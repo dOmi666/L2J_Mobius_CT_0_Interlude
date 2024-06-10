@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<list enabled="true" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="../../xsd/spawns.xsd">
+	<spawn name="19_21">
+		<npc id="50008" x="-12783" y="122814" z="-3112" heading="49783" respawnDelay="60" /> <!-- SIDDIK - Scheme Buffer -->
+		<npc id="50050" x="-12621" y="122825" z="-3112" heading="46191" respawnDelay="60" /> <!-- Carrefoursa - G M   S H O P -->
+		<npc id="50008" x="-14575" y="124028" z="-3112" heading="53819" respawnDelay="60" /> <!-- SIDDIK - Scheme Buffer -->
+		<npc id="50050" x="-14512" y="124078" z="-3112" heading="57343" respawnDelay="60" /> <!-- Carrefoursa - G M   S H O P -->
+		<npc id="31756" x="-14167" y="123970" z="-3112" heading="36952" respawnDelay="60" /> <!-- Mr. Cat - Test Server Helper -->
+		<npc id="31756" x="-12949" y="122794" z="-3112" heading="55710" respawnDelay="60" /> <!-- Mr. Cat - Test Server Helper -->
+		<npc id="30256" x="-14543" y="124056" z="-3112" heading="56398" respawnDelay="60" /> <!-- Bella - Gatekeeper -->
+		<npc id="50009" x="-12815" y="122792" z="-3112" heading="62322" respawnDelay="60" /> <!-- Melyssa - SOLO Buffer -->
+		<npc id="50010" x="-12839" y="122788" z="-3112" heading="58235" respawnDelay="60" /> <!-- Simone - SOLO Buffer -->
+		<npc id="50009" x="-14685" y="124032" z="-3112" heading="50785" respawnDelay="60" /> <!-- Melyssa - SOLO Buffer -->
+		<npc id="50010" x="-14636" y="124027" z="-3112" heading="47093" respawnDelay="60" /> <!-- Simone - SOLO Buffer -->
+		<npc id="50100" x="-14111" y="124071" z="-3112" heading="33221" respawnDelay="60" /> <!-- Skatty - SPECIAL Gatekeeper -->
+		<npc id="50100" x="-12713" y="122945" z="-3112" heading="47093" respawnDelay="60" /> <!-- Skatty - SPECIAL Gatekeeper -->
+	</spawn>
+</list>

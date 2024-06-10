@@ -1,0 +1,13 @@
+<list xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" maintainEnchantment="true" xsi:noNamespaceSchemaLocation="../xsd/multisell.xsd">
+	<npcs>
+		<npc>50050</npc> <!-- gmshop -->
+	</npcs>
+
+	<!-- Caradines letter -->
+	<item>
+	<ingredient id="5572" count="1000"/>
+	<ingredient id="5570" count="1000"/>
+	<ingredient id="5574" count="500"/>
+	<production id="7679" count="1"/>
+	</item>
+</list>

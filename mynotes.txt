@@ -1,0 +1,2 @@
+custom low quality but workin solo buffer added
+added spawns to required loc this npcs

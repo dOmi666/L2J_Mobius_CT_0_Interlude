@@ -1,0 +1,343 @@
+<list xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" maintainEnchantment="true" xsi:noNamespaceSchemaLocation="../xsd/multisell.xsd">
+	<npcs>
+		<npc>50050</npc> <!-- gmshop -->
+	</npcs>
+
+	<!-- Quest item Noble-->
+	<item>
+	<ingredient id="57" count="40000000"/>
+	<production id="7681" count="1"/>
+	</item>
+	<!-- Quest item Noble-->
+	<item>
+	<ingredient id="57" count="40000000"/>
+	<production id="7682" count="1"/>
+	</item>
+	<!-- Quest item Noble-->
+	<item>
+	<ingredient id="57" count="40000000"/>
+	<production id="7695" count="1"/>
+	</item>
+	<!-- Quest item Noble-->
+	<item>
+	<ingredient id="57" count="40000000"/>
+	<production id="7696" count="1"/>
+	</item>
+	<!-- Quest item Noble-->
+	<item>
+	<ingredient id="57" count="40000000"/>
+	<production id="7836" count="1"/>
+	</item>
+	<!-- Quest item Noble-->
+	<item>
+	<ingredient id="57" count="40000000"/>
+	<production id="6843" count="1"/>
+	</item>
+	<!-- Quest item Noble-->
+	<item>
+	<ingredient id="57" count="40000000"/>
+	<production id="6844" count="1"/>
+	</item>
+	<!-- Quest item Noble-->
+	<item>
+	<ingredient id="57" count="40000000"/>
+	<production id="6845" count="1"/>
+	</item>
+	<!-- Quest item Noble-->
+	<item>
+	<ingredient id="57" count="40000000"/>
+	<production id="6846" count="1"/>
+	</item>
+	<!-- Quest item Noble-->
+	<item>
+	<ingredient id="57" count="40000000"/>
+	<production id="7059" count="1"/>
+	</item>
+	<!-- Quest item Noble-->
+	<item>
+	<ingredient id="57" count="40000000"/>
+	<production id="8177" count="1"/>
+	</item>
+	<!-- Quest item Noble-->
+	<item>
+	<ingredient id="57" count="40000000"/>
+	<production id="8178" count="1"/>
+	</item>
+	<!-- Quest item Noble-->
+	<item>
+	<ingredient id="57" count="40000000"/>
+	<production id="8179" count="1"/>
+	</item>
+	<!-- Quest item Noble-->
+	<item>
+	<ingredient id="57" count="40000000"/>
+	<production id="8180" count="1"/>
+	</item>
+	<!-- Quest item Noble-->
+	<item>
+	<ingredient id="57" count="40000000"/>
+	<production id="8184" count="1"/>
+	</item>
+	<!-- Quest item Noble-->
+	<item>
+	<ingredient id="57" count="40000000"/>
+	<production id="8185" count="1"/>
+	</item>
+	<!-- Quest item Noble-->
+	<item>
+	<ingredient id="57" count="40000000"/>
+	<production id="8186" count="1"/>
+	</item>
+	<!-- Quest item Noble-->
+	<item>
+	<ingredient id="57" count="40000000"/>
+	<production id="8188" count="1"/>
+	</item>
+	<!-- Quest item Noble-->
+	<item>
+	<ingredient id="57" count="40000000"/>
+	<production id="8189" count="1"/>
+	</item>
+	<!-- Quest item Noble-->
+	<item>
+	<ingredient id="57" count="40000000"/>
+	<production id="8557" count="1"/>
+	</item>
+	<!-- Quest item Noble-->
+	<item>
+	<ingredient id="57" count="40000000"/>
+	<production id="8558" count="1"/>
+	</item>
+	<!-- Quest item Noble-->
+	<item>
+	<ingredient id="57" count="40000000"/>
+	<production id="8559" count="1"/>
+	</item>
+	<!-- Quest item Noble-->
+	<item>
+	<ingredient id="57" count="40000000"/>
+	<production id="8560" count="1"/>
+	</item>
+	<!-- Quest item Noble-->
+	<item>
+	<ingredient id="57" count="40000000"/>
+	<production id="8561" count="1"/>
+	</item>
+	<!-- Quest item Noble-->
+	<item>
+	<ingredient id="57" count="40000000"/>
+	<production id="8562" count="1"/>
+	</item>
+	<!-- Quest item Noble-->
+	<item>
+	<ingredient id="57" count="40000000"/>
+	<production id="8564" count="1"/>
+	</item>
+	<!-- Quest item Noble-->
+	<item>
+	<ingredient id="57" count="40000000"/>
+	<production id="8565" count="1"/>
+	</item>
+	<!-- Quest item Noble-->
+	<item>
+	<ingredient id="57" count="40000000"/>
+	<production id="8566" count="1"/>
+	</item>
+	<!-- Quest item Noble-->
+	<item>
+	<ingredient id="57" count="40000000"/>
+	<production id="8567" count="1"/>
+	</item>
+	<!-- Quest item Noble-->
+	<item>
+	<ingredient id="57" count="40000000"/>
+	<production id="8569" count="1"/>
+	</item>
+	<!-- Quest item Noble-->
+	<item>
+	<ingredient id="57" count="40000000"/>
+	<production id="8660" count="1"/>
+	</item>
+	<!-- Quest item Noble-->
+	<item>
+	<ingredient id="57" count="40000000"/>
+	<production id="8661" count="1"/>
+	</item>
+	<!-- Quest item Noble-->
+	<item>
+	<ingredient id="57" count="40000000"/>
+	<production id="8912" count="1"/>
+	</item>
+	<!-- Quest item Noble-->
+	<item>
+	<ingredient id="57" count="40000000"/>
+	<production id="8913" count="1"/>
+	</item>
+	<!-- Quest item Noble-->
+	<item>
+	<ingredient id="57" count="40000000"/>
+	<production id="8914" count="1"/>
+	</item>
+	<!-- Quest item Noble-->
+	<item>
+	<ingredient id="57" count="40000000"/>
+	<production id="8915" count="1"/>
+	</item>
+	<!-- Quest item Noble-->
+	<item>
+	<ingredient id="57" count="40000000"/>
+	<production id="8916" count="1"/>
+	</item>
+	<!-- Quest item Noble-->
+	<item>
+	<ingredient id="57" count="40000000"/>
+	<production id="8917" count="1"/>
+	</item>
+	<!-- Quest item Noble-->
+	<item>
+	<ingredient id="57" count="40000000"/>
+	<production id="8918" count="1"/>
+	</item>
+	<!-- Quest item Noble-->
+	<item>
+	<ingredient id="57" count="40000000"/>
+	<production id="8920" count="1"/>
+	</item>
+	<!-- Quest item Noble-->
+	<item>
+	<ingredient id="57" count="40000000"/>
+	<production id="8921" count="1"/>
+	</item>
+	<!-- Quest item Noble-->
+	<item>
+	<ingredient id="57" count="40000000"/>
+	<production id="8923" count="1"/>
+	</item>
+	<!-- Quest item Noble-->
+	<item>
+	<ingredient id="57" count="40000000"/>
+	<production id="8936" count="1"/>
+	</item>
+	<!-- Quest item Noble-->
+	<item>
+	<ingredient id="57" count="40000000"/>
+	<production id="8912" count="1"/>
+	</item>
+	<!-- RECIPES-->
+	<!-- RECIPES-->
+	<!-- RECIPES-->
+	<!-- RECIPES-->
+	<!-- RECIPES ARMORS-->
+	<!-- MAIN MP REGEN-->
+	<item>
+	<ingredient id="5570" count="1"/>
+	<production id="88" count="1"/>
+	<production id="8910" count="1"/>
+	<production id="2393" count="1"/>
+		</item>
+	 <!-- Tallum Full Set recipe -->
+	<item>
+	<ingredient id="5570" count="1"/>
+	<production id="5418" count="1"/>
+	<production id="5394" count="1"/>
+	<production id="5370" count="1"/>
+	<production id="5428" count="1"/>
+	<production id="5334" count="1"/>
+	<production id="5346" count="1"/>
+	<production id="5354" count="1"/>
+	</item>
+	<!-- DC Full Set recipe -->
+	<item>
+	<ingredient id="5570" count="1"/>
+	<production id="5348" count="1"/>
+	<production id="5392" count="1"/>
+	<production id="5368" count="1"/>
+	<production id="5426" count="1"/>
+	<production id="5416" count="1"/>
+	<production id="5424" count="1"/>
+	<production id="5332" count="1"/>
+	<production id="5340" count="1"/>
+	<production id="5364" count="1"/>
+	</item>
+	<!-- TTS recipes-->
+	<item>
+	<ingredient id="5570" count="1"/>
+	<production id="6847" count="1"/>
+	<production id="6849" count="1"/>
+	<production id="6851" count="1"/>
+	</item>
+	<!-- IC Heavy-->
+	<item>
+	<ingredient id="5570" count="1"/>
+	<production id="6853" count="1"/>
+	<production id="6859" count="1"/>
+	<production id="6855" count="1"/>
+	<production id="6857" count="1"/>
+	<production id="6863" count="1"/>
+	<production id="6861" count="1"/>
+	</item>
+	 <!-- Draconic Leather-->
+	<item>
+	<ingredient id="5570" count="1"/>
+	<production id="6865" count="1"/>
+	<production id="6867" count="1"/>
+	<production id="6869" count="1"/>
+	<production id="6871" count="1"/>
+	</item>
+	 <!-- Major Arcana-->
+	<item>
+	<ingredient id="5570" count="1"/>
+	<production id="6873" count="1"/>
+	<production id="6875" count="1"/>
+	<production id="6877" count="1"/>
+	<production id="6879" count="1"/>
+	</item>
+	<!-- S weps-->
+	<item>
+	<ingredient id="5570" count="1"/>
+	<production id="6899" count="1"/>
+	<production id="6897" count="1"/>
+	<production id="6895" count="1"/>
+	<production id="6893" count="1"/>
+	<production id="6891" count="1"/>
+	<production id="6889" count="1"/>
+	<production id="6887" count="1"/>
+	<production id="6885" count="1"/>
+	<production id="6883" count="1"/>
+	<production id="6881" count="1"/>
+	<production id="7580" count="1"/>
+	</item>
+	<!-- MATERIALS-->
+	<item>
+	<ingredient id="5570" count="1"/>
+	<production id="2138" count="1"/>
+	<production id="2142" count="1"/>
+	<production id="4122" count="1"/>
+	<production id="5477" count="1"/>
+	<production id="2140" count="1"/>
+	<production id="2143" count="1"/>
+	<production id="2136" count="1"/>
+	<production id="2145" count="1"/>
+	<production id="2137" count="1"/>
+	<production id="5473" count="1"/>
+	<production id="5472" count="1"/>
+	<production id="2135" count="1"/>
+	<production id="2141" count="1"/>
+	<production id="2147" count="1"/>
+	<production id="4125" count="1"/>
+	<production id="4123" count="1"/>
+	<production id="2144" count="1"/>
+	<production id="1817" count="1"/>
+	<production id="2149" count="1"/>
+	<production id="2148" count="1"/>
+	<production id="1814" count="1"/>
+	<production id="2139" count="1"/>
+	<production id="2146" count="1"/>
+	<production id="5475" count="1"/>
+	<production id="5474" count="1"/>
+	</item>
+	<!-- RECIPES-->
+	<!-- RECIPES-->
+	<!-- RECIPES-->
+	<!-- RECIPES-->
+</list>

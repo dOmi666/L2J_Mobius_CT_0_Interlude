@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<list enabled="true" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="../../xsd/spawns.xsd">
+	<spawn name="16_10">
+		<npc id="20432" x="-113171" y="-251206" z="-2992" heading="48252" respawnDelay="60" /> <!-- Elpy -->
+		<npc id="50050" x="-112985" y="-251172" z="-2992" heading="56765" respawnDelay="60" /> <!-- Carrefoursa - G M   S H O P -->
+		<npc id="31126" x="-113007" y="-251286" z="-2992" heading="57956" respawnDelay="60" /> <!-- Blacksmith of Mammon -->
+		<npc id="50008" x="-113082" y="-251136" z="-2992" heading="48466" respawnDelay="60" /> <!-- SIDDIK - Scheme Buffer -->
+		<npc id="35465" x="-112964" y="-251058" z="-2992" heading="16969" respawnDelay="60" /> <!-- Millicent - Clan Hall Manager -->
+		<npc id="50009" x="-113065" y="-251081" z="-2992" heading="9501" respawnDelay="60" /> <!-- Melyssa - Scheme Buffer -->
+		<npc id="30418" x="-113193" y="-251008" z="-2992" heading="39292" respawnDelay="60" /> <!-- Annika -->
+		<npc id="30414" x="-113209" y="-251042" z="-2992" heading="2799" respawnDelay="60" /> <!-- Rosella -->
+		<npc id="30406" x="-113184" y="-250982" z="-2992" heading="42078" respawnDelay="60" /> <!-- Matheo -->
+		<npc id="30407" x="-113151" y="-250944" z="-2992" heading="8925" respawnDelay="60" /> <!-- Mesella -->
+		<npc id="30738" x="-113024" y="-250945" z="-2992" heading="33672" respawnDelay="60" /> <!-- Matild - Alchemist -->
+		<npc id="31595" x="-112916" y="-251019" z="-2992" heading="64177" respawnDelay="60" /> <!-- Leona Blackbird -->
+		<npc id="32077" x="-113034" y="-251215" z="-2992" heading="47660" respawnDelay="60" /> <!-- Ice Sculpture -->
+		<npc id="50010" x="-113007" y="-251286" z="-2992" heading="39172" respawnDelay="60" /> <!-- Simone - SOLO Buffer -->
+		<npc id="50010" x="-113117" y="-251196" z="-2992" heading="53780" respawnDelay="60" /> <!-- Simone - SOLO Buffer -->
+		<npc id="50009" x="-113081" y="-251153" z="-2992" heading="37097" respawnDelay="60" /> <!-- Melyssa - SOLO Buffer -->
+	</spawn>
+</list>

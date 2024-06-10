@@ -1,0 +1,4 @@
+#The HexId to Auth into LoginServer
+#Thu Jan 18 20:42:17 TRT 2024
+HexID=-54f4034bab88d7fd7668ea5592f29e7a
+ServerID=13

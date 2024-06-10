@@ -1,0 +1,15 @@
+<list xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" maintainEnchantment="true" xsi:noNamespaceSchemaLocation="../xsd/multisell.xsd">
+	<npcs>
+		<npc>50050</npc> <!-- gmshop -->
+	</npcs>
+
+	<!-- D set Necklace -->
+	<item>
+	<ingredient id="57" count="500000"/>
+	<production id="913" count="1"/>
+	<production id="850" count="1"/>
+	<production id="850" count="1"/>
+	<production id="881" count="1"/>
+	<production id="881" count="1"/>
+	</item>
+</list>

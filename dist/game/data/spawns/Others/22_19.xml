@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<list enabled="true" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="../../xsd/spawns.xsd">
+	<spawn name="22_19">
+		<npc id="50008" x="82967" y="53124" z="-1488" heading="32442" respawnDelay="60" /> <!-- SIDDIK - Scheme Buffer -->
+		<npc id="50050" x="83012" y="53281" z="-1488" heading="28132" respawnDelay="60" /> <!-- Carrefoursa - G M   S H O P -->
+		<npc id="31756" x="82887" y="53049" z="-1488" heading="18939" respawnDelay="60" /> <!-- Mr. Cat - Test Server Helper -->
+		<npc id="50009" x="82508" y="53161" z="-1488" heading="6790" respawnDelay="60" /> <!-- Melyssa - SOLO Buffer -->
+		<npc id="50010" x="82497" y="53213" z="-1488" heading="57343" respawnDelay="60" /> <!-- Simone - SOLO Buffer -->
+		<npc id="50100" x="83189" y="53056" z="-1488" heading="24962" respawnDelay="60" /> <!-- Skatty - SPECIAL Gatekeeper -->
+	</spawn>
+</list>

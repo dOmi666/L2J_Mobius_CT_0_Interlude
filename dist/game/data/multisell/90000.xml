@@ -1,0 +1,101 @@
+<list xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" maintainEnchantment="true" xsi:noNamespaceSchemaLocation="../xsd/multisell.xsd">
+	<npcs>
+		<npc>50050</npc> <!-- GMSHOP -->
+	</npcs>
+	<!-- Imperial Crusader Breastplate -->
+	<item>
+	<ingredient id="57" count="150000000"/>
+	<production id="6373" count="1"/>
+	<production id="6374" count="1"/>
+	<production id="6378" count="1"/>
+	<production id="6375" count="1"/>
+	<production id="6376" count="1"/>
+	<production id="6377" count="1"/>
+	</item>
+	<!-- Draconic Leather Armor -->
+	<item>
+	<ingredient id="57" count="150000000"/>
+	<production id="6379" count="1"/>
+	<production id="6382" count="1"/>
+	<production id="6380" count="1"/>
+	<production id="6381" count="1"/>
+	</item>
+	<!-- Major Arcana Robe -->
+	<item>
+	<ingredient id="57" count="150000000"/>
+	<production id="6383" count="1"/>
+	<production id="6386" count="1"/>
+	<production id="6384" count="1"/>
+	<production id="6385" count="1"/>
+	</item>
+	<!-- Imperial Crusader Breastplate -->
+	<item>
+	<ingredient id="57" count="30000000"/>
+	<production id="6373" count="1"/>
+	</item>
+	<!-- Imperial Crusader Gaiters -->
+	<item>
+	<ingredient id="57" count="30000000"/>
+	<production id="6374" count="1"/>
+	</item>
+	<!-- Imperial Crusader Boots -->
+	<item>
+	<ingredient id="57" count="30000000"/>
+	<production id="6376" count="1"/>
+	</item>
+	<!-- Imperial Crusader Gauntlets -->
+	<item>
+	<ingredient id="57" count="30000000"/>
+	<production id="6375" count="1"/>
+	</item>
+	<!-- Imperial Crusader Helmet -->
+	<item>
+	<ingredient id="57" count="30000000"/>
+	<production id="6378" count="1"/>
+	</item>
+	<!-- Imperial Crusader Shield -->
+	<item>
+	<ingredient id="57" count="30000000"/>
+	<production id="6377" count="1"/>
+	</item>
+	<!-- Draconic Leather Armor -->
+	<item>
+	<ingredient id="57" count="30000000"/>
+	<production id="6379" count="1"/>
+	</item>
+	<!-- Draconic Leather Boots -->
+	<item>
+	<ingredient id="57" count="30000000"/>
+	<production id="6381" count="1"/>
+	</item>
+	<!-- Draconic Leather Gloves -->
+	<item>
+	<ingredient id="57" count="30000000"/>
+	<production id="6380" count="1"/>
+	</item>
+	<!-- Draconic Leather Helmet -->
+	<item>
+	<ingredient id="57" count="30000000"/>
+	<production id="6382" count="1"/>
+	</item>
+	<!-- Major Arcana Robe -->
+	<item>
+	<ingredient id="57" count="30000000"/>
+	<production id="6383" count="1"/>
+	</item>
+	<!-- Major Arcana Boots -->
+	<item>
+	<ingredient id="57" count="30000000"/>
+	<production id="6385" count="1"/>
+	</item>
+	<!-- Major Arcana Gloves -->
+	<item>
+	<ingredient id="57" count="30000000"/>
+	<production id="6384" count="1"/>
+	</item>
+	<!-- Major Arcana Circlet -->
+	<item>
+	<ingredient id="57" count="30000000"/>
+	<production id="6386" count="1"/>
+	</item>
+</list>

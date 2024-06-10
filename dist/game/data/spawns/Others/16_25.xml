@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<list enabled="true" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="../../xsd/spawns.xsd">
+	<spawn name="16_25">
+		<npc id="50050" x="-100074" y="238701" z="-3568" heading="57028" respawnDelay="60" /> <!-- Carrefoursa - G M   S H O P -->
+	</spawn>
+</list>

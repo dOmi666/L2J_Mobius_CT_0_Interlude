@@ -1,0 +1,103 @@
+<list xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" maintainEnchantment="true" xsi:noNamespaceSchemaLocation="../xsd/multisell.xsd">
+	<npcs>
+		<npc>50050</npc> <!-- gmshop -->
+	</npcs>
+
+<!-- Gold Bar / Adena -->
+	<item>
+	<ingredient id="57" count="500000000"/>
+	<production id="3470" count="1"/>
+	</item>
+	<item>
+	<ingredient id="3470" count="1"/>
+	<production id="57" count="500000000"/>
+	</item>
+	<!-- Seal stones Blue / Green / Red -->
+	<item>
+	<ingredient id="6360" count="1000"/>
+	<production id="5575" count="3000"/>
+	</item>
+	<item>
+	<ingredient id="6361" count="1000"/>
+	<production id="5575" count="5000"/>
+	</item>
+	<item>
+	<ingredient id="6362" count="1000"/>
+	<production id="5575" count="10000"/>
+	</item>
+	<!-- Dualsword Craft Stamp	-->
+	<item>
+	<ingredient id="57" count="75000000"/>
+	<production id="5126" count="1"/>
+	</item>
+	 <!-- Draconic bow shaft to Shining bow shaft	-->
+	<item>
+	<ingredient id="7579" count="1"/>
+	<production id="6692" count="1"/>
+	</item>
+	<!-- FANGS -->
+	<!-- FANGS -->
+	<!-- FANGS -->
+	<!-- Enria	-->
+	<item>
+	<ingredient id="8085" count="12"/>
+	<production id="4042" count="1"/>
+	</item>
+	<!-- Asofe	-->
+	<item>
+	<ingredient id="8085" count="6"/>
+	<production id="4043" count="1"/>
+	</item>
+	 <!-- Thons	-->
+	<item>
+	<ingredient id="8085" count="6"/>
+	<production id="4044" count="1"/>
+	</item>
+	<!-- Varnish Of Purity VOP	-->
+	<item>
+	<ingredient id="8085" count="8"/>
+	<production id="1887" count="1"/>
+	</item>
+	<!-- Syntetic Cokes	-->
+	<item>
+	<ingredient id="8085" count="33"/>
+	<production id="1888" count="5"/>
+	</item>
+	<!-- Compound Braid	-->
+	<item>
+	<ingredient id="8085" count="3"/>
+	<production id="1889" count="1"/>
+	</item>
+	<!-- Durable Metal Plate DMP	-->
+	<item>
+	<ingredient id="8085" count="15"/>
+	<production id="5550" count="1"/>
+	</item>
+	<!-- Mithril Alloy	-->
+	<item>
+	<ingredient id="8085" count="13"/>
+	<production id="1890" count="1"/>
+	</item>
+	<!-- Oriharukon	-->
+	<item>
+	<ingredient id="8085" count="25"/>
+	<production id="1893" count="1"/>
+	</item>
+	<!-- FANGS -->
+	<!-- FANGS -->
+	<!-- FANGS -->
+	<!-- VARKA MANE -->
+	<!-- VARKA MANE -->
+	 <!-- Varka mane to buffalo horn	-->
+	<item>
+	<ingredient id="7233" count="10"/>
+	<production id="7186" count="2"/>
+	</item>
+	<!-- Ketra molar to nependes seed -->
+	 <item>
+	<ingredient id="7234" count="10"/>
+	<production id="7187" count="2"/>
+	</item>
+	<!-- VARKA MANE -->
+	<!-- VARKA MANE -->
+</list>

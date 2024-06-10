@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<list enabled="true" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="../../xsd/spawns.xsd">
+	<spawn name="17_25">
+		<npc id="50050" x="-71444" y="258075" z="-3104" heading="46168" respawnDelay="60" /> <!-- Carrefoursa - G M   S H O P -->
+		<npc id="50008" x="-71634" y="258241" z="-3104" heading="9825" respawnDelay="60" /> <!-- SIDDIK - Scheme Buffer -->
+		<npc id="30177" x="-71594" y="258091" z="-3096" heading="8338" respawnDelay="60" /> <!-- Valentina - Gatekeeper -->
+		<npc id="30177" x="-90538" y="248353" z="-3568" heading="36372" respawnDelay="60" /> <!-- Valentina - Gatekeeper -->
+		<npc id="50008" x="-90561" y="248035" z="-3568" heading="22517" respawnDelay="60" /> <!-- SIDDIK - Scheme Buffer -->
+		<npc id="50050" x="-90831" y="248431" z="-3568" heading="57343" respawnDelay="60" /> <!-- Carrefoursa - G M   S H O P -->
+		<npc id="50009" x="-71489" y="258083" z="-3091" heading="16072" respawnDelay="60" /> <!-- Melyssa - SOLO Buffer -->
+		<npc id="50010" x="-71603" y="258216" z="-3099" heading="16072" respawnDelay="60" /> <!-- Simone - SOLO Buffer -->
+		<npc id="50009" x="-91014" y="248186" z="-3563" heading="16072" respawnDelay="60" /> <!-- Melyssa - SOLO Buffer -->
+		<npc id="50010" x="-90873" y="247956" z="-3555" heading="16072" respawnDelay="60" /> <!-- Simone - SOLO Buffer -->
+	</spawn>
+</list>

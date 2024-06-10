@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<list xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="../xsd/initialEquipment.xsd">
+	<!-- Human Fighter -->
+	<equipment classId="0">
+		<item id="43" count="1" equipped="true" /> <!-- Wooden Helmet -->
+		<item id="26" count="1" equipped="true" /> <!--  Bronze Breastplate -->
+		<item id="34" count="1" equipped="true" /> <!--  Bronze Gaiters -->
+		<item id="219" count="1" equipped="true" /> <!--  Sword Breaker -->
+		<item id="68" count="1" /> <!--  Falchion -->
+		<item id="1835" count="5000" /> <!--  Soulshot: No Grade -->
+		<item id="1538" count="50" /> <!--  Blessed Scroll Of Escape -->
+		<item id="4627" count="1" /> <!--  Dice (Clover) -->
+		<item id="1539" count="100" /> <!--   Greater Healing Potion -->
+		<item id="728" count="100" /> <!--   Mana potion -->
+		<item id="736" count="10" /> <!--   Scroll of Escape -->
+		<item id="737" count="10" /> <!--   Scroll of Ressurection -->
+	</equipment>
+	<!-- Human Mystic -->
+	<equipment classId="10">
+		<item id="44" count="1" equipped="true" /> <!-- Leather Helmet -->
+		<item id="1101" count="1" equipped="true" /> <!-- Tunic Of Devotion -->
+		<item id="1104" count="1" equipped="true" /> <!-- Stockings Of Devotion -->
+		<item id="177" count="1" equipped="true" /> <!-- Mage Staff -->
+		<item id="3947" count="3000" /> <!-- Blessed Spiritshot: No Grade -->
+		<item id="1538" count="50" /> <!--  Blessed Scroll Of Escape -->
+		<item id="4627" count="1" /> <!--  Dice (Clover) -->
+		<item id="1539" count="100" /> <!--   Greater Healing Potion -->
+		<item id="728" count="100" /> <!--   Mana potion -->
+		<item id="736" count="10" /> <!--   Scroll of Escape -->
+		<item id="737" count="10" /> <!--   Scroll of Ressurection -->
+	</equipment>
+	<!-- Elven Fighter -->
+	<equipment classId="18">
+		<item id="43" count="1" equipped="true" /> <!-- Wooden Helmet -->
+		<item id="26" count="1" equipped="true" /> <!--  Bronze Breastplate -->
+		<item id="34" count="1" equipped="true" /> <!--  Bronze Gaiters -->
+		<item id="219" count="1" equipped="true" /> <!--  Sword Breaker -->
+		<item id="68" count="1" /> <!--  Falchion -->
+		<item id="1835" count="5000" /> <!--  Soulshot: No Grade -->
+		<item id="1538" count="50" /> <!--  Blessed Scroll Of Escape -->
+		<item id="4627" count="1" /> <!--  Dice (Clover) -->
+		<item id="1539" count="100" /> <!--   Greater Healing Potion -->
+		<item id="728" count="100" /> <!--   Mana potion -->
+		<item id="736" count="10" /> <!--   Scroll of Escape -->
+		<item id="737" count="10" /> <!--   Scroll of Ressurection -->
+	</equipment>
+	<!-- Elven Mystic -->
+	<equipment classId="25">
+		<item id="44" count="1" equipped="true" /> <!-- Leather Helmet -->
+		<item id="1101" count="1" equipped="true" /> <!-- Tunic Of Devotion -->
+		<item id="1104" count="1" equipped="true" /> <!-- Stockings Of Devotion -->
+		<item id="177" count="1" equipped="true" /> <!-- Mage Staff -->
+		<item id="3947" count="3000" /> <!-- Blessed Spiritshot: No Grade -->
+		<item id="1538" count="50" /> <!--  Blessed Scroll Of Escape -->
+		<item id="4627" count="1" /> <!--  Dice (Clover) -->
+		<item id="1539" count="100" /> <!--   Greater Healing Potion -->
+		<item id="728" count="100" /> <!--   Mana potion -->
+		<item id="736" count="10" /> <!--   Scroll of Escape -->
+		<item id="737" count="10" /> <!--   Scroll of Ressurection -->
+	</equipment>
+	<!-- Dark Fighter -->
+	<equipment classId="31">
+		<item id="43" count="1" equipped="true" /> <!-- Wooden Helmet -->
+		<item id="26" count="1" equipped="true" /> <!--  Bronze Breastplate -->
+		<item id="34" count="1" equipped="true" /> <!--  Bronze Gaiters -->
+		<item id="219" count="1" equipped="true" /> <!--  Sword Breaker -->
+		<item id="68" count="1" /> <!--  Falchion -->
+		<item id="1835" count="5000" /> <!--  Soulshot: No Grade -->
+		<item id="1538" count="50" /> <!--  Blessed Scroll Of Escape -->
+		<item id="4627" count="1" /> <!--  Dice (Clover) -->
+		<item id="1539" count="100" /> <!--   Greater Healing Potion -->
+		<item id="728" count="100" /> <!--   Mana potion -->
+		<item id="736" count="10" /> <!--   Scroll of Escape -->
+		<item id="737" count="10" /> <!--   Scroll of Ressurection -->
+	</equipment>
+	<!-- Dark Mystic -->
+	<equipment classId="38">
+		<item id="44" count="1" equipped="true" /> <!-- Leather Helmet -->
+		<item id="1101" count="1" equipped="true" /> <!-- Tunic Of Devotion -->
+		<item id="1104" count="1" equipped="true" /> <!-- Stockings Of Devotion -->
+		<item id="177" count="1" equipped="true" /> <!-- Mage Staff -->
+		<item id="3947" count="3000" /> <!-- Blessed Spiritshot: No Grade -->
+		<item id="1538" count="50" /> <!--  Blessed Scroll Of Escape -->
+		<item id="4627" count="1" /> <!--  Dice (Clover) -->
+		<item id="1539" count="100" /> <!--   Greater Healing Potion -->
+		<item id="728" count="100" /> <!--   Mana potion -->
+		<item id="736" count="10" /> <!--   Scroll of Escape -->
+		<item id="737" count="10" /> <!--   Scroll of Ressurection -->
+	</equipment>
+	<!-- Orc Fighter -->
+	<equipment classId="44">
+		<item id="43" count="1" equipped="true" /> <!-- Wooden Helmet -->
+		<item id="26" count="1" equipped="true" /> <!--  Bronze Breastplate -->
+		<item id="34" count="1" equipped="true" /> <!--  Bronze Gaiters -->
+		<item id="257" count="1" equipped="true" /> <!--   Viper Fang -->
+		<item id="68" count="1" /> <!--  Falchion -->
+		<item id="1835" count="5000" /> <!--  Soulshot: No Grade -->
+		<item id="1538" count="50" /> <!--  Blessed Scroll Of Escape -->
+		<item id="4627" count="1" /> <!--  Dice (Clover) -->
+		<item id="1539" count="100" /> <!--   Greater Healing Potion -->
+		<item id="728" count="100" /> <!--   Mana potion -->
+		<item id="736" count="10" /> <!--   Scroll of Escape -->
+		<item id="737" count="10" /> <!--   Scroll of Ressurection -->
+	</equipment>
+	<!-- Orc Mystic -->
+	<!-- NOTE: This is orc_mage (orc_shaman is retail typo) -->
+	<equipment classId="49">
+		<item id="44" count="1" equipped="true" /> <!-- Leather Helmet -->
+		<item id="1101" count="1" equipped="true" /> <!-- Tunic Of Devotion -->
+		<item id="1104" count="1" equipped="true" /> <!-- Stockings Of Devotion -->
+		<item id="177" count="1" equipped="true" /> <!-- Mage Staff -->
+		<item id="3947" count="3000" /> <!-- Blessed Spiritshot: No Grade -->
+		<item id="1538" count="50" /> <!--  Blessed Scroll Of Escape -->
+		<item id="4627" count="1" /> <!--  Dice (Clover) -->
+		<item id="1539" count="100" /> <!--   Greater Healing Potion -->
+		<item id="728" count="100" /> <!--   Mana potion -->
+		<item id="736" count="10" /> <!--   Scroll of Escape -->
+		<item id="737" count="10" /> <!--   Scroll of Ressurection -->
+	</equipment>
+	<!-- Dwarf Fighter -->
+	<equipment classId="53">
+		<item id="43" count="1" equipped="true" /> <!-- Wooden Helmet -->
+		<item id="26" count="1" equipped="true" /> <!--  Bronze Breastplate -->
+		<item id="34" count="1" equipped="true" /> <!--  Bronze Gaiters -->
+		<item id="87" count="1" equipped="true" /> <!--  Iron Hammer  -->
+		<item id="68" count="1" /> <!--  Falchion -->
+		<item id="1835" count="5000" /> <!--  Soulshot: No Grade -->
+		<item id="1538" count="50" /> <!--  Blessed Scroll Of Escape -->
+		<item id="4627" count="1" /> <!--  Dice (Clover) -->
+		<item id="1539" count="100" /> <!--   Greater Healing Potion -->
+		<item id="728" count="100" /> <!--   Mana potion -->
+		<item id="736" count="10" /> <!--   Scroll of Escape -->
+		<item id="737" count="10" /> <!--   Scroll of Ressurection -->
+	</equipment>
+</list>

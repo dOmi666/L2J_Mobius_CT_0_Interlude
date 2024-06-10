@@ -1,0 +1,94 @@
+<list xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" maintainEnchantment="true" xsi:noNamespaceSchemaLocation="../xsd/multisell.xsd">
+	<npcs>
+		<npc>50050</npc> <!-- gmshop -->
+	</npcs>
+<!-- Cat Ear -->
+<item>
+<ingredient id="57" count="50000"/>
+<production id="3031" count="100"/>
+</item>
+<!-- Lady's Hair Pin -->
+<item>
+<ingredient id="57" count="50000"/>
+<production id="1785" count="100"/>
+</item>
+	<!-- Pirate's Eye Patch -->
+<item>
+<ingredient id="57" count="3000"/>
+<production id="2130" count="1"/>
+</item>
+<!-- Golden Festival Mask -->
+<item>
+<ingredient id="57" count="3000"/>
+<production id="2131" count="1"/>
+</item>
+<!-- Tateossian Hairband -->
+<item>
+<ingredient id="57" count="10000"/>
+<production id="2132" count="1"/>
+</item>
+	<!-- Raccoon Ears -->
+<item>
+<ingredient id="57" count="150000"/>
+<production id="2508" count="1000"/>
+ </item>
+<!-- Raccoon Ears -->
+<item>
+<ingredient id="57" count="40000"/>
+<production id="8599" count="1"/>
+</item>
+<!-- Raccoon Ears -->
+<item>
+<ingredient id="57" count="10000"/>
+<production id="5589" count="100"/>
+</item>
+<!-- Raccoon Ears -->
+<item>
+<ingredient id="57" count="35000"/>
+<production id="8874" count="1"/>
+</item>
+<!-- Raccoon Ears -->
+<item>
+<ingredient id="57" count="1000"/>
+<production id="8873" count="1"/>
+</item>
+<!-- Formal Wear -->
+<item>
+<ingredient id="57" count="500000000"/>
+<production id="6408" count="1"/>
+</item>
+<!-- Formal Wear -->
+<item>
+<ingredient id="57" count="100000"/>
+<production id="1345" count="1000"/>
+</item>
+<!-- Formal Wear -->
+<item>
+<ingredient id="57" count="100000"/>
+<production id="1344" count="1000"/>
+</item>
+<!-- Formal Wear -->
+<item>
+<ingredient id="57" count="100000"/>
+<production id="1343" count="1000"/>
+</item>
+<!-- Formal Wear -->
+<item>
+<ingredient id="57" count="100000"/>
+<production id="1342" count="1000"/>
+</item>
+<item>
+<ingredient id="57" count="100000"/>
+<production id="1341" count="1000"/>
+</item>
+<!-- Mana Potion -->
+<item>
+<ingredient id="57" count="35000"/>
+<production id="728" count="1"/>
+</item>
+<!-- Greater Healing Potion -->
+<item>
+<ingredient id="57" count="20000"/>
+<production id="1539" count="1"/>
+</item>
+</list>

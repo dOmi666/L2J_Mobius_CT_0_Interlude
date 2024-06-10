@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<list enabled="true" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="../../xsd/spawns.xsd">
+	<spawn name="21_16">
+		<npc id="50008" x="43767" y="-47690" z="-792" heading="56023" respawnDelay="60" /> <!-- SIDDIK - Scheme Buffer -->
+		<npc id="50050" x="43902" y="-47665" z="-792" heading="59084" respawnDelay="60" /> <!-- Carrefoursa - G M   S H O P -->
+		<npc id="31113" x="44143" y="-47648" z="-792" heading="51384" respawnDelay="60" /> <!-- Merchant of Mammon -->
+		<npc id="31126" x="44218" y="-47716" z="-792" heading="32219" respawnDelay="60" /> <!-- Blacksmith of Mammon -->
+		<npc id="50009" x="44289" y="-48391" z="-792" heading="22732" respawnDelay="60" /> <!-- Melyssa - SOLO Buffer -->
+		<npc id="50010" x="44358" y="-48373" z="-792" heading="27559" respawnDelay="60" /> <!-- Simone - SOLO Buffer -->
+		<npc id="30177" x="38196" y="-48385" z="896" heading="3658" respawnDelay="60" /> <!-- Valentina - Gatekeeper -->
+		<npc id="30177" x="38331" y="-48001" z="-1144" heading="45908" respawnDelay="60" /> <!-- Valentina - Gatekeeper -->
+		<npc id="50100" x="44011" y="-47716" z="-792" heading="53988" respawnDelay="60" /> <!-- Skatty - SPECIAL Gatekeeper -->
+	</spawn>
+</list>

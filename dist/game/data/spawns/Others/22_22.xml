@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<list enabled="true" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="../../xsd/spawns.xsd">
+	<spawn name="22_22">
+		<npc id="50008" x="83480" y="147906" z="-3400" heading="18038" respawnDelay="60" /> <!-- SIDDIK - Scheme Buffer -->
+		<npc id="50050" x="83268" y="147911" z="-3400" heading="15612" respawnDelay="60" /> <!-- Carrefoursa - G M   S H O P -->
+		<npc id="50008" x="83676" y="147986" z="-3400" heading="35178" respawnDelay="60" /> <!-- SIDDIK - Scheme Buffer -->
+		<npc id="50008" x="83674" y="148379" z="-3400" heading="30487" respawnDelay="60" /> <!-- SIDDIK - Scheme Buffer -->
+		<npc id="50008" x="83693" y="148857" z="-3400" heading="49151" respawnDelay="60" /> <!-- SIDDIK - Scheme Buffer -->
+		<npc id="50050" x="83258" y="148387" z="-3400" heading="33600" respawnDelay="60" /> <!-- Carrefoursa - G M   S H O P -->
+		<npc id="50009" x="83700" y="148115" z="-3400" heading="35575" respawnDelay="60" /> <!-- Melyssa - SOLO Buffer -->
+		<npc id="50010" x="83699" y="148215" z="-3400" heading="38901" respawnDelay="60" /> <!-- Simone - SOLO Buffer -->
+		<npc id="50100" x="83550" y="147577" z="-3400" heading="22517" respawnDelay="60" /> <!-- Skatty - SPECIAL Gatekeeper -->
+	</spawn>
+</list>

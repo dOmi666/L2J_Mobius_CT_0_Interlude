@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<list enabled="true" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="../../xsd/spawns.xsd">
+	<spawn name="21_19">
+		<npc id="30177" x="46047" y="41980" z="-3472" heading="49913" respawnDelay="60" /> <!-- Valentina - Gatekeeper -->
+		<npc id="50050" x="46274" y="41286" z="-3504" heading="18164" respawnDelay="60" /> <!-- Carrefoursa - G M   S H O P -->
+		<npc id="50008" x="45878" y="41141" z="-3504" heading="14620" respawnDelay="60" /> <!-- SIDDIK - Scheme Buffer -->
+		<npc id="50009" x="45967" y="41161" z="-3499" heading="16072" respawnDelay="60" /> <!-- Melyssa - SOLO Buffer -->
+		<npc id="50010" x="45843" y="41131" z="-3499" heading="16072" respawnDelay="60" /> <!-- Simone - SOLO Buffer -->
+	</spawn>
+</list>

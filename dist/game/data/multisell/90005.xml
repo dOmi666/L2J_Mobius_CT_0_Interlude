@@ -1,0 +1,20 @@
+<list xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" maintainEnchantment="true" xsi:noNamespaceSchemaLocation="../xsd/multisell.xsd">
+	<npcs>
+		<npc>50050</npc> <!-- gmshop -->
+	</npcs>
+
+	<!-- Wooden Helmet -->
+	<item>
+	<ingredient id="57" count="100000"/>
+	<production id="43" count="1"/>
+	<production id="23" count="1"/>
+	<production id="2386" count="1"/>
+	</item>
+	<!-- Leather Helmet -->
+	<item>
+	<ingredient id="57" count="100000"/>
+	<production id="44" count="1"/>
+	<production id="1101" count="1"/>
+	<production id="1104" count="1"/>
+	</item>
+</list>

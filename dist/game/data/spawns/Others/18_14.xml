@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<list enabled="true" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="../../xsd/spawns.xsd">
+	<spawn name="18_14">
+		<npc id="50050" x="-46237" y="-113595" z="-8" heading="8886" respawnDelay="60" /> <!-- Carrefoursa - G M   S H O P -->
+		<npc id="50009" x="-46261" y="-113675" z="-8" heading="39590" respawnDelay="60" /> <!-- Melyssa - Scheme Buffer -->
+		<npc id="31126" x="-46192" y="-113707" z="-8" heading="49524" respawnDelay="60" /> <!-- Blacksmith of Mammon -->
+		<npc id="50008" x="-46296" y="-113708" z="-8" heading="32767" respawnDelay="60" /> <!-- SIDDIK - Scheme Buffer -->
+		<npc id="31760" x="-46378" y="-113496" z="-8" heading="31866" respawnDelay="60" /> <!-- Miss Queen - Adventurers' Guide -->
+		<npc id="30602" x="-46111" y="-113566" z="-8" heading="29841" respawnDelay="60" /> <!-- Newbie Guide -->
+		<npc id="31756" x="-46229" y="-113655" z="-8" heading="32767" respawnDelay="60" /> <!-- Mr. Cat - Test Server Helper -->
+		<npc id="50050" x="-56726" y="-113466" z="-664" heading="1258" respawnDelay="60" /> <!-- Carrefoursa - G M   S H O P -->
+		<npc id="50008" x="-56739" y="-113610" z="-664" heading="891" respawnDelay="60" /> <!-- SIDDIK - Scheme Buffer -->
+		<npc id="30177" x="-56663" y="-113995" z="-672" heading="15626" respawnDelay="60" /> <!-- Valentina - Gatekeeper -->
+		<npc id="30177" x="-56111" y="-113606" z="-672" heading="31403" respawnDelay="60" /> <!-- Valentina - Gatekeeper -->
+		<npc id="50009" x="-56571" y="-113930" z="-667" heading="16072" respawnDelay="60" /> <!-- Melyssa - SOLO Buffer -->
+		<npc id="50010" x="-56495" y="-113936" z="-667" heading="16072" respawnDelay="60" /> <!-- Simone - SOLO Buffer -->
+	</spawn>
+</list>
