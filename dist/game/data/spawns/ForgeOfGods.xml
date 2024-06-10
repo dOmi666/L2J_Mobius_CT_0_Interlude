@@ -165,17 +165,14 @@
 		<npc id="21387" x="176683" y="-109142" z="-3658" heading="1991" respawnDelay="110" />
 		<npc id="21387" x="176814" y="-113060" z="-3531" heading="0" respawnDelay="110" />
 		<npc id="21387" x="176611" y="-113772" z="-3531" heading="0" respawnDelay="110" />
-		<npc id="21388" x="175809" y="-112141" z="-5521" heading="32579" respawnDelay="110" />
 		<npc id="21388" x="175426" y="-112498" z="-5565" heading="0" respawnDelay="110" />
 		<npc id="21388" x="175729" y="-112116" z="-5521" heading="57464" respawnDelay="110" />
 		<npc id="21388" x="178306" y="-114178" z="-5876" heading="0" respawnDelay="110" />
-		<npc id="21388" x="178105" y="-113466" z="-5876" heading="0" respawnDelay="110" />
 		<npc id="21388" x="179212" y="-112932" z="-5876" heading="0" respawnDelay="110" />
 		<npc id="21388" x="180169" y="-117142" z="-6170" heading="0" respawnDelay="110" />
 		<npc id="21388" x="180874" y="-116608" z="-6170" heading="0" respawnDelay="110" />
 		<npc id="21388" x="180974" y="-116074" z="-6170" heading="0" respawnDelay="110" />
 		<npc id="21388" x="183260" y="-114708" z="-6244" heading="0" respawnDelay="110" />
-		<npc id="21388" x="183361" y="-114530" z="-6244" heading="0" respawnDelay="110" />
 		<npc id="21388" x="184439" y="-117495" z="-6106" heading="45322" respawnDelay="110" />
 		<npc id="21388" x="184346" y="-116161" z="-6106" heading="14122" respawnDelay="110" />
 		<npc id="21389" x="176331" y="-112320" z="-5565" heading="0" respawnDelay="110" />
@@ -187,14 +184,9 @@
 		<npc id="21389" x="180068" y="-116252" z="-6170" heading="0" respawnDelay="110" />
 		<npc id="21389" x="180370" y="-117142" z="-6170" heading="0" respawnDelay="110" />
 		<npc id="21389" x="179767" y="-116430" z="-6170" heading="0" respawnDelay="110" />
-		<npc id="21390" x="175894" y="-112136" z="-5521" heading="17144" respawnDelay="110" />
-		<npc id="21390" x="175881" y="-111994" z="-5521" heading="56769" respawnDelay="110" />
 		<npc id="21390" x="175022" y="-111786" z="-5565" heading="0" respawnDelay="110" />
-		<npc id="21390" x="179240" y="-112304" z="-5834" heading="39407" respawnDelay="110" />
 		<npc id="21390" x="177703" y="-113822" z="-5876" heading="0" respawnDelay="110" />
-		<npc id="21390" x="178659" y="-112990" z="-5834" heading="35692" respawnDelay="110" />
 		<npc id="21390" x="180571" y="-117142" z="-6170" heading="0" respawnDelay="110" />
-		<npc id="21390" x="180471" y="-115896" z="-6170" heading="0" respawnDelay="110" />
 		<npc id="21390" x="179566" y="-116430" z="-6170" heading="0" respawnDelay="110" />
 		<npc id="21391" x="181344" y="-110930" z="-5834" heading="65514" respawnDelay="110" />
 		<npc id="21391" x="180936" y="-110481" z="-5834" heading="48380" respawnDelay="110" />
@@ -293,39 +285,39 @@
 		<npc id="21394" x="179242" y="-110171" z="-3711" heading="0" respawnDelay="90" />
 		<npc id="21394" x="176082" y="-109062" z="-3655" heading="16710" respawnDelay="90" />
 		<npc id="21394" x="176108" y="-112882" z="-3531" heading="0" respawnDelay="90" />
-		<npc id="21395" x="175699" y="-112639" z="-5521" heading="8192" respawnDelay="60" />
-		<npc id="21395" x="178376" y="-112801" z="-5821" heading="19466" respawnDelay="60" />
-		<npc id="21395" x="180169" y="-116786" z="-6170" heading="0" respawnDelay="60" />
-		<npc id="21395" x="178215" y="-108114" z="-5834" heading="29528" respawnDelay="60" />
-		<npc id="21395" x="178958" y="-110974" z="-5893" heading="0" respawnDelay="60" />
-		<npc id="21395" x="181519" y="-106328" z="-5997" heading="16800" respawnDelay="60" />
-		<npc id="21395" x="184424" y="-110596" z="-6006" heading="0" respawnDelay="60" />
-		<npc id="21395" x="184826" y="-110240" z="-6006" heading="0" respawnDelay="60" />
-		<npc id="21395" x="184725" y="-109706" z="-6006" heading="0" respawnDelay="60" />
-		<npc id="21395" x="185960" y="-108912" z="-5888" heading="32881" respawnDelay="60" />
-		<npc id="21395" x="184787" y="-109189" z="-5972" heading="0" respawnDelay="60" />
-		<npc id="21395" x="186511" y="-109513" z="-5888" heading="12272" respawnDelay="60" />
-		<npc id="21395" x="186189" y="-110872" z="-5970" heading="0" respawnDelay="60" />
-		<npc id="21395" x="185747" y="-111149" z="-5873" heading="12334" respawnDelay="60" />
-		<npc id="21395" x="187060" y="-111445" z="-5886" heading="63565" respawnDelay="60" />
-		<npc id="21395" x="186104" y="-109540" z="-5968" heading="0" respawnDelay="60" />
-		<npc id="21395" x="188717" y="-110449" z="-5932" heading="0" respawnDelay="60" />
-		<npc id="21395" x="193733" y="-113029" z="-1355" heading="6507" respawnDelay="60" />
-		<npc id="21395" x="192777" y="-112799" z="-1355" heading="27530" respawnDelay="60" />
-		<npc id="21395" x="192780" y="-113397" z="-1353" heading="17142" respawnDelay="60" />
-		<npc id="21395" x="192937" y="-113938" z="-1385" heading="26317" respawnDelay="60" />
-		<npc id="21395" x="193190" y="-113622" z="-1356" heading="29391" respawnDelay="60" />
-		<npc id="21395" x="193601" y="-113579" z="-1356" heading="13115" respawnDelay="60" />
-		<npc id="21395" x="193694" y="-113857" z="-1357" heading="1043" respawnDelay="60" />
-		<npc id="21395" x="193208" y="-113059" z="-1350" heading="13263" respawnDelay="60" />
-		<npc id="21395" x="189088" y="-107328" z="-884" heading="0" respawnDelay="60" />
-		<npc id="21395" x="189378" y="-106492" z="-781" heading="48861" respawnDelay="60" />
-		<npc id="21395" x="189490" y="-106972" z="-884" heading="0" respawnDelay="60" />
-		<npc id="21395" x="189692" y="-106972" z="-884" heading="0" respawnDelay="60" />
-		<npc id="21395" x="191084" y="-105461" z="-782" heading="11165" respawnDelay="60" />
-		<npc id="21395" x="190400" y="-106021" z="-771" heading="28814" respawnDelay="60" />
-		<npc id="21395" x="191050" y="-105961" z="-782" heading="43098" respawnDelay="60" />
-		<npc id="21395" x="191290" y="-106418" z="-880" heading="0" respawnDelay="60" />
+		<npc id="21395" x="175699" y="-112639" z="-5521" heading="8192" respawnDelay="110" />
+		<npc id="21395" x="178376" y="-112801" z="-5821" heading="19466" respawnDelay="110" />
+		<npc id="21395" x="180169" y="-116786" z="-6170" heading="0" respawnDelay="110" />
+		<npc id="21395" x="178215" y="-108114" z="-5834" heading="29528" respawnDelay="110" />
+		<npc id="21395" x="178958" y="-110974" z="-5893" heading="0" respawnDelay="110" />
+		<npc id="21395" x="181519" y="-106328" z="-5997" heading="16800" respawnDelay="110" />
+		<npc id="21395" x="184424" y="-110596" z="-6006" heading="0" respawnDelay="110" />
+		<npc id="21395" x="184826" y="-110240" z="-6006" heading="0" respawnDelay="110" />
+		<npc id="21395" x="184725" y="-109706" z="-6006" heading="0" respawnDelay="110" />
+		<npc id="21395" x="185960" y="-108912" z="-5888" heading="32881" respawnDelay="110" />
+		<npc id="21395" x="184787" y="-109189" z="-5972" heading="0" respawnDelay="110" />
+		<npc id="21395" x="186511" y="-109513" z="-5888" heading="12272" respawnDelay="110" />
+		<npc id="21395" x="186189" y="-110872" z="-5970" heading="0" respawnDelay="110" />
+		<npc id="21395" x="185747" y="-111149" z="-5873" heading="12334" respawnDelay="110" />
+		<npc id="21395" x="187060" y="-111445" z="-5886" heading="63565" respawnDelay="110" />
+		<npc id="21395" x="186104" y="-109540" z="-5968" heading="0" respawnDelay="110" />
+		<npc id="21395" x="188717" y="-110449" z="-5932" heading="0" respawnDelay="110" />
+		<npc id="21395" x="193733" y="-113029" z="-1355" heading="6507" respawnDelay="110" />
+		<npc id="21395" x="192777" y="-112799" z="-1355" heading="27530" respawnDelay="110" />
+		<npc id="21395" x="192780" y="-113397" z="-1353" heading="17142" respawnDelay="110" />
+		<npc id="21395" x="192937" y="-113938" z="-1385" heading="26317" respawnDelay="110" />
+		<npc id="21395" x="193190" y="-113622" z="-1356" heading="29391" respawnDelay="110" />
+		<npc id="21395" x="193601" y="-113579" z="-1356" heading="13115" respawnDelay="110" />
+		<npc id="21395" x="193694" y="-113857" z="-1357" heading="1043" respawnDelay="110" />
+		<npc id="21395" x="193208" y="-113059" z="-1350" heading="13263" respawnDelay="110" />
+		<npc id="21395" x="189088" y="-107328" z="-884" heading="0" respawnDelay="110" />
+		<npc id="21395" x="189378" y="-106492" z="-781" heading="48861" respawnDelay="110" />
+		<npc id="21395" x="189490" y="-106972" z="-884" heading="0" respawnDelay="110" />
+		<npc id="21395" x="189692" y="-106972" z="-884" heading="0" respawnDelay="110" />
+		<npc id="21395" x="191084" y="-105461" z="-782" heading="11165" respawnDelay="110" />
+		<npc id="21395" x="190400" y="-106021" z="-771" heading="28814" respawnDelay="110" />
+		<npc id="21395" x="191050" y="-105961" z="-782" heading="43098" respawnDelay="110" />
+		<npc id="21395" x="191290" y="-106418" z="-880" heading="0" respawnDelay="110" />
 		<npc id="21652" x="179353" y="-116662" z="-3647" heading="0" respawnDelay="110" />
 		<npc id="21652" x="179365" y="-117129" z="-3611" heading="28708" respawnDelay="110" />
 		<npc id="21652" x="179361" y="-116803" z="-3611" heading="56649" respawnDelay="110" />
@@ -402,13 +394,9 @@
 		<npc id="21655" x="175788" y="-112914" z="-3487" heading="31342" respawnDelay="110" />
 		<npc id="21655" x="176309" y="-113594" z="-3531" heading="0" respawnDelay="110" />
 		<npc id="21655" x="176109" y="-113238" z="-3531" heading="0" respawnDelay="110" />
-		<npc id="21656" x="175361" y="-112289" z="-5521" heading="44934" respawnDelay="110" />
 		<npc id="21656" x="175512" y="-111857" z="-5521" heading="29677" respawnDelay="110" />
-		<npc id="21656" x="174668" y="-112173" z="-5501" heading="33054" respawnDelay="110" />
-		<npc id="21656" x="178806" y="-113105" z="-5804" heading="58611" respawnDelay="110" />
 		<npc id="21656" x="178051" y="-112955" z="-5834" heading="54978" respawnDelay="110" />
 		<npc id="21656" x="178525" y="-113620" z="-5834" heading="18285" respawnDelay="110" />
-		<npc id="21656" x="180270" y="-116964" z="-6170" heading="0" respawnDelay="110" />
 		<npc id="21656" x="180371" y="-116786" z="-6170" heading="0" respawnDelay="110" />
 		<npc id="21656" x="179968" y="-116430" z="-6170" heading="0" respawnDelay="110" />
 		<npc id="21657" x="178242" y="-109055" z="-5886" heading="0" respawnDelay="110" />

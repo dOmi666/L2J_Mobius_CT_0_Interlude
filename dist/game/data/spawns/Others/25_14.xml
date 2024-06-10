@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <list enabled="true" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="../../xsd/spawns.xsd">
 	<spawn name="25_14">
-		<npc id="21389" x="182164" y="-114641" z="-6104" heading="10747" respawnDelay="60" /> <!-- Balrog of Destruction -->
 		<npc id="21389" x="182501" y="-114407" z="-6104" heading="7102" respawnDelay="60" /> <!-- Balrog of Destruction -->
 		<npc id="21389" x="182799" y="-114214" z="-6104" heading="3083" respawnDelay="60" /> <!-- Balrog of Destruction -->
 		<npc id="21389" x="183548" y="-114255" z="-6104" heading="57682" respawnDelay="60" /> <!-- Balrog of Destruction -->
@@ -11,27 +10,18 @@
 		<npc id="21389" x="182565" y="-115362" z="-6104" heading="38490" respawnDelay="60" /> <!-- Balrog of Destruction -->
 		<npc id="21388" x="182015" y="-115525" z="-6104" heading="27587" respawnDelay="60" /> <!-- Iblis of Destruction -->
 		<npc id="21388" x="182136" y="-115009" z="-6104" heading="16539" respawnDelay="60" /> <!-- Iblis of Destruction -->
-		<npc id="21390" x="181928" y="-114780" z="-6104" heading="24069" respawnDelay="60" /> <!-- Ashuras of Destruction -->
 		<npc id="21656" x="181813" y="-114653" z="-6104" heading="24069" respawnDelay="60" /> <!-- Ashuras of Destruction -->
 		<npc id="21388" x="182583" y="-114363" z="-6104" heading="945" respawnDelay="60" /> <!-- Iblis of Destruction -->
-		<npc id="21656" x="182735" y="-114382" z="-6104" heading="63025" respawnDelay="60" /> <!-- Ashuras of Destruction -->
-		<npc id="21390" x="182982" y="-114388" z="-6104" heading="3198" respawnDelay="60" /> <!-- Ashuras of Destruction -->
 		<npc id="21388" x="183220" y="-114294" z="-6104" heading="4897" respawnDelay="60" /> <!-- Iblis of Destruction -->
 		<npc id="21656" x="183411" y="-114269" z="-6104" heading="63311" respawnDelay="60" /> <!-- Ashuras of Destruction -->
-		<npc id="21390" x="183617" y="-114314" z="-6104" heading="63311" respawnDelay="60" /> <!-- Ashuras of Destruction -->
 		<npc id="21388" x="183864" y="-114920" z="-6104" heading="42568" respawnDelay="60" /> <!-- Iblis of Destruction -->
 		<npc id="21656" x="183772" y="-115044" z="-6104" heading="42568" respawnDelay="60" /> <!-- Ashuras of Destruction -->
 		<npc id="21390" x="183660" y="-115327" z="-6104" heading="47897" respawnDelay="60" /> <!-- Ashuras of Destruction -->
 		<npc id="21388" x="183871" y="-115918" z="-6099" heading="55418" respawnDelay="60" /> <!-- Iblis of Destruction -->
 		<npc id="21656" x="184080" y="-116136" z="-6097" heading="58008" respawnDelay="60" /> <!-- Ashuras of Destruction -->
 		<npc id="21390" x="184196" y="-116237" z="-6097" heading="58008" respawnDelay="60" /> <!-- Ashuras of Destruction -->
-		<npc id="21388" x="184483" y="-116449" z="-6097" heading="59303" respawnDelay="60" /> <!-- Iblis of Destruction -->
-		<npc id="21656" x="184640" y="-116577" z="-6097" heading="55578" respawnDelay="60" /> <!-- Ashuras of Destruction -->
-		<npc id="21390" x="184787" y="-116785" z="-6097" heading="55578" respawnDelay="60" /> <!-- Ashuras of Destruction -->
 		<npc id="21388" x="184834" y="-117279" z="-6097" heading="48834" respawnDelay="60" /> <!-- Iblis of Destruction -->
-		<npc id="21656" x="184798" y="-117428" z="-6098" heading="45644" respawnDelay="60" /> <!-- Ashuras of Destruction -->
 		<npc id="21390" x="184730" y="-117621" z="-6098" heading="45644" respawnDelay="60" /> <!-- Ashuras of Destruction -->
-		<npc id="21388" x="184428" y="-117818" z="-6098" heading="34861" respawnDelay="60" /> <!-- Iblis of Destruction -->
 		<npc id="21656" x="184225" y="-117833" z="-6097" heading="32153" respawnDelay="60" /> <!-- Ashuras of Destruction -->
 		<npc id="21390" x="184072" y="-117823" z="-6096" heading="32153" respawnDelay="60" /> <!-- Ashuras of Destruction -->
 		<npc id="21656" x="183515" y="-117608" z="-6090" heading="24606" respawnDelay="60" /> <!-- Ashuras of Destruction -->
@@ -41,13 +31,9 @@
 		<npc id="21388" x="183474" y="-116705" z="-6093" heading="12320" respawnDelay="60" /> <!-- Iblis of Destruction -->
 		<npc id="21390" x="183534" y="-116561" z="-6097" heading="12320" respawnDelay="60" /> <!-- Ashuras of Destruction -->
 		<npc id="21389" x="183971" y="-116328" z="-6096" heading="62448" respawnDelay="60" /> <!-- Balrog of Destruction -->
-		<npc id="21389" x="184308" y="-116627" z="-6096" heading="56720" respawnDelay="60" /> <!-- Balrog of Destruction -->
-		<npc id="21389" x="184482" y="-116820" z="-6099" heading="56909" respawnDelay="60" /> <!-- Balrog of Destruction -->
 		<npc id="21389" x="184581" y="-117276" z="-6099" heading="41063" respawnDelay="60" /> <!-- Balrog of Destruction -->
 		<npc id="21389" x="184369" y="-117418" z="-6099" heading="37482" respawnDelay="60" /> <!-- Balrog of Destruction -->
-		<npc id="21389" x="183892" y="-117447" z="-6100" heading="29242" respawnDelay="60" /> <!-- Balrog of Destruction -->
 		<npc id="21389" x="183737" y="-117034" z="-6098" heading="15736" respawnDelay="60" /> <!-- Balrog of Destruction -->
-		<npc id="21389" x="183809" y="-116680" z="-6090" heading="13162" respawnDelay="60" /> <!-- Balrog of Destruction -->
 		<npc id="21389" x="183913" y="-115816" z="-6088" heading="16510" respawnDelay="60" /> <!-- Balrog of Destruction -->
 		<npc id="21395" x="179737" y="-115484" z="-6104" heading="58363" respawnDelay="60" /> <!-- Elder Lavasaurus -->
 		<npc id="21395" x="180529" y="-115044" z="-6099" heading="3331" respawnDelay="60" /> <!-- Elder Lavasaurus -->

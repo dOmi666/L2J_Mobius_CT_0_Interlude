@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <list enabled="true" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="../xsd/spawns.xsd">
 	<spawn name="CryptsOfDiscrace">
-		<npc id="21656" x="175361" y="-112289" z="-5521" heading="44934" respawnDelay="110" />
 		<npc id="21656" x="175512" y="-111857" z="-5521" heading="29677" respawnDelay="110" />
 		<npc id="21656" x="174668" y="-112173" z="-5501" heading="33054" respawnDelay="110" />
 		<npc id="21656" x="178806" y="-113105" z="-5804" heading="58611" respawnDelay="110" />
@@ -9,7 +8,6 @@
 		<npc id="21656" x="178525" y="-113620" z="-5834" heading="18285" respawnDelay="110" />
 		<npc id="21656" x="180270" y="-116964" z="-6170" heading="0" respawnDelay="110" />
 		<npc id="21656" x="180371" y="-116786" z="-6170" heading="0" respawnDelay="110" />
-		<npc id="21656" x="179968" y="-116430" z="-6170" heading="0" respawnDelay="110" />
 		<npc id="21657" x="178242" y="-109055" z="-5886" heading="0" respawnDelay="110" />
 		<npc id="21657" x="179216" y="-107717" z="-5834" heading="6763" respawnDelay="110" />
 		<npc id="21657" x="178392" y="-108652" z="-5834" heading="52395" respawnDelay="110" />
