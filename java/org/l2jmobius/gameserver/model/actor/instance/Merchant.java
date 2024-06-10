@@ -111,4 +111,11 @@ public class Merchant extends Folk
 	{
 		return true;
 	}
+
+
+	public boolean VillageMasterOrc()
+	{
+		return true;
+	}
+
 }
