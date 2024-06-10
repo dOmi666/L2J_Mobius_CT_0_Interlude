@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<list enabled="true" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="../../xsd/spawns.xsd">
+	<spawn name="16_12">
+		<npc id="50008" x="-114788" y="-180152" z="-6752" heading="53120" respawnDelay="60" /> <!-- SIDDIK - Scheme Buffer -->
+		<npc id="50009" x="-114740" y="-180156" z="-6752" heading="49151" respawnDelay="60" /> <!-- Melyssa - SOLO Buffer -->
+		<npc id="50010" x="-114842" y="-180156" z="-6752" heading="60384" respawnDelay="60" /> <!-- Simone - SOLO Buffer -->
+		<npc id="50050" x="-114936" y="-180150" z="-6752" heading="52507" respawnDelay="60" /> <!-- Carrefoursa - G M   S H O P -->
+		<npc id="31756" x="-115059" y="-180199" z="-6752" heading="45796" respawnDelay="60" /> <!-- Mr. Cat - Test Server Helper -->
+		<npc id="30095" x="-114530" y="-180212" z="-6752" heading="47330" respawnDelay="60" /> <!-- Randolf - Warehouse Keeper -->
+		<npc id="30177" x="-114626" y="-180138" z="-6752" heading="40463" respawnDelay="60" /> <!-- Valentina - Gatekeeper -->
+	</spawn>
+</list>

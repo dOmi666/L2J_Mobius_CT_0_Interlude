@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<list enabled="true" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="../../xsd/spawns.xsd">
+	<spawn name="25_14">
+		<npc id="21389" x="182164" y="-114641" z="-6104" heading="10747" respawnDelay="60" /> <!-- Balrog of Destruction -->
+		<npc id="21389" x="182501" y="-114407" z="-6104" heading="7102" respawnDelay="60" /> <!-- Balrog of Destruction -->
+		<npc id="21389" x="182799" y="-114214" z="-6104" heading="3083" respawnDelay="60" /> <!-- Balrog of Destruction -->
+		<npc id="21389" x="183548" y="-114255" z="-6104" heading="57682" respawnDelay="60" /> <!-- Balrog of Destruction -->
+		<npc id="21389" x="183791" y="-114694" z="-6104" heading="54116" respawnDelay="60" /> <!-- Balrog of Destruction -->
+		<npc id="21389" x="183455" y="-115007" z="-6104" heading="39322" respawnDelay="60" /> <!-- Balrog of Destruction -->
+		<npc id="21389" x="183167" y="-115257" z="-6104" heading="40672" respawnDelay="60" /> <!-- Balrog of Destruction -->
+		<npc id="21389" x="182565" y="-115362" z="-6104" heading="38490" respawnDelay="60" /> <!-- Balrog of Destruction -->
+		<npc id="21388" x="182015" y="-115525" z="-6104" heading="27587" respawnDelay="60" /> <!-- Iblis of Destruction -->
+		<npc id="21388" x="182136" y="-115009" z="-6104" heading="16539" respawnDelay="60" /> <!-- Iblis of Destruction -->
+		<npc id="21390" x="181928" y="-114780" z="-6104" heading="24069" respawnDelay="60" /> <!-- Ashuras of Destruction -->
+		<npc id="21656" x="181813" y="-114653" z="-6104" heading="24069" respawnDelay="60" /> <!-- Ashuras of Destruction -->
+		<npc id="21388" x="182583" y="-114363" z="-6104" heading="945" respawnDelay="60" /> <!-- Iblis of Destruction -->
+		<npc id="21656" x="182735" y="-114382" z="-6104" heading="63025" respawnDelay="60" /> <!-- Ashuras of Destruction -->
+		<npc id="21390" x="182982" y="-114388" z="-6104" heading="3198" respawnDelay="60" /> <!-- Ashuras of Destruction -->
+		<npc id="21388" x="183220" y="-114294" z="-6104" heading="4897" respawnDelay="60" /> <!-- Iblis of Destruction -->
+		<npc id="21656" x="183411" y="-114269" z="-6104" heading="63311" respawnDelay="60" /> <!-- Ashuras of Destruction -->
+		<npc id="21390" x="183617" y="-114314" z="-6104" heading="63311" respawnDelay="60" /> <!-- Ashuras of Destruction -->
+		<npc id="21388" x="183864" y="-114920" z="-6104" heading="42568" respawnDelay="60" /> <!-- Iblis of Destruction -->
+		<npc id="21656" x="183772" y="-115044" z="-6104" heading="42568" respawnDelay="60" /> <!-- Ashuras of Destruction -->
+		<npc id="21390" x="183660" y="-115327" z="-6104" heading="47897" respawnDelay="60" /> <!-- Ashuras of Destruction -->
+		<npc id="21388" x="183871" y="-115918" z="-6099" heading="55418" respawnDelay="60" /> <!-- Iblis of Destruction -->
+		<npc id="21656" x="184080" y="-116136" z="-6097" heading="58008" respawnDelay="60" /> <!-- Ashuras of Destruction -->
+		<npc id="21390" x="184196" y="-116237" z="-6097" heading="58008" respawnDelay="60" /> <!-- Ashuras of Destruction -->
+		<npc id="21388" x="184483" y="-116449" z="-6097" heading="59303" respawnDelay="60" /> <!-- Iblis of Destruction -->
+		<npc id="21656" x="184640" y="-116577" z="-6097" heading="55578" respawnDelay="60" /> <!-- Ashuras of Destruction -->
+		<npc id="21390" x="184787" y="-116785" z="-6097" heading="55578" respawnDelay="60" /> <!-- Ashuras of Destruction -->
+		<npc id="21388" x="184834" y="-117279" z="-6097" heading="48834" respawnDelay="60" /> <!-- Iblis of Destruction -->
+		<npc id="21656" x="184798" y="-117428" z="-6098" heading="45644" respawnDelay="60" /> <!-- Ashuras of Destruction -->
+		<npc id="21390" x="184730" y="-117621" z="-6098" heading="45644" respawnDelay="60" /> <!-- Ashuras of Destruction -->
+		<npc id="21388" x="184428" y="-117818" z="-6098" heading="34861" respawnDelay="60" /> <!-- Iblis of Destruction -->
+		<npc id="21656" x="184225" y="-117833" z="-6097" heading="32153" respawnDelay="60" /> <!-- Ashuras of Destruction -->
+		<npc id="21390" x="184072" y="-117823" z="-6096" heading="32153" respawnDelay="60" /> <!-- Ashuras of Destruction -->
+		<npc id="21656" x="183515" y="-117608" z="-6090" heading="24606" respawnDelay="60" /> <!-- Ashuras of Destruction -->
+		<npc id="21388" x="183428" y="-117487" z="-6092" heading="19187" respawnDelay="60" /> <!-- Iblis of Destruction -->
+		<npc id="21390" x="183387" y="-117339" z="-6092" heading="19187" respawnDelay="60" /> <!-- Ashuras of Destruction -->
+		<npc id="21656" x="183416" y="-116848" z="-6092" heading="12320" respawnDelay="60" /> <!-- Ashuras of Destruction -->
+		<npc id="21388" x="183474" y="-116705" z="-6093" heading="12320" respawnDelay="60" /> <!-- Iblis of Destruction -->
+		<npc id="21390" x="183534" y="-116561" z="-6097" heading="12320" respawnDelay="60" /> <!-- Ashuras of Destruction -->
+		<npc id="21389" x="183971" y="-116328" z="-6096" heading="62448" respawnDelay="60" /> <!-- Balrog of Destruction -->
+		<npc id="21389" x="184308" y="-116627" z="-6096" heading="56720" respawnDelay="60" /> <!-- Balrog of Destruction -->
+		<npc id="21389" x="184482" y="-116820" z="-6099" heading="56909" respawnDelay="60" /> <!-- Balrog of Destruction -->
+		<npc id="21389" x="184581" y="-117276" z="-6099" heading="41063" respawnDelay="60" /> <!-- Balrog of Destruction -->
+		<npc id="21389" x="184369" y="-117418" z="-6099" heading="37482" respawnDelay="60" /> <!-- Balrog of Destruction -->
+		<npc id="21389" x="183892" y="-117447" z="-6100" heading="29242" respawnDelay="60" /> <!-- Balrog of Destruction -->
+		<npc id="21389" x="183737" y="-117034" z="-6098" heading="15736" respawnDelay="60" /> <!-- Balrog of Destruction -->
+		<npc id="21389" x="183809" y="-116680" z="-6090" heading="13162" respawnDelay="60" /> <!-- Balrog of Destruction -->
+		<npc id="21389" x="183913" y="-115816" z="-6088" heading="16510" respawnDelay="60" /> <!-- Balrog of Destruction -->
+		<npc id="21395" x="179737" y="-115484" z="-6104" heading="58363" respawnDelay="60" /> <!-- Elder Lavasaurus -->
+		<npc id="21395" x="180529" y="-115044" z="-6099" heading="3331" respawnDelay="60" /> <!-- Elder Lavasaurus -->
+		<npc id="21395" x="182716" y="-114536" z="-6104" heading="5057" respawnDelay="60" /> <!-- Elder Lavasaurus -->
+		<npc id="21395" x="183730" y="-116336" z="-6090" heading="49634" respawnDelay="60" /> <!-- Elder Lavasaurus -->
+		<npc id="21395" x="184435" y="-117671" z="-6104" heading="55708" respawnDelay="60" /> <!-- Elder Lavasaurus -->
+		<npc id="21384" x="189185" y="-111944" z="-3280" heading="44774" respawnDelay="60" /> <!-- Necromancer of Destruction -->
+		<npc id="21654" x="188839" y="-111864" z="-3280" heading="36670" respawnDelay="60" /> <!-- Necromancer of Destruction -->
+		<npc id="21383" x="188965" y="-112266" z="-3280" heading="52251" respawnDelay="60" /> <!-- Knight of Destruction -->
+		<npc id="21382" x="189010" y="-112668" z="-3280" heading="50073" respawnDelay="60" /> <!-- Mercenary of Destruction -->
+		<npc id="21654" x="189675" y="-113241" z="-3275" heading="64368" respawnDelay="60" /> <!-- Necromancer of Destruction -->
+		<npc id="21654" x="190105" y="-113459" z="-3274" heading="47172" respawnDelay="60" /> <!-- Necromancer of Destruction -->
+		<npc id="21383" x="190021" y="-113346" z="-3280" heading="20906" respawnDelay="60" /> <!-- Knight of Destruction -->
+		<npc id="21384" x="190010" y="-113414" z="-3280" heading="4526" respawnDelay="60" /> <!-- Necromancer of Destruction -->
+		<npc id="21384" x="189967" y="-113382" z="-3280" heading="26094" respawnDelay="60" /> <!-- Necromancer of Destruction -->
+		<npc id="21384" x="189967" y="-113382" z="-3280" heading="26094" respawnDelay="60" /> <!-- Necromancer of Destruction -->
+		<npc id="21384" x="189967" y="-113382" z="-3280" heading="26094" respawnDelay="60" /> <!-- Necromancer of Destruction -->
+		<npc id="21384" x="189967" y="-113382" z="-3280" heading="26094" respawnDelay="60" /> <!-- Necromancer of Destruction -->
+		<npc id="21384" x="189766" y="-113319" z="-3280" heading="29599" respawnDelay="60" /> <!-- Necromancer of Destruction -->
+		<npc id="21384" x="189766" y="-113319" z="-3280" heading="29599" respawnDelay="60" /> <!-- Necromancer of Destruction -->
+		<npc id="21384" x="189644" y="-113250" z="-3280" heading="27381" respawnDelay="60" /> <!-- Necromancer of Destruction -->
+		<npc id="21383" x="189426" y="-113417" z="-3280" heading="51210" respawnDelay="60" /> <!-- Knight of Destruction -->
+		<npc id="21382" x="189426" y="-113417" z="-3280" heading="51210" respawnDelay="60" /> <!-- Mercenary of Destruction -->
+		<npc id="21384" x="189098" y="-111983" z="-3280" heading="688" respawnDelay="60" /> <!-- Necromancer of Destruction -->
+		<npc id="21384" x="189098" y="-111983" z="-3280" heading="688" respawnDelay="60" /> <!-- Necromancer of Destruction -->
+		<npc id="21384" x="189098" y="-111983" z="-3280" heading="688" respawnDelay="60" /> <!-- Necromancer of Destruction -->
+		<npc id="21384" x="189098" y="-111983" z="-3280" heading="688" respawnDelay="60" /> <!-- Necromancer of Destruction -->
+		<npc id="21384" x="189098" y="-111983" z="-3280" heading="688" respawnDelay="60" /> <!-- Necromancer of Destruction -->
+		<npc id="21384" x="187784" y="-113055" z="-3280" heading="42348" respawnDelay="60" /> <!-- Necromancer of Destruction -->
+		<npc id="21384" x="187758" y="-113089" z="-3280" heading="42348" respawnDelay="60" /> <!-- Necromancer of Destruction -->
+		<npc id="21384" x="187728" y="-113129" z="-3280" heading="42348" respawnDelay="60" /> <!-- Necromancer of Destruction -->
+		<npc id="21384" x="187728" y="-113129" z="-3280" heading="42348" respawnDelay="60" /> <!-- Necromancer of Destruction -->
+		<npc id="21384" x="187728" y="-113129" z="-3280" heading="42348" respawnDelay="60" /> <!-- Necromancer of Destruction -->
+		<npc id="21654" x="187831" y="-112765" z="-3280" heading="13507" respawnDelay="60" /> <!-- Necromancer of Destruction -->
+		<npc id="21654" x="189511" y="-111054" z="-3280" heading="7191" respawnDelay="60" /> <!-- Necromancer of Destruction -->
+		<npc id="21384" x="189511" y="-111054" z="-3280" heading="7191" respawnDelay="60" /> <!-- Necromancer of Destruction -->
+		<npc id="21384" x="189511" y="-111054" z="-3280" heading="7191" respawnDelay="60" /> <!-- Necromancer of Destruction -->
+		<npc id="21384" x="189511" y="-111054" z="-3280" heading="7191" respawnDelay="60" /> <!-- Necromancer of Destruction -->
+		<npc id="21384" x="189511" y="-111054" z="-3280" heading="7191" respawnDelay="60" /> <!-- Necromancer of Destruction -->
+		<npc id="21384" x="189511" y="-111054" z="-3280" heading="7191" respawnDelay="60" /> <!-- Necromancer of Destruction -->
+		<npc id="21654" x="188320" y="-110305" z="-3257" heading="36693" respawnDelay="60" /> <!-- Necromancer of Destruction -->
+		<npc id="21654" x="187739" y="-110146" z="-3280" heading="267" respawnDelay="60" /> <!-- Necromancer of Destruction -->
+		<npc id="21384" x="187716" y="-110001" z="-3280" heading="62651" respawnDelay="60" /> <!-- Necromancer of Destruction -->
+		<npc id="21384" x="187716" y="-110001" z="-3280" heading="48238" respawnDelay="60" /> <!-- Necromancer of Destruction -->
+		<npc id="21384" x="187716" y="-110001" z="-3280" heading="48238" respawnDelay="60" /> <!-- Necromancer of Destruction -->
+		<npc id="21384" x="187716" y="-110001" z="-3280" heading="48238" respawnDelay="60" /> <!-- Necromancer of Destruction -->
+		<npc id="21384" x="187716" y="-110001" z="-3280" heading="48238" respawnDelay="60" /> <!-- Necromancer of Destruction -->
+		<npc id="21384" x="187644" y="-110130" z="-3280" heading="6765" respawnDelay="60" /> <!-- Necromancer of Destruction -->
+		<npc id="21384" x="188057" y="-110740" z="-3280" heading="6765" respawnDelay="60" /> <!-- Necromancer of Destruction -->
+		<npc id="21654" x="188209" y="-110966" z="-3280" heading="58034" respawnDelay="60" /> <!-- Necromancer of Destruction -->
+		<npc id="21383" x="188273" y="-111012" z="-3280" heading="59290" respawnDelay="60" /> <!-- Knight of Destruction -->
+		<npc id="21654" x="189387" y="-109734" z="-3280" heading="40959" respawnDelay="60" /> <!-- Necromancer of Destruction -->
+		<npc id="21384" x="189387" y="-109734" z="-3280" heading="40959" respawnDelay="60" /> <!-- Necromancer of Destruction -->
+		<npc id="21384" x="189387" y="-109734" z="-3280" heading="40959" respawnDelay="60" /> <!-- Necromancer of Destruction -->
+		<npc id="21384" x="189387" y="-109734" z="-3280" heading="40959" respawnDelay="60" /> <!-- Necromancer of Destruction -->
+		<npc id="21384" x="189387" y="-109734" z="-3280" heading="40959" respawnDelay="60" /> <!-- Necromancer of Destruction -->
+		<npc id="21384" x="189387" y="-109734" z="-3280" heading="40959" respawnDelay="60" /> <!-- Necromancer of Destruction -->
+		<npc id="21383" x="189920" y="-109665" z="-3280" heading="1667" respawnDelay="60" /> <!-- Knight of Destruction -->
+		<npc id="21394" x="190189" y="-109482" z="-3280" heading="12374" respawnDelay="60" /> <!-- Lavasaurus -->
+		<npc id="21654" x="190407" y="-109125" z="-3280" heading="21612" respawnDelay="60" /> <!-- Necromancer of Destruction -->
+		<npc id="21384" x="190311" y="-109024" z="-3280" heading="26255" respawnDelay="60" /> <!-- Necromancer of Destruction -->
+		<npc id="21384" x="190311" y="-109024" z="-3280" heading="26255" respawnDelay="60" /> <!-- Necromancer of Destruction -->
+		<npc id="21384" x="190311" y="-109024" z="-3280" heading="26255" respawnDelay="60" /> <!-- Necromancer of Destruction -->
+		<npc id="21384" x="190311" y="-109024" z="-3280" heading="26255" respawnDelay="60" /> <!-- Necromancer of Destruction -->
+		<npc id="21384" x="190311" y="-109024" z="-3280" heading="26255" respawnDelay="60" /> <!-- Necromancer of Destruction -->
+		<npc id="21383" x="190115" y="-108491" z="-3280" heading="21614" respawnDelay="60" /> <!-- Knight of Destruction -->
+		<npc id="21382" x="190087" y="-108438" z="-3280" heading="21614" respawnDelay="60" /> <!-- Mercenary of Destruction -->
+		<npc id="21394" x="189793" y="-108424" z="-3280" heading="34039" respawnDelay="60" /> <!-- Lavasaurus -->
+		<npc id="21654" x="189276" y="-108804" z="-3280" heading="42985" respawnDelay="60" /> <!-- Necromancer of Destruction -->
+		<npc id="21383" x="189137" y="-109012" z="-3280" heading="42985" respawnDelay="60" /> <!-- Knight of Destruction -->
+		<npc id="21384" x="189167" y="-108984" z="-3280" heading="7673" respawnDelay="60" /> <!-- Necromancer of Destruction -->
+		<npc id="21384" x="189198" y="-108956" z="-3280" heading="7673" respawnDelay="60" /> <!-- Necromancer of Destruction -->
+		<npc id="21384" x="189230" y="-108927" z="-3280" heading="7673" respawnDelay="60" /> <!-- Necromancer of Destruction -->
+		<npc id="21384" x="189249" y="-108910" z="-3280" heading="7673" respawnDelay="60" /> <!-- Necromancer of Destruction -->
+		<npc id="21384" x="189341" y="-108896" z="-3280" heading="1283" respawnDelay="60" /> <!-- Necromancer of Destruction -->
+		<npc id="21382" x="189473" y="-108996" z="-3280" heading="58365" respawnDelay="60" /> <!-- Mercenary of Destruction -->
+		<npc id="21394" x="189706" y="-109045" z="-3280" heading="12323" respawnDelay="60" /> <!-- Lavasaurus -->
+		<npc id="21389" x="178596" y="-112892" z="-5832" heading="22289" respawnDelay="60" /> <!-- Balrog of Destruction -->
+		<npc id="21389" x="178385" y="-113919" z="-5827" heading="35768" respawnDelay="60" /> <!-- Balrog of Destruction -->
+		<npc id="21389" x="175807" y="-112352" z="-5520" heading="35158" respawnDelay="60" /> <!-- Balrog of Destruction -->
+		<npc id="21389" x="180040" y="-115859" z="-6096" heading="36229" respawnDelay="60" /> <!-- Balrog of Destruction -->
+		<npc id="21389" x="182559" y="-115423" z="-6104" heading="50914" respawnDelay="60" /> <!-- Balrog of Destruction -->
+	</spawn>
+</list>
