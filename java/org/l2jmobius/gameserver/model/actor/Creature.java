@@ -1397,7 +1397,7 @@ public abstract class Creature extends WorldObject implements ISkillsHolder, IDe
 				
 				// Launch a simple attack against the additional target.
 				hitted |= doAttackHitSimple(attack, obj, attackpercent, sAtk, false);
-				attackpercent /= 0.966;
+				attackpercent /= 0.97;
 				
 				if (--attackCountMax <= 0)
 				{
