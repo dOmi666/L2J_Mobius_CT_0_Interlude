@@ -258,7 +258,7 @@ public class Gui
 		redirectSystemStreams();
 		
 		// Show SplashScreen.
-		new SplashScreen(".." + File.separator + "images" + File.separator + "splash.png", 5000, frame);
+		new SplashScreen(".." + File.separator + "images" + File.separator + "splash.png", 0, frame);
 	}
 	
 	// Set where the text is redirected. In this case, txtrConsole.
