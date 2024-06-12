@@ -314,7 +314,7 @@ public class CursedWeapon implements INamable
 	
 	public boolean checkDrop(Attackable attackable, Player player)
 	{
-		if (Rnd.get(1000) < _dropRate)
+		if (Rnd.get(100000) < _dropRate)
 		{
 			// Drop the item
 			dropIt(attackable, player);
