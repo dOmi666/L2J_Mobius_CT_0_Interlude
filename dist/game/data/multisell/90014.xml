@@ -43,6 +43,21 @@
 	<ingredient id="57" count="20000000"/>
 	<production id="7723" count="1"/>
 	</item>
+		<!-- Wizard's Tear - Acumen -->
+	<item>
+	<ingredient id="57" count="20000000"/>
+	<production id="8117" count="1"/>
+	</item>
+	<!-- Wizard's Tear - Magic Power -->
+	<item>
+	<ingredient id="57" count="20000000"/>
+	<production id="8118" count="1"/>
+	</item>
+	<!-- Wizard's Tear - Conversion -->
+	<item>
+	<ingredient id="57" count="20000000"/>
+	<production id="8119" count="1"/>
+	</item>
 	<!-- Lance - Towering Blow -->
 	<item>
 	<ingredient id="57" count="20000000"/>
@@ -223,20 +238,20 @@
 	<ingredient id="57" count="20000000"/>
 	<production id="8107" count="1"/>
 	</item>
-	<!-- Ice Storm Hammer - Anger -->
+	<!-- Star Buster - Health -->
 	<item>
 	<ingredient id="57" count="20000000"/>
-	<production id="8130" count="1"/>
+	<production id="8132" count="1"/>
 	</item>
-	<!-- Ice Storm Hammer - Critical Bleed -->
+	<!-- Star Buster - Haste -->
 	<item>
 	<ingredient id="57" count="20000000"/>
-	<production id="8131" count="1"/>
+	<production id="8133" count="1"/>
 	</item>
-	<!-- Ice Storm Hammer - Focus -->
+	<!-- Star Buster - Anger -->
 	<item>
 	<ingredient id="57" count="20000000"/>
-	<production id="8129" count="1"/>
+	<production id="8134" count="1"/>
 	</item>
 	<!-- Sprite's Staff - Magic Hold -->
 	<item>

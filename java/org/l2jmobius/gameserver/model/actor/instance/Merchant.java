@@ -107,11 +107,23 @@ public class Merchant extends Folk
 		player.sendPacket(ActionFailed.STATIC_PACKET);
 	}
 
+	// Merchant now supports warehouse functionalities with this method down below
 	@Override
 	public boolean isWarehouse()
 	{
 		return true;
 	}
 
-	
+
+	// Merchant now supports subclass functionalities with this method down below
+	@Override
+	public void onBypassFeedback(Player player, String command)
+	{
+		super.onBypassFeedback(player, command);
+
+		if (command.startsWith("Subclass"))
+		{
+			VillageMasterUtilityForSubclass.onBypassFeedback(getObjectId(), player, command);
+		}
+	}
 }
