@@ -626,20 +626,12 @@ public class Npc extends Creature
 				{
 					handler.useBypass(command, player, this);
 				}
-				else if (doesCommandNeedHandler(command))
+				else
 				{
 					LOGGER.info(getClass().getSimpleName() + ": Unknown NPC bypass: \"" + command + "\" NpcId: " + getId());
 				}
 			}
 		}
-	}
-
-	public boolean doesCommandNeedHandler(String command) {
-		// commands with subclass doesn't require handler
-		if (command.startsWith("Subclass")) {
-			return false;
-		}
-		return true;
 	}
 	
 	/**
