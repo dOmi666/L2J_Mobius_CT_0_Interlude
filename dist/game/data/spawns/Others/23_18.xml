@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<list enabled="true" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="../../xsd/spawns.xsd">
+	<spawn name="23_18">
+		<npc id="30952" x="114144" y="13309" z="-5096" heading="34173" respawnDelay="60" /> <!-- Dimensional Vortex 1 -->
+		<npc id="30949" x="114162" y="13401" z="-5096" heading="14368" respawnDelay="60" /> <!-- Keplon - Researcher -->
+	</spawn>
+</list>

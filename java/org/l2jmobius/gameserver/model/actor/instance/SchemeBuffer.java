@@ -153,7 +153,7 @@ public class SchemeBuffer extends Npc
 				}
 				else
 				{
-					if (getCountOf(skills, false) < player.getStat().getMaxBuffCount())
+					if (getCountOf(skills, false) < (player.getStat().getMaxBuffCount()) + 30 )
 					{
 						skills.add(skillId);
 					}
