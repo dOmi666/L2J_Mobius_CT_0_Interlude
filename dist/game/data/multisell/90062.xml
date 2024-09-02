@@ -259,6 +259,29 @@
 	<production id="5340" count="1"/>
 	<production id="5364" count="1"/>
 	</item>
+
+	<!-- Majestic Full Set recipe -->
+	<item>
+	<ingredient id="5570" count="1"/>
+	<production id="5422" count="1"/>
+	<production id="5338" count="1"/>
+	<production id="5352" count="1"/>
+	<production id="5382" count="1"/>
+	<production id="5432" count="1"/>
+	<production id="5406" count="1"/>
+	</item>
+
+	<!-- Nightmare Full Set recipe -->
+	<item>
+	<ingredient id="5420" count="1"/>
+	<production id="5336" count="1"/>
+	<production id="5350" count="1"/>
+	<production id="5380" count="1"/>
+	<production id="5404" count="1"/>
+	<production id="5430" count="1"/>
+	<production id="5366" count="1"/>
+	</item>
+
 	<!-- TTS recipes-->
 	<item>
 	<ingredient id="5570" count="1"/>
