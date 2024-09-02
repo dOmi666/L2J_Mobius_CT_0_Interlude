@@ -273,7 +273,8 @@
 
 	<!-- Nightmare Full Set recipe -->
 	<item>
-	<ingredient id="5420" count="1"/>
+	<ingredient id="5570" count="1"/>
+	<production id="5420" count="1"/>
 	<production id="5336" count="1"/>
 	<production id="5350" count="1"/>
 	<production id="5380" count="1"/>
