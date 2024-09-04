@@ -16,977 +16,587 @@
  */
 package quests.Q00330_AdeptOfTaste;
 
-import org.l2jmobius.Config;
+import java.util.HashMap;
+import java.util.Map;
+
 import org.l2jmobius.gameserver.enums.QuestSound;
 import org.l2jmobius.gameserver.model.actor.Npc;
 import org.l2jmobius.gameserver.model.actor.Player;
 import org.l2jmobius.gameserver.model.quest.Quest;
 import org.l2jmobius.gameserver.model.quest.QuestState;
-import org.l2jmobius.gameserver.util.Util;
+import org.l2jmobius.gameserver.model.quest.State;
 
-/**
- * Adept Of Taste (330)
- * @author ivantotov
- */
 public class Q00330_AdeptOfTaste extends Quest
 {
 	// NPCs
-	private static final int ACCESSORY_MERCHANT_SONIA = 30062;
-	private static final int PRIESTESS_GLYVKA = 30067;
-	private static final int MAGISTER_ROLLANT = 30069;
-	private static final int GUARD_JACOB = 30073;
-	private static final int GROCER_PANO = 30078;
-	private static final int MAGISTER_MIRIEN = 30461;
+	private static final int SONIA = 30062;
+	private static final int GLYVKA = 30067;
+	private static final int ROLLANT = 30069;
+	private static final int JACOB = 30073;
+	private static final int PANO = 30078;
+	private static final int MIRIEN = 30461;
 	private static final int JONAS = 30469;
 	// Items
 	private static final int INGREDIENT_LIST = 1420;
-	private static final int SONIAS_BOTANY_BOOK = 1421;
+	private static final int SONIA_BOTANY_BOOK = 1421;
 	private static final int RED_MANDRAGORA_ROOT = 1422;
 	private static final int WHITE_MANDRAGORA_ROOT = 1423;
 	private static final int RED_MANDRAGORA_SAP = 1424;
 	private static final int WHITE_MANDRAGORA_SAP = 1425;
-	private static final int JACOBS_INSECT_BOOK = 1426;
+	private static final int JACOB_INSECT_BOOK = 1426;
 	private static final int NECTAR = 1427;
 	private static final int ROYAL_JELLY = 1428;
 	private static final int HONEY = 1429;
 	private static final int GOLDEN_HONEY = 1430;
-	private static final int PANOS_CONTRACT = 1431;
+	private static final int PANO_CONTRACT = 1431;
 	private static final int HOBGOBLIN_AMULET = 1432;
 	private static final int DIONIAN_POTATO = 1433;
-	private static final int GLYVKAS_BOTANY_BOOK = 1434;
+	private static final int GLYVKA_BOTANY_BOOK = 1434;
 	private static final int GREEN_MARSH_MOSS = 1435;
 	private static final int BROWN_MARSH_MOSS = 1436;
 	private static final int GREEN_MOSS_BUNDLE = 1437;
 	private static final int BROWN_MOSS_BUNDLE = 1438;
-	private static final int ROLLANTS_CREATURE_BOOK = 1439;
-	private static final int BODY_OF_MONSTER_EYE = 1440;
+	private static final int ROLANT_CREATURE_BOOK = 1439;
+	private static final int MONSTER_EYE_BODY = 1440;
 	private static final int MONSTER_EYE_MEAT = 1441;
-	private static final int JONASS_1ST_STEAK_DISH = 1442;
-	private static final int JONASS_2ND_STEAK_DISH = 1443;
-	private static final int JONASS_3RD_STEAK_DISH = 1444;
-	private static final int JONASS_4TH_STEAK_DISH = 1445;
-	private static final int JONASS_5TH_STEAK_DISH = 1446;
-	private static final int MIRIENS_REVIEW_1 = 1447;
-	private static final int MIRIENS_REVIEW_2 = 1448;
-	private static final int MIRIENS_REVIEW_3 = 1449;
-	private static final int MIRIENS_REVIEW_4 = 1450;
-	private static final int MIRIENS_REVIEW_5 = 1451;
-	// Reward
-	private static final int JONASS_SALAD_RECIPE = 1455;
-	private static final int JONASS_SAUCE_RECIPE = 1456;
-	private static final int JONASS_STEAK_RECIPE = 1457;
-	// Monster
-	private static final int HOBGOBLIN = 20147;
-	private static final int MANDRAGORA_SPROUT1 = 20154;
-	private static final int MANDRAGORA_SAPLING = 20155;
-	private static final int MANDRAGORA_BLOSSOM = 20156;
-	private static final int BLOODY_BEE = 20204;
-	private static final int MANDRAGORA_SPROUT2 = 20223;
-	private static final int GRAY_ANT = 20226;
-	private static final int GIANT_CRIMSON_ANT = 20228;
-	private static final int STINGER_WASP = 20229;
-	private static final int MONSTER_EYE_SEARCHER = 20265;
-	private static final int MONSTER_EYE_GAZER = 20266;
-	// Misc
-	private static final int MIN_LEVEL = 24;
+	private static final int JONAS_STEAK_DISH_1 = 1442;
+	private static final int JONAS_STEAK_DISH_2 = 1443;
+	private static final int JONAS_STEAK_DISH_3 = 1444;
+	private static final int JONAS_STEAK_DISH_4 = 1445;
+	private static final int JONAS_STEAK_DISH_5 = 1446;
+	private static final int MIRIEN_REVIEW_1 = 1447;
+	private static final int MIRIEN_REVIEW_2 = 1448;
+	private static final int MIRIEN_REVIEW_3 = 1449;
+	private static final int MIRIEN_REVIEW_4 = 1450;
+	private static final int MIRIEN_REVIEW_5 = 1451;
+	// Rewards
+	private static final int JONAS_SALAD_RECIPE = 1455;
+	private static final int JONAS_SAUCE_RECIPE = 1456;
+	private static final int JONAS_STEAK_RECIPE = 1457;
+	// Drop chances
+	private static final Map<Integer, int[]> CHANCES = new HashMap<>();
+	static
+	{
+		// @formatter:off
+		CHANCES.put(20204, new int[]{92, 100});
+		CHANCES.put(20229, new int[]{80, 95});
+		CHANCES.put(20223, new int[]{70, 77});
+		CHANCES.put(20154, new int[]{70, 77});
+		CHANCES.put(20155, new int[]{87, 96});
+		CHANCES.put(20156, new int[]{77, 85});
+		// @formatter:on
+	}
 	
 	public Q00330_AdeptOfTaste()
 	{
 		super(330);
-		addStartNpc(JONAS);
-		addTalkId(JONAS, ACCESSORY_MERCHANT_SONIA, PRIESTESS_GLYVKA, MAGISTER_ROLLANT, GUARD_JACOB, GROCER_PANO, MAGISTER_MIRIEN);
-		addKillId(HOBGOBLIN, MANDRAGORA_SPROUT1, MANDRAGORA_SAPLING, MANDRAGORA_BLOSSOM, BLOODY_BEE, MANDRAGORA_SPROUT2, GRAY_ANT, GIANT_CRIMSON_ANT, STINGER_WASP, MONSTER_EYE_SEARCHER, MONSTER_EYE_GAZER);
-		registerQuestItems(INGREDIENT_LIST, SONIAS_BOTANY_BOOK, RED_MANDRAGORA_ROOT, WHITE_MANDRAGORA_ROOT, RED_MANDRAGORA_SAP, WHITE_MANDRAGORA_SAP, JACOBS_INSECT_BOOK, NECTAR, ROYAL_JELLY, HONEY, GOLDEN_HONEY, PANOS_CONTRACT, HOBGOBLIN_AMULET, DIONIAN_POTATO, GLYVKAS_BOTANY_BOOK, GREEN_MARSH_MOSS, BROWN_MARSH_MOSS, GREEN_MOSS_BUNDLE, BROWN_MOSS_BUNDLE, ROLLANTS_CREATURE_BOOK, BODY_OF_MONSTER_EYE, MONSTER_EYE_MEAT, JONASS_1ST_STEAK_DISH, JONASS_2ND_STEAK_DISH, JONASS_3RD_STEAK_DISH, JONASS_4TH_STEAK_DISH, JONASS_5TH_STEAK_DISH, MIRIENS_REVIEW_1, MIRIENS_REVIEW_2, MIRIENS_REVIEW_3, MIRIENS_REVIEW_4, MIRIENS_REVIEW_5);
+		registerQuestItems(INGREDIENT_LIST, RED_MANDRAGORA_SAP, WHITE_MANDRAGORA_SAP, HONEY, GOLDEN_HONEY, DIONIAN_POTATO, GREEN_MOSS_BUNDLE, BROWN_MOSS_BUNDLE, MONSTER_EYE_MEAT, MIRIEN_REVIEW_1, MIRIEN_REVIEW_2, MIRIEN_REVIEW_3, MIRIEN_REVIEW_4, MIRIEN_REVIEW_5, JONAS_STEAK_DISH_1, JONAS_STEAK_DISH_2, JONAS_STEAK_DISH_3, JONAS_STEAK_DISH_4, JONAS_STEAK_DISH_5, SONIA_BOTANY_BOOK, RED_MANDRAGORA_ROOT, WHITE_MANDRAGORA_ROOT, JACOB_INSECT_BOOK, NECTAR, ROYAL_JELLY, PANO_CONTRACT, HOBGOBLIN_AMULET, GLYVKA_BOTANY_BOOK, GREEN_MARSH_MOSS, BROWN_MARSH_MOSS, ROLANT_CREATURE_BOOK, MONSTER_EYE_BODY);
+		addStartNpc(JONAS); // Jonas
+		addTalkId(JONAS, SONIA, GLYVKA, ROLLANT, JACOB, PANO, MIRIEN);
+		addKillId(20147, 20154, 20155, 20156, 20204, 20223, 20226, 20228, 20229, 20265, 20266);
 	}
 	
 	@Override
-	public String onAdvEvent(String event, Npc npc, Player player)
+	public String onEvent(String event, Npc npc, Player player)
 	{
-		final QuestState qs = getQuestState(player, false);
-		if (qs == null)
+		String htmltext = event;
+		final QuestState st = getQuestState(player, false);
+		if (st == null)
 		{
-			return null;
+			return htmltext;
 		}
 		
-		String htmltext = null;
 		switch (event)
 		{
 			case "30469-03.htm":
 			{
-				if (qs.isCreated())
-				{
-					qs.startQuest();
-					giveItems(player, INGREDIENT_LIST, 1);
-					htmltext = event;
-				}
+				st.startQuest();
+				giveItems(player, INGREDIENT_LIST, 1);
 				break;
 			}
-			case "30062-05.html":
+			case "30062-05.htm":
 			{
-				if (hasQuestItems(player, SONIAS_BOTANY_BOOK) && ((getQuestItemsCount(player, RED_MANDRAGORA_ROOT) + getQuestItemsCount(player, WHITE_MANDRAGORA_ROOT)) >= 40) && (getQuestItemsCount(player, WHITE_MANDRAGORA_ROOT) < 40))
-				{
-					takeItems(player, SONIAS_BOTANY_BOOK, 1);
-					takeItems(player, RED_MANDRAGORA_ROOT, -1);
-					takeItems(player, WHITE_MANDRAGORA_ROOT, -1);
-					giveItems(player, RED_MANDRAGORA_SAP, 1);
-					htmltext = event;
-				}
+				playSound(player, QuestSound.ITEMSOUND_QUEST_ITEMGET);
+				takeItems(player, SONIA_BOTANY_BOOK, 1);
+				takeItems(player, RED_MANDRAGORA_ROOT, -1);
+				takeItems(player, WHITE_MANDRAGORA_ROOT, -1);
+				giveItems(player, RED_MANDRAGORA_SAP, 1);
 				break;
 			}
-			case "30067-05.html":
+			case "30073-05.htm":
 			{
-				if (hasQuestItems(player, GLYVKAS_BOTANY_BOOK) && ((getQuestItemsCount(player, GREEN_MARSH_MOSS) + getQuestItemsCount(player, BROWN_MARSH_MOSS)) >= 20) && (getQuestItemsCount(player, BROWN_MARSH_MOSS) < 20))
-				{
-					takeItems(player, GLYVKAS_BOTANY_BOOK, 1);
-					takeItems(player, GREEN_MARSH_MOSS, -1);
-					takeItems(player, BROWN_MARSH_MOSS, -1);
-					giveItems(player, GREEN_MOSS_BUNDLE, 1);
-					htmltext = event;
-				}
+				playSound(player, QuestSound.ITEMSOUND_QUEST_ITEMGET);
+				takeItems(player, JACOB_INSECT_BOOK, 1);
+				takeItems(player, NECTAR, -1);
+				takeItems(player, ROYAL_JELLY, -1);
+				giveItems(player, HONEY, 1);
 				break;
 			}
-			case "30073-05.html":
+			case "30067-05.htm":
 			{
-				if ((hasQuestItems(player, JACOBS_INSECT_BOOK) && (getQuestItemsCount(player, NECTAR) >= 20)) && (getQuestItemsCount(player, ROYAL_JELLY) < 10))
-				{
-					takeItems(player, JACOBS_INSECT_BOOK, 1);
-					takeItems(player, NECTAR, -1);
-					takeItems(player, ROYAL_JELLY, -1);
-					giveItems(player, HONEY, 1);
-					htmltext = event;
-				}
-				break;
-			}
-			case "30062-04.html":
-			case "30067-04.html":
-			case "30073-04.html":
-			case "30469-04.html":
-			case "30469-04t1.html":
-			case "30469-04t2.html":
-			case "30469-04t3.html":
-			case "30469-04t4.html":
-			case "30469-04t5.html":
-			{
-				htmltext = event;
+				playSound(player, QuestSound.ITEMSOUND_QUEST_ITEMGET);
+				takeItems(player, GLYVKA_BOTANY_BOOK, 1);
+				takeItems(player, GREEN_MARSH_MOSS, -1);
+				takeItems(player, BROWN_MARSH_MOSS, -1);
+				giveItems(player, GREEN_MOSS_BUNDLE, 1);
 				break;
 			}
 		}
+		
 		return htmltext;
-	}
-	
-	@Override
-	public String onKill(Npc npc, Player killer, boolean isSummon)
-	{
-		final QuestState qs = getQuestState(killer, false);
-		if ((qs != null) && qs.isStarted() && Util.checkIfInRange(Config.ALT_PARTY_RANGE, npc, killer, true))
-		{
-			switch (npc.getId())
-			{
-				case HOBGOBLIN:
-				{
-					if (((getQuestItemsCount(killer, RED_MANDRAGORA_SAP) + getQuestItemsCount(killer, WHITE_MANDRAGORA_SAP) + getQuestItemsCount(killer, HONEY) + getQuestItemsCount(killer, GOLDEN_HONEY) + getQuestItemsCount(killer, DIONIAN_POTATO) + getQuestItemsCount(killer, GREEN_MOSS_BUNDLE) + getQuestItemsCount(killer, BROWN_MOSS_BUNDLE) + getQuestItemsCount(killer, MONSTER_EYE_MEAT)) < 5) && hasQuestItems(killer, INGREDIENT_LIST, PANOS_CONTRACT) && (getQuestItemsCount(killer, HOBGOBLIN_AMULET) < 30))
-					{
-						giveItems(killer, HOBGOBLIN_AMULET, 1);
-						if (getQuestItemsCount(killer, HOBGOBLIN_AMULET) == 30)
-						{
-							playSound(killer, QuestSound.ITEMSOUND_QUEST_MIDDLE);
-						}
-						else
-						{
-							playSound(killer, QuestSound.ITEMSOUND_QUEST_ITEMGET);
-						}
-					}
-					break;
-				}
-				case MANDRAGORA_SPROUT1:
-				case MANDRAGORA_SPROUT2:
-				{
-					if (((getQuestItemsCount(killer, RED_MANDRAGORA_SAP) + getQuestItemsCount(killer, WHITE_MANDRAGORA_SAP) + getQuestItemsCount(killer, HONEY) + getQuestItemsCount(killer, GOLDEN_HONEY) + getQuestItemsCount(killer, DIONIAN_POTATO) + getQuestItemsCount(killer, GREEN_MOSS_BUNDLE) + getQuestItemsCount(killer, BROWN_MOSS_BUNDLE) + getQuestItemsCount(killer, MONSTER_EYE_MEAT)) < 5) && hasQuestItems(killer, INGREDIENT_LIST, SONIAS_BOTANY_BOOK) && !hasAtLeastOneQuestItem(killer, RED_MANDRAGORA_SAP, WHITE_MANDRAGORA_SAP))
-					{
-						final int i0 = getRandom(100);
-						if (i0 < 70)
-						{
-							if (getQuestItemsCount(killer, RED_MANDRAGORA_ROOT) < 40)
-							{
-								giveItems(killer, RED_MANDRAGORA_ROOT, 1);
-								if (getQuestItemsCount(killer, RED_MANDRAGORA_ROOT) == 40)
-								{
-									playSound(killer, QuestSound.ITEMSOUND_QUEST_MIDDLE);
-								}
-								else
-								{
-									playSound(killer, QuestSound.ITEMSOUND_QUEST_ITEMGET);
-								}
-							}
-						}
-						else if (i0 < 77)
-						{
-							if (getQuestItemsCount(killer, WHITE_MANDRAGORA_ROOT) < 40)
-							{
-								giveItems(killer, WHITE_MANDRAGORA_ROOT, 1);
-								if (getQuestItemsCount(killer, WHITE_MANDRAGORA_ROOT) == 40)
-								{
-									playSound(killer, QuestSound.ITEMSOUND_QUEST_MIDDLE);
-								}
-								else
-								{
-									playSound(killer, QuestSound.ITEMSOUND_QUEST_ITEMGET);
-								}
-							}
-						}
-					}
-					break;
-				}
-				case MANDRAGORA_SAPLING:
-				{
-					if (((getQuestItemsCount(killer, RED_MANDRAGORA_SAP) + getQuestItemsCount(killer, WHITE_MANDRAGORA_SAP) + getQuestItemsCount(killer, HONEY) + getQuestItemsCount(killer, GOLDEN_HONEY) + getQuestItemsCount(killer, DIONIAN_POTATO) + getQuestItemsCount(killer, GREEN_MOSS_BUNDLE) + getQuestItemsCount(killer, BROWN_MOSS_BUNDLE) + getQuestItemsCount(killer, MONSTER_EYE_MEAT)) < 5) && hasQuestItems(killer, INGREDIENT_LIST, SONIAS_BOTANY_BOOK) && !hasAtLeastOneQuestItem(killer, RED_MANDRAGORA_SAP, WHITE_MANDRAGORA_SAP))
-					{
-						final int i0 = getRandom(100);
-						if (i0 < 77)
-						{
-							if (getQuestItemsCount(killer, RED_MANDRAGORA_ROOT) < 40)
-							{
-								giveItems(killer, RED_MANDRAGORA_ROOT, 1);
-								if (getQuestItemsCount(killer, RED_MANDRAGORA_ROOT) == 40)
-								{
-									playSound(killer, QuestSound.ITEMSOUND_QUEST_MIDDLE);
-								}
-								else
-								{
-									playSound(killer, QuestSound.ITEMSOUND_QUEST_ITEMGET);
-								}
-							}
-						}
-						else if (i0 < 85)
-						{
-							if (getQuestItemsCount(killer, WHITE_MANDRAGORA_ROOT) < 40)
-							{
-								giveItems(killer, WHITE_MANDRAGORA_ROOT, 1);
-								if (getQuestItemsCount(killer, WHITE_MANDRAGORA_ROOT) == 40)
-								{
-									playSound(killer, QuestSound.ITEMSOUND_QUEST_MIDDLE);
-								}
-								else
-								{
-									playSound(killer, QuestSound.ITEMSOUND_QUEST_ITEMGET);
-								}
-							}
-						}
-					}
-					break;
-				}
-				case MANDRAGORA_BLOSSOM:
-				{
-					if (((getQuestItemsCount(killer, RED_MANDRAGORA_SAP) + getQuestItemsCount(killer, WHITE_MANDRAGORA_SAP) + getQuestItemsCount(killer, HONEY) + getQuestItemsCount(killer, GOLDEN_HONEY) + getQuestItemsCount(killer, DIONIAN_POTATO) + getQuestItemsCount(killer, GREEN_MOSS_BUNDLE) + getQuestItemsCount(killer, BROWN_MOSS_BUNDLE) + getQuestItemsCount(killer, MONSTER_EYE_MEAT)) < 5) && hasQuestItems(killer, INGREDIENT_LIST, SONIAS_BOTANY_BOOK) && !hasAtLeastOneQuestItem(killer, RED_MANDRAGORA_SAP, WHITE_MANDRAGORA_SAP))
-					{
-						final int i0 = getRandom(100);
-						if (i0 < 87)
-						{
-							if (getQuestItemsCount(killer, RED_MANDRAGORA_ROOT) < 40)
-							{
-								giveItems(killer, RED_MANDRAGORA_ROOT, 1);
-								if (getQuestItemsCount(killer, RED_MANDRAGORA_ROOT) == 40)
-								{
-									playSound(killer, QuestSound.ITEMSOUND_QUEST_MIDDLE);
-								}
-								else
-								{
-									playSound(killer, QuestSound.ITEMSOUND_QUEST_ITEMGET);
-								}
-							}
-						}
-						else if (i0 < 96)
-						{
-							if (getQuestItemsCount(killer, WHITE_MANDRAGORA_ROOT) < 40)
-							{
-								giveItems(killer, WHITE_MANDRAGORA_ROOT, 1);
-								if (getQuestItemsCount(killer, WHITE_MANDRAGORA_ROOT) == 40)
-								{
-									playSound(killer, QuestSound.ITEMSOUND_QUEST_MIDDLE);
-								}
-								else
-								{
-									playSound(killer, QuestSound.ITEMSOUND_QUEST_ITEMGET);
-								}
-							}
-						}
-					}
-					break;
-				}
-				case BLOODY_BEE:
-				{
-					if (((getQuestItemsCount(killer, RED_MANDRAGORA_SAP) + getQuestItemsCount(killer, WHITE_MANDRAGORA_SAP) + getQuestItemsCount(killer, HONEY) + getQuestItemsCount(killer, GOLDEN_HONEY) + getQuestItemsCount(killer, DIONIAN_POTATO) + getQuestItemsCount(killer, GREEN_MOSS_BUNDLE) + getQuestItemsCount(killer, BROWN_MOSS_BUNDLE) + getQuestItemsCount(killer, MONSTER_EYE_MEAT)) < 5) && hasQuestItems(killer, INGREDIENT_LIST, JACOBS_INSECT_BOOK))
-					{
-						final int i0 = getRandom(100);
-						if (i0 < 80)
-						{
-							if (getQuestItemsCount(killer, NECTAR) < 20)
-							{
-								giveItems(killer, NECTAR, 1);
-								if (getQuestItemsCount(killer, NECTAR) == 20)
-								{
-									playSound(killer, QuestSound.ITEMSOUND_QUEST_MIDDLE);
-								}
-								else
-								{
-									playSound(killer, QuestSound.ITEMSOUND_QUEST_ITEMGET);
-								}
-							}
-						}
-						else if (i0 < 95)
-						{
-							if (getQuestItemsCount(killer, ROYAL_JELLY) < 10)
-							{
-								giveItems(killer, ROYAL_JELLY, 1);
-								if (getQuestItemsCount(killer, ROYAL_JELLY) == 10)
-								{
-									playSound(killer, QuestSound.ITEMSOUND_QUEST_MIDDLE);
-								}
-								else
-								{
-									playSound(killer, QuestSound.ITEMSOUND_QUEST_ITEMGET);
-								}
-							}
-						}
-					}
-					break;
-				}
-				case GRAY_ANT:
-				{
-					if (((getQuestItemsCount(killer, RED_MANDRAGORA_SAP) + getQuestItemsCount(killer, WHITE_MANDRAGORA_SAP) + getQuestItemsCount(killer, HONEY) + getQuestItemsCount(killer, GOLDEN_HONEY) + getQuestItemsCount(killer, DIONIAN_POTATO) + getQuestItemsCount(killer, GREEN_MOSS_BUNDLE) + getQuestItemsCount(killer, BROWN_MOSS_BUNDLE) + getQuestItemsCount(killer, MONSTER_EYE_MEAT)) < 5) && hasQuestItems(killer, INGREDIENT_LIST, GLYVKAS_BOTANY_BOOK))
-					{
-						final int i0 = getRandom(100);
-						if (i0 < 87)
-						{
-							if (getQuestItemsCount(killer, GREEN_MARSH_MOSS) < 20)
-							{
-								giveItems(killer, GREEN_MARSH_MOSS, 1);
-								if (getQuestItemsCount(killer, GREEN_MARSH_MOSS) == 20)
-								{
-									playSound(killer, QuestSound.ITEMSOUND_QUEST_MIDDLE);
-								}
-								else
-								{
-									playSound(killer, QuestSound.ITEMSOUND_QUEST_ITEMGET);
-								}
-							}
-						}
-						else if (i0 < 96)
-						{
-							if (getQuestItemsCount(killer, BROWN_MARSH_MOSS) < 20)
-							{
-								giveItems(killer, BROWN_MARSH_MOSS, 1);
-								if (getQuestItemsCount(killer, BROWN_MARSH_MOSS) == 20)
-								{
-									playSound(killer, QuestSound.ITEMSOUND_QUEST_MIDDLE);
-								}
-								else
-								{
-									playSound(killer, QuestSound.ITEMSOUND_QUEST_ITEMGET);
-								}
-							}
-						}
-					}
-					break;
-				}
-				case GIANT_CRIMSON_ANT:
-				{
-					if (((getQuestItemsCount(killer, RED_MANDRAGORA_SAP) + getQuestItemsCount(killer, WHITE_MANDRAGORA_SAP) + getQuestItemsCount(killer, HONEY) + getQuestItemsCount(killer, GOLDEN_HONEY) + getQuestItemsCount(killer, DIONIAN_POTATO) + getQuestItemsCount(killer, GREEN_MOSS_BUNDLE) + getQuestItemsCount(killer, BROWN_MOSS_BUNDLE) + getQuestItemsCount(killer, MONSTER_EYE_MEAT)) < 5) && hasQuestItems(killer, INGREDIENT_LIST, GLYVKAS_BOTANY_BOOK))
-					{
-						final int i0 = getRandom(100);
-						if (i0 < 90)
-						{
-							if (getQuestItemsCount(killer, GREEN_MARSH_MOSS) < 20)
-							{
-								giveItems(killer, GREEN_MARSH_MOSS, 1);
-								if (getQuestItemsCount(killer, GREEN_MARSH_MOSS) == 20)
-								{
-									playSound(killer, QuestSound.ITEMSOUND_QUEST_MIDDLE);
-								}
-								else
-								{
-									playSound(killer, QuestSound.ITEMSOUND_QUEST_ITEMGET);
-								}
-							}
-						}
-						else
-						{
-							if (getQuestItemsCount(killer, BROWN_MARSH_MOSS) < 20)
-							{
-								giveItems(killer, BROWN_MARSH_MOSS, 1);
-								if (getQuestItemsCount(killer, BROWN_MARSH_MOSS) == 20)
-								{
-									playSound(killer, QuestSound.ITEMSOUND_QUEST_MIDDLE);
-								}
-								else
-								{
-									playSound(killer, QuestSound.ITEMSOUND_QUEST_ITEMGET);
-								}
-							}
-						}
-					}
-					break;
-				}
-				case STINGER_WASP:
-				{
-					if (((getQuestItemsCount(killer, RED_MANDRAGORA_SAP) + getQuestItemsCount(killer, WHITE_MANDRAGORA_SAP) + getQuestItemsCount(killer, HONEY) + getQuestItemsCount(killer, GOLDEN_HONEY) + getQuestItemsCount(killer, DIONIAN_POTATO) + getQuestItemsCount(killer, GREEN_MOSS_BUNDLE) + getQuestItemsCount(killer, BROWN_MOSS_BUNDLE) + getQuestItemsCount(killer, MONSTER_EYE_MEAT)) < 5) && hasQuestItems(killer, INGREDIENT_LIST, JACOBS_INSECT_BOOK))
-					{
-						final int i0 = getRandom(100);
-						if (i0 < 92)
-						{
-							if (getQuestItemsCount(killer, NECTAR) < 20)
-							{
-								giveItems(killer, NECTAR, 1);
-								if (getQuestItemsCount(killer, NECTAR) == 20)
-								{
-									playSound(killer, QuestSound.ITEMSOUND_QUEST_MIDDLE);
-								}
-								else
-								{
-									playSound(killer, QuestSound.ITEMSOUND_QUEST_ITEMGET);
-								}
-							}
-						}
-						else
-						{
-							if (getQuestItemsCount(killer, ROYAL_JELLY) < 10)
-							{
-								giveItems(killer, ROYAL_JELLY, 1);
-								if (getQuestItemsCount(killer, ROYAL_JELLY) == 10)
-								{
-									playSound(killer, QuestSound.ITEMSOUND_QUEST_MIDDLE);
-								}
-								else
-								{
-									playSound(killer, QuestSound.ITEMSOUND_QUEST_ITEMGET);
-								}
-							}
-						}
-					}
-					break;
-				}
-				case MONSTER_EYE_SEARCHER:
-				{
-					if (((getQuestItemsCount(killer, RED_MANDRAGORA_SAP) + getQuestItemsCount(killer, WHITE_MANDRAGORA_SAP) + getQuestItemsCount(killer, HONEY) + getQuestItemsCount(killer, GOLDEN_HONEY) + getQuestItemsCount(killer, DIONIAN_POTATO) + getQuestItemsCount(killer, GREEN_MOSS_BUNDLE) + getQuestItemsCount(killer, BROWN_MOSS_BUNDLE) + getQuestItemsCount(killer, MONSTER_EYE_MEAT)) < 5) && hasQuestItems(killer, INGREDIENT_LIST, ROLLANTS_CREATURE_BOOK) && (getQuestItemsCount(killer, BODY_OF_MONSTER_EYE) < 30))
-					{
-						final int i0 = getRandom(100);
-						if (i0 < 77)
-						{
-							if (getQuestItemsCount(killer, BODY_OF_MONSTER_EYE) == 29)
-							{
-								giveItems(killer, BODY_OF_MONSTER_EYE, 1);
-								playSound(killer, QuestSound.ITEMSOUND_QUEST_MIDDLE);
-							}
-							else
-							{
-								giveItems(killer, BODY_OF_MONSTER_EYE, 2);
-								playSound(killer, QuestSound.ITEMSOUND_QUEST_ITEMGET);
-							}
-						}
-						else if (i0 < 97)
-						{
-							if (getQuestItemsCount(killer, BROWN_MARSH_MOSS) == 28)
-							{
-								giveItems(killer, BODY_OF_MONSTER_EYE, 2);
-								playSound(killer, QuestSound.ITEMSOUND_QUEST_MIDDLE);
-							}
-							else if (getQuestItemsCount(killer, BROWN_MARSH_MOSS) == 29)
-							{
-								giveItems(killer, BODY_OF_MONSTER_EYE, 1);
-								playSound(killer, QuestSound.ITEMSOUND_QUEST_MIDDLE);
-							}
-							else
-							{
-								giveItems(killer, BODY_OF_MONSTER_EYE, 3);
-								playSound(killer, QuestSound.ITEMSOUND_QUEST_ITEMGET);
-							}
-						}
-					}
-					break;
-				}
-				case MONSTER_EYE_GAZER:
-				{
-					if (((getQuestItemsCount(killer, RED_MANDRAGORA_SAP) + getQuestItemsCount(killer, WHITE_MANDRAGORA_SAP) + getQuestItemsCount(killer, HONEY) + getQuestItemsCount(killer, GOLDEN_HONEY) + getQuestItemsCount(killer, DIONIAN_POTATO) + getQuestItemsCount(killer, GREEN_MOSS_BUNDLE) + getQuestItemsCount(killer, BROWN_MOSS_BUNDLE) + getQuestItemsCount(killer, MONSTER_EYE_MEAT)) < 5) && hasQuestItems(killer, INGREDIENT_LIST, ROLLANTS_CREATURE_BOOK) && (getQuestItemsCount(killer, BODY_OF_MONSTER_EYE) < 30))
-					{
-						final int i0 = getRandom(10);
-						if (i0 < 7)
-						{
-							giveItems(killer, BODY_OF_MONSTER_EYE, 1);
-							if (getQuestItemsCount(killer, BODY_OF_MONSTER_EYE) == 30)
-							{
-								playSound(killer, QuestSound.ITEMSOUND_QUEST_MIDDLE);
-							}
-							else
-							{
-								playSound(killer, QuestSound.ITEMSOUND_QUEST_ITEMGET);
-							}
-						}
-						else
-						{
-							if (getQuestItemsCount(killer, BROWN_MARSH_MOSS) == 29)
-							{
-								giveItems(killer, BODY_OF_MONSTER_EYE, 1);
-								playSound(killer, QuestSound.ITEMSOUND_QUEST_MIDDLE);
-							}
-							else
-							{
-								giveItems(killer, BODY_OF_MONSTER_EYE, 2);
-								playSound(killer, QuestSound.ITEMSOUND_QUEST_ITEMGET);
-							}
-						}
-					}
-					break;
-				}
-			}
-		}
-		return super.onKill(npc, killer, isSummon);
 	}
 	
 	@Override
 	public String onTalk(Npc npc, Player player)
 	{
-		final QuestState qs = getQuestState(player, true);
 		String htmltext = getNoQuestMsg(player);
-		if (qs.isCreated())
+		final QuestState st = getQuestState(player, true);
+		
+		switch (st.getState())
 		{
-			if (npc.getId() == JONAS)
+			case State.CREATED:
 			{
-				if (player.getLevel() < MIN_LEVEL)
+				htmltext = (player.getLevel() < 24) ? "30469-01.htm" : "30469-02.htm";
+				break;
+			}
+			case State.STARTED:
+			{
+				switch (npc.getId())
 				{
-					htmltext = "30469-01.htm";
+					case JONAS:
+					{
+						if (hasQuestItems(player, INGREDIENT_LIST))
+						{
+							if (!hasAllIngredients(player))
+							{
+								htmltext = "30469-04.htm";
+							}
+							else
+							{
+								int dish;
+								
+								final int specialIngredientsNumber = getQuestItemsCount(player, WHITE_MANDRAGORA_SAP) + getQuestItemsCount(player, GOLDEN_HONEY) + getQuestItemsCount(player, BROWN_MOSS_BUNDLE);
+								if (getRandomBoolean())
+								{
+									htmltext = "30469-05t" + Integer.toString(specialIngredientsNumber + 2) + ".htm";
+									dish = 1443 + specialIngredientsNumber;
+								}
+								else
+								{
+									htmltext = "30469-05t" + Integer.toString(specialIngredientsNumber + 1) + ".htm";
+									dish = 1442 + specialIngredientsNumber;
+								}
+								
+								// Sound according dish.
+								playSound(player, (dish == JONAS_STEAK_DISH_5) ? QuestSound.ITEMSOUND_QUEST_JACKPOT : QuestSound.ITEMSOUND_QUEST_ITEMGET);
+								takeItems(player, INGREDIENT_LIST, 1);
+								takeItems(player, RED_MANDRAGORA_SAP, 1);
+								takeItems(player, WHITE_MANDRAGORA_SAP, 1);
+								takeItems(player, HONEY, 1);
+								takeItems(player, GOLDEN_HONEY, 1);
+								takeItems(player, DIONIAN_POTATO, 1);
+								takeItems(player, GREEN_MOSS_BUNDLE, 1);
+								takeItems(player, BROWN_MOSS_BUNDLE, 1);
+								takeItems(player, MONSTER_EYE_MEAT, 1);
+								giveItems(player, dish, 1);
+							}
+						}
+						else if (hasAtLeastOneQuestItem(player, JONAS_STEAK_DISH_1, JONAS_STEAK_DISH_2, JONAS_STEAK_DISH_3, JONAS_STEAK_DISH_4, JONAS_STEAK_DISH_5))
+						{
+							htmltext = "30469-06.htm";
+						}
+						else if (hasAtLeastOneQuestItem(player, MIRIEN_REVIEW_1, MIRIEN_REVIEW_2, MIRIEN_REVIEW_3, MIRIEN_REVIEW_4, MIRIEN_REVIEW_5))
+						{
+							if (hasQuestItems(player, MIRIEN_REVIEW_1))
+							{
+								htmltext = "30469-06t1.htm";
+								takeItems(player, MIRIEN_REVIEW_1, 1);
+								giveAdena(player, 7500, true);
+								addExpAndSp(player, 6000, 0);
+							}
+							else if (hasQuestItems(player, MIRIEN_REVIEW_2))
+							{
+								htmltext = "30469-06t2.htm";
+								takeItems(player, MIRIEN_REVIEW_2, 1);
+								giveAdena(player, 9000, true);
+								addExpAndSp(player, 7000, 0);
+							}
+							else if (hasQuestItems(player, MIRIEN_REVIEW_3))
+							{
+								htmltext = "30469-06t3.htm";
+								takeItems(player, MIRIEN_REVIEW_3, 1);
+								giveAdena(player, 5800, true);
+								giveItems(player, JONAS_SALAD_RECIPE, 1);
+								addExpAndSp(player, 9000, 0);
+							}
+							else if (hasQuestItems(player, MIRIEN_REVIEW_4))
+							{
+								htmltext = "30469-06t4.htm";
+								takeItems(player, MIRIEN_REVIEW_4, 1);
+								giveAdena(player, 6800, true);
+								giveItems(player, JONAS_SAUCE_RECIPE, 1);
+								addExpAndSp(player, 10500, 0);
+							}
+							else if (hasQuestItems(player, MIRIEN_REVIEW_5))
+							{
+								htmltext = "30469-06t5.htm";
+								takeItems(player, MIRIEN_REVIEW_5, 1);
+								giveAdena(player, 7800, true);
+								giveItems(player, JONAS_STEAK_RECIPE, 1);
+								addExpAndSp(player, 12000, 0);
+							}
+							st.exitQuest(true, true);
+						}
+						break;
+					}
+					case MIRIEN:
+					{
+						if (hasQuestItems(player, INGREDIENT_LIST))
+						{
+							htmltext = "30461-01.htm";
+						}
+						else if (hasAtLeastOneQuestItem(player, JONAS_STEAK_DISH_1, JONAS_STEAK_DISH_2, JONAS_STEAK_DISH_3, JONAS_STEAK_DISH_4, JONAS_STEAK_DISH_5))
+						{
+							playSound(player, QuestSound.ITEMSOUND_QUEST_ITEMGET);
+							if (hasQuestItems(player, JONAS_STEAK_DISH_1))
+							{
+								htmltext = "30461-02t1.htm";
+								takeItems(player, JONAS_STEAK_DISH_1, 1);
+								giveItems(player, MIRIEN_REVIEW_1, 1);
+							}
+							else if (hasQuestItems(player, JONAS_STEAK_DISH_2))
+							{
+								htmltext = "30461-02t2.htm";
+								takeItems(player, JONAS_STEAK_DISH_2, 1);
+								giveItems(player, MIRIEN_REVIEW_2, 1);
+							}
+							else if (hasQuestItems(player, JONAS_STEAK_DISH_3))
+							{
+								htmltext = "30461-02t3.htm";
+								takeItems(player, JONAS_STEAK_DISH_3, 1);
+								giveItems(player, MIRIEN_REVIEW_3, 1);
+							}
+							else if (hasQuestItems(player, JONAS_STEAK_DISH_4))
+							{
+								htmltext = "30461-02t4.htm";
+								takeItems(player, JONAS_STEAK_DISH_4, 1);
+								giveItems(player, MIRIEN_REVIEW_4, 1);
+							}
+							else if (hasQuestItems(player, JONAS_STEAK_DISH_5))
+							{
+								htmltext = "30461-02t5.htm";
+								takeItems(player, JONAS_STEAK_DISH_5, 1);
+								giveItems(player, MIRIEN_REVIEW_5, 1);
+							}
+						}
+						else if (hasAtLeastOneQuestItem(player, MIRIEN_REVIEW_1, MIRIEN_REVIEW_2, MIRIEN_REVIEW_3, MIRIEN_REVIEW_4, MIRIEN_REVIEW_5))
+						{
+							htmltext = "30461-04.htm";
+						}
+						break;
+					}
+					case SONIA:
+					{
+						if (!hasQuestItems(player, RED_MANDRAGORA_SAP) && !hasQuestItems(player, WHITE_MANDRAGORA_SAP))
+						{
+							if (!hasQuestItems(player, SONIA_BOTANY_BOOK))
+							{
+								htmltext = "30062-01.htm";
+								giveItems(player, SONIA_BOTANY_BOOK, 1);
+								playSound(player, QuestSound.ITEMSOUND_QUEST_ITEMGET);
+							}
+							else
+							{
+								if ((getQuestItemsCount(player, RED_MANDRAGORA_ROOT) < 40) || (getQuestItemsCount(player, WHITE_MANDRAGORA_ROOT) < 40))
+								{
+									htmltext = "30062-02.htm";
+								}
+								else if (getQuestItemsCount(player, WHITE_MANDRAGORA_ROOT) >= 40)
+								{
+									htmltext = "30062-06.htm";
+									takeItems(player, SONIA_BOTANY_BOOK, 1);
+									takeItems(player, RED_MANDRAGORA_ROOT, -1);
+									takeItems(player, WHITE_MANDRAGORA_ROOT, -1);
+									giveItems(player, WHITE_MANDRAGORA_SAP, 1);
+									playSound(player, QuestSound.ITEMSOUND_QUEST_ITEMGET);
+								}
+								else
+								{
+									htmltext = "30062-03.htm";
+								}
+							}
+						}
+						else
+						{
+							htmltext = "30062-07.htm";
+						}
+						break;
+					}
+					case JACOB:
+					{
+						if (!hasQuestItems(player, HONEY) && !hasQuestItems(player, GOLDEN_HONEY))
+						{
+							if (!hasQuestItems(player, JACOB_INSECT_BOOK))
+							{
+								htmltext = "30073-01.htm";
+								giveItems(player, JACOB_INSECT_BOOK, 1);
+								playSound(player, QuestSound.ITEMSOUND_QUEST_ITEMGET);
+							}
+							else
+							{
+								if (getQuestItemsCount(player, NECTAR) < 20)
+								{
+									htmltext = "30073-02.htm";
+								}
+								else
+								{
+									if (getQuestItemsCount(player, ROYAL_JELLY) < 10)
+									{
+										htmltext = "30073-03.htm";
+									}
+									else
+									{
+										htmltext = "30073-06.htm";
+										takeItems(player, JACOB_INSECT_BOOK, 1);
+										takeItems(player, NECTAR, -1);
+										takeItems(player, ROYAL_JELLY, -1);
+										giveItems(player, GOLDEN_HONEY, 1);
+										playSound(player, QuestSound.ITEMSOUND_QUEST_ITEMGET);
+									}
+								}
+							}
+						}
+						else
+						{
+							htmltext = "30073-07.htm";
+						}
+						break;
+					}
+					case PANO:
+					{
+						if (!hasQuestItems(player, DIONIAN_POTATO))
+						{
+							if (!hasQuestItems(player, PANO_CONTRACT))
+							{
+								htmltext = "30078-01.htm";
+								giveItems(player, PANO_CONTRACT, 1);
+								playSound(player, QuestSound.ITEMSOUND_QUEST_ITEMGET);
+							}
+							else
+							{
+								if (getQuestItemsCount(player, HOBGOBLIN_AMULET) < 30)
+								{
+									htmltext = "30078-02.htm";
+								}
+								else
+								{
+									htmltext = "30078-03.htm";
+									takeItems(player, PANO_CONTRACT, 1);
+									takeItems(player, HOBGOBLIN_AMULET, -1);
+									giveItems(player, DIONIAN_POTATO, 1);
+									playSound(player, QuestSound.ITEMSOUND_QUEST_ITEMGET);
+								}
+							}
+						}
+						else
+						{
+							htmltext = "30078-04.htm";
+						}
+						break;
+					}
+					case GLYVKA:
+					{
+						if (!hasQuestItems(player, GREEN_MOSS_BUNDLE) && !hasQuestItems(player, BROWN_MOSS_BUNDLE))
+						{
+							if (!hasQuestItems(player, GLYVKA_BOTANY_BOOK))
+							{
+								giveItems(player, GLYVKA_BOTANY_BOOK, 1);
+								htmltext = "30067-01.htm";
+								playSound(player, QuestSound.ITEMSOUND_QUEST_ITEMGET);
+							}
+							else
+							{
+								if ((getQuestItemsCount(player, GREEN_MARSH_MOSS) < 20) || (getQuestItemsCount(player, BROWN_MARSH_MOSS) < 20))
+								{
+									htmltext = "30067-02.htm";
+								}
+								else if (getQuestItemsCount(player, BROWN_MARSH_MOSS) >= 20)
+								{
+									htmltext = "30067-06.htm";
+									takeItems(player, GLYVKA_BOTANY_BOOK, 1);
+									takeItems(player, GREEN_MARSH_MOSS, -1);
+									takeItems(player, BROWN_MARSH_MOSS, -1);
+									giveItems(player, BROWN_MOSS_BUNDLE, 1);
+									playSound(player, QuestSound.ITEMSOUND_QUEST_ITEMGET);
+								}
+								else
+								{
+									htmltext = "30067-03.htm";
+								}
+							}
+						}
+						else
+						{
+							htmltext = "30067-07.htm";
+						}
+						break;
+					}
+					case ROLLANT:
+					{
+						if (!hasQuestItems(player, MONSTER_EYE_MEAT))
+						{
+							if (!hasQuestItems(player, ROLANT_CREATURE_BOOK))
+							{
+								htmltext = "30069-01.htm";
+								giveItems(player, ROLANT_CREATURE_BOOK, 1);
+								playSound(player, QuestSound.ITEMSOUND_QUEST_ITEMGET);
+							}
+							else
+							{
+								if (getQuestItemsCount(player, MONSTER_EYE_BODY) < 30)
+								{
+									htmltext = "30069-02.htm";
+								}
+								else
+								{
+									htmltext = "30069-03.htm";
+									takeItems(player, ROLANT_CREATURE_BOOK, 1);
+									takeItems(player, MONSTER_EYE_BODY, -1);
+									giveItems(player, MONSTER_EYE_MEAT, 1);
+									playSound(player, QuestSound.ITEMSOUND_QUEST_ITEMGET);
+								}
+							}
+						}
+						else
+						{
+							htmltext = "30069-04.htm";
+						}
+						break;
+					}
 				}
-				else
-				{
-					htmltext = "30469-02.htm";
-				}
+				break;
 			}
 		}
-		else if (qs.isStarted())
+		
+		return htmltext;
+	}
+	
+	@Override
+	public String onKill(Npc npc, Player player, boolean isPet)
+	{
+		final QuestState st = getQuestState(player, false);
+		if ((st == null) || !st.isStarted())
 		{
-			switch (npc.getId())
+			return null;
+		}
+		
+		final int npcId = npc.getId();
+		switch (npcId)
+		{
+			case 20265:
 			{
-				case JONAS:
+				if (hasQuestItems(player, ROLANT_CREATURE_BOOK) && (getQuestItemsCount(player, MONSTER_EYE_BODY) < 30) && (getRandom(100) < 97))
 				{
-					if (hasQuestItems(player, INGREDIENT_LIST))
-					{
-						if ((getQuestItemsCount(player, RED_MANDRAGORA_SAP) + getQuestItemsCount(player, WHITE_MANDRAGORA_SAP) + getQuestItemsCount(player, HONEY) + getQuestItemsCount(player, GOLDEN_HONEY) + getQuestItemsCount(player, DIONIAN_POTATO) + getQuestItemsCount(player, GREEN_MOSS_BUNDLE) + getQuestItemsCount(player, BROWN_MOSS_BUNDLE) + getQuestItemsCount(player, MONSTER_EYE_MEAT)) < 5)
-						{
-							htmltext = "30469-04.html";
-						}
-						else
-						{
-							if ((getQuestItemsCount(player, WHITE_MANDRAGORA_SAP) + getQuestItemsCount(player, GOLDEN_HONEY) + getQuestItemsCount(player, BROWN_MOSS_BUNDLE)) == 0)
-							{
-								if (getRandom(10) < 5)
-								{
-									takeItems(player, INGREDIENT_LIST, -1);
-									takeItems(player, RED_MANDRAGORA_SAP, -1);
-									takeItems(player, WHITE_MANDRAGORA_SAP, -1);
-									takeItems(player, HONEY, -1);
-									takeItems(player, GOLDEN_HONEY, -1);
-									takeItems(player, DIONIAN_POTATO, -1);
-									takeItems(player, GREEN_MOSS_BUNDLE, -1);
-									takeItems(player, BROWN_MOSS_BUNDLE, -1);
-									takeItems(player, MONSTER_EYE_MEAT, -1);
-									giveItems(player, JONASS_2ND_STEAK_DISH, 1);
-									htmltext = "30469-05t2.html";
-								}
-								else
-								{
-									takeItems(player, INGREDIENT_LIST, -1);
-									takeItems(player, RED_MANDRAGORA_SAP, -1);
-									takeItems(player, WHITE_MANDRAGORA_SAP, -1);
-									takeItems(player, HONEY, -1);
-									takeItems(player, GOLDEN_HONEY, -1);
-									takeItems(player, DIONIAN_POTATO, -1);
-									takeItems(player, GREEN_MOSS_BUNDLE, -1);
-									takeItems(player, BROWN_MOSS_BUNDLE, -1);
-									takeItems(player, MONSTER_EYE_MEAT, -1);
-									giveItems(player, JONASS_1ST_STEAK_DISH, 1);
-									htmltext = "30469-05t1.html";
-								}
-							}
-							
-							if ((getQuestItemsCount(player, WHITE_MANDRAGORA_SAP) + getQuestItemsCount(player, GOLDEN_HONEY) + getQuestItemsCount(player, BROWN_MOSS_BUNDLE)) == 1)
-							{
-								if (getRandom(10) < 5)
-								{
-									takeItems(player, INGREDIENT_LIST, -1);
-									takeItems(player, RED_MANDRAGORA_SAP, -1);
-									takeItems(player, WHITE_MANDRAGORA_SAP, -1);
-									takeItems(player, HONEY, -1);
-									takeItems(player, GOLDEN_HONEY, -1);
-									takeItems(player, DIONIAN_POTATO, -1);
-									takeItems(player, GREEN_MOSS_BUNDLE, -1);
-									takeItems(player, BROWN_MOSS_BUNDLE, -1);
-									takeItems(player, MONSTER_EYE_MEAT, -1);
-									giveItems(player, JONASS_3RD_STEAK_DISH, 1);
-									htmltext = "30469-05t3.html";
-								}
-								else
-								{
-									takeItems(player, INGREDIENT_LIST, -1);
-									takeItems(player, RED_MANDRAGORA_SAP, -1);
-									takeItems(player, WHITE_MANDRAGORA_SAP, -1);
-									takeItems(player, HONEY, -1);
-									takeItems(player, GOLDEN_HONEY, -1);
-									takeItems(player, DIONIAN_POTATO, -1);
-									takeItems(player, GREEN_MOSS_BUNDLE, -1);
-									takeItems(player, BROWN_MOSS_BUNDLE, -1);
-									takeItems(player, MONSTER_EYE_MEAT, -1);
-									giveItems(player, JONASS_2ND_STEAK_DISH, 1);
-									htmltext = "30469-05t2.html";
-								}
-							}
-							
-							if ((getQuestItemsCount(player, WHITE_MANDRAGORA_SAP) + getQuestItemsCount(player, GOLDEN_HONEY) + getQuestItemsCount(player, BROWN_MOSS_BUNDLE)) == 2)
-							{
-								if (getRandom(10) < 5)
-								{
-									takeItems(player, INGREDIENT_LIST, -1);
-									takeItems(player, RED_MANDRAGORA_SAP, -1);
-									takeItems(player, WHITE_MANDRAGORA_SAP, -1);
-									takeItems(player, HONEY, -1);
-									takeItems(player, GOLDEN_HONEY, -1);
-									takeItems(player, DIONIAN_POTATO, -1);
-									takeItems(player, GREEN_MOSS_BUNDLE, -1);
-									takeItems(player, BROWN_MOSS_BUNDLE, -1);
-									takeItems(player, MONSTER_EYE_MEAT, -1);
-									giveItems(player, JONASS_4TH_STEAK_DISH, 1);
-									htmltext = "30469-05t4.html";
-								}
-								else
-								{
-									takeItems(player, INGREDIENT_LIST, -1);
-									takeItems(player, RED_MANDRAGORA_SAP, -1);
-									takeItems(player, WHITE_MANDRAGORA_SAP, -1);
-									takeItems(player, HONEY, -1);
-									takeItems(player, GOLDEN_HONEY, -1);
-									takeItems(player, DIONIAN_POTATO, -1);
-									takeItems(player, GREEN_MOSS_BUNDLE, -1);
-									takeItems(player, BROWN_MOSS_BUNDLE, -1);
-									takeItems(player, MONSTER_EYE_MEAT, -1);
-									giveItems(player, JONASS_3RD_STEAK_DISH, 1);
-									htmltext = "30469-05t3.html";
-								}
-							}
-							
-							if ((getQuestItemsCount(player, WHITE_MANDRAGORA_SAP) + getQuestItemsCount(player, GOLDEN_HONEY) + getQuestItemsCount(player, BROWN_MOSS_BUNDLE)) == 3)
-							{
-								if (getRandom(10) < 5)
-								{
-									takeItems(player, INGREDIENT_LIST, -1);
-									takeItems(player, RED_MANDRAGORA_SAP, -1);
-									takeItems(player, WHITE_MANDRAGORA_SAP, -1);
-									takeItems(player, HONEY, -1);
-									takeItems(player, GOLDEN_HONEY, -1);
-									takeItems(player, DIONIAN_POTATO, -1);
-									takeItems(player, GREEN_MOSS_BUNDLE, -1);
-									takeItems(player, BROWN_MOSS_BUNDLE, -1);
-									takeItems(player, MONSTER_EYE_MEAT, -1);
-									giveItems(player, JONASS_5TH_STEAK_DISH, 1);
-									playSound(player, QuestSound.ITEMSOUND_QUEST_JACKPOT);
-									htmltext = "30469-05t5.html";
-								}
-								else
-								{
-									takeItems(player, INGREDIENT_LIST, -1);
-									takeItems(player, RED_MANDRAGORA_SAP, -1);
-									takeItems(player, WHITE_MANDRAGORA_SAP, -1);
-									takeItems(player, HONEY, -1);
-									takeItems(player, GOLDEN_HONEY, -1);
-									takeItems(player, DIONIAN_POTATO, -1);
-									takeItems(player, GREEN_MOSS_BUNDLE, -1);
-									takeItems(player, BROWN_MOSS_BUNDLE, -1);
-									takeItems(player, MONSTER_EYE_MEAT, -1);
-									giveItems(player, JONASS_4TH_STEAK_DISH, 1);
-									htmltext = "30469-05t4.html";
-								}
-							}
-						}
-					}
-					else
-					{
-						if ((getQuestItemsCount(player, RED_MANDRAGORA_SAP) + getQuestItemsCount(player, WHITE_MANDRAGORA_SAP) + getQuestItemsCount(player, HONEY) + getQuestItemsCount(player, GOLDEN_HONEY) + getQuestItemsCount(player, DIONIAN_POTATO) + getQuestItemsCount(player, GREEN_MOSS_BUNDLE) + getQuestItemsCount(player, BROWN_MOSS_BUNDLE) + getQuestItemsCount(player, MONSTER_EYE_MEAT)) == 0)
-						{
-							if ((getQuestItemsCount(player, JONASS_1ST_STEAK_DISH) + getQuestItemsCount(player, JONASS_2ND_STEAK_DISH) + getQuestItemsCount(player, JONASS_3RD_STEAK_DISH) + getQuestItemsCount(player, JONASS_4TH_STEAK_DISH) + getQuestItemsCount(player, JONASS_5TH_STEAK_DISH)) == 1)
-							{
-								if ((getQuestItemsCount(player, MIRIENS_REVIEW_1) + getQuestItemsCount(player, MIRIENS_REVIEW_2) + getQuestItemsCount(player, MIRIENS_REVIEW_3) + getQuestItemsCount(player, MIRIENS_REVIEW_4) + getQuestItemsCount(player, MIRIENS_REVIEW_5)) == 0)
-								{
-									htmltext = "30469-06.html";
-								}
-							}
-							else
-							{
-								if ((getQuestItemsCount(player, MIRIENS_REVIEW_1) + getQuestItemsCount(player, MIRIENS_REVIEW_2) + getQuestItemsCount(player, MIRIENS_REVIEW_3) + getQuestItemsCount(player, MIRIENS_REVIEW_4) + getQuestItemsCount(player, MIRIENS_REVIEW_5)) == 1)
-								{
-									if (hasQuestItems(player, MIRIENS_REVIEW_1))
-									{
-										takeItems(player, MIRIENS_REVIEW_1, 1);
-										giveAdena(player, 10000, true);
-										htmltext = "30469-06t1.html";
-									}
-									
-									if (hasQuestItems(player, MIRIENS_REVIEW_2))
-									{
-										takeItems(player, MIRIENS_REVIEW_2, 1);
-										giveAdena(player, 14870, true);
-										htmltext = "30469-06t2.html";
-									}
-									
-									if (hasQuestItems(player, MIRIENS_REVIEW_3))
-									{
-										takeItems(player, MIRIENS_REVIEW_3, 1);
-										giveAdena(player, 6490, true);
-										giveItems(player, JONASS_SALAD_RECIPE, 1);
-										htmltext = "30469-06t3.html";
-									}
-									
-									if (hasQuestItems(player, MIRIENS_REVIEW_4))
-									{
-										takeItems(player, MIRIENS_REVIEW_4, 1);
-										giveAdena(player, 12220, true);
-										giveItems(player, JONASS_SAUCE_RECIPE, 1);
-										htmltext = "30469-06t4.html";
-									}
-									
-									if (hasQuestItems(player, MIRIENS_REVIEW_5))
-									{
-										takeItems(player, MIRIENS_REVIEW_5, 1);
-										giveAdena(player, 16540, true);
-										giveItems(player, JONASS_STEAK_RECIPE, 1);
-										htmltext = "30469-06t5.html";
-									}
-									
-									qs.exitQuest(true, true);
-								}
-							}
-						}
-					}
-					break;
+					giveItems(player, MONSTER_EYE_BODY, getRandom(97) < 77 ? 2 : 3);
+					playSound(player, QuestSound.ITEMSOUND_QUEST_ITEMGET);
 				}
-				case ACCESSORY_MERCHANT_SONIA:
+				break;
+			}
+			case 20266:
+			{
+				if (hasQuestItems(player, ROLANT_CREATURE_BOOK) && (getQuestItemsCount(player, MONSTER_EYE_BODY) < 30))
 				{
-					if (hasQuestItems(player, INGREDIENT_LIST) && ((getQuestItemsCount(player, RED_MANDRAGORA_SAP) + getQuestItemsCount(player, WHITE_MANDRAGORA_SAP) + getQuestItemsCount(player, HONEY) + getQuestItemsCount(player, GOLDEN_HONEY) + getQuestItemsCount(player, DIONIAN_POTATO) + getQuestItemsCount(player, GREEN_MOSS_BUNDLE) + getQuestItemsCount(player, BROWN_MOSS_BUNDLE) + getQuestItemsCount(player, MONSTER_EYE_MEAT)) < 5) && !hasAtLeastOneQuestItem(player, SONIAS_BOTANY_BOOK, RED_MANDRAGORA_SAP, WHITE_MANDRAGORA_SAP))
-					{
-						giveItems(player, SONIAS_BOTANY_BOOK, 1);
-						htmltext = "30062-01.html";
-					}
-					else if (hasQuestItems(player, INGREDIENT_LIST, SONIAS_BOTANY_BOOK) && ((getQuestItemsCount(player, RED_MANDRAGORA_SAP) + getQuestItemsCount(player, WHITE_MANDRAGORA_SAP) + getQuestItemsCount(player, HONEY) + getQuestItemsCount(player, GOLDEN_HONEY) + getQuestItemsCount(player, DIONIAN_POTATO) + getQuestItemsCount(player, GREEN_MOSS_BUNDLE) + getQuestItemsCount(player, BROWN_MOSS_BUNDLE) + getQuestItemsCount(player, MONSTER_EYE_MEAT)) < 5) && !hasAtLeastOneQuestItem(player, RED_MANDRAGORA_SAP, WHITE_MANDRAGORA_SAP))
-					{
-						if ((getQuestItemsCount(player, RED_MANDRAGORA_ROOT) + getQuestItemsCount(player, WHITE_MANDRAGORA_ROOT)) < 40)
-						{
-							htmltext = "30062-02.html";
-						}
-						else
-						{
-							if (getQuestItemsCount(player, WHITE_MANDRAGORA_ROOT) < 40)
-							{
-								htmltext = "30062-03.html";
-							}
-							else
-							{
-								takeItems(player, SONIAS_BOTANY_BOOK, 1);
-								takeItems(player, RED_MANDRAGORA_ROOT, -1);
-								takeItems(player, WHITE_MANDRAGORA_ROOT, -1);
-								giveItems(player, WHITE_MANDRAGORA_SAP, 1);
-								htmltext = "30062-06.html";
-							}
-						}
-					}
-					else if (hasQuestItems(player, INGREDIENT_LIST) && !hasQuestItems(player, SONIAS_BOTANY_BOOK) && ((getQuestItemsCount(player, RED_MANDRAGORA_SAP) + getQuestItemsCount(player, WHITE_MANDRAGORA_SAP) + getQuestItemsCount(player, HONEY) + getQuestItemsCount(player, GOLDEN_HONEY) + getQuestItemsCount(player, DIONIAN_POTATO) + getQuestItemsCount(player, GREEN_MOSS_BUNDLE) + getQuestItemsCount(player, BROWN_MOSS_BUNDLE) + getQuestItemsCount(player, MONSTER_EYE_MEAT)) < 5) && hasAtLeastOneQuestItem(player, RED_MANDRAGORA_SAP, WHITE_MANDRAGORA_SAP))
-					{
-						htmltext = "30062-07.html";
-					}
-					break;
+					giveItems(player, MONSTER_EYE_BODY, getRandom(10) < 7 ? 1 : 2);
+					playSound(player, QuestSound.ITEMSOUND_QUEST_ITEMGET);
 				}
-				case PRIESTESS_GLYVKA:
+				break;
+			}
+			case 20226:
+			{
+				if (hasQuestItems(player, GLYVKA_BOTANY_BOOK))
 				{
-					if (hasQuestItems(player, INGREDIENT_LIST) && ((getQuestItemsCount(player, RED_MANDRAGORA_SAP) + getQuestItemsCount(player, WHITE_MANDRAGORA_SAP) + getQuestItemsCount(player, HONEY) + getQuestItemsCount(player, GOLDEN_HONEY) + getQuestItemsCount(player, DIONIAN_POTATO) + getQuestItemsCount(player, GREEN_MOSS_BUNDLE) + getQuestItemsCount(player, BROWN_MOSS_BUNDLE) + getQuestItemsCount(player, MONSTER_EYE_MEAT)) < 5) && !hasAtLeastOneQuestItem(player, GLYVKAS_BOTANY_BOOK, GREEN_MOSS_BUNDLE, BROWN_MOSS_BUNDLE))
+					final int itemId = getRandom(96) < 87 ? GREEN_MARSH_MOSS : BROWN_MARSH_MOSS;
+					if ((getQuestItemsCount(player, itemId) < 20) && (getRandom(100) < 96))
 					{
-						giveItems(player, GLYVKAS_BOTANY_BOOK, 1);
-						htmltext = "30067-01.html";
+						giveItems(player, itemId, 1);
+						playSound(player, QuestSound.ITEMSOUND_QUEST_ITEMGET);
 					}
-					else if (hasQuestItems(player, INGREDIENT_LIST, GLYVKAS_BOTANY_BOOK) && ((getQuestItemsCount(player, RED_MANDRAGORA_SAP) + getQuestItemsCount(player, WHITE_MANDRAGORA_SAP) + getQuestItemsCount(player, HONEY) + getQuestItemsCount(player, GOLDEN_HONEY) + getQuestItemsCount(player, DIONIAN_POTATO) + getQuestItemsCount(player, GREEN_MOSS_BUNDLE) + getQuestItemsCount(player, BROWN_MOSS_BUNDLE) + getQuestItemsCount(player, MONSTER_EYE_MEAT)) < 5))
-					{
-						if ((getQuestItemsCount(player, GREEN_MARSH_MOSS) + getQuestItemsCount(player, BROWN_MARSH_MOSS)) < 20)
-						{
-							htmltext = "30067-02.html";
-						}
-						else
-						{
-							if (getQuestItemsCount(player, BROWN_MARSH_MOSS) < 20)
-							{
-								htmltext = "30067-03.html";
-							}
-							else
-							{
-								takeItems(player, GLYVKAS_BOTANY_BOOK, 1);
-								takeItems(player, GREEN_MARSH_MOSS, -1);
-								takeItems(player, BROWN_MARSH_MOSS, -1);
-								giveItems(player, BROWN_MOSS_BUNDLE, 1);
-								htmltext = "30067-06.html";
-							}
-						}
-					}
-					else if (hasQuestItems(player, INGREDIENT_LIST) && !hasQuestItems(player, GLYVKAS_BOTANY_BOOK) && ((getQuestItemsCount(player, RED_MANDRAGORA_SAP) + getQuestItemsCount(player, WHITE_MANDRAGORA_SAP) + getQuestItemsCount(player, HONEY) + getQuestItemsCount(player, GOLDEN_HONEY) + getQuestItemsCount(player, DIONIAN_POTATO) + getQuestItemsCount(player, GREEN_MOSS_BUNDLE) + getQuestItemsCount(player, BROWN_MOSS_BUNDLE) + getQuestItemsCount(player, MONSTER_EYE_MEAT)) < 5) && hasAtLeastOneQuestItem(player, GREEN_MOSS_BUNDLE, BROWN_MOSS_BUNDLE))
-					{
-						htmltext = "30067-07.html";
-					}
-					break;
 				}
-				case MAGISTER_ROLLANT:
+				break;
+			}
+			case 20228:
+			{
+				if (hasQuestItems(player, GLYVKA_BOTANY_BOOK))
 				{
-					if (hasQuestItems(player, INGREDIENT_LIST) && ((getQuestItemsCount(player, RED_MANDRAGORA_SAP) + getQuestItemsCount(player, WHITE_MANDRAGORA_SAP) + getQuestItemsCount(player, HONEY) + getQuestItemsCount(player, GOLDEN_HONEY) + getQuestItemsCount(player, DIONIAN_POTATO) + getQuestItemsCount(player, GREEN_MOSS_BUNDLE) + getQuestItemsCount(player, BROWN_MOSS_BUNDLE) + getQuestItemsCount(player, MONSTER_EYE_MEAT)) < 5) && !hasAtLeastOneQuestItem(player, ROLLANTS_CREATURE_BOOK, MONSTER_EYE_MEAT))
+					final int itemId = getRandom(10) < 9 ? GREEN_MARSH_MOSS : BROWN_MARSH_MOSS;
+					if (getQuestItemsCount(player, itemId) < 20)
 					{
-						giveItems(player, ROLLANTS_CREATURE_BOOK, 1);
-						htmltext = "30069-01.html";
+						giveItems(player, itemId, 1);
+						playSound(player, QuestSound.ITEMSOUND_QUEST_ITEMGET);
 					}
-					else if (hasQuestItems(player, INGREDIENT_LIST, ROLLANTS_CREATURE_BOOK) && ((getQuestItemsCount(player, RED_MANDRAGORA_SAP) + getQuestItemsCount(player, WHITE_MANDRAGORA_SAP) + getQuestItemsCount(player, HONEY) + getQuestItemsCount(player, GOLDEN_HONEY) + getQuestItemsCount(player, DIONIAN_POTATO) + getQuestItemsCount(player, GREEN_MOSS_BUNDLE) + getQuestItemsCount(player, BROWN_MOSS_BUNDLE) + getQuestItemsCount(player, MONSTER_EYE_MEAT)) < 5))
-					{
-						if (getQuestItemsCount(player, BODY_OF_MONSTER_EYE) < 30)
-						{
-							htmltext = "30069-02.html";
-						}
-						else
-						{
-							takeItems(player, ROLLANTS_CREATURE_BOOK, 1);
-							takeItems(player, BODY_OF_MONSTER_EYE, -1);
-							giveItems(player, MONSTER_EYE_MEAT, 1);
-							htmltext = "30069-03.html";
-						}
-					}
-					else if (hasQuestItems(player, INGREDIENT_LIST, MONSTER_EYE_MEAT) && !hasQuestItems(player, ROLLANTS_CREATURE_BOOK) && ((getQuestItemsCount(player, RED_MANDRAGORA_SAP) + getQuestItemsCount(player, WHITE_MANDRAGORA_SAP) + getQuestItemsCount(player, HONEY) + getQuestItemsCount(player, GOLDEN_HONEY) + getQuestItemsCount(player, DIONIAN_POTATO) + getQuestItemsCount(player, GREEN_MOSS_BUNDLE) + getQuestItemsCount(player, BROWN_MOSS_BUNDLE) + getQuestItemsCount(player, MONSTER_EYE_MEAT)) < 5))
-					{
-						htmltext = "30069-04.html";
-					}
-					break;
 				}
-				case GUARD_JACOB:
+				break;
+			}
+			case 20147:
+			{
+				if (hasQuestItems(player, PANO_CONTRACT) && (getQuestItemsCount(player, HOBGOBLIN_AMULET) < 30))
 				{
-					if (hasQuestItems(player, INGREDIENT_LIST) && ((getQuestItemsCount(player, RED_MANDRAGORA_SAP) + getQuestItemsCount(player, WHITE_MANDRAGORA_SAP) + getQuestItemsCount(player, HONEY) + getQuestItemsCount(player, GOLDEN_HONEY) + getQuestItemsCount(player, DIONIAN_POTATO) + getQuestItemsCount(player, GREEN_MOSS_BUNDLE) + getQuestItemsCount(player, BROWN_MOSS_BUNDLE) + getQuestItemsCount(player, MONSTER_EYE_MEAT)) < 5) && !hasAtLeastOneQuestItem(player, JACOBS_INSECT_BOOK, HONEY, GOLDEN_HONEY))
-					{
-						giveItems(player, JACOBS_INSECT_BOOK, 1);
-						htmltext = "30073-01.html";
-					}
-					else if (hasQuestItems(player, INGREDIENT_LIST, JACOBS_INSECT_BOOK) && ((getQuestItemsCount(player, RED_MANDRAGORA_SAP) + getQuestItemsCount(player, WHITE_MANDRAGORA_SAP) + getQuestItemsCount(player, HONEY) + getQuestItemsCount(player, GOLDEN_HONEY) + getQuestItemsCount(player, DIONIAN_POTATO) + getQuestItemsCount(player, GREEN_MOSS_BUNDLE) + getQuestItemsCount(player, BROWN_MOSS_BUNDLE) + getQuestItemsCount(player, MONSTER_EYE_MEAT)) < 5))
+					giveItems(player, HOBGOBLIN_AMULET, 1);
+					playSound(player, QuestSound.ITEMSOUND_QUEST_ITEMGET);
+				}
+				break;
+			}
+			case 20204:
+			case 20229:
+			{
+				if (hasQuestItems(player, JACOB_INSECT_BOOK))
+				{
+					final int random = getRandom(100);
+					final int[] chances = CHANCES.get(npcId);
+					if (random < chances[0])
 					{
 						if (getQuestItemsCount(player, NECTAR) < 20)
 						{
-							htmltext = "30073-02.html";
-						}
-						else
-						{
-							if (getQuestItemsCount(player, ROYAL_JELLY) < 10)
-							{
-								htmltext = "30073-03.html";
-							}
-							else
-							{
-								takeItems(player, JACOBS_INSECT_BOOK, 1);
-								takeItems(player, NECTAR, -1);
-								takeItems(player, ROYAL_JELLY, -1);
-								giveItems(player, GOLDEN_HONEY, 1);
-								htmltext = "30073-06.html";
-							}
+							giveItems(player, NECTAR, 1);
+							playSound(player, QuestSound.ITEMSOUND_QUEST_ITEMGET);
 						}
 					}
-					else if (hasQuestItems(player, INGREDIENT_LIST) && !hasQuestItems(player, JACOBS_INSECT_BOOK) && ((getQuestItemsCount(player, RED_MANDRAGORA_SAP) + getQuestItemsCount(player, WHITE_MANDRAGORA_SAP) + getQuestItemsCount(player, HONEY) + getQuestItemsCount(player, GOLDEN_HONEY) + getQuestItemsCount(player, DIONIAN_POTATO) + getQuestItemsCount(player, GREEN_MOSS_BUNDLE) + getQuestItemsCount(player, BROWN_MOSS_BUNDLE) + getQuestItemsCount(player, MONSTER_EYE_MEAT)) < 5) && hasAtLeastOneQuestItem(player, HONEY, GOLDEN_HONEY))
+					else if ((random < chances[1]) && (getQuestItemsCount(player, ROYAL_JELLY) < 10))
 					{
-						htmltext = "30073-07.html";
+						giveItems(player, ROYAL_JELLY, 1);
+						playSound(player, QuestSound.ITEMSOUND_QUEST_ITEMGET);
 					}
-					break;
 				}
-				case GROCER_PANO:
+				break;
+			}
+			case 20223:
+			case 20154:
+			case 20155:
+			case 20156:
+			{
+				if (hasQuestItems(player, SONIA_BOTANY_BOOK))
 				{
-					if (hasQuestItems(player, INGREDIENT_LIST) && ((getQuestItemsCount(player, RED_MANDRAGORA_SAP) + getQuestItemsCount(player, WHITE_MANDRAGORA_SAP) + getQuestItemsCount(player, HONEY) + getQuestItemsCount(player, GOLDEN_HONEY) + getQuestItemsCount(player, DIONIAN_POTATO) + getQuestItemsCount(player, GREEN_MOSS_BUNDLE) + getQuestItemsCount(player, BROWN_MOSS_BUNDLE) + getQuestItemsCount(player, MONSTER_EYE_MEAT)) < 5) && !hasAtLeastOneQuestItem(player, PANOS_CONTRACT, DIONIAN_POTATO))
+					final int random = getRandom(100);
+					final int[] chances = CHANCES.get(npcId);
+					if (random < chances[1])
 					{
-						giveItems(player, PANOS_CONTRACT, 1);
-						htmltext = "30078-01.html";
-					}
-					else if (hasQuestItems(player, INGREDIENT_LIST, PANOS_CONTRACT) && ((getQuestItemsCount(player, RED_MANDRAGORA_SAP) + getQuestItemsCount(player, WHITE_MANDRAGORA_SAP) + getQuestItemsCount(player, HONEY) + getQuestItemsCount(player, GOLDEN_HONEY) + getQuestItemsCount(player, DIONIAN_POTATO) + getQuestItemsCount(player, GREEN_MOSS_BUNDLE) + getQuestItemsCount(player, BROWN_MOSS_BUNDLE) + getQuestItemsCount(player, MONSTER_EYE_MEAT)) < 5))
-					{
-						if (getQuestItemsCount(player, HOBGOBLIN_AMULET) < 30)
+						final int itemId = random < chances[0] ? RED_MANDRAGORA_ROOT : WHITE_MANDRAGORA_ROOT;
+						if (getQuestItemsCount(player, itemId) < 40)
 						{
-							htmltext = "30078-02.html";
-						}
-						else
-						{
-							takeItems(player, PANOS_CONTRACT, 1);
-							takeItems(player, HOBGOBLIN_AMULET, -1);
-							giveItems(player, DIONIAN_POTATO, 1);
-							htmltext = "30078-03.html";
+							giveItems(player, itemId, 1);
+							playSound(player, QuestSound.ITEMSOUND_QUEST_ITEMGET);
 						}
 					}
-					else if (hasQuestItems(player, INGREDIENT_LIST, DIONIAN_POTATO) && !hasQuestItems(player, PANOS_CONTRACT) && ((getQuestItemsCount(player, RED_MANDRAGORA_SAP) + getQuestItemsCount(player, WHITE_MANDRAGORA_SAP) + getQuestItemsCount(player, HONEY) + getQuestItemsCount(player, GOLDEN_HONEY) + getQuestItemsCount(player, DIONIAN_POTATO) + getQuestItemsCount(player, GREEN_MOSS_BUNDLE) + getQuestItemsCount(player, BROWN_MOSS_BUNDLE) + getQuestItemsCount(player, MONSTER_EYE_MEAT)) < 5))
-					{
-						htmltext = "30078-04.html";
-					}
-					break;
 				}
-				case MAGISTER_MIRIEN:
-				{
-					if (hasQuestItems(player, INGREDIENT_LIST))
-					{
-						htmltext = "30461-01.html";
-					}
-					else
-					{
-						if ((getQuestItemsCount(player, RED_MANDRAGORA_SAP) + getQuestItemsCount(player, WHITE_MANDRAGORA_SAP) + getQuestItemsCount(player, HONEY) + getQuestItemsCount(player, GOLDEN_HONEY) + getQuestItemsCount(player, DIONIAN_POTATO) + getQuestItemsCount(player, GREEN_MOSS_BUNDLE) + getQuestItemsCount(player, BROWN_MOSS_BUNDLE) + getQuestItemsCount(player, MONSTER_EYE_MEAT)) == 0)
-						{
-							if ((getQuestItemsCount(player, JONASS_1ST_STEAK_DISH) + getQuestItemsCount(player, JONASS_2ND_STEAK_DISH) + getQuestItemsCount(player, JONASS_3RD_STEAK_DISH) + getQuestItemsCount(player, JONASS_4TH_STEAK_DISH) + getQuestItemsCount(player, JONASS_5TH_STEAK_DISH)) == 1)
-							{
-								if ((getQuestItemsCount(player, MIRIENS_REVIEW_1) + getQuestItemsCount(player, MIRIENS_REVIEW_2) + getQuestItemsCount(player, MIRIENS_REVIEW_3) + getQuestItemsCount(player, MIRIENS_REVIEW_4) + getQuestItemsCount(player, MIRIENS_REVIEW_5)) == 0)
-								{
-									if (hasQuestItems(player, JONASS_1ST_STEAK_DISH))
-									{
-										takeItems(player, JONASS_1ST_STEAK_DISH, 1);
-										giveItems(player, MIRIENS_REVIEW_1, 1);
-										htmltext = "30461-02t1.html";
-									}
-									
-									if (hasQuestItems(player, JONASS_2ND_STEAK_DISH))
-									{
-										takeItems(player, JONASS_2ND_STEAK_DISH, 1);
-										giveItems(player, MIRIENS_REVIEW_2, 1);
-										htmltext = "30461-02t2.html";
-									}
-									
-									if (hasQuestItems(player, JONASS_3RD_STEAK_DISH))
-									{
-										takeItems(player, JONASS_3RD_STEAK_DISH, 1);
-										giveItems(player, MIRIENS_REVIEW_3, 1);
-										htmltext = "30461-02t3.html";
-									}
-									
-									if (hasQuestItems(player, JONASS_4TH_STEAK_DISH))
-									{
-										takeItems(player, JONASS_4TH_STEAK_DISH, 1);
-										giveItems(player, MIRIENS_REVIEW_4, 1);
-										htmltext = "30461-02t4.html";
-									}
-									
-									if (hasQuestItems(player, JONASS_5TH_STEAK_DISH))
-									{
-										takeItems(player, JONASS_5TH_STEAK_DISH, 1);
-										giveItems(player, MIRIENS_REVIEW_5, 1);
-										htmltext = "30461-02t5.html";
-									}
-								}
-							}
-							else
-							{
-								if ((getQuestItemsCount(player, MIRIENS_REVIEW_1) + getQuestItemsCount(player, MIRIENS_REVIEW_2) + getQuestItemsCount(player, MIRIENS_REVIEW_3) + getQuestItemsCount(player, MIRIENS_REVIEW_4) + getQuestItemsCount(player, MIRIENS_REVIEW_5)) == 1)
-								{
-									htmltext = "30461-04.html";
-								}
-							}
-						}
-					}
-					break;
-				}
+				break;
 			}
 		}
-		return htmltext;
+		
+		return null;
+	}
+	
+	private boolean hasAllIngredients(Player player)
+	{
+		return hasQuestItems(player, DIONIAN_POTATO, MONSTER_EYE_MEAT) && hasAtLeastOneQuestItem(player, WHITE_MANDRAGORA_SAP, RED_MANDRAGORA_SAP) && hasAtLeastOneQuestItem(player, GOLDEN_HONEY, HONEY) && hasAtLeastOneQuestItem(player, BROWN_MOSS_BUNDLE, GREEN_MOSS_BUNDLE);
 	}
 }

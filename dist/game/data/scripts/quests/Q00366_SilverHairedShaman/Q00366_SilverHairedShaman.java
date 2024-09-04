@@ -23,11 +23,8 @@ import org.l2jmobius.gameserver.model.actor.Npc;
 import org.l2jmobius.gameserver.model.actor.Player;
 import org.l2jmobius.gameserver.model.quest.Quest;
 import org.l2jmobius.gameserver.model.quest.QuestState;
+import org.l2jmobius.gameserver.model.quest.State;
 
-/**
- * Silver Haired Shaman (366)
- * @author Adry_85, jurchiks
- */
 public class Q00366_SilverHairedShaman extends Quest
 {
 	// NPC
@@ -36,101 +33,87 @@ public class Q00366_SilverHairedShaman extends Quest
 	private static final int SAIRONS_SILVER_HAIR = 5874;
 	// Misc
 	private static final int MIN_LEVEL = 48;
-	// Mobs
-	private static final Map<Integer, Integer> MOBS = new HashMap<>();
+	// Drop chances
+	private static final Map<Integer, Integer> CHANCES = new HashMap<>();
 	static
 	{
-		MOBS.put(20986, 80); // saitnn
-		MOBS.put(20987, 73); // saitnn_doll
-		MOBS.put(20988, 80); // saitnn_puppet
+		CHANCES.put(20986, 56);
+		CHANCES.put(20987, 66);
+		CHANCES.put(20988, 62);
 	}
 	
 	public Q00366_SilverHairedShaman()
 	{
 		super(366);
+		registerQuestItems(SAIRONS_SILVER_HAIR);
 		addStartNpc(DIETER);
 		addTalkId(DIETER);
-		addKillId(MOBS.keySet());
-		registerQuestItems(SAIRONS_SILVER_HAIR);
+		addKillId(20986, 20987, 20988);
 	}
 	
 	@Override
-	public boolean checkPartyMember(Player member, Npc npc)
+	public String onEvent(String event, Npc npc, Player player)
 	{
-		final QuestState qs = getQuestState(member, false);
-		return ((qs != null) && qs.isStarted());
-	}
-	
-	@Override
-	public String onAdvEvent(String event, Npc npc, Player player)
-	{
-		final QuestState qs = getQuestState(player, false);
-		if (qs == null)
+		String htmltext = event;
+		final QuestState st = getQuestState(player, false);
+		if (st == null)
 		{
-			return null;
+			return htmltext;
 		}
 		
-		String htmltext = null;
-		switch (event)
+		if (event.equals("30111-2.htm"))
 		{
-			case "30111-02.htm":
-			{
-				qs.startQuest();
-				htmltext = event;
-				break;
-			}
-			case "30111-05.html":
-			{
-				qs.exitQuest(true, true);
-				htmltext = event;
-				break;
-			}
-			case "30111-06.html":
-			{
-				htmltext = event;
-				break;
-			}
+			st.startQuest();
 		}
+		else if (event.equals("30111-6.htm"))
+		{
+			st.exitQuest(true, true);
+		}
+		
 		return htmltext;
-	}
-	
-	@Override
-	public String onKill(Npc npc, Player player, boolean isSummon)
-	{
-		if (getRandom(100) < MOBS.get(npc.getId()))
-		{
-			final Player luckyPlayer = getRandomPartyMember(player, npc);
-			if (luckyPlayer != null)
-			{
-				giveItemRandomly(luckyPlayer, npc, SAIRONS_SILVER_HAIR, 1, 0, 1, true);
-			}
-		}
-		return super.onKill(npc, player, isSummon);
 	}
 	
 	@Override
 	public String onTalk(Npc npc, Player player)
 	{
-		final QuestState qs = getQuestState(player, true);
 		String htmltext = getNoQuestMsg(player);
-		if (qs.isCreated())
+		final QuestState st = getQuestState(player, true);
+		
+		switch (st.getState())
 		{
-			htmltext = (player.getLevel() >= MIN_LEVEL) ? "30111-01.htm" : "30111-03.html";
-		}
-		else if (qs.isStarted())
-		{
-			if (hasQuestItems(player, SAIRONS_SILVER_HAIR))
+			case State.CREATED:
 			{
-				final int itemCount = getQuestItemsCount(player, SAIRONS_SILVER_HAIR);
-				giveAdena(player, (itemCount * 500) + 29000, true);
-				takeItems(player, SAIRONS_SILVER_HAIR, -1);
-				htmltext = "30111-04.html";
+				htmltext = (player.getLevel() < MIN_LEVEL) ? "30111-0.htm" : "30111-1.htm";
+				break;
 			}
-			else
+			case State.STARTED:
 			{
-				htmltext = "30111-07.html";
+				final int count = getQuestItemsCount(player, SAIRONS_SILVER_HAIR);
+				if (count == 0)
+				{
+					htmltext = "30111-3.htm";
+				}
+				else
+				{
+					htmltext = "30111-4.htm";
+					takeItems(player, SAIRONS_SILVER_HAIR, -1);
+					giveAdena(player, 12070 + (500 * count), true);
+				}
+				break;
 			}
 		}
+		
 		return htmltext;
+	}
+	
+	@Override
+	public String onKill(Npc npc, Player killer, boolean isSummon)
+	{
+		final QuestState qs = getRandomPartyMemberState(killer, 1, 3, npc);
+		if ((qs != null) && (getRandom(100) < CHANCES.get(npc.getId())))
+		{
+			giveItemRandomly(qs.getPlayer(), npc, SAIRONS_SILVER_HAIR, 1, 0, 1, true);
+		}
+		return super.onKill(npc, killer, isSummon);
 	}
 }

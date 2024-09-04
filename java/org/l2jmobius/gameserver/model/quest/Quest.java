@@ -35,7 +35,7 @@ import org.l2jmobius.commons.database.DatabaseFactory;
 import org.l2jmobius.commons.util.CommonUtil;
 import org.l2jmobius.commons.util.Rnd;
 import org.l2jmobius.gameserver.cache.HtmCache;
-import org.l2jmobius.gameserver.data.ItemTable;
+import org.l2jmobius.gameserver.data.xml.ItemData;
 import org.l2jmobius.gameserver.enums.AcquireSkillType;
 import org.l2jmobius.gameserver.enums.CategoryType;
 import org.l2jmobius.gameserver.enums.ClassId;
@@ -89,6 +89,65 @@ public class Quest extends AbstractScript implements IIdentifiable
 	
 	private static final int RESET_HOUR = 6;
 	private static final int RESET_MINUTES = 30;
+	
+	// Dimensional Diamond Rewards by Class for 2nd class transfer quest (35)
+	protected static final Map<Integer, Integer> DF_REWARD_35 = new HashMap<>();
+	static
+	{
+		DF_REWARD_35.put(1, 61);
+		DF_REWARD_35.put(4, 45);
+		DF_REWARD_35.put(7, 128);
+		DF_REWARD_35.put(11, 168);
+		DF_REWARD_35.put(15, 49);
+		DF_REWARD_35.put(19, 61);
+		DF_REWARD_35.put(22, 128);
+		DF_REWARD_35.put(26, 168);
+		DF_REWARD_35.put(29, 49);
+		DF_REWARD_35.put(32, 61);
+		DF_REWARD_35.put(35, 128);
+		DF_REWARD_35.put(39, 168);
+		DF_REWARD_35.put(42, 49);
+		DF_REWARD_35.put(45, 61);
+		DF_REWARD_35.put(47, 61);
+		DF_REWARD_35.put(50, 49);
+		DF_REWARD_35.put(54, 85);
+		DF_REWARD_35.put(56, 85);
+	}
+	
+	// Dimensional Diamond Rewards by Race for 2nd class transfer quest (37)
+	protected static final Map<Integer, Integer> DF_REWARD_37 = new HashMap<>();
+	static
+	{
+		DF_REWARD_37.put(0, 96);
+		DF_REWARD_37.put(1, 102);
+		DF_REWARD_37.put(2, 98);
+		DF_REWARD_37.put(3, 109);
+		DF_REWARD_37.put(4, 50);
+	}
+	
+	// Dimensional Diamond Rewards by Class for 2nd class transfer quest (39)
+	protected static final Map<Integer, Integer> DF_REWARD_39 = new HashMap<>();
+	static
+	{
+		DF_REWARD_39.put(1, 72);
+		DF_REWARD_39.put(4, 104);
+		DF_REWARD_39.put(7, 96);
+		DF_REWARD_39.put(11, 122);
+		DF_REWARD_39.put(15, 60);
+		DF_REWARD_39.put(19, 72);
+		DF_REWARD_39.put(22, 96);
+		DF_REWARD_39.put(26, 122);
+		DF_REWARD_39.put(29, 45);
+		DF_REWARD_39.put(32, 104);
+		DF_REWARD_39.put(35, 96);
+		DF_REWARD_39.put(39, 122);
+		DF_REWARD_39.put(42, 60);
+		DF_REWARD_39.put(45, 64);
+		DF_REWARD_39.put(47, 72);
+		DF_REWARD_39.put(50, 92);
+		DF_REWARD_39.put(54, 82);
+		DF_REWARD_39.put(56, 23);
+	}
 	
 	/**
 	 * @return the reset hour for a daily quest, could be overridden on a script.
@@ -160,7 +219,7 @@ public class Quest extends AbstractScript implements IIdentifiable
 	 */
 	public int getNpcStringId()
 	{
-		return _questId > 10000 ? _questId - 5000 : _questId;
+		return _questId;
 	}
 	
 	/**
@@ -219,7 +278,7 @@ public class Quest extends AbstractScript implements IIdentifiable
 	
 	/**
 	 * Add a timer to the quest (if it doesn't exist already) and start it.
-	 * @param name the name of the timer (also passed back as "event" in {@link #onAdvEvent(String, Npc, Player)})
+	 * @param name the name of the timer (also passed back as "event" in {@link #onEvent(String, Npc, Player)})
 	 * @param time time in ms for when to fire the timer
 	 * @param npc the NPC associated with this timer (can be null)
 	 * @param player the player associated with this timer (can be null)
@@ -241,7 +300,7 @@ public class Quest extends AbstractScript implements IIdentifiable
 	
 	/**
 	 * Add a timer to the quest (if it doesn't exist already) and start it.
-	 * @param name the name of the timer (also passed back as "event" in {@link #onAdvEvent(String, Npc, Player)})
+	 * @param name the name of the timer (also passed back as "event" in {@link #onEvent(String, Npc, Player)})
 	 * @param time time in ms for when to fire the timer
 	 * @param npc the NPC associated with this timer (can be null)
 	 * @param player the player associated with this timer (can be null)
@@ -527,7 +586,7 @@ public class Quest extends AbstractScript implements IIdentifiable
 		String res = null;
 		try
 		{
-			res = onAdvEvent(event, npc, player);
+			res = onEvent(event, npc, player);
 		}
 		catch (Exception e)
 		{
@@ -966,12 +1025,11 @@ public class Quest extends AbstractScript implements IIdentifiable
 	 */
 	public String onDeath(Creature killer, Creature victim, QuestState qs)
 	{
-		return onAdvEvent("", (killer instanceof Npc) ? (Npc) killer : null, qs.getPlayer());
+		return onEvent("", (killer instanceof Npc) ? (Npc) killer : null, qs.getPlayer());
 	}
 	
 	/**
 	 * This function is called whenever a player clicks on a link in a quest dialog and whenever a timer fires.<br>
-	 * If is not overridden by a subclass, then default to the returned value of the simpler (and older) {@link #onEvent(String, QuestState)} override.<br>
 	 * If the player has a quest state, use it as parameter in the next call, otherwise return null.
 	 * @param event this parameter contains a string identifier for the event.<br>
 	 *            Generally, this string is passed directly via the link.<br>
@@ -990,35 +1048,7 @@ public class Quest extends AbstractScript implements IIdentifiable
 	 *            This parameter may be {@code null} in certain circumstances.
 	 * @return the text returned by the event (may be {@code null}, a filename or just text)
 	 */
-	public String onAdvEvent(String event, Npc npc, Player player)
-	{
-		if (player != null)
-		{
-			final QuestState qs = player.getQuestState(getName());
-			if (qs != null)
-			{
-				return onEvent(event, qs);
-			}
-		}
-		return null;
-	}
-	
-	/**
-	 * This function is called in place of {@link #onAdvEvent(String, Npc, Player)} if the former is not implemented.<br>
-	 * If a script contains both {@link #onAdvEvent(String, Npc, Player)} and this implementation, then this method will never be called unless the script's {@link #onAdvEvent(String, Npc, Player)} explicitly calls this method.
-	 * @param event this parameter contains a string identifier for the event.<br>
-	 *            Generally, this string is passed directly via the link.<br>
-	 *            For example:<br>
-	 *            <code>
-	 *            &lt;a action="bypass -h Quest 626_ADarkTwilight 31517-01.htm"&gt;hello&lt;/a&gt;
-	 *            </code><br>
-	 *            The above link sets the event variable to "31517-01.htm" for the quest 626_ADarkTwilight.<br>
-	 *            In the case of timers, this will be the name of the timer.<br>
-	 *            This parameter serves as a sort of identifier.
-	 * @param qs this parameter contains a reference to the quest state of the player who used the link or started the timer.
-	 * @return the text returned by the event (may be {@code null}, a filename or just text)
-	 */
-	public String onEvent(String event, QuestState qs)
+	public String onEvent(String event, Npc npc, Player player)
 	{
 		return null;
 	}
@@ -1641,7 +1671,7 @@ public class Quest extends AbstractScript implements IIdentifiable
 	 */
 	public void addFirstTalkId(int... npcIds)
 	{
-		setNpcFirstTalkId(event -> notifyFirstTalk(event.getNpc(), event.getActiveChar()), npcIds);
+		setNpcFirstTalkId(event -> notifyFirstTalk(event.getNpc(), event.getPlayer()), npcIds);
 	}
 	
 	/**
@@ -1650,7 +1680,7 @@ public class Quest extends AbstractScript implements IIdentifiable
 	 */
 	public void addFirstTalkId(Collection<Integer> npcIds)
 	{
-		setNpcFirstTalkId(event -> notifyFirstTalk(event.getNpc(), event.getActiveChar()), npcIds);
+		setNpcFirstTalkId(event -> notifyFirstTalk(event.getNpc(), event.getPlayer()), npcIds);
 	}
 	
 	/**
@@ -1677,7 +1707,7 @@ public class Quest extends AbstractScript implements IIdentifiable
 	 */
 	public void addItemBypassEventId(int... itemIds)
 	{
-		setItemBypassEvenId(event -> notifyItemEvent(event.getItem(), event.getActiveChar(), event.getEvent()), itemIds);
+		setItemBypassEvenId(event -> notifyItemEvent(event.getItem(), event.getPlayer(), event.getEvent()), itemIds);
 	}
 	
 	/**
@@ -1686,7 +1716,7 @@ public class Quest extends AbstractScript implements IIdentifiable
 	 */
 	public void addItemBypassEventId(Collection<Integer> itemIds)
 	{
-		setItemBypassEvenId(event -> notifyItemEvent(event.getItem(), event.getActiveChar(), event.getEvent()), itemIds);
+		setItemBypassEvenId(event -> notifyItemEvent(event.getItem(), event.getPlayer(), event.getEvent()), itemIds);
 	}
 	
 	/**
@@ -1695,7 +1725,7 @@ public class Quest extends AbstractScript implements IIdentifiable
 	 */
 	public void addItemTalkId(int... itemIds)
 	{
-		setItemTalkId(event -> notifyItemTalk(event.getItem(), event.getActiveChar()), itemIds);
+		setItemTalkId(event -> notifyItemTalk(event.getItem(), event.getPlayer()), itemIds);
 	}
 	
 	/**
@@ -1704,7 +1734,7 @@ public class Quest extends AbstractScript implements IIdentifiable
 	 */
 	public void addItemTalkId(Collection<Integer> itemIds)
 	{
-		setItemTalkId(event -> notifyItemTalk(event.getItem(), event.getActiveChar()), itemIds);
+		setItemTalkId(event -> notifyItemTalk(event.getItem(), event.getPlayer()), itemIds);
 	}
 	
 	/**
@@ -1867,7 +1897,7 @@ public class Quest extends AbstractScript implements IIdentifiable
 	 */
 	public void addAggroRangeEnterId(int... npcIds)
 	{
-		setAttackableAggroRangeEnterId(event -> notifyAggroRangeEnter(event.getNpc(), event.getActiveChar(), event.isSummon()), npcIds);
+		setAttackableAggroRangeEnterId(event -> notifyAggroRangeEnter(event.getNpc(), event.getPlayer(), event.isSummon()), npcIds);
 	}
 	
 	/**
@@ -1876,7 +1906,7 @@ public class Quest extends AbstractScript implements IIdentifiable
 	 */
 	public void addAggroRangeEnterId(Collection<Integer> npcIds)
 	{
-		setAttackableAggroRangeEnterId(event -> notifyAggroRangeEnter(event.getNpc(), event.getActiveChar(), event.isSummon()), npcIds);
+		setAttackableAggroRangeEnterId(event -> notifyAggroRangeEnter(event.getNpc(), event.getPlayer(), event.isSummon()), npcIds);
 	}
 	
 	/**
@@ -2027,7 +2057,7 @@ public class Quest extends AbstractScript implements IIdentifiable
 	 */
 	public void addNpcHateId(int... npcIds)
 	{
-		addNpcHateId(event -> new TerminateReturn(!onNpcHate(event.getNpc(), event.getActiveChar(), event.isSummon()), false, false), npcIds);
+		addNpcHateId(event -> new TerminateReturn(!onNpcHate(event.getNpc(), event.getPlayer(), event.isSummon()), false, false), npcIds);
 	}
 	
 	/**
@@ -2036,7 +2066,7 @@ public class Quest extends AbstractScript implements IIdentifiable
 	 */
 	public void addNpcHateId(Collection<Integer> npcIds)
 	{
-		addNpcHateId(event -> new TerminateReturn(!onNpcHate(event.getNpc(), event.getActiveChar(), event.isSummon()), false, false), npcIds);
+		addNpcHateId(event -> new TerminateReturn(!onNpcHate(event.getNpc(), event.getPlayer(), event.isSummon()), false, false), npcIds);
 	}
 	
 	/**
@@ -2081,7 +2111,7 @@ public class Quest extends AbstractScript implements IIdentifiable
 	 */
 	public void addCanSeeMeId(int... npcIds)
 	{
-		addNpcHateId(event -> new TerminateReturn(!notifyOnCanSeeMe(event.getNpc(), event.getActiveChar()), false, false), npcIds);
+		addNpcHateId(event -> new TerminateReturn(!notifyOnCanSeeMe(event.getNpc(), event.getPlayer()), false, false), npcIds);
 	}
 	
 	/**
@@ -2090,7 +2120,7 @@ public class Quest extends AbstractScript implements IIdentifiable
 	 */
 	public void addCanSeeMeId(Collection<Integer> npcIds)
 	{
-		addNpcHateId(event -> new TerminateReturn(!notifyOnCanSeeMe(event.getNpc(), event.getActiveChar()), false, false), npcIds);
+		addNpcHateId(event -> new TerminateReturn(!notifyOnCanSeeMe(event.getNpc(), event.getPlayer()), false, false), npcIds);
 	}
 	
 	/**
@@ -2444,7 +2474,7 @@ public class Quest extends AbstractScript implements IIdentifiable
 	{
 		for (int id : items)
 		{
-			if ((id != 0) && (ItemTable.getInstance().getTemplate(id) == null))
+			if ((id != 0) && (ItemData.getInstance().getTemplate(id) == null))
 			{
 				LOGGER.severe(super.getClass().getSimpleName() + ": Found registerQuestItems for non existing item: " + id + "!");
 			}
@@ -2752,7 +2782,7 @@ public class Quest extends AbstractScript implements IIdentifiable
 	{
 		try (Connection con = DatabaseFactory.getConnection())
 		{
-			final PreparedStatement stm = con.prepareStatement("INSERT INTO character_quests (char_id,name,var,value) VALUES (?,?,?,?)");
+			final PreparedStatement stm = con.prepareStatement("INSERT INTO character_quests (charId,name,var,value) VALUES (?,?,?,?)");
 			for (Integer charId : objectsId)
 			{
 				stm.setInt(1, charId.intValue());
@@ -2776,7 +2806,7 @@ public class Quest extends AbstractScript implements IIdentifiable
 	{
 		try (Connection con = DatabaseFactory.getConnection())
 		{
-			final PreparedStatement stm = con.prepareStatement("DELETE FROM character_quests WHERE name = ? and char_id IN (SELECT charId FROM characters WHERE clanid = ? AND online = 0)");
+			final PreparedStatement stm = con.prepareStatement("DELETE FROM character_quests WHERE name = ? and charId IN (SELECT charId FROM characters WHERE clanid = ? AND online = 0)");
 			stm.setString(1, getName());
 			stm.setInt(2, clanId);
 			stm.executeUpdate();

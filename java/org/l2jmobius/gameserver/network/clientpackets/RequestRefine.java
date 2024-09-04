@@ -16,12 +16,10 @@
  */
 package org.l2jmobius.gameserver.network.clientpackets;
 
-import org.l2jmobius.commons.network.ReadablePacket;
 import org.l2jmobius.gameserver.data.AugmentationData;
 import org.l2jmobius.gameserver.model.Augmentation;
 import org.l2jmobius.gameserver.model.actor.Player;
 import org.l2jmobius.gameserver.model.item.instance.Item;
-import org.l2jmobius.gameserver.network.GameClient;
 import org.l2jmobius.gameserver.network.SystemMessageId;
 import org.l2jmobius.gameserver.network.serverpackets.ExVariationResult;
 import org.l2jmobius.gameserver.network.serverpackets.InventoryUpdate;
@@ -39,18 +37,18 @@ public class RequestRefine extends AbstractRefinePacket
 	private int _gemStoneCount;
 	
 	@Override
-	public void read(ReadablePacket packet)
+	protected void readImpl()
 	{
-		_targetItemObjId = packet.readInt();
-		_refinerItemObjId = packet.readInt();
-		_gemStoneItemObjId = packet.readInt();
-		_gemStoneCount = packet.readInt();
+		_targetItemObjId = readInt();
+		_refinerItemObjId = readInt();
+		_gemStoneItemObjId = readInt();
+		_gemStoneCount = readInt();
 	}
 	
 	@Override
-	public void run(GameClient client)
+	protected void runImpl()
 	{
-		final Player player = client.getPlayer();
+		final Player player = getPlayer();
 		if (player == null)
 		{
 			return;
@@ -101,7 +99,7 @@ public class RequestRefine extends AbstractRefinePacket
 			{
 				iu.addModifiedItem(itm);
 			}
-			player.sendPacket(iu);
+			player.sendPacket(iu); // Sent inventory update for unequip instantly.
 			player.broadcastUserInfo();
 		}
 		
@@ -126,7 +124,7 @@ public class RequestRefine extends AbstractRefinePacket
 		
 		final InventoryUpdate iu = new InventoryUpdate();
 		iu.addModifiedItem(targetItem);
-		player.sendPacket(iu);
+		player.sendPacket(iu); // Sent inventory update for destruction instantly.
 		
 		final StatusUpdate su = new StatusUpdate(player);
 		su.addAttribute(StatusUpdate.CUR_LOAD, player.getCurrentLoad());

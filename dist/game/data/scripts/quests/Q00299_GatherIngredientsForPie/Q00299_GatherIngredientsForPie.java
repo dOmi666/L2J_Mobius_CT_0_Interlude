@@ -16,257 +16,186 @@
  */
 package quests.Q00299_GatherIngredientsForPie;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-
+import org.l2jmobius.gameserver.enums.QuestSound;
 import org.l2jmobius.gameserver.model.actor.Npc;
 import org.l2jmobius.gameserver.model.actor.Player;
-import org.l2jmobius.gameserver.model.holders.ItemChanceHolder;
 import org.l2jmobius.gameserver.model.quest.Quest;
 import org.l2jmobius.gameserver.model.quest.QuestState;
 import org.l2jmobius.gameserver.model.quest.State;
 
-/**
- * Gather Ingredients for Pie (299)
- * @author xban1x
- */
 public class Q00299_GatherIngredientsForPie extends Quest
 {
 	// NPCs
-	private static final int LARS = 30063;
+	private static final int LARA = 30063;
 	private static final int BRIGHT = 30466;
-	private static final int EMILLY = 30620;
-	// Monsters
-	private static final Map<Integer, Integer> MONSTERS_CHANCES = new HashMap<>(2);
+	private static final int EMILY = 30620;
 	// Items
 	private static final int FRUIT_BASKET = 7136;
 	private static final int AVELLAN_SPICE = 7137;
 	private static final int HONEY_POUCH = 7138;
-	// Rewards
-	private static final List<ItemChanceHolder> REWARDS = new ArrayList<>(5);
-	// Misc
-	private static final int MIN_LEVEL = 34;
-	static
-	{
-		MONSTERS_CHANCES.put(20934, 700); // Wasp Worker
-		MONSTERS_CHANCES.put(20935, 770); // Wasp Leader
-		REWARDS.add(new ItemChanceHolder(57, 400, 2500)); // Adena
-		REWARDS.add(new ItemChanceHolder(1865, 550, 50)); // Varnish
-		REWARDS.add(new ItemChanceHolder(1870, 700, 50)); // Coal
-		REWARDS.add(new ItemChanceHolder(1869, 850, 50)); // Iron Ore
-		REWARDS.add(new ItemChanceHolder(1871, 1000, 50)); // Charcoal
-	}
+	// Reward resources
+	private static final int VARNISH = 1865;
 	
 	public Q00299_GatherIngredientsForPie()
 	{
 		super(299);
-		addStartNpc(EMILLY);
-		addTalkId(LARS, BRIGHT, EMILLY);
-		addKillId(MONSTERS_CHANCES.keySet());
-		registerQuestItems(FRUIT_BASKET, HONEY_POUCH, AVELLAN_SPICE);
+		registerQuestItems(FRUIT_BASKET, AVELLAN_SPICE, HONEY_POUCH);
+		addStartNpc(EMILY);
+		addTalkId(EMILY, LARA, BRIGHT);
+		addKillId(20934, 20935); // Wasp Worker, Wasp Leader
 	}
 	
 	@Override
-	public String onAdvEvent(String event, Npc npc, Player player)
+	public String onEvent(String event, Npc npc, Player player)
 	{
-		final QuestState qs = getQuestState(player, false);
-		String html = null;
-		if (qs == null)
+		String htmltext = event;
+		final QuestState st = getQuestState(player, false);
+		if (st == null)
 		{
-			return html;
+			return htmltext;
 		}
+		
 		switch (event)
 		{
-			case "30063-02.html":
+			case "30620-1.htm":
 			{
-				if (qs.isCond(3))
-				{
-					giveItems(player, AVELLAN_SPICE, 1);
-					qs.setCond(4, true);
-					html = event;
-				}
+				st.startQuest();
 				break;
 			}
-			case "30466-02.html":
+			case "30620-3.htm":
 			{
-				if (qs.isCond(5))
-				{
-					giveItems(player, FRUIT_BASKET, 1);
-					qs.setCond(6, true);
-					html = event;
-				}
+				st.setCond(3, true);
+				takeItems(player, HONEY_POUCH, -1);
 				break;
 			}
-			case "30620-03.htm":
+			case "30063-1.htm":
 			{
-				if (qs.isCreated())
-				{
-					qs.startQuest();
-					html = event;
-				}
+				st.setCond(4, true);
+				giveItems(player, AVELLAN_SPICE, 1);
 				break;
 			}
-			case "30620-06.html":
+			case "30620-5.htm":
 			{
-				if (qs.isCond(2) && (getQuestItemsCount(player, HONEY_POUCH) >= 100))
-				{
-					takeItems(player, HONEY_POUCH, -1);
-					qs.setCond(3, true);
-					html = event;
-				}
-				else
-				{
-					html = "30620-07.html";
-				}
+				st.setCond(5, true);
+				takeItems(player, AVELLAN_SPICE, 1);
 				break;
 			}
-			case "30620-10.html":
+			case "30466-1.htm":
 			{
-				if (qs.isCond(4) && hasQuestItems(player, AVELLAN_SPICE))
-				{
-					takeItems(player, AVELLAN_SPICE, -1);
-					qs.setCond(5, true);
-					html = event;
-				}
-				else
-				{
-					html = "30620-11.html";
-				}
+				st.setCond(6, true);
+				giveItems(player, FRUIT_BASKET, 1);
 				break;
 			}
-			case "30620-14.html":
+			case "30620-7a.htm":
 			{
-				if (qs.isCond(6) && hasQuestItems(player, FRUIT_BASKET))
+				if (hasQuestItems(player, FRUIT_BASKET))
 				{
-					takeItems(player, FRUIT_BASKET, -1);
-					final int chance = getRandom(1000);
-					for (ItemChanceHolder holder : REWARDS)
+					htmltext = "30620-7.htm";
+					takeItems(player, FRUIT_BASKET, 1);
+					if (getRandom(100) < 70)
 					{
-						if (holder.getChance() > chance)
+						giveAdena(player, 25000, true);
+					}
+					else
+					{
+						giveItems(player, VARNISH, 50);
+					}
+					st.exitQuest(true, true);
+				}
+				else
+				{
+					st.setCond(5);
+				}
+				break;
+			}
+		}
+		
+		return htmltext;
+	}
+	
+	@Override
+	public String onTalk(Npc npc, Player player)
+	{
+		String htmltext = getNoQuestMsg(player);
+		final QuestState st = getQuestState(player, true);
+		
+		switch (st.getState())
+		{
+			case State.CREATED:
+			{
+				htmltext = (player.getLevel() < 34) ? "30620-0a.htm" : "30620-0.htm";
+				break;
+			}
+			case State.STARTED:
+			{
+				final int cond = st.getCond();
+				switch (npc.getId())
+				{
+					case EMILY:
+					{
+						if (cond == 1)
 						{
-							rewardItems(player, holder);
-							break;
+							htmltext = "30620-1a.htm";
 						}
-					}
-					qs.exitQuest(true, true);
-					html = event;
-				}
-				else
-				{
-					html = "30620-15.html";
-				}
-				break;
-			}
-		}
-		return html;
-	}
-	
-	@Override
-	public String onKill(Npc npc, Player killer, boolean isSummon)
-	{
-		final QuestState qs = getRandomPartyMemberState(killer, 1, 3, npc);
-		if ((qs != null) && (getRandom(1000) < MONSTERS_CHANCES.get(npc.getId())) && (getQuestItemsCount(killer, HONEY_POUCH) < 100) && giveItemRandomly(killer, npc, HONEY_POUCH, 1, 2, 100, 1, true))
-		{
-			qs.setCond(2);
-		}
-		return super.onKill(npc, killer, isSummon);
-	}
-	
-	@Override
-	public String onTalk(Npc npc, Player talker)
-	{
-		final QuestState qs = getQuestState(talker, true);
-		String html = getNoQuestMsg(talker);
-		switch (npc.getId())
-		{
-			case LARS:
-			{
-				switch (qs.getCond())
-				{
-					case 3:
-					{
-						html = "30063-01.html";
-						break;
-					}
-					case 4:
-					{
-						html = "30063-03.html";
-						break;
-					}
-				}
-				break;
-			}
-			case BRIGHT:
-			{
-				switch (qs.getCond())
-				{
-					case 5:
-					{
-						html = "30466-01.html";
-						break;
-					}
-					case 6:
-					{
-						html = "30466-03.html";
-						break;
-					}
-				}
-				break;
-			}
-			case EMILLY:
-			{
-				switch (qs.getState())
-				{
-					case State.CREATED:
-					{
-						html = (talker.getLevel() >= MIN_LEVEL) ? "30620-01.htm" : "30620-02.htm";
-						break;
-					}
-					case State.STARTED:
-					{
-						switch (qs.getCond())
+						else if (cond == 2)
 						{
-							case 1:
+							if (getQuestItemsCount(player, HONEY_POUCH) >= 100)
 							{
-								html = "30620-05.html";
-								break;
+								htmltext = "30620-2.htm";
 							}
-							case 2:
+							else
 							{
-								if (getQuestItemsCount(talker, HONEY_POUCH) >= 100)
-								{
-									html = "30620-04.html";
-								}
-								break;
+								htmltext = "30620-2a.htm";
+								st.exitQuest(true);
 							}
-							case 3:
+						}
+						else if (cond == 3)
+						{
+							htmltext = "30620-3a.htm";
+						}
+						else if (cond == 4)
+						{
+							if (hasQuestItems(player, AVELLAN_SPICE))
 							{
-								html = "30620-08.html";
-								break;
+								htmltext = "30620-4.htm";
 							}
-							case 4:
+							else
 							{
-								if (hasQuestItems(talker, AVELLAN_SPICE))
-								{
-									html = "30620-09.html";
-								}
-								break;
+								htmltext = "30620-4a.htm";
+								st.exitQuest(true);
 							}
-							case 5:
-							{
-								html = "30620-12.html";
-								break;
-							}
-							case 6:
-							{
-								if (hasQuestItems(talker, FRUIT_BASKET))
-								{
-									html = "30620-13.html";
-								}
-								break;
-							}
+						}
+						else if (cond == 5)
+						{
+							htmltext = "30620-5a.htm";
+						}
+						else if (cond == 6)
+						{
+							htmltext = "30620-6.htm";
+						}
+						break;
+					}
+					case LARA:
+					{
+						if (cond == 3)
+						{
+							htmltext = "30063-0.htm";
+						}
+						else if (cond > 3)
+						{
+							htmltext = "30063-1a.htm";
+						}
+						break;
+					}
+					case BRIGHT:
+					{
+						if (cond == 5)
+						{
+							htmltext = "30466-0.htm";
+						}
+						else if (cond > 5)
+						{
+							htmltext = "30466-1a.htm";
 						}
 						break;
 					}
@@ -274,6 +203,33 @@ public class Q00299_GatherIngredientsForPie extends Quest
 				break;
 			}
 		}
-		return html;
+		
+		return htmltext;
+	}
+	
+	@Override
+	public String onKill(Npc npc, Player player, boolean isPet)
+	{
+		final QuestState st = getRandomPartyMemberState(player, 1, 3, npc);
+		if (st == null)
+		{
+			return null;
+		}
+		final Player partyMember = st.getPlayer();
+		
+		if (getRandom(1000) < (npc.getId() == 20934 ? 571 : 625))
+		{
+			giveItems(partyMember, HONEY_POUCH, 1);
+			if (getQuestItemsCount(partyMember, HONEY_POUCH) < 100)
+			{
+				playSound(partyMember, QuestSound.ITEMSOUND_QUEST_ITEMGET);
+			}
+			else
+			{
+				st.setCond(2, true);
+			}
+		}
+		
+		return null;
 	}
 }

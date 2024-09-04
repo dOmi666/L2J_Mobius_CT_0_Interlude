@@ -70,7 +70,7 @@ public abstract class ClanHallSiegeEngine extends Quest implements Siegable
 	public static final int BEAST_FARM = 63;
 	public static final int FORTRESS_OF_DEAD = 64;
 	
-	protected final Logger _log;
+	protected final Logger LOGGER;
 	
 	private final Map<Integer, SiegeClan> _attackers = new ConcurrentHashMap<>();
 	private Collection<Spawn> _guards;
@@ -82,7 +82,7 @@ public abstract class ClanHallSiegeEngine extends Quest implements Siegable
 	public ClanHallSiegeEngine(int hallId)
 	{
 		super(-1);
-		_log = Logger.getLogger(getClass().getName());
+		LOGGER = Logger.getLogger(getClass().getName());
 		_hall = CHSiegeManager.getInstance().getSiegableHall(hallId);
 		_hall.setSiege(this);
 		
@@ -167,7 +167,7 @@ public abstract class ClanHallSiegeEngine extends Quest implements Siegable
 		}
 		catch (Exception e)
 		{
-			LOGGER.warning(getName() + ": Couldnt load siege guards!");
+			LOGGER.warning(getName() + ": Could not load siege guards!");
 		}
 	}
 	
@@ -346,7 +346,7 @@ public abstract class ClanHallSiegeEngine extends Quest implements Siegable
 	@Override
 	public void endSiege()
 	{
-		final SystemMessage end = new SystemMessage(SystemMessageId.THE_S1_SIEGE_HAS_FINISHED);
+		final SystemMessage end = new SystemMessage(SystemMessageId.THE_SIEGE_OF_S1_HAS_FINISHED);
 		end.addString(_hall.getName());
 		Broadcast.toAllOnlinePlayers(end);
 		

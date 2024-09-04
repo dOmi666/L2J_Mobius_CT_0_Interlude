@@ -40,7 +40,7 @@ public class TargetParty implements ITargetTypeHandler
 		// Check for null target or any other invalid target
 		if ((target == null) || target.isDead() || (target == creature))
 		{
-			creature.sendPacket(SystemMessageId.THAT_IS_AN_INCORRECT_TARGET);
+			creature.sendPacket(SystemMessageId.THAT_IS_THE_INCORRECT_TARGET);
 			return targetList;
 		}
 		

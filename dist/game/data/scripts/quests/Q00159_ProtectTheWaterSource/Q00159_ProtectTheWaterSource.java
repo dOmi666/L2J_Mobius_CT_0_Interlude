@@ -24,43 +24,102 @@ import org.l2jmobius.gameserver.model.quest.Quest;
 import org.l2jmobius.gameserver.model.quest.QuestState;
 import org.l2jmobius.gameserver.model.quest.State;
 
-/**
- * Protect the Water Source (159)
- * @author xban1x
- */
 public class Q00159_ProtectTheWaterSource extends Quest
 {
-	// NPC
-	private static final int ASTERIOS = 30154;
-	// Monster
-	private static final int PLAGUE_ZOMBIE = 27017;
 	// Items
 	private static final int PLAGUE_DUST = 1035;
-	private static final int HYACINTH_CHARM = 1071;
-	private static final int HYACINTH_CHARM2 = 1072;
-	// Misc
-	private static final int MIN_LEVEL = 12;
+	private static final int HYACINTH_CHARM_1 = 1071;
+	private static final int HYACINTH_CHARM_2 = 1072;
 	
 	public Q00159_ProtectTheWaterSource()
 	{
 		super(159);
-		addStartNpc(ASTERIOS);
-		addTalkId(ASTERIOS);
-		addKillId(PLAGUE_ZOMBIE);
-		registerQuestItems(PLAGUE_DUST, HYACINTH_CHARM, HYACINTH_CHARM2);
+		registerQuestItems(PLAGUE_DUST, HYACINTH_CHARM_1, HYACINTH_CHARM_2);
+		addStartNpc(30154); // Asterios
+		addTalkId(30154);
+		addKillId(27017); // Plague Zombie
 	}
 	
 	@Override
-	public String onAdvEvent(String event, Npc npc, Player player)
+	public String onEvent(String event, Npc npc, Player player)
 	{
-		final QuestState qs = getQuestState(player, false);
-		if ((qs != null) && event.equals("30154-04.htm"))
+		String htmltext = event;
+		final QuestState st = getQuestState(player, false);
+		if (st == null)
 		{
-			qs.startQuest();
-			giveItems(player, HYACINTH_CHARM, 1);
-			return event;
+			return htmltext;
 		}
-		return null;
+		
+		if (event.equals("30154-04.htm"))
+		{
+			st.startQuest();
+			giveItems(player, HYACINTH_CHARM_1, 1);
+		}
+		
+		return htmltext;
+	}
+	
+	@Override
+	public String onTalk(Npc npc, Player player)
+	{
+		String htmltext = getNoQuestMsg(player);
+		final QuestState st = getQuestState(player, true);
+		
+		switch (st.getState())
+		{
+			case State.CREATED:
+			{
+				if (player.getRace() != Race.ELF)
+				{
+					htmltext = "30154-00.htm";
+				}
+				else if (player.getLevel() < 12)
+				{
+					htmltext = "30154-02.htm";
+				}
+				else
+				{
+					htmltext = "30154-03.htm";
+				}
+				break;
+			}
+			case State.STARTED:
+			{
+				final int cond = st.getCond();
+				if (cond == 1)
+				{
+					htmltext = "30154-05.htm";
+				}
+				else if (cond == 2)
+				{
+					htmltext = "30154-06.htm";
+					st.setCond(3, true);
+					takeItems(player, PLAGUE_DUST, -1);
+					takeItems(player, HYACINTH_CHARM_1, 1);
+					giveItems(player, HYACINTH_CHARM_2, 1);
+				}
+				else if (cond == 3)
+				{
+					htmltext = "30154-07.htm";
+				}
+				else if (cond == 4)
+				{
+					htmltext = "30154-08.htm";
+					takeItems(player, HYACINTH_CHARM_2, 1);
+					takeItems(player, PLAGUE_DUST, -1);
+					giveAdena(player, 18250, true);
+					st.exitQuest(false, true);
+				}
+				break;
+			}
+			case State.COMPLETED:
+			{
+				htmltext = getAlreadyCompletedMsg(player);
+				break;
+			}
+		}
+		
+		return htmltext;
 	}
 	
 	@Override
@@ -73,7 +132,7 @@ public class Q00159_ProtectTheWaterSource extends Quest
 			{
 				case 1:
 				{
-					if ((getRandom(100) < 40) && hasQuestItems(killer, HYACINTH_CHARM) && !hasQuestItems(killer, PLAGUE_DUST))
+					if ((getRandom(100) < 40) && hasQuestItems(killer, HYACINTH_CHARM_1) && !hasQuestItems(killer, PLAGUE_DUST))
 					{
 						giveItems(killer, PLAGUE_DUST, 1);
 						qs.setCond(2, true);
@@ -83,7 +142,7 @@ public class Q00159_ProtectTheWaterSource extends Quest
 				case 3:
 				{
 					long dust = getQuestItemsCount(killer, PLAGUE_DUST);
-					if ((getRandom(100) < 40) && (dust < 5) && hasQuestItems(killer, HYACINTH_CHARM2))
+					if ((getRandom(100) < 40) && (dust < 5) && hasQuestItems(killer, HYACINTH_CHARM_2))
 					{
 						giveItems(killer, PLAGUE_DUST, 1);
 						if ((++dust) >= 5)
@@ -100,71 +159,5 @@ public class Q00159_ProtectTheWaterSource extends Quest
 			}
 		}
 		return super.onKill(npc, killer, isSummon);
-	}
-	
-	@Override
-	public String onTalk(Npc npc, Player player)
-	{
-		final QuestState qs = getQuestState(player, true);
-		String htmltext = getNoQuestMsg(player);
-		switch (qs.getState())
-		{
-			case State.CREATED:
-			{
-				htmltext = (player.getRace() == Race.ELF) ? (player.getLevel() >= MIN_LEVEL ? "30154-03.htm" : "30154-02.htm") : "30154-01.htm";
-				break;
-			}
-			case State.STARTED:
-			{
-				switch (qs.getCond())
-				{
-					case 1:
-					{
-						if (hasQuestItems(player, HYACINTH_CHARM) && !hasQuestItems(player, PLAGUE_DUST))
-						{
-							htmltext = "30154-05.html";
-						}
-						break;
-					}
-					case 2:
-					{
-						if (hasQuestItems(player, HYACINTH_CHARM, PLAGUE_DUST))
-						{
-							takeItems(player, HYACINTH_CHARM, -1);
-							takeItems(player, PLAGUE_DUST, -1);
-							giveItems(player, HYACINTH_CHARM2, 1);
-							qs.setCond(3, true);
-							htmltext = "30154-06.html";
-						}
-						break;
-					}
-					case 3:
-					{
-						if (hasQuestItems(player, HYACINTH_CHARM2))
-						{
-							htmltext = "30154-07.html";
-						}
-						break;
-					}
-					case 4:
-					{
-						if (hasQuestItems(player, HYACINTH_CHARM2) && (getQuestItemsCount(player, PLAGUE_DUST) >= 5))
-						{
-							giveAdena(player, 18250, true);
-							qs.exitQuest(false, true);
-							htmltext = "30154-08.html";
-						}
-						break;
-					}
-				}
-				break;
-			}
-			case State.COMPLETED:
-			{
-				htmltext = getAlreadyCompletedMsg(player);
-				break;
-			}
-		}
-		return htmltext;
 	}
 }

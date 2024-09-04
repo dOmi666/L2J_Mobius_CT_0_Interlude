@@ -24,14 +24,14 @@ import java.util.concurrent.ConcurrentHashMap;
 import org.l2jmobius.commons.util.CommonUtil;
 import org.l2jmobius.gameserver.ai.CtrlIntention;
 import org.l2jmobius.gameserver.enums.ChatType;
+import org.l2jmobius.gameserver.model.Spawn;
 import org.l2jmobius.gameserver.model.WorldObject;
 import org.l2jmobius.gameserver.model.actor.Attackable;
 import org.l2jmobius.gameserver.model.actor.Npc;
 import org.l2jmobius.gameserver.model.actor.Player;
 import org.l2jmobius.gameserver.model.actor.instance.TamedBeast;
+import org.l2jmobius.gameserver.model.quest.QuestState;
 import org.l2jmobius.gameserver.model.skill.Skill;
-import org.l2jmobius.gameserver.network.NpcStringId;
-import org.l2jmobius.gameserver.network.serverpackets.NpcSay;
 
 import ai.AbstractNpcAI;
 import quests.Q00020_BringUpWithLove.Q00020_BringUpWithLove;
@@ -39,7 +39,7 @@ import quests.Q00655_AGrandPlanForTamingWildBeasts.Q00655_AGrandPlanForTamingWil
 
 /**
  * Growth-capable mobs: Polymorphing upon successful feeding.
- * @author Fulminus
+ * @author Fulminus, Mobius
  */
 public class FeedableBeasts extends AbstractNpcAI
 {
@@ -47,32 +47,19 @@ public class FeedableBeasts extends AbstractNpcAI
 	private static final int CRYSTAL_SPICE = 6644;
 	private static final int SKILL_GOLDEN_SPICE = 2188;
 	private static final int SKILL_CRYSTAL_SPICE = 2189;
-	private static final int FOODSKILLDIFF = GOLDEN_SPICE - SKILL_GOLDEN_SPICE;
-	// Tamed Wild Beasts
-	private static final int TRAINED_BUFFALO1 = 16013;
-	private static final int TRAINED_BUFFALO2 = 16014;
-	private static final int TRAINED_COUGAR1 = 16015;
-	private static final int TRAINED_COUGAR2 = 16016;
-	private static final int TRAINED_KOOKABURRA1 = 16017;
-	private static final int TRAINED_KOOKABURRA2 = 16018;
-	// private static final int TRAINED_TINY_BABY_BUFFALO = 16020; // TODO: Implement.
-	// private static final int TRAINED_TINY_BABY_COUGAR = 16022; // TODO: Implement.
-	// private static final int TRAINED_TINY_BABY_KOOKABURRA = 16024; // TODO: Implement.
+	
 	// @formatter:off
 	private static final int[] TAMED_BEASTS =
 	{
-		TRAINED_BUFFALO1, TRAINED_BUFFALO2, TRAINED_COUGAR1, TRAINED_COUGAR2, TRAINED_KOOKABURRA1, TRAINED_KOOKABURRA2
+		16013, 16014, 16015, 16016, 16017, 16018
 	};
-	// all mobs that can eat...
+	
 	private static final int[] FEEDABLE_BEASTS =
 	{
-		21451, 21452, 21453, 21454, 21455, 21456, 21457, 21458, 21459, 21460,
-		21461, 21462, 21463, 21464, 21465, 21466, 21467, 21468, 21469, 21470,
-		21471, 21472, 21473, 21474, 21475, 21476, 21477, 21478, 21479, 21480,
-		21481, 21482, 21483, 21484, 21485, 21486, 21487, 21488, 21489, 21490,
-		21491, 21492, 21493, 21494, 21495, 21496, 21497, 21498, 21499, 21500,
-		21501, 21502, 21503, 21504, 21505, 21506, 21507, 21824, 21825, 21826,
-		21827, 21828, 21829, TRAINED_BUFFALO1, TRAINED_BUFFALO2, TRAINED_COUGAR1, TRAINED_COUGAR2, TRAINED_KOOKABURRA1, TRAINED_KOOKABURRA2
+		21451, 21452, 21453, 21454, 21455, 21456, 21457, 21458, 21459, 21460, 21461, 21462, 21463, 21464, 21465, 21466, 21467, 21468, 21469, // Alpen Kookaburra
+		21470, 21471, 21472, 21473, 21474, 21475, 21476, 21477, 21478, 21479, 21480, 21481, 21482, 21483, 21484, 21485, 21486, 21487, 21488, // Alpen Buffalo
+		21489, 21490, 21491, 21492, 21493, 21494, 21495, 21496, 21497, 21498, 21499, 21500, 21501, 21502, 21503, 21504, 21505, 21506, 21507, // Alpen Cougar
+		21824, 21825, 21826, 21827, 21828, 21829 // Alpen Kookaburra, Buffalo, Cougar
 	};
 	// @formatter:on
 	
@@ -87,52 +74,48 @@ public class FeedableBeasts extends AbstractNpcAI
 		MAD_COW_POLYMORPH.put(21829, 21507);
 	}
 	
-	private static final NpcStringId[][] TEXT =
+	private static final String[][] TEXT =
 	{
 		{
-			NpcStringId.WHAT_DID_YOU_JUST_DO_TO_ME,
-			NpcStringId.ARE_YOU_TRYING_TO_TAME_ME_DON_T_DO_THAT,
-			NpcStringId.DON_T_GIVE_SUCH_A_THING_YOU_CAN_ENDANGER_YOURSELF,
-			NpcStringId.YUCK_WHAT_IS_THIS_IT_TASTES_TERRIBLE,
-			NpcStringId.I_M_HUNGRY_GIVE_ME_A_LITTLE_MORE_PLEASE,
-			NpcStringId.WHAT_IS_THIS_IS_THIS_EDIBLE,
-			NpcStringId.DON_T_WORRY_ABOUT_ME,
-			NpcStringId.THANK_YOU_THAT_WAS_DELICIOUS,
-			NpcStringId.I_THINK_I_AM_STARTING_TO_LIKE_YOU,
-			NpcStringId.EEEEEK_EEEEEK
+			"What did you just do to me?",
+			"You want to tame me, huh?",
+			"Do not give me this. Perhaps you will be in danger.",
+			"Bah bah. What is this unpalatable thing?",
+			"My belly has been complaining. This hit the spot.",
+			"What is this? Can I eat it?",
+			"You don't need to worry about me.",
+			"Delicious food, thanks.",
+			"I am starting to like you!",
+			"Gulp!"
 		},
 		{
-			NpcStringId.DON_T_KEEP_TRYING_TO_TAME_ME_I_DON_T_WANT_TO_BE_TAMED,
-			NpcStringId.IT_IS_JUST_FOOD_TO_ME_ALTHOUGH_IT_MAY_ALSO_BE_YOUR_HAND,
-			NpcStringId.IF_I_KEEP_EATING_LIKE_THIS_WON_T_I_BECOME_FAT_CHOMP_CHOMP,
-			NpcStringId.WHY_DO_YOU_KEEP_FEEDING_ME,
-			NpcStringId.DON_T_TRUST_ME_I_M_AFRAID_I_MAY_BETRAY_YOU_LATER
+			"I do not think you have given up on the idea of taming me.",
+			"That is just food to me. Perhaps I can eat your hand too.",
+			"Will eating this make me fat? Ha ha.",
+			"Why do you always feed me?",
+			"Do not trust me. I may betray you."
 		},
 		{
-			NpcStringId.GRRRRR,
-			NpcStringId.YOU_BROUGHT_THIS_UPON_YOURSELF,
-			NpcStringId.I_FEEL_STRANGE_I_KEEP_HAVING_THESE_EVIL_THOUGHTS,
-			NpcStringId.ALAS_SO_THIS_IS_HOW_IT_ALL_ENDS,
-			NpcStringId.I_DON_T_FEEL_SO_GOOD_OH_MY_MIND_IS_VERY_TROUBLED
+			"Destroy!",
+			"Look what you have done!",
+			"Strange feeling...! Evil intentions grow in my heart...!",
+			"It is happening!",
+			"This is sad...Good is sad...!"
 		}
 	};
 	
-	private static final NpcStringId[] TAMED_TEXT =
+	private static final String[] SPAWN_CHATS =
 	{
-		NpcStringId.S1_SO_WHAT_DO_YOU_THINK_IT_IS_LIKE_TO_BE_TAMED,
-		NpcStringId.S1_WHENEVER_I_SEE_SPICE_I_THINK_I_WILL_MISS_YOUR_HAND_THAT_USED_TO_FEED_IT_TO_ME,
-		NpcStringId.S1_DON_T_GO_TO_THE_VILLAGE_I_DON_T_HAVE_THE_STRENGTH_TO_FOLLOW_YOU,
-		NpcStringId.THANK_YOU_FOR_TRUSTING_ME_S1_I_HOPE_I_WILL_BE_HELPFUL_TO_YOU,
-		NpcStringId.S1_WILL_I_BE_ABLE_TO_HELP_YOU,
-		NpcStringId.I_GUESS_IT_S_JUST_MY_ANIMAL_MAGNETISM,
-		NpcStringId.TOO_MUCH_SPICY_FOOD_MAKES_ME_SWEAT_LIKE_A_BEAST,
-		NpcStringId.ANIMALS_NEED_LOVE_TOO
+		"$s1, will you show me your hideaway?",
+		"$s1, whenever I look at spice, I think about you.",
+		"$s1, you do not need to return to the village. I will give you strength.",
+		"Thanks, $s1. I hope I can help you.",
+		"$s1, what can I do to help you?",
 	};
 	
 	private static final Map<Integer, Integer> FEED_INFO = new ConcurrentHashMap<>();
 	private static final Map<Integer, GrowthCapableMob> GROWTH_CAPABLE_MONSTERS = new HashMap<>();
 	
-	// all mobs that grow by eating
 	private static class GrowthCapableMob
 	{
 		private final int _growthLevel;
@@ -164,8 +147,7 @@ public class FeedableBeasts extends AbstractNpcAI
 		{
 			int[][] temp;
 			temp = _spiceToMob.get(spice);
-			final int rand = getRandom(temp[0].length);
-			return temp[0][rand];
+			return temp[0][getRandom(temp[0].length)];
 		}
 		
 		public Integer getChance()
@@ -187,32 +169,32 @@ public class FeedableBeasts extends AbstractNpcAI
 		// TODO: no grendels?
 		GrowthCapableMob temp;
 		
-		//@formatter:off
+		// @formatter:off
 		final int[][] Kookabura_0_Gold = {{ 21452, 21453, 21454, 21455 }};
 		final int[][] Kookabura_0_Crystal = {{ 21456, 21457, 21458, 21459 }};
 		final int[][] Kookabura_1_Gold_1= {{ 21460, 21462 }};
 		final int[][] Kookabura_1_Gold_2 = {{ 21461, 21463 }};
 		final int[][] Kookabura_1_Crystal_1 = {{ 21464, 21466 }};
 		final int[][] Kookabura_1_Crystal_2 = {{ 21465, 21467 }};
-		final int[][] Kookabura_2_1 = {{ 21468, 21824}, { TRAINED_KOOKABURRA1, TRAINED_KOOKABURRA2 }};
-		final int[][] Kookabura_2_2 = {{ 21469, 21825}, { TRAINED_KOOKABURRA1, TRAINED_KOOKABURRA2 }};
+		final int[][] Kookabura_2_1 = {{ 21468, 21824}, { 16017, 16018 }};
+		final int[][] Kookabura_2_2 = {{ 21469, 21825}, { 16017, 16018 }};
 		final int[][] Buffalo_0_Gold = {{ 21471, 21472, 21473, 21474 }};
 		final int[][] Buffalo_0_Crystal = {{ 21475, 21476, 21477, 21478 }};
 		final int[][] Buffalo_1_Gold_1 = {{ 21479, 21481 }};
 		final int[][] Buffalo_1_Gold_2 = {{ 21481, 21482 }};
 		final int[][] Buffalo_1_Crystal_1 = {{ 21483, 21485 }};
 		final int[][] Buffalo_1_Crystal_2 = {{ 21484, 21486 }};
-		final int[][] Buffalo_2_1 = {{ 21487, 21826}, {TRAINED_BUFFALO1, TRAINED_BUFFALO2 }};
-		final int[][] Buffalo_2_2 = {{ 21488, 21827}, {TRAINED_BUFFALO1, TRAINED_BUFFALO2 }};
+		final int[][] Buffalo_2_1 = {{ 21487,21826}, {16013, 16014 }};
+		final int[][] Buffalo_2_2 = {{ 21488,21827}, {16013, 16014 }};
 		final int[][] Cougar_0_Gold = {{ 21490, 21491, 21492, 21493 }};
-		final int[][] Cougar_0_Crystal = {{ 21494, 21495, 21496, 21497 }};
+		final int[][] Cougar_0_Crystal = {{ 21494,21495, 21496, 21497 }};
 		final int[][] Cougar_1_Gold_1 = {{ 21498, 21500 }};
 		final int[][] Cougar_1_Gold_2 = {{ 21499, 21501 }};
-		final int[][] Cougar_1_Crystal_1 = {{ 21502, 21504 }};
-		final int[][] Cougar_1_Crystal_2 = {{ 21503, 21505 }};
-		final int[][] Cougar_2_1 = {{ 21506, 21828 }, { TRAINED_COUGAR1, TRAINED_COUGAR2 }};
-		final int[][] Cougar_2_2 = {{ 21507, 21829 }, { TRAINED_COUGAR1, TRAINED_COUGAR2 }};
-		//@formatter:on
+		final int[][] Cougar_1_Crystal_1 = {{ 21502,21504 }};
+		final int[][] Cougar_1_Crystal_2 = {{ 21503,21505 }};
+		final int[][] Cougar_2_1 = {{ 21506, 21828 }, { 16015,16016 }};
+		final int[][] Cougar_2_2 = {{ 21507, 21829 }, { 16015,16016 }};
+		// @formatter:on
 		
 		// Alpen Kookabura
 		temp = new GrowthCapableMob(0, 100);
@@ -369,13 +351,13 @@ public class FeedableBeasts extends AbstractNpcAI
 		final int npcId = npc.getId();
 		int nextNpcId = 0;
 		
-		// find the next mob to spawn, based on the current npcId, growthlevel, and food.
+		// Find the next mob to spawn, based on the current npcId, growthlevel, and food.
 		if (growthLevel == 2)
 		{
-			// if tamed, the mob that will spawn depends on the class type (fighter/mage) of the player!
+			// If tamed, the mob that will spawn depends on the class type (fighter/mage) of the player!
 			if (getRandom(2) == 0)
 			{
-				if (player.getClassId().isMage())
+				if (player.isMageClass())
 				{
 					nextNpcId = GROWTH_CAPABLE_MONSTERS.get(npcId).getMob(food, 1, 1);
 				}
@@ -386,8 +368,9 @@ public class FeedableBeasts extends AbstractNpcAI
 			}
 			else
 			{
-				// if not tamed, there is a small chance that have "mad cow" disease.
-				// that is a stronger-than-normal animal that attacks its feeder
+				/*
+				 * If not tamed, there is a small chance that have "mad cow" disease. that is a stronger-than-normal animal that attacks its feeder
+				 */
 				if (getRandom(5) == 0)
 				{
 					nextNpcId = GROWTH_CAPABLE_MONSTERS.get(npcId).getMob(food, 0, 1);
@@ -398,35 +381,27 @@ public class FeedableBeasts extends AbstractNpcAI
 				}
 			}
 		}
+		// All other levels of growth are straight-forward
 		else
 		{
-			// all other levels of growth are straight-forward
 			nextNpcId = GROWTH_CAPABLE_MONSTERS.get(npcId).getRandomMob(food);
 		}
 		
-		// remove the feedinfo of the mob that got despawned, if any
-		if (FEED_INFO.containsKey(npc.getObjectId()) && (FEED_INFO.get(npc.getObjectId()) == player.getObjectId()))
+		// Remove the feedinfo of the mob that got despawned, if any
+		if (FEED_INFO.getOrDefault(npc.getObjectId(), 0) == player.getObjectId())
 		{
 			FEED_INFO.remove(npc.getObjectId());
 		}
 		
-		// despawn the old mob
-		// TODO: same code? FIXED?
-		// @formatter:off
-		/*
-		 * if (_GrowthCapableMobs.get(npcId).getGrowthLevel() == 0)
-			{
-				npc.deleteMe();
-			}
-			else 
-			{
-		 */
+		// Despawn the old mob
 		npc.deleteMe();
-		// }
-		// @formatter:on
+		final Spawn spawn = npc.getSpawn();
+		if (spawn != null)
+		{
+			spawn.decreaseCount(npc);
+		}
 		
-		// if this is finally a trained mob, then despawn any other trained mobs that the
-		// player might have and initialize the Tamed Beast.
+		// if this is finally a trained mob, then despawn any other trained mobs that the player might have and initialize the Tamed Beast.
 		if (CommonUtil.contains(TAMED_BEASTS, nextNpcId))
 		{
 			if ((player.getTrainedBeasts() != null) && !player.getTrainedBeasts().isEmpty())
@@ -437,51 +412,39 @@ public class FeedableBeasts extends AbstractNpcAI
 				}
 			}
 			
-			final TamedBeast nextNpc = new TamedBeast(nextNpcId, player, food - FOODSKILLDIFF, npc.getX(), npc.getY(), npc.getZ());
+			final TamedBeast nextNpc = new TamedBeast(nextNpcId, player, food, npc.getX(), npc.getY(), npc.getZ());
 			nextNpc.setRunning();
-			Q00020_BringUpWithLove.checkJewelOfInnocence(player);
 			
-			// Support for A Grand Plan for Taming Wild Beasts (655) quest.
-			Q00655_AGrandPlanForTamingWildBeasts.reward(player, nextNpc);
+			// If player has Q020 going, give quest item
+			final QuestState st = player.getQuestState(Q00020_BringUpWithLove.class.getSimpleName());
+			if ((st != null) && (getRandom(100) < 5) && !hasQuestItems(player, 7185))
+			{
+				giveItems(player, 7185, 1);
+				st.setCond(2);
+			}
 			
-			// also, perform a rare random chat
-			if (getRandom(20) == 0)
+			Q00655_AGrandPlanForTamingWildBeasts.checkCrystalofPurity(player);
+			
+			// Also, perform a rare random chat
+			final int rand = getRandom(20);
+			if (rand < 5)
 			{
-				final NpcStringId message = NpcStringId.getNpcStringId(getRandom(2024, 2029));
-				final NpcSay packet = new NpcSay(nextNpc, ChatType.GENERAL, message);
-				if (message.getParamCount() > 0) // player name, $s1
-				{
-					packet.addStringParameter(player.getName());
-				}
-				npc.broadcastPacket(packet);
+				npc.broadcastSay(ChatType.GENERAL, SPAWN_CHATS[rand].replace("$s1", player.getName()));
 			}
-			// @formatter:off
-			/*
-			TODO: The tamed beast consumes one golden/crystal spice
-			every 60 seconds with an initial delay of 60 seconds
-			if (tamed beast exists and is alive)
-			{
-				if (player has 1+ golden/crystal spice)
-				{
-					take one golden/crystal spice;
-					say random NpcString(getRandom(2029, 2038));
-				}
-			}
-			*/
-			// @formatter:on
 		}
 		else
 		{
-			// if not trained, the newly spawned mob will automatically be aggro against its feeder
+			// If not trained, the newly spawned mob will automatically be aggro against its feeder
 			// (what happened to "never bite the hand that feeds you" anyway?!)
 			final Attackable nextNpc = (Attackable) addSpawn(nextNpcId, npc);
 			if (MAD_COW_POLYMORPH.containsKey(nextNpcId))
 			{
-				startQuestTimer("polymorph Mad Cow", 10000, nextNpc, player);
+				startQuestTimer("polymorph Mad Cow", 10000, nextNpc, player, false);
 			}
 			
-			// register the player in the feedinfo for the mob that just spawned
+			// Register the player in the feedinfo for the mob that just spawned
 			FEED_INFO.put(nextNpc.getObjectId(), player.getObjectId());
+			
 			nextNpc.setRunning();
 			nextNpc.addDamageHate(player, 0, 99999);
 			nextNpc.getAI().setIntention(CtrlIntention.AI_INTENTION_ATTACK, player);
@@ -489,27 +452,31 @@ public class FeedableBeasts extends AbstractNpcAI
 	}
 	
 	@Override
-	public String onAdvEvent(String event, Npc npc, Player player)
+	public String onEvent(String event, Npc npc, Player player)
 	{
 		if (event.equalsIgnoreCase("polymorph Mad Cow") && (npc != null) && (player != null) && MAD_COW_POLYMORPH.containsKey(npc.getId()))
 		{
 			// remove the feed info from the previous mob
-			if (FEED_INFO.get(npc.getObjectId()) == player.getObjectId())
+			if (FEED_INFO.getOrDefault(npc.getObjectId(), 0) == player.getObjectId())
 			{
 				FEED_INFO.remove(npc.getObjectId());
 			}
+			
 			// despawn the mad cow
 			npc.deleteMe();
+			
 			// spawn the new mob
 			final Attackable nextNpc = (Attackable) addSpawn(MAD_COW_POLYMORPH.get(npc.getId()), npc);
 			
 			// register the player in the feedinfo for the mob that just spawned
 			FEED_INFO.put(nextNpc.getObjectId(), player.getObjectId());
+			
 			nextNpc.setRunning();
 			nextNpc.addDamageHate(player, 0, 99999);
 			nextNpc.getAI().setIntention(CtrlIntention.AI_INTENTION_ATTACK, player);
 		}
-		return super.onAdvEvent(event, npc, player);
+		
+		return super.onEvent(event, npc, player);
 	}
 	
 	@Override
@@ -521,24 +488,26 @@ public class FeedableBeasts extends AbstractNpcAI
 		{
 			return super.onSkillSee(npc, caster, skill, targets, isSummon);
 		}
-		// gather some values on local variables
+		
+		// Gather some values on local variables
 		final int npcId = npc.getId();
 		final int skillId = skill.getId();
-		// check if the npc and skills used are valid for this script. Exit if invalid.
-		if ((skillId != SKILL_GOLDEN_SPICE) && (skillId != SKILL_CRYSTAL_SPICE))
+		
+		// Check if the npc and skills used are valid for this script. Exit if invalid.
+		if (!CommonUtil.contains(FEEDABLE_BEASTS, npcId) || ((skillId != SKILL_GOLDEN_SPICE) && (skillId != SKILL_CRYSTAL_SPICE)))
 		{
 			return super.onSkillSee(npc, caster, skill, targets, isSummon);
 		}
 		
-		// first gather some values on local variables
+		// First gather some values on local variables
 		final int objectId = npc.getObjectId();
-		int growthLevel = 3; // if a mob is in FEEDABLE_BEASTS but not in _GrowthCapableMobs, then it's at max growth (3)
+		int growthLevel = 3; // if a mob is in FEEDABLE_BEASTS but not in GROWTH_CAPABLE_MOBS, then it's at max growth (3)
 		if (GROWTH_CAPABLE_MONSTERS.containsKey(npcId))
 		{
 			growthLevel = GROWTH_CAPABLE_MONSTERS.get(npcId).getGrowthLevel();
 		}
 		
-		// prevent exploit which allows 2 players to simultaneously raise the same 0-growth beast
+		// Prevent exploit which allows 2 players to simultaneously raise the same 0-growth beast
 		// If the mob is at 0th level (when it still listens to all feeders) lock it to the first feeder!
 		if ((growthLevel == 0) && FEED_INFO.containsKey(objectId))
 		{
@@ -557,31 +526,25 @@ public class FeedableBeasts extends AbstractNpcAI
 			food = CRYSTAL_SPICE;
 		}
 		
-		// display the social action of the beast eating the food.
+		// Display the social action of the beast eating the food.
 		npc.broadcastSocialAction(2);
 		
-		// if this pet can't grow, it's all done.
+		// If the pet can grow
 		if (GROWTH_CAPABLE_MONSTERS.containsKey(npcId))
 		{
-			// do nothing if this mob doesn't eat the specified food (food gets consumed but has no effect).
+			// Do nothing if this mob doesn't eat the specified food (food gets consumed but has no effect).
 			if (GROWTH_CAPABLE_MONSTERS.get(npcId).getMob(food, 0, 0) == null)
 			{
 				return super.onSkillSee(npc, caster, skill, targets, isSummon);
 			}
 			
-			// rare random talk...
+			// Rare random talk...
 			if (getRandom(20) == 0)
 			{
-				final NpcStringId message = getRandomEntry(TEXT[growthLevel]);
-				final NpcSay packet = new NpcSay(npc, ChatType.GENERAL, message);
-				if (message.getParamCount() > 0) // player name, $s1
-				{
-					packet.addStringParameter(caster.getName());
-				}
-				npc.broadcastPacket(packet);
+				npc.broadcastSay(ChatType.GENERAL, TEXT[growthLevel][getRandom(TEXT[growthLevel].length)]);
 			}
 			
-			if ((growthLevel > 0) && (FEED_INFO.get(objectId) != caster.getObjectId()))
+			if ((growthLevel > 0) && (FEED_INFO.getOrDefault(objectId, 0) != caster.getObjectId()))
 			{
 				// check if this is the same player as the one who raised it from growth 0.
 				// if no, then do not allow a chance to raise the pet (food gets consumed but has no effect).
@@ -594,32 +557,15 @@ public class FeedableBeasts extends AbstractNpcAI
 				spawnNext(npc, growthLevel, caster, food);
 			}
 		}
-		else if (CommonUtil.contains(TAMED_BEASTS, npcId) && (npc instanceof TamedBeast))
-		{
-			final TamedBeast beast = ((TamedBeast) npc);
-			if (skillId == beast.getFoodType())
-			{
-				beast.onReceiveFood();
-				final NpcStringId message = getRandomEntry(TAMED_TEXT);
-				final NpcSay packet = new NpcSay(npc, ChatType.GENERAL, message);
-				if (message.getParamCount() > 0)
-				{
-					packet.addStringParameter(caster.getName());
-				}
-				beast.broadcastPacket(packet);
-			}
-		}
+		
 		return super.onSkillSee(npc, caster, skill, targets, isSummon);
 	}
 	
 	@Override
 	public String onKill(Npc npc, Player killer, boolean isSummon)
 	{
-		// remove the feedinfo of the mob that got killed, if any
-		if (FEED_INFO.containsKey(npc.getObjectId()))
-		{
-			FEED_INFO.remove(npc.getObjectId());
-		}
+		// Remove the feedinfo of the mob that got killed, if any
+		FEED_INFO.remove(npc.getObjectId());
 		return super.onKill(npc, killer, isSummon);
 	}
 	

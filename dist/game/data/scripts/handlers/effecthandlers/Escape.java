@@ -19,12 +19,13 @@ package handlers.effecthandlers;
 import org.l2jmobius.gameserver.enums.TeleportWhereType;
 import org.l2jmobius.gameserver.instancemanager.MapRegionManager;
 import org.l2jmobius.gameserver.model.StatSet;
+import org.l2jmobius.gameserver.model.actor.Creature;
 import org.l2jmobius.gameserver.model.actor.Npc;
 import org.l2jmobius.gameserver.model.actor.instance.Guard;
 import org.l2jmobius.gameserver.model.conditions.Condition;
 import org.l2jmobius.gameserver.model.effects.AbstractEffect;
 import org.l2jmobius.gameserver.model.effects.EffectType;
-import org.l2jmobius.gameserver.model.skill.BuffInfo;
+import org.l2jmobius.gameserver.model.skill.Skill;
 
 /**
  * Escape effect implementation.
@@ -54,23 +55,23 @@ public class Escape extends AbstractEffect
 	}
 	
 	@Override
-	public void onStart(BuffInfo info)
+	public void onStart(Creature effector, Creature effected, Skill skill)
 	{
 		if (_escapeType == null)
 		{
 			return;
 		}
 		
-		if (info.getEffected() instanceof Guard)
+		if (effected instanceof Guard)
 		{
-			info.getEffected().teleToLocation(((Npc) info.getEffected()).getSpawn());
-			info.getEffected().setHeading(((Npc) info.getEffected()).getSpawn().getHeading());
+			effected.teleToLocation(((Npc) effected).getSpawn());
+			effected.setHeading(((Npc) effected).getSpawn().getHeading());
 		}
 		else
 		{
-			info.getEffected().teleToLocation(MapRegionManager.getInstance().getTeleToLocation(info.getEffected(), _escapeType), true);
-			info.getEffected().getActingPlayer().setIn7sDungeon(false);
-			info.getEffected().setInstanceId(0);
+			effected.teleToLocation(MapRegionManager.getInstance().getTeleToLocation(effected, _escapeType), true);
+			effected.getActingPlayer().setIn7sDungeon(false);
+			effected.setInstanceId(0);
 		}
 	}
 }

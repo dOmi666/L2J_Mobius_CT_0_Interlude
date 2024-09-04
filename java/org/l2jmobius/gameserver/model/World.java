@@ -120,7 +120,11 @@ public class World
 			}
 		}
 		
-		LOGGER.info(getClass().getSimpleName() + ": (" + REGIONS_X + " by " + REGIONS_Y + ") World Region Grid set up.");
+		// When GUI is enabled World is called early. So we need to skip this log.
+		if (!Config.ENABLE_GUI)
+		{
+			LOGGER.info(getClass().getSimpleName() + ": (" + REGIONS_X + " by " + REGIONS_Y + ") World Region Grid set up.");
+		}
 	}
 	
 	/**
@@ -288,6 +292,23 @@ public class World
 	public void removePet(int ownerId)
 	{
 		_petsInstance.remove(ownerId);
+	}
+	
+	/**
+	 * This operation is quite heave as it iterates all world visible objects.
+	 * @param npcId the id of the NPC to find.
+	 * @return the first NPC found corresponding to the given id.
+	 */
+	public Npc getNpc(int npcId)
+	{
+		for (WorldObject wo : getVisibleObjects())
+		{
+			if (wo.isNpc() && (wo.getId() == npcId))
+			{
+				return (Npc) wo;
+			}
+		}
+		return null;
 	}
 	
 	/**

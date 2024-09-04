@@ -137,7 +137,7 @@ public class CHSiegeManager
 		}
 		else if (hall.getOwnerId() == clan.getId())
 		{
-			player.sendPacket(SystemMessageId.CASTLE_OWNING_CLANS_ARE_AUTOMATICALLY_REGISTERED_ON_THE_DEFENDING_SIDE);
+			player.sendPacket(SystemMessageId.THE_CLAN_THAT_OWNS_THE_CASTLE_IS_AUTOMATICALLY_REGISTERED_ON_THE_DEFENDING_SIDE);
 		}
 		else if ((clan.getCastleId() != 0) || (clan.getHideoutId() != 0))
 		{
@@ -145,11 +145,11 @@ public class CHSiegeManager
 		}
 		else if (hall.getSiege().checkIsAttacker(clan))
 		{
-			player.sendPacket(SystemMessageId.YOU_HAVE_ALREADY_REQUESTED_A_CASTLE_SIEGE);
+			player.sendPacket(SystemMessageId.YOU_HAVE_ALREADY_REQUESTED_A_SIEGE_BATTLE);
 		}
 		else if (isClanParticipating(clan))
 		{
-			player.sendPacket(SystemMessageId.YOUR_APPLICATION_HAS_BEEN_DENIED_BECAUSE_YOU_HAVE_ALREADY_SUBMITTED_A_REQUEST_FOR_ANOTHER_CASTLE_SIEGE);
+			player.sendPacket(SystemMessageId.YOUR_APPLICATION_HAS_BEEN_DENIED_BECAUSE_YOU_HAVE_ALREADY_SUBMITTED_A_REQUEST_FOR_ANOTHER_SIEGE_BATTLE);
 		}
 		else if (hall.getSiege().getAttackers().size() >= Config.CHS_MAX_ATTACKERS)
 		{
@@ -186,8 +186,7 @@ public class CHSiegeManager
 	{
 		for (SiegableHall hall : _siegableHalls.values())
 		{
-			// Rainbow springs has his own attackers table
-			if ((hall.getId() == 62) || (hall.getSiege() == null))
+			if (hall.getSiege() == null)
 			{
 				continue;
 			}

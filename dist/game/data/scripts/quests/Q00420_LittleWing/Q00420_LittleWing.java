@@ -16,25 +16,15 @@
  */
 package quests.Q00420_LittleWing;
 
-import java.util.Arrays;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-
 import org.l2jmobius.gameserver.enums.ChatType;
 import org.l2jmobius.gameserver.enums.QuestSound;
+import org.l2jmobius.gameserver.model.Location;
 import org.l2jmobius.gameserver.model.actor.Npc;
 import org.l2jmobius.gameserver.model.actor.Player;
 import org.l2jmobius.gameserver.model.quest.Quest;
 import org.l2jmobius.gameserver.model.quest.QuestState;
 import org.l2jmobius.gameserver.model.quest.State;
-import org.l2jmobius.gameserver.network.NpcStringId;
-import org.l2jmobius.gameserver.network.serverpackets.NpcSay;
 
-/**
- * Little Wing (420)
- * @author Pandragon
- */
 public class Q00420_LittleWing extends Quest
 {
 	// NPCs
@@ -49,837 +39,870 @@ public class Q00420_LittleWing extends Quest
 	private static final int SHAMHAI = 30752;
 	private static final int COOPER = 30829;
 	// Items
+	private static final int FAIRY_DUST = 3499;
+	private static final int FAIRY_STONE = 3816;
+	private static final int DELUXE_FAIRY_STONE = 3817;
+	private static final int FAIRY_STONE_LIST = 3818;
+	private static final int DELUXE_FAIRY_STONE_LIST = 3819;
+	private static final int TOAD_LORD_BACK_SKIN = 3820;
+	private static final int JUICE_OF_MONKSHOOD = 3821;
+	private static final int SCALE_OF_DRAKE_EXARION = 3822;
+	private static final int EGG_OF_DRAKE_EXARION = 3823;
+	private static final int SCALE_OF_DRAKE_ZWOV = 3824;
+	private static final int EGG_OF_DRAKE_ZWOV = 3825;
+	private static final int SCALE_OF_DRAKE_KALIBRAN = 3826;
+	private static final int EGG_OF_DRAKE_KALIBRAN = 3827;
+	private static final int SCALE_OF_WYVERN_SUZET = 3828;
+	private static final int EGG_OF_WYVERN_SUZET = 3829;
+	private static final int SCALE_OF_WYVERN_SHAMHAI = 3830;
+	private static final int EGG_OF_WYVERN_SHAMHAI = 3831;
+	// Needed items
 	private static final int COAL = 1870;
 	private static final int CHARCOAL = 1871;
 	private static final int SILVER_NUGGET = 1873;
 	private static final int STONE_OF_PURITY = 1875;
 	private static final int GEMSTONE_D = 2130;
 	private static final int GEMSTONE_C = 2131;
-	private static final int FAIRY_DUST = 3499;
-	private static final int FAIRY_STONE = 3816;
-	private static final int DELUXE_FAIRY_STONE = 3817;
-	private static final int FAIRY_STONE_LIST = 3818;
-	private static final int DELUXE_STONE_LIST = 3819;
-	private static final int TOAD_SKIN = 3820;
-	private static final int MONKSHOOD_JUICE = 3821;
-	private static final int EXARION_SCALE = 3822;
-	private static final int EXARION_EGG = 3823;
-	private static final int ZWOV_SCALE = 3824;
-	private static final int ZWOV_EGG = 3825;
-	private static final int KALIBRAN_SCALE = 3826;
-	private static final int KALIBRAN_EGG = 3827;
-	private static final int SUZET_SCALE = 3828;
-	private static final int SUZET_EGG = 3829;
-	private static final int SHAMHAI_SCALE = 3830;
-	private static final int SHAMHAI_EGG = 3831;
-	// Monsters
-	private static final int DEAD_SEEKER = 20202;
-	private static final int TOAD_LORD = 20231;
-	private static final int MARSH_SPIDER = 20233;
-	private static final int BREKA_OVERLORD = 20270;
-	private static final int ROAD_SCAVENGER = 20551;
-	private static final int LETO_WARRIOR = 20580;
-	private static final int[] DELUXE_STONE_BREAKERS =
-	{
-		20589, // Fline
-		20590, // Liele
-		20591, // Valley Treant
-		20592, // Satyr
-		20593, // Unicorn
-		20594, // Forest Runner
-		20595, // Fline Elder
-		20596, // Liele Elder
-		20597, // Valley Treant Elder
-		20598, // Satyr Elder
-		20599, // Unicorn Elder
-		27185, // Fairy Tree of Wind (Quest Monster)
-		27186, // Fairy Tree of Star (Quest Monster)
-		27187, // Fairy Tree of Twilight (Quest Monster)
-		27188, // Fairy Tree of Abyss (Quest Monster)
-		27189, // Soul of Tree Guardian (Quest Monster)
-	};
 	// Rewards
 	private static final int DRAGONFLUTE_OF_WIND = 3500;
 	private static final int DRAGONFLUTE_OF_STAR = 3501;
 	private static final int DRAGONFLUTE_OF_TWILIGHT = 3502;
-	private static final int HATCHLING_ARMOR = 3912;
-	private static final int HATCHLING_FOOD = 4038;
-	private static final List<Integer> EGGS = Arrays.asList(EXARION_EGG, SUZET_EGG, KALIBRAN_EGG, SHAMHAI_EGG, ZWOV_EGG);
-	// Drake Drops
-	private static final Map<Integer, Integer> EGG_DROPS = new HashMap<>();
-	static
+	private static final int HATCHLING_SOFT_LEATHER = 3912;
+	private static final int FOOD_FOR_HATCHLING = 4038;
+	// Spawn Points
+	private static final Location[] LOCATIONS =
 	{
-		EGG_DROPS.put(DEAD_SEEKER, SHAMHAI_EGG);
-		EGG_DROPS.put(MARSH_SPIDER, ZWOV_EGG);
-		EGG_DROPS.put(BREKA_OVERLORD, SUZET_EGG);
-		EGG_DROPS.put(ROAD_SCAVENGER, KALIBRAN_EGG);
-		EGG_DROPS.put(LETO_WARRIOR, EXARION_EGG);
-	}
+		new Location(109816, 40854, -4640, 0),
+		new Location(108940, 41615, -4643, 0),
+		new Location(110395, 41625, -4642, 0)
+	};
 	// Misc
-	private static final int MIN_LEVEL = 35;
+	private static int _counter = 0;
 	
 	public Q00420_LittleWing()
 	{
 		super(420);
-		addStartNpc(COOPER);
+		registerQuestItems(FAIRY_STONE, DELUXE_FAIRY_STONE, FAIRY_STONE_LIST, DELUXE_FAIRY_STONE_LIST, TOAD_LORD_BACK_SKIN, JUICE_OF_MONKSHOOD, SCALE_OF_DRAKE_EXARION, EGG_OF_DRAKE_EXARION, SCALE_OF_DRAKE_ZWOV, EGG_OF_DRAKE_ZWOV, SCALE_OF_DRAKE_KALIBRAN, EGG_OF_DRAKE_KALIBRAN, SCALE_OF_WYVERN_SUZET, EGG_OF_WYVERN_SUZET, SCALE_OF_WYVERN_SHAMHAI, EGG_OF_WYVERN_SHAMHAI);
+		addStartNpc(COOPER, MIMYU);
 		addTalkId(MARIA, CRONOS, BYRON, MIMYU, EXARION, ZWOV, KALIBRAN, SUZET, SHAMHAI, COOPER);
-		addAttackId(DELUXE_STONE_BREAKERS);
-		addKillId(TOAD_LORD, DEAD_SEEKER, MARSH_SPIDER, BREKA_OVERLORD, ROAD_SCAVENGER, LETO_WARRIOR);
-		registerQuestItems(FAIRY_DUST, FAIRY_STONE, DELUXE_FAIRY_STONE, FAIRY_STONE_LIST, DELUXE_STONE_LIST, TOAD_SKIN, MONKSHOOD_JUICE, EXARION_SCALE, EXARION_EGG, ZWOV_SCALE, ZWOV_EGG, KALIBRAN_SCALE, KALIBRAN_EGG, SUZET_SCALE, SUZET_EGG, SHAMHAI_SCALE, SHAMHAI_EGG);
+		addKillId(20202, 20231, 20233, 20270, 20551, 20580, 20589, 20590, 20591, 20592, 20593, 20594, 20595, 20596, 20597, 20598, 20599);
 	}
 	
 	@Override
-	public String onAdvEvent(String event, Npc npc, Player player)
+	public String onEvent(String event, Npc npc, Player player)
 	{
-		final QuestState qs = getQuestState(player, false);
-		String htmltext = null;
-		if (qs == null)
+		String htmltext = event;
+		final QuestState st = getQuestState(player, false);
+		if (st == null)
 		{
 			return htmltext;
 		}
 		
 		switch (event)
 		{
-			case "30610-02.html":
-			case "30610-03.html":
-			case "30610-04.html":
-			case "30711-02.html":
-			case "30747-05.html":
-			case "30747-06.html":
-			case "30751-02.html":
-			{
-				htmltext = event;
-				break;
-			}
 			case "30829-02.htm":
 			{
-				if (qs.isCreated())
+				st.startQuest();
+				break;
+			}
+			case "30610-05.htm":
+			{
+				st.setCond(2, true);
+				giveItems(player, FAIRY_STONE_LIST, 1);
+				break;
+			}
+			case "30610-06.htm":
+			{
+				st.setCond(2, true);
+				giveItems(player, DELUXE_FAIRY_STONE_LIST, 1);
+				break;
+			}
+			case "30610-12.htm":
+			{
+				st.setCond(2, true);
+				st.set("deluxestone", "1");
+				giveItems(player, FAIRY_STONE_LIST, 1);
+				break;
+			}
+			case "30610-13.htm":
+			{
+				st.setCond(2, true);
+				st.set("deluxestone", "1");
+				giveItems(player, DELUXE_FAIRY_STONE_LIST, 1);
+				break;
+			}
+			case "30608-03.htm":
+			{
+				if (!checkItems(player, false))
 				{
-					qs.startQuest();
-					htmltext = event;
+					htmltext = "30608-01.htm"; // Avoid to continue while trade or drop mats before clicking bypass
+				}
+				else
+				{
+					takeItems(player, COAL, 10);
+					takeItems(player, CHARCOAL, 10);
+					takeItems(player, GEMSTONE_D, 1);
+					takeItems(player, SILVER_NUGGET, 3);
+					takeItems(player, TOAD_LORD_BACK_SKIN, -1);
+					takeItems(player, FAIRY_STONE_LIST, 1);
+					giveItems(player, FAIRY_STONE, 1);
 				}
 				break;
 			}
-			case "30610-05.html":
+			case "30608-05.htm":
 			{
-				if (qs.isCond(1))
+				if (!checkItems(player, true))
 				{
-					qs.setCond(2, true);
-					qs.set("old_stone", 0);
-					qs.set("fairy_stone", 1);
-					giveItems(player, FAIRY_STONE_LIST, 1);
-					htmltext = event;
+					htmltext = "30608-01.htm"; // Avoid to continue while trade or drop mats before clicking bypass
+				}
+				else
+				{
+					takeItems(player, COAL, 10);
+					takeItems(player, CHARCOAL, 10);
+					takeItems(player, GEMSTONE_C, 1);
+					takeItems(player, STONE_OF_PURITY, 1);
+					takeItems(player, SILVER_NUGGET, 5);
+					takeItems(player, TOAD_LORD_BACK_SKIN, -1);
+					takeItems(player, DELUXE_FAIRY_STONE_LIST, 1);
+					giveItems(player, DELUXE_FAIRY_STONE, 1);
 				}
 				break;
 			}
-			case "30610-06.html":
+			case "30711-03.htm":
 			{
-				if (qs.isCond(1))
+				st.setCond(4, true);
+				if (hasQuestItems(player, DELUXE_FAIRY_STONE))
 				{
-					qs.setCond(2, true);
-					qs.set("old_stone", 0);
-					qs.set("fairy_stone", 2);
-					giveItems(player, DELUXE_STONE_LIST, 1);
-					htmltext = event;
+					htmltext = "30711-04.htm";
 				}
 				break;
 			}
-			case "30610-12.html":
+			case "30747-02.htm":
 			{
-				if (qs.isCond(5))
+				st.set("mimyu", "1");
+				takeItems(player, FAIRY_STONE, 1);
+				break;
+			}
+			case "30747-04.htm":
+			{
+				st.set("mimyu", "1");
+				takeItems(player, DELUXE_FAIRY_STONE, 1);
+				giveItems(player, FAIRY_DUST, 1);
+				break;
+			}
+			case "30747-07.htm":
+			{
+				st.setCond(5, true);
+				giveItems(player, JUICE_OF_MONKSHOOD, 1);
+				break;
+			}
+			case "30747-12.htm":
+			{
+				if (!hasQuestItems(player, FAIRY_DUST))
 				{
-					qs.setCond(2, true);
-					qs.set("old_stone", qs.getInt("fairy_stone"));
-					qs.set("fairy_stone", 1);
-					giveItems(player, FAIRY_STONE_LIST, 1);
-					htmltext = event;
+					htmltext = "30747-15.htm";
+					giveRandomPet(player, false);
+					st.exitQuest(true, true);
 				}
 				break;
 			}
-			case "30610-13.html":
+			case "30747-13.htm":
 			{
-				if (qs.isCond(5))
-				{
-					qs.setCond(2, true);
-					qs.set("old_stone", qs.getInt("fairy_stone"));
-					qs.set("fairy_stone", 2);
-					giveItems(player, DELUXE_STONE_LIST, 1);
-					htmltext = event;
-				}
+				giveRandomPet(player, hasQuestItems(player, FAIRY_DUST));
+				st.exitQuest(true, true);
 				break;
 			}
-			case "30608-03.html":
+			case "30747-14.htm":
 			{
-				if (qs.isCond(2))
+				if (hasQuestItems(player, FAIRY_DUST))
 				{
-					if ((qs.getInt("fairy_stone") == 1) && (getQuestItemsCount(player, COAL) >= 10) && (getQuestItemsCount(player, CHARCOAL) >= 10) && (getQuestItemsCount(player, GEMSTONE_D) >= 1) && (getQuestItemsCount(player, SILVER_NUGGET) >= 3) && (getQuestItemsCount(player, TOAD_SKIN) >= 10))
+					takeItems(player, FAIRY_DUST, 1);
+					giveRandomPet(player, true);
+					if (getRandom(20) == 1)
 					{
-						takeItems(player, FAIRY_STONE_LIST, -1);
-						takeItems(player, COAL, 10);
-						takeItems(player, CHARCOAL, 10);
-						takeItems(player, GEMSTONE_D, 1);
-						takeItems(player, SILVER_NUGGET, 3);
-						takeItems(player, TOAD_SKIN, -1);
-						giveItems(player, FAIRY_STONE, 1);
-					}
-					qs.setCond(3, true);
-					htmltext = event;
-				}
-				break;
-			}
-			case "30608-05.html":
-			{
-				if (qs.isCond(2))
-				{
-					if ((qs.getInt("fairy_stone") == 2) && (getQuestItemsCount(player, COAL) >= 10) && (getQuestItemsCount(player, CHARCOAL) >= 10) && (getQuestItemsCount(player, GEMSTONE_C) >= 1) && (getQuestItemsCount(player, STONE_OF_PURITY) >= 1) && (getQuestItemsCount(player, SILVER_NUGGET) >= 5) && (getQuestItemsCount(player, TOAD_SKIN) >= 20))
-					{
-						takeItems(player, DELUXE_STONE_LIST, -1);
-						takeItems(player, COAL, 10);
-						takeItems(player, CHARCOAL, 10);
-						takeItems(player, GEMSTONE_C, 1);
-						takeItems(player, STONE_OF_PURITY, 1);
-						takeItems(player, SILVER_NUGGET, 5);
-						takeItems(player, TOAD_SKIN, -1);
-						giveItems(player, DELUXE_FAIRY_STONE, 1);
-					}
-					qs.setCond(3, true);
-					htmltext = event;
-				}
-				break;
-			}
-			case "30711-03.html":
-			{
-				if (qs.isCond(3))
-				{
-					qs.setCond(4, true);
-					if (qs.getInt("fairy_stone") == 2)
-					{
-						htmltext = "30711-04.html";
-					}
-					else
-					{
-						htmltext = event;
-					}
-				}
-				break;
-			}
-			case "30747-02.html":
-			case "30747-04.html":
-			{
-				if (qs.isCond(4) && ((getQuestItemsCount(player, FAIRY_STONE) + getQuestItemsCount(player, DELUXE_FAIRY_STONE)) > 0))
-				{
-					takeItems(player, -1, FAIRY_STONE, DELUXE_FAIRY_STONE);
-					if (qs.getInt("fairy_stone") == 2)
-					{
-						giveItems(player, FAIRY_DUST, 1);
-					}
-					qs.setCond(5, true);
-					htmltext = event;
-				}
-				break;
-			}
-			case "30747-07.html":
-			case "30747-08.html":
-			{
-				if (qs.isCond(5) && (getQuestItemsCount(player, MONKSHOOD_JUICE) == 0))
-				{
-					giveItems(player, MONKSHOOD_JUICE, 1);
-					htmltext = event;
-				}
-				break;
-			}
-			case "30747-12.html":
-			{
-				if (qs.isCond(7))
-				{
-					if ((qs.getInt("fairy_stone") == 1) || (getQuestItemsCount(player, FAIRY_DUST) == 0))
-					{
-						giveReward(player);
-						qs.exitQuest(true, true);
-						htmltext = "30747-16.html";
+						giveItems(player, HATCHLING_SOFT_LEATHER, 1);
 					}
 					else
 					{
-						qs.setCond(8, false);
-						htmltext = event;
+						htmltext = "30747-14t.htm";
+						giveItems(player, FOOD_FOR_HATCHLING, 20);
 					}
+					st.exitQuest(true, true);
 				}
-				else if (qs.isCond(8))
+				else
 				{
-					htmltext = event;
+					htmltext = "30747-13.htm";
 				}
 				break;
 			}
-			case "30747-13.html":
+			case "30748-02.htm":
 			{
-				if (qs.isCond(8))
-				{
-					giveReward(player);
-					qs.exitQuest(true, true);
-					htmltext = event;
-				}
+				st.setCond(6, true);
+				takeItems(player, JUICE_OF_MONKSHOOD, 1);
+				giveItems(player, SCALE_OF_DRAKE_EXARION, 1);
 				break;
 			}
-			case "30747-15.html":
+			case "30749-02.htm":
 			{
-				if (qs.isCond(8) && (getQuestItemsCount(player, FAIRY_DUST) > 1))
-				{
-					if (getRandom(100) < 5)
-					{
-						giveItems(player, HATCHLING_ARMOR, 1);
-						htmltext = "30747-14.html";
-					}
-					else
-					{
-						giveItems(player, HATCHLING_FOOD, 20);
-						htmltext = event;
-					}
-					giveReward(player);
-					takeItems(player, FAIRY_DUST, -1);
-					qs.exitQuest(true, true);
-				}
+				st.setCond(6, true);
+				takeItems(player, JUICE_OF_MONKSHOOD, 1);
+				giveItems(player, SCALE_OF_DRAKE_ZWOV, 1);
 				break;
 			}
-			case "30748-02.html":
+			case "30750-02.htm":
 			{
-				if (qs.isCond(5))
-				{
-					takeItems(player, MONKSHOOD_JUICE, -1);
-					giveItems(player, EXARION_SCALE, 1);
-					qs.setCond(6, true);
-					qs.set("drake_hunt", LETO_WARRIOR);
-					htmltext = event;
-				}
+				st.setCond(6, true);
+				takeItems(player, JUICE_OF_MONKSHOOD, 1);
+				giveItems(player, SCALE_OF_DRAKE_KALIBRAN, 1);
 				break;
 			}
-			case "30749-02.html":
+			case "30750-05.htm":
 			{
-				if (qs.isCond(5))
-				{
-					takeItems(player, MONKSHOOD_JUICE, -1);
-					giveItems(player, ZWOV_SCALE, 1);
-					qs.setCond(6, true);
-					qs.set("drake_hunt", MARSH_SPIDER);
-					htmltext = event;
-				}
+				st.setCond(7, true);
+				takeItems(player, EGG_OF_DRAKE_KALIBRAN, 19);
+				takeItems(player, SCALE_OF_DRAKE_KALIBRAN, 1);
 				break;
 			}
-			case "30750-02.html":
+			case "30751-03.htm":
 			{
-				if (qs.isCond(5))
-				{
-					takeItems(player, MONKSHOOD_JUICE, -1);
-					giveItems(player, KALIBRAN_SCALE, 1);
-					qs.setCond(6, true);
-					qs.set("drake_hunt", ROAD_SCAVENGER);
-					htmltext = event;
-				}
+				st.setCond(6, true);
+				takeItems(player, JUICE_OF_MONKSHOOD, 1);
+				giveItems(player, SCALE_OF_WYVERN_SUZET, 1);
 				break;
 			}
-			case "30750-05.html":
+			case "30752-02.htm":
 			{
-				if (qs.isCond(6) && (getQuestItemsCount(player, KALIBRAN_EGG) >= 20))
-				{
-					takeItems(player, -1, KALIBRAN_SCALE, KALIBRAN_EGG);
-					giveItems(player, KALIBRAN_EGG, 1);
-					qs.setCond(7, true);
-					htmltext = event;
-				}
-				break;
-			}
-			case "30751-03.html":
-			{
-				if (qs.isCond(5))
-				{
-					takeItems(player, MONKSHOOD_JUICE, -1);
-					giveItems(player, SUZET_SCALE, 1);
-					qs.setCond(6, true);
-					qs.set("drake_hunt", BREKA_OVERLORD);
-					htmltext = event;
-				}
-				break;
-			}
-			case "30752-02.html":
-			{
-				if (qs.isCond(5))
-				{
-					takeItems(player, MONKSHOOD_JUICE, -1);
-					giveItems(player, SHAMHAI_SCALE, 1);
-					qs.setCond(6, true);
-					qs.set("drake_hunt", DEAD_SEEKER);
-					htmltext = event;
-				}
+				st.setCond(6, true);
+				takeItems(player, JUICE_OF_MONKSHOOD, 1);
+				giveItems(player, SCALE_OF_WYVERN_SHAMHAI, 1);
 				break;
 			}
 		}
+		
 		return htmltext;
 	}
 	
 	@Override
-	public String onAttack(Npc npc, Player attacker, int damage, boolean isSummon)
+	public String onTalk(Npc npc, Player player)
 	{
-		final QuestState qs = getQuestState(attacker, false);
-		if ((qs != null) && (getQuestItemsCount(attacker, DELUXE_FAIRY_STONE) > 0) && (getRandom(100) < 30))
-		{
-			takeItems(attacker, DELUXE_FAIRY_STONE, -1);
-			playSound(attacker, QuestSound.ITEMSOUND_QUEST_MIDDLE);
-			npc.broadcastPacket(new NpcSay(npc, ChatType.NPC_GENERAL, NpcStringId.THE_STONE_THE_ELVEN_STONE_BROKE));
-		}
-		return super.onAttack(npc, attacker, damage, isSummon);
-	}
-	
-	@Override
-	public String onTalk(Npc npc, Player talker)
-	{
-		final QuestState qs = getQuestState(talker, true);
-		String htmltext = getNoQuestMsg(talker);
-		switch (qs.getState())
+		String htmltext = getNoQuestMsg(player);
+		final QuestState st = getQuestState(player, true);
+		
+		switch (st.getState())
 		{
 			case State.CREATED:
-			{
-				if (npc.getId() == COOPER)
-				{
-					htmltext = (talker.getLevel() >= MIN_LEVEL) ? "30829-01.htm" : "30829-03.html";
-				}
-				break;
-			}
-			case State.STARTED:
 			{
 				switch (npc.getId())
 				{
 					case COOPER:
 					{
-						htmltext = "30829-04.html";
+						htmltext = (player.getLevel() >= 35) ? "30829-01.htm" : "30829-03.htm";
+						break;
+					}
+					case MIMYU:
+					{
+						_counter += 1;
+						final Location loc = LOCATIONS[_counter % 3];
+						npc.teleToLocation(loc.getX(), loc.getY(), loc.getZ());
+						return null;
+					}
+				}
+				break;
+			}
+			case State.STARTED:
+			{
+				final int cond = st.getCond();
+				switch (npc.getId())
+				{
+					case COOPER:
+					{
+						htmltext = "30829-04.htm";
 						break;
 					}
 					case CRONOS:
 					{
-						switch (qs.getCond())
+						if (cond == 1)
 						{
-							case 1:
+							htmltext = "30610-01.htm";
+						}
+						else if (st.getInt("deluxestone") == 2)
+						{
+							htmltext = "30610-10.htm";
+						}
+						else if (cond == 2)
+						{
+							if (hasAtLeastOneQuestItem(player, FAIRY_STONE, DELUXE_FAIRY_STONE))
 							{
-								htmltext = "30610-01.html";
-								break;
-							}
-							case 2:
-							{
-								htmltext = "30610-07.html";
-								break;
-							}
-							case 3:
-							{
-								if (qs.getInt("old_stone") > 0)
+								if (st.getInt("deluxestone") == 1)
 								{
-									htmltext = "30610-14.html";
+									htmltext = "30610-14.htm";
 								}
 								else
 								{
-									htmltext = "30610-08.html";
+									htmltext = "30610-08.htm";
+									st.setCond(3, true);
 								}
-								break;
 							}
-							case 4:
+							else
 							{
-								htmltext = "30610-09.html";
-								break;
+								htmltext = "30610-07.htm";
 							}
-							case 5:
-							{
-								if ((getQuestItemsCount(talker, FAIRY_STONE) == 0) && (getQuestItemsCount(talker, DELUXE_FAIRY_STONE) == 0))
-								{
-									htmltext = "30610-10.html";
-								}
-								else
-								{
-									htmltext = "30610-11.html";
-								}
-								break;
-							}
+						}
+						else if (cond == 3)
+						{
+							htmltext = "30610-09.htm";
+						}
+						else if ((cond == 4) && hasAtLeastOneQuestItem(player, FAIRY_STONE, DELUXE_FAIRY_STONE))
+						{
+							htmltext = "30610-11.htm";
 						}
 						break;
 					}
 					case MARIA:
 					{
-						switch (qs.getCond())
+						if (hasAtLeastOneQuestItem(player, FAIRY_STONE, DELUXE_FAIRY_STONE))
 						{
-							case 2:
+							htmltext = "30608-06.htm";
+						}
+						else if (cond == 2)
+						{
+							if (hasQuestItems(player, FAIRY_STONE_LIST))
 							{
-								if ((qs.getInt("fairy_stone") == 1) && (getQuestItemsCount(talker, COAL) >= 10) && (getQuestItemsCount(talker, CHARCOAL) >= 10) && (getQuestItemsCount(talker, GEMSTONE_D) >= 1) && (getQuestItemsCount(talker, SILVER_NUGGET) >= 3) && (getQuestItemsCount(talker, TOAD_SKIN) >= 10))
-								{
-									htmltext = "30608-02.html";
-								}
-								else if ((qs.getInt("fairy_stone") == 2) && (getQuestItemsCount(talker, COAL) >= 10) && (getQuestItemsCount(talker, CHARCOAL) >= 10) && (getQuestItemsCount(talker, GEMSTONE_C) >= 1) && (getQuestItemsCount(talker, STONE_OF_PURITY) >= 1) && (getQuestItemsCount(talker, SILVER_NUGGET) >= 5) && (getQuestItemsCount(talker, TOAD_SKIN) >= 20))
-								{
-									htmltext = "30608-04.html";
-								}
-								else
-								{
-									htmltext = "30608-01.html";
-								}
-								break;
+								htmltext = checkItems(player, false) ? "30608-02.htm" : "30608-01.htm";
 							}
-							case 3:
+							else if (hasQuestItems(player, DELUXE_FAIRY_STONE_LIST))
 							{
-								htmltext = "30608-06.html";
-								break;
+								htmltext = checkItems(player, true) ? "30608-04.htm" : "30608-01.htm";
 							}
 						}
 						break;
 					}
 					case BYRON:
 					{
-						switch (qs.getCond())
+						final int deluxestone = st.getInt("deluxestone");
+						if (deluxestone == 1)
 						{
-							case 2:
+							if (hasQuestItems(player, FAIRY_STONE))
 							{
-								htmltext = "30711-10.html";
-								break;
+								htmltext = "30711-05.htm";
+								st.setCond(4, true);
+								st.unset("deluxestone");
 							}
-							case 3:
+							else if (hasQuestItems(player, DELUXE_FAIRY_STONE))
 							{
-								if (qs.getInt("old_stone") == 0)
-								{
-									htmltext = "30711-01.html";
-								}
-								else if (qs.getInt("old_stone") == 1)
-								{
-									qs.setCond(5, true);
-									htmltext = "30711-05.html";
-								}
-								else
-								{
-									qs.setCond(4, true);
-									htmltext = "30711-06.html";
-								}
-								break;
+								htmltext = "30711-06.htm";
+								st.setCond(4, true);
+								st.unset("deluxestone");
 							}
-							case 4:
+							else
 							{
-								if ((getQuestItemsCount(talker, FAIRY_STONE) == 0) && (getQuestItemsCount(talker, DELUXE_FAIRY_STONE) == 0))
-								{
-									htmltext = "30711-09.html";
-								}
-								else if (getQuestItemsCount(talker, FAIRY_STONE) == 0)
-								{
-									htmltext = "30711-08.html";
-								}
-								else
-								{
-									htmltext = "30711-07.html";
-								}
-								break;
+								htmltext = "30711-10.htm";
+							}
+						}
+						else if (deluxestone == 2)
+						{
+							htmltext = "30711-09.htm";
+						}
+						else if (cond == 3)
+						{
+							htmltext = "30711-01.htm";
+						}
+						else if (cond == 4)
+						{
+							if (hasQuestItems(player, FAIRY_STONE))
+							{
+								htmltext = "30711-07.htm";
+							}
+							else if (hasQuestItems(player, DELUXE_FAIRY_STONE))
+							{
+								htmltext = "30711-08.htm";
 							}
 						}
 						break;
 					}
 					case MIMYU:
 					{
-						switch (qs.getCond())
+						if (cond == 4)
 						{
-							case 4:
+							if (st.getInt("mimyu") == 1)
 							{
-								if (getQuestItemsCount(talker, FAIRY_STONE) > 0)
-								{
-									htmltext = "30747-01.html";
-								}
-								else if (getQuestItemsCount(talker, DELUXE_FAIRY_STONE) > 0)
-								{
-									htmltext = "30747-03.html";
-								}
-								break;
+								htmltext = "30747-06.htm";
 							}
-							case 5:
+							else if (hasQuestItems(player, FAIRY_STONE))
 							{
-								if (getQuestItemsCount(talker, MONKSHOOD_JUICE) > 0)
-								{
-									htmltext = "30747-09.html";
-								}
-								else if (qs.getInt("fairy_stone") == 1)
-								{
-									htmltext = "30747-05.html";
-								}
-								else
-								{
-									htmltext = "30747-06.html";
-								}
-								break;
+								htmltext = "30747-01.htm";
 							}
-							case 6:
+							else if (hasQuestItems(player, DELUXE_FAIRY_STONE))
 							{
-								if ((getQuestItemsCount(talker, EXARION_EGG) >= 20) || (getQuestItemsCount(talker, ZWOV_EGG) >= 20) || (getQuestItemsCount(talker, KALIBRAN_EGG) >= 20) || (getQuestItemsCount(talker, SUZET_EGG) >= 20) || (getQuestItemsCount(talker, SHAMHAI_EGG) >= 20))
-								{
-									htmltext = "30747-10.html";
-								}
-								else
-								{
-									htmltext = "30747-09.html";
-								}
-								break;
+								htmltext = "30747-03.htm";
 							}
-							case 7:
+						}
+						else if (cond == 5)
+						{
+							htmltext = "30747-08.htm";
+						}
+						else if (cond == 6)
+						{
+							final int eggs = getQuestItemsCount(player, EGG_OF_DRAKE_EXARION) + getQuestItemsCount(player, EGG_OF_DRAKE_ZWOV) + getQuestItemsCount(player, EGG_OF_DRAKE_KALIBRAN) + getQuestItemsCount(player, EGG_OF_WYVERN_SUZET) + getQuestItemsCount(player, EGG_OF_WYVERN_SHAMHAI);
+							if (eggs < 20)
 							{
-								htmltext = "30747-11.html";
-								break;
+								htmltext = "30747-09.htm";
 							}
-							case 8:
+							else
 							{
-								htmltext = "30747-12.html";
-								break;
+								htmltext = "30747-10.htm";
 							}
+						}
+						else if (cond == 7)
+						{
+							htmltext = "30747-11.htm";
+						}
+						else
+						{
+							_counter += 1;
+							final Location loc = LOCATIONS[_counter % 3];
+							npc.teleToLocation(loc.getX(), loc.getY(), loc.getZ());
+							return null;
 						}
 						break;
 					}
 					case EXARION:
 					{
-						switch (qs.getCond())
+						if (cond == 5)
 						{
-							case 5:
+							htmltext = "30748-01.htm";
+						}
+						else if (cond == 6)
+						{
+							if (getQuestItemsCount(player, EGG_OF_DRAKE_EXARION) < 20)
 							{
-								if (getQuestItemsCount(talker, MONKSHOOD_JUICE) > 0)
-								{
-									htmltext = "30748-01.html";
-								}
-								break;
+								htmltext = "30748-03.htm";
 							}
-							case 6:
+							else
 							{
-								if (getQuestItemsCount(talker, EXARION_EGG) >= 20)
-								{
-									takeItems(talker, -1, EXARION_SCALE, EXARION_EGG);
-									giveItems(talker, EXARION_EGG, 1);
-									qs.setCond(7, true);
-									htmltext = "30748-04.html";
-								}
-								else
-								{
-									htmltext = "30748-03.html";
-								}
-								break;
+								htmltext = "30748-04.htm";
+								st.setCond(7, true);
+								takeItems(player, EGG_OF_DRAKE_EXARION, 19);
+								takeItems(player, SCALE_OF_DRAKE_EXARION, 1);
 							}
-							case 7:
-							{
-								htmltext = "30748-05.html";
-								break;
-							}
+						}
+						else if (cond == 7)
+						{
+							htmltext = "30748-05.htm";
 						}
 						break;
 					}
 					case ZWOV:
 					{
-						switch (qs.getCond())
+						if (cond == 5)
 						{
-							case 5:
+							htmltext = "30749-01.htm";
+						}
+						else if (cond == 6)
+						{
+							if (getQuestItemsCount(player, EGG_OF_DRAKE_ZWOV) < 20)
 							{
-								if (getQuestItemsCount(talker, MONKSHOOD_JUICE) > 0)
-								{
-									htmltext = "30749-01.html";
-								}
-								break;
+								htmltext = "30749-03.htm";
 							}
-							case 6:
+							else
 							{
-								if (getQuestItemsCount(talker, ZWOV_EGG) >= 20)
-								{
-									takeItems(talker, -1, ZWOV_SCALE, ZWOV_EGG);
-									giveItems(talker, ZWOV_EGG, 1);
-									qs.setCond(7, true);
-									htmltext = "30749-04.html";
-								}
-								else
-								{
-									htmltext = "30749-03.html";
-								}
-								break;
+								htmltext = "30749-04.htm";
+								st.setCond(7, true);
+								takeItems(player, EGG_OF_DRAKE_ZWOV, 19);
+								takeItems(player, SCALE_OF_DRAKE_ZWOV, 1);
 							}
-							case 7:
-							{
-								htmltext = "30749-05.html";
-								break;
-							}
+						}
+						else if (cond == 7)
+						{
+							htmltext = "30749-05.htm";
 						}
 						break;
 					}
 					case KALIBRAN:
 					{
-						switch (qs.getCond())
+						if (cond == 5)
 						{
-							case 5:
-							{
-								if (getQuestItemsCount(talker, MONKSHOOD_JUICE) > 0)
-								{
-									htmltext = "30750-01.html";
-								}
-								break;
-							}
-							case 6:
-							{
-								if (getQuestItemsCount(talker, KALIBRAN_EGG) >= 20)
-								{
-									htmltext = "30750-04.html";
-								}
-								else
-								{
-									htmltext = "30750-03.html";
-								}
-								break;
-							}
-							case 7:
-							{
-								htmltext = "30750-06.html";
-								break;
-							}
+							htmltext = "30750-01.htm";
+						}
+						else if (cond == 6)
+						{
+							htmltext = (getQuestItemsCount(player, EGG_OF_DRAKE_KALIBRAN) < 20) ? "30750-03.htm" : "30750-04.htm";
+						}
+						else if (cond == 7)
+						{
+							htmltext = "30750-06.htm";
 						}
 						break;
 					}
 					case SUZET:
 					{
-						switch (qs.getCond())
+						if (cond == 5)
 						{
-							case 5:
+							htmltext = "30751-01.htm";
+						}
+						else if (cond == 6)
+						{
+							if (getQuestItemsCount(player, EGG_OF_WYVERN_SUZET) < 20)
 							{
-								if (getQuestItemsCount(talker, MONKSHOOD_JUICE) > 0)
-								{
-									htmltext = "30751-01.html";
-								}
-								break;
+								htmltext = "30751-04.htm";
 							}
-							case 6:
+							else
 							{
-								if (getQuestItemsCount(talker, SUZET_EGG) >= 20)
-								{
-									takeItems(talker, -1, SUZET_SCALE, SUZET_EGG);
-									giveItems(talker, SUZET_EGG, 1);
-									qs.setCond(7, true);
-									htmltext = "30751-05.html";
-								}
-								else
-								{
-									htmltext = "30751-04.html";
-								}
-								break;
+								htmltext = "30751-05.htm";
+								st.setCond(7, true);
+								takeItems(player, EGG_OF_WYVERN_SUZET, 19);
+								takeItems(player, SCALE_OF_WYVERN_SUZET, 1);
 							}
-							case 7:
-							{
-								htmltext = "30751-06.html";
-								break;
-							}
+						}
+						else if (cond == 7)
+						{
+							htmltext = "30751-06.htm";
 						}
 						break;
 					}
 					case SHAMHAI:
 					{
-						switch (qs.getCond())
+						if (cond == 5)
 						{
-							case 5:
+							htmltext = "30752-01.htm";
+						}
+						else if (cond == 6)
+						{
+							if (getQuestItemsCount(player, EGG_OF_WYVERN_SHAMHAI) < 20)
 							{
-								if (getQuestItemsCount(talker, MONKSHOOD_JUICE) > 0)
-								{
-									htmltext = "30752-01.html";
-								}
-								break;
+								htmltext = "30752-03.htm";
 							}
-							case 6:
+							else
 							{
-								if (getQuestItemsCount(talker, SHAMHAI_EGG) >= 20)
-								{
-									takeItems(talker, -1, SHAMHAI_SCALE, SHAMHAI_EGG);
-									giveItems(talker, SHAMHAI_EGG, 1);
-									qs.setCond(7, true);
-									htmltext = "30752-04.html";
-								}
-								else
-								{
-									htmltext = "30752-03.html";
-								}
-								break;
+								htmltext = "30752-04.htm";
+								st.setCond(7, true);
+								takeItems(player, EGG_OF_WYVERN_SHAMHAI, 19);
+								takeItems(player, SCALE_OF_WYVERN_SHAMHAI, 1);
 							}
-							case 7:
-							{
-								htmltext = "30752-05.html";
-								break;
-							}
+						}
+						else if (cond == 7)
+						{
+							htmltext = "30752-05.htm";
 						}
 						break;
 					}
 				}
 				break;
 			}
-			case State.COMPLETED:
-			{
-				htmltext = getAlreadyCompletedMsg(talker);
-				break;
-			}
 		}
+		
 		return htmltext;
 	}
 	
 	@Override
-	public String onKill(Npc npc, Player killer, boolean isSummon)
+	public String onKill(Npc npc, Player player, boolean isPet)
 	{
-		final QuestState qs = getRandomPartyMemberState(killer, -1, 3, npc);
-		if (qs != null)
+		final QuestState st = getQuestState(player, false);
+		if ((st == null) || !st.isStarted())
 		{
-			if (qs.isCond(2) && (npc.getId() == TOAD_LORD))
-			{
-				if (qs.getInt("fairy_stone") == 1)
-				{
-					giveItemRandomly(qs.getPlayer(), npc, TOAD_SKIN, 1, 10, 0.3, true);
-				}
-				else
-				{
-					giveItemRandomly(qs.getPlayer(), npc, TOAD_SKIN, 1, 20, 0.3, true);
-				}
-			}
-			else if (qs.isCond(6) && (npc.getId() == qs.getInt("drake_hunt")))
-			{
-				giveItemRandomly(qs.getPlayer(), npc, EGG_DROPS.get(npc.getId()), 1, 20, 0.5, true);
-			}
+			return null;
 		}
-		return super.onKill(npc, killer, isSummon);
-	}
-	
-	/**
-	 * Gives the reward to the player.
-	 * @param player the player
-	 */
-	private void giveReward(Player player)
-	{
-		final int random = getRandom(100);
-		for (int i : EGGS)
+		
+		switch (npc.getId())
 		{
-			if (hasQuestItems(player, i))
+			case 20231:
 			{
-				final int mul = EGGS.indexOf(i) * 5;
-				if (hasQuestItems(player, FAIRY_DUST))
+				if (hasQuestItems(player, FAIRY_STONE_LIST))
 				{
-					if (random < (45 + mul))
+					if ((getQuestItemsCount(player, TOAD_LORD_BACK_SKIN) < 10) && (getRandom(10) < 3))
 					{
-						giveItems(player, DRAGONFLUTE_OF_WIND, 1);
+						giveItems(player, TOAD_LORD_BACK_SKIN, 1);
+						if (getQuestItemsCount(player, TOAD_LORD_BACK_SKIN) < 10)
+						{
+							playSound(player, QuestSound.ITEMSOUND_QUEST_ITEMGET);
+						}
+						else
+						{
+							playSound(player, QuestSound.ITEMSOUND_QUEST_MIDDLE);
+						}
 					}
-					else if (random < (75 + mul))
+				}
+				else if (hasQuestItems(player, DELUXE_FAIRY_STONE_LIST) && (getQuestItemsCount(player, TOAD_LORD_BACK_SKIN) < 20) && (getRandom(10) < 3))
+				{
+					giveItems(player, TOAD_LORD_BACK_SKIN, 1);
+					if (getQuestItemsCount(player, TOAD_LORD_BACK_SKIN) < 20)
 					{
-						giveItems(player, DRAGONFLUTE_OF_STAR, 1);
+						playSound(player, QuestSound.ITEMSOUND_QUEST_ITEMGET);
 					}
 					else
 					{
-						giveItems(player, DRAGONFLUTE_OF_TWILIGHT, 1);
+						playSound(player, QuestSound.ITEMSOUND_QUEST_MIDDLE);
 					}
 				}
-				else if (random < (50 + mul))
+				break;
+			}
+			case 20580:
+			{
+				if (hasQuestItems(player, SCALE_OF_DRAKE_EXARION) && (getQuestItemsCount(player, EGG_OF_DRAKE_EXARION) < 20))
 				{
-					giveItems(player, DRAGONFLUTE_OF_WIND, 1);
+					if (getRandom(10) < 5)
+					{
+						giveItems(player, EGG_OF_DRAKE_EXARION, 1);
+						if (getQuestItemsCount(player, EGG_OF_DRAKE_EXARION) < 20)
+						{
+							playSound(player, QuestSound.ITEMSOUND_QUEST_ITEMGET);
+						}
+						else
+						{
+							playSound(player, QuestSound.ITEMSOUND_QUEST_MIDDLE);
+						}
+					}
+					else
+					{
+						npc.broadcastSay(ChatType.GENERAL, "If the eggs get taken, we're dead!");
+					}
 				}
-				else if (random < (85 + mul))
+				break;
+			}
+			case 20233:
+			{
+				if (hasQuestItems(player, SCALE_OF_DRAKE_ZWOV) && (getQuestItemsCount(player, EGG_OF_DRAKE_ZWOV) < 20) && (getRandom(10) < 5))
 				{
-					giveItems(player, DRAGONFLUTE_OF_STAR, 1);
+					giveItems(player, EGG_OF_DRAKE_ZWOV, 1);
+					if (getQuestItemsCount(player, EGG_OF_DRAKE_ZWOV) < 20)
+					{
+						playSound(player, QuestSound.ITEMSOUND_QUEST_ITEMGET);
+					}
+					else
+					{
+						playSound(player, QuestSound.ITEMSOUND_QUEST_MIDDLE);
+					}
 				}
-				else
+				break;
+			}
+			case 20551:
+			{
+				if (hasQuestItems(player, SCALE_OF_DRAKE_KALIBRAN) && (getQuestItemsCount(player, EGG_OF_DRAKE_KALIBRAN) < 20))
 				{
-					giveItems(player, DRAGONFLUTE_OF_TWILIGHT, 1);
+					if (getRandom(10) < 5)
+					{
+						giveItems(player, EGG_OF_DRAKE_KALIBRAN, 1);
+						if (getQuestItemsCount(player, EGG_OF_DRAKE_KALIBRAN) < 20)
+						{
+							playSound(player, QuestSound.ITEMSOUND_QUEST_ITEMGET);
+						}
+						else
+						{
+							playSound(player, QuestSound.ITEMSOUND_QUEST_MIDDLE);
+						}
+					}
+					else
+					{
+						npc.broadcastSay(ChatType.GENERAL, "Hey! Everybody watch the eggs!");
+					}
 				}
-				takeItems(player, i, -1);
+				break;
+			}
+			case 20270:
+			{
+				if (hasQuestItems(player, SCALE_OF_WYVERN_SUZET) && (getQuestItemsCount(player, EGG_OF_WYVERN_SUZET) < 20))
+				{
+					if (getRandom(10) < 5)
+					{
+						giveItems(player, EGG_OF_WYVERN_SUZET, 1);
+						if (getQuestItemsCount(player, EGG_OF_WYVERN_SUZET) < 20)
+						{
+							playSound(player, QuestSound.ITEMSOUND_QUEST_ITEMGET);
+						}
+						else
+						{
+							playSound(player, QuestSound.ITEMSOUND_QUEST_MIDDLE);
+						}
+					}
+					else
+					{
+						npc.broadcastSay(ChatType.GENERAL, "I thought I'd caught one share... Whew!");
+					}
+				}
+				break;
+			}
+			case 20202:
+			{
+				if (hasQuestItems(player, SCALE_OF_WYVERN_SHAMHAI) && (getQuestItemsCount(player, EGG_OF_WYVERN_SHAMHAI) < 20))
+				{
+					giveItems(player, EGG_OF_WYVERN_SHAMHAI, 1);
+					if (getQuestItemsCount(player, EGG_OF_WYVERN_SHAMHAI) < 20)
+					{
+						playSound(player, QuestSound.ITEMSOUND_QUEST_ITEMGET);
+					}
+					else
+					{
+						playSound(player, QuestSound.ITEMSOUND_QUEST_MIDDLE);
+					}
+				}
+				break;
+			}
+			case 20589:
+			case 20590:
+			case 20591:
+			case 20592:
+			case 20593:
+			case 20594:
+			case 20595:
+			case 20596:
+			case 20597:
+			case 20598:
+			case 20599:
+			{
+				if (hasQuestItems(player, DELUXE_FAIRY_STONE) && (getRandom(100) < 30))
+				{
+					st.set("deluxestone", "2");
+					playSound(player, QuestSound.ITEMSOUND_QUEST_MIDDLE);
+					takeItems(player, DELUXE_FAIRY_STONE, 1);
+					npc.broadcastSay(ChatType.GENERAL, "The stone... the Elven stone... broke...");
+				}
 				break;
 			}
 		}
+		return null;
+	}
+	
+	private static boolean checkItems(Player player, boolean isDeluxe)
+	{
+		// Conditions required for both cases.
+		if ((getQuestItemsCount(player, COAL) < 10) || (getQuestItemsCount(player, CHARCOAL) < 10))
+		{
+			return false;
+		}
+		
+		if (isDeluxe)
+		{
+			if ((getQuestItemsCount(player, GEMSTONE_C) >= 1) && (getQuestItemsCount(player, SILVER_NUGGET) >= 5) && (getQuestItemsCount(player, STONE_OF_PURITY) >= 1) && (getQuestItemsCount(player, TOAD_LORD_BACK_SKIN) >= 20))
+			{
+				return true;
+			}
+		}
+		else
+		{
+			if ((getQuestItemsCount(player, GEMSTONE_D) >= 1) && (getQuestItemsCount(player, SILVER_NUGGET) >= 3) && (getQuestItemsCount(player, TOAD_LORD_BACK_SKIN) >= 10))
+			{
+				return true;
+			}
+		}
+		return false;
+	}
+	
+	private void giveRandomPet(Player player, boolean hasFairyDust)
+	{
+		int pet = DRAGONFLUTE_OF_TWILIGHT;
+		final int chance = getRandom(100);
+		if (hasQuestItems(player, EGG_OF_DRAKE_EXARION))
+		{
+			takeItems(player, EGG_OF_DRAKE_EXARION, 1);
+			if (hasFairyDust)
+			{
+				if (chance < 45)
+				{
+					pet = DRAGONFLUTE_OF_WIND;
+				}
+				else if (chance < 75)
+				{
+					pet = DRAGONFLUTE_OF_STAR;
+				}
+			}
+			else if (chance < 50)
+			{
+				pet = DRAGONFLUTE_OF_WIND;
+			}
+			else if (chance < 85)
+			{
+				pet = DRAGONFLUTE_OF_STAR;
+			}
+		}
+		else if (hasQuestItems(player, EGG_OF_WYVERN_SUZET))
+		{
+			takeItems(player, EGG_OF_WYVERN_SUZET, 1);
+			if (hasFairyDust)
+			{
+				if (chance < 55)
+				{
+					pet = DRAGONFLUTE_OF_WIND;
+				}
+				else if (chance < 85)
+				{
+					pet = DRAGONFLUTE_OF_STAR;
+				}
+			}
+			else if (chance < 65)
+			{
+				pet = DRAGONFLUTE_OF_WIND;
+			}
+			else if (chance < 95)
+			{
+				pet = DRAGONFLUTE_OF_STAR;
+			}
+		}
+		else if (hasQuestItems(player, EGG_OF_DRAKE_KALIBRAN))
+		{
+			takeItems(player, EGG_OF_DRAKE_KALIBRAN, 1);
+			if (hasFairyDust)
+			{
+				if (chance < 60)
+				{
+					pet = DRAGONFLUTE_OF_WIND;
+				}
+				else if (chance < 90)
+				{
+					pet = DRAGONFLUTE_OF_STAR;
+				}
+			}
+			else if (chance < 70)
+			{
+				pet = DRAGONFLUTE_OF_WIND;
+			}
+			else
+			{
+				pet = DRAGONFLUTE_OF_STAR;
+			}
+		}
+		else if (hasQuestItems(player, EGG_OF_WYVERN_SHAMHAI))
+		{
+			takeItems(player, EGG_OF_WYVERN_SHAMHAI, 1);
+			if (hasFairyDust)
+			{
+				if (chance < 70)
+				{
+					pet = DRAGONFLUTE_OF_WIND;
+				}
+				else
+				{
+					pet = DRAGONFLUTE_OF_STAR;
+				}
+			}
+			else if (chance < 85)
+			{
+				pet = DRAGONFLUTE_OF_WIND;
+			}
+			else
+			{
+				pet = DRAGONFLUTE_OF_STAR;
+			}
+		}
+		else if (hasQuestItems(player, EGG_OF_DRAKE_ZWOV))
+		{
+			takeItems(player, EGG_OF_DRAKE_ZWOV, 1);
+			if (hasFairyDust)
+			{
+				if (chance < 90)
+				{
+					pet = DRAGONFLUTE_OF_WIND;
+				}
+				else
+				{
+					pet = DRAGONFLUTE_OF_STAR;
+				}
+			}
+			else
+			{
+				pet = DRAGONFLUTE_OF_WIND;
+			}
+		}
+		
+		giveItems(player, pet, 1);
 	}
 }

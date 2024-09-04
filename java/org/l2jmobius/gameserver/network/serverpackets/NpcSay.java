@@ -21,9 +21,11 @@ import java.util.Collections;
 import java.util.List;
 
 import org.l2jmobius.Config;
+import org.l2jmobius.commons.network.WritableBuffer;
 import org.l2jmobius.gameserver.enums.ChatType;
 import org.l2jmobius.gameserver.model.actor.Npc;
 import org.l2jmobius.gameserver.model.actor.Player;
+import org.l2jmobius.gameserver.network.GameClient;
 import org.l2jmobius.gameserver.network.NpcStringId;
 import org.l2jmobius.gameserver.network.NpcStringId.NSLocalisation;
 import org.l2jmobius.gameserver.network.ServerPackets;
@@ -97,12 +99,12 @@ public class NpcSay extends ServerPacket
 	}
 	
 	@Override
-	public void write()
+	public void writeImpl(GameClient client, WritableBuffer buffer)
 	{
-		ServerPackets.NPC_SAY.writeId(this);
-		writeInt(_objectId);
-		writeInt(_textType.getClientId());
-		writeInt(_npcId);
+		ServerPackets.NPC_SAY.writeId(this, buffer);
+		buffer.writeInt(_objectId);
+		buffer.writeInt(_textType.getClientId());
+		buffer.writeInt(_npcId);
 		if (_parameters != null)
 		{
 			for (int i = 0; i < _parameters.size(); i++)
@@ -114,7 +116,7 @@ public class NpcSay extends ServerPacket
 		// Localisation related.
 		if (Config.MULTILANG_ENABLE)
 		{
-			final Player player = getPlayer();
+			final Player player = client.getPlayer();
 			if (player != null)
 			{
 				final String lang = player.getLang();
@@ -133,6 +135,6 @@ public class NpcSay extends ServerPacket
 			}
 		}
 		
-		writeString(_text);
+		buffer.writeString(_text);
 	}
 }

@@ -26,6 +26,8 @@ import org.l2jmobius.gameserver.data.xml.DoorData;
 import org.l2jmobius.gameserver.data.xml.FenceData;
 import org.l2jmobius.gameserver.geoengine.geodata.Cell;
 import org.l2jmobius.gameserver.geoengine.geodata.GeoData;
+import org.l2jmobius.gameserver.geoengine.geodata.IRegion;
+import org.l2jmobius.gameserver.geoengine.geodata.regions.Region;
 import org.l2jmobius.gameserver.model.Location;
 import org.l2jmobius.gameserver.model.World;
 import org.l2jmobius.gameserver.model.WorldObject;
@@ -42,7 +44,8 @@ public class GeoEngine
 {
 	private static final Logger LOGGER = Logger.getLogger(GeoEngine.class.getName());
 	
-	private static final String FILE_NAME_FORMAT = "%d_%d.l2j";
+	public static final String FILE_NAME_FORMAT = "%d_%d.l2j";
+	
 	private static final int ELEVATED_SEE_OVER_DISTANCE = 2;
 	private static final int MAX_SEE_OVER_HEIGHT = 48;
 	private static final int SPAWN_Z_DELTA_LIMIT = 100;
@@ -82,6 +85,13 @@ public class GeoEngine
 		}
 		
 		LOGGER.info(getClass().getSimpleName() + ": Loaded " + loadedRegions + " regions.");
+		
+		// Avoid wrong configuration when no files are loaded.
+		if ((loadedRegions == 0) && (Config.PATHFINDING > 0))
+		{
+			Config.PATHFINDING = 0;
+			LOGGER.info(getClass().getSimpleName() + ": Pathfinding is disabled.");
+		}
 	}
 	
 	public boolean hasGeoPos(int geoX, int geoY)
@@ -124,6 +134,16 @@ public class GeoEngine
 		return can && checkNearestNswe(geoX, geoY, worldZ, nswe);
 	}
 	
+	public void setNearestNswe(int geoX, int geoY, int worldZ, byte nswe)
+	{
+		_geodata.setNearestNswe(geoX, geoY, worldZ, nswe);
+	}
+	
+	public void unsetNearestNswe(int geoX, int geoY, int worldZ, byte nswe)
+	{
+		_geodata.unsetNearestNswe(geoX, geoY, worldZ, nswe);
+	}
+	
 	public int getNearestZ(int geoX, int geoY, int worldZ)
 	{
 		return _geodata.getNearestZ(geoX, geoY, worldZ);
@@ -157,6 +177,16 @@ public class GeoEngine
 	public int getWorldY(int geoY)
 	{
 		return _geodata.getWorldY(geoY);
+	}
+	
+	public IRegion getRegion(int geoX, int geoY)
+	{
+		return _geodata.getRegion(geoX, geoY);
+	}
+	
+	public void setRegion(int regionX, int regionY, Region region)
+	{
+		_geodata.setRegion(regionX, regionY, region);
 	}
 	
 	/**
@@ -474,7 +504,7 @@ public class GeoEngine
 	}
 	
 	/**
-	 * Checks if its possible to move from one location to another.
+	 * Checks if it is possible to move from one location to another.
 	 * @param fromX the X coordinate to start checking from
 	 * @param fromY the Y coordinate to start checking from
 	 * @param fromZ the Z coordinate to start checking from
@@ -550,7 +580,7 @@ public class GeoEngine
 	}
 	
 	/**
-	 * Checks if its possible to move from one location to another.
+	 * Checks if it is possible to move from one location to another.
 	 * @param from the {@code ILocational} to start checking from
 	 * @param toX the X coordinate to end checking at
 	 * @param toY the Y coordinate to end checking at
@@ -563,7 +593,7 @@ public class GeoEngine
 	}
 	
 	/**
-	 * Checks if its possible to move from one location to another.
+	 * Checks if it is possible to move from one location to another.
 	 * @param from the {@code ILocational} to start checking from
 	 * @param to the {@code ILocational} to end checking at
 	 * @return {@code true} if the character at start coordinates can move to end coordinates, {@code false} otherwise

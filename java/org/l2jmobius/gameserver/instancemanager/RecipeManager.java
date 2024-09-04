@@ -25,7 +25,7 @@ import java.util.logging.Logger;
 import org.l2jmobius.Config;
 import org.l2jmobius.commons.threads.ThreadPool;
 import org.l2jmobius.commons.util.Rnd;
-import org.l2jmobius.gameserver.data.ItemTable;
+import org.l2jmobius.gameserver.data.xml.ItemData;
 import org.l2jmobius.gameserver.data.xml.RecipeData;
 import org.l2jmobius.gameserver.enums.StatType;
 import org.l2jmobius.gameserver.model.ManufactureItem;
@@ -42,7 +42,6 @@ import org.l2jmobius.gameserver.model.skill.Skill;
 import org.l2jmobius.gameserver.model.stats.Stat;
 import org.l2jmobius.gameserver.network.SystemMessageId;
 import org.l2jmobius.gameserver.network.serverpackets.ActionFailed;
-import org.l2jmobius.gameserver.network.serverpackets.ItemList;
 import org.l2jmobius.gameserver.network.serverpackets.MagicSkillUse;
 import org.l2jmobius.gameserver.network.serverpackets.RecipeBookItemList;
 import org.l2jmobius.gameserver.network.serverpackets.RecipeItemMakeInfo;
@@ -97,7 +96,7 @@ public class RecipeManager
 		// Check if manufacturer is under manufacturing store or private store.
 		if (Config.ALT_GAME_CREATION && _activeMakers.containsKey(manufacturer.getObjectId()))
 		{
-			player.sendPacket(SystemMessageId.PLEASE_CLOSE_THE_SETUP_WINDOW_FOR_YOUR_PRIVATE_MANUFACTURING_STORE_OR_PRIVATE_STORE_AND_TRY_AGAIN);
+			player.sendPacket(SystemMessageId.PLEASE_CLOSE_THE_THE_SETUP_WINDOW_FOR_YOUR_PRIVATE_MANUFACTURING_STORE_OR_PRIVATE_STORE_AND_TRY_AGAIN);
 			return;
 		}
 		
@@ -397,12 +396,12 @@ public class RecipeManager
 				{
 					if (_target != _player)
 					{
-						SystemMessage msg = new SystemMessage(SystemMessageId.YOUR_ATTEMPT_TO_CREATE_S2_FOR_C1_AT_THE_PRICE_OF_S3_ADENA_HAS_FAILED);
+						SystemMessage msg = new SystemMessage(SystemMessageId.THE_ATTEMPT_TO_CREATE_S2_FOR_S1_AT_THE_PRICE_OF_S3_ADENA_HAS_FAILED);
 						msg.addString(_target.getName());
 						msg.addItemName(_recipeList.getItemId());
 						msg.addInt(_price);
 						_player.sendPacket(msg);
-						msg = new SystemMessage(SystemMessageId.C1_HAS_FAILED_TO_CREATE_S2_AT_THE_PRICE_OF_S3_ADENA);
+						msg = new SystemMessage(SystemMessageId.S1_HAS_FAILED_TO_CREATE_S2_AT_THE_PRICE_OF_S3_ADENA);
 						msg.addString(_player.getName());
 						msg.addItemName(_recipeList.getItemId());
 						msg.addInt(_price);
@@ -420,7 +419,7 @@ public class RecipeManager
 			updateCurLoad();
 			_activeMakers.remove(_player.getObjectId());
 			_player.setCrafting(false);
-			_target.sendPacket(new ItemList(_target, false));
+			_target.sendItemList(false);
 		}
 		
 		private void updateMakeInfo(boolean success)
@@ -632,18 +631,9 @@ public class RecipeManager
 		
 		private void rewardPlayer()
 		{
-			final int rareProdId = _recipeList.getRareItemId();
-			int itemId = _recipeList.getItemId();
-			int itemCount = _recipeList.getCount();
-			final ItemTemplate template = ItemTable.getInstance().getTemplate(itemId);
-			
-			// check that the current recipe has a rare production or not
-			if ((rareProdId != -1) && ((rareProdId == itemId) || Config.CRAFT_MASTERWORK) && (Rnd.get(100) < _recipeList.getRarity()))
-			{
-				itemId = rareProdId;
-				itemCount = _recipeList.getRareCount();
-			}
-			
+			final int itemId = _recipeList.getItemId();
+			final int itemCount = _recipeList.getCount();
+			final ItemTemplate template = ItemData.getInstance().getTemplate(itemId);
 			_target.getInventory().addItem("Manufacture", itemId, itemCount, _target, _player);
 			
 			// inform customer of earned item
@@ -653,13 +643,13 @@ public class RecipeManager
 				// inform manufacturer of earned profit
 				if (itemCount == 1)
 				{
-					sm = new SystemMessage(SystemMessageId.S2_HAS_BEEN_CREATED_FOR_C1_AFTER_THE_PAYMENT_OF_S3_ADENA_WAS_RECEIVED);
+					sm = new SystemMessage(SystemMessageId.S2_HAS_BEEN_CREATED_FOR_S1_AFTER_THE_PAYMENT_OF_S3_ADENA_IS_RECEIVED);
 					sm.addString(_target.getName());
 					sm.addItemName(itemId);
 					sm.addInt(_price);
 					_player.sendPacket(sm);
 					
-					sm = new SystemMessage(SystemMessageId.C1_CREATED_S2_AFTER_RECEIVING_S3_ADENA);
+					sm = new SystemMessage(SystemMessageId.S1_CREATED_S2_AFTER_RECEIVING_S3_ADENA);
 					sm.addString(_player.getName());
 					sm.addItemName(itemId);
 					sm.addInt(_price);
@@ -667,14 +657,14 @@ public class RecipeManager
 				}
 				else
 				{
-					sm = new SystemMessage(SystemMessageId.S2_S3_HAVE_BEEN_CREATED_FOR_C1_AT_THE_PRICE_OF_S4_ADENA);
+					sm = new SystemMessage(SystemMessageId.S2_S3_HAVE_BEEN_CREATED_FOR_S1_AT_THE_PRICE_OF_S4_ADENA);
 					sm.addString(_target.getName());
 					sm.addInt(itemCount);
 					sm.addItemName(itemId);
 					sm.addInt(_price);
 					_player.sendPacket(sm);
 					
-					sm = new SystemMessage(SystemMessageId.C1_CREATED_S2_S3_AT_THE_PRICE_OF_S4_ADENA);
+					sm = new SystemMessage(SystemMessageId.S1_CREATED_S2_S3_AT_THE_PRICE_OF_S4_ADENA);
 					sm.addString(_player.getName());
 					sm.addInt(itemCount);
 					sm.addItemName(itemId);
@@ -707,11 +697,6 @@ public class RecipeManager
 				if (_sp < 0)
 				{
 					_sp = _exp / 10;
-				}
-				if (itemId == rareProdId)
-				{
-					_exp *= Config.ALT_GAME_CREATION_RARE_XPSP_RATE;
-					_sp *= Config.ALT_GAME_CREATION_RARE_XPSP_RATE;
 				}
 				
 				if (_exp < 0)

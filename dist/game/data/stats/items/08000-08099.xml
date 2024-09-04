@@ -6,7 +6,7 @@
 		<set name="etcitem_type" val="CASTLE_GUARD" />
 		<set name="immediate_effect" val="true" />
 		<set name="material" val="PAPER" />
-		<set name="price" val="350000" />
+		<set name="price" val="200000" />
 		<set name="is_stackable" val="true" />
 		<set name="handler" val="MercTicket" />
 	</item>
@@ -16,7 +16,7 @@
 		<set name="etcitem_type" val="CASTLE_GUARD" />
 		<set name="immediate_effect" val="true" />
 		<set name="material" val="PAPER" />
-		<set name="price" val="140000" />
+		<set name="price" val="350000" />
 		<set name="is_stackable" val="true" />
 		<set name="handler" val="MercTicket" />
 	</item>
@@ -26,7 +26,7 @@
 		<set name="etcitem_type" val="CASTLE_GUARD" />
 		<set name="immediate_effect" val="true" />
 		<set name="material" val="PAPER" />
-		<set name="price" val="170000" />
+		<set name="price" val="350000" />
 		<set name="is_stackable" val="true" />
 		<set name="handler" val="MercTicket" />
 	</item>
@@ -36,7 +36,7 @@
 		<set name="etcitem_type" val="CASTLE_GUARD" />
 		<set name="immediate_effect" val="true" />
 		<set name="material" val="PAPER" />
-		<set name="price" val="200000" />
+		<set name="price" val="140000" />
 		<set name="is_stackable" val="true" />
 		<set name="handler" val="MercTicket" />
 	</item>
@@ -46,7 +46,7 @@
 		<set name="etcitem_type" val="CASTLE_GUARD" />
 		<set name="immediate_effect" val="true" />
 		<set name="material" val="PAPER" />
-		<set name="price" val="350000" />
+		<set name="price" val="170000" />
 		<set name="is_stackable" val="true" />
 		<set name="handler" val="MercTicket" />
 	</item>
@@ -56,7 +56,7 @@
 		<set name="etcitem_type" val="CASTLE_GUARD" />
 		<set name="immediate_effect" val="true" />
 		<set name="material" val="PAPER" />
-		<set name="price" val="350000" />
+		<set name="price" val="200000" />
 		<set name="is_stackable" val="true" />
 		<set name="handler" val="MercTicket" />
 	</item>
@@ -66,7 +66,7 @@
 		<set name="etcitem_type" val="CASTLE_GUARD" />
 		<set name="immediate_effect" val="true" />
 		<set name="material" val="PAPER" />
-		<set name="price" val="70000" />
+		<set name="price" val="350000" />
 		<set name="is_stackable" val="true" />
 		<set name="handler" val="MercTicket" />
 	</item>
@@ -76,7 +76,7 @@
 		<set name="etcitem_type" val="CASTLE_GUARD" />
 		<set name="immediate_effect" val="true" />
 		<set name="material" val="PAPER" />
-		<set name="price" val="90000" />
+		<set name="price" val="350000" />
 		<set name="is_stackable" val="true" />
 		<set name="handler" val="MercTicket" />
 	</item>
@@ -86,7 +86,7 @@
 		<set name="etcitem_type" val="CASTLE_GUARD" />
 		<set name="immediate_effect" val="true" />
 		<set name="material" val="PAPER" />
-		<set name="price" val="110000" />
+		<set name="price" val="70000" />
 		<set name="is_stackable" val="true" />
 		<set name="handler" val="MercTicket" />
 	</item>
@@ -96,7 +96,7 @@
 		<set name="etcitem_type" val="CASTLE_GUARD" />
 		<set name="immediate_effect" val="true" />
 		<set name="material" val="PAPER" />
-		<set name="price" val="230000" />
+		<set name="price" val="90000" />
 		<set name="is_stackable" val="true" />
 		<set name="handler" val="MercTicket" />
 	</item>
@@ -106,7 +106,7 @@
 		<set name="etcitem_type" val="CASTLE_GUARD" />
 		<set name="immediate_effect" val="true" />
 		<set name="material" val="PAPER" />
-		<set name="price" val="230000" />
+		<set name="price" val="110000" />
 		<set name="is_stackable" val="true" />
 		<set name="handler" val="MercTicket" />
 	</item>
@@ -116,7 +116,7 @@
 		<set name="etcitem_type" val="CASTLE_GUARD" />
 		<set name="immediate_effect" val="true" />
 		<set name="material" val="PAPER" />
-		<set name="price" val="70000" />
+		<set name="price" val="230000" />
 		<set name="is_stackable" val="true" />
 		<set name="handler" val="MercTicket" />
 	</item>
@@ -126,7 +126,7 @@
 		<set name="etcitem_type" val="CASTLE_GUARD" />
 		<set name="immediate_effect" val="true" />
 		<set name="material" val="PAPER" />
-		<set name="price" val="90000" />
+		<set name="price" val="230000" />
 		<set name="is_stackable" val="true" />
 		<set name="handler" val="MercTicket" />
 	</item>
@@ -136,7 +136,7 @@
 		<set name="etcitem_type" val="CASTLE_GUARD" />
 		<set name="immediate_effect" val="true" />
 		<set name="material" val="PAPER" />
-		<set name="price" val="110000" />
+		<set name="price" val="70000" />
 		<set name="is_stackable" val="true" />
 		<set name="handler" val="MercTicket" />
 	</item>
@@ -146,7 +146,7 @@
 		<set name="etcitem_type" val="CASTLE_GUARD" />
 		<set name="immediate_effect" val="true" />
 		<set name="material" val="PAPER" />
-		<set name="price" val="230000" />
+		<set name="price" val="90000" />
 		<set name="is_stackable" val="true" />
 		<set name="handler" val="MercTicket" />
 	</item>
@@ -156,7 +156,7 @@
 		<set name="etcitem_type" val="CASTLE_GUARD" />
 		<set name="immediate_effect" val="true" />
 		<set name="material" val="PAPER" />
-		<set name="price" val="230000" />
+		<set name="price" val="110000" />
 		<set name="is_stackable" val="true" />
 		<set name="handler" val="MercTicket" />
 	</item>
@@ -166,7 +166,7 @@
 		<set name="etcitem_type" val="CASTLE_GUARD" />
 		<set name="immediate_effect" val="true" />
 		<set name="material" val="PAPER" />
-		<set name="price" val="40000" />
+		<set name="price" val="230000" />
 		<set name="is_stackable" val="true" />
 		<set name="handler" val="MercTicket" />
 	</item>
@@ -176,7 +176,7 @@
 		<set name="etcitem_type" val="CASTLE_GUARD" />
 		<set name="immediate_effect" val="true" />
 		<set name="material" val="PAPER" />
-		<set name="price" val="50000" />
+		<set name="price" val="230000" />
 		<set name="is_stackable" val="true" />
 		<set name="handler" val="MercTicket" />
 	</item>
@@ -186,7 +186,7 @@
 		<set name="etcitem_type" val="CASTLE_GUARD" />
 		<set name="immediate_effect" val="true" />
 		<set name="material" val="PAPER" />
-		<set name="price" val="60000" />
+		<set name="price" val="40000" />
 		<set name="is_stackable" val="true" />
 		<set name="handler" val="MercTicket" />
 	</item>
@@ -196,7 +196,7 @@
 		<set name="etcitem_type" val="CASTLE_GUARD" />
 		<set name="immediate_effect" val="true" />
 		<set name="material" val="PAPER" />
-		<set name="price" val="150000" />
+		<set name="price" val="50000" />
 		<set name="is_stackable" val="true" />
 		<set name="handler" val="MercTicket" />
 	</item>
@@ -206,7 +206,7 @@
 		<set name="etcitem_type" val="CASTLE_GUARD" />
 		<set name="immediate_effect" val="true" />
 		<set name="material" val="PAPER" />
-		<set name="price" val="150000" />
+		<set name="price" val="60000" />
 		<set name="is_stackable" val="true" />
 		<set name="handler" val="MercTicket" />
 	</item>
@@ -216,7 +216,7 @@
 		<set name="etcitem_type" val="CASTLE_GUARD" />
 		<set name="immediate_effect" val="true" />
 		<set name="material" val="PAPER" />
-		<set name="price" val="40000" />
+		<set name="price" val="150000" />
 		<set name="is_stackable" val="true" />
 		<set name="handler" val="MercTicket" />
 	</item>
@@ -226,7 +226,7 @@
 		<set name="etcitem_type" val="CASTLE_GUARD" />
 		<set name="immediate_effect" val="true" />
 		<set name="material" val="PAPER" />
-		<set name="price" val="50000" />
+		<set name="price" val="150000" />
 		<set name="is_stackable" val="true" />
 		<set name="handler" val="MercTicket" />
 	</item>
@@ -236,7 +236,7 @@
 		<set name="etcitem_type" val="CASTLE_GUARD" />
 		<set name="immediate_effect" val="true" />
 		<set name="material" val="PAPER" />
-		<set name="price" val="60000" />
+		<set name="price" val="40000" />
 		<set name="is_stackable" val="true" />
 		<set name="handler" val="MercTicket" />
 	</item>
@@ -246,7 +246,7 @@
 		<set name="etcitem_type" val="CASTLE_GUARD" />
 		<set name="immediate_effect" val="true" />
 		<set name="material" val="PAPER" />
-		<set name="price" val="150000" />
+		<set name="price" val="50000" />
 		<set name="is_stackable" val="true" />
 		<set name="handler" val="MercTicket" />
 	</item>
@@ -256,7 +256,7 @@
 		<set name="etcitem_type" val="CASTLE_GUARD" />
 		<set name="immediate_effect" val="true" />
 		<set name="material" val="PAPER" />
-		<set name="price" val="150000" />
+		<set name="price" val="60000" />
 		<set name="is_stackable" val="true" />
 		<set name="handler" val="MercTicket" />
 	</item>
@@ -266,7 +266,7 @@
 		<set name="etcitem_type" val="CASTLE_GUARD" />
 		<set name="immediate_effect" val="true" />
 		<set name="material" val="PAPER" />
-		<set name="price" val="2500000" />
+		<set name="price" val="150000" />
 		<set name="is_stackable" val="true" />
 		<set name="handler" val="MercTicket" />
 	</item>
@@ -276,7 +276,7 @@
 		<set name="etcitem_type" val="CASTLE_GUARD" />
 		<set name="immediate_effect" val="true" />
 		<set name="material" val="PAPER" />
-		<set name="price" val="5000000" />
+		<set name="price" val="150000" />
 		<set name="is_stackable" val="true" />
 		<set name="handler" val="MercTicket" />
 	</item>
@@ -590,7 +590,7 @@
 	</item>
 	<item id="8056" type="EtcItem" name="Key of Splendor Room">
 		<!-- The key to the Splendor Room in the Monastery of Silence. -->
-		<set name="icon" val="icon.etc_old_key_i02" />
+		<set name="icon" val="icon.etc_old_key_i03" />
 		<set name="default_action" val="SKILL_REDUCE" />
 		<set name="material" val="STEEL" />
 		<set name="is_stackable" val="true" />
@@ -914,11 +914,11 @@
 		<set name="icon" val="icon.etc_fang_red_i00" />
 		<set name="immediate_effect" val="true" />
 		<set name="material" val="PAPER" />
-		<set name="is_tradable" val="true" />
+		<set name="is_tradable" val="false" />
 		<set name="is_dropable" val="false" />
 		<set name="is_sellable" val="false" />
 		<set name="is_stackable" val="true" />
-		<set name="is_questitem" val="false" />
+		<set name="is_questitem" val="true" />
 	</item>
 	<item id="8086" type="EtcItem" name="Box Containing the Fire of Holy Spirit">
 		<!-- Box containing the Fire of the Holy Spirit -->

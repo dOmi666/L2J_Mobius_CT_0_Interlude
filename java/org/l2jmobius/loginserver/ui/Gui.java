@@ -150,7 +150,7 @@ public class Gui
 			{
 				gsi.setStatus(ServerStatus.STATUS_NORMAL);
 			}
-			LoginServer.getInstance().LOGGER.info("Status changed to enabled.");
+			LoginServer.LOGGER.info("Status changed to enabled.");
 		});
 		chckbxmntmEnabled.setSelected(true);
 		mnStatus.add(chckbxmntmEnabled);
@@ -167,7 +167,7 @@ public class Gui
 			{
 				gsi.setStatus(ServerStatus.STATUS_DOWN);
 			}
-			LoginServer.getInstance().LOGGER.info("Status changed to disabled.");
+			LoginServer.LOGGER.info("Status changed to disabled.");
 		});
 		mnStatus.add(chckbxmntmDisabled);
 		
@@ -183,7 +183,7 @@ public class Gui
 			{
 				gsi.setStatus(ServerStatus.STATUS_GM_ONLY);
 			}
-			LoginServer.getInstance().LOGGER.info("Status changed to GM only.");
+			LoginServer.LOGGER.info("Status changed to GM only.");
 		});
 		mnStatus.add(chckbxmntmGmOnly);
 		
@@ -258,7 +258,7 @@ public class Gui
 		redirectSystemStreams();
 		
 		// Show SplashScreen.
-		new SplashScreen(".." + File.separator + "images" + File.separator + "splash.png", 0, frame);
+		new SplashScreen(".." + File.separator + "images" + File.separator + "splash.png", 5000, frame);
 	}
 	
 	// Set where the text is redirected. In this case, txtrConsole.

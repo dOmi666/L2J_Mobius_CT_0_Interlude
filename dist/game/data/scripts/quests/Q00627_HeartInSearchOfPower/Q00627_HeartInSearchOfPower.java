@@ -19,7 +19,6 @@ package quests.Q00627_HeartInSearchOfPower;
 import java.util.HashMap;
 import java.util.Map;
 
-import org.l2jmobius.Config;
 import org.l2jmobius.gameserver.enums.QuestSound;
 import org.l2jmobius.gameserver.model.actor.Npc;
 import org.l2jmobius.gameserver.model.actor.Player;
@@ -27,247 +26,199 @@ import org.l2jmobius.gameserver.model.quest.Quest;
 import org.l2jmobius.gameserver.model.quest.QuestState;
 import org.l2jmobius.gameserver.model.quest.State;
 
-/**
- * Heart in Search of Power (627)
- * @author Citizen
- */
 public class Q00627_HeartInSearchOfPower extends Quest
 {
 	// NPCs
-	private static final int MYSTERIOUS_NECROMANCER = 31518;
+	private static final int NECROMANCER = 31518;
 	private static final int ENFEUX = 31519;
 	// Items
 	private static final int SEAL_OF_LIGHT = 7170;
 	private static final int BEAD_OF_OBEDIENCE = 7171;
 	private static final int GEM_OF_SAINTS = 7172;
-	// Monsters
-	private static final Map<Integer, Integer> MONSTERS = new HashMap<>();
+	// Drop chances
+	private static final Map<Integer, Integer> CHANCES = new HashMap<>();
 	static
 	{
-		MONSTERS.put(21520, 661); // Eye of Splendor
-		MONSTERS.put(21523, 668); // Flash of Splendor
-		MONSTERS.put(21524, 714); // Blade of Splendor
-		MONSTERS.put(21525, 714); // Blade of Splendor
-		MONSTERS.put(21526, 796); // Wisdom of Splendor
-		MONSTERS.put(21529, 659); // Soul of Splendor
-		MONSTERS.put(21530, 704); // Victory of Splendor
-		MONSTERS.put(21531, 791); // Punishment of Splendor
-		MONSTERS.put(21532, 820); // Shout of Splendor
-		MONSTERS.put(21535, 827); // Signet of Splendor
-		MONSTERS.put(21536, 798); // Crown of Splendor
-		MONSTERS.put(21539, 875); // Wailing of Splendor
-		MONSTERS.put(21540, 875); // Wailing of Splendor
-		MONSTERS.put(21658, 791); // Punishment of Splendor
+		CHANCES.put(21520, 550000);
+		CHANCES.put(21523, 584000);
+		CHANCES.put(21524, 621000);
+		CHANCES.put(21525, 621000);
+		CHANCES.put(21526, 606000);
+		CHANCES.put(21529, 625000);
+		CHANCES.put(21530, 578000);
+		CHANCES.put(21531, 690000);
+		CHANCES.put(21532, 671000);
+		CHANCES.put(21535, 693000);
+		CHANCES.put(21536, 615000);
+		CHANCES.put(21539, 762000);
+		CHANCES.put(21540, 762000);
+		CHANCES.put(21658, 690000);
 	}
-	// Misc
-	private static final int MIN_LEVEL_REQUIRED = 60;
-	private static final int BEAD_OF_OBEDIENCE_COUNT_REQUIRED = 300;
-	// Rewards ID's
-	private static final int ASOFE = 4043;
-	private static final int THONS = 4044;
-	private static final int ENRIA = 4042;
-	private static final int MOLD_HARDENER = 4041;
+	// Rewards
+	private static final Map<String, int[]> REWARDS = new HashMap<>();
+	static
+	{
+		// @formatter:off
+		REWARDS.put("adena", new int[]{0, 0, 100000});
+		REWARDS.put("asofe", new int[]{4043, 13, 6400});
+		REWARDS.put("thon", new int[]{4044, 13, 6400});
+		REWARDS.put("enria", new int[]{4042, 6, 13600});
+		REWARDS.put("mold", new int[]{4041, 6, 17200});
+		// @formatter:on
+	}
 	
 	public Q00627_HeartInSearchOfPower()
 	{
 		super(627);
-		addStartNpc(MYSTERIOUS_NECROMANCER);
-		addTalkId(MYSTERIOUS_NECROMANCER, ENFEUX);
-		addKillId(MONSTERS.keySet());
-		registerQuestItems(SEAL_OF_LIGHT, BEAD_OF_OBEDIENCE, GEM_OF_SAINTS);
+		registerQuestItems(BEAD_OF_OBEDIENCE);
+		addStartNpc(NECROMANCER);
+		addTalkId(NECROMANCER, ENFEUX);
+		addKillId(CHANCES.keySet());
 	}
 	
 	@Override
-	public String onAdvEvent(String event, Npc npc, Player player)
+	public String onEvent(String event, Npc npc, Player player)
 	{
-		final QuestState qs = getQuestState(player, false);
-		if (qs == null)
-		{
-			return null;
-		}
 		String htmltext = event;
-		switch (event)
+		final QuestState st = getQuestState(player, false);
+		if (st == null)
 		{
-			case "31518-02.htm":
+			return htmltext;
+		}
+		
+		if (event.equals("31518-01.htm"))
+		{
+			st.startQuest();
+		}
+		else if (event.equals("31518-03.htm"))
+		{
+			if (getQuestItemsCount(player, BEAD_OF_OBEDIENCE) == 300)
 			{
-				qs.startQuest();
-				break;
-			}
-			case "31518-06.html":
-			{
-				if (getQuestItemsCount(player, BEAD_OF_OBEDIENCE) < BEAD_OF_OBEDIENCE_COUNT_REQUIRED)
-				{
-					return "31518-05.html";
-				}
-				giveItems(player, SEAL_OF_LIGHT, 1);
+				st.setCond(3, true);
 				takeItems(player, BEAD_OF_OBEDIENCE, -1);
-				qs.setCond(3);
-				break;
+				giveItems(player, SEAL_OF_LIGHT, 1);
 			}
-			case "Adena":
-			case "Asofes":
-			case "Thons":
-			case "Enrias":
-			case "Mold_Hardener":
+			else
 			{
-				if (!hasQuestItems(player, GEM_OF_SAINTS))
-				{
-					return "31518-11.html";
-				}
-				switch (event)
-				{
-					case "Adena":
-					{
-						giveAdena(player, 100000, true);
-						break;
-					}
-					case "Asofes":
-					{
-						rewardItems(player, ASOFE, 13);
-						giveAdena(player, 6400, true);
-						break;
-					}
-					case "Thons":
-					{
-						rewardItems(player, THONS, 13);
-						giveAdena(player, 6400, true);
-						break;
-					}
-					case "Enrias":
-					{
-						rewardItems(player, ENRIA, 6);
-						giveAdena(player, 13600, true);
-						break;
-					}
-					case "Mold_Hardener":
-					{
-						rewardItems(player, MOLD_HARDENER, 3);
-						giveAdena(player, 17200, true);
-						break;
-					}
-				}
-				htmltext = "31518-10.html";
-				qs.exitQuest(true);
-				break;
-			}
-			case "31519-02.html":
-			{
-				if (hasQuestItems(player, SEAL_OF_LIGHT) && qs.isCond(3))
-				{
-					giveItems(player, GEM_OF_SAINTS, 1);
-					takeItems(player, SEAL_OF_LIGHT, -1);
-					qs.setCond(4);
-				}
-				else
-				{
-					htmltext = getNoQuestMsg(player);
-				}
-				break;
-			}
-			case "31518-09.html":
-			{
-				break;
-			}
-			default:
-			{
-				htmltext = null;
-				break;
+				st.setCond(1);
+				takeItems(player, BEAD_OF_OBEDIENCE, -1);
+				htmltext = "31518-03a.htm";
 			}
 		}
-		return htmltext;
-	}
-	
-	@Override
-	public String onKill(Npc npc, Player killer, boolean isSummon)
-	{
-		final Player partyMember = getRandomPartyMember(killer, 1);
-		if (partyMember != null)
+		else if (event.equals("31519-01.htm"))
 		{
-			final QuestState qs = getQuestState(partyMember, false);
-			final float chance = MONSTERS.get(npc.getId()) * Config.RATE_QUEST_DROP;
-			if (getRandom(1000) < chance)
+			if (getQuestItemsCount(player, SEAL_OF_LIGHT) == 1)
 			{
-				giveItems(partyMember, BEAD_OF_OBEDIENCE, 1);
-				if (getQuestItemsCount(partyMember, BEAD_OF_OBEDIENCE) < BEAD_OF_OBEDIENCE_COUNT_REQUIRED)
-				{
-					playSound(partyMember, QuestSound.ITEMSOUND_QUEST_ITEMGET);
-				}
-				else
-				{
-					qs.setCond(2, true);
-				}
+				st.setCond(4, true);
+				takeItems(player, SEAL_OF_LIGHT, 1);
+				giveItems(player, GEM_OF_SAINTS, 1);
 			}
 		}
-		return super.onKill(npc, killer, isSummon);
+		else if (REWARDS.containsKey(event))
+		{
+			if (getQuestItemsCount(player, GEM_OF_SAINTS) == 1)
+			{
+				htmltext = "31518-07.htm";
+				takeItems(player, GEM_OF_SAINTS, 1);
+				
+				if (REWARDS.get(event)[0] > 0)
+				{
+					giveItems(player, REWARDS.get(event)[0], REWARDS.get(event)[1]);
+				}
+				giveAdena(player, REWARDS.get(event)[2], true);
+				
+				st.exitQuest(true, true);
+			}
+			else
+			{
+				htmltext = "31518-7.htm";
+			}
+		}
+		
+		return htmltext;
 	}
 	
 	@Override
 	public String onTalk(Npc npc, Player player)
 	{
-		final QuestState qs = getQuestState(player, true);
 		String htmltext = getNoQuestMsg(player);
-		switch (qs.getState())
+		final QuestState st = getQuestState(player, true);
+		
+		switch (st.getState())
 		{
 			case State.CREATED:
 			{
-				if (npc.getId() == MYSTERIOUS_NECROMANCER)
-				{
-					htmltext = (player.getLevel() >= MIN_LEVEL_REQUIRED) ? "31518-01.htm" : "31518-00.htm";
-				}
+				htmltext = (player.getLevel() < 60) ? "31518-00a.htm" : "31518-00.htm";
 				break;
 			}
 			case State.STARTED:
 			{
+				final int cond = st.getCond();
 				switch (npc.getId())
 				{
-					case MYSTERIOUS_NECROMANCER:
+					case NECROMANCER:
 					{
-						switch (qs.getCond())
+						if (cond == 1)
 						{
-							case 1:
-							{
-								htmltext = "31518-03.html";
-								break;
-							}
-							case 2:
-							{
-								htmltext = "31518-04.html";
-								break;
-							}
-							case 3:
-							{
-								htmltext = "31518-07.html";
-								break;
-							}
-							case 4:
-							{
-								htmltext = "31518-08.html";
-								break;
-							}
+							htmltext = "31518-01a.htm";
+						}
+						else if (cond == 2)
+						{
+							htmltext = "31518-02.htm";
+						}
+						else if (cond == 3)
+						{
+							htmltext = "31518-04.htm";
+						}
+						else if (cond == 4)
+						{
+							htmltext = "31518-05.htm";
 						}
 						break;
 					}
 					case ENFEUX:
 					{
-						switch (qs.getCond())
+						if (cond == 3)
 						{
-							case 3:
-							{
-								htmltext = "31519-01.html";
-								break;
-							}
-							case 4:
-							{
-								htmltext = "31519-03.html";
-								break;
-							}
+							htmltext = "31519-00.htm";
+						}
+						else if (cond == 4)
+						{
+							htmltext = "31519-02.htm";
 						}
 						break;
 					}
 				}
 				break;
 			}
+			
 		}
+		
 		return htmltext;
+	}
+	
+	@Override
+	public String onKill(Npc npc, Player player, boolean isPet)
+	{
+		final QuestState st = getQuestState(player, false);
+		if ((st == null) || !st.isCond(1))
+		{
+			return null;
+		}
+		
+		if (getRandom(1000000) < CHANCES.get(npc.getId()))
+		{
+			giveItems(player, BEAD_OF_OBEDIENCE, 1);
+			if (getQuestItemsCount(player, BEAD_OF_OBEDIENCE) < 300)
+			{
+				playSound(player, QuestSound.ITEMSOUND_QUEST_ITEMGET);
+			}
+			else
+			{
+				st.setCond(2, true);
+			}
+		}
+		
+		return null;
 	}
 }

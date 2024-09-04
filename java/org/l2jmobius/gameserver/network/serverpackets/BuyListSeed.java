@@ -19,8 +19,10 @@ package org.l2jmobius.gameserver.network.serverpackets;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.l2jmobius.commons.network.WritableBuffer;
 import org.l2jmobius.gameserver.instancemanager.CastleManorManager;
 import org.l2jmobius.gameserver.model.SeedProduction;
+import org.l2jmobius.gameserver.network.GameClient;
 import org.l2jmobius.gameserver.network.ServerPackets;
 
 /**
@@ -46,29 +48,29 @@ public class BuyListSeed extends ServerPacket
 	}
 	
 	@Override
-	public void write()
+	public void writeImpl(GameClient client, WritableBuffer buffer)
 	{
-		ServerPackets.BUY_LIST_SEED.writeId(this);
-		writeInt((int) _money); // current money
-		writeInt(_manorId); // manor id
+		ServerPackets.BUY_LIST_SEED.writeId(this, buffer);
+		buffer.writeInt((int) _money); // current money
+		buffer.writeInt(_manorId); // manor id
 		if (!_list.isEmpty())
 		{
-			writeShort(_list.size()); // list length
+			buffer.writeShort(_list.size()); // list length
 			for (SeedProduction s : _list)
 			{
-				writeShort(4); // item->type1
-				writeInt(0); // objectId
-				writeInt(s.getId()); // item id
-				writeInt(s.getAmount()); // item count
-				writeShort(4); // item->type2
-				writeShort(0); // unknown :)
-				writeInt(s.getPrice()); // price
+				buffer.writeShort(4); // item->type1
+				buffer.writeInt(0); // objectId
+				buffer.writeInt(s.getId()); // item id
+				buffer.writeInt(s.getAmount()); // item count
+				buffer.writeShort(4); // item->type2
+				buffer.writeShort(0); // unknown :)
+				buffer.writeInt(s.getPrice()); // price
 			}
 			_list.clear();
 		}
 		else
 		{
-			writeShort(0);
+			buffer.writeShort(0);
 		}
 	}
 }

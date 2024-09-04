@@ -29,7 +29,7 @@
 	</item>
 	<item id="8403" type="EtcItem" name="Small Nimble Green Fish - Upper Grade">
 		<!-- Double-click to randomly transform an item. The transformed item can be used to make other items. -->
-		<set name="icon" val="icon.etc_tuna_i07" />
+		<set name="icon" val="icon.etc_tuna_i06" />
 		<set name="default_action" val="CAPSULE" />
 		<set name="immediate_effect" val="true" />
 		<set name="material" val="FISH" />
@@ -41,7 +41,7 @@
 	</item>
 	<item id="8404" type="EtcItem" name="Small Ugly Green Fish - Upper Grade">
 		<!-- Double-click to randomly transform an item. The transformed item can be used to make other items. -->
-		<set name="icon" val="icon.etc_angler_i07" />
+		<set name="icon" val="icon.etc_angler_i06" />
 		<set name="default_action" val="CAPSULE" />
 		<set name="immediate_effect" val="true" />
 		<set name="material" val="FISH" />
@@ -53,7 +53,7 @@
 	</item>
 	<item id="8405" type="EtcItem" name="Small Pudgy Green Fish - Upper Grade">
 		<!-- Double-click to randomly transform an item. The transformed item can be used to make other items. -->
-		<set name="icon" val="icon.etc_bream_i07" />
+		<set name="icon" val="icon.etc_bream_i06" />
 		<set name="default_action" val="CAPSULE" />
 		<set name="immediate_effect" val="true" />
 		<set name="material" val="FISH" />
@@ -65,7 +65,7 @@
 	</item>
 	<item id="8406" type="EtcItem" name="Nimble Green Fish - Upper Grade">
 		<!-- Double-click to randomly transform an item. The transformed item can be used to make other items. -->
-		<set name="icon" val="icon.etc_tuna_i07" />
+		<set name="icon" val="icon.etc_tuna_i06" />
 		<set name="default_action" val="CAPSULE" />
 		<set name="immediate_effect" val="true" />
 		<set name="material" val="FISH" />
@@ -77,7 +77,7 @@
 	</item>
 	<item id="8407" type="EtcItem" name="Ugly Green Fish - Upper Grade">
 		<!-- Double-click to randomly transform an item. The transformed item can be used to make other items. -->
-		<set name="icon" val="icon.etc_angler_i07" />
+		<set name="icon" val="icon.etc_angler_i06" />
 		<set name="default_action" val="CAPSULE" />
 		<set name="immediate_effect" val="true" />
 		<set name="material" val="FISH" />
@@ -89,7 +89,7 @@
 	</item>
 	<item id="8408" type="EtcItem" name="Pudgy Green Fish - Upper Grade">
 		<!-- Double-click to randomly transform an item. The transformed item can be used to make other items. -->
-		<set name="icon" val="icon.etc_bream_i07" />
+		<set name="icon" val="icon.etc_bream_i06" />
 		<set name="default_action" val="CAPSULE" />
 		<set name="immediate_effect" val="true" />
 		<set name="material" val="FISH" />
@@ -101,7 +101,7 @@
 	</item>
 	<item id="8409" type="EtcItem" name="Large Nimble Green Fish - Upper Grade">
 		<!-- Double-click to randomly transform an item. The transformed item can be used to make other items. -->
-		<set name="icon" val="icon.etc_tuna_i07" />
+		<set name="icon" val="icon.etc_tuna_i06" />
 		<set name="default_action" val="CAPSULE" />
 		<set name="immediate_effect" val="true" />
 		<set name="material" val="FISH" />
@@ -113,7 +113,7 @@
 	</item>
 	<item id="8410" type="EtcItem" name="Large Ugly Green Fish - Upper Grade">
 		<!-- Double-click to randomly transform an item. The transformed item can be used to make other items. -->
-		<set name="icon" val="icon.etc_angler_i07" />
+		<set name="icon" val="icon.etc_angler_i06" />
 		<set name="default_action" val="CAPSULE" />
 		<set name="immediate_effect" val="true" />
 		<set name="material" val="FISH" />
@@ -125,7 +125,7 @@
 	</item>
 	<item id="8411" type="EtcItem" name="Large Pudgy Green Fish - Upper Grade">
 		<!-- Double-click to randomly transform an item. The transformed item can be used to make other items. -->
-		<set name="icon" val="icon.etc_bream_i07" />
+		<set name="icon" val="icon.etc_bream_i06" />
 		<set name="default_action" val="CAPSULE" />
 		<set name="immediate_effect" val="true" />
 		<set name="material" val="FISH" />
@@ -137,7 +137,7 @@
 	</item>
 	<item id="8412" type="EtcItem" name="Small Jade Nimble Fish - Upper Grade">
 		<!-- Double-click to randomly transform an item. The transformed item can be used to make other items. -->
-		<set name="icon" val="icon.etc_tuna_i06" />
+		<set name="icon" val="icon.etc_tuna_i07" />
 		<set name="default_action" val="CAPSULE" />
 		<set name="immediate_effect" val="true" />
 		<set name="material" val="FISH" />
@@ -149,7 +149,7 @@
 	</item>
 	<item id="8413" type="EtcItem" name="Small Jade Ugly Fish - Upper Grade">
 		<!-- Double-click to randomly transform an item. The transformed item can be used to make other items. -->
-		<set name="icon" val="icon.etc_angler_i06" />
+		<set name="icon" val="icon.etc_angler_i07" />
 		<set name="default_action" val="CAPSULE" />
 		<set name="immediate_effect" val="true" />
 		<set name="material" val="FISH" />
@@ -161,7 +161,7 @@
 	</item>
 	<item id="8414" type="EtcItem" name="Small Jade Fat Fish - Upper Grade">
 		<!-- Double-click to randomly transform an item. The transformed item can be used to make other items. -->
-		<set name="icon" val="icon.etc_bream_i06" />
+		<set name="icon" val="icon.etc_bream_i07" />
 		<set name="default_action" val="CAPSULE" />
 		<set name="immediate_effect" val="true" />
 		<set name="material" val="FISH" />
@@ -173,7 +173,7 @@
 	</item>
 	<item id="8415" type="EtcItem" name="Jade Nimble Fish - Upper Grade">
 		<!-- Double-click to randomly transform an item. The transformed item can be used to make other items. -->
-		<set name="icon" val="icon.etc_tuna_i06" />
+		<set name="icon" val="icon.etc_tuna_i07" />
 		<set name="default_action" val="CAPSULE" />
 		<set name="immediate_effect" val="true" />
 		<set name="material" val="FISH" />
@@ -185,7 +185,7 @@
 	</item>
 	<item id="8416" type="EtcItem" name="Jade Ugly Fish - Upper Grade">
 		<!-- Double-click to randomly transform an item. The transformed item can be used to make other items. -->
-		<set name="icon" val="icon.etc_angler_i06" />
+		<set name="icon" val="icon.etc_angler_i07" />
 		<set name="default_action" val="CAPSULE" />
 		<set name="immediate_effect" val="true" />
 		<set name="material" val="FISH" />
@@ -197,7 +197,7 @@
 	</item>
 	<item id="8417" type="EtcItem" name="Jade Fat Fish - Upper Grade">
 		<!-- Double-click to randomly transform an item. The transformed item can be used to make other items. -->
-		<set name="icon" val="icon.etc_bream_i06" />
+		<set name="icon" val="icon.etc_bream_i07" />
 		<set name="default_action" val="CAPSULE" />
 		<set name="immediate_effect" val="true" />
 		<set name="material" val="FISH" />
@@ -209,7 +209,7 @@
 	</item>
 	<item id="8418" type="EtcItem" name="Large Jade Nimble Fish - Upper Grade">
 		<!-- Double-click to randomly transform an item. The transformed item can be used to make other items. -->
-		<set name="icon" val="icon.etc_tuna_i06" />
+		<set name="icon" val="icon.etc_tuna_i07" />
 		<set name="default_action" val="CAPSULE" />
 		<set name="immediate_effect" val="true" />
 		<set name="material" val="FISH" />
@@ -221,7 +221,7 @@
 	</item>
 	<item id="8419" type="EtcItem" name="Large Jade Ugly Fish - Upper Grade">
 		<!-- Double-click to randomly transform an item. The transformed item can be used to make other items. -->
-		<set name="icon" val="icon.etc_angler_i06" />
+		<set name="icon" val="icon.etc_angler_i07" />
 		<set name="default_action" val="CAPSULE" />
 		<set name="immediate_effect" val="true" />
 		<set name="material" val="FISH" />
@@ -233,7 +233,7 @@
 	</item>
 	<item id="8420" type="EtcItem" name="Large Jade Fat Fish - Upper Grade">
 		<!-- Double-click to randomly transform an item. The transformed item can be used to make other items. -->
-		<set name="icon" val="icon.etc_bream_i06" />
+		<set name="icon" val="icon.etc_bream_i07" />
 		<set name="default_action" val="CAPSULE" />
 		<set name="immediate_effect" val="true" />
 		<set name="material" val="FISH" />
@@ -1137,7 +1137,7 @@
 		<set name="immediate_effect" val="true" />
 		<set name="material" val="LIQUID" />
 		<set name="weight" val="5" />
-		<set name="price" val="120" />
+		<set name="price" val="2" />
 		<set name="is_stackable" val="true" />
 	</item>
 	<item id="8497" type="EtcItem" name="Dion's Luminous Lure">
@@ -1149,7 +1149,7 @@
 		<set name="immediate_effect" val="true" />
 		<set name="material" val="LIQUID" />
 		<set name="weight" val="4" />
-		<set name="price" val="120" />
+		<set name="price" val="2" />
 		<set name="is_stackable" val="true" />
 	</item>
 	<item id="8498" type="EtcItem" name="Giran's Luminous Lure">
@@ -1161,7 +1161,7 @@
 		<set name="immediate_effect" val="true" />
 		<set name="material" val="LIQUID" />
 		<set name="weight" val="3" />
-		<set name="price" val="120" />
+		<set name="price" val="2" />
 		<set name="is_stackable" val="true" />
 	</item>
 	<item id="8499" type="EtcItem" name="Oren's Luminous Lure">
@@ -1173,7 +1173,7 @@
 		<set name="immediate_effect" val="true" />
 		<set name="material" val="LIQUID" />
 		<set name="weight" val="5" />
-		<set name="price" val="120" />
+		<set name="price" val="2" />
 		<set name="is_stackable" val="true" />
 	</item>
 </list>

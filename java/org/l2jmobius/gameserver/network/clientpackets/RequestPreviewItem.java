@@ -20,7 +20,6 @@ import java.util.HashMap;
 import java.util.Map;
 
 import org.l2jmobius.Config;
-import org.l2jmobius.commons.network.ReadablePacket;
 import org.l2jmobius.commons.threads.ThreadPool;
 import org.l2jmobius.gameserver.data.xml.BuyListData;
 import org.l2jmobius.gameserver.model.WorldObject;
@@ -31,7 +30,6 @@ import org.l2jmobius.gameserver.model.buylist.BuyListHolder;
 import org.l2jmobius.gameserver.model.buylist.Product;
 import org.l2jmobius.gameserver.model.item.ItemTemplate;
 import org.l2jmobius.gameserver.model.itemcontainer.Inventory;
-import org.l2jmobius.gameserver.network.GameClient;
 import org.l2jmobius.gameserver.network.PacketLogger;
 import org.l2jmobius.gameserver.network.SystemMessageId;
 import org.l2jmobius.gameserver.network.serverpackets.ActionFailed;
@@ -41,7 +39,7 @@ import org.l2jmobius.gameserver.util.Util;
 /**
  ** @author Gnacik
  */
-public class RequestPreviewItem implements ClientPacket
+public class RequestPreviewItem extends ClientPacket
 {
 	@SuppressWarnings("unused")
 	private int _unk;
@@ -74,11 +72,11 @@ public class RequestPreviewItem implements ClientPacket
 	}
 	
 	@Override
-	public void read(ReadablePacket packet)
+	protected void readImpl()
 	{
-		_unk = packet.readInt();
-		_listId = packet.readInt();
-		_count = packet.readInt();
+		_unk = readInt();
+		_listId = readInt();
+		_count = readInt();
 		if (_count < 0)
 		{
 			_count = 0;
@@ -94,12 +92,12 @@ public class RequestPreviewItem implements ClientPacket
 		// Fill _items table with all ItemID to Wear
 		for (int i = 0; i < _count; i++)
 		{
-			_items[i] = packet.readInt();
+			_items[i] = readInt();
 		}
 	}
 	
 	@Override
-	public void run(GameClient client)
+	protected void runImpl()
 	{
 		if (_items == null)
 		{
@@ -107,13 +105,13 @@ public class RequestPreviewItem implements ClientPacket
 		}
 		
 		// Get the current player and return if null
-		final Player player = client.getPlayer();
+		final Player player = getPlayer();
 		if (player == null)
 		{
 			return;
 		}
 		
-		if (!client.getFloodProtectors().canPerformTransaction())
+		if (!getClient().getFloodProtectors().canPerformTransaction())
 		{
 			player.sendMessage("You are buying too fast.");
 			return;

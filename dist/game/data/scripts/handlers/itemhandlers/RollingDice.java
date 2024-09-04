@@ -45,7 +45,7 @@ public class RollingDice implements IItemHandler
 		final int itemId = item.getId();
 		if (player.isInOlympiadMode())
 		{
-			player.sendPacket(SystemMessageId.YOU_CANNOT_USE_THAT_ITEM_IN_A_GRAND_OLYMPIAD_MATCH);
+			player.sendPacket(SystemMessageId.YOU_CANNOT_USE_THAT_ITEM_IN_A_GRAND_OLYMPIAD_GAMES_MATCH);
 			return false;
 		}
 		
@@ -68,7 +68,7 @@ public class RollingDice implements IItemHandler
 		final Location destination = GeoEngine.getInstance().getValidLocation(player.getX(), player.getY(), player.getZ(), x, y, z, player.getInstanceId());
 		Broadcast.toSelfAndKnownPlayers(player, new Dice(player.getObjectId(), itemId, number, destination.getX(), destination.getY(), destination.getZ()));
 		
-		final SystemMessage sm = new SystemMessage(SystemMessageId.C1_HAS_ROLLED_A_S2);
+		final SystemMessage sm = new SystemMessage(SystemMessageId.S1_HAS_ROLLED_S2);
 		sm.addString(player.getName());
 		sm.addInt(number);
 		

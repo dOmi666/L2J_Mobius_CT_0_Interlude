@@ -31,89 +31,64 @@ public class Q00631_DeliciousTopChoiceMeat extends Quest
 {
 	// NPC
 	private static final int TUNATUN = 31537;
-	
 	// Item
 	private static final int TOP_QUALITY_MEAT = 7546;
-	
 	// Drop chances
-	private static final Map<Integer, Double> CHANCES = new HashMap<>();
+	private static final Map<Integer, Integer> CHANCES = new HashMap<>();
 	static
 	{
-		CHANCES.put(21460, 0.600);
-		CHANCES.put(21461, 0.480);
-		CHANCES.put(21462, 0.447);
-		CHANCES.put(21463, 0.808);
-		CHANCES.put(21464, 0.447);
-		CHANCES.put(21465, 0.808);
-		CHANCES.put(21466, 0.447);
-		CHANCES.put(21467, 0.808);
-		CHANCES.put(21479, 0.477);
-		CHANCES.put(21480, 0.863);
-		CHANCES.put(21481, 0.477);
-		CHANCES.put(21482, 0.863);
-		CHANCES.put(21483, 0.477);
-		CHANCES.put(21484, 0.863);
-		CHANCES.put(21485, 0.477);
-		CHANCES.put(21486, 0.863);
-		CHANCES.put(21498, 0.509);
-		CHANCES.put(21499, 0.920);
-		CHANCES.put(21500, 0.509);
-		CHANCES.put(21501, 0.920);
-		CHANCES.put(21502, 0.509);
-		CHANCES.put(21503, 0.920);
-		CHANCES.put(21504, 0.509);
-		CHANCES.put(21505, 0.920);
+		CHANCES.put(21460, 601000);
+		CHANCES.put(21461, 480000);
+		CHANCES.put(21462, 447000);
+		CHANCES.put(21463, 808000);
+		CHANCES.put(21464, 447000);
+		CHANCES.put(21465, 808000);
+		CHANCES.put(21466, 447000);
+		CHANCES.put(21467, 808000);
+		CHANCES.put(21479, 477000);
+		CHANCES.put(21480, 863000);
+		CHANCES.put(21481, 477000);
+		CHANCES.put(21482, 863000);
+		CHANCES.put(21483, 477000);
+		CHANCES.put(21484, 863000);
+		CHANCES.put(21485, 477000);
+		CHANCES.put(21486, 863000);
+		CHANCES.put(21498, 509000);
+		CHANCES.put(21499, 920000);
+		CHANCES.put(21500, 509000);
+		CHANCES.put(21501, 920000);
+		CHANCES.put(21502, 509000);
+		CHANCES.put(21503, 920000);
+		CHANCES.put(21504, 509000);
+		CHANCES.put(21505, 920000);
 	}
-	
 	// Rewards
 	private static final int[][] REWARDS =
 	{
-		{
-			4039,
-			15
-		},
-		{
-			4043,
-			15
-		},
-		{
-			4044,
-			15
-		},
-		{
-			4040,
-			10
-		},
-		{
-			4042,
-			10
-		},
-		{
-			4041,
-			5
-		}
+		// @formatter:off
+		{4039, 15},
+		{4043, 15},
+		{4044, 15},
+		{4040, 10},
+		{4042, 10},
+		{4041, 5}
+		// @formatter:on
 	};
 	
 	public Q00631_DeliciousTopChoiceMeat()
 	{
 		super(631);
-		
 		registerQuestItems(TOP_QUALITY_MEAT);
-		
 		addStartNpc(TUNATUN);
 		addTalkId(TUNATUN);
-		
-		for (int npcId : CHANCES.keySet())
-		{
-			addKillId(npcId);
-		}
+		addKillId(CHANCES.keySet());
 	}
 	
 	@Override
-	public String onAdvEvent(String event, Npc npc, Player player)
+	public String onEvent(String event, Npc npc, Player player)
 	{
 		String htmltext = event;
-		final QuestState st = player.getQuestState(getName());
+		final QuestState st = getQuestState(player, false);
 		if (st == null)
 		{
 			return htmltext;
@@ -140,8 +115,8 @@ public class Q00631_DeliciousTopChoiceMeat extends Quest
 				
 				final int[] reward = REWARDS[Integer.parseInt(event)];
 				rewardItems(player, reward[0], reward[1]);
-				playSound(player, QuestSound.ITEMSOUND_QUEST_FINISH);
-				st.exitQuest(true);
+				
+				st.exitQuest(true, true);
 			}
 			else
 			{
@@ -156,15 +131,18 @@ public class Q00631_DeliciousTopChoiceMeat extends Quest
 	@Override
 	public String onTalk(Npc npc, Player player)
 	{
-		final QuestState st = getQuestState(player, true);
 		String htmltext = getNoQuestMsg(player);
+		final QuestState st = getQuestState(player, true);
+		
 		switch (st.getState())
 		{
 			case State.CREATED:
+			{
 				htmltext = "31537-01.htm";
 				break;
-			
+			}
 			case State.STARTED:
+			{
 				final int cond = st.getCond();
 				if (cond == 1)
 				{
@@ -183,28 +161,39 @@ public class Q00631_DeliciousTopChoiceMeat extends Quest
 					}
 				}
 				break;
+			}
 		}
+		
 		return htmltext;
 	}
 	
 	@Override
 	public String onKill(Npc npc, Player player, boolean isPet)
 	{
-		final Player partyMember = getRandomPartyMember(player, 1);
-		if (partyMember == null)
+		final QuestState qs = getRandomPartyMemberState(player, 1, 3, npc);
+		if (qs == null)
 		{
 			return null;
 		}
+		final Player partyMember = qs.getPlayer();
 		
-		final QuestState st = partyMember.getQuestState(getName());
+		final QuestState st = getQuestState(partyMember, false);
 		if (st == null)
 		{
 			return null;
 		}
 		
-		if (giveItemRandomly(partyMember, npc, TOP_QUALITY_MEAT, 1, 120, CHANCES.get(npc.getId()), true))
+		if (getRandom(1000000) < CHANCES.get(npc.getId()))
 		{
-			st.setCond(2);
+			giveItems(partyMember, TOP_QUALITY_MEAT, 1);
+			if (getQuestItemsCount(partyMember, TOP_QUALITY_MEAT) < 120)
+			{
+				playSound(partyMember, QuestSound.ITEMSOUND_QUEST_ITEMGET);
+			}
+			else
+			{
+				st.setCond(2, true);
+			}
 		}
 		
 		return null;

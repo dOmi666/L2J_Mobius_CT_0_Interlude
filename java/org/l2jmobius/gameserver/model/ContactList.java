@@ -27,8 +27,6 @@ import java.util.logging.Logger;
 import org.l2jmobius.commons.database.DatabaseFactory;
 import org.l2jmobius.gameserver.data.sql.CharInfoTable;
 import org.l2jmobius.gameserver.model.actor.Player;
-import org.l2jmobius.gameserver.network.SystemMessageId;
-import org.l2jmobius.gameserver.network.serverpackets.SystemMessage;
 
 /**
  * TODO: System messages:<br>
@@ -87,29 +85,25 @@ public class ContactList
 	
 	public boolean add(String name)
 	{
-		SystemMessage sm;
-		
 		final int contactId = CharInfoTable.getInstance().getIdByName(name);
 		if (_contacts.contains(name))
 		{
-			_player.sendPacket(SystemMessageId.THE_NAME_ALREADY_EXISTS_ON_THE_ADDED_LIST);
+			_player.sendMessage("The name already exists on the added list.");
 			return false;
 		}
 		else if (_player.getName().equals(name))
 		{
-			_player.sendPacket(SystemMessageId.YOU_CANNOT_ADD_YOUR_OWN_NAME);
+			_player.sendMessage("You cannot add your own name.");
 			return false;
 		}
 		else if (_contacts.size() >= 100)
 		{
-			_player.sendPacket(SystemMessageId.THE_MAXIMUM_NUMBER_OF_NAMES_100_HAS_BEEN_REACHED_YOU_CANNOT_REGISTER_ANY_MORE);
+			_player.sendMessage("The maximum number of names (100) has been reached. You cannot register any more.");
 			return false;
 		}
 		else if (contactId < 1)
 		{
-			sm = new SystemMessage(SystemMessageId.THE_NAME_S1_DOESN_T_EXIST_PLEASE_TRY_ANOTHER_NAME);
-			sm.addString(name);
-			_player.sendPacket(sm);
+			_player.sendMessage("The name " + name + " doesn't exist. Please try another name.");
 			return false;
 		}
 		else
@@ -118,7 +112,7 @@ public class ContactList
 			{
 				if (contactName.equalsIgnoreCase(name))
 				{
-					_player.sendPacket(SystemMessageId.THE_NAME_ALREADY_EXISTS_ON_THE_ADDED_LIST);
+					_player.sendMessage("The name already exists on the added list.");
 					return false;
 				}
 			}
@@ -133,9 +127,7 @@ public class ContactList
 			
 			_contacts.add(name);
 			
-			sm = new SystemMessage(SystemMessageId.S1_WAS_SUCCESSFULLY_ADDED_TO_YOUR_CONTACT_LIST);
-			sm.addString(name);
-			_player.sendPacket(sm);
+			_player.sendMessage(name + " was successfully added to your Contact List.");
 		}
 		catch (Exception e)
 		{
@@ -149,7 +141,7 @@ public class ContactList
 		final int contactId = CharInfoTable.getInstance().getIdByName(name);
 		if (!_contacts.contains(name))
 		{
-			_player.sendPacket(SystemMessageId.THE_NAME_IS_NOT_CURRENTLY_REGISTERED);
+			_player.sendMessage("The name is not currently registered.");
 			return;
 		}
 		else if (contactId < 1)
@@ -167,9 +159,7 @@ public class ContactList
 			statement.setInt(2, contactId);
 			statement.execute();
 			
-			final SystemMessage sm = new SystemMessage(SystemMessageId.S1_WAS_SUCCESSFULLY_DELETED_FROM_YOUR_CONTACT_LIST);
-			sm.addString(name);
-			_player.sendPacket(sm);
+			_player.sendMessage(name + " was successfully deleted from your Contact List.");
 		}
 		catch (Exception e)
 		{

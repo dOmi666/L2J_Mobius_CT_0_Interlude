@@ -17,7 +17,6 @@
 package org.l2jmobius.gameserver.network.clientpackets;
 
 import org.l2jmobius.Config;
-import org.l2jmobius.commons.network.ReadablePacket;
 import org.l2jmobius.gameserver.model.World;
 import org.l2jmobius.gameserver.model.actor.Npc;
 import org.l2jmobius.gameserver.model.actor.Player;
@@ -26,40 +25,41 @@ import org.l2jmobius.gameserver.model.item.instance.Item;
 import org.l2jmobius.gameserver.model.itemcontainer.Inventory;
 import org.l2jmobius.gameserver.model.itemcontainer.ItemContainer;
 import org.l2jmobius.gameserver.model.itemcontainer.PlayerFreight;
-import org.l2jmobius.gameserver.network.GameClient;
 import org.l2jmobius.gameserver.network.PacketLogger;
 import org.l2jmobius.gameserver.network.SystemMessageId;
+import org.l2jmobius.gameserver.network.serverpackets.ActionFailed;
+import org.l2jmobius.gameserver.network.serverpackets.EnchantResult;
 import org.l2jmobius.gameserver.network.serverpackets.InventoryUpdate;
 import org.l2jmobius.gameserver.network.serverpackets.StatusUpdate;
-import org.l2jmobius.gameserver.util.Util;
 
 /**
  * @author -Wooden-
  * @author UnAfraid Thanks mrTJO
  */
-public class RequestPackageSend implements ClientPacket
+public class RequestPackageSend extends ClientPacket
 {
-	private static final int BATCH_LENGTH = 8; // length of the one item
+	private static final int BATCH_LENGTH = 8; // length of the one item.
 	
 	private ItemHolder[] _items = null;
 	private int _objectId;
 	
 	@Override
-	public void read(ReadablePacket packet)
+	protected void readImpl()
 	{
-		_objectId = packet.readInt();
+		_objectId = readInt();
 		
-		final int count = packet.readInt();
-		if ((count <= 0) || (count > Config.MAX_ITEM_IN_PACKET) || ((count * BATCH_LENGTH) != packet.getRemainingLength()))
+		final int count = readInt();
+		if ((count <= 0) || (count > Config.MAX_ITEM_IN_PACKET) || ((count * BATCH_LENGTH) != remaining()))
 		{
+			_items = null;
 			return;
 		}
 		
 		_items = new ItemHolder[count];
 		for (int i = 0; i < count; i++)
 		{
-			final int objId = packet.readInt();
-			final int cnt = packet.readInt();
+			final int objId = readInt();
+			final int cnt = readInt();
 			if ((objId < 1) || (cnt < 0))
 			{
 				_items = null;
@@ -71,15 +71,15 @@ public class RequestPackageSend implements ClientPacket
 	}
 	
 	@Override
-	public void run(GameClient client)
+	protected void runImpl()
 	{
-		final Player player = client.getPlayer();
+		final Player player = getPlayer();
 		if ((_items == null) || (player == null) || !player.getAccountChars().containsKey(_objectId))
 		{
 			return;
 		}
 		
-		if (!client.getFloodProtectors().canPerformTransaction())
+		if (!getClient().getFloodProtectors().canPerformTransaction())
 		{
 			player.sendMessage("You depositing items too fast.");
 			return;
@@ -88,24 +88,37 @@ public class RequestPackageSend implements ClientPacket
 		final Npc manager = player.getLastFolkNPC();
 		if (((manager == null) || !player.isInsideRadius2D(manager, Npc.INTERACTION_DISTANCE)))
 		{
+			player.sendPacket(SystemMessageId.YOU_FAILED_AT_SENDING_THE_PACKAGE_BECAUSE_YOU_ARE_TOO_FAR_FROM_THE_WAREHOUSE);
 			return;
 		}
 		
+		// If there is an active enchanting process, cancel it.
 		if (player.getActiveEnchantItemId() != Player.ID_NONE)
 		{
-			Util.handleIllegalPlayerAction(player, player + " tried to use enchant Exploit!", Config.DEFAULT_PUNISH);
+			player.sendPacket(SystemMessageId.YOU_HAVE_CANCELLED_THE_ENCHANTING_PROCESS);
+			player.sendPacket(new EnchantResult(0));
+			player.setActiveEnchantItemId(Player.ID_NONE);
 			return;
 		}
 		
-		// get current tradelist if any
+		// Check for active trade list.
 		if (player.getActiveTradeList() != null)
 		{
 			return;
 		}
 		
-		// Alt game - Karma punishment
+		// Alt game - Karma punishment.
 		if (!Config.ALT_GAME_KARMA_PLAYER_CAN_USE_WAREHOUSE && (player.getKarma() > 0))
 		{
+			return;
+		}
+		
+		final ItemContainer warehouse = new PlayerFreight(_objectId);
+		if ((warehouse instanceof PlayerFreight) && !player.getAccessLevel().allowTransaction())
+		{
+			player.sendPacket(SystemMessageId.YOU_ARE_NOT_AUTHORIZED_TO_DO_THAT);
+			player.sendPacket(ActionFailed.STATIC_PACKET);
+			warehouse.deleteMe();
 			return;
 		}
 		
@@ -114,31 +127,25 @@ public class RequestPackageSend implements ClientPacket
 		long currentAdena = player.getAdena();
 		int slots = 0;
 		
-		final ItemContainer warehouse = new PlayerFreight(_objectId);
-		for (ItemHolder i : _items)
+		for (ItemHolder itemHolder : _items)
 		{
-			// Check validity of requested item
-			final Item item = player.checkItemManipulation(i.getId(), i.getCount(), "freight");
-			if (item == null)
+			// Check validity of requested item.
+			final Item item = player.checkItemManipulation(itemHolder.getId(), itemHolder.getCount(), "freight");
+			if ((item == null) || !item.isTradeable() || item.isQuestItem())
 			{
 				PacketLogger.warning("Error depositing a warehouse object for char " + player.getName() + " (validity check)");
 				warehouse.deleteMe();
 				return;
 			}
-			else if (!item.isFreightable())
-			{
-				warehouse.deleteMe();
-				return;
-			}
 			
-			// Calculate needed adena and slots
+			// Calculate needed adena and slots.
 			if (item.getId() == Inventory.ADENA_ID)
 			{
-				currentAdena -= i.getCount();
+				currentAdena -= itemHolder.getCount();
 			}
 			else if (!item.isStackable())
 			{
-				slots += i.getCount();
+				slots += itemHolder.getCount();
 			}
 			else if (warehouse.getItemByItemId(item.getId()) == null)
 			{
@@ -146,7 +153,7 @@ public class RequestPackageSend implements ClientPacket
 			}
 		}
 		
-		// Item Max Limit Check
+		// Item Max Limit Check.
 		if (!warehouse.validateCapacity(slots))
 		{
 			player.sendPacket(SystemMessageId.YOU_HAVE_EXCEEDED_THE_QUANTITY_THAT_CAN_BE_INPUTTED);
@@ -154,7 +161,7 @@ public class RequestPackageSend implements ClientPacket
 			return;
 		}
 		
-		// Check if enough adena and charge the fee
+		// Check if enough adena and charge the fee.
 		if ((currentAdena < fee) || !player.reduceAdena(warehouse.getName(), fee, manager, false))
 		{
 			player.sendPacket(SystemMessageId.YOU_DO_NOT_HAVE_ENOUGH_ADENA);
@@ -162,12 +169,12 @@ public class RequestPackageSend implements ClientPacket
 			return;
 		}
 		
-		// Proceed to the transfer
+		// Proceed to the transfer.
 		final InventoryUpdate playerIU = new InventoryUpdate();
-		for (ItemHolder i : _items)
+		for (ItemHolder itemHolder : _items)
 		{
-			// Check validity of requested item
-			final Item oldItem = player.checkItemManipulation(i.getId(), i.getCount(), "deposit");
+			// Check validity of requested item.
+			final Item oldItem = player.checkItemManipulation(itemHolder.getId(), itemHolder.getCount(), "deposit");
 			if (oldItem == null)
 			{
 				PacketLogger.warning("Error depositing a warehouse object for char " + player.getName() + " (olditem == null)");
@@ -175,7 +182,7 @@ public class RequestPackageSend implements ClientPacket
 				return;
 			}
 			
-			final Item newItem = player.getInventory().transferItem("Trade", i.getId(), i.getCount(), warehouse, player, null);
+			final Item newItem = player.getInventory().transferItem("Trade", itemHolder.getId(), itemHolder.getCount(), warehouse, player, null);
 			if (newItem == null)
 			{
 				PacketLogger.warning("Error depositing a warehouse object for char " + player.getName() + " (newitem == null)");
@@ -198,10 +205,10 @@ public class RequestPackageSend implements ClientPacket
 		
 		warehouse.deleteMe();
 		
-		// Send updated item list to the player
+		// Send updated item list to the player.
 		player.sendPacket(playerIU);
 		
-		// Update current load status on player
+		// Update current load status on player.
 		final StatusUpdate su = new StatusUpdate(player);
 		su.addAttribute(StatusUpdate.CUR_LOAD, player.getCurrentLoad());
 		player.sendPacket(su);

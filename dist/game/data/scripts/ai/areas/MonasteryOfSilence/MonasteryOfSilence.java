@@ -66,6 +66,14 @@ public class MonasteryOfSilence extends AbstractNpcAI
 	{
 		registerMobs(mobs1);
 		registerMobs(mobs2);
+		addNpcHateId(mobs1);
+		addNpcHateId(mobs2);
+	}
+	
+	@Override
+	public boolean onNpcHate(Attackable mob, Player player, boolean isSummon)
+	{
+		return player.getActiveWeaponInstance() != null;
 	}
 	
 	@Override

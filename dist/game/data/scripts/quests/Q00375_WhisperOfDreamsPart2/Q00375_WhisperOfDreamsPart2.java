@@ -53,10 +53,10 @@ public class Q00375_WhisperOfDreamsPart2 extends Quest
 	}
 	
 	@Override
-	public String onAdvEvent(String event, Npc npc, Player player)
+	public String onEvent(String event, Npc npc, Player player)
 	{
-		final String htmltext = event;
-		final QuestState st = player.getQuestState(getName());
+		String htmltext = event;
+		final QuestState st = getQuestState(player, false);
 		if (st == null)
 		{
 			return htmltext;
@@ -130,6 +130,7 @@ public class Q00375_WhisperOfDreamsPart2 extends Quest
 			case KARIK:
 			{
 				giveItems(st.getPlayer(), KARIK_HORN, 1);
+				playSound(player, QuestSound.ITEMSOUND_QUEST_ITEMGET);
 				break;
 			}
 			case CAVE_HOWLER:
@@ -137,6 +138,7 @@ public class Q00375_WhisperOfDreamsPart2 extends Quest
 				if (Rnd.get(10) < 9)
 				{
 					giveItems(st.getPlayer(), CAVE_HOWLER_SKULL, 1);
+					playSound(player, QuestSound.ITEMSOUND_QUEST_ITEMGET);
 				}
 				break;
 			}

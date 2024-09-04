@@ -78,7 +78,6 @@ public class RecipeData implements IXmlReader
 						final NamedNodeMap attrs = d.getAttributes();
 						Node att;
 						int id = -1;
-						boolean haveRare = false;
 						final StatSet set = new StatSet();
 						
 						att = attrs.getNamedItem("id");
@@ -171,16 +170,9 @@ public class RecipeData implements IXmlReader
 								set.set("itemId", Integer.parseInt(c.getAttributes().getNamedItem("id").getNodeValue()));
 								set.set("count", Integer.parseInt(c.getAttributes().getNamedItem("count").getNodeValue()));
 							}
-							else if ("productionRare".equalsIgnoreCase(c.getNodeName()))
-							{
-								set.set("rareItemId", Integer.parseInt(c.getAttributes().getNamedItem("id").getNodeValue()));
-								set.set("rareCount", Integer.parseInt(c.getAttributes().getNamedItem("count").getNodeValue()));
-								set.set("rarity", Integer.parseInt(c.getAttributes().getNamedItem("rarity").getNodeValue()));
-								haveRare = true;
-							}
 						}
 						
-						final RecipeList recipeList = new RecipeList(set, haveRare);
+						final RecipeList recipeList = new RecipeList(set);
 						for (RecipeHolder recipePart : recipePartList)
 						{
 							recipeList.addRecipe(recipePart);

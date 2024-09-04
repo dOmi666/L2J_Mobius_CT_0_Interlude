@@ -62,7 +62,7 @@ public class AdminMammon implements IAdminCommandHandler
 			
 			if (!_isSealValidation)
 			{
-				activeChar.sendPacket(SystemMessageId.THE_SSQ_COMPETITION_PERIOD_IS_UNDERWAY);
+				activeChar.sendPacket(SystemMessageId.THIS_IS_A_QUEST_EVENT_PERIOD);
 				return false;
 			}
 			
@@ -104,7 +104,7 @@ public class AdminMammon implements IAdminCommandHandler
 		{
 			if (!_isSealValidation)
 			{
-				activeChar.sendPacket(SystemMessageId.THE_SSQ_COMPETITION_PERIOD_IS_UNDERWAY);
+				activeChar.sendPacket(SystemMessageId.THIS_IS_A_QUEST_EVENT_PERIOD);
 				return true;
 			}
 			

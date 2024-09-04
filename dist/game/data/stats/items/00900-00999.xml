@@ -9,7 +9,7 @@
 		<set name="crystal_type" val="B" />
 		<set name="material" val="GOLD" />
 		<set name="weight" val="150" />
-		<set name="price" val="310600" />
+		<set name="price" val="404000" />
 		<set name="enchant_enabled" val="true" />
 		<for>
 			<add order="0" stat="mDef" val="34" />
@@ -25,7 +25,7 @@
 		<set name="crystal_type" val="B" />
 		<set name="material" val="GOLD" />
 		<set name="weight" val="150" />
-		<set name="price" val="474000" />
+		<set name="price" val="616000" />
 		<set name="enchant_enabled" val="true" />
 		<for>
 			<add order="0" stat="mDef" val="36" />
@@ -38,11 +38,11 @@
 		<set name="default_action" val="EQUIP" />
 		<set name="bodypart" val="rfinger;lfinger" />
 		<set name="immediate_effect" val="true" />
-		<set name="crystal_count" val="54" />
+		<set name="crystal_count" val="104" />
 		<set name="crystal_type" val="A" />
 		<set name="material" val="GOLD" />
 		<set name="weight" val="150" />
-		<set name="price" val="670000" />
+		<set name="price" val="1300000" />
 		<set name="enchant_enabled" val="true" />
 		<for>
 			<add order="0" stat="mDef" val="40" />
@@ -59,7 +59,7 @@
 		<set name="crystal_type" val="A" />
 		<set name="material" val="GOLD" />
 		<set name="weight" val="150" />
-		<set name="price" val="999000" />
+		<set name="price" val="1300000" />
 		<set name="enchant_enabled" val="true" />
 		<for>
 			<add order="0" stat="mDef" val="40" />
@@ -75,7 +75,7 @@
 		<set name="crystal_type" val="B" />
 		<set name="material" val="GOLD" />
 		<set name="weight" val="150" />
-		<set name="price" val="310600" />
+		<set name="price" val="404000" />
 		<set name="enchant_enabled" val="true" />
 		<for>
 			<add order="0" stat="mDef" val="34" />
@@ -91,7 +91,7 @@
 		<set name="crystal_type" val="B" />
 		<set name="material" val="GOLD" />
 		<set name="weight" val="150" />
-		<set name="price" val="310600" />
+		<set name="price" val="404000" />
 		<set name="enchant_enabled" val="true" />
 		<for>
 			<add order="0" stat="mDef" val="34" />
@@ -106,7 +106,7 @@
 		<set name="immediate_effect" val="true" />
 		<set name="material" val="SILVER" />
 		<set name="weight" val="150" />
-		<set name="price" val="830" />
+		<set name="price" val="1080" />
 		<for>
 			<add order="0" stat="mDef" val="18" />
 		</for>
@@ -119,7 +119,7 @@
 		<set name="immediate_effect" val="true" />
 		<set name="material" val="SILVER" />
 		<set name="weight" val="150" />
-		<set name="price" val="3600" />
+		<set name="price" val="4680" />
 		<for>
 			<add order="0" stat="mDef" val="21" />
 		</for>
@@ -131,7 +131,7 @@
 		<set name="immediate_effect" val="true" />
 		<set name="material" val="SILVER" />
 		<set name="weight" val="150" />
-		<set name="price" val="9120" />
+		<set name="price" val="11900" />
 		<for>
 			<add order="0" stat="mDef" val="25" />
 		</for>
@@ -143,7 +143,7 @@
 		<set name="immediate_effect" val="true" />
 		<set name="material" val="SILVER" />
 		<set name="weight" val="150" />
-		<set name="price" val="16400" />
+		<set name="price" val="21300" />
 		<for>
 			<add order="0" stat="mDef" val="28" />
 		</for>
@@ -153,11 +153,11 @@
 		<set name="default_action" val="EQUIP" />
 		<set name="bodypart" val="neck" />
 		<set name="immediate_effect" val="true" />
-		<set name="crystal_count" val="51" />
+		<set name="crystal_count" val="65" />
 		<set name="crystal_type" val="D" />
 		<set name="material" val="SILVER" />
 		<set name="weight" val="150" />
-		<set name="price" val="27600" />
+		<set name="price" val="35900" />
 		<set name="enchant_enabled" val="true" />
 		<for>
 			<add order="0" stat="mDef" val="32" />
@@ -169,11 +169,11 @@
 		<set name="default_action" val="EQUIP" />
 		<set name="bodypart" val="neck" />
 		<set name="immediate_effect" val="true" />
-		<set name="crystal_count" val="81" />
+		<set name="crystal_count" val="103" />
 		<set name="crystal_type" val="D" />
 		<set name="material" val="SILVER" />
 		<set name="weight" val="150" />
-		<set name="price" val="43700" />
+		<set name="price" val="56800" />
 		<set name="enchant_enabled" val="true" />
 		<for>
 			<add order="0" stat="mDef" val="36" />
@@ -185,11 +185,11 @@
 		<set name="default_action" val="EQUIP" />
 		<set name="bodypart" val="neck" />
 		<set name="immediate_effect" val="true" />
-		<set name="crystal_count" val="122" />
+		<set name="crystal_count" val="155" />
 		<set name="crystal_type" val="D" />
 		<set name="material" val="SILVER" />
 		<set name="weight" val="150" />
-		<set name="price" val="65900" />
+		<set name="price" val="85700" />
 		<set name="enchant_enabled" val="true" />
 		<for>
 			<add order="0" stat="mDef" val="40" />
@@ -201,11 +201,11 @@
 		<set name="default_action" val="EQUIP" />
 		<set name="bodypart" val="neck" />
 		<set name="immediate_effect" val="true" />
-		<set name="crystal_count" val="177" />
+		<set name="crystal_count" val="227" />
 		<set name="crystal_type" val="D" />
 		<set name="material" val="SILVER" />
 		<set name="weight" val="150" />
-		<set name="price" val="95800" />
+		<set name="price" val="125000" />
 		<set name="enchant_enabled" val="true" />
 		<for>
 			<add order="0" stat="mDef" val="45" />
@@ -217,11 +217,11 @@
 		<set name="default_action" val="EQUIP" />
 		<set name="bodypart" val="neck" />
 		<set name="immediate_effect" val="true" />
-		<set name="crystal_count" val="230" />
+		<set name="crystal_count" val="294" />
 		<set name="crystal_type" val="D" />
 		<set name="material" val="SILVER" />
 		<set name="weight" val="150" />
-		<set name="price" val="124400" />
+		<set name="price" val="162000" />
 		<set name="enchant_enabled" val="true" />
 		<for>
 			<add order="0" stat="mDef" val="48" />
@@ -233,11 +233,11 @@
 		<set name="default_action" val="EQUIP" />
 		<set name="bodypart" val="neck" />
 		<set name="immediate_effect" val="true" />
-		<set name="crystal_count" val="64" />
+		<set name="crystal_count" val="82" />
 		<set name="crystal_type" val="C" />
 		<set name="material" val="SILVER" />
 		<set name="weight" val="150" />
-		<set name="price" val="159000" />
+		<set name="price" val="207000" />
 		<set name="enchant_enabled" val="true" />
 		<for>
 			<add order="0" stat="mDef" val="52" />
@@ -249,11 +249,11 @@
 		<set name="default_action" val="EQUIP" />
 		<set name="bodypart" val="neck" />
 		<set name="immediate_effect" val="true" />
-		<set name="crystal_count" val="80" />
+		<set name="crystal_count" val="104" />
 		<set name="crystal_type" val="C" />
 		<set name="material" val="SILVER" />
 		<set name="weight" val="150" />
-		<set name="price" val="200600" />
+		<set name="price" val="261000" />
 		<set name="enchant_enabled" val="true" />
 		<for>
 			<add order="0" stat="mDef" val="56" />
@@ -265,11 +265,11 @@
 		<set name="default_action" val="EQUIP" />
 		<set name="bodypart" val="neck" />
 		<set name="immediate_effect" val="true" />
-		<set name="crystal_count" val="121" />
+		<set name="crystal_count" val="157" />
 		<set name="crystal_type" val="C" />
 		<set name="material" val="SILVER" />
 		<set name="weight" val="150" />
-		<set name="price" val="302100" />
+		<set name="price" val="393000" />
 		<set name="enchant_enabled" val="true" />
 		<for>
 			<add order="0" stat="mDef" val="60" />
@@ -281,11 +281,11 @@
 		<set name="default_action" val="EQUIP" />
 		<set name="bodypart" val="neck" />
 		<set name="immediate_effect" val="true" />
-		<set name="crystal_count" val="83" />
+		<set name="crystal_count" val="107" />
 		<set name="crystal_type" val="B" />
 		<set name="material" val="SILVER" />
 		<set name="weight" val="150" />
-		<set name="price" val="621200" />
+		<set name="price" val="808000" />
 		<set name="enchant_enabled" val="true" />
 		<for>
 			<add order="0" stat="mDef" val="68" />
@@ -301,7 +301,7 @@
 		<set name="crystal_type" val="C" />
 		<set name="material" val="SILVER" />
 		<set name="weight" val="150" />
-		<set name="price" val="434400" />
+		<set name="price" val="565000" />
 		<set name="enchant_enabled" val="true" />
 		<for>
 			<add order="0" stat="mDef" val="64" />
@@ -314,11 +314,11 @@
 		<set name="default_action" val="EQUIP" />
 		<set name="bodypart" val="neck" />
 		<set name="immediate_effect" val="true" />
-		<set name="crystal_count" val="209" />
+		<set name="crystal_count" val="296" />
 		<set name="crystal_type" val="S" />
 		<set name="material" val="SILVER" />
 		<set name="weight" val="150" />
-		<set name="price" val="4361000" />
+		<set name="price" val="5920000" />
 		<set name="enchant_enabled" val="true" />
 		<for>
 			<add order="0" stat="mDef" val="95" />
@@ -335,7 +335,7 @@
 		<set name="crystal_type" val="B" />
 		<set name="material" val="SILVER" />
 		<set name="weight" val="150" />
-		<set name="price" val="621200" />
+		<set name="price" val="808000" />
 		<set name="enchant_enabled" val="true" />
 		<for>
 			<add order="0" stat="mDef" val="68" />
@@ -351,7 +351,7 @@
 		<set name="crystal_type" val="B" />
 		<set name="material" val="SILVER" />
 		<set name="weight" val="150" />
-		<set name="price" val="948000" />
+		<set name="price" val="1230000" />
 		<set name="enchant_enabled" val="true" />
 		<for>
 			<add order="0" stat="mDef" val="72" />
@@ -367,7 +367,7 @@
 		<set name="crystal_type" val="B" />
 		<set name="material" val="SILVER" />
 		<set name="weight" val="150" />
-		<set name="price" val="948000" />
+		<set name="price" val="1230000" />
 		<set name="enchant_enabled" val="true" />
 		<for>
 			<add order="0" stat="mDef" val="72" />
@@ -380,11 +380,11 @@
 		<set name="default_action" val="EQUIP" />
 		<set name="bodypart" val="neck" />
 		<set name="immediate_effect" val="true" />
-		<set name="crystal_count" val="160" />
+		<set name="crystal_count" val="276" />
 		<set name="crystal_type" val="A" />
 		<set name="material" val="SILVER" />
 		<set name="weight" val="150" />
-		<set name="price" val="1998000" />
+		<set name="price" val="3450000" />
 		<set name="enchant_enabled" val="true" />
 		<for>
 			<add order="0" stat="mDef" val="85" />
@@ -401,7 +401,7 @@
 		<set name="crystal_type" val="B" />
 		<set name="material" val="SILVER" />
 		<set name="weight" val="150" />
-		<set name="price" val="621200" />
+		<set name="price" val="808000" />
 		<set name="enchant_enabled" val="true" />
 		<for>
 			<add order="0" stat="mDef" val="68" />
@@ -413,11 +413,11 @@
 		<set name="default_action" val="EQUIP" />
 		<set name="bodypart" val="neck" />
 		<set name="immediate_effect" val="true" />
-		<set name="crystal_count" val="126" />
+		<set name="crystal_count" val="164" />
 		<set name="crystal_type" val="B" />
 		<set name="material" val="SILVER" />
 		<set name="weight" val="150" />
-		<set name="price" val="948000" />
+		<set name="price" val="1230000" />
 		<set name="enchant_enabled" val="true" />
 		<for>
 			<add order="0" stat="mDef" val="72" />
@@ -433,7 +433,7 @@
 		<set name="crystal_type" val="B" />
 		<set name="material" val="SILVER" />
 		<set name="weight" val="150" />
-		<set name="price" val="621200" />
+		<set name="price" val="808000" />
 		<set name="enchant_enabled" val="true" />
 		<for>
 			<add order="0" stat="mDef" val="68" />
@@ -449,7 +449,7 @@
 		<set name="crystal_type" val="B" />
 		<set name="material" val="SILVER" />
 		<set name="weight" val="150" />
-		<set name="price" val="948000" />
+		<set name="price" val="1230000" />
 		<set name="enchant_enabled" val="true" />
 		<for>
 			<add order="0" stat="mDef" val="72" />
@@ -465,7 +465,7 @@
 		<set name="crystal_type" val="B" />
 		<set name="material" val="SILVER" />
 		<set name="weight" val="150" />
-		<set name="price" val="948000" />
+		<set name="price" val="1230000" />
 		<set name="enchant_enabled" val="true" />
 		<for>
 			<add order="0" stat="mDef" val="72" />
@@ -481,7 +481,7 @@
 		<set name="crystal_type" val="A" />
 		<set name="material" val="SILVER" />
 		<set name="weight" val="150" />
-		<set name="price" val="1998000" />
+		<set name="price" val="2600000" />
 		<set name="enchant_enabled" val="true" />
 		<for>
 			<add order="0" stat="mDef" val="80" />
@@ -493,11 +493,11 @@
 		<set name="default_action" val="EQUIP" />
 		<set name="bodypart" val="neck" />
 		<set name="immediate_effect" val="true" />
-		<set name="crystal_count" val="83" />
+		<set name="crystal_count" val="107" />
 		<set name="crystal_type" val="B" />
 		<set name="material" val="SILVER" />
 		<set name="weight" val="150" />
-		<set name="price" val="621200" />
+		<set name="price" val="808000" />
 		<set name="enchant_enabled" val="true" />
 		<for>
 			<add order="0" stat="mDef" val="68" />
@@ -513,7 +513,7 @@
 		<set name="crystal_type" val="B" />
 		<set name="material" val="SILVER" />
 		<set name="weight" val="150" />
-		<set name="price" val="948000" />
+		<set name="price" val="1230000" />
 		<set name="enchant_enabled" val="true" />
 		<for>
 			<add order="0" stat="mDef" val="72" />
@@ -526,11 +526,11 @@
 		<set name="default_action" val="EQUIP" />
 		<set name="bodypart" val="neck" />
 		<set name="immediate_effect" val="true" />
-		<set name="crystal_count" val="107" />
+		<set name="crystal_count" val="208" />
 		<set name="crystal_type" val="A" />
 		<set name="material" val="SILVER" />
 		<set name="weight" val="150" />
-		<set name="price" val="1340000" />
+		<set name="price" val="2600000" />
 		<set name="enchant_enabled" val="true" />
 		<for>
 			<add order="0" stat="mDef" val="80" />
@@ -547,7 +547,7 @@
 		<set name="crystal_type" val="A" />
 		<set name="material" val="SILVER" />
 		<set name="weight" val="150" />
-		<set name="price" val="1998000" />
+		<set name="price" val="2600000" />
 		<set name="enchant_enabled" val="true" />
 		<for>
 			<add order="0" stat="mDef" val="80" />
@@ -563,7 +563,7 @@
 		<set name="crystal_type" val="B" />
 		<set name="material" val="SILVER" />
 		<set name="weight" val="150" />
-		<set name="price" val="621200" />
+		<set name="price" val="808000" />
 		<set name="enchant_enabled" val="true" />
 		<for>
 			<add order="0" stat="mDef" val="68" />
@@ -579,7 +579,7 @@
 		<set name="crystal_type" val="B" />
 		<set name="material" val="SILVER" />
 		<set name="weight" val="150" />
-		<set name="price" val="621200" />
+		<set name="price" val="808000" />
 		<set name="enchant_enabled" val="true" />
 		<for>
 			<add order="0" stat="mDef" val="68" />
@@ -679,7 +679,7 @@
 		<set name="immediate_effect" val="true" />
 		<set name="material" val="WOOD" />
 		<set name="weight" val="1400" />
-		<set name="price" val="2640" />
+		<set name="price" val="3440" />
 		<cond msgId="1518">
 			<player races="HUMAN,ELF,DARK_ELF,ORC,DWARF" />
 		</cond>
@@ -904,7 +904,7 @@
 	</item>
 	<item id="961" type="EtcItem" name="Crystal Scroll: Enchant Weapon (S-Grade)">
 		<!-- A scroll of enchantment that empowers a S Grade weapon. -->
-		<set name="icon" val="BranchSys.icon.br_scrl_of_ench_wp_s_i00" />
+		<set name="icon" val="icon.etc_scroll_of_enchant_weapon_i01" />
 		<set name="default_action" val="SKILL_REDUCE" />
 		<set name="etcitem_type" val="SCRL_ENCHANT_WP" /> <!-- Epilogue Modification -->
 		<set name="immediate_effect" val="true" />
@@ -917,7 +917,7 @@
 	</item>
 	<item id="962" type="EtcItem" name="Crystal Scroll: Enchant Armor (S-Grade)">
 		<!-- A scroll of enchantment that empowers a S Grade armor -->
-		<set name="icon" val="BranchSys.icon.br_scrl_of_ench_am_s_i00" />
+		<set name="icon" val="icon.etc_scroll_of_enchant_armor_i01" />
 		<set name="default_action" val="SKILL_REDUCE" />
 		<set name="etcitem_type" val="SCRL_ENCHANT_AM" /> <!-- Epilogue Modification -->
 		<set name="immediate_effect" val="true" />
@@ -1084,7 +1084,7 @@
 		<set name="immediate_effect" val="true" />
 		<set name="material" val="ORIHARUKON" />
 		<set name="weight" val="1450" />
-		<set name="price" val="25800" />
+		<set name="price" val="33600" />
 		<set name="soulshots" val="1" />
 		<set name="spiritshots" val="1" />
 		<for>
@@ -1166,7 +1166,7 @@
 		<set name="immediate_effect" val="true" />
 		<set name="material" val="STEEL" />
 		<set name="weight" val="1300" />
-		<set name="price" val="19500" />
+		<set name="price" val="25500" />
 		<set name="soulshots" val="1" />
 		<set name="spiritshots" val="1" />
 		<for>
@@ -1272,7 +1272,7 @@
 		<set name="immediate_effect" val="true" />
 		<set name="material" val="STEEL" />
 		<set name="weight" val="1130" />
-		<set name="price" val="19500" />
+		<set name="price" val="25500" />
 		<set name="soulshots" val="1" />
 		<set name="spiritshots" val="1" />
 		<for>
@@ -1290,7 +1290,7 @@
 		<set name="immediate_effect" val="true" />
 		<set name="material" val="CLOTH" />
 		<set name="weight" val="60" />
-		<set name="price" val="28" />
+		<set name="price" val="37" />
 		<for>
 			<add order="0" stat="pDef" val="9" />
 		</for>
@@ -1302,7 +1302,7 @@
 		<set name="immediate_effect" val="true" />
 		<set name="material" val="CLOTH" />
 		<set name="weight" val="60" />
-		<set name="price" val="28" />
+		<set name="price" val="37" />
 		<for>
 			<add order="0" stat="pDef" val="9" />
 		</for>
@@ -1314,7 +1314,7 @@
 		<set name="immediate_effect" val="true" />
 		<set name="material" val="CLOTH" />
 		<set name="weight" val="60" />
-		<set name="price" val="28" />
+		<set name="price" val="37" />
 		<for>
 			<add order="0" stat="pDef" val="9" />
 		</for>
@@ -1326,7 +1326,7 @@
 		<set name="immediate_effect" val="true" />
 		<set name="material" val="CLOTH" />
 		<set name="weight" val="60" />
-		<set name="price" val="28" />
+		<set name="price" val="37" />
 		<for>
 			<add order="0" stat="pDef" val="9" />
 		</for>
@@ -1338,7 +1338,7 @@
 		<set name="immediate_effect" val="true" />
 		<set name="material" val="CLOTH" />
 		<set name="weight" val="60" />
-		<set name="price" val="28" />
+		<set name="price" val="37" />
 		<for>
 			<add order="0" stat="pDef" val="9" />
 		</for>
@@ -1350,7 +1350,7 @@
 		<set name="immediate_effect" val="true" />
 		<set name="material" val="CLOTH" />
 		<set name="weight" val="60" />
-		<set name="price" val="28" />
+		<set name="price" val="37" />
 		<for>
 			<add order="0" stat="pDef" val="9" />
 		</for>
@@ -1362,7 +1362,7 @@
 		<set name="immediate_effect" val="true" />
 		<set name="material" val="CLOTH" />
 		<set name="weight" val="60" />
-		<set name="price" val="28" />
+		<set name="price" val="37" />
 		<for>
 			<add order="0" stat="pDef" val="9" />
 		</for>
@@ -1374,7 +1374,7 @@
 		<set name="immediate_effect" val="true" />
 		<set name="material" val="CLOTH" />
 		<set name="weight" val="60" />
-		<set name="price" val="28" />
+		<set name="price" val="37" />
 		<for>
 			<add order="0" stat="pDef" val="9" />
 		</for>
@@ -1386,7 +1386,7 @@
 		<set name="immediate_effect" val="true" />
 		<set name="material" val="CLOTH" />
 		<set name="weight" val="60" />
-		<set name="price" val="28" />
+		<set name="price" val="37" />
 		<for>
 			<add order="0" stat="pDef" val="9" />
 		</for>
@@ -1398,7 +1398,7 @@
 		<set name="immediate_effect" val="true" />
 		<set name="material" val="CLOTH" />
 		<set name="weight" val="60" />
-		<set name="price" val="28" />
+		<set name="price" val="37" />
 		<for>
 			<add order="0" stat="pDef" val="9" />
 		</for>

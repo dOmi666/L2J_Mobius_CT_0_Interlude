@@ -23,16 +23,12 @@ import org.l2jmobius.gameserver.enums.QuestSound;
 import org.l2jmobius.gameserver.model.actor.Npc;
 import org.l2jmobius.gameserver.model.actor.Player;
 import org.l2jmobius.gameserver.model.quest.Quest;
-
 import org.l2jmobius.gameserver.model.quest.QuestState;
 import org.l2jmobius.gameserver.model.quest.State;
 import org.l2jmobius.gameserver.util.Util;
 
 public class Q00617_GatherTheFlames extends Quest
-
 {
-
-	
 	// NPCs
 	private static final int HILDA = 31271;
 	private static final int VULCAN = 31539;
@@ -82,8 +78,7 @@ public class Q00617_GatherTheFlames extends Quest
 		6895,
 		6897,
 		6899,
-		7580,
-		6889
+		7580
 	};
 	
 	public Q00617_GatherTheFlames()
@@ -96,10 +91,10 @@ public class Q00617_GatherTheFlames extends Quest
 	}
 	
 	@Override
-	public String onAdvEvent(String event, Npc npc, Player player)
+	public String onEvent(String event, Npc npc, Player player)
 	{
 		String htmltext = event;
-		final QuestState st = player.getQuestState(getName());
+		final QuestState st = getQuestState(player, false);
 		if (st == null)
 		{
 			return htmltext;
@@ -183,9 +178,6 @@ public class Q00617_GatherTheFlames extends Quest
 	@Override
 	public String onKill(Npc npc, Player killer, boolean isSummon)
 	{
-
-
-
 		final Player partyMember = getRandomPartyMemberState(killer, State.STARTED);
 		if (partyMember == null)
 		{
@@ -194,11 +186,11 @@ public class Q00617_GatherTheFlames extends Quest
 		
 		if (getRandom(1000) < CHANCES.get(npc.getId()))
 		{
-			giveItems(partyMember, TORCH, 10);
+			giveItems(partyMember, TORCH, 2);
 		}
 		else
 		{
-			giveItems(partyMember, TORCH, 11);
+			giveItems(partyMember, TORCH, 1);
 		}
 		playSound(partyMember, QuestSound.ITEMSOUND_QUEST_ITEMGET);
 		

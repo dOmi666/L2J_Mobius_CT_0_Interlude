@@ -16,102 +16,84 @@
  */
 package quests.Q00649_ALooterAndARailroadMan;
 
-import java.util.HashMap;
-import java.util.Map;
-
-import org.l2jmobius.Config;
 import org.l2jmobius.gameserver.enums.QuestSound;
 import org.l2jmobius.gameserver.model.actor.Npc;
 import org.l2jmobius.gameserver.model.actor.Player;
 import org.l2jmobius.gameserver.model.quest.Quest;
 import org.l2jmobius.gameserver.model.quest.QuestState;
 import org.l2jmobius.gameserver.model.quest.State;
-import org.l2jmobius.gameserver.util.Util;
 
-/**
- * A Looter And A Railroad Man (649)
- * @author netvirus
- */
 public class Q00649_ALooterAndARailroadMan extends Quest
 {
-	// Npc
-	private static final int RAILMAN_OBI = 32052;
+	// NPC
+	private static final int OBI = 32052;
 	// Item
 	private static final int THIEF_GUILD_MARK = 8099;
-	// Misc
-	private static final int MIN_LEVEL = 30;
-	// Monsters
-	private static final Map<Integer, Integer> MONSTERS = new HashMap<>();
-	static
-	{
-		MONSTERS.put(22017, 529); // Bandit Sweeper
-		MONSTERS.put(22018, 452); // Bandit Hound
-		MONSTERS.put(22019, 606); // Bandit Watchman
-		MONSTERS.put(22021, 615); // Bandit Undertaker
-		MONSTERS.put(22022, 721); // Bandit Assassin
-		MONSTERS.put(22023, 827); // Bandit Warrior
-		MONSTERS.put(22024, 779); // Bandit Inspector
-		MONSTERS.put(22026, 1000); // Bandit Captain
-	}
 	
 	public Q00649_ALooterAndARailroadMan()
 	{
 		super(649);
-		addStartNpc(RAILMAN_OBI);
-		addTalkId(RAILMAN_OBI);
-		addKillId(MONSTERS.keySet());
 		registerQuestItems(THIEF_GUILD_MARK);
+		addStartNpc(OBI);
+		addTalkId(OBI);
+		addKillId(22017, 22018, 22019, 22021, 22022, 22023, 22024, 22026);
 	}
 	
 	@Override
-	public String onAdvEvent(String event, Npc npc, Player player)
+	public String onEvent(String event, Npc npc, Player player)
 	{
-		final QuestState qs = getQuestState(player, false);
-		if (qs == null)
+		String htmltext = event;
+		final QuestState st = getQuestState(player, false);
+		if (st == null)
 		{
-			return null;
+			return htmltext;
 		}
 		
-		String htmltext = null;
-		switch (event)
+		if (event.equals("32052-1.htm"))
 		{
-			case "32052-03.htm":
+			st.startQuest();
+		}
+		else if (event.equals("32052-3.htm"))
+		{
+			if (getQuestItemsCount(player, THIEF_GUILD_MARK) < 200)
 			{
-				if (qs.isCreated())
-				{
-					qs.startQuest();
-					htmltext = event;
-				}
-				break;
+				htmltext = "32052-3a.htm";
 			}
-			case "32052-06.html":
+			else
 			{
-				if (qs.isCond(2) && hasQuestItems(player, THIEF_GUILD_MARK))
-				{
-					giveAdena(player, 21698, true);
-					qs.exitQuest(true, true);
-					htmltext = event;
-				}
+				takeItems(player, THIEF_GUILD_MARK, -1);
+				giveAdena(player, 21698, true);
+				st.exitQuest(true, true);
 			}
 		}
+		
 		return htmltext;
 	}
 	
 	@Override
 	public String onTalk(Npc npc, Player player)
 	{
-		final QuestState qs = getQuestState(player, true);
 		String htmltext = getNoQuestMsg(player);
-		switch (qs.getState())
+		final QuestState st = getQuestState(player, true);
+		
+		switch (st.getState())
 		{
 			case State.CREATED:
 			{
-				htmltext = (player.getLevel() >= MIN_LEVEL) ? "32052-01.htm" : "32052-02.htm";
+				htmltext = (player.getLevel() < 30) ? "32052-0a.htm" : "32052-0.htm";
 				break;
 			}
 			case State.STARTED:
 			{
-				htmltext = (getQuestItemsCount(player, THIEF_GUILD_MARK) == 200) ? "32052-04.html" : "32052-05.html";
+				final int cond = st.getCond();
+				if (cond == 1)
+				{
+					htmltext = "32052-2a.htm";
+				}
+				else if (cond == 2)
+				{
+					htmltext = "32052-2.htm";
+				}
 				break;
 			}
 		}
@@ -119,21 +101,27 @@ public class Q00649_ALooterAndARailroadMan extends Quest
 	}
 	
 	@Override
-	public String onKill(Npc npc, Player killer, boolean isSummon)
+	public String onKill(Npc npc, Player player, boolean isPet)
 	{
-		final QuestState qs = getQuestState(killer, false);
-		if ((qs != null) && qs.isCond(1) && Util.checkIfInRange(Config.ALT_PARTY_RANGE, npc, killer, false) && (getRandom(1000) < MONSTERS.get(npc.getId())))
+		final QuestState st = getQuestState(player, false);
+		if ((st == null) || !st.isCond(1))
 		{
-			giveItems(killer, THIEF_GUILD_MARK, 1);
-			if (getQuestItemsCount(killer, THIEF_GUILD_MARK) == 200)
+			return null;
+		}
+		
+		if (getRandom(10) < 8)
+		{
+			giveItems(player, THIEF_GUILD_MARK, 1);
+			if (getQuestItemsCount(player, THIEF_GUILD_MARK) < 200)
 			{
-				qs.setCond(2, true);
+				playSound(player, QuestSound.ITEMSOUND_QUEST_ITEMGET);
 			}
 			else
 			{
-				playSound(killer, QuestSound.ITEMSOUND_QUEST_ITEMGET);
+				st.setCond(2, true);
 			}
 		}
-		return super.onKill(npc, killer, isSummon);
+		
+		return null;
 	}
 }

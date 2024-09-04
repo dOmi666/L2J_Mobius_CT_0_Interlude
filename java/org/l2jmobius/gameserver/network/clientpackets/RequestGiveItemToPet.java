@@ -17,41 +17,39 @@
 package org.l2jmobius.gameserver.network.clientpackets;
 
 import org.l2jmobius.Config;
-import org.l2jmobius.commons.network.ReadablePacket;
-import org.l2jmobius.gameserver.enums.PrivateStoreType;
 import org.l2jmobius.gameserver.model.actor.Player;
 import org.l2jmobius.gameserver.model.actor.instance.Pet;
 import org.l2jmobius.gameserver.model.item.instance.Item;
-import org.l2jmobius.gameserver.network.GameClient;
 import org.l2jmobius.gameserver.network.PacketLogger;
 import org.l2jmobius.gameserver.network.SystemMessageId;
+import org.l2jmobius.gameserver.network.serverpackets.EnchantResult;
 import org.l2jmobius.gameserver.util.Util;
 
 /**
  * @version $Revision: 1.3.2.1.2.5 $ $Date: 2005/03/29 23:15:33 $
  */
-public class RequestGiveItemToPet implements ClientPacket
+public class RequestGiveItemToPet extends ClientPacket
 {
 	private int _objectId;
 	private int _amount;
 	
 	@Override
-	public void read(ReadablePacket packet)
+	protected void readImpl()
 	{
-		_objectId = packet.readInt();
-		_amount = packet.readInt();
+		_objectId = readInt();
+		_amount = readInt();
 	}
 	
 	@Override
-	public void run(GameClient client)
+	protected void runImpl()
 	{
-		final Player player = client.getPlayer();
+		final Player player = getPlayer();
 		if ((_amount <= 0) || (player == null) || !player.hasPet())
 		{
 			return;
 		}
 		
-		if (!client.getFloodProtectors().canPerformTransaction())
+		if (!getClient().getFloodProtectors().canPerformTransaction())
 		{
 			player.sendMessage("You are giving items to pet too fast.");
 			return;
@@ -59,6 +57,9 @@ public class RequestGiveItemToPet implements ClientPacket
 		
 		if (player.getActiveEnchantItemId() != Player.ID_NONE)
 		{
+			player.setActiveEnchantItemId(Player.ID_NONE);
+			player.sendPacket(SystemMessageId.YOU_HAVE_CANCELLED_THE_ENCHANTING_PROCESS);
+			player.sendPacket(new EnchantResult(0));
 			return;
 		}
 		// Alt game - Karma punishment
@@ -67,7 +68,7 @@ public class RequestGiveItemToPet implements ClientPacket
 			return;
 		}
 		
-		if (player.getPrivateStoreType() != PrivateStoreType.NONE)
+		if (player.isInStoreMode())
 		{
 			player.sendMessage("You cannot exchange items while trading.");
 			return;
@@ -99,19 +100,19 @@ public class RequestGiveItemToPet implements ClientPacket
 		final Pet pet = (Pet) player.getSummon();
 		if (pet.isDead())
 		{
-			player.sendPacket(SystemMessageId.YOUR_PET_IS_DEAD_AND_ANY_ATTEMPT_YOU_MAKE_TO_GIVE_IT_SOMETHING_GOES_UNRECOGNIZED);
+			player.sendPacket(SystemMessageId.YOUR_PET_IS_MOTIONLESS_AND_ANY_ATTEMPT_YOU_MAKE_TO_GIVE_IT_SOMETHING_GOES_UNRECOGNIZED);
 			return;
 		}
 		
 		if (!pet.getInventory().validateCapacity(item))
 		{
-			player.sendPacket(SystemMessageId.YOUR_PET_CANNOT_CARRY_ANY_MORE_ITEMS);
+			player.sendPacket(SystemMessageId.YOUR_PET_CANNOT_CARRY_ANY_MORE_ITEMS_REMOVE_SOME_THEN_TRY_AGAIN);
 			return;
 		}
 		
 		if (!pet.getInventory().validateWeight(item, _amount))
 		{
-			player.sendPacket(SystemMessageId.YOUR_PET_CANNOT_CARRY_ANY_MORE_ITEMS);
+			player.sendPacket(SystemMessageId.UNABLE_TO_PLACE_ITEM_YOUR_PET_IS_TOO_ENCUMBERED);
 			return;
 		}
 		

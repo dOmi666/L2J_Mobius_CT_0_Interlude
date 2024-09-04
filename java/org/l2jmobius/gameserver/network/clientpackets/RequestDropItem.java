@@ -17,10 +17,8 @@
 package org.l2jmobius.gameserver.network.clientpackets;
 
 import org.l2jmobius.Config;
-import org.l2jmobius.commons.network.ReadablePacket;
 import org.l2jmobius.gameserver.data.xml.AdminData;
 import org.l2jmobius.gameserver.enums.PlayerCondOverride;
-import org.l2jmobius.gameserver.enums.PrivateStoreType;
 import org.l2jmobius.gameserver.model.actor.Player;
 import org.l2jmobius.gameserver.model.holders.SkillUseHolder;
 import org.l2jmobius.gameserver.model.item.ItemTemplate;
@@ -29,18 +27,16 @@ import org.l2jmobius.gameserver.model.item.type.EtcItemType;
 import org.l2jmobius.gameserver.model.itemcontainer.Inventory;
 import org.l2jmobius.gameserver.model.skill.Skill;
 import org.l2jmobius.gameserver.model.zone.ZoneId;
-import org.l2jmobius.gameserver.network.GameClient;
 import org.l2jmobius.gameserver.network.PacketLogger;
 import org.l2jmobius.gameserver.network.SystemMessageId;
 import org.l2jmobius.gameserver.network.serverpackets.InventoryUpdate;
-import org.l2jmobius.gameserver.network.serverpackets.ItemList;
 import org.l2jmobius.gameserver.util.GMAudit;
 import org.l2jmobius.gameserver.util.Util;
 
 /**
  * @version $Revision: 1.11.2.1.2.7 $ $Date: 2005/04/02 21:25:21 $
  */
-public class RequestDropItem implements ClientPacket
+public class RequestDropItem extends ClientPacket
 {
 	private int _objectId;
 	private int _count;
@@ -49,26 +45,26 @@ public class RequestDropItem implements ClientPacket
 	private int _z;
 	
 	@Override
-	public void read(ReadablePacket packet)
+	protected void readImpl()
 	{
-		_objectId = packet.readInt();
-		_count = packet.readInt();
-		_x = packet.readInt();
-		_y = packet.readInt();
-		_z = packet.readInt();
+		_objectId = readInt();
+		_count = readInt();
+		_x = readInt();
+		_y = readInt();
+		_z = readInt();
 	}
 	
 	@Override
-	public void run(GameClient client)
+	protected void runImpl()
 	{
-		final Player player = client.getPlayer();
+		final Player player = getPlayer();
 		if ((player == null) || player.isDead())
 		{
 			return;
 		}
 		
 		// Flood protect drop to avoid packet lag
-		if (!client.getFloodProtectors().canDropItem())
+		if (!getClient().getFloodProtectors().canDropItem())
 		{
 			return;
 		}
@@ -122,7 +118,7 @@ public class RequestDropItem implements ClientPacket
 			return;
 		}
 		
-		if (player.isProcessingTransaction() || (player.getPrivateStoreType() != PrivateStoreType.NONE))
+		if (player.isProcessingTransaction() || player.isInStoreMode())
 		{
 			player.sendPacket(SystemMessageId.WHILE_OPERATING_A_PRIVATE_STORE_OR_WORKSHOP_YOU_CANNOT_DISCARD_DESTROY_OR_TRADE_AN_ITEM);
 			return;
@@ -190,7 +186,7 @@ public class RequestDropItem implements ClientPacket
 		
 		if (!player.isInsideRadius2D(_x, _y, 0, 150) || (Math.abs(_z - player.getZ()) > 50))
 		{
-			player.sendPacket(SystemMessageId.YOU_CANNOT_DISCARD_SOMETHING_THAT_FAR_AWAY_FROM_YOU);
+			player.sendPacket(SystemMessageId.THAT_IS_TOO_FAR_FROM_YOU_TO_DISCARD);
 			return;
 		}
 		
@@ -208,9 +204,9 @@ public class RequestDropItem implements ClientPacket
 				itm.unChargeAllShots();
 				iu.addModifiedItem(itm);
 			}
-			player.sendPacket(iu);
+			player.sendInventoryUpdate(iu);
 			player.broadcastUserInfo();
-			player.sendPacket(new ItemList(player, true));
+			player.sendItemList(true);
 		}
 		
 		final Item dropedItem = player.dropItem("Drop", _objectId, _count, _x, _y, _z, null, false, false);

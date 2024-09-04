@@ -145,7 +145,6 @@
 		<skill skillName="Confusion" skillId="2" skillLevel="9" getLevel="52" levelUpSp="88000" learnedByNpc="true" />
 		<skill skillName="Power Break" skillId="115" skillLevel="7" getLevel="52" levelUpSp="88000" learnedByNpc="true" />
 		<skill skillName="Hex" skillId="122" skillLevel="5" getLevel="52" levelUpSp="88000" learnedByNpc="true" />
-		<skill skillName="Lure" skillId="51" skillLevel="1" getLevel="52" levelUpSp="88000" learnedByNpc="true" />
 		<skill skillName="Dagger Mastery" skillId="209" skillLevel="24" getLevel="55" levelUpSp="39000" learnedByNpc="true" />
 		<skill skillName="Dagger Mastery" skillId="209" skillLevel="25" getLevel="55" levelUpSp="39000" learnedByNpc="true" />
 		<skill skillName="Dagger Mastery" skillId="209" skillLevel="26" getLevel="55" levelUpSp="39000" learnedByNpc="true" />

@@ -1,9 +1,9 @@
 L2J-Mobius Interlude
 
-JDK: https://www.mediafire.com/file/kb2nfx54wojys4f/bellsoft-jdk17.0.2%252B9-windows-amd64.msi
-XAMPP: https://www.mediafire.com/file/hkehxpyjn81ybsw/xampp-windows-x64-8.0.11-2-VS16-installer.exe
-Eclipse: https://www.mediafire.com/file/dd2fj30rtvj33lz/eclipse-java-2023-03-R-win32-x86_64.zip
-Geodata: http://www.mediafire.com/file/4k2pi3qa8rqt299/L2J_Mobius_C6_Interlude_Geodata.zip
+JDK: https://www.mediafire.com/file/lb0by9xcvbzapi7/bellsoft-jdk21.0.2%252B14-windows-amd64.msi
+XAMPP: https://www.mediafire.com/file/0m05e3p7wdal224/xampp-windows-x64-8.0.30-0-VS16-installer.exe
+Eclipse: https://www.mediafire.com/file/ef5eub52bx4iixc/eclipse-java-2024-06-R-win32-x86_64.zip
+Geodata: https://www.mediafire.com/file/4zfzsnmzz8rv3lk/L2J_Mobius_CT_0_Interlude_Geodata.zip
 
 Client (password L2jMobius): https://drive.google.com/u/2/uc?id=1zCGzxWgkxASntc_X8L4YCEqk9hDc5VBN&export=download
 System: https://mega.nz/#!t49wiKgZ!PzVAcxcg2o8gRkAiMjH7CUO6lKrBG27npg2JPL1uEq8
@@ -113,16 +113,13 @@ What is done
 -Updated pledge skilltree data.
 -Adjusted custom community board htmls.
 -Replaced quest 639.
+-Updated buylists.
+-Made Olympiad adjustments.
+-Replaced quests 257, 260, 265, 273 and 293.
+-Removed subclass certification AI.
+-Removed masterwork craft.
 
-TODO: Important (project unusable due to the following)
--Adjust all skills according to Interlude description.
--Check if quests need adjustments, mainly rewards.
--Test Olympiad and make adjustments if needed.
 
 TODO: Not that important.
--Update skilltrees with retail data.
--Update buylists and multisells with retail data.
 -Adjust community board sell buff htmls.
 -Adjust community board announcements admin htmls.
--Spawn monsters by zones on separate XML files.
--Update htmls with retail dialogs.

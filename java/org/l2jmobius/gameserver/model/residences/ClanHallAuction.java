@@ -271,7 +271,7 @@ public class ClanHallAuction
 		}
 		if ((bid < _startingBid) || (bid <= _highestBidderMaxBid))
 		{
-			bidder.sendPacket(SystemMessageId.YOUR_BID_PRICE_MUST_BE_HIGHER_THAN_THE_MINIMUM_PRICE_CURRENTLY_BEING_BID);
+			bidder.sendPacket(SystemMessageId.YOUR_BID_PRICE_MUST_BE_HIGHER_THAN_THE_MINIMUM_PRICE_THAT_CAN_BE_BID);
 		}
 	}
 	
@@ -380,7 +380,7 @@ public class ClanHallAuction
 				_bidders.get(_highestBidderId).setBid(bid);
 				_bidders.get(_highestBidderId).setTimeBid(currentTime);
 			}
-			bidder.sendPacket(SystemMessageId.YOUR_BID_HAS_BEEN_SUCCESSFULLY_PLACED);
+			bidder.sendPacket(SystemMessageId.YOU_HAVE_BID_IN_A_CLAN_HALL_AUCTION);
 		}
 		catch (Exception e)
 		{

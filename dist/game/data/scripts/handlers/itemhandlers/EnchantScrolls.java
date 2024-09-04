@@ -42,12 +42,13 @@ public class EnchantScrolls implements IItemHandler
 		
 		if (player.isEnchanting())
 		{
-			player.sendPacket(SystemMessageId.ANOTHER_ENCHANTMENT_IS_IN_PROGRESS_PLEASE_COMPLETE_THE_PREVIOUS_TASK_THEN_TRY_AGAIN);
+			player.sendMessage("Another enchantment is in progress. Please complete the previous task, then try again.");
 			return false;
 		}
 		
 		player.setActiveEnchantItemId(item.getObjectId());
 		player.sendPacket(new ChooseInventoryItem(item.getId()));
+		player.sendPacket(SystemMessageId.SELECT_ITEM_TO_ENCHANT);
 		return true;
 	}
 }

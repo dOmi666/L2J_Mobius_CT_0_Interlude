@@ -16,169 +16,140 @@
  */
 package quests.Q00362_BardsMandolin;
 
+import org.l2jmobius.gameserver.enums.QuestSound;
 import org.l2jmobius.gameserver.model.actor.Npc;
 import org.l2jmobius.gameserver.model.actor.Player;
 import org.l2jmobius.gameserver.model.quest.Quest;
 import org.l2jmobius.gameserver.model.quest.QuestState;
 import org.l2jmobius.gameserver.model.quest.State;
 
-/**
- * Bard's Mandolin (362)
- * @author Adry_85
- */
 public class Q00362_BardsMandolin extends Quest
 {
 	// NPCs
-	private static final int WOODROW = 30837;
-	private static final int NANARIN = 30956;
 	private static final int SWAN = 30957;
+	private static final int NANARIN = 30956;
 	private static final int GALION = 30958;
+	private static final int WOODROW = 30837;
 	// Items
-	private static final int SWANS_FLUTE = 4316;
-	private static final int SWANS_LETTER = 4317;
-	private static final int THEME_OF_JOURNEY = 4410;
-	// Misc
-	private static final int MIN_LEVEL = 15;
+	private static final int SWAN_FLUTE = 4316;
+	private static final int SWAN_LETTER = 4317;
 	
 	public Q00362_BardsMandolin()
 	{
 		super(362);
+		registerQuestItems(SWAN_FLUTE, SWAN_LETTER);
 		addStartNpc(SWAN);
-		addTalkId(SWAN, GALION, WOODROW, NANARIN);
-		registerQuestItems(SWANS_FLUTE, SWANS_LETTER);
+		addTalkId(SWAN, NANARIN, GALION, WOODROW);
 	}
 	
 	@Override
-	public String onAdvEvent(String event, Npc npc, Player player)
+	public String onEvent(String event, Npc npc, Player player)
 	{
-		final QuestState qs = getQuestState(player, false);
-		if (qs == null)
+		String htmltext = event;
+		final QuestState st = getQuestState(player, false);
+		if (st == null)
 		{
-			return null;
+			return htmltext;
 		}
 		
-		String htmltext = null;
-		switch (event)
+		if (event.equals("30957-3.htm"))
 		{
-			case "30957-02.htm":
-			{
-				qs.startQuest();
-				qs.setMemoState(1);
-				htmltext = event;
-				break;
-			}
-			case "30957-07.html":
-			case "30957-08.html":
-			{
-				if (qs.isMemoState(5))
-				{
-					giveAdena(player, 10000, true);
-					rewardItems(player, THEME_OF_JOURNEY, 1);
-					qs.exitQuest(true, true);
-					htmltext = event;
-				}
-				break;
-			}
+			st.startQuest();
 		}
+		else if (event.equals("30957-7.htm") || event.equals("30957-8.htm"))
+		{
+			giveAdena(player, 10000, true);
+			giveItems(player, 4410, 1);
+			st.exitQuest(true, true);
+		}
+		
 		return htmltext;
 	}
 	
 	@Override
 	public String onTalk(Npc npc, Player player)
 	{
-		final QuestState qs = getQuestState(player, true);
 		String htmltext = getNoQuestMsg(player);
-		switch (qs.getState())
+		final QuestState st = getQuestState(player, true);
+		
+		switch (st.getState())
 		{
 			case State.CREATED:
 			{
-				if (npc.getId() == SWAN)
-				{
-					htmltext = (player.getLevel() >= MIN_LEVEL) ? "30957-01.htm" : "30957-03.html";
-				}
+				htmltext = (player.getLevel() < 15) ? "30957-2.htm" : "30957-1.htm";
 				break;
 			}
 			case State.STARTED:
 			{
+				final int cond = st.getCond();
 				switch (npc.getId())
 				{
 					case SWAN:
 					{
-						switch (qs.getMemoState())
+						if ((cond == 1) || (cond == 2))
 						{
-							case 1:
-							case 2:
-							{
-								htmltext = "30957-04.html";
-								break;
-							}
-							case 3:
-							{
-								qs.setCond(4, true);
-								qs.setMemoState(4);
-								giveItems(player, SWANS_LETTER, 1);
-								htmltext = "30957-05.html";
-								break;
-							}
-							case 4:
-							{
-								htmltext = "30957-05.html";
-								break;
-							}
-							case 5:
-							{
-								htmltext = "30957-06.html";
-								break;
-							}
+							htmltext = "30957-4.htm";
 						}
-						break;
-					}
-					case GALION:
-					{
-						if (qs.isMemoState(2))
+						else if (cond == 3)
 						{
-							qs.setMemoState(3);
-							qs.setCond(3, true);
-							giveItems(player, SWANS_FLUTE, 1);
-							htmltext = "30958-01.html";
+							htmltext = "30957-5.htm";
+							st.setCond(4, true);
+							giveItems(player, SWAN_LETTER, 1);
 						}
-						else if (qs.getMemoState() >= 3)
+						else if (cond == 4)
 						{
-							htmltext = "30958-02.html";
+							htmltext = "30957-5a.htm";
+						}
+						else if (cond == 5)
+						{
+							htmltext = "30957-6.htm";
 						}
 						break;
 					}
 					case WOODROW:
 					{
-						if (qs.isMemoState(1))
+						if (cond == 1)
 						{
-							qs.setMemoState(2);
-							qs.setCond(2, true);
-							htmltext = "30837-01.html";
+							htmltext = "30837-1.htm";
+							st.setCond(2, true);
 						}
-						else if (qs.isMemoState(2))
+						else if (cond == 2)
 						{
-							htmltext = "30837-02.html";
+							htmltext = "30837-2.htm";
 						}
-						else if (qs.getMemoState() >= 3)
+						else if (cond > 2)
 						{
-							htmltext = "30837-03.html";
+							htmltext = "30837-3.htm";
+						}
+						break;
+					}
+					case GALION:
+					{
+						if (cond == 2)
+						{
+							htmltext = "30958-1.htm";
+							st.setCond(3);
+							playSound(player, QuestSound.ITEMSOUND_QUEST_ITEMGET);
+							giveItems(player, SWAN_FLUTE, 1);
+						}
+						else if (cond > 2)
+						{
+							htmltext = "30958-2.htm";
 						}
 						break;
 					}
 					case NANARIN:
 					{
-						if (qs.isMemoState(4) && hasQuestItems(player, SWANS_FLUTE, SWANS_LETTER))
+						if (cond == 4)
 						{
-							qs.setMemoState(5);
-							qs.setCond(5, true);
-							takeItems(player, SWANS_FLUTE, -1);
-							takeItems(player, SWANS_LETTER, -1);
-							htmltext = "30956-01.html";
+							htmltext = "30956-1.htm";
+							st.setCond(5, true);
+							takeItems(player, SWAN_FLUTE, 1);
+							takeItems(player, SWAN_LETTER, 1);
 						}
-						else if (qs.getMemoState() >= 5)
+						else if (cond == 5)
 						{
-							htmltext = "30956-02.html";
+							htmltext = "30956-2.htm";
 						}
 						break;
 					}
@@ -186,6 +157,7 @@ public class Q00362_BardsMandolin extends Quest
 				break;
 			}
 		}
+		
 		return htmltext;
 	}
 }

@@ -22,141 +22,125 @@ import org.l2jmobius.gameserver.model.quest.Quest;
 import org.l2jmobius.gameserver.model.quest.QuestState;
 import org.l2jmobius.gameserver.model.quest.State;
 
-/**
- * Dwarven Kinship (167)
- * @author xban1x
- */
 public class Q00167_DwarvenKinship extends Quest
 {
 	// NPCs
+	private static final int CARLON = 30350;
 	private static final int NORMAN = 30210;
 	private static final int HAPROCK = 30255;
-	private static final int CARLON = 30350;
 	// Items
-	private static final int CARLONS_LETTER = 1076;
-	private static final int NORMANS_LETTER = 1106;
-	// Misc
-	private static final int MIN_LEVEL = 15;
+	private static final int CARLON_LETTER = 1076;
+	private static final int NORMAN_LETTER = 1106;
 	
 	public Q00167_DwarvenKinship()
 	{
 		super(167);
+		registerQuestItems(CARLON_LETTER, NORMAN_LETTER);
 		addStartNpc(CARLON);
-		addTalkId(CARLON, NORMAN, HAPROCK);
-		registerQuestItems(CARLONS_LETTER, NORMANS_LETTER);
+		addTalkId(CARLON, HAPROCK, NORMAN);
 	}
 	
 	@Override
-	public String onAdvEvent(String event, Npc npc, Player player)
+	public String onEvent(String event, Npc npc, Player player)
 	{
-		final QuestState qs = getQuestState(player, false);
-		String htmltext = null;
-		if (qs != null)
+		String htmltext = event;
+		final QuestState st = getQuestState(player, false);
+		if (st == null)
 		{
-			switch (event)
+			return htmltext;
+		}
+		
+		switch (event)
+		{
+			case "30350-04.htm":
 			{
-				case "30210-02.html":
-				{
-					if (qs.isCond(2) && hasQuestItems(player, NORMANS_LETTER))
-					{
-						giveAdena(player, 20000, true);
-						qs.exitQuest(false, true);
-						htmltext = event;
-					}
-					break;
-				}
-				case "30255-02.html":
-				{
-					htmltext = event;
-					break;
-				}
-				case "30255-03.html":
-				{
-					if (qs.isCond(1) && hasQuestItems(player, CARLONS_LETTER))
-					{
-						takeItems(player, CARLONS_LETTER, -1);
-						giveItems(player, NORMANS_LETTER, 1);
-						giveAdena(player, 2000, true);
-						qs.setCond(2);
-						htmltext = event;
-					}
-					break;
-				}
-				case "30255-04.html":
-				{
-					if (qs.isCond(1) && hasQuestItems(player, CARLONS_LETTER))
-					{
-						giveAdena(player, 15000, true);
-						qs.exitQuest(false, true);
-						htmltext = event;
-					}
-					break;
-				}
-				case "30350-03.htm":
-				{
-					qs.startQuest();
-					giveItems(player, CARLONS_LETTER, 1);
-					htmltext = event;
-					break;
-				}
+				st.startQuest();
+				giveItems(player, CARLON_LETTER, 1);
+				break;
+			}
+			case "30255-03.htm":
+			{
+				st.setCond(2);
+				takeItems(player, CARLON_LETTER, 1);
+				giveItems(player, NORMAN_LETTER, 1);
+				giveAdena(player, 2000, true);
+				break;
+			}
+			case "30255-04.htm":
+			{
+				takeItems(player, CARLON_LETTER, 1);
+				giveAdena(player, 3000, true);
+				st.exitQuest(false, true);
+				break;
+			}
+			case "30210-02.htm":
+			{
+				takeItems(player, NORMAN_LETTER, 1);
+				giveAdena(player, 20000, true);
+				st.exitQuest(false, true);
+				break;
 			}
 		}
+		
 		return htmltext;
 	}
 	
 	@Override
 	public String onTalk(Npc npc, Player player)
 	{
-		final QuestState qs = getQuestState(player, true);
 		String htmltext = getNoQuestMsg(player);
-		switch (npc.getId())
+		final QuestState st = getQuestState(player, true);
+		
+		switch (st.getState())
 		{
-			case CARLON:
+			case State.CREATED:
 			{
-				switch (qs.getState())
+				htmltext = (player.getLevel() < 15) ? "30350-02.htm" : "30350-03.htm";
+				break;
+			}
+			case State.STARTED:
+			{
+				final int cond = st.getCond();
+				switch (npc.getId())
 				{
-					case State.CREATED:
+					case CARLON:
 					{
-						htmltext = (player.getLevel() >= MIN_LEVEL) ? "30350-02.htm" : "30350-01.htm";
-						break;
-					}
-					case State.STARTED:
-					{
-						if (qs.isCond(1) && hasQuestItems(player, CARLONS_LETTER))
+						if (cond == 1)
 						{
-							htmltext = "30350-04.html";
+							htmltext = "30350-05.htm";
 						}
 						break;
 					}
-					case State.COMPLETED:
+					case HAPROCK:
 					{
-						htmltext = getAlreadyCompletedMsg(player);
+						if (cond == 1)
+						{
+							htmltext = "30255-01.htm";
+						}
+						else if (cond == 2)
+						{
+							htmltext = "30255-05.htm";
+						}
+						break;
+					}
+					case NORMAN:
+					{
+						if (cond == 2)
+						{
+							htmltext = "30210-01.htm";
+						}
 						break;
 					}
 				}
 				break;
 			}
-			case HAPROCK:
+			case State.COMPLETED:
 			{
-				if (qs.isCond(1) && hasQuestItems(player, CARLONS_LETTER))
-				{
-					htmltext = "30255-01.html";
-				}
-				else if (qs.isCond(2) && hasQuestItems(player, NORMANS_LETTER))
-				{
-					htmltext = "30255-05.html";
-				}
-				break;
-			}
-			case NORMAN:
-			{
-				if (qs.isCond(2) && hasQuestItems(player, NORMANS_LETTER))
-				{
-					htmltext = "30210-01.html";
-				}
+				htmltext = getAlreadyCompletedMsg(player);
 				break;
 			}
 		}
+		
 		return htmltext;
 	}
 }

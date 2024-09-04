@@ -23,11 +23,11 @@
 		<set name="attack_range" val="40" />
 		<set name="damage_range" val="0;0;40;120" />
 		<set name="immediate_effect" val="true" />
-		<set name="crystal_count" val="705" />
+		<set name="crystal_count" val="916" />
 		<set name="crystal_type" val="C" />
 		<set name="material" val="WOOD" />
 		<set name="weight" val="1160" />
-		<set name="price" val="1762900" />
+		<set name="price" val="2290000" />
 		<set name="soulshots" val="2" />
 		<set name="spiritshots" val="2" />
 		<set name="enchant_enabled" val="true" />
@@ -53,11 +53,11 @@
 		<set name="attack_range" val="40" />
 		<set name="damage_range" val="0;0;40;120" />
 		<set name="immediate_effect" val="true" />
-		<set name="crystal_count" val="705" />
+		<set name="crystal_count" val="916" />
 		<set name="crystal_type" val="C" />
 		<set name="material" val="WOOD" />
 		<set name="weight" val="1160" />
-		<set name="price" val="1762900" />
+		<set name="price" val="2290000" />
 		<set name="soulshots" val="2" />
 		<set name="spiritshots" val="2" />
 		<set name="enchant_enabled" val="true" />
@@ -84,11 +84,11 @@
 		<set name="attack_range" val="40" />
 		<set name="damage_range" val="0;0;40;120" />
 		<set name="immediate_effect" val="true" />
-		<set name="crystal_count" val="705" />
+		<set name="crystal_count" val="916" />
 		<set name="crystal_type" val="C" />
 		<set name="material" val="WOOD" />
 		<set name="weight" val="1160" />
-		<set name="price" val="1762900" />
+		<set name="price" val="2290000" />
 		<set name="soulshots" val="2" />
 		<set name="spiritshots" val="2" />
 		<set name="enchant_enabled" val="true" />
@@ -115,11 +115,11 @@
 		<set name="attack_range" val="40" />
 		<set name="damage_range" val="0;0;40;120" />
 		<set name="immediate_effect" val="true" />
-		<set name="crystal_count" val="1322" />
+		<set name="crystal_count" val="1720" />
 		<set name="crystal_type" val="C" />
 		<set name="material" val="WOOD" />
 		<set name="weight" val="1130" />
-		<set name="price" val="3304300" />
+		<set name="price" val="4300000" />
 		<set name="soulshots" val="3" />
 		<set name="spiritshots" val="3" />
 		<set name="enchant_enabled" val="true" />
@@ -145,11 +145,11 @@
 		<set name="attack_range" val="40" />
 		<set name="damage_range" val="0;0;40;120" />
 		<set name="immediate_effect" val="true" />
-		<set name="crystal_count" val="1322" />
+		<set name="crystal_count" val="1720" />
 		<set name="crystal_type" val="C" />
 		<set name="material" val="WOOD" />
 		<set name="weight" val="1130" />
-		<set name="price" val="3304300" />
+		<set name="price" val="4300000" />
 		<set name="soulshots" val="3" />
 		<set name="spiritshots" val="3" />
 		<set name="enchant_enabled" val="true" />
@@ -175,11 +175,11 @@
 		<set name="attack_range" val="40" />
 		<set name="damage_range" val="0;0;40;120" />
 		<set name="immediate_effect" val="true" />
-		<set name="crystal_count" val="1322" />
+		<set name="crystal_count" val="1720" />
 		<set name="crystal_type" val="C" />
 		<set name="material" val="WOOD" />
 		<set name="weight" val="1130" />
-		<set name="price" val="3304300" />
+		<set name="price" val="4300000" />
 		<set name="soulshots" val="3" />
 		<set name="spiritshots" val="3" />
 		<set name="enchant_enabled" val="true" />
@@ -206,11 +206,11 @@
 		<set name="attack_range" val="40" />
 		<set name="damage_range" val="0;0;40;120" />
 		<set name="immediate_effect" val="true" />
-		<set name="crystal_count" val="1322" />
+		<set name="crystal_count" val="1720" />
 		<set name="crystal_type" val="C" />
 		<set name="material" val="FINE_STEEL" />
 		<set name="weight" val="1150" />
-		<set name="price" val="3304300" />
+		<set name="price" val="4300000" />
 		<set name="soulshots" val="3" />
 		<set name="spiritshots" val="3" />
 		<set name="enchant_enabled" val="true" />
@@ -236,11 +236,11 @@
 		<set name="attack_range" val="40" />
 		<set name="damage_range" val="0;0;40;120" />
 		<set name="immediate_effect" val="true" />
-		<set name="crystal_count" val="1322" />
+		<set name="crystal_count" val="1720" />
 		<set name="crystal_type" val="C" />
 		<set name="material" val="FINE_STEEL" />
 		<set name="weight" val="1150" />
-		<set name="price" val="3304300" />
+		<set name="price" val="4300000" />
 		<set name="soulshots" val="3" />
 		<set name="spiritshots" val="3" />
 		<set name="enchant_enabled" val="true" />
@@ -267,11 +267,11 @@
 		<set name="attack_range" val="40" />
 		<set name="damage_range" val="0;0;40;120" />
 		<set name="immediate_effect" val="true" />
-		<set name="crystal_count" val="1322" />
+		<set name="crystal_count" val="1720" />
 		<set name="crystal_type" val="C" />
 		<set name="material" val="FINE_STEEL" />
 		<set name="weight" val="1150" />
-		<set name="price" val="3304300" />
+		<set name="price" val="4300000" />
 		<set name="soulshots" val="3" />
 		<set name="spiritshots" val="3" />
 		<set name="enchant_enabled" val="true" />
@@ -298,11 +298,11 @@
 		<set name="attack_range" val="40" />
 		<set name="damage_range" val="0;0;40;120" />
 		<set name="immediate_effect" val="true" />
-		<set name="crystal_count" val="1322" />
+		<set name="crystal_count" val="1720" />
 		<set name="crystal_type" val="C" />
 		<set name="material" val="WOOD" />
 		<set name="weight" val="1100" />
-		<set name="price" val="3304300" />
+		<set name="price" val="4300000" />
 		<set name="soulshots" val="3" />
 		<set name="spiritshots" val="3" />
 		<set name="enchant_enabled" val="true" />
@@ -328,11 +328,11 @@
 		<set name="attack_range" val="40" />
 		<set name="damage_range" val="0;0;40;120" />
 		<set name="immediate_effect" val="true" />
-		<set name="crystal_count" val="1322" />
+		<set name="crystal_count" val="1720" />
 		<set name="crystal_type" val="C" />
 		<set name="material" val="WOOD" />
 		<set name="weight" val="1100" />
-		<set name="price" val="3304300" />
+		<set name="price" val="4300000" />
 		<set name="soulshots" val="3" />
 		<set name="spiritshots" val="3" />
 		<set name="enchant_enabled" val="true" />
@@ -359,11 +359,11 @@
 		<set name="attack_range" val="40" />
 		<set name="damage_range" val="0;0;40;120" />
 		<set name="immediate_effect" val="true" />
-		<set name="crystal_count" val="1322" />
+		<set name="crystal_count" val="1720" />
 		<set name="crystal_type" val="C" />
 		<set name="material" val="WOOD" />
 		<set name="weight" val="1100" />
-		<set name="price" val="3304300" />
+		<set name="price" val="4300000" />
 		<set name="soulshots" val="3" />
 		<set name="spiritshots" val="3" />
 		<set name="enchant_enabled" val="true" />
@@ -390,11 +390,11 @@
 		<set name="attack_range" val="40" />
 		<set name="damage_range" val="0;0;40;120" />
 		<set name="immediate_effect" val="true" />
-		<set name="crystal_count" val="1322" />
+		<set name="crystal_count" val="1720" />
 		<set name="crystal_type" val="C" />
 		<set name="material" val="FINE_STEEL" />
 		<set name="weight" val="1090" />
-		<set name="price" val="3304300" />
+		<set name="price" val="4300000" />
 		<set name="soulshots" val="3" />
 		<set name="spiritshots" val="3" />
 		<set name="enchant_enabled" val="true" />
@@ -420,11 +420,11 @@
 		<set name="attack_range" val="40" />
 		<set name="damage_range" val="0;0;40;120" />
 		<set name="immediate_effect" val="true" />
-		<set name="crystal_count" val="1322" />
+		<set name="crystal_count" val="1720" />
 		<set name="crystal_type" val="C" />
 		<set name="material" val="FINE_STEEL" />
 		<set name="weight" val="1090" />
-		<set name="price" val="3304300" />
+		<set name="price" val="4300000" />
 		<set name="soulshots" val="3" />
 		<set name="spiritshots" val="3" />
 		<set name="enchant_enabled" val="true" />
@@ -451,11 +451,11 @@
 		<set name="attack_range" val="40" />
 		<set name="damage_range" val="0;0;40;120" />
 		<set name="immediate_effect" val="true" />
-		<set name="crystal_count" val="1322" />
+		<set name="crystal_count" val="1720" />
 		<set name="crystal_type" val="C" />
 		<set name="material" val="FINE_STEEL" />
 		<set name="weight" val="1090" />
-		<set name="price" val="3304300" />
+		<set name="price" val="4300000" />
 		<set name="soulshots" val="3" />
 		<set name="spiritshots" val="3" />
 		<set name="enchant_enabled" val="true" />
@@ -481,11 +481,11 @@
 		<set name="attack_range" val="40" />
 		<set name="damage_range" val="0;0;46;120" />
 		<set name="immediate_effect" val="true" />
-		<set name="crystal_count" val="1322" />
+		<set name="crystal_count" val="1720" />
 		<set name="crystal_type" val="C" />
 		<set name="material" val="WOOD" />
 		<set name="weight" val="1000" />
-		<set name="price" val="3304300" />
+		<set name="price" val="4300000" />
 		<set name="soulshots" val="3" />
 		<set name="spiritshots" val="3" />
 		<set name="enchant_enabled" val="true" />
@@ -511,11 +511,11 @@
 		<set name="attack_range" val="40" />
 		<set name="damage_range" val="0;0;46;120" />
 		<set name="immediate_effect" val="true" />
-		<set name="crystal_count" val="1322" />
+		<set name="crystal_count" val="1720" />
 		<set name="crystal_type" val="C" />
 		<set name="material" val="WOOD" />
 		<set name="weight" val="1000" />
-		<set name="price" val="3304300" />
+		<set name="price" val="4300000" />
 		<set name="soulshots" val="3" />
 		<set name="spiritshots" val="3" />
 		<set name="enchant_enabled" val="true" />
@@ -542,11 +542,11 @@
 		<set name="attack_range" val="40" />
 		<set name="damage_range" val="0;0;46;120" />
 		<set name="immediate_effect" val="true" />
-		<set name="crystal_count" val="1322" />
+		<set name="crystal_count" val="1720" />
 		<set name="crystal_type" val="C" />
 		<set name="material" val="WOOD" />
 		<set name="weight" val="1000" />
-		<set name="price" val="3304300" />
+		<set name="price" val="4300000" />
 		<set name="soulshots" val="3" />
 		<set name="spiritshots" val="3" />
 		<set name="enchant_enabled" val="true" />
@@ -573,11 +573,11 @@
 		<set name="attack_range" val="80" />
 		<set name="damage_range" val="0;0;66;120" />
 		<set name="immediate_effect" val="true" />
-		<set name="crystal_count" val="1322" />
+		<set name="crystal_count" val="1720" />
 		<set name="crystal_type" val="C" />
 		<set name="material" val="BRONZE" />
 		<set name="weight" val="2010" />
-		<set name="price" val="3304300" />
+		<set name="price" val="4300000" />
 		<set name="soulshots" val="3" />
 		<set name="spiritshots" val="3" />
 		<set name="enchant_enabled" val="true" />
@@ -604,11 +604,11 @@
 		<set name="attack_range" val="80" />
 		<set name="damage_range" val="0;0;80;120" />
 		<set name="immediate_effect" val="true" />
-		<set name="crystal_count" val="1322" />
+		<set name="crystal_count" val="1720" />
 		<set name="crystal_type" val="C" />
 		<set name="material" val="BRONZE" />
 		<set name="weight" val="2010" />
-		<set name="price" val="3304300" />
+		<set name="price" val="4300000" />
 		<set name="soulshots" val="3" />
 		<set name="spiritshots" val="3" />
 		<set name="enchant_enabled" val="true" />
@@ -634,11 +634,11 @@
 		<set name="attack_range" val="80" />
 		<set name="damage_range" val="0;0;66;180" />
 		<set name="immediate_effect" val="true" />
-		<set name="crystal_count" val="1322" />
+		<set name="crystal_count" val="1720" />
 		<set name="crystal_type" val="C" />
 		<set name="material" val="BRONZE" />
 		<set name="weight" val="2010" />
-		<set name="price" val="3304300" />
+		<set name="price" val="4300000" />
 		<set name="soulshots" val="3" />
 		<set name="spiritshots" val="3" />
 		<set name="enchant_enabled" val="true" />
@@ -663,11 +663,11 @@
 		<set name="attack_range" val="40" />
 		<set name="damage_range" val="0;0;40;120" />
 		<set name="immediate_effect" val="true" />
-		<set name="crystal_count" val="891" />
+		<set name="crystal_count" val="1157" />
 		<set name="crystal_type" val="B" />
 		<set name="material" val="ORIHARUKON" />
 		<set name="weight" val="900" />
-		<set name="price" val="6680500" />
+		<set name="price" val="8680000" />
 		<set name="soulshots" val="1" />
 		<set name="spiritshots" val="1" />
 		<set name="enchant_enabled" val="true" />
@@ -675,7 +675,7 @@
 		<set name="item_skill" val="3047-1" /> <!-- Special Ability: Acumen -->
 		<for>
 			<set stat="pAtk" val="140" />
-			<set stat="mAtk" val="140" />
+			<set stat="mAtk" val="122" />
 			<set stat="critRate" val="8" />
 			<set stat="pAtkSpd" val="379" />
 			<enchant val="0" stat="pAtk" />
@@ -692,11 +692,11 @@
 		<set name="attack_range" val="40" />
 		<set name="damage_range" val="0;0;40;120" />
 		<set name="immediate_effect" val="true" />
-		<set name="crystal_count" val="891" />
+		<set name="crystal_count" val="1157" />
 		<set name="crystal_type" val="B" />
 		<set name="material" val="ORIHARUKON" />
 		<set name="weight" val="900" />
-		<set name="price" val="6680500" />
+		<set name="price" val="8680000" />
 		<set name="soulshots" val="1" />
 		<set name="spiritshots" val="1" />
 		<set name="enchant_enabled" val="true" />
@@ -705,7 +705,7 @@
 		<set name="onmagic_skill" val="1164-11" />
 		<for>
 			<set stat="pAtk" val="140" />
-			<set stat="mAtk" val="140" />
+			<set stat="mAtk" val="122" />
 			<set stat="critRate" val="8" />
 			<set stat="pAtkSpd" val="379" />
 			<enchant val="0" stat="pAtk" />
@@ -722,11 +722,11 @@
 		<set name="attack_range" val="40" />
 		<set name="damage_range" val="0;0;40;120" />
 		<set name="immediate_effect" val="true" />
-		<set name="crystal_count" val="891" />
+		<set name="crystal_count" val="1157" />
 		<set name="crystal_type" val="B" />
 		<set name="material" val="ORIHARUKON" />
 		<set name="weight" val="900" />
-		<set name="price" val="6680500" />
+		<set name="price" val="8680000" />
 		<set name="soulshots" val="1" />
 		<set name="spiritshots" val="1" />
 		<set name="enchant_enabled" val="true" />
@@ -735,7 +735,7 @@
 		<set name="onmagic_skill" val="1044-3" />
 		<for>
 			<set stat="pAtk" val="140" />
-			<set stat="mAtk" val="140" />
+			<set stat="mAtk" val="122" />
 			<set stat="critRate" val="8" />
 			<set stat="pAtkSpd" val="379" />
 			<enchant val="0" stat="pAtk" />
@@ -755,7 +755,7 @@
 	</item>
 	<item id="7726" type="EtcItem" name="Small Nimble Green Fish - For Beginners">
 		<!-- Double-click to randomly change into another item. The changed item can be used as a regular ingredient to make other items. -->
-		<set name="icon" val="icon.etc_tuna_i07" />
+		<set name="icon" val="icon.etc_tuna_i06" />
 		<set name="default_action" val="CAPSULE" />
 		<set name="immediate_effect" val="true" />
 		<set name="material" val="FISH" />
@@ -767,7 +767,7 @@
 	</item>
 	<item id="7727" type="EtcItem" name="Small Ugly Green Fish - For Beginners">
 		<!-- Double-click to randomly change into another item. The changed item can be used as a regular ingredient to make other items. -->
-		<set name="icon" val="icon.etc_angler_i07" />
+		<set name="icon" val="icon.etc_angler_i06" />
 		<set name="default_action" val="CAPSULE" />
 		<set name="immediate_effect" val="true" />
 		<set name="material" val="FISH" />
@@ -779,7 +779,7 @@
 	</item>
 	<item id="7728" type="EtcItem" name="Small Pudgy Green Fish - For Beginners">
 		<!-- Double-click to randomly change into another item. The changed item can be used as a regular ingredient to make other items. -->
-		<set name="icon" val="icon.etc_bream_i07" />
+		<set name="icon" val="icon.etc_bream_i06" />
 		<set name="default_action" val="CAPSULE" />
 		<set name="immediate_effect" val="true" />
 		<set name="material" val="FISH" />
@@ -791,7 +791,7 @@
 	</item>
 	<item id="7729" type="EtcItem" name="Nimble Green Fish - For Beginners">
 		<!-- Double-click to randomly change into another item. The changed item can be used as a regular ingredient to make other items. -->
-		<set name="icon" val="icon.etc_tuna_i07" />
+		<set name="icon" val="icon.etc_tuna_i06" />
 		<set name="default_action" val="CAPSULE" />
 		<set name="immediate_effect" val="true" />
 		<set name="material" val="FISH" />
@@ -803,7 +803,7 @@
 	</item>
 	<item id="7730" type="EtcItem" name="Ugly Green Fish - For Beginners">
 		<!-- Double-click to randomly change into another item. The changed item can be used as a regular ingredient to make other items. -->
-		<set name="icon" val="icon.etc_angler_i07" />
+		<set name="icon" val="icon.etc_angler_i06" />
 		<set name="default_action" val="CAPSULE" />
 		<set name="immediate_effect" val="true" />
 		<set name="material" val="FISH" />
@@ -815,7 +815,7 @@
 	</item>
 	<item id="7731" type="EtcItem" name="Pudgy Green Fish - For Beginners">
 		<!-- Double-click to randomly change into another item. The changed item can be used as a regular ingredient to make other items. -->
-		<set name="icon" val="icon.etc_bream_i07" />
+		<set name="icon" val="icon.etc_bream_i06" />
 		<set name="default_action" val="CAPSULE" />
 		<set name="immediate_effect" val="true" />
 		<set name="material" val="FISH" />
@@ -827,7 +827,7 @@
 	</item>
 	<item id="7732" type="EtcItem" name="Large Nimble Green Fish - For Beginners">
 		<!-- Double-click to randomly change into another item. The changed item can be used as a regular ingredient to make other items. -->
-		<set name="icon" val="icon.etc_tuna_i07" />
+		<set name="icon" val="icon.etc_tuna_i06" />
 		<set name="default_action" val="CAPSULE" />
 		<set name="immediate_effect" val="true" />
 		<set name="material" val="FISH" />
@@ -839,7 +839,7 @@
 	</item>
 	<item id="7733" type="EtcItem" name="Large Ugly Green Fish - For Beginners">
 		<!-- Double-click to randomly change into another item. The changed item can be used as a regular ingredient to make other items. -->
-		<set name="icon" val="icon.etc_angler_i07" />
+		<set name="icon" val="icon.etc_angler_i06" />
 		<set name="default_action" val="CAPSULE" />
 		<set name="immediate_effect" val="true" />
 		<set name="material" val="FISH" />
@@ -851,7 +851,7 @@
 	</item>
 	<item id="7734" type="EtcItem" name="Large Pudgy Green Fish - For Beginners">
 		<!-- Double-click to randomly change into another item. The changed item can be used as a regular ingredient to make other items. -->
-		<set name="icon" val="icon.etc_bream_i07" />
+		<set name="icon" val="icon.etc_bream_i06" />
 		<set name="default_action" val="CAPSULE" />
 		<set name="immediate_effect" val="true" />
 		<set name="material" val="FISH" />
@@ -863,7 +863,7 @@
 	</item>
 	<item id="7735" type="EtcItem" name="Small Jade Nimble Fish - For Beginners">
 		<!-- Double-click to randomly change into another item. The changed item can be used as a regular ingredient to make other items. -->
-		<set name="icon" val="icon.etc_tuna_i06" />
+		<set name="icon" val="icon.etc_tuna_i07" />
 		<set name="default_action" val="CAPSULE" />
 		<set name="immediate_effect" val="true" />
 		<set name="material" val="FISH" />
@@ -875,7 +875,7 @@
 	</item>
 	<item id="7736" type="EtcItem" name="Small Jade Ugly Fish - For Beginners">
 		<!-- Double-click to randomly change into another item. The changed item can be used as a regular ingredient to make other items. -->
-		<set name="icon" val="icon.etc_angler_i06" />
+		<set name="icon" val="icon.etc_angler_i07" />
 		<set name="default_action" val="CAPSULE" />
 		<set name="immediate_effect" val="true" />
 		<set name="material" val="FISH" />
@@ -887,7 +887,7 @@
 	</item>
 	<item id="7737" type="EtcItem" name="Small Jade Fat Fish - For Beginners">
 		<!-- Double-click to randomly change into another item. The changed item can be used as a regular ingredient to make other items. -->
-		<set name="icon" val="icon.etc_bream_i06" />
+		<set name="icon" val="icon.etc_bream_i07" />
 		<set name="default_action" val="CAPSULE" />
 		<set name="immediate_effect" val="true" />
 		<set name="material" val="FISH" />
@@ -899,7 +899,7 @@
 	</item>
 	<item id="7738" type="EtcItem" name="Jade Nimble Fish - For Beginners">
 		<!-- Double-click to randomly change into another item. The changed item can be used as a regular ingredient to make other items. -->
-		<set name="icon" val="icon.etc_tuna_i06" />
+		<set name="icon" val="icon.etc_tuna_i07" />
 		<set name="default_action" val="CAPSULE" />
 		<set name="immediate_effect" val="true" />
 		<set name="material" val="FISH" />
@@ -911,7 +911,7 @@
 	</item>
 	<item id="7739" type="EtcItem" name="Jade Ugly Fish - For Beginners">
 		<!-- Double-click to randomly change into another item. The changed item can be used as a regular ingredient to make other items. -->
-		<set name="icon" val="icon.etc_angler_i06" />
+		<set name="icon" val="icon.etc_angler_i07" />
 		<set name="default_action" val="CAPSULE" />
 		<set name="immediate_effect" val="true" />
 		<set name="material" val="FISH" />
@@ -923,7 +923,7 @@
 	</item>
 	<item id="7740" type="EtcItem" name="Jade Fat Fish - For Beginners">
 		<!-- Double-click to randomly change into another item. The changed item can be used as a regular ingredient to make other items. -->
-		<set name="icon" val="icon.etc_bream_i06" />
+		<set name="icon" val="icon.etc_bream_i07" />
 		<set name="default_action" val="CAPSULE" />
 		<set name="immediate_effect" val="true" />
 		<set name="material" val="FISH" />
@@ -935,7 +935,7 @@
 	</item>
 	<item id="7741" type="EtcItem" name="Large Jade Nimble Fish - For Beginners">
 		<!-- Double-click to randomly change into another item. The changed item can be used as a regular ingredient to make other items. -->
-		<set name="icon" val="icon.etc_tuna_i06" />
+		<set name="icon" val="icon.etc_tuna_i07" />
 		<set name="default_action" val="CAPSULE" />
 		<set name="immediate_effect" val="true" />
 		<set name="material" val="FISH" />
@@ -947,7 +947,7 @@
 	</item>
 	<item id="7742" type="EtcItem" name="Large Jade Ugly Fish - For Beginners">
 		<!-- Double-click to randomly change into another item. The changed item can be used as a regular ingredient to make other items. -->
-		<set name="icon" val="icon.etc_angler_i06" />
+		<set name="icon" val="icon.etc_angler_i07" />
 		<set name="default_action" val="CAPSULE" />
 		<set name="immediate_effect" val="true" />
 		<set name="material" val="FISH" />
@@ -959,7 +959,7 @@
 	</item>
 	<item id="7743" type="EtcItem" name="Large Jade Fat Fish - For Beginners">
 		<!-- Double-click to randomly change into another item. The changed item can be used as a regular ingredient to make other items. -->
-		<set name="icon" val="icon.etc_bream_i06" />
+		<set name="icon" val="icon.etc_bream_i07" />
 		<set name="default_action" val="CAPSULE" />
 		<set name="immediate_effect" val="true" />
 		<set name="material" val="FISH" />

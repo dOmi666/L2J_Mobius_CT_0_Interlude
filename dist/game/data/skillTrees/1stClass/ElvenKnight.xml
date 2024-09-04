@@ -16,7 +16,7 @@
 		<skill skillName="Magic Resistance" skillId="147" skillLevel="2" getLevel="20" levelUpSp="2100" learnedByNpc="true" />
 		<skill skillName="Poison Recovery" skillId="21" skillLevel="1" getLevel="20" levelUpSp="4100" learnedByNpc="true" />
 		<skill skillName="Shield Mastery" skillId="153" skillLevel="1" getLevel="20" levelUpSp="4100" learnedByNpc="true" />
-		<skill skillName="Sword/Blunt Weapon Mastery" skillId="217" skillLevel="1" getLevel="20" levelUpSp="4100" learnedByNpc="true" />
+		<skill skillName="Sword Blunt Mastery" skillId="217" skillLevel="1" getLevel="20" levelUpSp="4100" learnedByNpc="true" />
 		<skill skillName="Ultimate Defense" skillId="110" skillLevel="1" getLevel="20" levelUpSp="4100" learnedByNpc="true" />
 		<skill skillName="Aggression" skillId="28" skillLevel="1" getLevel="24" levelUpSp="2900" learnedByNpc="true" />
 		<skill skillName="Aggression" skillId="28" skillLevel="2" getLevel="24" levelUpSp="2900" learnedByNpc="true" />
@@ -35,7 +35,7 @@
 		<skill skillName="Magic Resistance" skillId="147" skillLevel="3" getLevel="24" levelUpSp="2900" learnedByNpc="true" />
 		<skill skillName="Magic Resistance" skillId="147" skillLevel="4" getLevel="24" levelUpSp="2900" learnedByNpc="true" />
 		<skill skillName="Magic Resistance" skillId="147" skillLevel="5" getLevel="24" levelUpSp="2900" learnedByNpc="true" />
-		<skill skillName="Sword/Blunt Weapon Mastery" skillId="217" skillLevel="2" getLevel="24" levelUpSp="8800" learnedByNpc="true" />
+		<skill skillName="Sword Blunt Mastery" skillId="217" skillLevel="2" getLevel="24" levelUpSp="8800" learnedByNpc="true" />
 		<skill skillName="Aggression" skillId="28" skillLevel="4" getLevel="28" levelUpSp="5000" learnedByNpc="true" />
 		<skill skillName="Aggression" skillId="28" skillLevel="5" getLevel="28" levelUpSp="5000" learnedByNpc="true" />
 		<skill skillName="Aggression" skillId="28" skillLevel="6" getLevel="28" levelUpSp="5000" learnedByNpc="true" />
@@ -53,8 +53,8 @@
 		<skill skillName="Magic Resistance" skillId="147" skillLevel="7" getLevel="28" levelUpSp="5000" learnedByNpc="true" />
 		<skill skillName="Magic Resistance" skillId="147" skillLevel="8" getLevel="28" levelUpSp="5000" learnedByNpc="true" />
 		<skill skillName="Shield Mastery" skillId="153" skillLevel="2" getLevel="28" levelUpSp="15000" learnedByNpc="true" />
-		<skill skillName="Sword/Blunt Weapon Mastery" skillId="217" skillLevel="3" getLevel="28" levelUpSp="7500" learnedByNpc="true" />
-		<skill skillName="Sword/Blunt Weapon Mastery" skillId="217" skillLevel="4" getLevel="28" levelUpSp="7500" learnedByNpc="true" />
+		<skill skillName="Sword Blunt Mastery" skillId="217" skillLevel="3" getLevel="28" levelUpSp="7500" learnedByNpc="true" />
+		<skill skillName="Sword Blunt Mastery" skillId="217" skillLevel="4" getLevel="28" levelUpSp="7500" learnedByNpc="true" />
 		<skill skillName="Aggression" skillId="28" skillLevel="7" getLevel="32" levelUpSp="8300" learnedByNpc="true" />
 		<skill skillName="Aggression" skillId="28" skillLevel="8" getLevel="32" levelUpSp="8300" learnedByNpc="true" />
 		<skill skillName="Aggression" skillId="28" skillLevel="9" getLevel="32" levelUpSp="8300" learnedByNpc="true" />
@@ -72,8 +72,8 @@
 		<skill skillName="Magic Resistance" skillId="147" skillLevel="10" getLevel="32" levelUpSp="8300" learnedByNpc="true" />
 		<skill skillName="Magic Resistance" skillId="147" skillLevel="11" getLevel="32" levelUpSp="8300" learnedByNpc="true" />
 		<skill skillName="Sprint" skillId="230" skillLevel="1" getLevel="32" levelUpSp="25000" learnedByNpc="true" />
-		<skill skillName="Sword/Blunt Weapon Mastery" skillId="217" skillLevel="5" getLevel="32" levelUpSp="13000" learnedByNpc="true" />
-		<skill skillName="Sword/Blunt Weapon Mastery" skillId="217" skillLevel="6" getLevel="32" levelUpSp="13000" learnedByNpc="true" />
+		<skill skillName="Sword Blunt Mastery" skillId="217" skillLevel="5" getLevel="32" levelUpSp="13000" learnedByNpc="true" />
+		<skill skillName="Sword Blunt Mastery" skillId="217" skillLevel="6" getLevel="32" levelUpSp="13000" learnedByNpc="true" />
 		<skill skillName="Aggression" skillId="28" skillLevel="10" getLevel="36" levelUpSp="13000" learnedByNpc="true" />
 		<skill skillName="Aggression" skillId="28" skillLevel="11" getLevel="36" levelUpSp="13000" learnedByNpc="true" />
 		<skill skillName="Aggression" skillId="28" skillLevel="12" getLevel="36" levelUpSp="13000" learnedByNpc="true" />
@@ -91,7 +91,7 @@
 		<skill skillName="Magic Resistance" skillId="147" skillLevel="12" getLevel="36" levelUpSp="13000" learnedByNpc="true" />
 		<skill skillName="Magic Resistance" skillId="147" skillLevel="13" getLevel="36" levelUpSp="13000" learnedByNpc="true" />
 		<skill skillName="Magic Resistance" skillId="147" skillLevel="14" getLevel="36" levelUpSp="13000" learnedByNpc="true" />
-		<skill skillName="Sword/Blunt Weapon Mastery" skillId="217" skillLevel="7" getLevel="36" levelUpSp="19000" learnedByNpc="true" />
-		<skill skillName="Sword/Blunt Weapon Mastery" skillId="217" skillLevel="8" getLevel="36" levelUpSp="19000" learnedByNpc="true" />
+		<skill skillName="Sword Blunt Mastery" skillId="217" skillLevel="7" getLevel="36" levelUpSp="19000" learnedByNpc="true" />
+		<skill skillName="Sword Blunt Mastery" skillId="217" skillLevel="8" getLevel="36" levelUpSp="19000" learnedByNpc="true" />
 	</skillTree>
 </list>

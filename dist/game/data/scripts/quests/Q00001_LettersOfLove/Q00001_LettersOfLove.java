@@ -21,12 +21,7 @@ import org.l2jmobius.gameserver.model.actor.Player;
 import org.l2jmobius.gameserver.model.quest.Quest;
 import org.l2jmobius.gameserver.model.quest.QuestState;
 import org.l2jmobius.gameserver.model.quest.State;
-import org.l2jmobius.gameserver.network.NpcStringId;
 
-/**
- * Letters of Love (1)
- * @author Zoey76
- */
 public class Q00001_LettersOfLove extends Quest
 {
 	// NPCs
@@ -34,189 +29,115 @@ public class Q00001_LettersOfLove extends Quest
 	private static final int ROXXY = 30006;
 	private static final int BAULRO = 30033;
 	// Items
-	private static final int DARINS_LETTER = 687;
-	private static final int ROXXYS_KERCHIEF = 688;
-	private static final int DARINS_RECEIPT = 1079;
-	private static final int BAULROS_POTION = 1080;
-	private static final int NECKLACE_OF_KNOWLEDGE = 906;
-	// Misc
-	private static final int MIN_LEVEL = 2;
+	private static final int DARIN_LETTER = 687;
+	private static final int ROXXY_KERCHIEF = 688;
+	private static final int DARIN_RECEIPT = 1079;
+	private static final int BAULRO_POTION = 1080;
+	// Reward
+	private static final int NECKLACE = 906;
 	
 	public Q00001_LettersOfLove()
 	{
 		super(1);
+		registerQuestItems(DARIN_LETTER, ROXXY_KERCHIEF, DARIN_RECEIPT, BAULRO_POTION);
 		addStartNpc(DARIN);
 		addTalkId(DARIN, ROXXY, BAULRO);
-		registerQuestItems(DARINS_LETTER, ROXXYS_KERCHIEF, DARINS_RECEIPT, BAULROS_POTION);
 	}
 	
 	@Override
-	public String onAdvEvent(String event, Npc npc, Player player)
+	public String onEvent(String event, Npc npc, Player player)
 	{
-		final QuestState qs = getQuestState(player, false);
-		if (qs == null)
+		String htmltext = event;
+		final QuestState st = getQuestState(player, false);
+		if (st == null)
 		{
-			return null;
+			return htmltext;
 		}
 		
-		String htmltext = null;
-		switch (event)
+		if (event.equals("30048-06.htm"))
 		{
-			case "30048-03.html":
-			case "30048-04.html":
-			case "30048-05.html":
-			{
-				htmltext = event;
-				break;
-			}
-			case "30048-06.htm":
-			{
-				if (player.getLevel() >= MIN_LEVEL)
-				{
-					qs.startQuest();
-					giveItems(player, DARINS_LETTER, 1);
-					htmltext = event;
-				}
-				break;
-			}
+			st.startQuest();
+			giveItems(player, DARIN_LETTER, 1);
 		}
+		
 		return htmltext;
 	}
 	
 	@Override
 	public String onTalk(Npc npc, Player player)
 	{
-		final QuestState qs = getQuestState(player, true);
 		String htmltext = getNoQuestMsg(player);
-		switch (qs.getState())
+		final QuestState st = getQuestState(player, true);
+		
+		switch (st.getState())
 		{
 			case State.CREATED:
 			{
-				htmltext = (player.getLevel() < MIN_LEVEL) ? "30048-01.html" : "30048-02.html";
+				htmltext = (player.getLevel() < 2) ? "30048-01.htm" : "30048-02.htm";
 				break;
 			}
 			case State.STARTED:
 			{
-				switch (qs.getCond())
+				final int cond = st.getCond();
+				switch (npc.getId())
 				{
-					case 1:
+					case DARIN:
 					{
-						switch (npc.getId())
+						if (cond == 1)
 						{
-							case DARIN:
-							{
-								htmltext = "30048-07.html";
-								break;
-							}
-							case ROXXY:
-							{
-								if (hasQuestItems(player, DARINS_LETTER) && !hasQuestItems(player, ROXXYS_KERCHIEF))
-								{
-									takeItems(player, DARINS_LETTER, -1);
-									giveItems(player, ROXXYS_KERCHIEF, 1);
-									qs.setCond(2, true);
-									htmltext = "30006-01.html";
-								}
-								break;
-							}
+							htmltext = "30048-07.htm";
+						}
+						else if (cond == 2)
+						{
+							htmltext = "30048-08.htm";
+							st.setCond(3, true);
+							takeItems(player, ROXXY_KERCHIEF, 1);
+							giveItems(player, DARIN_RECEIPT, 1);
+						}
+						else if (cond == 3)
+						{
+							htmltext = "30048-09.htm";
+						}
+						else if (cond == 4)
+						{
+							htmltext = "30048-10.htm";
+							takeItems(player, BAULRO_POTION, 1);
+							giveItems(player, NECKLACE, 1);
+							st.exitQuest(false, true);
 						}
 						break;
 					}
-					case 2:
+					case ROXXY:
 					{
-						switch (npc.getId())
+						if (cond == 1)
 						{
-							case DARIN:
-							{
-								if (hasQuestItems(player, ROXXYS_KERCHIEF))
-								{
-									takeItems(player, ROXXYS_KERCHIEF, -1);
-									giveItems(player, DARINS_RECEIPT, 1);
-									qs.setCond(3, true);
-									htmltext = "30048-08.html";
-								}
-								break;
-							}
-							case ROXXY:
-							{
-								if (hasQuestItems(player, ROXXYS_KERCHIEF))
-								{
-									htmltext = "30006-02.html";
-								}
-								break;
-							}
+							htmltext = "30006-01.htm";
+							st.setCond(2, true);
+							takeItems(player, DARIN_LETTER, 1);
+							giveItems(player, ROXXY_KERCHIEF, 1);
+						}
+						else if (cond == 2)
+						{
+							htmltext = "30006-02.htm";
+						}
+						else if (cond > 2)
+						{
+							htmltext = "30006-03.htm";
 						}
 						break;
 					}
-					case 3:
+					case BAULRO:
 					{
-						switch (npc.getId())
+						if (cond == 3)
 						{
-							case DARIN:
-							{
-								if (hasQuestItems(player, DARINS_RECEIPT) || !hasQuestItems(player, BAULROS_POTION))
-								{
-									htmltext = "30048-09.html";
-								}
-								break;
-							}
-							case ROXXY:
-							{
-								if (hasQuestItems(player, DARINS_RECEIPT) || hasQuestItems(player, BAULROS_POTION))
-								{
-									htmltext = "30006-03.html";
-								}
-								break;
-							}
-							case BAULRO:
-							{
-								if (hasQuestItems(player, DARINS_RECEIPT))
-								{
-									takeItems(player, DARINS_RECEIPT, -1);
-									giveItems(player, BAULROS_POTION, 1);
-									qs.setCond(4, true);
-									htmltext = "30033-01.html";
-								}
-								else if (hasQuestItems(player, BAULROS_POTION))
-								{
-									htmltext = "30033-02.html";
-								}
-								break;
-							}
+							htmltext = "30033-01.htm";
+							st.setCond(4, true);
+							takeItems(player, DARIN_RECEIPT, 1);
+							giveItems(player, BAULRO_POTION, 1);
 						}
-						break;
-					}
-					case 4:
-					{
-						switch (npc.getId())
+						else if (cond == 4)
 						{
-							case DARIN:
-							{
-								// TODO: Beside this message something should be set for the Newbie Guide.
-								showOnScreenMsg(player, NpcStringId.DELIVERY_DUTY_COMPLETE_N_GO_FIND_THE_NEWBIE_GUIDE, 2, 5000);
-								giveItems(player, NECKLACE_OF_KNOWLEDGE, 1);
-								addExpAndSp(player, 5672, 446);
-								giveAdena(player, 2466, false);
-								qs.exitQuest(false, true);
-								htmltext = "30048-10.html";
-								break;
-							}
-							case BAULRO:
-							{
-								if (hasQuestItems(player, BAULROS_POTION))
-								{
-									htmltext = "30033-02.html";
-								}
-								break;
-							}
-							case ROXXY:
-							{
-								if (hasQuestItems(player, BAULROS_POTION))
-								{
-									htmltext = "30006-03.html";
-								}
-								break;
-							}
+							htmltext = "30033-02.htm";
 						}
 						break;
 					}
@@ -229,6 +150,7 @@ public class Q00001_LettersOfLove extends Quest
 				break;
 			}
 		}
+		
 		return htmltext;
 	}
 }

@@ -7,7 +7,7 @@
 		<set name="immediate_effect" val="true" />
 		<set name="material" val="CLOTH" />
 		<set name="weight" val="60" />
-		<set name="price" val="28" />
+		<set name="price" val="37" />
 		<for>
 			<add order="0" stat="pDef" val="9" />
 		</for>

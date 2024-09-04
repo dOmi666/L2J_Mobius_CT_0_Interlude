@@ -759,7 +759,7 @@
 		<set name="immediate_effect" val="true" />
 		<set name="material" val="CLOTH" />
 		<set name="weight" val="5" />
-		<set name="price" val="100" />
+		<set name="price" val="45923" />
 		<set name="is_stackable" val="true" />
 	</item>
 	<item id="4370" type="EtcItem" name="Luxurious Goblet">

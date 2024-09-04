@@ -268,7 +268,7 @@
 		<table name="#effectPoints">-279 -296 -311 -323 -328 -333 -337 -340 -341 -342</table>
 		<table name="#magicLevel">58 62 66 70 72 74 76 78 79 80</table>
 		<table name="#mpConsume">58 62 67 71 73 75 77 78 79 80</table>
-		<table name="#power">4181 4920 5700 6503 6906 7305 7698 8079 8265 8447</table>
+		<table name="#power">1249 2164 3408 4878 5627 6335 7698 8079 8265 8447</table>
 		<set name="baseCritRate" val="10" />
 		<set name="blowChance" val="20" />
 		<set name="castRange" val="40" />

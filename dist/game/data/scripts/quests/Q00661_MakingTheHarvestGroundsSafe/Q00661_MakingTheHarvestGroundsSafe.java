@@ -16,141 +16,119 @@
  */
 package quests.Q00661_MakingTheHarvestGroundsSafe;
 
-import java.util.HashMap;
-import java.util.Map;
-
+import org.l2jmobius.gameserver.enums.QuestSound;
 import org.l2jmobius.gameserver.model.actor.Npc;
 import org.l2jmobius.gameserver.model.actor.Player;
-import org.l2jmobius.gameserver.model.holders.ItemChanceHolder;
 import org.l2jmobius.gameserver.model.quest.Quest;
 import org.l2jmobius.gameserver.model.quest.QuestState;
 import org.l2jmobius.gameserver.model.quest.State;
 
-/**
- * Making the Harvest Grounds Safe (661)
- * @author Pandragon
- */
 public class Q00661_MakingTheHarvestGroundsSafe extends Quest
 {
 	// NPC
 	private static final int NORMAN = 30210;
-	// Items
-	private static final int BIG_HORNET_STING = 8283;
-	private static final int CLOUD_GEM = 8284;
-	private static final int YOUNG_ARANEID_CLAW = 8285;
 	// Monsters
-	private static final Map<Integer, ItemChanceHolder> MONSTER_CHANCES = new HashMap<>();
-	static
-	{
-		MONSTER_CHANCES.put(21095, new ItemChanceHolder(BIG_HORNET_STING, 0.508)); // Giant Poison Bee
-		MONSTER_CHANCES.put(21096, new ItemChanceHolder(CLOUD_GEM, 0.5)); // Cloudy Beast
-		MONSTER_CHANCES.put(21097, new ItemChanceHolder(YOUNG_ARANEID_CLAW, 0.516)); // Young Araneid
-	}
-	// Misc
-	private static final int MIN_LEVEL = 21;
+	private static final int GIANT_POISON_BEE = 21095;
+	private static final int CLOUDY_BEAST = 21096;
+	private static final int YOUNG_ARANEID = 21097;
+	// Items
+	private static final int STING_OF_GIANT_POISON_BEE = 8283;
+	private static final int CLOUDY_GEM = 8284;
+	private static final int TALON_OF_YOUNG_ARANEID = 8285;
+	// Reward
+	private static final int ADENA = 57;
 	
 	public Q00661_MakingTheHarvestGroundsSafe()
 	{
 		super(661);
+		registerQuestItems(STING_OF_GIANT_POISON_BEE, CLOUDY_GEM, TALON_OF_YOUNG_ARANEID);
 		addStartNpc(NORMAN);
 		addTalkId(NORMAN);
-		addKillId(MONSTER_CHANCES.keySet());
-		registerQuestItems(BIG_HORNET_STING, CLOUD_GEM, YOUNG_ARANEID_CLAW);
+		addKillId(GIANT_POISON_BEE, CLOUDY_BEAST, YOUNG_ARANEID);
 	}
 	
 	@Override
-	public String onAdvEvent(String event, Npc npc, Player player)
+	public String onEvent(String event, Npc npc, Player player)
 	{
-		final QuestState qs = getQuestState(player, false);
-		String htmltext = null;
-		if (qs == null)
+		String htmltext = event;
+		final QuestState st = getQuestState(player, false);
+		if (st == null)
 		{
 			return htmltext;
 		}
 		
 		switch (event)
 		{
-			case "30210-01.htm":
 			case "30210-02.htm":
-			case "30210-04.html":
-			case "30210-06.html":
 			{
-				htmltext = event;
+				st.startQuest();
 				break;
 			}
-			case "30210-03.htm":
+			case "30210-04.htm":
 			{
-				if (qs.isCreated())
+				final int item1 = getQuestItemsCount(player, STING_OF_GIANT_POISON_BEE);
+				final int item2 = getQuestItemsCount(player, CLOUDY_GEM);
+				final int item3 = getQuestItemsCount(player, TALON_OF_YOUNG_ARANEID);
+				int sum = 0;
+				sum = (item1 * 57) + (item2 * 56) + (item3 * 60);
+				if ((item1 + item2 + item3) >= 10)
 				{
-					qs.startQuest();
-					htmltext = event;
+					sum += 2871;
 				}
+				takeItems(player, STING_OF_GIANT_POISON_BEE, item1);
+				takeItems(player, CLOUDY_GEM, item2);
+				takeItems(player, TALON_OF_YOUNG_ARANEID, item3);
+				rewardItems(player, ADENA, sum);
 				break;
 			}
-			case "30210-08.html":
+			case "30210-06.htm":
 			{
-				final int stingCount = getQuestItemsCount(player, BIG_HORNET_STING);
-				final int gemCount = getQuestItemsCount(player, CLOUD_GEM);
-				final int clawCount = getQuestItemsCount(player, YOUNG_ARANEID_CLAW);
-				int reward = (57 * stingCount) + (56 * gemCount) + (60 * clawCount);
-				if ((stingCount + gemCount + clawCount) >= 10)
-				{
-					reward += 5773;
-				}
-				takeItems(player, BIG_HORNET_STING, -1);
-				takeItems(player, CLOUD_GEM, -1);
-				takeItems(player, YOUNG_ARANEID_CLAW, -1);
-				giveAdena(player, reward, true);
-				htmltext = event;
-				break;
-			}
-			case "30210-09.html":
-			{
-				qs.exitQuest(true, true);
-				htmltext = event;
+				st.exitQuest(true);
 				break;
 			}
 		}
+		
 		return htmltext;
 	}
 	
 	@Override
-	public String onTalk(Npc npc, Player talker)
+	public String onTalk(Npc npc, Player player)
 	{
-		final QuestState qs = getQuestState(talker, true);
-		String htmltext = getNoQuestMsg(talker);
-		switch (qs.getState())
+		String htmltext = getNoQuestMsg(player);
+		final QuestState st = getQuestState(player, true);
+		
+		switch (st.getState())
 		{
 			case State.CREATED:
 			{
-				htmltext = (talker.getLevel() >= MIN_LEVEL) ? "30210-01.htm" : "30210-02.htm";
+				htmltext = (player.getLevel() < 21) ? "30210-01a.htm" : "30210-01.htm";
 				break;
 			}
 			case State.STARTED:
 			{
-				if (hasQuestItems(talker, BIG_HORNET_STING, CLOUD_GEM, YOUNG_ARANEID_CLAW))
-				{
-					htmltext = "30210-04.html";
-				}
-				else
-				{
-					htmltext = "30210-05.html";
-				}
+				htmltext = (hasAtLeastOneQuestItem(player, STING_OF_GIANT_POISON_BEE, CLOUDY_GEM, TALON_OF_YOUNG_ARANEID)) ? "30210-03.htm" : "30210-05.htm";
 				break;
 			}
 		}
+		
 		return htmltext;
 	}
 	
 	@Override
-	public String onKill(Npc npc, Player killer, boolean isSummon)
+	public String onKill(Npc npc, Player player, boolean isPet)
 	{
-		final QuestState qs = getRandomPartyMemberState(killer, -1, 3, npc);
-		if (qs != null)
+		final QuestState st = getQuestState(player, false);
+		if ((st == null) || !st.isStarted())
 		{
-			final ItemChanceHolder item = MONSTER_CHANCES.get(npc.getId());
-			giveItemRandomly(qs.getPlayer(), npc, item.getId(), item.getCount(), 0, item.getChance(), true);
+			return null;
 		}
-		return super.onKill(npc, killer, isSummon);
+		
+		if (getRandomBoolean())
+		{
+			giveItems(player, npc.getId() - 12812, 1);
+			playSound(player, QuestSound.ITEMSOUND_QUEST_ITEMGET);
+		}
+		
+		return null;
 	}
 }

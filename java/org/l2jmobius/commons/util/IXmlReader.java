@@ -113,7 +113,7 @@ public interface IXmlReader
 	
 	/**
 	 * Checks if XML validation is enabled.
-	 * @return {@code true} if its enabled, {@code false} otherwise
+	 * @return {@code true} if it Is enabled, {@code false} otherwise
 	 */
 	default boolean isValidating()
 	{
@@ -716,7 +716,7 @@ public interface IXmlReader
 						if (minions_node.getNodeName().equalsIgnoreCase("npc"))
 						{
 							attrs = minions_node.getAttributes();
-							minions.add(new MinionHolder(parseInteger(attrs, "id"), parseInteger(attrs, "count"), parseInteger(attrs, "respawnTime"), parseInteger(attrs, "weightPoint")));
+							minions.add(new MinionHolder(parseInteger(attrs, "id"), parseInteger(attrs, "count"), parseInteger(attrs, "max", 0), parseInteger(attrs, "respawnTime"), parseInteger(attrs, "weightPoint", 0)));
 						}
 					}
 					

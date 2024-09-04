@@ -16,7 +16,9 @@
  */
 package org.l2jmobius.gameserver.network.serverpackets;
 
+import org.l2jmobius.commons.network.WritableBuffer;
 import org.l2jmobius.gameserver.model.actor.Creature;
+import org.l2jmobius.gameserver.network.GameClient;
 import org.l2jmobius.gameserver.network.ServerPackets;
 
 /**
@@ -35,7 +37,6 @@ public class MagicSkillUse extends ServerPacket
 	
 	public MagicSkillUse(Creature creature, Creature target, int skillId, int skillLevel, int hitTime, int reuseDelay, boolean critical)
 	{
-		super(57);
 		_creature = creature;
 		_target = target;
 		_skillId = skillId;
@@ -56,29 +57,29 @@ public class MagicSkillUse extends ServerPacket
 	}
 	
 	@Override
-	public void write()
+	public void writeImpl(GameClient client, WritableBuffer buffer)
 	{
-		ServerPackets.MAGIC_SKILL_USE.writeId(this);
-		writeInt(_creature.getObjectId());
-		writeInt(_target.getObjectId());
-		writeInt(_skillId);
-		writeInt(_skillLevel);
-		writeInt(_hitTime);
-		writeInt(_reuseDelay);
-		writeInt(_creature.getX());
-		writeInt(_creature.getY());
-		writeInt(_creature.getZ());
+		ServerPackets.MAGIC_SKILL_USE.writeId(this, buffer);
+		buffer.writeInt(_creature.getObjectId());
+		buffer.writeInt(_target.getObjectId());
+		buffer.writeInt(_skillId);
+		buffer.writeInt(_skillLevel);
+		buffer.writeInt(_hitTime);
+		buffer.writeInt(_reuseDelay);
+		buffer.writeInt(_creature.getX());
+		buffer.writeInt(_creature.getY());
+		buffer.writeInt(_creature.getZ());
 		if (_critical)
 		{
-			writeInt(1);
-			writeShort(0);
+			buffer.writeInt(1);
+			buffer.writeShort(0);
 		}
 		else
 		{
-			writeInt(0);
+			buffer.writeInt(0);
 		}
-		writeInt(_target.getX());
-		writeInt(_target.getY());
-		writeInt(_target.getZ());
+		buffer.writeInt(_target.getX());
+		buffer.writeInt(_target.getY());
+		buffer.writeInt(_target.getZ());
 	}
 }

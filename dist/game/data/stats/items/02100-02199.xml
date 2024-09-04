@@ -17,7 +17,7 @@
 		<set name="immediate_effect" val="true" />
 		<set name="material" val="LIQUID" />
 		<set name="weight" val="60" />
-		<set name="price" val="35480" />
+		<set name="price" val="35900" />
 		<set name="is_stackable" val="true" />
 	</item>
 	<item id="2102" type="EtcItem" name="Pa'agrian Hammer Head">
@@ -117,7 +117,7 @@
 		<set name="immediate_effect" val="true" />
 		<set name="material" val="LIQUID" />
 		<set name="weight" val="60" />
-		<set name="price" val="35480" />
+		<set name="price" val="35900" />
 		<set name="is_stackable" val="true" />
 	</item>
 	<item id="2112" type="EtcItem" name="Pa'agrian Axe Blade">
@@ -237,7 +237,7 @@
 		<set name="immediate_effect" val="true" />
 		<set name="material" val="LIQUID" />
 		<set name="weight" val="60" />
-		<set name="price" val="42509" />
+		<set name="price" val="43818" />
 		<set name="is_stackable" val="true" />
 	</item>
 	<item id="2124" type="EtcItem" name="Blessed Branch Splinter">
@@ -247,7 +247,7 @@
 		<set name="immediate_effect" val="true" />
 		<set name="material" val="LIQUID" />
 		<set name="weight" val="60" />
-		<set name="price" val="42509" />
+		<set name="price" val="43818" />
 		<set name="is_stackable" val="true" />
 	</item>
 	<item id="2125" type="EtcItem" name="Phoenix Feather Piece">
@@ -257,7 +257,7 @@
 		<set name="immediate_effect" val="true" />
 		<set name="material" val="LIQUID" />
 		<set name="weight" val="60" />
-		<set name="price" val="42509" />
+		<set name="price" val="43818" />
 		<set name="is_stackable" val="true" />
 	</item>
 	<item id="2126" type="EtcItem" name="Cerberus Eye Fragment">
@@ -267,7 +267,7 @@
 		<set name="immediate_effect" val="true" />
 		<set name="material" val="LIQUID" />
 		<set name="weight" val="60" />
-		<set name="price" val="42509" />
+		<set name="price" val="43818" />
 		<set name="is_stackable" val="true" />
 	</item>
 	<item id="2127" type="EtcItem" name="Scroll of Destruction Page">
@@ -277,7 +277,7 @@
 		<set name="immediate_effect" val="true" />
 		<set name="material" val="LIQUID" />
 		<set name="weight" val="60" />
-		<set name="price" val="42509" />
+		<set name="price" val="43818" />
 		<set name="is_stackable" val="true" />
 	</item>
 	<item id="2128" type="EtcItem" name="Claws of Black Dragon Piece">
@@ -287,7 +287,7 @@
 		<set name="immediate_effect" val="true" />
 		<set name="material" val="LIQUID" />
 		<set name="weight" val="60" />
-		<set name="price" val="42509" />
+		<set name="price" val="43818" />
 		<set name="is_stackable" val="true" />
 	</item>
 	<item id="2129" type="EtcItem" name="Three Eyed Crow's Feather Piece">
@@ -297,7 +297,7 @@
 		<set name="immediate_effect" val="true" />
 		<set name="material" val="LIQUID" />
 		<set name="weight" val="60" />
-		<set name="price" val="42509" />
+		<set name="price" val="43818" />
 		<set name="is_stackable" val="true" />
 	</item>
 	<item id="2130" type="EtcItem" name="Gemstone D">

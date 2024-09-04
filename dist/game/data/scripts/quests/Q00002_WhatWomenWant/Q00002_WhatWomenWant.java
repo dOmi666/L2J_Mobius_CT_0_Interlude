@@ -22,12 +22,7 @@ import org.l2jmobius.gameserver.model.actor.Player;
 import org.l2jmobius.gameserver.model.quest.Quest;
 import org.l2jmobius.gameserver.model.quest.QuestState;
 import org.l2jmobius.gameserver.model.quest.State;
-import org.l2jmobius.gameserver.network.NpcStringId;
 
-/**
- * What Women Want (2)
- * @author malyelfik
- */
 public class Q00002_WhatWomenWant extends Quest
 {
 	// NPCs
@@ -36,192 +31,174 @@ public class Q00002_WhatWomenWant extends Quest
 	private static final int HERBIEL = 30150;
 	private static final int GREENIS = 30157;
 	// Items
-	private static final int ARUJIENS_LETTER1 = 1092;
-	private static final int ARUJIENS_LETTER2 = 1093;
-	private static final int ARUJIENS_LETTER3 = 1094;
+	private static final int ARUJIEN_LETTER_1 = 1092;
+	private static final int ARUJIEN_LETTER_2 = 1093;
+	private static final int ARUJIEN_LETTER_3 = 1094;
 	private static final int POETRY_BOOK = 689;
 	private static final int GREENIS_LETTER = 693;
-	private static final int EARRING = 113;
-	// Misc
-	private static final int MIN_LEVEL = 2;
+	// Rewards
+	private static final int MYSTICS_EARRING = 113;
 	
 	public Q00002_WhatWomenWant()
 	{
 		super(2);
+		registerQuestItems(ARUJIEN_LETTER_1, ARUJIEN_LETTER_2, ARUJIEN_LETTER_3, POETRY_BOOK, GREENIS_LETTER);
 		addStartNpc(ARUJIEN);
 		addTalkId(ARUJIEN, MIRABEL, HERBIEL, GREENIS);
-		registerQuestItems(ARUJIENS_LETTER1, ARUJIENS_LETTER2, ARUJIENS_LETTER3, POETRY_BOOK, GREENIS_LETTER);
 	}
 	
 	@Override
-	public String onAdvEvent(String event, Npc npc, Player player)
+	public String onEvent(String event, Npc npc, Player player)
 	{
-		final QuestState qs = getQuestState(player, false);
-		if (qs == null)
+		String htmltext = event;
+		final QuestState st = getQuestState(player, false);
+		if (st == null)
 		{
-			return null;
+			return htmltext;
 		}
 		
-		String htmltext = event;
 		switch (event)
 		{
 			case "30223-04.htm":
 			{
-				qs.startQuest();
-				giveItems(player, ARUJIENS_LETTER1, 1);
+				st.startQuest();
+				giveItems(player, ARUJIEN_LETTER_1, 1);
 				break;
 			}
-			case "30223-08.html":
+			case "30223-08.htm":
 			{
-				takeItems(player, ARUJIENS_LETTER3, -1);
+				st.setCond(4, true);
+				takeItems(player, ARUJIEN_LETTER_3, 1);
 				giveItems(player, POETRY_BOOK, 1);
-				qs.setCond(4, true);
 				break;
 			}
-			case "30223-09.html":
+			case "30223-09.htm":
 			{
+				takeItems(player, ARUJIEN_LETTER_3, 1);
 				giveAdena(player, 450, true);
-				qs.exitQuest(false, true);
-				// Newbie Guide
-				showOnScreenMsg(player, NpcStringId.DELIVERY_DUTY_COMPLETE_N_GO_FIND_THE_NEWBIE_GUIDE, 2, 5000);
-				addExpAndSp(player, 4254, 335);
-				giveAdena(player, 1850, true);
-				break;
-			}
-			case "30223-03.html":
-			{
-				break;
-			}
-			default:
-			{
-				htmltext = null;
+				st.exitQuest(false, true);
 				break;
 			}
 		}
+		
 		return htmltext;
 	}
 	
 	@Override
 	public String onTalk(Npc npc, Player player)
 	{
-		final QuestState qs = getQuestState(player, true);
 		String htmltext = getNoQuestMsg(player);
-		switch (npc.getId())
+		final QuestState st = getQuestState(player, true);
+		
+		switch (st.getState())
 		{
-			case ARUJIEN:
+			case State.CREATED:
 			{
-				switch (qs.getState())
+				if ((player.getRace() != Race.ELF) && (player.getRace() != Race.HUMAN))
 				{
-					case State.CREATED:
+					htmltext = "30223-00.htm";
+				}
+				else if (player.getLevel() < 2)
+				{
+					htmltext = "30223-01.htm";
+				}
+				else
+				{
+					htmltext = "30223-02.htm";
+				}
+				break;
+			}
+			case State.STARTED:
+			{
+				final int cond = st.getCond();
+				switch (npc.getId())
+				{
+					case ARUJIEN:
 					{
-						htmltext = ((player.getRace() != Race.ELF) && (player.getRace() != Race.HUMAN)) ? "30223-00.htm" : (player.getLevel() >= MIN_LEVEL) ? "30223-02.htm" : "30223-01.html";
-						break;
-					}
-					case State.STARTED:
-					{
-						switch (qs.getCond())
+						if (hasQuestItems(player, ARUJIEN_LETTER_1))
 						{
-							case 1:
-							{
-								htmltext = "30223-05.html";
-								break;
-							}
-							case 2:
-							{
-								htmltext = "30223-06.html";
-								break;
-							}
-							case 3:
-							{
-								htmltext = "30223-07.html";
-								break;
-							}
-							case 4:
-							{
-								htmltext = "30223-10.html";
-								break;
-							}
-							case 5:
-							{
-								giveItems(player, EARRING, 1);
-								qs.exitQuest(false, true);
-								htmltext = "30223-11.html";
-								// Newbie Guide
-								showOnScreenMsg(player, NpcStringId.DELIVERY_DUTY_COMPLETE_N_GO_FIND_THE_NEWBIE_GUIDE, 2, 5000);
-								addExpAndSp(player, 4254, 335);
-								giveAdena(player, 1850, true);
-								break;
-							}
+							htmltext = "30223-05.htm";
+						}
+						else if (hasQuestItems(player, ARUJIEN_LETTER_3))
+						{
+							htmltext = "30223-07.htm";
+						}
+						else if (hasQuestItems(player, ARUJIEN_LETTER_2))
+						{
+							htmltext = "30223-06.htm";
+						}
+						else if (hasQuestItems(player, POETRY_BOOK))
+						{
+							htmltext = "30223-11.htm";
+						}
+						else if (hasQuestItems(player, GREENIS_LETTER))
+						{
+							htmltext = "30223-10.htm";
+							takeItems(player, GREENIS_LETTER, 1);
+							giveItems(player, MYSTICS_EARRING, 1);
+							st.exitQuest(false, true);
 						}
 						break;
 					}
-					case State.COMPLETED:
+					case MIRABEL:
 					{
-						htmltext = getAlreadyCompletedMsg(player);
+						if (cond == 1)
+						{
+							htmltext = "30146-01.htm";
+							st.setCond(2, true);
+							takeItems(player, ARUJIEN_LETTER_1, 1);
+							giveItems(player, ARUJIEN_LETTER_2, 1);
+						}
+						else if (cond > 1)
+						{
+							htmltext = "30146-02.htm";
+						}
+						break;
+					}
+					case HERBIEL:
+					{
+						if (cond == 2)
+						{
+							htmltext = "30150-01.htm";
+							st.setCond(3, true);
+							takeItems(player, ARUJIEN_LETTER_2, 1);
+							giveItems(player, ARUJIEN_LETTER_3, 1);
+						}
+						else if (cond > 2)
+						{
+							htmltext = "30150-02.htm";
+						}
+						break;
+					}
+					case GREENIS:
+					{
+						if (cond < 4)
+						{
+							htmltext = "30157-01.htm";
+						}
+						else if (cond == 4)
+						{
+							htmltext = "30157-02.htm";
+							st.setCond(5, true);
+							takeItems(player, POETRY_BOOK, 1);
+							giveItems(player, GREENIS_LETTER, 1);
+						}
+						else if (cond == 5)
+						{
+							htmltext = "30157-03.htm";
+						}
 						break;
 					}
 				}
 				break;
 			}
-			case MIRABEL:
+			case State.COMPLETED:
 			{
-				if (qs.isStarted())
-				{
-					if (qs.isCond(1))
-					{
-						qs.setCond(2, true);
-						takeItems(player, ARUJIENS_LETTER1, -1);
-						giveItems(player, ARUJIENS_LETTER2, 1);
-						htmltext = "30146-01.html";
-					}
-					else
-					{
-						htmltext = "30146-02.html";
-					}
-				}
-				break;
-			}
-			case HERBIEL:
-			{
-				if (qs.isStarted() && (qs.getCond() > 1))
-				{
-					if (qs.isCond(2))
-					{
-						qs.setCond(3, true);
-						takeItems(player, ARUJIENS_LETTER2, -1);
-						giveItems(player, ARUJIENS_LETTER3, 1);
-						htmltext = "30150-01.html";
-					}
-					else
-					{
-						htmltext = "30150-02.html";
-					}
-				}
-				break;
-			}
-			case GREENIS:
-			{
-				if (qs.isStarted())
-				{
-					if (qs.isCond(4))
-					{
-						qs.setCond(5, true);
-						takeItems(player, POETRY_BOOK, -1);
-						giveItems(player, GREENIS_LETTER, 1);
-						htmltext = "30157-02.html";
-					}
-					else if (qs.isCond(5))
-					{
-						htmltext = "30157-03.html";
-					}
-					else
-					{
-						htmltext = "30157-01.html";
-					}
-				}
+				htmltext = getAlreadyCompletedMsg(player);
 				break;
 			}
 		}
+		
 		return htmltext;
 	}
 }

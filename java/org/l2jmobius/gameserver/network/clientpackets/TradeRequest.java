@@ -17,13 +17,10 @@
 package org.l2jmobius.gameserver.network.clientpackets;
 
 import org.l2jmobius.Config;
-import org.l2jmobius.commons.network.ReadablePacket;
-import org.l2jmobius.gameserver.enums.PrivateStoreType;
 import org.l2jmobius.gameserver.model.BlockList;
 import org.l2jmobius.gameserver.model.World;
 import org.l2jmobius.gameserver.model.WorldObject;
 import org.l2jmobius.gameserver.model.actor.Player;
-import org.l2jmobius.gameserver.network.GameClient;
 import org.l2jmobius.gameserver.network.SystemMessageId;
 import org.l2jmobius.gameserver.network.serverpackets.ActionFailed;
 import org.l2jmobius.gameserver.network.serverpackets.SendTradeRequest;
@@ -32,20 +29,20 @@ import org.l2jmobius.gameserver.network.serverpackets.SystemMessage;
 /**
  * This packet manages the trade request.
  */
-public class TradeRequest implements ClientPacket
+public class TradeRequest extends ClientPacket
 {
 	private int _objectId;
 	
 	@Override
-	public void read(ReadablePacket packet)
+	protected void readImpl()
 	{
-		_objectId = packet.readInt();
+		_objectId = readInt();
 	}
 	
 	@Override
-	public void run(GameClient client)
+	protected void runImpl()
 	{
-		final Player player = client.getPlayer();
+		final Player player = getPlayer();
 		if (player == null)
 		{
 			return;
@@ -71,7 +68,7 @@ public class TradeRequest implements ClientPacket
 		// and the following system message is sent to acting player.
 		if (target.getObjectId() == player.getObjectId())
 		{
-			player.sendPacket(SystemMessageId.THAT_IS_AN_INCORRECT_TARGET);
+			player.sendPacket(SystemMessageId.THAT_IS_THE_INCORRECT_TARGET);
 			return;
 		}
 		
@@ -107,7 +104,7 @@ public class TradeRequest implements ClientPacket
 			return;
 		}
 		
-		if ((player.getPrivateStoreType() != PrivateStoreType.NONE) || (partner.getPrivateStoreType() != PrivateStoreType.NONE))
+		if (player.isInStoreMode() || partner.isInStoreMode())
 		{
 			player.sendPacket(SystemMessageId.WHILE_OPERATING_A_PRIVATE_STORE_OR_WORKSHOP_YOU_CANNOT_DISCARD_DESTROY_OR_TRADE_AN_ITEM);
 			return;
@@ -122,7 +119,7 @@ public class TradeRequest implements ClientPacket
 		SystemMessage sm;
 		if (partner.isProcessingRequest() || partner.isProcessingTransaction())
 		{
-			sm = new SystemMessage(SystemMessageId.C1_IS_ON_ANOTHER_TASK_PLEASE_TRY_AGAIN_LATER);
+			sm = new SystemMessage(SystemMessageId.S1_IS_BUSY_PLEASE_TRY_AGAIN_LATER);
 			sm.addString(partner.getName());
 			player.sendPacket(sm);
 			return;
@@ -150,7 +147,7 @@ public class TradeRequest implements ClientPacket
 		
 		player.onTransactionRequest(partner);
 		partner.sendPacket(new SendTradeRequest(player.getObjectId()));
-		sm = new SystemMessage(SystemMessageId.YOU_HAVE_REQUESTED_A_TRADE_WITH_C1);
+		sm = new SystemMessage(SystemMessageId.YOU_HAVE_REQUESTED_A_TRADE_WITH_S1);
 		sm.addString(partner.getName());
 		player.sendPacket(sm);
 	}

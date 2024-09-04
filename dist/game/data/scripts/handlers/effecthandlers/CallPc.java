@@ -20,6 +20,7 @@ import org.l2jmobius.Config;
 import org.l2jmobius.gameserver.instancemanager.InstanceManager;
 import org.l2jmobius.gameserver.model.StatSet;
 import org.l2jmobius.gameserver.model.WorldObject;
+import org.l2jmobius.gameserver.model.actor.Creature;
 import org.l2jmobius.gameserver.model.actor.Player;
 import org.l2jmobius.gameserver.model.conditions.Condition;
 import org.l2jmobius.gameserver.model.effects.AbstractEffect;
@@ -27,7 +28,7 @@ import org.l2jmobius.gameserver.model.holders.SummonRequestHolder;
 import org.l2jmobius.gameserver.model.instancezone.Instance;
 import org.l2jmobius.gameserver.model.olympiad.Olympiad;
 import org.l2jmobius.gameserver.model.sevensigns.SevenSigns;
-import org.l2jmobius.gameserver.model.skill.BuffInfo;
+import org.l2jmobius.gameserver.model.skill.Skill;
 import org.l2jmobius.gameserver.model.zone.ZoneId;
 import org.l2jmobius.gameserver.network.SystemMessageId;
 import org.l2jmobius.gameserver.network.serverpackets.ConfirmDlg;
@@ -57,15 +58,15 @@ public class CallPc extends AbstractEffect
 	}
 	
 	@Override
-	public void onStart(BuffInfo info)
+	public void onStart(Creature effector, Creature effected, Skill skill)
 	{
-		if (info.getEffected() == info.getEffector())
+		if (effected == effector)
 		{
 			return;
 		}
 		
-		final Player target = info.getEffected().getActingPlayer();
-		final Player player = info.getEffector().getActingPlayer();
+		final Player target = effected.getActingPlayer();
+		final Player player = effector.getActingPlayer();
 		if (player != null)
 		{
 			if (checkSummonTargetStatus(target, player))
@@ -86,7 +87,7 @@ public class CallPc extends AbstractEffect
 				}
 				target.addScript(new SummonRequestHolder(player));
 				
-				final ConfirmDlg confirm = new ConfirmDlg(SystemMessageId.C1_WISHES_TO_SUMMON_YOU_FROM_S2_DO_YOU_ACCEPT.getId());
+				final ConfirmDlg confirm = new ConfirmDlg(SystemMessageId.S1_WISHES_TO_SUMMON_YOU_FROM_S2_DO_YOU_ACCEPT.getId());
 				confirm.getSystemMessage().addString(player.getName());
 				confirm.getSystemMessage().addZoneName(player.getX(), player.getY(), player.getZ());
 				confirm.addTime(30000);
@@ -97,7 +98,7 @@ public class CallPc extends AbstractEffect
 		else if (target != null)
 		{
 			final WorldObject previousTarget = target.getTarget();
-			target.teleToLocation(info.getEffector());
+			target.teleToLocation(effector);
 			target.setTarget(previousTarget);
 		}
 	}
@@ -111,7 +112,7 @@ public class CallPc extends AbstractEffect
 		
 		if (target.isAlikeDead())
 		{
-			final SystemMessage sm = new SystemMessage(SystemMessageId.C1_IS_DEAD_AT_THE_MOMENT_AND_CANNOT_BE_SUMMONED);
+			final SystemMessage sm = new SystemMessage(SystemMessageId.S1_IS_DEAD_AT_THE_MOMENT_AND_CANNOT_BE_SUMMONED);
 			sm.addPcName(target);
 			activeChar.sendPacket(sm);
 			return false;
@@ -119,7 +120,7 @@ public class CallPc extends AbstractEffect
 		
 		if (target.isInStoreMode())
 		{
-			final SystemMessage sm = new SystemMessage(SystemMessageId.C1_IS_CURRENTLY_TRADING_OR_OPERATING_A_PRIVATE_STORE_AND_CANNOT_BE_SUMMONED);
+			final SystemMessage sm = new SystemMessage(SystemMessageId.S1_IS_CURRENTLY_TRADING_OR_OPERATING_A_PRIVATE_STORE_AND_CANNOT_BE_SUMMONED);
 			sm.addPcName(target);
 			activeChar.sendPacket(sm);
 			return false;
@@ -127,7 +128,7 @@ public class CallPc extends AbstractEffect
 		
 		if (target.isRooted() || target.isInCombat())
 		{
-			final SystemMessage sm = new SystemMessage(SystemMessageId.C1_IS_ENGAGED_IN_COMBAT_AND_CANNOT_BE_SUMMONED);
+			final SystemMessage sm = new SystemMessage(SystemMessageId.S1_IS_ENGAGED_IN_COMBAT_AND_CANNOT_BE_SUMMONED);
 			sm.addPcName(target);
 			activeChar.sendPacket(sm);
 			return false;
@@ -147,7 +148,7 @@ public class CallPc extends AbstractEffect
 		
 		if (target.inObserverMode())
 		{
-			final SystemMessage sm = new SystemMessage(SystemMessageId.C1_IS_IN_A_STATE_WHICH_PREVENTS_SUMMONING);
+			final SystemMessage sm = new SystemMessage(SystemMessageId.S1_IS_IN_A_STATE_WHICH_PREVENTS_SUMMONING);
 			sm.addString(target.getName());
 			activeChar.sendPacket(sm);
 			return false;
@@ -155,7 +156,7 @@ public class CallPc extends AbstractEffect
 		
 		if (target.isInsideZone(ZoneId.NO_SUMMON_FRIEND) || target.isInsideZone(ZoneId.JAIL))
 		{
-			final SystemMessage sm = new SystemMessage(SystemMessageId.C1_IS_IN_AN_AREA_WHICH_BLOCKS_SUMMONING);
+			final SystemMessage sm = new SystemMessage(SystemMessageId.S1_IS_IN_AN_AREA_WHICH_BLOCKS_SUMMONING);
 			sm.addString(target.getName());
 			activeChar.sendPacket(sm);
 			return false;

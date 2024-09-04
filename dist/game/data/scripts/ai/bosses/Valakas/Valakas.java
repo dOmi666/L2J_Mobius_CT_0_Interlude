@@ -191,7 +191,7 @@ public class Valakas extends AbstractNpcAI
 	}
 	
 	@Override
-	public String onAdvEvent(String event, Npc npc, Player player)
+	public String onEvent(String event, Npc npc, Player player)
 	{
 		if (npc != null)
 		{
@@ -380,7 +380,7 @@ public class Valakas extends AbstractNpcAI
 		{
 			BOSS_ZONE.oustAllPlayers();
 		}
-		return super.onAdvEvent(event, npc, player);
+		return super.onEvent(event, npc, player);
 	}
 	
 	@Override
@@ -444,8 +444,10 @@ public class Valakas extends AbstractNpcAI
 		startQuestTimer("die_8", 16500, npc, null); // 2500
 		
 		GrandBossManager.getInstance().setStatus(VALAKAS, DEAD);
-		// Calculate Min and Max respawn times randomly.
-		final long respawnTime = (Config.VALAKAS_SPAWN_INTERVAL + getRandom(-Config.VALAKAS_SPAWN_RANDOM, Config.VALAKAS_SPAWN_RANDOM)) * 3600000;
+		
+		final long baseIntervalMillis = Config.VALAKAS_SPAWN_INTERVAL * 3600000;
+		final long randomRangeMillis = Config.VALAKAS_SPAWN_RANDOM * 3600000;
+		final long respawnTime = baseIntervalMillis + getRandom(-randomRangeMillis, randomRangeMillis);
 		startQuestTimer("valakas_unlock", respawnTime, null, null);
 		// also save the respawn time so that the info is maintained past reboots
 		final StatSet info = GrandBossManager.getInstance().getStatSet(VALAKAS);

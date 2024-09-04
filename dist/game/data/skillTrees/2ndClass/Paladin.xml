@@ -24,9 +24,9 @@
 		<skill skillName="Shield Stun" skillId="92" skillLevel="16" getLevel="40" levelUpSp="12000" learnedByNpc="true" />
 		<skill skillName="Shield Stun" skillId="92" skillLevel="17" getLevel="40" levelUpSp="12000" learnedByNpc="true" />
 		<skill skillName="Shield Stun" skillId="92" skillLevel="18" getLevel="40" levelUpSp="12000" learnedByNpc="true" />
-		<skill skillName="Sword/Blunt Weapon Mastery" skillId="217" skillLevel="9" getLevel="40" levelUpSp="12000" learnedByNpc="true" />
-		<skill skillName="Sword/Blunt Weapon Mastery" skillId="217" skillLevel="10" getLevel="40" levelUpSp="12000" learnedByNpc="true" />
-		<skill skillName="Sword/Blunt Weapon Mastery" skillId="217" skillLevel="11" getLevel="40" levelUpSp="12000" learnedByNpc="true" />
+		<skill skillName="Sword Blunt Mastery" skillId="217" skillLevel="9" getLevel="40" levelUpSp="12000" learnedByNpc="true" />
+		<skill skillName="Sword Blunt Mastery" skillId="217" skillLevel="10" getLevel="40" levelUpSp="12000" learnedByNpc="true" />
+		<skill skillName="Sword Blunt Mastery" skillId="217" skillLevel="11" getLevel="40" levelUpSp="12000" learnedByNpc="true" />
 		<skill skillName="Aggression" skillId="28" skillLevel="16" getLevel="43" levelUpSp="13000" learnedByNpc="true" />
 		<skill skillName="Aggression" skillId="28" skillLevel="17" getLevel="43" levelUpSp="13000" learnedByNpc="true" />
 		<skill skillName="Aggression" skillId="28" skillLevel="18" getLevel="43" levelUpSp="13000" learnedByNpc="true" />
@@ -49,9 +49,9 @@
 		<skill skillName="Shield Stun" skillId="92" skillLevel="19" getLevel="43" levelUpSp="13000" learnedByNpc="true" />
 		<skill skillName="Shield Stun" skillId="92" skillLevel="20" getLevel="43" levelUpSp="13000" learnedByNpc="true" />
 		<skill skillName="Shield Stun" skillId="92" skillLevel="21" getLevel="43" levelUpSp="13000" learnedByNpc="true" />
-		<skill skillName="Sword/Blunt Weapon Mastery" skillId="217" skillLevel="12" getLevel="43" levelUpSp="13000" learnedByNpc="true" />
-		<skill skillName="Sword/Blunt Weapon Mastery" skillId="217" skillLevel="13" getLevel="43" levelUpSp="13000" learnedByNpc="true" />
-		<skill skillName="Sword/Blunt Weapon Mastery" skillId="217" skillLevel="14" getLevel="43" levelUpSp="13000" learnedByNpc="true" />
+		<skill skillName="Sword Blunt Mastery" skillId="217" skillLevel="12" getLevel="43" levelUpSp="13000" learnedByNpc="true" />
+		<skill skillName="Sword Blunt Mastery" skillId="217" skillLevel="13" getLevel="43" levelUpSp="13000" learnedByNpc="true" />
+		<skill skillName="Sword Blunt Mastery" skillId="217" skillLevel="14" getLevel="43" levelUpSp="13000" learnedByNpc="true" />
 		<skill skillName="Aegis Stance" skillId="318" skillLevel="1" getLevel="46" levelUpSp="55000" learnedByNpc="true" />
 		<skill skillName="Aggression" skillId="28" skillLevel="19" getLevel="46" levelUpSp="18000" learnedByNpc="true" />
 		<skill skillName="Aggression" skillId="28" skillLevel="20" getLevel="46" levelUpSp="18000" learnedByNpc="true" />
@@ -74,9 +74,9 @@
 		<skill skillName="Shield Stun" skillId="92" skillLevel="22" getLevel="46" levelUpSp="18000" learnedByNpc="true" />
 		<skill skillName="Shield Stun" skillId="92" skillLevel="23" getLevel="46" levelUpSp="18000" learnedByNpc="true" />
 		<skill skillName="Shield Stun" skillId="92" skillLevel="24" getLevel="46" levelUpSp="18000" learnedByNpc="true" />
-		<skill skillName="Sword/Blunt Weapon Mastery" skillId="217" skillLevel="15" getLevel="46" levelUpSp="18000" learnedByNpc="true" />
-		<skill skillName="Sword/Blunt Weapon Mastery" skillId="217" skillLevel="16" getLevel="46" levelUpSp="18000" learnedByNpc="true" />
-		<skill skillName="Sword/Blunt Weapon Mastery" skillId="217" skillLevel="17" getLevel="46" levelUpSp="18000" learnedByNpc="true" />
+		<skill skillName="Sword Blunt Mastery" skillId="217" skillLevel="15" getLevel="46" levelUpSp="18000" learnedByNpc="true" />
+		<skill skillName="Sword Blunt Mastery" skillId="217" skillLevel="16" getLevel="46" levelUpSp="18000" learnedByNpc="true" />
+		<skill skillName="Sword Blunt Mastery" skillId="217" skillLevel="17" getLevel="46" levelUpSp="18000" learnedByNpc="true" />
 		<skill skillName="Ultimate Defense" skillId="110" skillLevel="2" getLevel="46" levelUpSp="55000" learnedByNpc="true" />
 		<skill skillName="Aggression" skillId="28" skillLevel="22" getLevel="49" levelUpSp="27000" learnedByNpc="true" />
 		<skill skillName="Aggression" skillId="28" skillLevel="23" getLevel="49" levelUpSp="27000" learnedByNpc="true" />
@@ -102,9 +102,9 @@
 		<skill skillName="Shield Stun" skillId="92" skillLevel="25" getLevel="49" levelUpSp="27000" learnedByNpc="true" />
 		<skill skillName="Shield Stun" skillId="92" skillLevel="26" getLevel="49" levelUpSp="27000" learnedByNpc="true" />
 		<skill skillName="Shield Stun" skillId="92" skillLevel="27" getLevel="49" levelUpSp="27000" learnedByNpc="true" />
-		<skill skillName="Sword/Blunt Weapon Mastery" skillId="217" skillLevel="18" getLevel="49" levelUpSp="27000" learnedByNpc="true" />
-		<skill skillName="Sword/Blunt Weapon Mastery" skillId="217" skillLevel="19" getLevel="49" levelUpSp="27000" learnedByNpc="true" />
-		<skill skillName="Sword/Blunt Weapon Mastery" skillId="217" skillLevel="20" getLevel="49" levelUpSp="27000" learnedByNpc="true" />
+		<skill skillName="Sword Blunt Mastery" skillId="217" skillLevel="18" getLevel="49" levelUpSp="27000" learnedByNpc="true" />
+		<skill skillName="Sword Blunt Mastery" skillId="217" skillLevel="19" getLevel="49" levelUpSp="27000" learnedByNpc="true" />
+		<skill skillName="Sword Blunt Mastery" skillId="217" skillLevel="20" getLevel="49" levelUpSp="27000" learnedByNpc="true" />
 		<skill skillName="Aggression" skillId="28" skillLevel="25" getLevel="52" levelUpSp="38000" learnedByNpc="true" />
 		<skill skillName="Aggression" skillId="28" skillLevel="26" getLevel="52" levelUpSp="38000" learnedByNpc="true" />
 		<skill skillName="Aggression" skillId="28" skillLevel="27" getLevel="52" levelUpSp="38000" learnedByNpc="true" />
@@ -131,9 +131,9 @@
 		<skill skillName="Shield Stun" skillId="92" skillLevel="28" getLevel="52" levelUpSp="38000" learnedByNpc="true" />
 		<skill skillName="Shield Stun" skillId="92" skillLevel="29" getLevel="52" levelUpSp="38000" learnedByNpc="true" />
 		<skill skillName="Shield Stun" skillId="92" skillLevel="30" getLevel="52" levelUpSp="38000" learnedByNpc="true" />
-		<skill skillName="Sword/Blunt Weapon Mastery" skillId="217" skillLevel="21" getLevel="52" levelUpSp="38000" learnedByNpc="true" />
-		<skill skillName="Sword/Blunt Weapon Mastery" skillId="217" skillLevel="22" getLevel="52" levelUpSp="38000" learnedByNpc="true" />
-		<skill skillName="Sword/Blunt Weapon Mastery" skillId="217" skillLevel="23" getLevel="52" levelUpSp="38000" learnedByNpc="true" />
+		<skill skillName="Sword Blunt Mastery" skillId="217" skillLevel="21" getLevel="52" levelUpSp="38000" learnedByNpc="true" />
+		<skill skillName="Sword Blunt Mastery" skillId="217" skillLevel="22" getLevel="52" levelUpSp="38000" learnedByNpc="true" />
+		<skill skillName="Sword Blunt Mastery" skillId="217" skillLevel="23" getLevel="52" levelUpSp="38000" learnedByNpc="true" />
 		<skill skillName="Aggression" skillId="28" skillLevel="28" getLevel="55" levelUpSp="46000" learnedByNpc="true" />
 		<skill skillName="Aggression" skillId="28" skillLevel="29" getLevel="55" levelUpSp="46000" learnedByNpc="true" />
 		<skill skillName="Aggression" skillId="28" skillLevel="30" getLevel="55" levelUpSp="46000" learnedByNpc="true" />
@@ -163,9 +163,9 @@
 		<skill skillName="Shield Stun" skillId="92" skillLevel="31" getLevel="55" levelUpSp="46000" learnedByNpc="true" />
 		<skill skillName="Shield Stun" skillId="92" skillLevel="32" getLevel="55" levelUpSp="46000" learnedByNpc="true" />
 		<skill skillName="Shield Stun" skillId="92" skillLevel="33" getLevel="55" levelUpSp="46000" learnedByNpc="true" />
-		<skill skillName="Sword/Blunt Weapon Mastery" skillId="217" skillLevel="24" getLevel="55" levelUpSp="46000" learnedByNpc="true" />
-		<skill skillName="Sword/Blunt Weapon Mastery" skillId="217" skillLevel="25" getLevel="55" levelUpSp="46000" learnedByNpc="true" />
-		<skill skillName="Sword/Blunt Weapon Mastery" skillId="217" skillLevel="26" getLevel="55" levelUpSp="46000" learnedByNpc="true" />
+		<skill skillName="Sword Blunt Mastery" skillId="217" skillLevel="24" getLevel="55" levelUpSp="46000" learnedByNpc="true" />
+		<skill skillName="Sword Blunt Mastery" skillId="217" skillLevel="25" getLevel="55" levelUpSp="46000" learnedByNpc="true" />
+		<skill skillName="Sword Blunt Mastery" skillId="217" skillLevel="26" getLevel="55" levelUpSp="46000" learnedByNpc="true" />
 		<skill skillName="Tribunal" skillId="400" skillLevel="1" getLevel="55" levelUpSp="138000" learnedByNpc="true" />
 		<skill skillName="Aggression" skillId="28" skillLevel="31" getLevel="58" levelUpSp="67000" learnedByNpc="true" />
 		<skill skillName="Aggression" skillId="28" skillLevel="32" getLevel="58" levelUpSp="67000" learnedByNpc="true" />
@@ -197,9 +197,9 @@
 		<skill skillName="Shield Stun" skillId="92" skillLevel="34" getLevel="58" levelUpSp="67000" learnedByNpc="true" />
 		<skill skillName="Shield Stun" skillId="92" skillLevel="35" getLevel="58" levelUpSp="67000" learnedByNpc="true" />
 		<skill skillName="Shield Stun" skillId="92" skillLevel="36" getLevel="58" levelUpSp="67000" learnedByNpc="true" />
-		<skill skillName="Sword/Blunt Weapon Mastery" skillId="217" skillLevel="27" getLevel="58" levelUpSp="47000" learnedByNpc="true" />
-		<skill skillName="Sword/Blunt Weapon Mastery" skillId="217" skillLevel="28" getLevel="58" levelUpSp="67000" learnedByNpc="true" />
-		<skill skillName="Sword/Blunt Weapon Mastery" skillId="217" skillLevel="29" getLevel="58" levelUpSp="67000" learnedByNpc="true" />
+		<skill skillName="Sword Blunt Mastery" skillId="217" skillLevel="27" getLevel="58" levelUpSp="47000" learnedByNpc="true" />
+		<skill skillName="Sword Blunt Mastery" skillId="217" skillLevel="28" getLevel="58" levelUpSp="67000" learnedByNpc="true" />
+		<skill skillName="Sword Blunt Mastery" skillId="217" skillLevel="29" getLevel="58" levelUpSp="67000" learnedByNpc="true" />
 		<skill skillName="Tribunal" skillId="400" skillLevel="2" getLevel="58" levelUpSp="141000" learnedByNpc="true" />
 		<skill skillName="Aggression" skillId="28" skillLevel="34" getLevel="60" levelUpSp="90000" learnedByNpc="true" />
 		<skill skillName="Aggression" skillId="28" skillLevel="35" getLevel="60" levelUpSp="90000" learnedByNpc="true" />
@@ -221,8 +221,8 @@
 		<skill skillName="Shackle" skillId="403" skillLevel="3" getLevel="60" levelUpSp="180000" learnedByNpc="true" />
 		<skill skillName="Shield Stun" skillId="92" skillLevel="37" getLevel="60" levelUpSp="90000" learnedByNpc="true" />
 		<skill skillName="Shield Stun" skillId="92" skillLevel="38" getLevel="60" levelUpSp="90000" learnedByNpc="true" />
-		<skill skillName="Sword/Blunt Weapon Mastery" skillId="217" skillLevel="30" getLevel="60" levelUpSp="90000" learnedByNpc="true" />
-		<skill skillName="Sword/Blunt Weapon Mastery" skillId="217" skillLevel="31" getLevel="60" levelUpSp="90000" learnedByNpc="true" />
+		<skill skillName="Sword Blunt Mastery" skillId="217" skillLevel="30" getLevel="60" levelUpSp="90000" learnedByNpc="true" />
+		<skill skillName="Sword Blunt Mastery" skillId="217" skillLevel="31" getLevel="60" levelUpSp="90000" learnedByNpc="true" />
 		<skill skillName="Tribunal" skillId="400" skillLevel="3" getLevel="60" levelUpSp="180000" learnedByNpc="true" />
 		<skill skillName="Aggression" skillId="28" skillLevel="36" getLevel="62" levelUpSp="130000" learnedByNpc="true" />
 		<skill skillName="Aggression" skillId="28" skillLevel="37" getLevel="62" levelUpSp="130000" learnedByNpc="true" />
@@ -246,8 +246,8 @@
 		<skill skillName="Shackle" skillId="403" skillLevel="4" getLevel="62" levelUpSp="250000" learnedByNpc="true" />
 		<skill skillName="Shield Stun" skillId="92" skillLevel="39" getLevel="62" levelUpSp="130000" learnedByNpc="true" />
 		<skill skillName="Shield Stun" skillId="92" skillLevel="40" getLevel="62" levelUpSp="130000" learnedByNpc="true" />
-		<skill skillName="Sword/Blunt Weapon Mastery" skillId="217" skillLevel="32" getLevel="62" levelUpSp="130000" learnedByNpc="true" />
-		<skill skillName="Sword/Blunt Weapon Mastery" skillId="217" skillLevel="33" getLevel="62" levelUpSp="130000" learnedByNpc="true" />
+		<skill skillName="Sword Blunt Mastery" skillId="217" skillLevel="32" getLevel="62" levelUpSp="130000" learnedByNpc="true" />
+		<skill skillName="Sword Blunt Mastery" skillId="217" skillLevel="33" getLevel="62" levelUpSp="130000" learnedByNpc="true" />
 		<skill skillName="Tribunal" skillId="400" skillLevel="4" getLevel="62" levelUpSp="250000" learnedByNpc="true" />
 		<skill skillName="Aggression" skillId="28" skillLevel="38" getLevel="64" levelUpSp="140000" learnedByNpc="true" />
 		<skill skillName="Aggression" skillId="28" skillLevel="39" getLevel="64" levelUpSp="140000" learnedByNpc="true" />
@@ -271,8 +271,8 @@
 		<skill skillName="Shield Fortress" skillId="322" skillLevel="1" getLevel="64" levelUpSp="270000" learnedByNpc="true" />
 		<skill skillName="Shield Stun" skillId="92" skillLevel="41" getLevel="64" levelUpSp="140000" learnedByNpc="true" />
 		<skill skillName="Shield Stun" skillId="92" skillLevel="42" getLevel="64" levelUpSp="140000" learnedByNpc="true" />
-		<skill skillName="Sword/Blunt Weapon Mastery" skillId="217" skillLevel="34" getLevel="64" levelUpSp="140000" learnedByNpc="true" />
-		<skill skillName="Sword/Blunt Weapon Mastery" skillId="217" skillLevel="35" getLevel="64" levelUpSp="140000" learnedByNpc="true" />
+		<skill skillName="Sword Blunt Mastery" skillId="217" skillLevel="34" getLevel="64" levelUpSp="140000" learnedByNpc="true" />
+		<skill skillName="Sword Blunt Mastery" skillId="217" skillLevel="35" getLevel="64" levelUpSp="140000" learnedByNpc="true" />
 		<skill skillName="Tribunal" skillId="400" skillLevel="5" getLevel="64" levelUpSp="270000" learnedByNpc="true" />
 		<skill skillName="Aggression" skillId="28" skillLevel="40" getLevel="66" levelUpSp="210000" learnedByNpc="true" />
 		<skill skillName="Aggression" skillId="28" skillLevel="41" getLevel="66" levelUpSp="210000" learnedByNpc="true" />
@@ -297,8 +297,8 @@
 		<skill skillName="Shield Fortress" skillId="322" skillLevel="2" getLevel="66" levelUpSp="410000" learnedByNpc="true" />
 		<skill skillName="Shield Stun" skillId="92" skillLevel="43" getLevel="66" levelUpSp="210000" learnedByNpc="true" />
 		<skill skillName="Shield Stun" skillId="92" skillLevel="44" getLevel="66" levelUpSp="210000" learnedByNpc="true" />
-		<skill skillName="Sword/Blunt Weapon Mastery" skillId="217" skillLevel="36" getLevel="66" levelUpSp="210000" learnedByNpc="true" />
-		<skill skillName="Sword/Blunt Weapon Mastery" skillId="217" skillLevel="37" getLevel="66" levelUpSp="210000" learnedByNpc="true" />
+		<skill skillName="Sword Blunt Mastery" skillId="217" skillLevel="36" getLevel="66" levelUpSp="210000" learnedByNpc="true" />
+		<skill skillName="Sword Blunt Mastery" skillId="217" skillLevel="37" getLevel="66" levelUpSp="210000" learnedByNpc="true" />
 		<skill skillName="Tribunal" skillId="400" skillLevel="6" getLevel="66" levelUpSp="410000" learnedByNpc="true" />
 		<skill skillName="Aggression" skillId="28" skillLevel="42" getLevel="68" levelUpSp="240000" learnedByNpc="true" />
 		<skill skillName="Aggression" skillId="28" skillLevel="43" getLevel="68" levelUpSp="240000" learnedByNpc="true" />
@@ -321,8 +321,8 @@
 		<skill skillName="Shield Fortress" skillId="322" skillLevel="3" getLevel="68" levelUpSp="490000" learnedByNpc="true" />
 		<skill skillName="Shield Stun" skillId="92" skillLevel="45" getLevel="68" levelUpSp="240000" learnedByNpc="true" />
 		<skill skillName="Shield Stun" skillId="92" skillLevel="46" getLevel="68" levelUpSp="240000" learnedByNpc="true" />
-		<skill skillName="Sword/Blunt Weapon Mastery" skillId="217" skillLevel="38" getLevel="68" levelUpSp="240000" learnedByNpc="true" />
-		<skill skillName="Sword/Blunt Weapon Mastery" skillId="217" skillLevel="39" getLevel="68" levelUpSp="240000" learnedByNpc="true" />
+		<skill skillName="Sword Blunt Mastery" skillId="217" skillLevel="38" getLevel="68" levelUpSp="240000" learnedByNpc="true" />
+		<skill skillName="Sword Blunt Mastery" skillId="217" skillLevel="39" getLevel="68" levelUpSp="240000" learnedByNpc="true" />
 		<skill skillName="Tribunal" skillId="400" skillLevel="7" getLevel="68" levelUpSp="490000" learnedByNpc="true" />
 		<skill skillName="Aggression" skillId="28" skillLevel="44" getLevel="70" levelUpSp="270000" learnedByNpc="true" />
 		<skill skillName="Aggression" skillId="28" skillLevel="45" getLevel="70" levelUpSp="270000" learnedByNpc="true" />
@@ -346,8 +346,8 @@
 		<skill skillName="Shield Fortress" skillId="322" skillLevel="4" getLevel="70" levelUpSp="550000" learnedByNpc="true" />
 		<skill skillName="Shield Stun" skillId="92" skillLevel="47" getLevel="70" levelUpSp="270000" learnedByNpc="true" />
 		<skill skillName="Shield Stun" skillId="92" skillLevel="48" getLevel="70" levelUpSp="270000" learnedByNpc="true" />
-		<skill skillName="Sword/Blunt Weapon Mastery" skillId="217" skillLevel="40" getLevel="70" levelUpSp="270000" learnedByNpc="true" />
-		<skill skillName="Sword/Blunt Weapon Mastery" skillId="217" skillLevel="41" getLevel="70" levelUpSp="270000" learnedByNpc="true" />
+		<skill skillName="Sword Blunt Mastery" skillId="217" skillLevel="40" getLevel="70" levelUpSp="270000" learnedByNpc="true" />
+		<skill skillName="Sword Blunt Mastery" skillId="217" skillLevel="41" getLevel="70" levelUpSp="270000" learnedByNpc="true" />
 		<skill skillName="Tribunal" skillId="400" skillLevel="8" getLevel="70" levelUpSp="550000" learnedByNpc="true" />
 		<skill skillName="Aggression" skillId="28" skillLevel="46" getLevel="72" levelUpSp="350000" learnedByNpc="true" />
 		<skill skillName="Aggression" skillId="28" skillLevel="47" getLevel="72" levelUpSp="350000" learnedByNpc="true" />
@@ -371,8 +371,8 @@
 		<skill skillName="Shield Fortress" skillId="322" skillLevel="5" getLevel="72" levelUpSp="720000" learnedByNpc="true" />
 		<skill skillName="Shield Stun" skillId="92" skillLevel="49" getLevel="72" levelUpSp="350000" learnedByNpc="true" />
 		<skill skillName="Shield Stun" skillId="92" skillLevel="50" getLevel="72" levelUpSp="350000" learnedByNpc="true" />
-		<skill skillName="Sword/Blunt Weapon Mastery" skillId="217" skillLevel="42" getLevel="72" levelUpSp="350000" learnedByNpc="true" />
-		<skill skillName="Sword/Blunt Weapon Mastery" skillId="217" skillLevel="43" getLevel="72" levelUpSp="350000" learnedByNpc="true" />
+		<skill skillName="Sword Blunt Mastery" skillId="217" skillLevel="42" getLevel="72" levelUpSp="350000" learnedByNpc="true" />
+		<skill skillName="Sword Blunt Mastery" skillId="217" skillLevel="43" getLevel="72" levelUpSp="350000" learnedByNpc="true" />
 		<skill skillName="Tribunal" skillId="400" skillLevel="9" getLevel="72" levelUpSp="720000" learnedByNpc="true" />
 		<skill skillName="Aggression" skillId="28" skillLevel="48" getLevel="74" levelUpSp="760000" learnedByNpc="true" />
 		<skill skillName="Aggression" skillId="28" skillLevel="49" getLevel="74" levelUpSp="760000" learnedByNpc="true" />
@@ -397,8 +397,8 @@
 		<skill skillName="Shield Fortress" skillId="322" skillLevel="6" getLevel="74" levelUpSp="1530000" learnedByNpc="true" />
 		<skill skillName="Shield Stun" skillId="92" skillLevel="51" getLevel="74" levelUpSp="760000" learnedByNpc="true" />
 		<skill skillName="Shield Stun" skillId="92" skillLevel="52" getLevel="74" levelUpSp="760000" learnedByNpc="true" />
-		<skill skillName="Sword/Blunt Weapon Mastery" skillId="217" skillLevel="44" getLevel="74" levelUpSp="760000" learnedByNpc="true" />
-		<skill skillName="Sword/Blunt Weapon Mastery" skillId="217" skillLevel="45" getLevel="74" levelUpSp="760000" learnedByNpc="true" />
+		<skill skillName="Sword Blunt Mastery" skillId="217" skillLevel="44" getLevel="74" levelUpSp="760000" learnedByNpc="true" />
+		<skill skillName="Sword Blunt Mastery" skillId="217" skillLevel="45" getLevel="74" levelUpSp="760000" learnedByNpc="true" />
 		<skill skillName="Tribunal" skillId="400" skillLevel="10" getLevel="74" levelUpSp="1530000" learnedByNpc="true" />
 	</skillTree>
 </list>

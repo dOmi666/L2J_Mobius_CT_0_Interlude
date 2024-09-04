@@ -38,10 +38,10 @@ public class Q00353_PowerOfDarkness extends Quest
 	}
 	
 	@Override
-	public String onAdvEvent(String event, Npc npc, Player player)
+	public String onEvent(String event, Npc npc, Player player)
 	{
-		final String htmltext = event;
-		final QuestState st = player.getQuestState(getName());
+		String htmltext = event;
+		final QuestState st = getQuestState(player, false);
 		if (st == null)
 		{
 			return htmltext;
@@ -83,7 +83,7 @@ public class Q00353_PowerOfDarkness extends Quest
 				{
 					htmltext = "31044-06.htm";
 					takeItems(player, STONE, -1);
-					rewardItems(player, 57, 2500 + (230 * stones));
+					giveAdena(player, 2500 + (230 * stones), true);
 				}
 				break;
 			}

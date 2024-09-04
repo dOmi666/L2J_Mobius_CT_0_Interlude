@@ -1035,7 +1035,7 @@
 	</item>
 	<item id="8274" type="EtcItem" name="Chapel Key">
 		<!-- Opens the door to the chapel in the Pagan Temple. -->
-		<set name="icon" val="icon.etc_old_key_i01" />
+		<set name="icon" val="icon.etc_old_key_i03" />
 		<set name="default_action" val="SKILL_REDUCE" />
 		<set name="material" val="STEEL" />
 		<set name="is_stackable" val="true" />
@@ -1044,7 +1044,7 @@
 	</item>
 	<item id="8275" type="EtcItem" name="Key of Darkness">
 		<!-- The key that opens the Door of Darkness located at the altar within the Pagan Temple. -->
-		<set name="icon" val="icon.etc_old_key_i02" />
+		<set name="icon" val="icon.etc_old_key_i03" />
 		<set name="default_action" val="SKILL_REDUCE" />
 		<set name="material" val="STEEL" />
 		<set name="is_stackable" val="true" />

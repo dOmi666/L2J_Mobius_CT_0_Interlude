@@ -16,96 +16,120 @@
  */
 package quests.Q00653_WildMaiden;
 
+import org.l2jmobius.gameserver.model.Location;
 import org.l2jmobius.gameserver.model.actor.Npc;
 import org.l2jmobius.gameserver.model.actor.Player;
 import org.l2jmobius.gameserver.model.quest.Quest;
 import org.l2jmobius.gameserver.model.quest.QuestState;
 import org.l2jmobius.gameserver.model.quest.State;
+import org.l2jmobius.gameserver.network.serverpackets.MagicSkillUse;
 
-/**
- * Wild Maiden (653)
- * @author malyelfik
- */
 public class Q00653_WildMaiden extends Quest
 {
 	// NPCs
-	private static final int GALIBREDO = 30181;
 	private static final int SUKI = 32013;
+	private static final int GALIBREDO = 30181;
 	// Item
-	private static final int SOE = 736;
-	// Misc
-	private static final int MIN_LEVEL = 36;
+	private static final int SCROLL_OF_ESCAPE = 736;
+	// Table of possible spawns
+	private static final Location[] SPAWNS =
+	{
+		new Location(66578, 72351, -3731, 0),
+		new Location(77189, 73610, -3708, 2555),
+		new Location(71809, 67377, -3675, 29130),
+		new Location(69166, 88825, -3447, 43886)
+	};
+	// Current position
+	private int _currentPosition = 0;
 	
 	public Q00653_WildMaiden()
 	{
 		super(653);
 		addStartNpc(SUKI);
-		addTalkId(GALIBREDO, SUKI);
+		addTalkId(SUKI, GALIBREDO);
+		addSpawn(SUKI, 66578, 72351, -3731, 0, false, 0);
 	}
 	
 	@Override
-	public String onAdvEvent(String event, Npc npc, Player player)
+	public String onEvent(String event, Npc npc, Player player)
 	{
-		final QuestState qs = getQuestState(player, false);
-		if (qs == null)
+		String htmltext = event;
+		final QuestState st = getQuestState(player, false);
+		if (st == null)
 		{
+			return htmltext;
+		}
+		
+		if (event.equals("32013-03.htm"))
+		{
+			if (hasQuestItems(player, SCROLL_OF_ESCAPE))
+			{
+				st.startQuest();
+				takeItems(player, SCROLL_OF_ESCAPE, 1);
+				npc.broadcastPacket(new MagicSkillUse(npc, npc, 2013, 1, 3500, 0));
+				startQuestTimer("apparition_npc", 4000, npc, player, false);
+			}
+			else
+			{
+				htmltext = "32013-03a.htm";
+				st.exitQuest(true);
+			}
+		}
+		else if (event.equals("apparition_npc"))
+		{
+			int chance = getRandom(4);
+			
+			// Loop to avoid to spawn to the same place.
+			while (chance == _currentPosition)
+			{
+				chance = getRandom(4);
+			}
+			
+			// Register new position.
+			_currentPosition = chance;
+			
+			npc.deleteMe();
+			addSpawn(SUKI, SPAWNS[chance], false, 0);
 			return null;
 		}
 		
-		String htmltext = null;
-		if (event.equals("32013-03.html"))
-		{
-			htmltext = event;
-		}
-		else if (event.equals("32013-04.htm"))
-		{
-			if (!hasQuestItems(player, SOE))
-			{
-				return "32013-05.htm";
-			}
-			qs.startQuest();
-			takeItems(player, SOE, 1);
-			npc.deleteMe();
-			htmltext = (getRandom(2) == 0) ? event : "32013-04a.htm";
-		}
 		return htmltext;
 	}
 	
 	@Override
 	public String onTalk(Npc npc, Player player)
 	{
-		final QuestState qs = getQuestState(player, true);
 		String htmltext = getNoQuestMsg(player);
-		switch (npc.getId())
+		final QuestState st = getQuestState(player, true);
+		
+		switch (st.getState())
 		{
-			case SUKI:
+			case State.CREATED:
 			{
-				switch (qs.getState())
-				{
-					case State.CREATED:
-					{
-						htmltext = (player.getLevel() >= MIN_LEVEL) ? "32013-01.htm" : "32013-01a.htm";
-						break;
-					}
-					case State.STARTED:
-					{
-						htmltext = "32013-02.htm";
-						break;
-					}
-				}
+				htmltext = (player.getLevel() < 36) ? "32013-01.htm" : "32013-02.htm";
 				break;
 			}
-			case GALIBREDO:
+			case State.STARTED:
 			{
-				if (qs.isStarted())
+				switch (npc.getId())
 				{
-					giveAdena(player, 2553, true);
-					qs.exitQuest(true, true);
-					htmltext = "30181-01.html";
+					case GALIBREDO:
+					{
+						htmltext = "30181-01.htm";
+						giveAdena(player, 2883, true);
+						st.exitQuest(true, true);
+						break;
+					}
+					case SUKI:
+					{
+						htmltext = "32013-04a.htm";
+						break;
+					}
 				}
 				break;
 			}
 		}
+		
 		return htmltext;
 	}
 }

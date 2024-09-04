@@ -19,15 +19,13 @@ package quests.Q00629_CleanUpTheSwampOfScreams;
 import java.util.HashMap;
 import java.util.Map;
 
+import org.l2jmobius.gameserver.enums.QuestSound;
 import org.l2jmobius.gameserver.model.actor.Npc;
 import org.l2jmobius.gameserver.model.actor.Player;
 import org.l2jmobius.gameserver.model.quest.Quest;
 import org.l2jmobius.gameserver.model.quest.QuestState;
+import org.l2jmobius.gameserver.model.quest.State;
 
-/**
- * Clean Up The Swamp Of Screams (629)
- * @author netvirus
- */
 public class Q00629_CleanUpTheSwampOfScreams extends Quest
 {
 	// NPC
@@ -35,115 +33,130 @@ public class Q00629_CleanUpTheSwampOfScreams extends Quest
 	// Items
 	private static final int TALON_OF_STAKATO = 7250;
 	private static final int GOLDEN_RAM_COIN = 7251;
-	// Misc
-	private static final int REQUIRED_TALON_COUNT = 100;
-	private static final int MIN_LEVEL = 66;
-	// Mobs
-	private static final Map<Integer, Double> MOBS_DROP_CHANCES = new HashMap<>();
+	// Drop chances
+	private static final Map<Integer, Integer> CHANCES = new HashMap<>();
 	static
 	{
-		MOBS_DROP_CHANCES.put(21508, 0.599); // splinter_stakato
-		MOBS_DROP_CHANCES.put(21509, 0.524); // splinter_stakato_worker
-		MOBS_DROP_CHANCES.put(21510, 0.640); // splinter_stakato_soldier
-		MOBS_DROP_CHANCES.put(21511, 0.830); // splinter_stakato_drone
-		MOBS_DROP_CHANCES.put(21512, 0.970); // splinter_stakato_drone_a
-		MOBS_DROP_CHANCES.put(21513, 0.682); // needle_stakato
-		MOBS_DROP_CHANCES.put(21514, 0.595); // needle_stakato_worker
-		MOBS_DROP_CHANCES.put(21515, 0.727); // needle_stakato_soldier
-		MOBS_DROP_CHANCES.put(21516, 0.879); // needle_stakato_drone
-		MOBS_DROP_CHANCES.put(21517, 0.999); // needle_stakato_drone_a
+		CHANCES.put(21508, 500000);
+		CHANCES.put(21509, 431000);
+		CHANCES.put(21510, 521000);
+		CHANCES.put(21511, 576000);
+		CHANCES.put(21512, 746000);
+		CHANCES.put(21513, 530000);
+		CHANCES.put(21514, 538000);
+		CHANCES.put(21515, 545000);
+		CHANCES.put(21516, 553000);
+		CHANCES.put(21517, 560000);
 	}
 	
 	public Q00629_CleanUpTheSwampOfScreams()
 	{
 		super(629);
+		registerQuestItems(TALON_OF_STAKATO, GOLDEN_RAM_COIN);
 		addStartNpc(PIERCE);
 		addTalkId(PIERCE);
-		addKillId(MOBS_DROP_CHANCES.keySet());
-		registerQuestItems(TALON_OF_STAKATO, GOLDEN_RAM_COIN);
+		addKillId(CHANCES.keySet());
 	}
 	
 	@Override
-	public String onAdvEvent(String event, Npc npc, Player player)
+	public String onEvent(String event, Npc npc, Player player)
 	{
-		final QuestState qs = getQuestState(player, false);
-		String htmltext = null;
-		if (qs == null)
+		String htmltext = event;
+		final QuestState st = getQuestState(player, false);
+		if (st == null)
 		{
 			return htmltext;
 		}
 		
 		switch (event)
 		{
-			case "31553-03.htm":
+			case "31553-1.htm":
 			{
-				if (qs.isCreated())
+				if (player.getLevel() >= 66)
 				{
-					qs.startQuest();
-					htmltext = event;
-				}
-				break;
-			}
-			case "31553-04.html":
-			case "31553-06.html":
-			{
-				if (qs.isStarted())
-				{
-					htmltext = event;
-				}
-				break;
-			}
-			case "31553-07.html":
-			{
-				if (qs.isStarted() && (getQuestItemsCount(player, TALON_OF_STAKATO) >= REQUIRED_TALON_COUNT))
-				{
-					rewardItems(player, GOLDEN_RAM_COIN, 20);
-					takeItems(player, TALON_OF_STAKATO, 100);
-					htmltext = event;
+					st.startQuest();
 				}
 				else
 				{
-					htmltext = "31553-08.html";
+					htmltext = "31553-0a.htm";
+					st.exitQuest(true);
 				}
 				break;
 			}
-			case "31553-09.html":
+			case "31553-3.htm":
 			{
-				if (qs.isStarted())
+				if (getQuestItemsCount(player, TALON_OF_STAKATO) >= 100)
 				{
-					qs.exitQuest(true, true);
-					htmltext = event;
+					takeItems(player, TALON_OF_STAKATO, 100);
+					giveItems(player, GOLDEN_RAM_COIN, 20);
+				}
+				else
+				{
+					htmltext = "31553-3a.htm";
 				}
 				break;
 			}
+			case "31553-5.htm":
+			{
+				st.exitQuest(true, true);
+				break;
+			}
 		}
+		
 		return htmltext;
-	}
-	
-	@Override
-	public String onKill(Npc npc, Player killer, boolean isSummon)
-	{
-		final QuestState qs = getRandomPartyMemberState(killer, -1, 2, npc);
-		if (qs != null)
-		{
-			giveItemRandomly(qs.getPlayer(), npc, TALON_OF_STAKATO, 1, 0, MOBS_DROP_CHANCES.get(npc.getId()), true);
-		}
-		return super.onKill(npc, killer, isSummon);
 	}
 	
 	@Override
 	public String onTalk(Npc npc, Player player)
 	{
-		final QuestState qs = getQuestState(player, true);
 		String htmltext = getNoQuestMsg(player);
-		if (qs.isCreated())
+		final QuestState st = getQuestState(player, true);
+		
+		if (!hasAtLeastOneQuestItem(player, 7246, 7247))
 		{
-			htmltext = ((player.getLevel() >= MIN_LEVEL) ? "31553-01.htm" : "31553-02.htm");
+			return "31553-6.htm";
 		}
-		else if (qs.isStarted())
+		
+		switch (st.getState())
 		{
-			htmltext = ((getQuestItemsCount(player, TALON_OF_STAKATO) >= REQUIRED_TALON_COUNT) ? "31553-04.html" : "31553-05.html");
+			case State.CREATED:
+			{
+				htmltext = (player.getLevel() < 66) ? "31553-0a.htm" : "31553-0.htm";
+				break;
+			}
+			case State.STARTED:
+			{
+				htmltext = (getQuestItemsCount(player, TALON_OF_STAKATO) >= 100) ? "31553-2.htm" : "31553-1a.htm";
+				break;
+			}
 		}
+		
 		return htmltext;
+	}
+	
+	@Override
+	public String onKill(Npc npc, Player player, boolean isPet)
+	{
+		final QuestState st = getRandomPartyMemberState(player, -1, 3, npc);
+		if ((st == null) || !st.isStarted())
+		{
+			return null;
+		}
+		final Player partyMember = st.getPlayer();
+		
+		if (getRandom(1000000) < CHANCES.get(npc.getId()))
+		{
+			giveItems(partyMember, TALON_OF_STAKATO, 1);
+			if (getQuestItemsCount(partyMember, TALON_OF_STAKATO) < 100)
+			{
+				playSound(partyMember, QuestSound.ITEMSOUND_QUEST_ITEMGET);
+			}
+			else
+			{
+				st.setCond(2, true);
+			}
+		}
+		
+		return null;
 	}
 }

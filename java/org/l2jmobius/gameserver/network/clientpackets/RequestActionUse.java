@@ -16,7 +16,6 @@
  */
 package org.l2jmobius.gameserver.network.clientpackets;
 
-import org.l2jmobius.commons.network.ReadablePacket;
 import org.l2jmobius.commons.util.Rnd;
 import org.l2jmobius.gameserver.ai.CtrlEvent;
 import org.l2jmobius.gameserver.ai.CtrlIntention;
@@ -38,7 +37,6 @@ import org.l2jmobius.gameserver.model.actor.instance.StaticObject;
 import org.l2jmobius.gameserver.model.effects.EffectType;
 import org.l2jmobius.gameserver.model.holders.SkillHolder;
 import org.l2jmobius.gameserver.model.skill.Skill;
-import org.l2jmobius.gameserver.network.GameClient;
 import org.l2jmobius.gameserver.network.NpcStringId;
 import org.l2jmobius.gameserver.network.SystemMessageId;
 import org.l2jmobius.gameserver.network.serverpackets.ActionFailed;
@@ -48,10 +46,10 @@ import org.l2jmobius.gameserver.network.serverpackets.RecipeShopManageList;
 import org.l2jmobius.gameserver.network.serverpackets.SocialAction;
 
 /**
- * This class manages the action use request packet.
+ * This class manages the action use request
  * @author Zoey76
  */
-public class RequestActionUse implements ClientPacket
+public class RequestActionUse extends ClientPacket
 {
 	private static final int SIN_EATER_ID = 12564;
 	private static final int SWITCH_STANCE_ID = 6054;
@@ -68,17 +66,17 @@ public class RequestActionUse implements ClientPacket
 	private boolean _shiftPressed;
 	
 	@Override
-	public void read(ReadablePacket packet)
+	protected void readImpl()
 	{
-		_actionId = packet.readInt();
-		_ctrlPressed = (packet.readInt() == 1);
-		_shiftPressed = (packet.readByte() == 1);
+		_actionId = readInt();
+		_ctrlPressed = readInt() == 1;
+		_shiftPressed = readByte() == 1;
 	}
 	
 	@Override
-	public void run(GameClient client)
+	protected void runImpl()
 	{
-		final Player player = client.getPlayer();
+		final Player player = getPlayer();
 		if (player == null)
 		{
 			return;
@@ -99,13 +97,13 @@ public class RequestActionUse implements ClientPacket
 			{
 				if (player.isSitting() || !player.isMoving() || player.isFakeDeath())
 				{
-					useSit(client, player, target);
+					useSit(player, target);
 				}
 				else
 				{
 					// Sit when arrive using next action.
 					// Creating next action class.
-					final NextAction nextAction = new NextAction(CtrlEvent.EVT_ARRIVED, CtrlIntention.AI_INTENTION_MOVE_TO, () -> useSit(client, player, target));
+					final NextAction nextAction = new NextAction(CtrlEvent.EVT_ARRIVED, CtrlIntention.AI_INTENTION_MOVE_TO, () -> useSit(player, target));
 					// Binding next action to AI.
 					player.getAI().setNextAction(nextAction);
 				}
@@ -130,7 +128,7 @@ public class RequestActionUse implements ClientPacket
 			}
 			case 15: // Change Movement Mode (Pets)
 			{
-				if (validateSummon(client, summon, true))
+				if (validateSummon(player, summon, true))
 				{
 					((SummonAI) summon.getAI()).notifyFollowStatusChange();
 				}
@@ -138,7 +136,7 @@ public class RequestActionUse implements ClientPacket
 			}
 			case 16: // Attack (Pets)
 			{
-				if (validateSummon(client, summon, true) && summon.canAttack(_ctrlPressed))
+				if (validateSummon(player, summon, true) && summon.canAttack(_ctrlPressed))
 				{
 					summon.doSummonAttack(target);
 				}
@@ -146,7 +144,7 @@ public class RequestActionUse implements ClientPacket
 			}
 			case 17: // Stop (Pets)
 			{
-				if (validateSummon(client, summon, true))
+				if (validateSummon(player, summon, true))
 				{
 					summon.cancelAction();
 				}
@@ -154,18 +152,18 @@ public class RequestActionUse implements ClientPacket
 			}
 			case 19: // Unsummon Pet
 			{
-				if (!validateSummon(client, summon, true))
+				if (!validateSummon(player, summon, true))
 				{
 					break;
 				}
 				if (summon.isDead())
 				{
-					player.sendPacket(SystemMessageId.DEAD_PETS_CANNOT_BE_RETURNED_TO_THEIR_SUMMONING_ITEM);
+					player.sendPacket(SystemMessageId.A_DEAD_PET_CANNOT_BE_SENT_BACK);
 					break;
 				}
 				if (summon.isAttackingNow() || summon.isInCombat() || summon.isMovementDisabled())
 				{
-					player.sendPacket(SystemMessageId.A_PET_CANNOT_BE_UNSUMMONED_DURING_BATTLE);
+					player.sendPacket(SystemMessageId.A_PET_CANNOT_BE_SENT_BACK_DURING_BATTLE);
 					break;
 				}
 				if (summon.isHungry())
@@ -176,7 +174,7 @@ public class RequestActionUse implements ClientPacket
 					}
 					else
 					{
-						player.sendPacket(SystemMessageId.THE_HUNTING_HELPER_PET_CANNOT_BE_RETURNED_BECAUSE_THERE_IS_NOT_MUCH_TIME_REMAINING_UNTIL_IT_LEAVES);
+						player.sendMessage("The hunting helper pet cannot be returned because there is not much time remaining until it leaves.");
 					}
 					break;
 				}
@@ -185,7 +183,7 @@ public class RequestActionUse implements ClientPacket
 			}
 			case 21: // Change Movement Mode (Servitors)
 			{
-				if (validateSummon(client, summon, false))
+				if (validateSummon(player, summon, false))
 				{
 					((SummonAI) summon.getAI()).notifyFollowStatusChange();
 				}
@@ -193,7 +191,7 @@ public class RequestActionUse implements ClientPacket
 			}
 			case 22: // Attack (Servitors)
 			{
-				if (validateSummon(client, summon, false) && summon.canAttack(_ctrlPressed))
+				if (validateSummon(player, summon, false) && summon.canAttack(_ctrlPressed))
 				{
 					summon.doSummonAttack(target);
 				}
@@ -201,7 +199,7 @@ public class RequestActionUse implements ClientPacket
 			}
 			case 23: // Stop (Servitors)
 			{
-				if (validateSummon(client, summon, false))
+				if (validateSummon(player, summon, false))
 				{
 					summon.cancelAction();
 				}
@@ -214,12 +212,12 @@ public class RequestActionUse implements ClientPacket
 			}
 			case 32: // Wild Hog Cannon - Wild Cannon
 			{
-				useSkill(client, "DDMagic", false);
+				useSkill(player, "DDMagic", false);
 				break;
 			}
 			case 36: // Soulless - Toxic Smoke
 			{
-				useSkill(client, "RangeDebuff", false);
+				useSkill(player, "RangeDebuff", false);
 				break;
 			}
 			case 37: // Dwarven Manufacture
@@ -229,7 +227,7 @@ public class RequestActionUse implements ClientPacket
 					player.sendPacket(ActionFailed.STATIC_PACKET);
 					return;
 				}
-				if (player.getPrivateStoreType() != PrivateStoreType.NONE)
+				if (player.isInStoreMode())
 				{
 					player.setPrivateStoreType(PrivateStoreType.NONE);
 					player.broadcastUserInfo();
@@ -248,16 +246,16 @@ public class RequestActionUse implements ClientPacket
 			}
 			case 39: // Soulless - Parasite Burst
 			{
-				useSkill(client, "RangeDD", false);
+				useSkill(player, "RangeDD", false);
 				break;
 			}
 			case 41: // Wild Hog Cannon - Attack
 			{
-				if (validateSummon(client, summon, false))
+				if (validateSummon(player, summon, false))
 				{
 					if ((target != null) && (target.isDoor() || (target instanceof SiegeFlag)))
 					{
-						useSkill(client, 4230, false);
+						useSkill(player, 4230, false);
 					}
 					else
 					{
@@ -268,37 +266,37 @@ public class RequestActionUse implements ClientPacket
 			}
 			case 42: // Kai the Cat - Self Damage Shield
 			{
-				useSkill(client, "HealMagic", false);
+				useSkill(player, "HealMagic", false);
 				break;
 			}
 			case 43: // Merrow the Unicorn - Hydro Screw
 			{
-				useSkill(client, "DDMagic", false);
+				useSkill(player, "DDMagic", false);
 				break;
 			}
 			case 44: // Big Boom - Boom Attack
 			{
-				useSkill(client, "DDMagic", false);
+				useSkill(player, "DDMagic", false);
 				break;
 			}
 			case 45: // Boxer the Unicorn - Master Recharge
 			{
-				useSkill(client, "HealMagic", player, false);
+				useSkill(player, "HealMagic", player, false);
 				break;
 			}
 			case 46: // Mew the Cat - Mega Storm Strike
 			{
-				useSkill(client, "DDMagic", false);
+				useSkill(player, "DDMagic", false);
 				break;
 			}
 			case 47: // Silhouette - Steal Blood
 			{
-				useSkill(client, "DDMagic", false);
+				useSkill(player, "DDMagic", false);
 				break;
 			}
 			case 48: // Mechanic Golem - Mech. Cannon
 			{
-				useSkill(client, "DDMagic", false);
+				useSkill(player, "DDMagic", false);
 				break;
 			}
 			case 51: // General Manufacture
@@ -323,7 +321,7 @@ public class RequestActionUse implements ClientPacket
 			}
 			case 52: // Unsummon Servitor
 			{
-				if (validateSummon(client, summon, false))
+				if (validateSummon(player, summon, false))
 				{
 					if (summon.isAttackingNow() || summon.isInCombat())
 					{
@@ -336,7 +334,7 @@ public class RequestActionUse implements ClientPacket
 			}
 			case 53: // Move to target (Servitors)
 			{
-				if (validateSummon(client, summon, false) && (target != null) && (summon != target) && !summon.isMovementDisabled())
+				if (validateSummon(player, summon, false) && (target != null) && (summon != target) && !summon.isMovementDisabled())
 				{
 					summon.setFollowStatus(false);
 					summon.getAI().setIntention(CtrlIntention.AI_INTENTION_MOVE_TO, target.getLocation());
@@ -345,7 +343,7 @@ public class RequestActionUse implements ClientPacket
 			}
 			case 54: // Move to target (Pets)
 			{
-				if (validateSummon(client, summon, true) && (target != null) && (summon != target) && !summon.isMovementDisabled())
+				if (validateSummon(player, summon, true) && (target != null) && (summon != target) && !summon.isMovementDisabled())
 				{
 					summon.setFollowStatus(false);
 					summon.getAI().setIntention(CtrlIntention.AI_INTENTION_MOVE_TO, target.getLocation());
@@ -356,13 +354,13 @@ public class RequestActionUse implements ClientPacket
 			{
 				if ((target != null) && target.isDoor())
 				{
-					useSkill(client, 4079, false);
+					useSkill(player, 4079, false);
 				}
 				break;
 			}
 			case 1001: // Sin Eater - Ultimate Bombastic Buster
 			{
-				if (validateSummon(client, summon, true) && (summon.getId() == SIN_EATER_ID))
+				if (validateSummon(player, summon, true) && (summon.getId() == SIN_EATER_ID))
 				{
 					summon.broadcastPacket(new NpcSay(summon.getObjectId(), ChatType.NPC_GENERAL, summon.getId(), NPC_STRINGS[Rnd.get(NPC_STRINGS.length)]));
 				}
@@ -370,198 +368,198 @@ public class RequestActionUse implements ClientPacket
 			}
 			case 1003: // Wind Hatchling/Strider - Wild Stun
 			{
-				useSkill(client, "PhysicalSpecial", true);
+				useSkill(player, "PhysicalSpecial", true);
 				break;
 			}
 			case 1004: // Wind Hatchling/Strider - Wild Defense
 			{
-				useSkill(client, "Buff", player, true);
+				useSkill(player, "Buff", player, true);
 				break;
 			}
 			case 1005: // Star Hatchling/Strider - Bright Burst
 			{
-				useSkill(client, "DDMagic", true);
+				useSkill(player, "DDMagic", true);
 				break;
 			}
 			case 1006: // Star Hatchling/Strider - Bright Heal
 			{
-				useSkill(client, "Heal", player, true);
+				useSkill(player, "Heal", player, true);
 				break;
 			}
 			case 1007: // Feline Queen - Blessing of Queen
 			{
-				useSkill(client, "Buff1", player, false);
+				useSkill(player, "Buff1", player, false);
 				break;
 			}
 			case 1008: // Feline Queen - Gift of Queen
 			{
-				useSkill(client, "Buff2", player, false);
+				useSkill(player, "Buff2", player, false);
 				break;
 			}
 			case 1009: // Feline Queen - Cure of Queen
 			{
-				useSkill(client, "DDMagic", false);
+				useSkill(player, "DDMagic", false);
 				break;
 			}
 			case 1010: // Unicorn Seraphim - Blessing of Seraphim
 			{
-				useSkill(client, "Buff1", player, false);
+				useSkill(player, "Buff1", player, false);
 				break;
 			}
 			case 1011: // Unicorn Seraphim - Gift of Seraphim
 			{
-				useSkill(client, "Buff2", player, false);
+				useSkill(player, "Buff2", player, false);
 				break;
 			}
 			case 1012: // Unicorn Seraphim - Cure of Seraphim
 			{
-				useSkill(client, "DDMagic", false);
+				useSkill(player, "DDMagic", false);
 				break;
 			}
 			case 1013: // Nightshade - Curse of Shade
 			{
-				useSkill(client, "DeBuff1", false);
+				useSkill(player, "DeBuff1", false);
 				break;
 			}
 			case 1014: // Nightshade - Mass Curse of Shade
 			{
-				useSkill(client, "DeBuff2", false);
+				useSkill(player, "DeBuff2", false);
 				break;
 			}
 			case 1015: // Nightshade - Shade Sacrifice
 			{
-				useSkill(client, "Heal", false);
+				useSkill(player, "Heal", false);
 				break;
 			}
 			case 1016: // Cursed Man - Cursed Blow
 			{
-				useSkill(client, "PhysicalSpecial1", false);
+				useSkill(player, "PhysicalSpecial1", false);
 				break;
 			}
 			case 1017: // Cursed Man - Cursed Strike
 			{
-				useSkill(client, "PhysicalSpecial2", false);
+				useSkill(player, "PhysicalSpecial2", false);
 				break;
 			}
 			case 1031: // Feline King - Slash
 			{
-				useSkill(client, "PhysicalSpecial1", false);
+				useSkill(player, "PhysicalSpecial1", false);
 				break;
 			}
 			case 1032: // Feline King - Spinning Slash
 			{
-				useSkill(client, "PhysicalSpecial2", false);
+				useSkill(player, "PhysicalSpecial2", false);
 				break;
 			}
 			case 1033: // Feline King - Hold of King
 			{
-				useSkill(client, "PhysicalSpecial3", false);
+				useSkill(player, "PhysicalSpecial3", false);
 				break;
 			}
 			case 1034: // Magnus the Unicorn - Whiplash
 			{
-				useSkill(client, "PhysicalSpecial1", false);
+				useSkill(player, "PhysicalSpecial1", false);
 				break;
 			}
 			case 1035: // Magnus the Unicorn - Tridal Wave
 			{
-				useSkill(client, "PhysicalSpecial2", false);
+				useSkill(player, "PhysicalSpecial2", false);
 				break;
 			}
 			case 1036: // Spectral Lord - Corpse Kaboom
 			{
-				useSkill(client, "PhysicalSpecial1", false);
+				useSkill(player, "PhysicalSpecial1", false);
 				break;
 			}
 			case 1037: // Spectral Lord - Dicing Death
 			{
-				useSkill(client, "PhysicalSpecial2", false);
+				useSkill(player, "PhysicalSpecial2", false);
 				break;
 			}
 			case 1038: // Spectral Lord - Dark Curse
 			{
-				useSkill(client, "PhysicalSpecial3", false);
+				useSkill(player, "PhysicalSpecial3", false);
 				break;
 			}
 			case 1039: // Swoop Cannon - Cannon Fodder
 			{
-				useSkill(client, 5110, false);
+				useSkill(player, 5110, false);
 				break;
 			}
 			case 1040: // Swoop Cannon - Big Bang
 			{
-				useSkill(client, 5111, false);
+				useSkill(player, 5111, false);
 				break;
 			}
 			// Social Packets
 			case 12: // Greeting
 			{
-				tryBroadcastSocial(client, 2);
+				tryBroadcastSocial(player, 2);
 				break;
 			}
 			case 13: // Victory
 			{
-				tryBroadcastSocial(client, 3);
+				tryBroadcastSocial(player, 3);
 				break;
 			}
 			case 14: // Advance
 			{
-				tryBroadcastSocial(client, 4);
+				tryBroadcastSocial(player, 4);
 				break;
 			}
 			case 24: // Yes
 			{
-				tryBroadcastSocial(client, 6);
+				tryBroadcastSocial(player, 6);
 				break;
 			}
 			case 25: // No
 			{
-				tryBroadcastSocial(client, 5);
+				tryBroadcastSocial(player, 5);
 				break;
 			}
 			case 26: // Bow
 			{
-				tryBroadcastSocial(client, 7);
+				tryBroadcastSocial(player, 7);
 				break;
 			}
 			case 29: // Unaware
 			{
-				tryBroadcastSocial(client, 8);
+				tryBroadcastSocial(player, 8);
 				break;
 			}
 			case 30: // Social Waiting
 			{
-				tryBroadcastSocial(client, 9);
+				tryBroadcastSocial(player, 9);
 				break;
 			}
 			case 31: // Laugh
 			{
-				tryBroadcastSocial(client, 10);
+				tryBroadcastSocial(player, 10);
 				break;
 			}
 			case 33: // Applaud
 			{
-				tryBroadcastSocial(client, 11);
+				tryBroadcastSocial(player, 11);
 				break;
 			}
 			case 34: // Dance
 			{
-				tryBroadcastSocial(client, 12);
+				tryBroadcastSocial(player, 12);
 				break;
 			}
 			case 35: // Sorrow
 			{
-				tryBroadcastSocial(client, 13);
+				tryBroadcastSocial(player, 13);
 				break;
 			}
 			case 62: // Charm
 			{
-				tryBroadcastSocial(client, 14);
+				tryBroadcastSocial(player, 14);
 				break;
 			}
 			case 66: // Shyness
 			{
-				tryBroadcastSocial(client, 15);
+				tryBroadcastSocial(player, 15);
 				break;
 			}
 		}
@@ -569,12 +567,11 @@ public class RequestActionUse implements ClientPacket
 	
 	/**
 	 * Use the sit action.
-	 * @param client the game client
 	 * @param player the player trying to sit
 	 * @param target the target to sit, throne, bench or chair
 	 * @return {@code true} if the player can sit, {@code false} otherwise
 	 */
-	protected boolean useSit(GameClient client, Player player, WorldObject target)
+	protected boolean useSit(Player player, WorldObject target)
 	{
 		if (player.getMountType() != MountType.NONE)
 		{
@@ -584,7 +581,7 @@ public class RequestActionUse implements ClientPacket
 		if (!player.isSitting() && (target instanceof StaticObject) && (((StaticObject) target).getType() == 1) && player.isInsideRadius2D(target, StaticObject.INTERACTION_DISTANCE))
 		{
 			final ChairSit cs = new ChairSit(player, target.getId());
-			client.sendPacket(cs);
+			player.sendPacket(cs);
 			player.sitDown();
 			player.broadcastPacket(cs);
 			return true;
@@ -608,26 +605,20 @@ public class RequestActionUse implements ClientPacket
 	/**
 	 * Cast a skill for active summon.<br>
 	 * Target is specified as a parameter but can be overwrited or ignored depending on skill type.
-	 * @param client the game client
+	 * @param player the Player
 	 * @param skillId the skill Id to be casted by the summon
 	 * @param target the target to cast the skill on, overwritten or ignored depending on skill type
 	 * @param pet if {@code true} it'll validate a pet, if {@code false} it will validate a servitor
 	 */
-	private void useSkill(GameClient client, int skillId, WorldObject target, boolean pet)
+	private void useSkill(Player player, int skillId, WorldObject target, boolean pet)
 	{
-		final Player player = client.getPlayer();
-		if (player == null)
-		{
-			return;
-		}
-		
 		final Summon summon = player.getSummon();
-		if (!validateSummon(client, summon, pet))
+		if (!validateSummon(player, summon, pet))
 		{
 			return;
 		}
 		
-		if (!canControl(client, summon))
+		if (!canControl(player, summon))
 		{
 			return;
 		}
@@ -654,28 +645,22 @@ public class RequestActionUse implements ClientPacket
 		}
 	}
 	
-	private void useSkill(GameClient client, String skillName, WorldObject target, boolean pet)
+	private void useSkill(Player player, String skillName, WorldObject target, boolean pet)
 	{
-		final Player player = client.getPlayer();
-		if (player == null)
-		{
-			return;
-		}
-		
 		final Summon summon = player.getSummon();
-		if (!validateSummon(client, summon, pet))
+		if (!validateSummon(player, summon, pet))
 		{
 			return;
 		}
 		
-		if (!canControl(client, summon))
+		if (!canControl(player, summon))
 		{
 			return;
 		}
 		
 		if ((summon instanceof BabyPet) && !((BabyPet) summon).isInSupportMode())
 		{
-			client.sendPacket(SystemMessageId.A_PET_ON_AUXILIARY_MODE_CANNOT_USE_SKILLS);
+			player.sendMessage("A pet on auxiliary mode cannot use skills.");
 			return;
 		}
 		
@@ -697,17 +682,17 @@ public class RequestActionUse implements ClientPacket
 		}
 	}
 	
-	private boolean canControl(GameClient client, Summon summon)
+	private boolean canControl(Player player, Summon summon)
 	{
 		if ((summon instanceof BabyPet) && !((BabyPet) summon).isInSupportMode())
 		{
-			client.sendPacket(SystemMessageId.A_PET_ON_AUXILIARY_MODE_CANNOT_USE_SKILLS);
+			player.sendMessage("A pet on auxiliary mode cannot use skills.");
 			return false;
 		}
 		
-		if (summon.isPet() && ((summon.getLevel() - client.getPlayer().getLevel()) > 20))
+		if (summon.isPet() && ((summon.getLevel() - player.getLevel()) > 20))
 		{
-			client.sendPacket(SystemMessageId.YOUR_PET_IS_TOO_HIGH_LEVEL_TO_CONTROL);
+			player.sendPacket(SystemMessageId.YOUR_PET_IS_TOO_HIGH_LEVEL_TO_CONTROL);
 			return false;
 		}
 		
@@ -717,58 +702,46 @@ public class RequestActionUse implements ClientPacket
 	/**
 	 * Cast a skill for active summon.<br>
 	 * Target is retrieved from owner's target, then validated by overloaded method useSkill(int, Creature).
-	 * @param client the game client
+	 * @param player the Player
 	 * @param skillId the skill Id to use
 	 * @param pet if {@code true} it'll validate a pet, if {@code false} it will validate a servitor
 	 */
-	private void useSkill(GameClient client, int skillId, boolean pet)
+	private void useSkill(Player player, int skillId, boolean pet)
 	{
-		final Player player = client.getPlayer();
-		if (player == null)
-		{
-			return;
-		}
-		
-		useSkill(client, skillId, player.getTarget(), pet);
+		useSkill(player, skillId, player.getTarget(), pet);
 	}
 	
 	/**
 	 * Cast a skill for active summon.<br>
 	 * Target is retrieved from owner's target, then validated by overloaded method useSkill(int, Creature).
-	 * @param client the game client
+	 * @param player the Player
 	 * @param skillName the skill name to use
 	 * @param pet if {@code true} it'll validate a pet, if {@code false} it will validate a servitor
 	 */
-	private void useSkill(GameClient client, String skillName, boolean pet)
+	private void useSkill(Player player, String skillName, boolean pet)
 	{
-		final Player player = client.getPlayer();
-		if (player == null)
-		{
-			return;
-		}
-		
-		useSkill(client, skillName, player.getTarget(), pet);
+		useSkill(player, skillName, player.getTarget(), pet);
 	}
 	
 	/**
 	 * Validates the given summon and sends a system message to the master.
-	 * @param client the game client
+	 * @param player the game client
 	 * @param summon the summon to validate
 	 * @param checkPet if {@code true} it'll validate a pet, if {@code false} it will validate a servitor
 	 * @return {@code true} if the summon is not null and whether is a pet or a servitor depending on {@code checkPet} value, {@code false} otherwise
 	 */
-	private boolean validateSummon(GameClient client, Summon summon, boolean checkPet)
+	private boolean validateSummon(Player player, Summon summon, boolean checkPet)
 	{
 		if ((summon != null) && ((checkPet && summon.isPet()) || summon.isServitor()))
 		{
 			if (summon.isPet() && ((Pet) summon).isUncontrollable())
 			{
-				client.sendPacket(SystemMessageId.ONLY_A_CLAN_LEADER_THAT_IS_A_NOBLESSE_CAN_VIEW_THE_SIEGE_WAR_STATUS_WINDOW_DURING_A_SIEGE_WAR);
+				player.sendPacket(SystemMessageId.ONLY_A_CLAN_LEADER_THAT_IS_A_NOBLESSE_CAN_VIEW_THE_SIEGE_WAR_STATUS_WINDOW_DURING_A_SIEGE_WAR);
 				return false;
 			}
 			if (summon.isBetrayed())
 			{
-				client.sendPacket(SystemMessageId.YOUR_PET_SERVITOR_IS_UNRESPONSIVE_AND_WILL_NOT_OBEY_ANY_ORDERS);
+				player.sendPacket(SystemMessageId.YOUR_PET_SERVITOR_IS_UNRESPONSIVE_AND_WILL_NOT_OBEY_ANY_ORDERS);
 				return false;
 			}
 			return true;
@@ -776,30 +749,25 @@ public class RequestActionUse implements ClientPacket
 		
 		if (checkPet)
 		{
-			client.sendPacket(SystemMessageId.YOU_DO_NOT_HAVE_A_PET);
+			player.sendMessage("You do not have a pet.");
 		}
 		else
 		{
-			client.sendPacket(SystemMessageId.YOU_DO_NOT_HAVE_A_SERVITOR);
+			player.sendMessage("You do not have a servitor.");
 		}
 		return false;
 	}
 	
 	/**
-	 * Try to broadcast SocialAction packet.
-	 * @param client the game client
+	 * Try to broadcast SocialAction
+	 * @param player the Player
 	 * @param id the social action Id to broadcast
 	 */
-	private void tryBroadcastSocial(GameClient client, int id)
+	private void tryBroadcastSocial(Player player, int id)
 	{
-		final Player player = client.getPlayer();
-		if (player == null)
-		{
-			return;
-		}
 		if (player.isFishing())
 		{
-			client.sendPacket(SystemMessageId.YOU_CANNOT_DO_THAT_WHILE_FISHING_3);
+			player.sendPacket(SystemMessageId.YOU_CANNOT_DO_THAT_WHILE_FISHING_3);
 			return;
 		}
 		

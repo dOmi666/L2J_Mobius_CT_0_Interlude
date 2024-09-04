@@ -21,13 +21,11 @@ import java.sql.PreparedStatement;
 
 import org.l2jmobius.Config;
 import org.l2jmobius.commons.database.DatabaseFactory;
-import org.l2jmobius.commons.network.ReadablePacket;
 import org.l2jmobius.gameserver.enums.PlayerCondOverride;
-import org.l2jmobius.gameserver.enums.PrivateStoreType;
 import org.l2jmobius.gameserver.instancemanager.CursedWeaponsManager;
 import org.l2jmobius.gameserver.model.actor.Player;
+import org.l2jmobius.gameserver.model.actor.Summon;
 import org.l2jmobius.gameserver.model.item.instance.Item;
-import org.l2jmobius.gameserver.network.GameClient;
 import org.l2jmobius.gameserver.network.PacketLogger;
 import org.l2jmobius.gameserver.network.SystemMessageId;
 import org.l2jmobius.gameserver.network.serverpackets.InventoryUpdate;
@@ -38,29 +36,30 @@ import org.l2jmobius.gameserver.util.Util;
 /**
  * @version $Revision: 1.7.2.4.2.6 $ $Date: 2005/03/27 15:29:30 $
  */
-public class RequestDestroyItem implements ClientPacket
+public class RequestDestroyItem extends ClientPacket
 {
 	private int _objectId;
 	private int _count;
 	
 	@Override
-	public void read(ReadablePacket packet)
+	protected void readImpl()
 	{
-		_objectId = packet.readInt();
-		_count = packet.readInt();
+		_objectId = readInt();
+		_count = readInt();
 	}
 	
 	@Override
-	public void run(GameClient client)
+	protected void runImpl()
 	{
-		final Player player = client.getPlayer();
+		final Player player = getPlayer();
 		if (player == null)
 		{
 			return;
 		}
 		
-		if (_count <= 0)
+		if (_count < 1)
 		{
+			player.sendPacket(SystemMessageId.YOU_CANNOT_DESTROY_IT_BECAUSE_THE_NUMBER_IS_INCORRECT);
 			if (_count < 0)
 			{
 				Util.handleIllegalPlayerAction(player, "[RequestDestroyItem] Character " + player.getName() + " of account " + player.getAccountName() + " tried to destroy item with oid " + _objectId + " but has count < 0!", Config.DEFAULT_PUNISH);
@@ -68,14 +67,14 @@ public class RequestDestroyItem implements ClientPacket
 			return;
 		}
 		
-		if (!client.getFloodProtectors().canPerformTransaction())
+		if (!getClient().getFloodProtectors().canPerformTransaction())
 		{
 			player.sendMessage("You are destroying items too fast.");
 			return;
 		}
 		
 		int count = _count;
-		if (player.isProcessingTransaction() || (player.getPrivateStoreType() != PrivateStoreType.NONE))
+		if (player.isProcessingTransaction() || player.isInStoreMode())
 		{
 			player.sendPacket(SystemMessageId.WHILE_OPERATING_A_PRIVATE_STORE_OR_WORKSHOP_YOU_CANNOT_DISCARD_DESTROY_OR_TRADE_AN_ITEM);
 			return;
@@ -83,7 +82,7 @@ public class RequestDestroyItem implements ClientPacket
 		
 		final Item itemToRemove = player.getInventory().getItemByObjectId(_objectId);
 		
-		// if we can't find the requested item, its actually a cheat
+		// if we can't find the requested item, it is actually a cheat
 		if (itemToRemove == null)
 		{
 			player.sendPacket(SystemMessageId.THIS_ITEM_CANNOT_BE_DISCARDED);
@@ -96,6 +95,7 @@ public class RequestDestroyItem implements ClientPacket
 			player.sendPacket(SystemMessageId.THIS_ITEM_CANNOT_BE_DISCARDED);
 			return;
 		}
+		
 		// Cannot discard item that the skill is consuming
 		if (player.isCastingSimultaneouslyNow() && (player.getLastSimultaneousSkillCast() != null) && (player.getLastSimultaneousSkillCast().getItemConsumeId() == itemToRemove.getId()))
 		{
@@ -136,9 +136,12 @@ public class RequestDestroyItem implements ClientPacket
 		
 		if (itemToRemove.getTemplate().isPetItem())
 		{
-			if (player.hasSummon() && (player.getSummon().getControlObjectId() == _objectId))
+			// Check if the player has a summoned pet or mount active with the same object ID.
+			final Summon summon = player.getSummon();
+			if (((summon != null) && (summon.getControlObjectId() == _objectId)) || (player.isMounted() && (player.getMountObjectID() == _objectId)))
 			{
-				player.getSummon().unSummon(player);
+				player.sendPacket(SystemMessageId.YOUR_PET_HAS_BEEN_SUMMONED_AND_MAY_NOT_BE_DESTROYED);
+				return;
 			}
 			
 			try (Connection con = DatabaseFactory.getConnection();
@@ -178,7 +181,7 @@ public class RequestDestroyItem implements ClientPacket
 			{
 				iu.addModifiedItem(itm);
 			}
-			player.sendPacket(iu);
+			player.sendPacket(iu); // Sent inventory update for unequip instantly.
 		}
 		
 		final Item removedItem = player.getInventory().destroyItem("Destroy", itemToRemove, count, player, null);
@@ -196,10 +199,24 @@ public class RequestDestroyItem implements ClientPacket
 		{
 			iu.addModifiedItem(removedItem);
 		}
-		player.sendPacket(iu);
+		player.sendPacket(iu); // Sent inventory update for destruction instantly.
 		
 		final StatusUpdate su = new StatusUpdate(player);
 		su.addAttribute(StatusUpdate.CUR_LOAD, player.getCurrentLoad());
 		player.sendPacket(su);
+		
+		final SystemMessage sm;
+		if (count > 1)
+		{
+			sm = new SystemMessage(SystemMessageId.S2_S1_HAS_DISAPPEARED);
+			sm.addItemName(removedItem);
+			sm.addInt(count);
+		}
+		else
+		{
+			sm = new SystemMessage(SystemMessageId.S1_HAS_DISAPPEARED);
+			sm.addItemName(removedItem);
+		}
+		player.sendPacket(sm);
 	}
 }

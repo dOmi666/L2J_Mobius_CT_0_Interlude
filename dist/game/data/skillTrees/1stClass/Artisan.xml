@@ -3,7 +3,7 @@
 	<!-- Artisan -->
 	<skillTree type="classSkillTree" classId="56" parentClassId="53">
 		<skill skillName="Bandage" skillId="34" skillLevel="1" getLevel="20" levelUpSp="3700" learnedByNpc="true" />
-		<skill skillName="Blunt Weapon Mastery" skillId="205" skillLevel="1" getLevel="20" levelUpSp="3700" learnedByNpc="true" />
+		<skill skillName="Blunt Mastery" skillId="205" skillLevel="1" getLevel="20" levelUpSp="3700" learnedByNpc="true" />
 		<skill skillName="Boost HP" skillId="211" skillLevel="1" getLevel="20" levelUpSp="3700" learnedByNpc="true" />
 		<skill skillName="Create Item" skillId="172" skillLevel="2" getLevel="20" levelUpSp="3700" learnedByNpc="true" />
 		<skill skillName="Crystallize" skillId="248" skillLevel="1" getLevel="20" levelUpSp="3700" learnedByNpc="true" />
@@ -18,7 +18,7 @@
 		<skill skillName="Wild Sweep" skillId="245" skillLevel="1" getLevel="20" levelUpSp="1200" learnedByNpc="true" />
 		<skill skillName="Wild Sweep" skillId="245" skillLevel="2" getLevel="20" levelUpSp="1200" learnedByNpc="true" />
 		<skill skillName="Wild Sweep" skillId="245" skillLevel="3" getLevel="20" levelUpSp="1200" learnedByNpc="true" />
-		<skill skillName="Blunt Weapon Mastery" skillId="205" skillLevel="2" getLevel="24" levelUpSp="7000" learnedByNpc="true" />
+		<skill skillName="Blunt Mastery" skillId="205" skillLevel="2" getLevel="24" levelUpSp="7000" learnedByNpc="true" />
 		<skill skillName="Fast HP Recovery" skillId="212" skillLevel="1" getLevel="24" levelUpSp="7000" learnedByNpc="true" />
 		<skill skillName="Heavy Armor Mastery" skillId="231" skillLevel="3" getLevel="24" levelUpSp="3500" learnedByNpc="true" />
 		<skill skillName="Heavy Armor Mastery" skillId="231" skillLevel="4" getLevel="24" levelUpSp="3500" learnedByNpc="true" />
@@ -33,8 +33,8 @@
 		<skill skillName="Wild Sweep" skillId="245" skillLevel="4" getLevel="24" levelUpSp="2300" learnedByNpc="true" />
 		<skill skillName="Wild Sweep" skillId="245" skillLevel="5" getLevel="24" levelUpSp="2300" learnedByNpc="true" />
 		<skill skillName="Wild Sweep" skillId="245" skillLevel="6" getLevel="24" levelUpSp="2300" learnedByNpc="true" />
-		<skill skillName="Blunt Weapon Mastery" skillId="205" skillLevel="3" getLevel="28" levelUpSp="6700" learnedByNpc="true" />
-		<skill skillName="Blunt Weapon Mastery" skillId="205" skillLevel="4" getLevel="28" levelUpSp="6700" learnedByNpc="true" />
+		<skill skillName="Blunt Mastery" skillId="205" skillLevel="3" getLevel="28" levelUpSp="6700" learnedByNpc="true" />
+		<skill skillName="Blunt Mastery" skillId="205" skillLevel="4" getLevel="28" levelUpSp="6700" learnedByNpc="true" />
 		<skill skillName="Boost HP" skillId="211" skillLevel="2" getLevel="28" levelUpSp="13000" learnedByNpc="true" />
 		<skill skillName="Create Item" skillId="172" skillLevel="3" getLevel="28" levelUpSp="13000" learnedByNpc="true" />
 		<skill skillName="Heavy Armor Mastery" skillId="231" skillLevel="5" getLevel="28" levelUpSp="4400" learnedByNpc="true" />
@@ -52,8 +52,8 @@
 		<skill skillName="Wild Sweep" skillId="245" skillLevel="7" getLevel="28" levelUpSp="4400" learnedByNpc="true" />
 		<skill skillName="Wild Sweep" skillId="245" skillLevel="8" getLevel="28" levelUpSp="4400" learnedByNpc="true" />
 		<skill skillName="Wild Sweep" skillId="245" skillLevel="9" getLevel="28" levelUpSp="4400" learnedByNpc="true" />
-		<skill skillName="Blunt Weapon Mastery" skillId="205" skillLevel="5" getLevel="32" levelUpSp="13000" learnedByNpc="true" />
-		<skill skillName="Blunt Weapon Mastery" skillId="205" skillLevel="6" getLevel="32" levelUpSp="13000" learnedByNpc="true" />
+		<skill skillName="Blunt Mastery" skillId="205" skillLevel="5" getLevel="32" levelUpSp="13000" learnedByNpc="true" />
+		<skill skillName="Blunt Mastery" skillId="205" skillLevel="6" getLevel="32" levelUpSp="13000" learnedByNpc="true" />
 		<skill skillName="Fast HP Recovery" skillId="212" skillLevel="2" getLevel="32" levelUpSp="25000" learnedByNpc="true" />
 		<skill skillName="Heavy Armor Mastery" skillId="231" skillLevel="8" getLevel="32" levelUpSp="8300" learnedByNpc="true" />
 		<skill skillName="Heavy Armor Mastery" skillId="231" skillLevel="9" getLevel="32" levelUpSp="8300" learnedByNpc="true" />
@@ -70,8 +70,8 @@
 		<skill skillName="Wild Sweep" skillId="245" skillLevel="10" getLevel="32" levelUpSp="8300" learnedByNpc="true" />
 		<skill skillName="Wild Sweep" skillId="245" skillLevel="11" getLevel="32" levelUpSp="8300" learnedByNpc="true" />
 		<skill skillName="Wild Sweep" skillId="245" skillLevel="12" getLevel="32" levelUpSp="8300" learnedByNpc="true" />
-		<skill skillName="Blunt Weapon Mastery" skillId="205" skillLevel="7" getLevel="36" levelUpSp="17000" learnedByNpc="true" />
-		<skill skillName="Blunt Weapon Mastery" skillId="205" skillLevel="8" getLevel="36" levelUpSp="17000" learnedByNpc="true" />
+		<skill skillName="Blunt Mastery" skillId="205" skillLevel="7" getLevel="36" levelUpSp="17000" learnedByNpc="true" />
+		<skill skillName="Blunt Mastery" skillId="205" skillLevel="8" getLevel="36" levelUpSp="17000" learnedByNpc="true" />
 		<skill skillName="Boost HP" skillId="211" skillLevel="3" getLevel="36" levelUpSp="34000" learnedByNpc="true" />
 		<skill skillName="Create Item" skillId="172" skillLevel="4" getLevel="36" levelUpSp="34000" learnedByNpc="true" />
 		<skill skillName="Heavy Armor Mastery" skillId="231" skillLevel="11" getLevel="36" levelUpSp="11000" learnedByNpc="true" />

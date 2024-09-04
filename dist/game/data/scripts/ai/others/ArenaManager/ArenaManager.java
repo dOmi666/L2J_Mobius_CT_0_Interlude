@@ -34,14 +34,12 @@ public class ArenaManager extends AbstractNpcAI
 	// NPCs
 	private static final int[] ARENA_MANAGER =
 	{
-		31226, // Arena Director (MDT)
-		31225, // Arena Manager (Coliseum)
+		31225, // Arena Manager (MRT)
+		31226, // Arena Director (Coliseum)
 	};
 	private static final SkillHolder CP_RECOVERY = new SkillHolder(4380, 1); // Arena: CP Recovery
-	private static final SkillHolder HP_RECOVERY = new SkillHolder(6817, 1); // Arena HP Recovery
 	// Misc
-	private static final int CP_COST = 1000;
-	private static final int HP_COST = 1000;
+	private static final int CP_COST = 100;
 	
 	private ArenaManager()
 	{
@@ -51,7 +49,7 @@ public class ArenaManager extends AbstractNpcAI
 	}
 	
 	@Override
-	public String onAdvEvent(String event, Npc npc, Player player)
+	public String onEvent(String event, Npc npc, Player player)
 	{
 		switch (event)
 		{
@@ -77,30 +75,8 @@ public class ArenaManager extends AbstractNpcAI
 				}
 				break;
 			}
-			case "HPrecovery":
-			{
-				if (player.getAdena() >= HP_COST)
-				{
-					takeItems(player, Inventory.ADENA_ID, HP_COST);
-					startQuestTimer("HPrecovery_delay", 2000, npc, player);
-				}
-				else
-				{
-					player.sendPacket(SystemMessageId.YOU_DO_NOT_HAVE_ENOUGH_ADENA);
-				}
-				break;
-			}
-			case "HPrecovery_delay":
-			{
-				if ((player != null) && !player.isInsideZone(ZoneId.PVP))
-				{
-					npc.setTarget(player);
-					npc.doCast(HP_RECOVERY.getSkill());
-				}
-				break;
-			}
 		}
-		return super.onAdvEvent(event, npc, player);
+		return super.onEvent(event, npc, player);
 	}
 	
 	public static void main(String[] args)

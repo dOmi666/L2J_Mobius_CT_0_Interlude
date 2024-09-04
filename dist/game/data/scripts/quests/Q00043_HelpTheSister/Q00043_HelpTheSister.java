@@ -23,11 +23,6 @@ import org.l2jmobius.gameserver.model.quest.Quest;
 import org.l2jmobius.gameserver.model.quest.QuestState;
 import org.l2jmobius.gameserver.model.quest.State;
 
-/**
- * Help The Sister! (43)<br>
- * Original Jython script by zerghase.
- * @author malyelfik
- */
 public class Q00043_HelpTheSister extends Quest
 {
 	// NPCs
@@ -45,76 +40,126 @@ public class Q00043_HelpTheSister extends Quest
 	public Q00043_HelpTheSister()
 	{
 		super(43);
+		registerQuestItems(MAP_PIECE, MAP);
 		addStartNpc(COOPER);
 		addTalkId(COOPER, GALLADUCCI);
-		addKillId(SORROW_MAIDEN, SPECTER);
-		registerQuestItems(MAP, MAP_PIECE);
+		addKillId(SPECTER, SORROW_MAIDEN);
 	}
 	
 	@Override
-	public String onAdvEvent(String event, Npc npc, Player player)
+	public String onEvent(String event, Npc npc, Player player)
 	{
-		final QuestState qs = getQuestState(player, false);
-		if (qs == null)
+		String htmltext = event;
+		final QuestState st = getQuestState(player, false);
+		if (st == null)
 		{
-			return getNoQuestMsg(player);
+			return htmltext;
 		}
 		
-		String htmltext = event;
 		switch (event)
 		{
 			case "30829-01.htm":
 			{
-				qs.startQuest();
+				st.startQuest();
 				break;
 			}
-			case "30829-03.html":
+			case "30829-03.htm":
 			{
 				if (hasQuestItems(player, CRAFTED_DAGGER))
 				{
+					st.setCond(2, true);
 					takeItems(player, CRAFTED_DAGGER, 1);
-					qs.setCond(2, true);
-				}
-				else
-				{
-					htmltext = getNoQuestMsg(player);
 				}
 				break;
 			}
-			case "30829-06.html":
+			case "30829-05.htm":
 			{
-				if (getQuestItemsCount(player, MAP_PIECE) == 30)
-				{
-					takeItems(player, MAP_PIECE, -1);
-					giveItems(player, MAP, 1);
-					qs.setCond(4, true);
-				}
-				else
-				{
-					htmltext = "30829-06a.html";
-				}
+				st.setCond(4, true);
+				takeItems(player, MAP_PIECE, 30);
+				giveItems(player, MAP, 1);
 				break;
 			}
-			case "30097-02.html":
+			case "30097-06.htm":
 			{
-				if (hasQuestItems(player, MAP))
-				{
-					takeItems(player, MAP, -1);
-					qs.setCond(5, true);
-				}
-				else
-				{
-					htmltext = "30097-02a.html";
-				}
+				st.setCond(5, true);
+				takeItems(player, MAP, 1);
 				break;
 			}
-			case "30829-09.html":
+			case "30829-07.htm":
 			{
 				giveItems(player, PET_TICKET, 1);
-				qs.exitQuest(false, true);
+				st.exitQuest(false, true);
 				break;
 			}
 		}
+		
+		return htmltext;
+	}
+	
+	@Override
+	public String onTalk(Npc npc, Player player)
+	{
+		String htmltext = getNoQuestMsg(player);
+		final QuestState st = getQuestState(player, true);
+		
+		switch (st.getState())
+		{
+			case State.CREATED:
+			{
+				htmltext = (player.getLevel() < 26) ? "30829-00a.htm" : "30829-00.htm";
+				break;
+			}
+			case State.STARTED:
+			{
+				final int cond = st.getCond();
+				switch (npc.getId())
+				{
+					case COOPER:
+					{
+						if (cond == 1)
+						{
+							htmltext = (!hasQuestItems(player, CRAFTED_DAGGER)) ? "30829-01a.htm" : "30829-02.htm";
+						}
+						else if (cond == 2)
+						{
+							htmltext = "30829-03a.htm";
+						}
+						else if (cond == 3)
+						{
+							htmltext = "30829-04.htm";
+						}
+						else if (cond == 4)
+						{
+							htmltext = "30829-05a.htm";
+						}
+						else if (cond == 5)
+						{
+							htmltext = "30829-06.htm";
+						}
+						break;
+					}
+					case GALLADUCCI:
+					{
+						if (cond == 4)
+						{
+							htmltext = "30097-05.htm";
+						}
+						else if (cond == 5)
+						{
+							htmltext = "30097-06a.htm";
+						}
+						break;
+					}
+				}
+				break;
+			}
+			case State.COMPLETED:
+			{
+				htmltext = getAlreadyCompletedMsg(player);
+				break;
+			}
+		}
+		
 		return htmltext;
 	}
 	
@@ -135,85 +180,5 @@ public class Q00043_HelpTheSister extends Quest
 			}
 		}
 		return super.onKill(npc, player, isSummon);
-	}
-	
-	@Override
-	public String onTalk(Npc npc, Player player)
-	{
-		final QuestState qs = getQuestState(player, true);
-		String htmltext = getNoQuestMsg(player);
-		switch (npc.getId())
-		{
-			case COOPER:
-			{
-				switch (qs.getState())
-				{
-					case State.CREATED:
-					{
-						htmltext = (player.getLevel() >= 26) ? "30829-00.htm" : "30829-00a.html";
-						break;
-					}
-					case State.STARTED:
-					{
-						switch (qs.getCond())
-						{
-							case 1:
-							{
-								htmltext = hasQuestItems(player, CRAFTED_DAGGER) ? "30829-02.html" : "30829-02a.html";
-								break;
-							}
-							case 2:
-							{
-								htmltext = "30829-04.html";
-								break;
-							}
-							case 3:
-							{
-								htmltext = "30829-05.html";
-								break;
-							}
-							case 4:
-							{
-								htmltext = "30829-07.html";
-								break;
-							}
-							case 5:
-							{
-								htmltext = "30829-08.html";
-								break;
-							}
-						}
-						break;
-					}
-					case State.COMPLETED:
-					{
-						htmltext = getAlreadyCompletedMsg(player);
-						break;
-					}
-				}
-				break;
-			}
-			case GALLADUCCI:
-			{
-				if (qs.isStarted())
-				{
-					switch (qs.getCond())
-					{
-						case 4:
-						{
-							htmltext = "30097-01.html";
-							break;
-						}
-						case 5:
-						{
-							htmltext = "30097-03.html";
-							break;
-						}
-					}
-				}
-				break;
-			}
-		}
-		return htmltext;
 	}
 }

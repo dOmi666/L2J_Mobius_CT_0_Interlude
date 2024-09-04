@@ -16,156 +16,116 @@
  */
 package quests.Q00650_ABrokenDream;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-
-import org.l2jmobius.Config;
 import org.l2jmobius.gameserver.enums.QuestSound;
 import org.l2jmobius.gameserver.model.actor.Npc;
 import org.l2jmobius.gameserver.model.actor.Player;
 import org.l2jmobius.gameserver.model.quest.Quest;
 import org.l2jmobius.gameserver.model.quest.QuestState;
 import org.l2jmobius.gameserver.model.quest.State;
-import org.l2jmobius.gameserver.util.Util;
 
 import quests.Q00117_TheOceanOfDistantStars.Q00117_TheOceanOfDistantStars;
 
-/**
- * A Broken Dream (650)
- * @author netvirus
- */
 public class Q00650_ABrokenDream extends Quest
 {
-	// Npc
-	private static final int GHOST_OF_A_RAILROAD_ENGINEER = 32054;
-	// Item
-	private static final int REMNANTS_OF_OLD_DWARVES_DREAMS = 8514;
-	// Misc
-	private static final int MIN_LEVEL = 39;
+	// NPC
+	private static final int GHOST = 32054;
 	// Monsters
-	private static final Map<Integer, Integer> MONSTER_DROP_CHANCES = new HashMap<>();
-	static
-	{
-		MONSTER_DROP_CHANCES.put(22027, 575); // Forgotten Crewman
-		MONSTER_DROP_CHANCES.put(22028, 515); // Vagabond of the Ruins
-	}
+	private static final int CREWMAN = 22027;
+	private static final int VAGABOND = 22028;
+	// Item
+	private static final int DREAM_FRAGMENT = 8514;
 	
 	public Q00650_ABrokenDream()
 	{
 		super(650);
-		addStartNpc(GHOST_OF_A_RAILROAD_ENGINEER);
-		addTalkId(GHOST_OF_A_RAILROAD_ENGINEER);
-		addKillId(MONSTER_DROP_CHANCES.keySet());
-		registerQuestItems(REMNANTS_OF_OLD_DWARVES_DREAMS);
+		registerQuestItems(DREAM_FRAGMENT);
+		addStartNpc(GHOST);
+		addTalkId(GHOST);
+		addKillId(CREWMAN, VAGABOND);
 	}
 	
 	@Override
-	public String onAdvEvent(String event, Npc npc, Player player)
+	public String onEvent(String event, Npc npc, Player player)
 	{
-		final QuestState qs = getQuestState(player, false);
-		String htmltext = null;
-		if (qs == null)
+		String htmltext = event;
+		final QuestState st = getQuestState(player, false);
+		if (st == null)
 		{
 			return htmltext;
 		}
 		
 		switch (event)
 		{
+			case "32054-01a.htm":
+			{
+				st.startQuest();
+				break;
+			}
 			case "32054-03.htm":
 			{
-				if (qs.isCreated())
+				if (!hasQuestItems(player, DREAM_FRAGMENT))
 				{
-					qs.startQuest();
-					htmltext = event;
+					htmltext = "32054-04.htm";
 				}
 				break;
 			}
-			case "32054-07.html":
-			case "32054-08.html":
+			case "32054-05.htm":
 			{
-				if (qs.isStarted())
-				{
-					htmltext = event;
-				}
-				break;
-			}
-			case "32054-09.html":
-			{
-				if (qs.isStarted())
-				{
-					qs.exitQuest(true, true);
-					htmltext = event;
-				}
+				st.exitQuest(true, true);
 				break;
 			}
 		}
+		
 		return htmltext;
 	}
 	
 	@Override
 	public String onTalk(Npc npc, Player player)
 	{
-		final QuestState qs = getQuestState(player, true);
 		String htmltext = getNoQuestMsg(player);
-		switch (qs.getState())
+		final QuestState st = getQuestState(player, true);
+		
+		switch (st.getState())
 		{
 			case State.CREATED:
 			{
-				if (player.getLevel() < MIN_LEVEL)
+				final QuestState st2 = player.getQuestState(Q00117_TheOceanOfDistantStars.class.getSimpleName());
+				if ((st2 != null) && st2.isCompleted() && (player.getLevel() >= 39))
 				{
-					htmltext = "32054-02.htm";
+					htmltext = "32054-01.htm";
 				}
 				else
 				{
-					final QuestState q117 = player.getQuestState(Q00117_TheOceanOfDistantStars.class.getSimpleName());
-					htmltext = (q117 != null) && q117.isCompleted() ? "32054-01.htm" : "32054-04.htm";
+					htmltext = "32054-00.htm";
+					st.exitQuest(true);
 				}
 				break;
 			}
 			case State.STARTED:
 			{
-				htmltext = hasQuestItems(player, REMNANTS_OF_OLD_DWARVES_DREAMS) ? "32054-05.html" : "32054-06.html";
+				htmltext = "32054-02.htm";
 				break;
 			}
 		}
+		
 		return htmltext;
 	}
 	
 	@Override
-	public String onKill(Npc npc, Player killer, boolean isSummon)
+	public String onKill(Npc npc, Player player, boolean isPet)
 	{
-		final List<Player> randomList = new ArrayList<>();
-		final QuestState qs = getQuestState(killer, false);
-		if ((qs != null) && qs.isStarted())
+		final QuestState st = getQuestState(player, false);
+		if ((st == null) || !st.isStarted())
 		{
-			randomList.add(killer);
-			randomList.add(killer);
+			return null;
 		}
 		
-		final int monsterChance = MONSTER_DROP_CHANCES.get(npc.getId());
-		if (killer.isInParty())
+		if (getRandom(100) < 25)
 		{
-			for (Player member : killer.getParty().getMembers())
-			{
-				final QuestState qst = getQuestState(member, false);
-				if ((qst != null) && qst.isStarted())
-				{
-					randomList.add(member);
-				}
-			}
+			giveItems(player, DREAM_FRAGMENT, 1);
+			playSound(player, QuestSound.ITEMSOUND_QUEST_ITEMGET);
 		}
 		
-		if (!randomList.isEmpty())
-		{
-			final Player player = randomList.get(getRandom(randomList.size()));
-			if ((getRandom(1000) < monsterChance) && Util.checkIfInRange(Config.ALT_PARTY_RANGE, npc, player, true))
-			{
-				giveItems(player, REMNANTS_OF_OLD_DWARVES_DREAMS, 1);
-				playSound(player, QuestSound.ITEMSOUND_QUEST_ITEMGET);
-			}
-		}
-		return super.onKill(npc, killer, isSummon);
+		return null;
 	}
 }

@@ -63,12 +63,13 @@ public class ValakasTeleporters extends AbstractNpcAI
 	}
 	
 	@Override
-	public String onAdvEvent(String event, Npc npc, Player player)
+	public String onEvent(String event, Npc npc, Player player)
 	{
 		String htmltext = "";
 		final QuestState qs = getQuestState(player, false);
 		if (hasQuestItems(player, VACUALITE_FLOATING_STONE))
 		{
+			takeItems(player, VACUALITE_FLOATING_STONE, 1);
 			player.teleToLocation(ENTER_HALL_OF_FLAMES);
 			qs.set("allowEnter", "1");
 		}

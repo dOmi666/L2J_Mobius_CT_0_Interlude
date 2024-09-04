@@ -24,12 +24,9 @@ import org.l2jmobius.gameserver.model.actor.Npc;
 import org.l2jmobius.gameserver.model.actor.Player;
 import org.l2jmobius.gameserver.model.quest.Quest;
 import org.l2jmobius.gameserver.model.quest.QuestState;
+import org.l2jmobius.gameserver.model.quest.State;
 import org.l2jmobius.gameserver.util.Util;
 
-/**
- * Shrieks of Ghosts (371)
- * @author Adry_85
- */
 public class Q00371_ShrieksOfGhosts extends Quest
 {
 	private static class DropInfo
@@ -57,16 +54,10 @@ public class Q00371_ShrieksOfGhosts extends Quest
 	// NPCs
 	private static final int REVA = 30867;
 	private static final int PATRIN = 30929;
-	// Items
-	private static final int ANCIENT_ASH_URN = 5903;
-	private static final int ANCIENT_PORCELAIN = 6002;
-	private static final int ANCIENT_PORCELAIN_EXCELLENT = 6003;
-	private static final int ANCIENT_PORCELAIN_HIGH_QUALITY = 6004;
-	private static final int ANCIENT_PORCELAIN_LOW_QUALITY = 6005;
-	private static final int ANCIENT_PORCELAIN_LOWEST_QUALITY = 6006;
-	// Misc
-	private static final int MIN_LEVEL = 59;
-	
+	// Item
+	private static final int URN = 5903;
+	private static final int PORCELAIN = 6002;
+	// Drop chances
 	private static final Map<Integer, DropInfo> MOBS = new HashMap<>();
 	static
 	{
@@ -78,104 +69,134 @@ public class Q00371_ShrieksOfGhosts extends Quest
 	public Q00371_ShrieksOfGhosts()
 	{
 		super(371);
+		registerQuestItems(URN, PORCELAIN);
 		addStartNpc(REVA);
 		addTalkId(REVA, PATRIN);
-		addKillId(MOBS.keySet());
-		registerQuestItems(ANCIENT_ASH_URN);
+		addKillId(20818, 20820, 20824);
 	}
 	
 	@Override
-	public String onAdvEvent(String event, Npc npc, Player player)
+	public String onEvent(String event, Npc npc, Player player)
 	{
-		final QuestState qs = getQuestState(player, false);
-		if (qs == null)
+		String htmltext = event;
+		final QuestState st = getQuestState(player, false);
+		if (st == null)
 		{
-			return null;
+			return htmltext;
 		}
 		
-		String htmltext = null;
 		switch (event)
 		{
-			case "30867-02.htm":
+			case "30867-03.htm":
 			{
-				qs.startQuest();
-				htmltext = event;
+				st.startQuest();
 				break;
 			}
-			case "30867-05.html":
+			case "30867-07.htm":
 			{
-				final int ancientAshUrnCount = getQuestItemsCount(player, ANCIENT_ASH_URN);
-				if (ancientAshUrnCount < 1)
+				int urns = getQuestItemsCount(player, URN);
+				if (urns > 0)
 				{
-					htmltext = event;
-				}
-				else if (ancientAshUrnCount < 100)
-				{
-					giveAdena(player, (ancientAshUrnCount * 1000) + 15000, true);
-					takeItems(player, ANCIENT_ASH_URN, -1);
-					htmltext = "30867-06.html";
-				}
-				else
-				{
-					giveAdena(player, (ancientAshUrnCount * 1000) + 37700, true);
-					takeItems(player, ANCIENT_ASH_URN, -1);
-					htmltext = "30867-07.html";
-				}
-				break;
-			}
-			case "30867-08.html":
-			case "30929-01.html":
-			case "30929-02.html":
-			{
-				htmltext = event;
-				break;
-			}
-			case "30867-09.html":
-			{
-				giveAdena(player, getQuestItemsCount(player, ANCIENT_ASH_URN) * 1000, true);
-				qs.exitQuest(true, true);
-				htmltext = "30867-09.html";
-				break;
-			}
-			case "30929-03.html":
-			{
-				if (!hasQuestItems(player, ANCIENT_PORCELAIN))
-				{
-					htmltext = event;
-				}
-				else
-				{
-					final int random = getRandom(100);
-					if (random < 2)
+					takeItems(player, URN, urns);
+					if (urns >= 100)
 					{
-						giveItems(player, ANCIENT_PORCELAIN_EXCELLENT, 1);
-						htmltext = "30929-04.html";
-					}
-					else if (random < 32)
-					{
-						giveItems(player, ANCIENT_PORCELAIN_HIGH_QUALITY, 1);
-						htmltext = "30929-05.html";
-					}
-					else if (random < 62)
-					{
-						giveItems(player, ANCIENT_PORCELAIN_LOW_QUALITY, 1);
-						htmltext = "30929-06.html";
-					}
-					else if (random < 77)
-					{
-						giveItems(player, ANCIENT_PORCELAIN_LOWEST_QUALITY, 1);
-						htmltext = "30929-07.html";
+						urns += 13;
+						htmltext = "30867-08.htm";
 					}
 					else
 					{
-						htmltext = "30929-08.html";
+						urns += 7;
 					}
-					
-					takeItems(player, ANCIENT_PORCELAIN, 1);
+					giveAdena(player, urns * 1000, true);
+				}
+				break;
+			}
+			case "30867-10.htm":
+			{
+				st.exitQuest(true, true);
+				break;
+			}
+			case "APPR":
+			{
+				if (hasQuestItems(player, PORCELAIN))
+				{
+					final int chance = getRandom(100);
+					takeItems(player, PORCELAIN, 1);
+					if (chance < 2)
+					{
+						giveItems(player, 6003, 1);
+						htmltext = "30929-03.htm";
+					}
+					else if (chance < 32)
+					{
+						giveItems(player, 6004, 1);
+						htmltext = "30929-04.htm";
+					}
+					else if (chance < 62)
+					{
+						giveItems(player, 6005, 1);
+						htmltext = "30929-05.htm";
+					}
+					else if (chance < 77)
+					{
+						giveItems(player, 6006, 1);
+						htmltext = "30929-06.htm";
+					}
+					else
+					{
+						htmltext = "30929-07.htm";
+					}
+				}
+				else
+				{
+					htmltext = "30929-02.htm";
 				}
 				break;
 			}
 		}
+		
+		return htmltext;
+	}
+	
+	@Override
+	public String onTalk(Npc npc, Player player)
+	{
+		String htmltext = getNoQuestMsg(player);
+		final QuestState st = getQuestState(player, true);
+		
+		switch (st.getState())
+		{
+			case State.CREATED:
+			{
+				htmltext = (player.getLevel() < 59) ? "30867-01.htm" : "30867-02.htm";
+				break;
+			}
+			case State.STARTED:
+			{
+				switch (npc.getId())
+				{
+					case REVA:
+					{
+						if (hasQuestItems(player, URN))
+						{
+							htmltext = (hasQuestItems(player, PORCELAIN)) ? "30867-05.htm" : "30867-04.htm";
+						}
+						else
+						{
+							htmltext = "30867-06.htm";
+						}
+						break;
+					}
+					case PATRIN:
+					{
+						htmltext = "30929-01.htm";
+						break;
+					}
+				}
+				break;
+			}
+		}
+		
 		return htmltext;
 	}
 	
@@ -192,35 +213,12 @@ public class Q00371_ShrieksOfGhosts extends Quest
 		final int random = getRandom(1000);
 		if (random < info.getFirstChance())
 		{
-			giveItemRandomly(qs.getPlayer(), npc, ANCIENT_ASH_URN, 1, 0, 1, true);
+			giveItemRandomly(qs.getPlayer(), npc, URN, 1, 0, 1, true);
 		}
 		else if (random < info.getSecondChance())
 		{
-			giveItemRandomly(qs.getPlayer(), npc, ANCIENT_PORCELAIN, 1, 0, 1, true);
+			giveItemRandomly(qs.getPlayer(), npc, PORCELAIN, 1, 0, 1, true);
 		}
 		return super.onKill(npc, killer, isSummon);
-	}
-	
-	@Override
-	public String onTalk(Npc npc, Player player)
-	{
-		final QuestState qs = getQuestState(player, true);
-		String htmltext = getNoQuestMsg(player);
-		if (qs.isCreated())
-		{
-			htmltext = (player.getLevel() >= MIN_LEVEL) ? "30867-01.htm" : "30867-03.htm";
-		}
-		else if (qs.isStarted())
-		{
-			if (npc.getId() == REVA)
-			{
-				htmltext = hasQuestItems(player, ANCIENT_PORCELAIN) ? "30867-04.html" : "30867-10.html";
-			}
-			else
-			{
-				htmltext = "30929-01.html";
-			}
-		}
-		return htmltext;
 	}
 }

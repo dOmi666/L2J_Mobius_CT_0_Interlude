@@ -63,7 +63,7 @@ public class Freight implements IBypassHandler
 				}
 				else
 				{
-					player.sendPacket(SystemMessageId.YOU_HAVE_NOT_DEPOSITED_ANY_ITEMS_IN_YOUR_WAREHOUSE);
+					player.sendPacket(SystemMessageId.NO_PACKAGES_HAVE_ARRIVED);
 				}
 			}
 		}

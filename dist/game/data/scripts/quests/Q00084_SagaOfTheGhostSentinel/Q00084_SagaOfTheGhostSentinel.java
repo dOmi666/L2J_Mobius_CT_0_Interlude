@@ -16,15 +16,13 @@
  */
 package quests.Q00084_SagaOfTheGhostSentinel;
 
-import org.l2jmobius.gameserver.model.Location;
-
-import quests.AbstractSagaQuest;
+import quests.SagasSuperClass;
 
 /**
  * Saga of the Ghost Sentinel (84)
  * @author Emperorc
  */
-public class Q00084_SagaOfTheGhostSentinel extends AbstractSagaQuest
+public class Q00084_SagaOfTheGhostSentinel extends SagasSuperClass
 {
 	public Q00084_SagaOfTheGhostSentinel()
 	{
@@ -73,11 +71,23 @@ public class Q00084_SagaOfTheGhostSentinel extends AbstractSagaQuest
 		{
 			0x25
 		};
-		_npcSpawnLocations = new Location[]
+		_x = new int[]
 		{
-			new Location(161719, -92823, -1893),
-			new Location(124376, 82127, -2796),
-			new Location(124376, 82127, -2796)
+			161719,
+			124376,
+			124376
+		};
+		_y = new int[]
+		{
+			-92823,
+			82127,
+			82127
+		};
+		_z = new int[]
+		{
+			-1893,
+			-2796,
+			-2796
 		};
 		_text = new String[]
 		{

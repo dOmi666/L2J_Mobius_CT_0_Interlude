@@ -99,7 +99,7 @@ public class SoulShots implements IItemHandler
 		weaponInst.setChargedShot(ShotType.SOULSHOTS, true);
 		
 		// Send message to client
-		player.sendPacket(SystemMessageId.YOUR_SOULSHOTS_ARE_ENABLED);
+		player.sendPacket(SystemMessageId.POWER_OF_THE_SPIRITS_ENABLED);
 		Broadcast.toSelfAndKnownPlayersInRadius(player, new MagicSkillUse(player, player, skills[0].getSkillId(), skills[0].getSkillLevel(), 0, 0), 600);
 		return true;
 	}

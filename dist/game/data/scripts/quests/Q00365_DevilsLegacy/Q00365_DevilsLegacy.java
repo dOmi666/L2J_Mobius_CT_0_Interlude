@@ -16,68 +16,37 @@
  */
 package quests.Q00365_DevilsLegacy;
 
-import java.util.HashMap;
-import java.util.Map;
-
+import org.l2jmobius.gameserver.data.xml.SkillData;
 import org.l2jmobius.gameserver.model.actor.Npc;
 import org.l2jmobius.gameserver.model.actor.Player;
-import org.l2jmobius.gameserver.model.holders.SkillHolder;
-import org.l2jmobius.gameserver.model.itemcontainer.Inventory;
 import org.l2jmobius.gameserver.model.quest.Quest;
 import org.l2jmobius.gameserver.model.quest.QuestState;
+import org.l2jmobius.gameserver.model.quest.State;
+import org.l2jmobius.gameserver.model.skill.Skill;
 
-/**
- * Devil's Legacy (365)
- * @author Adry_85
- */
 public class Q00365_DevilsLegacy extends Quest
 {
 	// NPCs
-	private static final int COLLOB = 30092;
 	private static final int RANDOLF = 30095;
+	private static final int COLLOB = 30092;
 	// Item
-	private static final int PIRATES_TREASURE_CHEST = 5873;
-	// Rewards
-	private static final int ENCHANT_WEAPON_C = 951;
-	private static final int ENCHANT_ARMOR_C = 952;
-	private static final int ENCHANT_WEAPON_D = 955;
-	private static final int ENCHANT_ARMOR_D = 956;
-	private static final int THREAD = 1868;
-	private static final int ANIMAL_BONE = 1872;
-	private static final int COKES = 1879;
-	private static final int STEEL = 1880;
-	private static final int COARSE_BONE_POWDER = 1881;
-	private static final int LEATHER = 1882;
-	private static final int CORD = 1884;
-	// Misc
-	private static final int MIN_LEVEL = 39;
-	// Skill
-	private static SkillHolder POISON = new SkillHolder(4035, 2);
-	// Mobs
-	private static final Map<Integer, Double> MOBS = new HashMap<>();
-	static
-	{
-		MOBS.put(20836, 0.47); // pirates_zombie
-		MOBS.put(20845, 0.40); // pirates_zombie_captain
-		MOBS.put(21629, 0.40); // pirates_zombie_captain_1
-		MOBS.put(21630, 0.40); // pirates_zombie_captain_2
-	}
+	private static final int PIRATE_TREASURE_CHEST = 5873;
 	
 	public Q00365_DevilsLegacy()
 	{
 		super(365);
+		registerQuestItems(PIRATE_TREASURE_CHEST);
 		addStartNpc(RANDOLF);
 		addTalkId(RANDOLF, COLLOB);
-		addKillId(MOBS.keySet());
-		registerQuestItems(PIRATES_TREASURE_CHEST);
+		addKillId(20836, 20845, 21629, 21630); // Pirate Zombie && Pirate Zombie Captain.
 	}
 	
 	@Override
-	public String onAdvEvent(String event, Npc npc, Player player)
+	public String onEvent(String event, Npc npc, Player player)
 	{
-		final QuestState qs = getQuestState(player, false);
-		String htmltext = null;
-		if (qs == null)
+		String htmltext = event;
+		final QuestState st = getQuestState(player, false);
+		if (st == null)
 		{
 			return htmltext;
 		}
@@ -86,113 +55,153 @@ public class Q00365_DevilsLegacy extends Quest
 		{
 			case "30095-02.htm":
 			{
-				qs.startQuest();
-				qs.setMemoState(1);
-				htmltext = event;
+				st.startQuest();
 				break;
 			}
-			case "30095-05.html":
+			case "30095-06.htm":
 			{
-				qs.exitQuest(true, true);
-				htmltext = event;
+				st.exitQuest(true, true);
 				break;
 			}
-			case "30095-06.html":
+			case "30092-05.htm":
 			{
-				htmltext = event;
-				break;
-			}
-			case "REWARD":
-			{
-				if (!qs.isMemoState(1))
+				if (!hasQuestItems(player, PIRATE_TREASURE_CHEST))
 				{
-					htmltext = "30092-04.html";
+					htmltext = "30092-02.htm";
 				}
-				else if (!hasQuestItems(player, PIRATES_TREASURE_CHEST))
+				else if (getQuestItemsCount(player, 57) < 600)
 				{
-					htmltext = "30092-02.html";
-				}
-				else if (player.getAdena() < 600)
-				{
-					htmltext = "30092-03.html";
+					htmltext = "30092-03.htm";
 				}
 				else
 				{
-					final int itemId;
-					final int chance;
+					takeItems(player, PIRATE_TREASURE_CHEST, 1);
+					takeItems(player, 57, 600);
+					
+					int i0;
 					if (getRandom(100) < 80)
 					{
-						chance = getRandom(100);
-						if (chance < 1)
+						i0 = getRandom(100);
+						if (i0 < 1)
 						{
-							itemId = ENCHANT_WEAPON_D;
+							giveItems(player, 955, 1);
 						}
-						else if (chance < 4)
+						else if (i0 < 4)
 						{
-							itemId = ENCHANT_ARMOR_D;
+							giveItems(player, 956, 1);
 						}
-						else if (chance < 36)
+						else if (i0 < 36)
 						{
-							itemId = THREAD;
+							giveItems(player, 1868, 1);
 						}
-						else if (chance < 68)
+						else if (i0 < 68)
 						{
-							itemId = CORD;
+							giveItems(player, 1884, 1);
 						}
 						else
 						{
-							itemId = ANIMAL_BONE;
+							giveItems(player, 1872, 1);
 						}
-						htmltext = "30092-05.html";
+						
+						htmltext = "30092-05.htm";
 					}
 					else
 					{
-						chance = getRandom(1000);
-						if (chance < 10)
+						i0 = getRandom(1000);
+						if (i0 < 10)
 						{
-							itemId = ENCHANT_WEAPON_C;
+							giveItems(player, 951, 1);
 						}
-						else if (chance < 40)
+						else if (i0 < 40)
 						{
-							itemId = ENCHANT_ARMOR_C;
+							giveItems(player, 952, 1);
 						}
-						else if (chance < 60)
+						else if (i0 < 60)
 						{
-							itemId = ENCHANT_WEAPON_D;
+							giveItems(player, 955, 1);
 						}
-						else if (chance < 260)
+						else if (i0 < 260)
 						{
-							itemId = ENCHANT_ARMOR_D;
+							giveItems(player, 956, 1);
 						}
-						else if (chance < 445)
+						else if (i0 < 445)
 						{
-							itemId = COKES;
+							giveItems(player, 1879, 1);
 						}
-						else if (chance < 630)
+						else if (i0 < 630)
 						{
-							itemId = STEEL;
+							giveItems(player, 1880, 1);
 						}
-						else if (chance < 815)
+						else if (i0 < 815)
 						{
-							itemId = LEATHER;
+							giveItems(player, 1882, 1);
 						}
 						else
 						{
-							itemId = COARSE_BONE_POWDER;
+							giveItems(player, 1881, 1);
 						}
-						npc.setTarget(player);
-						npc.doCast(POISON.getSkill());
-						npc.setCurrentMp(npc.getMaxMp());
-						qs.setMemoState(2);
-						htmltext = "30092-06.html";
+						
+						htmltext = "30092-06.htm";
+						
+						// Curse effect !
+						final Skill skill = SkillData.getInstance().getSkill(4082, 1);
+						if ((skill != null) && !player.isAffectedBySkill(skill.getId()))
+						{
+							skill.applyEffects(npc, player);
+						}
 					}
-					takeItems(player, PIRATES_TREASURE_CHEST, 1);
-					takeItems(player, Inventory.ADENA_ID, 600);
-					rewardItems(player, itemId, 1);
 				}
 				break;
 			}
 		}
+		
+		return htmltext;
+	}
+	
+	@Override
+	public String onTalk(Npc npc, Player player)
+	{
+		String htmltext = Quest.getNoQuestMsg(player);
+		final QuestState st = getQuestState(player, true);
+		
+		switch (st.getState())
+		{
+			case State.CREATED:
+			{
+				htmltext = (player.getLevel() < 39) ? "30095-00.htm" : "30095-01.htm";
+				break;
+			}
+			case State.STARTED:
+			{
+				switch (npc.getId())
+				{
+					case RANDOLF:
+					{
+						if (!hasQuestItems(player, PIRATE_TREASURE_CHEST))
+						{
+							htmltext = "30095-03.htm";
+						}
+						else
+						{
+							htmltext = "30095-05.htm";
+							
+							final int reward = getQuestItemsCount(player, PIRATE_TREASURE_CHEST) * 1600;
+							
+							takeItems(player, PIRATE_TREASURE_CHEST, -1);
+							giveAdena(player, reward, true);
+						}
+						break;
+					}
+					case COLLOB:
+					{
+						htmltext = "30092-01.htm";
+						break;
+					}
+				}
+				break;
+			}
+		}
+		
 		return htmltext;
 	}
 	
@@ -202,49 +211,8 @@ public class Q00365_DevilsLegacy extends Quest
 		final QuestState qs = getRandomPartyMemberState(player, -1, 3, npc);
 		if (qs != null)
 		{
-			giveItemRandomly(qs.getPlayer(), npc, PIRATES_TREASURE_CHEST, 1, 0, MOBS.get(npc.getId()), true);
+			giveItemRandomly(qs.getPlayer(), npc, PIRATE_TREASURE_CHEST, 1, 0, npc.getId() == 20836 ? 0.36 : 0.52, true);
 		}
 		return super.onKill(npc, player, isSummon);
-	}
-	
-	@Override
-	public String onTalk(Npc npc, Player player)
-	{
-		final QuestState qs = getQuestState(player, true);
-		String htmltext = getNoQuestMsg(player);
-		switch (npc.getId())
-		{
-			case RANDOLF:
-			{
-				if (qs.isCreated())
-				{
-					htmltext = ((player.getLevel() >= MIN_LEVEL) ? "30095-01.htm" : "30095-03.html");
-				}
-				else if (qs.isStarted())
-				{
-					if (hasQuestItems(player, PIRATES_TREASURE_CHEST))
-					{
-						final int chestCount = getQuestItemsCount(player, PIRATES_TREASURE_CHEST);
-						giveAdena(player, (chestCount * 400) + 19800, true);
-						takeItems(player, PIRATES_TREASURE_CHEST, -1);
-						htmltext = "30095-04.html";
-					}
-					else
-					{
-						htmltext = "30095-07.html";
-					}
-				}
-				break;
-			}
-			case COLLOB:
-			{
-				if (qs.isStarted())
-				{
-					htmltext = (qs.isMemoState(1) ? "30092-01.html" : "30092-07.html");
-				}
-				break;
-			}
-		}
-		return htmltext;
 	}
 }

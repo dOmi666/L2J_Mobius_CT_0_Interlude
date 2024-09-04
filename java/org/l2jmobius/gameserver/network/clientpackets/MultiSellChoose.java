@@ -20,7 +20,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.l2jmobius.Config;
-import org.l2jmobius.commons.network.ReadablePacket;
 import org.l2jmobius.gameserver.data.xml.MultisellData;
 import org.l2jmobius.gameserver.model.Augmentation;
 import org.l2jmobius.gameserver.model.actor.Npc;
@@ -30,40 +29,38 @@ import org.l2jmobius.gameserver.model.itemcontainer.PlayerInventory;
 import org.l2jmobius.gameserver.model.multisell.Entry;
 import org.l2jmobius.gameserver.model.multisell.Ingredient;
 import org.l2jmobius.gameserver.model.multisell.PreparedListContainer;
-import org.l2jmobius.gameserver.network.GameClient;
 import org.l2jmobius.gameserver.network.PacketLogger;
 import org.l2jmobius.gameserver.network.SystemMessageId;
-import org.l2jmobius.gameserver.network.serverpackets.ItemList;
 import org.l2jmobius.gameserver.network.serverpackets.StatusUpdate;
 import org.l2jmobius.gameserver.network.serverpackets.SystemMessage;
 
 /**
  * The Class MultiSellChoose.
  */
-public class MultiSellChoose implements ClientPacket
+public class MultiSellChoose extends ClientPacket
 {
 	private int _listId;
 	private int _entryId;
 	private int _amount;
 	
 	@Override
-	public void read(ReadablePacket packet)
+	protected void readImpl()
 	{
-		_listId = packet.readInt();
-		_entryId = packet.readInt();
-		_amount = packet.readInt();
+		_listId = readInt();
+		_entryId = readInt();
+		_amount = readInt();
 	}
 	
 	@Override
-	public void run(GameClient client)
+	protected void runImpl()
 	{
-		final Player player = client.getPlayer();
+		final Player player = getPlayer();
 		if (player == null)
 		{
 			return;
 		}
 		
-		if (!client.getFloodProtectors().canUseMultiSell())
+		if (!getClient().getFloodProtectors().canUseMultiSell())
 		{
 			player.setMultiSell(null);
 			return;
@@ -205,10 +202,7 @@ public class MultiSellChoose implements ClientPacket
 						final int required = ((Config.ALT_BLACKSMITH_USE_RECIPES || !e.getMaintainIngredient()) ? (e.getItemCount() * _amount) : e.getItemCount());
 						if (inv.getInventoryItemCount(e.getItemId(), (list.getMaintainEnchantment() || (e.getEnchantLevel() > 0)) ? e.getEnchantLevel() : -1, false) < required)
 						{
-							final SystemMessage sm = new SystemMessage(SystemMessageId.S2_UNIT_S_OF_THE_ITEM_S1_IS_ARE_REQUIRED);
-							sm.addItemName(e.getTemplate());
-							sm.addInt(required);
-							player.sendPacket(sm);
+							player.sendMessage(required + " unit(s) of the item " + e.getTemplate().getName() + " is/are required.");
 							return;
 						}
 					}
@@ -405,7 +399,7 @@ public class MultiSellChoose implements ClientPacket
 						}
 					}
 				}
-				player.sendPacket(new ItemList(player, false));
+				player.sendItemList(false);
 				
 				final StatusUpdate su = new StatusUpdate(player);
 				su.addAttribute(StatusUpdate.CUR_LOAD, player.getCurrentLoad());

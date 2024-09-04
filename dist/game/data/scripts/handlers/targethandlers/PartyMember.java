@@ -36,7 +36,7 @@ public class PartyMember implements ITargetTypeHandler
 	{
 		if (target == null)
 		{
-			creature.sendPacket(SystemMessageId.THAT_IS_AN_INCORRECT_TARGET);
+			creature.sendPacket(SystemMessageId.THAT_IS_THE_INCORRECT_TARGET);
 			return Collections.emptyList();
 		}
 		

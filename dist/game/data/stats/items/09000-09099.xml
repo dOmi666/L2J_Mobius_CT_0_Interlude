@@ -2,7 +2,7 @@
 <list xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="../../xsd/items.xsd">
 	<item id="9000" type="Weapon" name="Shadow Item: Stormbringer*Stormbringer">
 		<!-- This Shadow Item contains the mirrored power of a Stormbringer*Stormbringer. It cannot be traded, dropped, crystallized, or given other functions. -->
-		<set name="icon" val="icon.time_weapon_dual_sword_i00" />
+		<set name="icon" val="icon.weapon_dual_sword_i00" />
 		<set name="default_action" val="EQUIP" />
 		<set name="weapon_type" val="DUAL" />
 		<set name="bodypart" val="lrhand" />
@@ -101,7 +101,7 @@
 		<set name="duration" val="600" />
 		<for>
 			<set stat="pAtk" val="170" />
-			<set stat="mAtk" val="154" />
+			<set stat="mAtk" val="134" />
 			<set stat="critRate" val="4" />
 			<add stat="accCombat" val="4.75" />
 			<set stat="pAtkSpd" val="325" />
@@ -155,7 +155,7 @@
 		<set name="duration" val="600" />
 		<for>
 			<set stat="pAtk" val="140" />
-			<set stat="mAtk" val="140" />
+			<set stat="mAtk" val="122" />
 			<set stat="critRate" val="8" />
 			<set stat="pAtkSpd" val="379" />
 		</for>
@@ -245,7 +245,7 @@
 	</item>
 	<item id="9009" type="Weapon" name="Shadow Item: Sword of Delusion*Sword of Delusion">
 		<!-- This Shadow Item contains the mirrored power of a Sword of Delusion*Sword of Delusion. It cannot be traded, dropped, crystallized, or given other functions. -->
-		<set name="icon" val="icon.time_weapon_dual_sword_i00" />
+		<set name="icon" val="icon.weapon_dual_sword_i00" />
 		<set name="default_action" val="EQUIP" />
 		<set name="weapon_type" val="DUAL" />
 		<set name="bodypart" val="lrhand" />
@@ -464,7 +464,7 @@
 	</item>
 	<item id="9017" type="Weapon" name="Shadow Item: Keshanberk*Keshanberk">
 		<!-- This Shadow Item contains the mirrored power of a Keshanberk*Keshanberk. It cannot be traded, dropped, crystallized, or given other functions. -->
-		<set name="icon" val="icon.time_weapon_dual_sword_i00" />
+		<set name="icon" val="icon.weapon_dual_sword_i00" />
 		<set name="default_action" val="EQUIP" />
 		<set name="weapon_type" val="DUAL" />
 		<set name="bodypart" val="lrhand" />
@@ -670,7 +670,7 @@
 		<set name="duration" val="600" />
 		<for>
 			<set stat="pAtk" val="226" />
-			<set stat="mAtk" val="192" />
+			<set stat="mAtk" val="167" />
 			<set stat="critRate" val="4" />
 			<add stat="accCombat" val="4.75" />
 			<set stat="pAtkSpd" val="325" />
@@ -821,7 +821,7 @@
 		<set name="bodypart" val="chest" />
 		<set name="immediate_effect" val="true" />
 		<set name="material" val="BRONZE" />
-		<set name="weight" val="2973" />
+		<set name="weight" val="8920" />
 		<set name="is_tradable" val="false" />
 		<set name="is_dropable" val="false" />
 		<set name="is_sellable" val="false" />
@@ -841,7 +841,7 @@
 		<set name="bodypart" val="legs" />
 		<set name="immediate_effect" val="true" />
 		<set name="material" val="BRONZE" />
-		<set name="weight" val="1320" />
+		<set name="weight" val="3960" />
 		<set name="is_tradable" val="false" />
 		<set name="is_dropable" val="false" />
 		<set name="is_sellable" val="false" />
@@ -861,7 +861,7 @@
 		<set name="bodypart" val="chest" />
 		<set name="immediate_effect" val="true" />
 		<set name="material" val="LEATHER" />
-		<set name="weight" val="1573" />
+		<set name="weight" val="4720" />
 		<set name="is_tradable" val="false" />
 		<set name="is_dropable" val="false" />
 		<set name="is_sellable" val="false" />
@@ -878,7 +878,7 @@
 		<set name="bodypart" val="legs" />
 		<set name="immediate_effect" val="true" />
 		<set name="material" val="LEATHER" />
-		<set name="weight" val="537" />
+		<set name="weight" val="1610" />
 		<set name="is_tradable" val="false" />
 		<set name="is_dropable" val="false" />
 		<set name="is_sellable" val="false" />
@@ -895,7 +895,7 @@
 		<set name="bodypart" val="chest" />
 		<set name="immediate_effect" val="true" />
 		<set name="material" val="CLOTH" />
-		<set name="weight" val="693" />
+		<set name="weight" val="2080" />
 		<set name="is_tradable" val="false" />
 		<set name="is_dropable" val="false" />
 		<set name="is_sellable" val="false" />
@@ -916,7 +916,7 @@
 		<set name="bodypart" val="legs" />
 		<set name="immediate_effect" val="true" />
 		<set name="material" val="CLOTH" />
-		<set name="weight" val="343" />
+		<set name="weight" val="1030" />
 		<set name="is_tradable" val="false" />
 		<set name="is_dropable" val="false" />
 		<set name="is_sellable" val="false" />
@@ -936,7 +936,7 @@
 		<set name="bodypart" val="lhand" />
 		<set name="immediate_effect" val="true" />
 		<set name="material" val="BONE" />
-		<set name="weight" val="460" />
+		<set name="weight" val="1380" />
 		<set name="is_tradable" val="false" />
 		<set name="is_dropable" val="false" />
 		<set name="is_sellable" val="false" />
@@ -957,7 +957,7 @@
 		<set name="bodypart" val="head" />
 		<set name="immediate_effect" val="true" />
 		<set name="material" val="LEATHER" />
-		<set name="weight" val="213" />
+		<set name="weight" val="640" />
 		<set name="is_tradable" val="false" />
 		<set name="is_dropable" val="false" />
 		<set name="is_sellable" val="false" />
@@ -973,7 +973,7 @@
 		<set name="bodypart" val="feet" />
 		<set name="immediate_effect" val="true" />
 		<set name="material" val="CLOTH" />
-		<set name="weight" val="437" />
+		<set name="weight" val="1310" />
 		<set name="is_tradable" val="false" />
 		<set name="is_dropable" val="false" />
 		<set name="is_sellable" val="false" />
@@ -989,7 +989,7 @@
 		<set name="bodypart" val="gloves" />
 		<set name="immediate_effect" val="true" />
 		<set name="material" val="LEATHER" />
-		<set name="weight" val="217" />
+		<set name="weight" val="650" />
 		<set name="is_tradable" val="false" />
 		<set name="is_dropable" val="false" />
 		<set name="is_sellable" val="false" />

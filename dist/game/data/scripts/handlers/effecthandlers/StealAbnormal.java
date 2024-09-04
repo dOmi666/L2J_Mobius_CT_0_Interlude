@@ -20,11 +20,13 @@ import java.util.List;
 
 import org.l2jmobius.gameserver.enums.SkillFinishType;
 import org.l2jmobius.gameserver.model.StatSet;
+import org.l2jmobius.gameserver.model.actor.Creature;
 import org.l2jmobius.gameserver.model.conditions.Condition;
 import org.l2jmobius.gameserver.model.effects.AbstractEffect;
 import org.l2jmobius.gameserver.model.effects.EffectType;
 import org.l2jmobius.gameserver.model.skill.BuffInfo;
 import org.l2jmobius.gameserver.model.skill.EffectScope;
+import org.l2jmobius.gameserver.model.skill.Skill;
 import org.l2jmobius.gameserver.model.stats.Formulas;
 
 /**
@@ -54,11 +56,11 @@ public class StealAbnormal extends AbstractEffect
 	}
 	
 	@Override
-	public void onStart(BuffInfo info)
+	public void onStart(Creature effector, Creature effected, Skill skill)
 	{
-		if ((info.getEffected() != null) && info.getEffected().isPlayer() && (info.getEffector() != info.getEffected()))
+		if ((effected != null) && effected.isPlayer() && (effector != effected))
 		{
-			final List<BuffInfo> toSteal = Formulas.calcStealEffects(info.getEffected(), _amount);
+			final List<BuffInfo> toSteal = Formulas.calcStealEffects(effected, _amount);
 			if (toSteal.isEmpty())
 			{
 				return;
@@ -67,12 +69,12 @@ public class StealAbnormal extends AbstractEffect
 			for (BuffInfo infoToSteal : toSteal)
 			{
 				// Invert effected and effector.
-				final BuffInfo stolen = new BuffInfo(info.getEffected(), info.getEffector(), infoToSteal.getSkill());
+				final BuffInfo stolen = new BuffInfo(effected, effector, infoToSteal.getSkill());
 				stolen.setAbnormalTime(infoToSteal.getTime()); // Copy the remaining time.
 				// To include all the effects, it's required to go through the template rather the buff info.
 				infoToSteal.getSkill().applyEffectScope(EffectScope.GENERAL, stolen, true, true);
-				info.getEffected().getEffectList().remove(SkillFinishType.REMOVED, infoToSteal);
-				info.getEffector().getEffectList().add(stolen);
+				effected.getEffectList().remove(SkillFinishType.REMOVED, infoToSteal);
+				effector.getEffectList().add(stolen);
 			}
 		}
 	}

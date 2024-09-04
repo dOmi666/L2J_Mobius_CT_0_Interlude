@@ -16,7 +16,6 @@
  */
 package quests.Q00019_GoToThePastureland;
 
-import org.l2jmobius.gameserver.enums.QuestSound;
 import org.l2jmobius.gameserver.model.actor.Npc;
 import org.l2jmobius.gameserver.model.actor.Player;
 import org.l2jmobius.gameserver.model.quest.Quest;
@@ -25,28 +24,25 @@ import org.l2jmobius.gameserver.model.quest.State;
 
 public class Q00019_GoToThePastureland extends Quest
 {
-	// Items
-	private static final int YOUNG_WILD_BEAST_MEAT = 7547;
-	
 	// NPCs
 	private static final int VLADIMIR = 31302;
 	private static final int TUNATUN = 31537;
+	// Items
+	private static final int YOUNG_WILD_BEAST_MEAT = 7547;
 	
 	public Q00019_GoToThePastureland()
 	{
 		super(19);
-		
 		registerQuestItems(YOUNG_WILD_BEAST_MEAT);
-		
 		addStartNpc(VLADIMIR);
 		addTalkId(VLADIMIR, TUNATUN);
 	}
 	
 	@Override
-	public String onAdvEvent(String event, Npc npc, Player player)
+	public String onEvent(String event, Npc npc, Player player)
 	{
 		String htmltext = event;
-		final QuestState st = player.getQuestState(getName());
+		final QuestState st = getQuestState(player, false);
 		if (st == null)
 		{
 			return htmltext;
@@ -63,9 +59,8 @@ public class Q00019_GoToThePastureland extends Quest
 			{
 				htmltext = "31537-01.htm";
 				takeItems(player, YOUNG_WILD_BEAST_MEAT, 1);
-				rewardItems(player, 57, 30000);
-				playSound(player, QuestSound.ITEMSOUND_QUEST_FINISH);
-				st.exitQuest(false);
+				giveAdena(player, 30000, true);
+				st.exitQuest(false, true);
 			}
 			else
 			{
@@ -78,30 +73,38 @@ public class Q00019_GoToThePastureland extends Quest
 	@Override
 	public String onTalk(Npc npc, Player player)
 	{
-		final QuestState st = getQuestState(player, true);
 		String htmltext = getNoQuestMsg(player);
+		final QuestState st = getQuestState(player, true);
+		
 		switch (st.getState())
 		{
 			case State.CREATED:
+			{
 				htmltext = (player.getLevel() < 63) ? "31302-03.htm" : "31302-00.htm";
 				break;
-			
+			}
 			case State.STARTED:
+			{
 				switch (npc.getId())
 				{
 					case VLADIMIR:
+					{
 						htmltext = "31302-02.htm";
 						break;
-					
+					}
 					case TUNATUN:
+					{
 						htmltext = "31537-00.htm";
 						break;
+					}
 				}
 				break;
-			
+			}
 			case State.COMPLETED:
+			{
 				htmltext = getAlreadyCompletedMsg(player);
 				break;
+			}
 		}
 		
 		return htmltext;

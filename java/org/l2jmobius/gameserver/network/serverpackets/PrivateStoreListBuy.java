@@ -18,8 +18,10 @@ package org.l2jmobius.gameserver.network.serverpackets;
 
 import java.util.Collection;
 
+import org.l2jmobius.commons.network.WritableBuffer;
 import org.l2jmobius.gameserver.model.TradeItem;
 import org.l2jmobius.gameserver.model.actor.Player;
+import org.l2jmobius.gameserver.network.GameClient;
 import org.l2jmobius.gameserver.network.ServerPackets;
 
 public class PrivateStoreListBuy extends ServerPacket
@@ -37,24 +39,24 @@ public class PrivateStoreListBuy extends ServerPacket
 	}
 	
 	@Override
-	public void write()
+	public void writeImpl(GameClient client, WritableBuffer buffer)
 	{
-		ServerPackets.PRIVATE_STORE_BUY_LIST.writeId(this);
-		writeInt(_objId);
-		writeInt((int) _playerAdena);
-		writeInt(_items.size());
+		ServerPackets.PRIVATE_STORE_BUY_LIST.writeId(this, buffer);
+		buffer.writeInt(_objId);
+		buffer.writeInt((int) _playerAdena);
+		buffer.writeInt(_items.size());
 		for (TradeItem item : _items)
 		{
-			writeInt(item.getObjectId());
-			writeInt(item.getItem().getId());
-			writeShort(item.getEnchant());
-			writeInt(item.getCount()); // give max possible sell amount
-			writeInt(item.getItem().getReferencePrice());
-			writeShort(0);
-			writeInt(item.getItem().getBodyPart());
-			writeShort(item.getItem().getType2());
-			writeInt(item.getPrice()); // buyers price
-			writeInt(item.getStoreCount()); // maximum possible tradecount
+			buffer.writeInt(item.getObjectId());
+			buffer.writeInt(item.getItem().getId());
+			buffer.writeShort(item.getEnchant());
+			buffer.writeInt(item.getCount()); // give max possible sell amount
+			buffer.writeInt(item.getItem().getReferencePrice());
+			buffer.writeShort(0);
+			buffer.writeInt(item.getItem().getBodyPart());
+			buffer.writeShort(item.getItem().getType2());
+			buffer.writeInt(item.getPrice()); // buyers price
+			buffer.writeInt(item.getStoreCount()); // maximum possible tradecount
 		}
 	}
 }

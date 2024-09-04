@@ -7,7 +7,7 @@
 		<set name="immediate_effect" val="true" />
 		<set name="material" val="LIQUID" />
 		<set name="weight" val="60" />
-		<set name="price" val="68831" />
+		<set name="price" val="5782" />
 		<set name="is_stackable" val="true" />
 	</item>
 	<item id="2001" type="EtcItem" name="Helm of Avadon Design">
@@ -717,7 +717,7 @@
 		<set name="immediate_effect" val="true" />
 		<set name="material" val="LIQUID" />
 		<set name="weight" val="60" />
-		<set name="price" val="25188" />
+		<set name="price" val="24425" />
 		<set name="is_stackable" val="true" />
 	</item>
 	<item id="2072" type="EtcItem" name="Dark Elven Dagger Edge">
@@ -877,7 +877,7 @@
 		<set name="immediate_effect" val="true" />
 		<set name="material" val="LIQUID" />
 		<set name="weight" val="60" />
-		<set name="price" val="28378" />
+		<set name="price" val="30911" />
 		<set name="is_stackable" val="true" />
 	</item>
 	<item id="2088" type="EtcItem" name="Horn of Glory Fragment">
@@ -937,7 +937,7 @@
 		<set name="immediate_effect" val="true" />
 		<set name="material" val="LIQUID" />
 		<set name="weight" val="60" />
-		<set name="price" val="36800" />
+		<set name="price" val="34200" />
 		<set name="is_stackable" val="true" />
 	</item>
 	<item id="2094" type="EtcItem" name="Sword of Limit Blade">
@@ -947,7 +947,7 @@
 		<set name="immediate_effect" val="true" />
 		<set name="material" val="LIQUID" />
 		<set name="weight" val="60" />
-		<set name="price" val="36700" />
+		<set name="price" val="37450" />
 		<set name="is_stackable" val="true" />
 	</item>
 	<item id="2095" type="EtcItem" name="Sword of Nightmare Blade">

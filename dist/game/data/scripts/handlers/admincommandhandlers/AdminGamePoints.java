@@ -122,7 +122,7 @@ public class AdminGamePoints implements IAdminCommandHandler
 		}
 		else
 		{
-			admin.sendPacket(SystemMessageId.THAT_IS_AN_INCORRECT_TARGET);
+			admin.sendPacket(SystemMessageId.THAT_IS_THE_INCORRECT_TARGET);
 			return false;
 		}
 		
@@ -158,7 +158,7 @@ public class AdminGamePoints implements IAdminCommandHandler
 		}
 		else
 		{
-			admin.sendPacket(SystemMessageId.THAT_IS_AN_INCORRECT_TARGET);
+			admin.sendPacket(SystemMessageId.THAT_IS_THE_INCORRECT_TARGET);
 			return false;
 		}
 		
@@ -184,7 +184,7 @@ public class AdminGamePoints implements IAdminCommandHandler
 		}
 		else
 		{
-			admin.sendPacket(SystemMessageId.THAT_IS_AN_INCORRECT_TARGET);
+			admin.sendPacket(SystemMessageId.THAT_IS_THE_INCORRECT_TARGET);
 			return false;
 		}
 		

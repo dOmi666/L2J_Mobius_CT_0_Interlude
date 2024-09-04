@@ -149,7 +149,7 @@ public class AdminShowQuests implements IAdminCommandHandler
 	
 	private void showFirstQuestMenu(Player target, Player actor)
 	{
-		final StringBuilder replyMSG = new StringBuilder("<html><body><table width=270><tr><td width=45><button value=\"Main\" action=\"bypass -h admin_admin\" width=45 height=15 back=\"sek.cbui94\" fore=\"sek.cbui92\"></td><td width=180><center>Player: " + target.getName() + "</center></td><td width=45><button value=\"Back\" action=\"bypass -h admin_admin6\" width=45 height=15 back=\"sek.cbui94\" fore=\"sek.cbui92\"></td></tr></table>");
+		final StringBuilder replyMSG = new StringBuilder("<html><body><table width=270><tr><td width=45><button value=\"Main\" action=\"bypass admin_admin\" width=45 height=15 back=\"sek.cbui94\" fore=\"sek.cbui92\"></td><td width=180><center>Player: " + target.getName() + "</center></td><td width=45><button value=\"Back\" action=\"bypass admin_admin6\" width=45 height=15 back=\"sek.cbui94\" fore=\"sek.cbui92\"></td></tr></table>");
 		final NpcHtmlMessage adminReply = new NpcHtmlMessage();
 		final int ID = target.getObjectId();
 		replyMSG.append("Quest Menu for <font color=\"LEVEL\">" + target.getName() + "</font> (ID:" + ID + ")<br><center>");

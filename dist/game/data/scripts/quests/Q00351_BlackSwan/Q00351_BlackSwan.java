@@ -16,202 +16,162 @@
  */
 package quests.Q00351_BlackSwan;
 
-import java.util.HashMap;
-import java.util.Map;
-
-import org.l2jmobius.Config;
+import org.l2jmobius.gameserver.enums.QuestSound;
 import org.l2jmobius.gameserver.model.actor.Npc;
 import org.l2jmobius.gameserver.model.actor.Player;
 import org.l2jmobius.gameserver.model.quest.Quest;
 import org.l2jmobius.gameserver.model.quest.QuestState;
-import org.l2jmobius.gameserver.util.Util;
+import org.l2jmobius.gameserver.model.quest.State;
 
-import quests.Q00345_MethodToRaiseTheDead.Q00345_MethodToRaiseTheDead;
-
-/**
- * Black Swan (351)
- * @author Adry_85
- */
 public class Q00351_BlackSwan extends Quest
 {
 	// NPCs
-	private static final int ROMAN = 30897;
 	private static final int GOSTA = 30916;
 	private static final int IASON_HEINE = 30969;
+	private static final int ROMAN = 30897;
 	// Items
 	private static final int ORDER_OF_GOSTA = 4296;
 	private static final int LIZARD_FANG = 4297;
 	private static final int BARREL_OF_LEAGUE = 4298;
-	private static final int BILL_OF_IASON_HEINE = 4407;
-	// Misc
-	private static final int MIN_LEVEL = 32;
-	// Monsters
-	private static final int TASABA_LIZARDMAN1 = 20784;
-	private static final int TASABA_LIZARDMAN_SHAMAN1 = 20785;
-	private static final int TASABA_LIZARDMAN2 = 21639;
-	private static final int TASABA_LIZARDMAN_SHAMAN2 = 21640;
-	private static final Map<Integer, Integer> MONSTER_DROP_CHANCES = new HashMap<>();
-	static
-	{
-		MONSTER_DROP_CHANCES.put(TASABA_LIZARDMAN1, 4);
-		MONSTER_DROP_CHANCES.put(TASABA_LIZARDMAN_SHAMAN1, 3);
-		MONSTER_DROP_CHANCES.put(TASABA_LIZARDMAN2, 4);
-		MONSTER_DROP_CHANCES.put(TASABA_LIZARDMAN_SHAMAN2, 3);
-	}
+	private static final int BILL_OF_IASON_HEINE = 4310;
 	
 	public Q00351_BlackSwan()
 	{
 		super(351);
-		addStartNpc(GOSTA, ROMAN);
+		registerQuestItems(ORDER_OF_GOSTA, BARREL_OF_LEAGUE, LIZARD_FANG);
+		addStartNpc(GOSTA);
 		addTalkId(GOSTA, IASON_HEINE, ROMAN);
-		addKillId(TASABA_LIZARDMAN1, TASABA_LIZARDMAN_SHAMAN1, TASABA_LIZARDMAN2, TASABA_LIZARDMAN_SHAMAN2);
-		registerQuestItems(ORDER_OF_GOSTA, LIZARD_FANG, BARREL_OF_LEAGUE);
+		addKillId(20784, 20785, 21639, 21640);
 	}
 	
 	@Override
-	public String onAdvEvent(String event, Npc npc, Player player)
+	public String onEvent(String event, Npc npc, Player player)
 	{
-		final QuestState qs = getQuestState(player, false);
-		if (qs == null)
+		String htmltext = event;
+		final QuestState st = getQuestState(player, false);
+		if (st == null)
 		{
-			return null;
+			return htmltext;
 		}
 		
-		String htmltext = null;
 		switch (event)
 		{
-			case "30916-02.htm":
-			case "30969-03.html":
-			{
-				htmltext = event;
-				break;
-			}
 			case "30916-03.htm":
 			{
+				st.startQuest();
 				giveItems(player, ORDER_OF_GOSTA, 1);
-				qs.startQuest();
-				htmltext = event;
 				break;
 			}
-			case "30969-02.html":
+			case "30969-02a.htm":
 			{
-				final int lizardFangCount = getQuestItemsCount(player, LIZARD_FANG);
-				if (lizardFangCount == 0)
+				final int lizardFangs = getQuestItemsCount(player, LIZARD_FANG);
+				if (lizardFangs > 0)
 				{
-					htmltext = event;
-				}
-				else
-				{
-					final int adenaBonus = (lizardFangCount >= 10) ? 3880 : 0;
-					giveAdena(player, adenaBonus + (20 * lizardFangCount), true);
+					htmltext = "30969-02.htm";
+					
 					takeItems(player, LIZARD_FANG, -1);
-					htmltext = "30969-04.html";
+					giveAdena(player, lizardFangs * 20, true);
 				}
 				break;
 			}
-			case "30969-05.html":
+			case "30969-03a.htm":
 			{
-				final int barrelOfLeagueCount = getQuestItemsCount(player, BARREL_OF_LEAGUE);
-				if (barrelOfLeagueCount == 0)
+				final int barrels = getQuestItemsCount(player, BARREL_OF_LEAGUE);
+				if (barrels > 0)
 				{
-					htmltext = event;
-				}
-				else
-				{
-					giveItems(player, BILL_OF_IASON_HEINE, barrelOfLeagueCount);
-					giveAdena(player, 3880, true);
+					htmltext = "30969-03.htm";
+					
 					takeItems(player, BARREL_OF_LEAGUE, -1);
-					qs.setCond(2);
-					htmltext = "30969-06.html";
+					rewardItems(player, BILL_OF_IASON_HEINE, barrels);
+					
+					// Heine explains than player can speak with Roman in order to exchange bills for rewards.
+					if (st.isCond(1))
+					{
+						st.setCond(2, true);
+					}
 				}
 				break;
 			}
-			case "30969-07.html":
+			case "30969-06.htm":
 			{
-				htmltext = (!hasQuestItems(player, BARREL_OF_LEAGUE, LIZARD_FANG)) ? event : "30969-08.html";
-				break;
-			}
-			case "30969-09.html":
-			{
-				htmltext = event;
-				qs.exitQuest(true, true);
+				// If no more quest items finish the quest for real, else send a "Return" type HTM.
+				if (!hasQuestItems(player, BARREL_OF_LEAGUE, LIZARD_FANG))
+				{
+					htmltext = "30969-07.htm";
+					st.exitQuest(true, true);
+				}
 				break;
 			}
 		}
+		
 		return htmltext;
-	}
-	
-	@Override
-	public String onKill(Npc npc, Player killer, boolean isSummon)
-	{
-		final QuestState qs = getRandomPartyMemberState(killer, -1, 3, npc);
-		if ((qs == null) || !Util.checkIfInRange(Config.ALT_PARTY_RANGE, npc, killer, true))
-		{
-			return null;
-		}
-		
-		final int random = getRandom(20);
-		if (random < 10)
-		{
-			giveItemRandomly(qs.getPlayer(), npc, LIZARD_FANG, 1, 0, 1, true);
-			if (getRandom(20) == 0)
-			{
-				giveItemRandomly(qs.getPlayer(), npc, BARREL_OF_LEAGUE, 1, 0, 1, false);
-			}
-		}
-		else if (random < 15)
-		{
-			giveItemRandomly(qs.getPlayer(), npc, LIZARD_FANG, 2, 0, 1, true);
-			if (getRandom(20) == 0)
-			{
-				giveItemRandomly(qs.getPlayer(), npc, BARREL_OF_LEAGUE, 1, 0, 1, false);
-			}
-		}
-		else if (getRandom(100) < MONSTER_DROP_CHANCES.get(npc.getId()))
-		{
-			giveItemRandomly(qs.getPlayer(), npc, BARREL_OF_LEAGUE, 1, 0, 1, true);
-		}
-		
-		return super.onKill(npc, killer, isSummon);
 	}
 	
 	@Override
 	public String onTalk(Npc npc, Player player)
 	{
-		final QuestState qs = getQuestState(player, true);
-		final QuestState qs2 = player.getQuestState(Q00345_MethodToRaiseTheDead.class.getSimpleName());
 		String htmltext = getNoQuestMsg(player);
-		switch (npc.getId())
+		final QuestState st = getQuestState(player, true);
+		
+		switch (st.getState())
 		{
-			case GOSTA:
+			case State.CREATED:
 			{
-				if (qs.isCreated())
-				{
-					htmltext = (player.getLevel() >= MIN_LEVEL) ? "30916-01.htm" : "30916-04.html";
-				}
-				else if (qs.isStarted())
-				{
-					htmltext = "30916-05.html";
-				}
+				htmltext = (player.getLevel() < 32) ? "30916-00.htm" : "30916-01.htm";
 				break;
 			}
-			case IASON_HEINE:
+			case State.STARTED:
 			{
-				if (qs.isStarted())
+				switch (npc.getId())
 				{
-					htmltext = "30969-01.html";
-				}
-				break;
-			}
-			case ROMAN:
-			{
-				if (qs.isStarted() || ((qs2 != null) && qs2.isStarted()))
-				{
-					htmltext = (hasQuestItems(player, BILL_OF_IASON_HEINE)) ? "30897-01.html" : "30897-02.html";
+					case GOSTA:
+					{
+						htmltext = "30916-04.htm";
+						break;
+					}
+					case IASON_HEINE:
+					{
+						htmltext = "30969-01.htm";
+						break;
+					}
+					case ROMAN:
+					{
+						htmltext = (hasQuestItems(player, BILL_OF_IASON_HEINE)) ? "30897-01.htm" : "30897-02.htm";
+						break;
+					}
 				}
 				break;
 			}
 		}
+		
 		return htmltext;
+	}
+	
+	@Override
+	public String onKill(Npc npc, Player player, boolean isPet)
+	{
+		final QuestState st = getQuestState(player, false);
+		if ((st == null) || !st.isStarted())
+		{
+			return null;
+		}
+		
+		final int random = getRandom(4);
+		if (random < 3)
+		{
+			giveItems(player, LIZARD_FANG, random < 2 ? 1 : 2);
+			playSound(player, QuestSound.ITEMSOUND_QUEST_ITEMGET);
+			if (getRandomBoolean())
+			{
+				giveItems(player, BARREL_OF_LEAGUE, 1);
+			}
+		}
+		else if (getRandom(10) < (npc.getId() > 20785 ? 3 : 4))
+		{
+			giveItems(player, BARREL_OF_LEAGUE, 1);
+			playSound(player, QuestSound.ITEMSOUND_QUEST_ITEMGET);
+		}
+		
+		return null;
 	}
 }

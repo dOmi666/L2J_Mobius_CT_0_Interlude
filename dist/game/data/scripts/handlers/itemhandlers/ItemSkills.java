@@ -32,7 +32,7 @@ public class ItemSkills extends ItemSkillsTemplate
 		final Player player = playable.getActingPlayer();
 		if ((player != null) && player.isInOlympiadMode())
 		{
-			player.sendPacket(SystemMessageId.YOU_CANNOT_USE_THAT_ITEM_IN_A_GRAND_OLYMPIAD_MATCH);
+			player.sendPacket(SystemMessageId.YOU_CANNOT_USE_THAT_ITEM_IN_A_GRAND_OLYMPIAD_GAMES_MATCH);
 			return false;
 		}
 		return super.useItem(playable, item, forceUse);

@@ -28,21 +28,21 @@
 		<set name="operateType" val="P" />
 		<set name="targetType" val="SELF" />
 	</skill>
-	<skill id="4904" levels="1" name="Raid Boss - Level 80">
+	<skill id="4904" levels="1" name="Raid Boss - Level 84">
 		<!-- This merciless and reckless warrior has led the Ketra Orcs for many years. A born gambler, he prefers direct action to elaborate plans, and personally leads his troops from the front line during an attack. He has faced Varka's Commander Mos twice, winning one of the contests, and is eager for a rematch. -->
 		<set name="icon" val="icon.skillraid" />
 		<set name="magicLevel" val="1" />
 		<set name="operateType" val="P" />
 		<set name="targetType" val="SELF" />
 	</skill>
-	<skill id="4905" levels="1" name="Raid Boss - Level 80">
+	<skill id="4905" levels="1" name="Raid Boss - Level 87">
 		<!-- Brakki obtained the power of Soul of Fire Nastron, which gave him beast-like attributes. Thanks to his enhanced strength and instincts, he has become a formidable chief of the Ketra Orcs. He finds his inferiors burdensome during a battle, however, and prefers to fight alone. He has fought Varka's Chief Horus several times without success. -->
 		<set name="icon" val="icon.skillraid" />
 		<set name="magicLevel" val="1" />
 		<set name="operateType" val="P" />
 		<set name="targetType" val="SELF" />
 	</skill>
-	<skill id="4906" levels="1" name="Raid Boss - Level 80">
+	<skill id="4906" levels="1" name="Raid Boss - Level 87">
 		<!-- Soul of Fire summoned by Ketra Orcs' Soul Guide Asefa. Possessed with a strong propensity to wildness and violence, he tends to burn or destroy anything near him. He gave Ketra's Chief Brakki the power of the beasts, and is the power source of spells used by Asefa. -->
 		<set name="icon" val="icon.skillraid" />
 		<set name="magicLevel" val="1" />
@@ -56,28 +56,28 @@
 		<set name="operateType" val="P" />
 		<set name="targetType" val="SELF" />
 	</skill>
-	<skill id="4908" levels="1" name="Raid Boss - Level 80">
+	<skill id="4908" levels="1" name="Raid Boss - Level 84">
 		<!-- This legendary Varka Silenos commander has helped lead his people in the endless war against the Ketra Orcs. A resourceful general, he prefers painstaking preparations and cunning, often elaborate, plans. He has had difficulty anticipating Commander Tayr's reckless tactics. -->
 		<set name="icon" val="icon.skillraid" />
 		<set name="magicLevel" val="1" />
 		<set name="operateType" val="P" />
 		<set name="targetType" val="SELF" />
 	</skill>
-	<skill id="4909" levels="1" name="Raid Boss - Level 80">
+	<skill id="4909" levels="1" name="Raid Boss - Level 87">
 		<!-- This young chief of the powerful mercenary Varka Silenos is an excellent swordsman. He is ably assisted by his commander, Mos, and his shaman, Shadith. -->
 		<set name="icon" val="icon.skillraid" />
 		<set name="magicLevel" val="1" />
 		<set name="operateType" val="P" />
 		<set name="targetType" val="SELF" />
 	</skill>
-	<skill id="4910" levels="1" name="Raid Boss - Level 80">
+	<skill id="4910" levels="1" name="Raid Boss - Level 87">
 		<!-- This Soul of Water was summoned by Soul Guide Udan Mardui of the Varka Silenos. He is capricious but peaceful, and provides the power source for the Soul Guide. -->
 		<set name="icon" val="icon.skillraid" />
 		<set name="magicLevel" val="1" />
 		<set name="operateType" val="P" />
 		<set name="targetType" val="SELF" />
 	</skill>
-	<skill id="4911" levels="1" name="Raid Boss - Level 80">
+	<skill id="4911" levels="1" name="Raid Boss - Level 85">
 		<!-- Known as Valakas' Hound, Valakas fashioned this monster out of lava to punish trespassers and fend off enemies while he sleeps. -->
 		<set name="icon" val="icon.skillraid" />
 		<set name="magicLevel" val="1" />
@@ -147,28 +147,28 @@
 		<set name="operateType" val="P" />
 		<set name="targetType" val="SELF" />
 	</skill>
-	<skill id="4921" levels="1" name="Raid Boss - Level 80">
+	<skill id="4921" levels="1" name="Raid Boss - Level 81">
 		<!-- One of four Guardian Knights assigned to protect Prince Frintezza, he was sacrificed and sold to Halisha by the unwise Prince in an attempt to save his own skin. In his lifetime, he was called Valkyrie Alectia of Flames because of his beautiful appearance, excellent skills and fiery temper. -->
 		<set name="icon" val="icon.skillraid" />
 		<set name="magicLevel" val="1" />
 		<set name="operateType" val="P" />
 		<set name="targetType" val="SELF" />
 	</skill>
-	<skill id="4922" levels="1" name="Raid Boss - Level 80">
+	<skill id="4922" levels="1" name="Raid Boss - Level 81">
 		<!-- One of four Guardian Knights assigned to protect Prince Frintezza, he was sacrificed and sold to Halisha by the unwise Prince in an attempt to save his own skin. In his lifetime, he was called Valkyrie Tishas of Calmness because of his handsome appearance, formidable skill and dignified character. -->
 		<set name="icon" val="icon.skillraid" />
 		<set name="magicLevel" val="1" />
 		<set name="operateType" val="P" />
 		<set name="targetType" val="SELF" />
 	</skill>
-	<skill id="4923" levels="1" name="Raid Boss - Level 80">
+	<skill id="4923" levels="1" name="Raid Boss - Level 81">
 		<!-- One of four Guardian Knights assigned to protect Prince Frintezza, he was sacrificed and sold to Halisha by the unwise Prince in an attempt to save his own skin. In his lifetime, he was called Valkyrie Meka Snowstorm due to his excellent skills and ice-cold personality. -->
 		<set name="icon" val="icon.skillraid" />
 		<set name="magicLevel" val="1" />
 		<set name="operateType" val="P" />
 		<set name="targetType" val="SELF" />
 	</skill>
-	<skill id="4924" levels="1" name="Raid Boss - Level 80">
+	<skill id="4924" levels="1" name="Raid Boss - Level 81">
 		<!-- One of four Guardian Knights assigned to protect Prince Frintezza, he was sacrificed and sold to Halisha by the unwise Prince in an attempt to save his own skin. In his lifetime, he was called Valkyrie Morigul of the Ivory Tower because he hailed from the Ivory Tower. -->
 		<set name="icon" val="icon.skillraid" />
 		<set name="magicLevel" val="1" />
@@ -665,10 +665,11 @@
 		<set name="effectPoint" val="-100" />
 		<set name="effectRange" val="200" />
 		<set name="hitTime" val="830" />
-		<set name="magicLevel" val="79" />
+		<set name="magicLevel" val="75" />
 		<set name="mpConsume" val="88" />
 		<set name="operateType" val="A1" />
-		<set name="power" val="57742" />
+		<set name="power" val="14000" />
+		<set name="reuseDelay" val="5000" />
 		<set name="targetType" val="ONE" />
 		<for>
 			<effect name="PhysicalAttack" />
@@ -680,11 +681,11 @@
 		<set name="effectPoint" val="-100" />
 		<set name="effectRange" val="1000" />
 		<set name="hitTime" val="1900" />
-		<set name="magicLevel" val="79" />
+		<set name="magicLevel" val="75" />
 		<set name="mpConsume" val="88" />
 		<set name="operateType" val="A1" />
-		<set name="power" val="28871" />
-		<set name="reuseDelay" val="20000" />
+		<set name="power" val="12450" />
+		<set name="reuseDelay" val="5000" />
 		<set name="targetType" val="AREA" />
 		<for>
 			<effect name="PhysicalAttack" />
@@ -696,8 +697,9 @@
 		<set name="effectPoint" val="-100" />
 		<set name="effectRange" val="1300" />
 		<set name="hitTime" val="2900" />
-		<set name="magicLevel" val="79" />
+		<set name="magicLevel" val="75" />
 		<set name="operateType" val="A1" />
+		<set name="reuseDelay" val="5000" />
 		<set name="targetType" val="ONE" />
 	</skill>
 	<skill id="4996" levels="1" name="Venom - Range Teleport">
@@ -705,10 +707,11 @@
 		<set name="castRange" val="800" />
 		<set name="coolTime" val="100" />
 		<set name="effectPoint" val="-100" />
-		<set name="effectRange" val="1300" />
+		<set name="effectRange" val="1200" />
 		<set name="hitTime" val="2900" />
-		<set name="magicLevel" val="79" />
+		<set name="magicLevel" val="75" />
 		<set name="operateType" val="A1" />
+		<set name="reuseDelay" val="5000" />
 		<set name="targetType" val="AREA" />
 	</skill>
 	<skill id="4997" levels="1" name="Lidia - Regen">
@@ -726,6 +729,7 @@
 		<set name="hitTime" val="2500" />
 		<set name="magicLevel" val="77" />
 		<set name="operateType" val="A1" />
+		<set name="reuseDelay" val="5000" />
 		<set name="targetType" val="SELF" />
 	</skill>
 	<skill id="4999" levels="1" name="Lidia - Range Life Drain">
@@ -733,6 +737,7 @@
 		<set name="hitTime" val="2000" />
 		<set name="magicLevel" val="77" />
 		<set name="operateType" val="A1" />
+		<set name="reuseDelay" val="5000" />
 		<set name="targetType" val="SELF" />
 	</skill>
 </list>

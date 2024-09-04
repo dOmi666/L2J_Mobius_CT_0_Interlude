@@ -32,13 +32,6 @@
 									<xs:attribute name="id" type="xs:positiveInteger" use="required" />
 								</xs:complexType>
 							</xs:element>
-							<xs:element name="productionRare" minOccurs="0" maxOccurs="1">
-								<xs:complexType>
-									<xs:attribute name="count" type="xs:positiveInteger" use="required" />
-									<xs:attribute name="id" type="xs:positiveInteger" use="required" />
-									<xs:attribute name="rarity" type="xs:positiveInteger" use="required" />
-								</xs:complexType>
-							</xs:element>
 							<xs:element name="statUse" minOccurs="1" maxOccurs="1">
 								<xs:complexType>
 									<xs:attribute name="name" use="required">

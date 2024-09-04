@@ -16,183 +16,155 @@
  */
 package quests.Q00618_IntoTheFlame;
 
-import java.util.HashMap;
-import java.util.Map;
-
 import org.l2jmobius.gameserver.enums.QuestSound;
 import org.l2jmobius.gameserver.model.actor.Npc;
 import org.l2jmobius.gameserver.model.actor.Player;
 import org.l2jmobius.gameserver.model.quest.Quest;
 import org.l2jmobius.gameserver.model.quest.QuestState;
+import org.l2jmobius.gameserver.model.quest.State;
 
-/**
- * Into The Flame (618)
- * @author St3eT
- */
 public class Q00618_IntoTheFlame extends Quest
 {
 	// NPCs
 	private static final int KLEIN = 31540;
 	private static final int HILDA = 31271;
-	// Monsters
-	private static final Map<Integer, Integer> MONSTERS = new HashMap<>();
 	// Items
 	private static final int VACUALITE_ORE = 7265;
 	private static final int VACUALITE = 7266;
-	private static final int VACUALITE_FLOATING_STONE = 7267;
-	// Misc
-	private static final int MIN_LEVEL = 60;
-	private static final int REQUIRED_COUNT = 50;
-	static
-	{
-		MONSTERS.put(21274, 630);
-		MONSTERS.put(21276, 630);
-		MONSTERS.put(21282, 670);
-		MONSTERS.put(21283, 670);
-		MONSTERS.put(21284, 670);
-		MONSTERS.put(21290, 710);
-		MONSTERS.put(21291, 710);
-		MONSTERS.put(21292, 710);
-	}
+	// Reward
+	private static final int FLOATING_STONE = 7267;
 	
 	public Q00618_IntoTheFlame()
 	{
 		super(618);
-		addStartNpc(KLEIN);
-		addTalkId(HILDA, KLEIN);
-		addKillId(MONSTERS.keySet());
 		registerQuestItems(VACUALITE_ORE, VACUALITE);
+		addStartNpc(KLEIN);
+		addTalkId(KLEIN, HILDA);
+		// Kookaburras, Bandersnatches, Grendels
+		addKillId(21274, 21275, 21276, 21277, 21282, 21283, 21284, 21285, 21290, 21291, 21292, 21293);
 	}
 	
 	@Override
-	public String onAdvEvent(String event, Npc npc, Player player)
+	public String onEvent(String event, Npc npc, Player player)
 	{
-		final QuestState qs = getQuestState(player, false);
-		if (qs == null)
+		String htmltext = event;
+		final QuestState st = getQuestState(player, false);
+		if (st == null)
 		{
-			return null;
+			return htmltext;
 		}
-		String htmltext = null;
+		
 		switch (event)
 		{
 			case "31540-03.htm":
 			{
-				qs.startQuest();
-				htmltext = event;
+				st.startQuest();
 				break;
 			}
-			case "31540-05.html":
+			case "31540-05.htm":
 			{
-				if (!hasQuestItems(player, VACUALITE))
-				{
-					htmltext = "31540-03.htm";
-				}
-				else
-				{
-					giveItems(player, VACUALITE_FLOATING_STONE, 1);
-					qs.exitQuest(true, true);
-					htmltext = event;
-				}
+				takeItems(player, VACUALITE, 1);
+				giveItems(player, FLOATING_STONE, 1);
+				st.exitQuest(true, true);
 				break;
 			}
-			case "31271-02.html":
+			case "31271-02.htm":
 			{
-				if (qs.isCond(1))
-				{
-					qs.setCond(2, true);
-					htmltext = event;
-				}
+				st.setCond(2, true);
 				break;
 			}
-			case "31271-05.html":
+			case "31271-05.htm":
 			{
-				if ((getQuestItemsCount(player, VACUALITE_ORE) == REQUIRED_COUNT) && qs.isCond(3))
+				st.setCond(4, true);
+				takeItems(player, VACUALITE_ORE, -1);
+				giveItems(player, VACUALITE, 1);
+				break;
+			}
+		}
+		
+		return htmltext;
+	}
+	
+	@Override
+	public String onTalk(Npc npc, Player player)
+	{
+		String htmltext = getNoQuestMsg(player);
+		final QuestState st = getQuestState(player, true);
+		
+		switch (st.getState())
+		{
+			case State.CREATED:
+			{
+				htmltext = (player.getLevel() < 60) ? "31540-01.htm" : "31540-02.htm";
+				break;
+			}
+			case State.STARTED:
+			{
+				final int cond = st.getCond();
+				switch (npc.getId())
 				{
-					takeItems(player, VACUALITE_ORE, -1);
-					giveItems(player, VACUALITE, 1);
-					qs.setCond(4, true);
-					htmltext = event;
-				}
-				else
-				{
-					htmltext = "31271-03.html";
+					case KLEIN:
+					{
+						htmltext = (cond == 4) ? "31540-04.htm" : "31540-03.htm";
+						break;
+					}
+					case HILDA:
+					{
+						if (cond == 1)
+						{
+							htmltext = "31271-01.htm";
+						}
+						else if (cond == 2)
+						{
+							htmltext = "31271-03.htm";
+						}
+						else if (cond == 3)
+						{
+							htmltext = "31271-04.htm";
+						}
+						else if (cond == 4)
+						{
+							htmltext = "31271-06.htm";
+						}
+						break;
+					}
 				}
 				break;
 			}
 		}
+		
 		return htmltext;
 	}
 	
 	@Override
 	public String onKill(Npc npc, Player player, boolean isPet)
 	{
-		final Player member = getRandomPartyMember(player, 2);
-		if (member != null)
+		final QuestState qs = getRandomPartyMemberState(player, 2, 3, npc);
+		if (qs == null)
 		{
-			final QuestState qs = getQuestState(member, false);
-			if ((getQuestItemsCount(player, VACUALITE_ORE) < REQUIRED_COUNT) && (getRandom(1000) < MONSTERS.get(npc.getId())))
+			return null;
+		}
+		final Player partyMember = qs.getPlayer();
+		
+		final QuestState st = getQuestState(partyMember, false);
+		if (st == null)
+		{
+			return null;
+		}
+		
+		if (getRandomBoolean())
+		{
+			giveItems(partyMember, VACUALITE_ORE, 1);
+			if (getQuestItemsCount(partyMember, VACUALITE_ORE) < 50)
 			{
-				giveItems(member, VACUALITE_ORE, 1);
-				if (getQuestItemsCount(member, VACUALITE_ORE) >= REQUIRED_COUNT)
-				{
-					qs.setCond(3, true);
-				}
-				else
-				{
-					playSound(member, QuestSound.ITEMSOUND_QUEST_ITEMGET);
-				}
+				playSound(partyMember, QuestSound.ITEMSOUND_QUEST_ITEMGET);
+			}
+			else
+			{
+				st.setCond(3, true);
 			}
 		}
-		return super.onKill(npc, player, isPet);
-	}
-	
-	@Override
-	public String onTalk(Npc npc, Player player)
-	{
-		final QuestState qs = getQuestState(player, true);
-		String htmltext = getNoQuestMsg(player);
-		switch (npc.getId())
-		{
-			case KLEIN:
-			{
-				if (qs.isCreated())
-				{
-					htmltext = (player.getLevel() < MIN_LEVEL) ? "31540-01.html" : "31540-02.htm";
-				}
-				else if (qs.isStarted())
-				{
-					htmltext = qs.isCond(4) ? "31540-04.html" : "31540-03.htm";
-				}
-				break;
-			}
-			case HILDA:
-			{
-				switch (qs.getCond())
-				{
-					case 1:
-					{
-						htmltext = "31271-01.html";
-						break;
-					}
-					case 2:
-					{
-						htmltext = "31271-03.html";
-						break;
-					}
-					case 3:
-					{
-						htmltext = "31271-04.html";
-						break;
-					}
-					case 4:
-					{
-						htmltext = "31271-06.html";
-						break;
-					}
-				}
-				break;
-			}
-		}
-		return htmltext;
+		
+		return null;
 	}
 }

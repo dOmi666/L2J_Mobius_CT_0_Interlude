@@ -18,8 +18,10 @@ package org.l2jmobius.gameserver.network.serverpackets;
 
 import java.util.Collection;
 
+import org.l2jmobius.commons.network.WritableBuffer;
 import org.l2jmobius.gameserver.model.TradeItem;
 import org.l2jmobius.gameserver.model.actor.Player;
+import org.l2jmobius.gameserver.network.GameClient;
 import org.l2jmobius.gameserver.network.ServerPackets;
 
 public class PrivateStoreManageListSell extends ServerPacket
@@ -41,41 +43,41 @@ public class PrivateStoreManageListSell extends ServerPacket
 	}
 	
 	@Override
-	public void write()
+	public void writeImpl(GameClient client, WritableBuffer buffer)
 	{
-		ServerPackets.PRIVATE_STORE_MANAGE_LIST_SELL.writeId(this);
+		ServerPackets.PRIVATE_STORE_MANAGE_LIST_SELL.writeId(this, buffer);
 		// section 1
-		writeInt(_objId);
-		writeInt(_packageSale); // Package sell
-		writeInt((int) _playerAdena);
+		buffer.writeInt(_objId);
+		buffer.writeInt(_packageSale); // Package sell
+		buffer.writeInt((int) _playerAdena);
 		// section2
-		writeInt(_itemList.size()); // for potential sells
+		buffer.writeInt(_itemList.size()); // for potential sells
 		for (TradeItem item : _itemList)
 		{
-			writeInt(item.getItem().getType2());
-			writeInt(item.getObjectId());
-			writeInt(item.getItem().getId());
-			writeInt(item.getCount());
-			writeShort(0);
-			writeShort(item.getEnchant()); // enchant level
-			writeShort(item.getCustomType2());
-			writeInt(item.getItem().getBodyPart());
-			writeInt(item.getPrice()); // store price
+			buffer.writeInt(item.getItem().getType2());
+			buffer.writeInt(item.getObjectId());
+			buffer.writeInt(item.getItem().getId());
+			buffer.writeInt(item.getCount());
+			buffer.writeShort(0);
+			buffer.writeShort(item.getEnchant()); // enchant level
+			buffer.writeShort(item.getCustomType2());
+			buffer.writeInt(item.getItem().getBodyPart());
+			buffer.writeInt(item.getPrice()); // store price
 		}
 		// section 3
-		writeInt(_sellList.size()); // count for any items already added for sell
+		buffer.writeInt(_sellList.size()); // count for any items already added for sell
 		for (TradeItem item : _sellList)
 		{
-			writeInt(item.getItem().getType2());
-			writeInt(item.getObjectId());
-			writeInt(item.getItem().getId());
-			writeInt(item.getCount());
-			writeShort(0);
-			writeShort(item.getEnchant()); // enchant level
-			writeShort(0);
-			writeInt(item.getItem().getBodyPart());
-			writeInt(item.getPrice()); // your price
-			writeInt(item.getItem().getReferencePrice()); // store price
+			buffer.writeInt(item.getItem().getType2());
+			buffer.writeInt(item.getObjectId());
+			buffer.writeInt(item.getItem().getId());
+			buffer.writeInt(item.getCount());
+			buffer.writeShort(0);
+			buffer.writeShort(item.getEnchant()); // enchant level
+			buffer.writeShort(0);
+			buffer.writeInt(item.getItem().getBodyPart());
+			buffer.writeInt(item.getPrice()); // your price
+			buffer.writeInt(item.getItem().getReferencePrice()); // store price
 		}
 	}
 }

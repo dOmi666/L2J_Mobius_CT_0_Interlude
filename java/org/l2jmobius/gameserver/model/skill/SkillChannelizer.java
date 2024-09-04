@@ -141,7 +141,7 @@ public class SkillChannelizer implements Runnable
 				{
 					if (_channelizer.isPlayer())
 					{
-						_channelizer.sendPacket(SystemMessageId.YOUR_SKILL_WAS_DEACTIVATED_DUE_TO_LACK_OF_MP);
+						_channelizer.sendPacket(SystemMessageId.YOUR_SKILL_WAS_REMOVED_DUE_TO_A_LACK_OF_MP);
 					}
 					_channelizer.abortCast();
 					return;

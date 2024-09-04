@@ -16,6 +16,7 @@
  */
 package handlers.bypasshandlers;
 
+import org.l2jmobius.Config;
 import org.l2jmobius.gameserver.data.xml.SkillData;
 import org.l2jmobius.gameserver.enums.CategoryType;
 import org.l2jmobius.gameserver.handler.IBypassHandler;
@@ -49,7 +50,12 @@ public class SupportMagic implements IBypassHandler
 		{
 			final int level = player.getLevel();
 			final Npc npc = (Npc) target;
-			if (level > HIGHEST_LEVEL)
+			if (!Config.ALT_GAME_NEW_CHAR_ALWAYS_IS_NEWBIE && !player.isNewbie())
+			{
+				npc.showChatWindow(player, "data/html/default/SupportMagicNovice.htm");
+				return false;
+			}
+			else if (level > HIGHEST_LEVEL)
 			{
 				npc.showChatWindow(player, "data/html/default/SupportMagicHighLevel.htm");
 				return false;

@@ -5,11 +5,11 @@
 		<set name="default_action" val="EQUIP" />
 		<set name="bodypart" val="feet" />
 		<set name="immediate_effect" val="true" />
-		<set name="crystal_count" val="53" />
+		<set name="crystal_count" val="69" />
 		<set name="crystal_type" val="B" />
 		<set name="material" val="DAMASCUS" />
 		<set name="weight" val="1170" />
-		<set name="price" val="399100" />
+		<set name="price" val="519000" />
 		<set name="enchant_enabled" val="true" />
 		<for>
 			<add order="0" stat="pDef" val="41" />
@@ -21,11 +21,11 @@
 		<set name="default_action" val="EQUIP" />
 		<set name="bodypart" val="feet" />
 		<set name="immediate_effect" val="true" />
-		<set name="crystal_count" val="83" />
+		<set name="crystal_count" val="107" />
 		<set name="crystal_type" val="B" />
 		<set name="material" val="MITHRIL" />
 		<set name="weight" val="1130" />
-		<set name="price" val="618800" />
+		<set name="price" val="804000" />
 		<set name="enchant_enabled" val="true" />
 		<for>
 			<add order="0" stat="pDef" val="44" />
@@ -41,7 +41,7 @@
 		<set name="crystal_type" val="B" />
 		<set name="material" val="CHRYSOLITE" />
 		<set name="weight" val="1130" />
-		<set name="price" val="890000" />
+		<set name="price" val="1160000" />
 		<set name="enchant_enabled" val="true" />
 		<for>
 			<add order="0" stat="pDef" val="45" />
@@ -57,7 +57,7 @@
 		<set name="crystal_type" val="C" />
 		<set name="material" val="ADAMANTAITE" />
 		<set name="weight" val="1200" />
-		<set name="price" val="275100" />
+		<set name="price" val="358000" />
 		<set name="enchant_enabled" val="true" />
 		<for>
 			<add order="0" stat="pDef" val="39" />
@@ -69,11 +69,11 @@
 		<set name="default_action" val="EQUIP" />
 		<set name="bodypart" val="gloves" />
 		<set name="immediate_effect" val="true" />
-		<set name="crystal_count" val="30" />
+		<set name="crystal_count" val="38" />
 		<set name="crystal_type" val="D" />
 		<set name="material" val="LEATHER" />
 		<set name="weight" val="650" />
-		<set name="price" val="16100" />
+		<set name="price" val="20900" />
 		<set name="enchant_enabled" val="true" />
 		<for>
 			<add order="0" stat="pDef" val="19" />
@@ -85,11 +85,11 @@
 		<set name="default_action" val="EQUIP" />
 		<set name="bodypart" val="gloves" />
 		<set name="immediate_effect" val="true" />
-		<set name="crystal_count" val="47" />
+		<set name="crystal_count" val="60" />
 		<set name="crystal_type" val="D" />
 		<set name="material" val="LEATHER" />
 		<set name="weight" val="640" />
-		<set name="price" val="25600" />
+		<set name="price" val="33300" />
 		<set name="enchant_enabled" val="true" />
 		<for>
 			<add order="0" stat="pDef" val="22" />
@@ -101,11 +101,11 @@
 		<set name="default_action" val="EQUIP" />
 		<set name="bodypart" val="gloves" />
 		<set name="immediate_effect" val="true" />
-		<set name="crystal_count" val="106" />
+		<set name="crystal_count" val="135" />
 		<set name="crystal_type" val="D" />
 		<set name="material" val="LEATHER" />
 		<set name="weight" val="630" />
-		<set name="price" val="57400" />
+		<set name="price" val="74700" />
 		<set name="enchant_enabled" val="true" />
 		<for>
 			<add order="0" stat="pDef" val="27" />
@@ -117,11 +117,11 @@
 		<set name="default_action" val="EQUIP" />
 		<set name="bodypart" val="gloves" />
 		<set name="immediate_effect" val="true" />
-		<set name="crystal_count" val="139" />
+		<set name="crystal_count" val="177" />
 		<set name="crystal_type" val="D" />
 		<set name="material" val="FINE_STEEL" />
 		<set name="weight" val="620" />
-		<set name="price" val="75200" />
+		<set name="price" val="97800" />
 		<set name="enchant_enabled" val="true" />
 		<for>
 			<add order="0" stat="pDef" val="29" />
@@ -133,11 +133,11 @@
 		<set name="default_action" val="EQUIP" />
 		<set name="bodypart" val="gloves" />
 		<set name="immediate_effect" val="true" />
-		<set name="crystal_count" val="76" />
+		<set name="crystal_count" val="98" />
 		<set name="crystal_type" val="C" />
 		<set name="material" val="MITHRIL" />
 		<set name="weight" val="600" />
-		<set name="price" val="188800" />
+		<set name="price" val="245000" />
 		<set name="enchant_enabled" val="true" />
 		<for>
 			<add order="0" stat="pDef" val="36" />
@@ -153,7 +153,7 @@
 		<set name="crystal_type" val="C" />
 		<set name="material" val="BLOOD_STEEL" />
 		<set name="weight" val="1920" />
-		<set name="price" val="275100" />
+		<set name="price" val="358000" />
 		<set name="enchant_enabled" val="true" />
 		<for>
 			<add order="0" stat="pDef" val="39" />
@@ -169,7 +169,7 @@
 		<set name="crystal_type" val="B" />
 		<set name="material" val="ORIHARUKON" />
 		<set name="weight" val="6400" />
-		<set name="price" val="399100" />
+		<set name="price" val="519000" />
 		<set name="enchant_enabled" val="true" />
 		<for>
 			<add order="0" stat="pDef" val="41" />
@@ -185,7 +185,7 @@
 		<set name="crystal_type" val="B" />
 		<set name="material" val="BLOOD_STEEL" />
 		<set name="weight" val="4800" />
-		<set name="price" val="618800" />
+		<set name="price" val="804000" />
 		<set name="enchant_enabled" val="true" />
 		<for>
 			<add order="0" stat="pDef" val="44" />
@@ -197,11 +197,11 @@
 		<set name="default_action" val="EQUIP" />
 		<set name="bodypart" val="gloves" />
 		<set name="immediate_effect" val="true" />
-		<set name="crystal_count" val="53" />
+		<set name="crystal_count" val="69" />
 		<set name="crystal_type" val="B" />
 		<set name="material" val="MITHRIL" />
 		<set name="weight" val="590" />
-		<set name="price" val="399100" />
+		<set name="price" val="519000" />
 		<set name="enchant_enabled" val="true" />
 		<for>
 			<add order="0" stat="pDef" val="41" />
@@ -217,7 +217,7 @@
 		<set name="crystal_type" val="A" />
 		<set name="material" val="DAMASCUS" />
 		<set name="weight" val="3200" />
-		<set name="price" val="1355000" />
+		<set name="price" val="1760000" />
 		<set name="enchant_enabled" val="true" />
 		<for>
 			<add order="0" stat="pDef" val="48" />
@@ -404,7 +404,7 @@
 		<set name="immediate_effect" val="true" />
 		<set name="material" val="BONE" />
 		<set name="weight" val="1380" />
-		<set name="price" val="9900" />
+		<set name="price" val="12900" />
 		<cond msgId="1518">
 			<player races="HUMAN,ELF,DARK_ELF,ORC,DWARF" />
 		</cond>
@@ -420,11 +420,11 @@
 		<set name="default_action" val="EQUIP" />
 		<set name="bodypart" val="lhand" />
 		<set name="immediate_effect" val="true" />
-		<set name="crystal_count" val="31" />
+		<set name="crystal_count" val="39" />
 		<set name="crystal_type" val="D" />
 		<set name="material" val="BRONZE" />
 		<set name="weight" val="1370" />
-		<set name="price" val="16900" />
+		<set name="price" val="21900" />
 		<set name="enchant_enabled" val="true" />
 		<cond msgId="1518">
 			<player races="HUMAN,ELF,DARK_ELF,ORC,DWARF" />
@@ -441,11 +441,11 @@
 		<set name="default_action" val="EQUIP" />
 		<set name="bodypart" val="lhand" />
 		<set name="immediate_effect" val="true" />
-		<set name="crystal_count" val="50" />
+		<set name="crystal_count" val="63" />
 		<set name="crystal_type" val="D" />
 		<set name="material" val="STEEL" />
 		<set name="weight" val="1350" />
-		<set name="price" val="26900" />
+		<set name="price" val="35000" />
 		<set name="enchant_enabled" val="true" />
 		<cond msgId="1518">
 			<player races="HUMAN,ELF,DARK_ELF,ORC,DWARF" />
@@ -462,11 +462,11 @@
 		<set name="default_action" val="EQUIP" />
 		<set name="bodypart" val="lhand" />
 		<set name="immediate_effect" val="true" />
-		<set name="crystal_count" val="76" />
+		<set name="crystal_count" val="96" />
 		<set name="crystal_type" val="D" />
 		<set name="material" val="FINE_STEEL" />
 		<set name="weight" val="1340" />
-		<set name="price" val="41000" />
+		<set name="price" val="53300" />
 		<set name="enchant_enabled" val="true" />
 		<cond msgId="1518">
 			<player races="HUMAN,ELF,DARK_ELF,ORC,DWARF" />
@@ -483,11 +483,11 @@
 		<set name="default_action" val="EQUIP" />
 		<set name="bodypart" val="lhand" />
 		<set name="immediate_effect" val="true" />
-		<set name="crystal_count" val="111" />
+		<set name="crystal_count" val="142" />
 		<set name="crystal_type" val="D" />
 		<set name="material" val="FINE_STEEL" />
 		<set name="weight" val="1320" />
-		<set name="price" val="60300" />
+		<set name="price" val="78400" />
 		<set name="enchant_enabled" val="true" />
 		<cond msgId="1518">
 			<player races="HUMAN,ELF,DARK_ELF,ORC,DWARF" />
@@ -504,11 +504,11 @@
 		<set name="default_action" val="EQUIP" />
 		<set name="bodypart" val="lhand" />
 		<set name="immediate_effect" val="true" />
-		<set name="crystal_count" val="146" />
+		<set name="crystal_count" val="187" />
 		<set name="crystal_type" val="D" />
 		<set name="material" val="FINE_STEEL" />
 		<set name="weight" val="1310" />
-		<set name="price" val="79000" />
+		<set name="price" val="103000" />
 		<set name="enchant_enabled" val="true" />
 		<cond msgId="1518">
 			<player races="HUMAN,ELF,DARK_ELF,ORC,DWARF" />
@@ -525,11 +525,11 @@
 		<set name="default_action" val="EQUIP" />
 		<set name="bodypart" val="lhand" />
 		<set name="immediate_effect" val="true" />
-		<set name="crystal_count" val="41" />
+		<set name="crystal_count" val="53" />
 		<set name="crystal_type" val="C" />
 		<set name="material" val="FINE_STEEL" />
 		<set name="weight" val="1290" />
-		<set name="price" val="102000" />
+		<set name="price" val="133000" />
 		<set name="enchant_enabled" val="true" />
 		<cond msgId="1518">
 			<player races="HUMAN,ELF,DARK_ELF,ORC,DWARF" />
@@ -546,11 +546,11 @@
 		<set name="default_action" val="EQUIP" />
 		<set name="bodypart" val="lhand" />
 		<set name="immediate_effect" val="true" />
-		<set name="crystal_count" val="52" />
+		<set name="crystal_count" val="67" />
 		<set name="crystal_type" val="C" />
 		<set name="material" val="FINE_STEEL" />
 		<set name="weight" val="1260" />
-		<set name="price" val="130100" />
+		<set name="price" val="169000" />
 		<set name="enchant_enabled" val="true" />
 		<cond msgId="1518">
 			<player races="HUMAN,ELF,DARK_ELF,ORC,DWARF" />
@@ -567,11 +567,11 @@
 		<set name="default_action" val="EQUIP" />
 		<set name="bodypart" val="lhand" />
 		<set name="immediate_effect" val="true" />
-		<set name="crystal_count" val="56" />
+		<set name="crystal_count" val="72" />
 		<set name="crystal_type" val="B" />
 		<set name="material" val="MITHRIL" />
 		<set name="weight" val="1210" />
-		<set name="price" val="419000" />
+		<set name="price" val="545000" />
 		<set name="enchant_enabled" val="true" />
 		<cond msgId="1518">
 			<player races="HUMAN,ELF,DARK_ELF,ORC,DWARF" />
@@ -592,7 +592,7 @@
 		<set name="crystal_type" val="S" />
 		<set name="material" val="BONE" />
 		<set name="weight" val="1170" />
-		<set name="price" val="1949000" />
+		<set name="price" val="2510000" />
 		<set name="enchant_enabled" val="true" />
 		<set name="is_dropable" val="false" />
 		<cond msgId="1518">
@@ -614,7 +614,7 @@
 		<set name="crystal_type" val="B" />
 		<set name="material" val="ORIHARUKON" />
 		<set name="weight" val="640" />
-		<set name="price" val="419000" />
+		<set name="price" val="545000" />
 		<set name="enchant_enabled" val="true" />
 		<cond msgId="1518">
 			<player races="HUMAN,ELF,DARK_ELF,ORC,DWARF" />
@@ -635,7 +635,7 @@
 		<set name="crystal_type" val="B" />
 		<set name="material" val="MITHRIL" />
 		<set name="weight" val="720" />
-		<set name="price" val="649800" />
+		<set name="price" val="845000" />
 		<set name="enchant_enabled" val="true" />
 		<cond msgId="1518">
 			<player races="HUMAN,ELF,DARK_ELF,ORC,DWARF" />
@@ -656,7 +656,7 @@
 		<set name="crystal_type" val="B" />
 		<set name="material" val="BLOOD_STEEL" />
 		<set name="weight" val="720" />
-		<set name="price" val="649800" />
+		<set name="price" val="845000" />
 		<set name="enchant_enabled" val="true" />
 		<cond msgId="1518">
 			<player races="HUMAN,ELF,DARK_ELF,ORC,DWARF" />
@@ -677,7 +677,7 @@
 		<set name="crystal_type" val="B" />
 		<set name="material" val="FINE_STEEL" />
 		<set name="weight" val="800" />
-		<set name="price" val="419000" />
+		<set name="price" val="545000" />
 		<set name="enchant_enabled" val="true" />
 		<cond msgId="1518">
 			<player races="HUMAN,ELF,DARK_ELF,ORC,DWARF" />
@@ -698,7 +698,7 @@
 		<set name="crystal_type" val="B" />
 		<set name="material" val="BLOOD_STEEL" />
 		<set name="weight" val="960" />
-		<set name="price" val="649800" />
+		<set name="price" val="845000" />
 		<set name="enchant_enabled" val="true" />
 		<cond msgId="1518">
 			<player races="HUMAN,ELF,DARK_ELF,ORC,DWARF" />
@@ -719,7 +719,7 @@
 		<set name="crystal_type" val="B" />
 		<set name="material" val="CRYSTAL" />
 		<set name="weight" val="720" />
-		<set name="price" val="419000" />
+		<set name="price" val="545000" />
 		<set name="enchant_enabled" val="true" />
 		<cond msgId="1518">
 			<player races="HUMAN,ELF,DARK_ELF,ORC,DWARF" />
@@ -736,11 +736,11 @@
 		<set name="default_action" val="EQUIP" />
 		<set name="bodypart" val="lhand" />
 		<set name="immediate_effect" val="true" />
-		<set name="crystal_count" val="75" />
+		<set name="crystal_count" val="97" />
 		<set name="crystal_type" val="A" />
 		<set name="material" val="CRYSTAL" />
 		<set name="weight" val="1190" />
-		<set name="price" val="935000" />
+		<set name="price" val="1220000" />
 		<set name="enchant_enabled" val="true" />
 		<cond msgId="1518">
 			<player races="HUMAN,ELF,DARK_ELF,ORC,DWARF" />
@@ -761,7 +761,7 @@
 		<set name="crystal_type" val="B" />
 		<set name="material" val="MITHRIL" />
 		<set name="weight" val="560" />
-		<set name="price" val="419000" />
+		<set name="price" val="545000" />
 		<set name="enchant_enabled" val="true" />
 		<cond msgId="1518">
 			<player races="HUMAN,ELF,DARK_ELF,ORC,DWARF" />
@@ -782,7 +782,7 @@
 		<set name="crystal_type" val="B" />
 		<set name="material" val="MITHRIL" />
 		<set name="weight" val="560" />
-		<set name="price" val="649800" />
+		<set name="price" val="845000" />
 		<set name="enchant_enabled" val="true" />
 		<cond msgId="1518">
 			<player races="HUMAN,ELF,DARK_ELF,ORC,DWARF" />
@@ -803,7 +803,7 @@
 		<set name="crystal_type" val="B" />
 		<set name="material" val="BLOOD_STEEL" />
 		<set name="weight" val="640" />
-		<set name="price" val="649800" />
+		<set name="price" val="845000" />
 		<set name="enchant_enabled" val="true" />
 		<cond msgId="1518">
 			<player races="HUMAN,ELF,DARK_ELF,ORC,DWARF" />
@@ -824,7 +824,7 @@
 		<set name="crystal_type" val="B" />
 		<set name="material" val="CHRYSOLITE" />
 		<set name="weight" val="560" />
-		<set name="price" val="419000" />
+		<set name="price" val="545000" />
 		<set name="enchant_enabled" val="true" />
 		<cond msgId="1518">
 			<player races="HUMAN,ELF,DARK_ELF,ORC,DWARF" />
@@ -845,7 +845,7 @@
 		<set name="crystal_type" val="B" />
 		<set name="material" val="DAMASCUS" />
 		<set name="weight" val="640" />
-		<set name="price" val="419000" />
+		<set name="price" val="545000" />
 		<set name="enchant_enabled" val="true" />
 		<cond msgId="1518">
 			<player races="HUMAN,ELF,DARK_ELF,ORC,DWARF" />
@@ -866,7 +866,7 @@
 		<set name="crystal_type" val="B" />
 		<set name="material" val="BLOOD_STEEL" />
 		<set name="weight" val="720" />
-		<set name="price" val="649800" />
+		<set name="price" val="845000" />
 		<set name="enchant_enabled" val="true" />
 		<cond msgId="1518">
 			<player races="HUMAN,ELF,DARK_ELF,ORC,DWARF" />
@@ -887,7 +887,7 @@
 		<set name="crystal_type" val="B" />
 		<set name="material" val="CHRYSOLITE" />
 		<set name="weight" val="800" />
-		<set name="price" val="419000" />
+		<set name="price" val="545000" />
 		<set name="enchant_enabled" val="true" />
 		<cond msgId="1518">
 			<player races="HUMAN,ELF,DARK_ELF,ORC,DWARF" />
@@ -908,7 +908,7 @@
 		<set name="crystal_type" val="B" />
 		<set name="material" val="DAMASCUS" />
 		<set name="weight" val="880" />
-		<set name="price" val="649800" />
+		<set name="price" val="845000" />
 		<set name="enchant_enabled" val="true" />
 		<cond msgId="1518">
 			<player races="HUMAN,ELF,DARK_ELF,ORC,DWARF" />
@@ -929,7 +929,7 @@
 		<set name="crystal_type" val="B" />
 		<set name="material" val="ORIHARUKON" />
 		<set name="weight" val="960" />
-		<set name="price" val="419000" />
+		<set name="price" val="545000" />
 		<set name="enchant_enabled" val="true" />
 		<cond msgId="1518">
 			<player races="HUMAN,ELF,DARK_ELF,ORC,DWARF" />
@@ -950,7 +950,7 @@
 		<set name="crystal_type" val="B" />
 		<set name="material" val="ORIHARUKON" />
 		<set name="weight" val="1040" />
-		<set name="price" val="649800" />
+		<set name="price" val="845000" />
 		<set name="enchant_enabled" val="true" />
 		<cond msgId="1518">
 			<player races="HUMAN,ELF,DARK_ELF,ORC,DWARF" />
@@ -971,7 +971,7 @@
 		<set name="crystal_type" val="B" />
 		<set name="material" val="MITHRIL" />
 		<set name="weight" val="1120" />
-		<set name="price" val="419000" />
+		<set name="price" val="545000" />
 		<set name="enchant_enabled" val="true" />
 		<cond msgId="1518">
 			<player races="HUMAN,ELF,DARK_ELF,ORC,DWARF" />
@@ -992,7 +992,7 @@
 		<set name="crystal_type" val="B" />
 		<set name="material" val="LEATHER" />
 		<set name="weight" val="1200" />
-		<set name="price" val="649800" />
+		<set name="price" val="845000" />
 		<set name="enchant_enabled" val="true" />
 		<cond msgId="1518">
 			<player races="HUMAN,ELF,DARK_ELF,ORC,DWARF" />
@@ -1013,7 +1013,7 @@
 		<set name="crystal_type" val="B" />
 		<set name="material" val="MITHRIL" />
 		<set name="weight" val="480" />
-		<set name="price" val="419000" />
+		<set name="price" val="545000" />
 		<set name="enchant_enabled" val="true" />
 		<cond msgId="1518">
 			<player races="HUMAN,ELF,DARK_ELF,ORC,DWARF" />
@@ -1034,7 +1034,7 @@
 		<set name="crystal_type" val="B" />
 		<set name="material" val="STEEL" />
 		<set name="weight" val="560" />
-		<set name="price" val="649800" />
+		<set name="price" val="845000" />
 		<set name="enchant_enabled" val="true" />
 		<cond msgId="1518">
 			<player races="HUMAN,ELF,DARK_ELF,ORC,DWARF" />
@@ -1055,7 +1055,7 @@
 		<set name="crystal_type" val="B" />
 		<set name="material" val="CHRYSOLITE" />
 		<set name="weight" val="480" />
-		<set name="price" val="419000" />
+		<set name="price" val="545000" />
 		<set name="enchant_enabled" val="true" />
 		<cond msgId="1518">
 			<player races="HUMAN,ELF,DARK_ELF,ORC,DWARF" />
@@ -1076,7 +1076,7 @@
 		<set name="crystal_type" val="B" />
 		<set name="material" val="BLOOD_STEEL" />
 		<set name="weight" val="560" />
-		<set name="price" val="649800" />
+		<set name="price" val="845000" />
 		<set name="enchant_enabled" val="true" />
 		<cond msgId="1518">
 			<player races="HUMAN,ELF,DARK_ELF,ORC,DWARF" />
@@ -1097,7 +1097,7 @@
 		<set name="crystal_type" val="B" />
 		<set name="material" val="DAMASCUS" />
 		<set name="weight" val="560" />
-		<set name="price" val="649800" />
+		<set name="price" val="845000" />
 		<set name="enchant_enabled" val="true" />
 		<cond msgId="1518">
 			<player races="HUMAN,ELF,DARK_ELF,ORC,DWARF" />
@@ -1118,7 +1118,7 @@
 		<set name="crystal_type" val="B" />
 		<set name="material" val="LEATHER" />
 		<set name="weight" val="480" />
-		<set name="price" val="419000" />
+		<set name="price" val="545000" />
 		<set name="enchant_enabled" val="true" />
 		<cond msgId="1518">
 			<player races="HUMAN,ELF,DARK_ELF,ORC,DWARF" />
@@ -1139,7 +1139,7 @@
 		<set name="crystal_type" val="B" />
 		<set name="material" val="ADAMANTAITE" />
 		<set name="weight" val="560" />
-		<set name="price" val="649800" />
+		<set name="price" val="845000" />
 		<set name="enchant_enabled" val="true" />
 		<cond msgId="1518">
 			<player races="HUMAN,ELF,DARK_ELF,ORC,DWARF" />
@@ -1160,7 +1160,7 @@
 		<set name="crystal_type" val="B" />
 		<set name="material" val="MITHRIL" />
 		<set name="weight" val="480" />
-		<set name="price" val="419000" />
+		<set name="price" val="545000" />
 		<set name="enchant_enabled" val="true" />
 		<cond msgId="1518">
 			<player races="HUMAN,ELF,DARK_ELF,ORC,DWARF" />
@@ -1181,7 +1181,7 @@
 		<set name="crystal_type" val="B" />
 		<set name="material" val="ORIHARUKON" />
 		<set name="weight" val="560" />
-		<set name="price" val="649800" />
+		<set name="price" val="845000" />
 		<set name="enchant_enabled" val="true" />
 		<cond msgId="1518">
 			<player races="HUMAN,ELF,DARK_ELF,ORC,DWARF" />
@@ -1202,7 +1202,7 @@
 		<set name="crystal_type" val="B" />
 		<set name="material" val="MITHRIL" />
 		<set name="weight" val="480" />
-		<set name="price" val="419000" />
+		<set name="price" val="545000" />
 		<set name="enchant_enabled" val="true" />
 		<cond msgId="1518">
 			<player races="HUMAN,ELF,DARK_ELF,ORC,DWARF" />
@@ -1223,7 +1223,7 @@
 		<set name="crystal_type" val="B" />
 		<set name="material" val="CHRYSOLITE" />
 		<set name="weight" val="560" />
-		<set name="price" val="649800" />
+		<set name="price" val="845000" />
 		<set name="enchant_enabled" val="true" />
 		<cond msgId="1518">
 			<player races="HUMAN,ELF,DARK_ELF,ORC,DWARF" />
@@ -1244,7 +1244,7 @@
 		<set name="crystal_type" val="B" />
 		<set name="material" val="BLOOD_STEEL" />
 		<set name="weight" val="480" />
-		<set name="price" val="419000" />
+		<set name="price" val="545000" />
 		<set name="enchant_enabled" val="true" />
 		<cond msgId="1518">
 			<player races="HUMAN,ELF,DARK_ELF,ORC,DWARF" />
@@ -1265,7 +1265,7 @@
 		<set name="crystal_type" val="B" />
 		<set name="material" val="DAMASCUS" />
 		<set name="weight" val="560" />
-		<set name="price" val="649800" />
+		<set name="price" val="845000" />
 		<set name="enchant_enabled" val="true" />
 		<cond msgId="1518">
 			<player races="HUMAN,ELF,DARK_ELF,ORC,DWARF" />
@@ -1286,7 +1286,7 @@
 		<set name="crystal_type" val="B" />
 		<set name="material" val="FINE_STEEL" />
 		<set name="weight" val="480" />
-		<set name="price" val="419000" />
+		<set name="price" val="545000" />
 		<set name="enchant_enabled" val="true" />
 		<cond msgId="1518">
 			<player races="HUMAN,ELF,DARK_ELF,ORC,DWARF" />
@@ -1307,7 +1307,7 @@
 		<set name="crystal_type" val="B" />
 		<set name="material" val="ADAMANTAITE" />
 		<set name="weight" val="560" />
-		<set name="price" val="649800" />
+		<set name="price" val="845000" />
 		<set name="enchant_enabled" val="true" />
 		<cond msgId="1518">
 			<player races="HUMAN,ELF,DARK_ELF,ORC,DWARF" />
@@ -1328,7 +1328,7 @@
 		<set name="crystal_type" val="B" />
 		<set name="material" val="BLOOD_STEEL" />
 		<set name="weight" val="480" />
-		<set name="price" val="419000" />
+		<set name="price" val="545000" />
 		<set name="enchant_enabled" val="true" />
 		<cond msgId="1518">
 			<player races="HUMAN,ELF,DARK_ELF,ORC,DWARF" />
@@ -1349,7 +1349,7 @@
 		<set name="crystal_type" val="B" />
 		<set name="material" val="CHRYSOLITE" />
 		<set name="weight" val="560" />
-		<set name="price" val="649800" />
+		<set name="price" val="845000" />
 		<set name="enchant_enabled" val="true" />
 		<cond msgId="1518">
 			<player races="HUMAN,ELF,DARK_ELF,ORC,DWARF" />
@@ -1370,7 +1370,7 @@
 		<set name="crystal_type" val="B" />
 		<set name="material" val="BLOOD_STEEL" />
 		<set name="weight" val="480" />
-		<set name="price" val="419000" />
+		<set name="price" val="545000" />
 		<set name="enchant_enabled" val="true" />
 		<cond msgId="1518">
 			<player races="HUMAN,ELF,DARK_ELF,ORC,DWARF" />
@@ -1391,7 +1391,7 @@
 		<set name="crystal_type" val="B" />
 		<set name="material" val="MITHRIL" />
 		<set name="weight" val="560" />
-		<set name="price" val="649800" />
+		<set name="price" val="845000" />
 		<set name="enchant_enabled" val="true" />
 		<cond msgId="1518">
 			<player races="HUMAN,ELF,DARK_ELF,ORC,DWARF" />
@@ -1408,11 +1408,11 @@
 		<set name="default_action" val="EQUIP" />
 		<set name="bodypart" val="lhand" />
 		<set name="immediate_effect" val="true" />
-		<set name="crystal_count" val="56" />
+		<set name="crystal_count" val="72" />
 		<set name="crystal_type" val="B" />
 		<set name="material" val="DAMASCUS" />
 		<set name="weight" val="1210" />
-		<set name="price" val="419000" />
+		<set name="price" val="545000" />
 		<set name="enchant_enabled" val="true" />
 		<cond msgId="1518">
 			<player races="HUMAN,ELF,DARK_ELF,ORC,DWARF" />
@@ -1433,7 +1433,7 @@
 		<set name="crystal_type" val="B" />
 		<set name="material" val="ADAMANTAITE" />
 		<set name="weight" val="560" />
-		<set name="price" val="649800" />
+		<set name="price" val="845000" />
 		<set name="enchant_enabled" val="true" />
 		<cond msgId="1518">
 			<player races="HUMAN,ELF,DARK_ELF,ORC,DWARF" />

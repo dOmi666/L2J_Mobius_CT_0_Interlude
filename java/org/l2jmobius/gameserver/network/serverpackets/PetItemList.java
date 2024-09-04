@@ -18,7 +18,9 @@ package org.l2jmobius.gameserver.network.serverpackets;
 
 import java.util.Collection;
 
+import org.l2jmobius.commons.network.WritableBuffer;
 import org.l2jmobius.gameserver.model.item.instance.Item;
+import org.l2jmobius.gameserver.network.GameClient;
 import org.l2jmobius.gameserver.network.ServerPackets;
 
 public class PetItemList extends ServerPacket
@@ -31,22 +33,22 @@ public class PetItemList extends ServerPacket
 	}
 	
 	@Override
-	public void write()
+	public void writeImpl(GameClient client, WritableBuffer buffer)
 	{
-		ServerPackets.PET_ITEM_LIST.writeId(this);
-		writeShort(_items.size());
+		ServerPackets.PET_ITEM_LIST.writeId(this, buffer);
+		buffer.writeShort(_items.size());
 		for (Item item : _items)
 		{
-			writeShort(item.getTemplate().getType1()); // item type1
-			writeInt(item.getObjectId());
-			writeInt(item.getId());
-			writeInt(item.getCount());
-			writeShort(item.getTemplate().getType2()); // item type2
-			writeShort(0); // ?
-			writeShort(item.isEquipped());
-			writeInt(item.getTemplate().getBodyPart()); // rev 415 slot 0006-lr.ear 0008-neck 0030-lr.finger 0040-head 0080-?? 0100-l.hand 0200-gloves 0400-chest 0800-pants 1000-feet 2000-?? 4000-r.hand 8000-r.hand
-			writeShort(item.getEnchantLevel()); // enchant level
-			writeShort(0); // ?
+			buffer.writeShort(item.getTemplate().getType1()); // item type1
+			buffer.writeInt(item.getObjectId());
+			buffer.writeInt(item.getId());
+			buffer.writeInt(item.getCount());
+			buffer.writeShort(item.getTemplate().getType2()); // item type2
+			buffer.writeShort(0); // ?
+			buffer.writeShort(item.isEquipped());
+			buffer.writeInt(item.getTemplate().getBodyPart()); // rev 415 slot 0006-lr.ear 0008-neck 0030-lr.finger 0040-head 0080-?? 0100-l.hand 0200-gloves 0400-chest 0800-pants 1000-feet 2000-?? 4000-r.hand 8000-r.hand
+			buffer.writeShort(item.getEnchantLevel()); // enchant level
+			buffer.writeShort(0); // ?
 		}
 	}
 }

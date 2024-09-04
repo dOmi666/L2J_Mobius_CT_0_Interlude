@@ -36,6 +36,10 @@
 	<item id="5193" /> <!-- Rope of Magic: C-Grade -->
 	<item id="5194" /> <!-- Rope of Magic: B-Grade -->
 	<item id="2130" /> <!-- Gemstone D -->
+	<item id="4625" /> <!-- Dice (Heart) -->
+	<item id="4626" /> <!-- Dice (Spade) -->
+	<item id="4627" /> <!-- Dice (Clover) -->
+	<item id="4628" /> <!-- Dice (Diamond) -->
 	<item id="8594" /> <!-- Scroll: Recovery (No Grade) -->
 	<item id="8595" /> <!-- Scroll: Recovery (Grade D) -->
 	<item id="8596" /> <!-- Scroll: Recovery (Grade C) -->
@@ -48,9 +52,4 @@
 	<item id="8635" /> <!-- Elixir of CP (D-Grade) -->
 	<item id="8636" /> <!-- Elixir of CP (C-Grade) -->
 	<item id="8637" /> <!-- Elixir of CP (B-Grade) -->
-	<item id="8615" /> <!-- Summoning Crystal -->
-	<item id="4625" /> <!-- Dice (Heart) -->
-	<item id="4626" /> <!-- Dice (Spade) -->
-	<item id="4627" /> <!-- Dice (Clover) -->
-	<item id="4628" /> <!-- Dice (Diamond) -->
 </list>

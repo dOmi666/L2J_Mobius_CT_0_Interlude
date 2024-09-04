@@ -16,8 +16,6 @@
  */
 package org.l2jmobius.gameserver.model.actor.instance;
 
-import org.l2jmobius.gameserver.enums.ClassId;
-import org.l2jmobius.gameserver.enums.Race;
 import org.l2jmobius.gameserver.model.actor.templates.NpcTemplate;
 
 public class VillageMasterDElf extends VillageMaster
@@ -29,15 +27,5 @@ public class VillageMasterDElf extends VillageMaster
 	public VillageMasterDElf(NpcTemplate template)
 	{
 		super(template);
-	}
-	
-	@Override
-	protected final boolean checkVillageMasterRace(ClassId pClass)
-	{
-		if (pClass == null)
-		{
-			return false;
-		}
-		return pClass.getRace() == Race.DARK_ELF;
 	}
 }

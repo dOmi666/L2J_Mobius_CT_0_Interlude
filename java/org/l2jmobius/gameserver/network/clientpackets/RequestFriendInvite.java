@@ -16,29 +16,27 @@
  */
 package org.l2jmobius.gameserver.network.clientpackets;
 
-import org.l2jmobius.commons.network.ReadablePacket;
 import org.l2jmobius.gameserver.model.BlockList;
 import org.l2jmobius.gameserver.model.World;
 import org.l2jmobius.gameserver.model.actor.Player;
-import org.l2jmobius.gameserver.network.GameClient;
 import org.l2jmobius.gameserver.network.SystemMessageId;
 import org.l2jmobius.gameserver.network.serverpackets.FriendAddRequest;
 import org.l2jmobius.gameserver.network.serverpackets.SystemMessage;
 
-public class RequestFriendInvite implements ClientPacket
+public class RequestFriendInvite extends ClientPacket
 {
 	private String _name;
 	
 	@Override
-	public void read(ReadablePacket packet)
+	protected void readImpl()
 	{
-		_name = packet.readString();
+		_name = readString();
 	}
 	
 	@Override
-	public void run(GameClient client)
+	protected void runImpl()
 	{
-		final Player player = client.getPlayer();
+		final Player player = getPlayer();
 		if (player == null)
 		{
 			return;
@@ -61,20 +59,20 @@ public class RequestFriendInvite implements ClientPacket
 		// Target is in olympiad.
 		if (player.isInOlympiadMode() || friend.isInOlympiadMode())
 		{
-			player.sendPacket(SystemMessageId.A_USER_CURRENTLY_PARTICIPATING_IN_THE_OLYMPIAD_CANNOT_SEND_PARTY_AND_FRIEND_INVITATIONS);
+			player.sendMessage("A user currently participating in the Olympiad cannot send party and friend invitations.");
 			return;
 		}
 		// Target blocked active player.
 		if (BlockList.isBlocked(friend, player))
 		{
-			player.sendMessage("You are in target's block list.");
+			player.sendMessage("You are in " + _name + "'s block list.");
 			return;
 		}
 		SystemMessage sm;
 		// Target is blocked.
 		if (BlockList.isBlocked(player, friend))
 		{
-			sm = new SystemMessage(SystemMessageId.YOU_HAVE_BLOCKED_C1);
+			sm = new SystemMessage(SystemMessageId.YOU_HAVE_BLOCKED_S1);
 			sm.addString(friend.getName());
 			player.sendPacket(sm);
 			return;
@@ -82,13 +80,13 @@ public class RequestFriendInvite implements ClientPacket
 		// Target already in friend list.
 		if (player.getFriendList().contains(friend.getObjectId()))
 		{
-			player.sendPacket(SystemMessageId.THIS_PLAYER_IS_ALREADY_REGISTERED_ON_YOUR_FRIENDS_LIST);
+			player.sendPacket(SystemMessageId.THIS_PLAYER_IS_ALREADY_REGISTERED_IN_YOUR_FRIENDS_LIST);
 			return;
 		}
 		// Target is busy.
 		if (friend.isProcessingRequest())
 		{
-			sm = new SystemMessage(SystemMessageId.C1_IS_ON_ANOTHER_TASK_PLEASE_TRY_AGAIN_LATER);
+			sm = new SystemMessage(SystemMessageId.S1_IS_BUSY_PLEASE_TRY_AGAIN_LATER);
 			sm.addString(_name);
 			player.sendPacket(sm);
 			return;
@@ -96,8 +94,10 @@ public class RequestFriendInvite implements ClientPacket
 		// Friend request sent.
 		player.onTransactionRequest(friend);
 		friend.sendPacket(new FriendAddRequest(player.getName()));
-		sm = new SystemMessage(SystemMessageId.YOU_VE_REQUESTED_C1_TO_BE_ON_YOUR_FRIENDS_LIST);
-		sm.addString(_name);
-		player.sendPacket(sm);
+		player.sendMessage("You've requested " + _name + " to be on your Friends List.");
+		// Notify the friend about the request.
+		sm = new SystemMessage(SystemMessageId.S1_HAS_REQUESTED_TO_BECOME_FRIENDS);
+		sm.addString(player.getName());
+		friend.sendPacket(sm);
 	}
 }

@@ -158,7 +158,7 @@ public class Siege implements Siegable
 				}
 				else if ((timeRemaining <= 10000) && (timeRemaining > 0))
 				{
-					final SystemMessage sm = new SystemMessage(SystemMessageId.THIS_CASTLE_SIEGE_WILL_END_IN_S1_SECOND_S);
+					final SystemMessage sm = new SystemMessage(SystemMessageId.CASTLE_SIEGE_S1_SECOND_S_LEFT);
 					sm.addInt((int) timeRemaining / 1000);
 					announceToPlayer(sm, true);
 					ThreadPool.schedule(new ScheduleEndSiegeTask(_castleInst), timeRemaining); // Prepare task for second count down
@@ -254,7 +254,7 @@ public class Siege implements Siegable
 	{
 		if (_isInProgress)
 		{
-			SystemMessage sm = new SystemMessage(SystemMessageId.THE_S1_SIEGE_HAS_FINISHED);
+			SystemMessage sm = new SystemMessage(SystemMessageId.THE_SIEGE_OF_S1_HAS_FINISHED);
 			sm.addCastleId(_castle.getResidenceId());
 			Broadcast.toAllOnlinePlayers(sm);
 			Broadcast.toAllOnlinePlayers(new PlaySound("systemmsg_e.18"));
@@ -518,7 +518,7 @@ public class Siege implements Siegable
 			_siegeEndDate.add(Calendar.MINUTE, SiegeManager.getInstance().getSiegeLength());
 			ThreadPool.schedule(new ScheduleEndSiegeTask(_castle), 1000); // Prepare auto end task
 			
-			final SystemMessage sm = new SystemMessage(SystemMessageId.THE_S1_SIEGE_HAS_STARTED);
+			final SystemMessage sm = new SystemMessage(SystemMessageId.THE_SIEGE_OF_S1_HAS_STARTED);
 			sm.addCastleId(_castle.getResidenceId());
 			Broadcast.toAllOnlinePlayers(sm);
 			Broadcast.toAllOnlinePlayers(new PlaySound("systemmsg_e.17"));
@@ -896,7 +896,7 @@ public class Siege implements Siegable
 		final int allyId = getCastle().getOwnerId() != 0 ? ClanTable.getInstance().getClan(getCastle().getOwnerId()).getAllyId() : 0;
 		if ((allyId != 0) && (player.getClan().getAllyId() == allyId) && !force)
 		{
-			player.sendPacket(SystemMessageId.YOU_CANNOT_REGISTER_AS_AN_ATTACKER_BECAUSE_YOU_ARE_IN_AN_ALLIANCE_WITH_THE_CASTLE_OWNING_CLAN);
+			player.sendPacket(SystemMessageId.YOU_CANNOT_REGISTER_ON_THE_ATTACKING_SIDE_BECAUSE_YOU_ARE_PART_OF_AN_ALLIANCE_WITH_THE_CLAN_THAT_OWNS_THE_CASTLE);
 			return;
 		}
 		
@@ -904,7 +904,7 @@ public class Siege implements Siegable
 		{
 			if (SiegeManager.getInstance().checkIsRegistered(player.getClan(), getCastle().getResidenceId()))
 			{
-				player.sendPacket(SystemMessageId.YOU_HAVE_ALREADY_REQUESTED_A_CASTLE_SIEGE);
+				player.sendPacket(SystemMessageId.YOU_HAVE_ALREADY_REQUESTED_A_SIEGE_BATTLE);
 			}
 			else
 			{
@@ -940,7 +940,7 @@ public class Siege implements Siegable
 		{
 			if (SiegeManager.getInstance().checkIsRegistered(player.getClan(), getCastle().getResidenceId()))
 			{
-				player.sendPacket(SystemMessageId.YOU_HAVE_ALREADY_REQUESTED_A_CASTLE_SIEGE);
+				player.sendPacket(SystemMessageId.YOU_HAVE_ALREADY_REQUESTED_A_SIEGE_BATTLE);
 			}
 			else
 			{
@@ -1134,11 +1134,11 @@ public class Siege implements Siegable
 		}
 		else if ((player.getClan() == null) || (player.getClan().getLevel() < SiegeManager.getInstance().getSiegeClanMinLevel()))
 		{
-			player.sendPacket(SystemMessageId.ONLY_CLANS_OF_LEVEL_5_OR_HIGHER_MAY_REGISTER_FOR_A_CASTLE_SIEGE);
+			player.sendPacket(SystemMessageId.ONLY_CLANS_OF_LEVEL_4_OR_HIGHER_MAY_REGISTER_FOR_A_CASTLE_SIEGE);
 		}
 		else if (player.getClan().getId() == getCastle().getOwnerId())
 		{
-			player.sendPacket(SystemMessageId.CASTLE_OWNING_CLANS_ARE_AUTOMATICALLY_REGISTERED_ON_THE_DEFENDING_SIDE);
+			player.sendPacket(SystemMessageId.THE_CLAN_THAT_OWNS_THE_CASTLE_IS_AUTOMATICALLY_REGISTERED_ON_THE_DEFENDING_SIDE);
 		}
 		else if (player.getClan().getCastleId() > 0)
 		{
@@ -1146,11 +1146,11 @@ public class Siege implements Siegable
 		}
 		else if (SiegeManager.getInstance().checkIsRegistered(player.getClan(), getCastle().getResidenceId()))
 		{
-			player.sendPacket(SystemMessageId.YOU_HAVE_ALREADY_REQUESTED_A_CASTLE_SIEGE);
+			player.sendPacket(SystemMessageId.YOU_HAVE_ALREADY_REQUESTED_A_SIEGE_BATTLE);
 		}
 		else if (checkIfAlreadyRegisteredForSameDay(player.getClan()))
 		{
-			player.sendPacket(SystemMessageId.YOUR_APPLICATION_HAS_BEEN_DENIED_BECAUSE_YOU_HAVE_ALREADY_SUBMITTED_A_REQUEST_FOR_ANOTHER_CASTLE_SIEGE);
+			player.sendPacket(SystemMessageId.YOUR_APPLICATION_HAS_BEEN_DENIED_BECAUSE_YOU_HAVE_ALREADY_SUBMITTED_A_REQUEST_FOR_ANOTHER_SIEGE_BATTLE);
 		}
 		else if ((typeId == ATTACKER) && (getAttackerClans().size() >= SiegeManager.getInstance().getAttackerMaxClans()))
 		{
@@ -1443,7 +1443,7 @@ public class Siege implements Siegable
 		{
 			CastleManager.getInstance().registerSiegeDate(getCastle().getResidenceId(), calendar.getTimeInMillis());
 			
-			Broadcast.toAllOnlinePlayers(new SystemMessage(SystemMessageId.S1_HAS_ANNOUNCED_THE_NEXT_CASTLE_SIEGE_TIME).addCastleId(_castle.getResidenceId()));
+			Broadcast.toAllOnlinePlayers(new SystemMessage(SystemMessageId.S1_HAS_ANNOUNCED_THE_CASTLE_SIEGE_TIME).addCastleId(_castle.getResidenceId()));
 			
 			// Allow registration for next siege
 			_isRegistrationOver = false;

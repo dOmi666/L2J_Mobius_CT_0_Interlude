@@ -16,11 +16,9 @@
  */
 package org.l2jmobius.gameserver.network.clientpackets;
 
-import org.l2jmobius.commons.network.ReadablePacket;
 import org.l2jmobius.gameserver.model.Party;
 import org.l2jmobius.gameserver.model.World;
 import org.l2jmobius.gameserver.model.actor.Player;
-import org.l2jmobius.gameserver.network.GameClient;
 import org.l2jmobius.gameserver.network.SystemMessageId;
 import org.l2jmobius.gameserver.network.serverpackets.ExAskJoinMPCC;
 import org.l2jmobius.gameserver.network.serverpackets.SystemMessage;
@@ -30,20 +28,20 @@ import org.l2jmobius.gameserver.network.serverpackets.SystemMessage;
  * D0 0D 00 5A 00 77 00 65 00 72 00 67 00 00 00
  * @author chris_00
  */
-public class RequestExAskJoinMPCC implements ClientPacket
+public class RequestExAskJoinMPCC extends ClientPacket
 {
 	private String _name;
 	
 	@Override
-	public void read(ReadablePacket packet)
+	protected void readImpl()
 	{
-		_name = packet.readString();
+		_name = readString();
 	}
 	
 	@Override
-	public void run(GameClient client)
+	protected void runImpl()
 	{
-		final Player player = client.getPlayer();
+		final Player player = getPlayer();
 		if (player == null)
 		{
 			return;
@@ -78,7 +76,7 @@ public class RequestExAskJoinMPCC implements ClientPacket
 						// targets party already in a CChannel?
 						if (target.getParty().isInCommandChannel())
 						{
-							sm = new SystemMessage(SystemMessageId.C1_S_PARTY_IS_ALREADY_A_MEMBER_OF_THE_COMMAND_CHANNEL);
+							sm = new SystemMessage(SystemMessageId.S1_S_PARTY_IS_ALREADY_A_MEMBER_OF_THE_COMMAND_CHANNEL);
 							sm.addString(target.getName());
 							player.sendPacket(sm);
 						}
@@ -108,7 +106,7 @@ public class RequestExAskJoinMPCC implements ClientPacket
 						// targets party already in a CChannel?
 						if (target.getParty().isInCommandChannel())
 						{
-							sm = new SystemMessage(SystemMessageId.C1_S_PARTY_IS_ALREADY_A_MEMBER_OF_THE_COMMAND_CHANNEL);
+							sm = new SystemMessage(SystemMessageId.S1_S_PARTY_IS_ALREADY_A_MEMBER_OF_THE_COMMAND_CHANNEL);
 							sm.addString(target.getName());
 							player.sendPacket(sm);
 						}
@@ -164,7 +162,7 @@ public class RequestExAskJoinMPCC implements ClientPacket
 		if (!targetLeader.isProcessingRequest())
 		{
 			requestor.onTransactionRequest(targetLeader);
-			sm = new SystemMessage(SystemMessageId.C1_IS_INVITING_YOU_TO_A_COMMAND_CHANNEL_DO_YOU_ACCEPT);
+			sm = new SystemMessage(SystemMessageId.S1_HAS_INVITED_YOU_TO_JOIN_A_COMMAND_CHANNEL_DO_YOU_WISH_TO_ACCEPT);
 			sm.addString(requestor.getName());
 			targetLeader.sendPacket(sm);
 			targetLeader.sendPacket(new ExAskJoinMPCC(requestor.getName()));
@@ -172,7 +170,7 @@ public class RequestExAskJoinMPCC implements ClientPacket
 		}
 		else
 		{
-			sm = new SystemMessage(SystemMessageId.C1_IS_ON_ANOTHER_TASK_PLEASE_TRY_AGAIN_LATER);
+			sm = new SystemMessage(SystemMessageId.S1_IS_BUSY_PLEASE_TRY_AGAIN_LATER);
 			sm.addString(targetLeader.getName());
 			requestor.sendPacket(sm);
 		}

@@ -788,7 +788,7 @@ public class Duel
 			case TEAM_2_SURRENDER:
 			{
 				restorePlayerConditions(false);
-				sm = _partyDuel ? new SystemMessage(SystemMessageId.C1_S_PARTY_HAS_WON_THE_DUEL) : new SystemMessage(SystemMessageId.C1_HAS_WON_THE_DUEL);
+				sm = _partyDuel ? new SystemMessage(SystemMessageId.S1_S_PARTY_HAS_WON_THE_DUEL) : new SystemMessage(SystemMessageId.S1_HAS_WON_THE_DUEL);
 				sm.addString(_playerA.getName());
 				
 				broadcastToTeam1(sm);
@@ -799,7 +799,7 @@ public class Duel
 			case TEAM_2_WIN:
 			{
 				restorePlayerConditions(false);
-				sm = _partyDuel ? new SystemMessage(SystemMessageId.C1_S_PARTY_HAS_WON_THE_DUEL) : new SystemMessage(SystemMessageId.C1_HAS_WON_THE_DUEL);
+				sm = _partyDuel ? new SystemMessage(SystemMessageId.S1_S_PARTY_HAS_WON_THE_DUEL) : new SystemMessage(SystemMessageId.S1_HAS_WON_THE_DUEL);
 				sm.addString(_playerB.getName());
 				
 				broadcastToTeam1(sm);

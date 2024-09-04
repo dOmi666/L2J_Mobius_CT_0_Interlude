@@ -16,38 +16,44 @@
  */
 package quests.Q00378_GrandFeast;
 
+import java.util.HashMap;
+import java.util.Map;
+
 import org.l2jmobius.gameserver.model.actor.Npc;
 import org.l2jmobius.gameserver.model.actor.Player;
 import org.l2jmobius.gameserver.model.quest.Quest;
 import org.l2jmobius.gameserver.model.quest.QuestState;
+import org.l2jmobius.gameserver.model.quest.State;
 
-/**
- * Grand Feast (378)
- * @author Adry_85
- */
 public class Q00378_GrandFeast extends Quest
 {
 	// NPC
 	private static final int RANSPO = 30594;
 	// Items
-	private static final int JONAS_SALAD_RECIPE = 1455;
-	private static final int JONAS_SAUCE_RECIPE = 1456;
-	private static final int JONAS_STEAK_RECIPE = 1457;
-	private static final int THEME_OF_THE_FEAST = 4421;
-	private static final int OLD_WINE_15_YEAR = 5956;
-	private static final int OLD_WINE_30_YEAR = 5957;
-	private static final int OLD_WINE_60_YEAR = 5958;
-	private static final int RITRONS_DESSERT_RECIPE = 5959;
+	private static final int WINE_15 = 5956;
+	private static final int WINE_30 = 5957;
+	private static final int WINE_60 = 5958;
+	private static final int MUSICAL_SCORE = 4421;
+	private static final int SALAD_RECIPE = 1455;
+	private static final int SAUCE_RECIPE = 1456;
+	private static final int STEAK_RECIPE = 1457;
+	private static final int RITRON_DESSERT = 5959;
 	// Rewards
-	private static final int CORAL_EARRING = 846;
-	private static final int RED_CRESCENT_EARRING = 847;
-	private static final int ENCHANTED_EARRING = 848;
-	private static final int ENCHANTED_RING = 879;
-	private static final int RING_OF_DEVOTION = 890;
-	private static final int BLUE_DIAMOND_NECKLACE = 909;
-	private static final int NECKLACE_OF_DEVOTION = 910;
-	// Misc
-	private static final int MIN_LEVEL = 20;
+	private static final Map<String, int[]> REWARDS = new HashMap<>();
+	static
+	{
+		// @formatter:off
+		REWARDS.put("9", new int[]{847, 1, 5700});
+		REWARDS.put("10", new int[]{846, 2, 0});
+		REWARDS.put("12", new int[]{909, 1, 25400});
+		REWARDS.put("17", new int[]{846, 2, 1200});
+		REWARDS.put("18", new int[]{879, 1, 6900});
+		REWARDS.put("20", new int[]{890, 2, 8500});
+		REWARDS.put("33", new int[]{879, 1, 8100});
+		REWARDS.put("34", new int[]{910, 1, 0});
+		REWARDS.put("36", new int[]{848, 1, 2200});
+		// @formatter:on
+	}
 	
 	public Q00378_GrandFeast()
 	{
@@ -57,257 +63,182 @@ public class Q00378_GrandFeast extends Quest
 	}
 	
 	@Override
-	public String onAdvEvent(String event, Npc npc, Player player)
+	public String onEvent(String event, Npc npc, Player player)
 	{
-		final QuestState qs = getQuestState(player, false);
-		if (qs == null)
+		String htmltext = event;
+		final QuestState st = getQuestState(player, false);
+		if (st == null)
 		{
-			return null;
+			return htmltext;
 		}
 		
-		String htmltext = null;
 		switch (event)
 		{
-			case "30594-02.htm":
+			case "30594-2.htm":
 			{
-				qs.setMemoStateEx(1, 0);
-				qs.startQuest();
-				htmltext = event;
+				st.startQuest();
 				break;
 			}
-			case "30594-05.html":
+			case "30594-4a.htm":
 			{
-				final int i0 = qs.getMemoStateEx(1);
-				if (hasQuestItems(player, OLD_WINE_15_YEAR))
+				if (hasQuestItems(player, WINE_15))
 				{
-					takeItems(player, OLD_WINE_15_YEAR, 1);
-					qs.setMemoStateEx(1, i0 + 10);
-					qs.setCond(2, true);
-					htmltext = event;
+					st.setCond(2, true);
+					st.set("score", "1");
+					takeItems(player, WINE_15, 1);
 				}
 				else
 				{
-					htmltext = "30594-08.html";
+					htmltext = "30594-4.htm";
 				}
 				break;
 			}
-			case "30594-06.html":
+			case "30594-4b.htm":
 			{
-				final int i0 = qs.getMemoStateEx(1);
-				if (hasQuestItems(player, OLD_WINE_30_YEAR))
+				if (hasQuestItems(player, WINE_30))
 				{
-					takeItems(player, OLD_WINE_30_YEAR, 1);
-					qs.setMemoStateEx(1, i0 + 20);
-					qs.setCond(2, true);
-					htmltext = event;
+					st.setCond(2, true);
+					st.set("score", "2");
+					takeItems(player, WINE_30, 1);
 				}
 				else
 				{
-					htmltext = "30594-08.html";
+					htmltext = "30594-4.htm";
 				}
 				break;
 			}
-			case "30594-07.html":
+			case "30594-4c.htm":
 			{
-				final int i0 = qs.getMemoStateEx(1);
-				if (hasQuestItems(player, OLD_WINE_60_YEAR))
+				if (hasQuestItems(player, WINE_60))
 				{
-					takeItems(player, OLD_WINE_60_YEAR, 1);
-					qs.setMemoStateEx(1, i0 + 30);
-					qs.setCond(2, true);
-					htmltext = event;
+					st.setCond(2, true);
+					st.set("score", "4");
+					takeItems(player, WINE_60, 1);
 				}
 				else
 				{
-					htmltext = "30594-08.html";
+					htmltext = "30594-4.htm";
 				}
 				break;
 			}
-			case "30594-09.html":
-			case "30594-18.html":
+			case "30594-6.htm":
 			{
-				htmltext = event;
-				break;
-			}
-			case "30594-12.html":
-			{
-				if (hasQuestItems(player, THEME_OF_THE_FEAST))
+				if (hasQuestItems(player, MUSICAL_SCORE))
 				{
-					takeItems(player, THEME_OF_THE_FEAST, 1);
-					qs.setCond(3, true);
-					htmltext = event;
+					st.setCond(3, true);
+					takeItems(player, MUSICAL_SCORE, 1);
 				}
 				else
 				{
-					htmltext = "30594-08.html";
+					htmltext = "30594-5.htm";
 				}
 				break;
 			}
-			case "30594-14.html":
+			case "30594-8a.htm":
 			{
-				final int i0 = qs.getMemoStateEx(1);
-				if (hasQuestItems(player, JONAS_SALAD_RECIPE))
+				if (hasQuestItems(player, SALAD_RECIPE))
 				{
-					takeItems(player, JONAS_SALAD_RECIPE, 1);
-					qs.setMemoStateEx(1, i0 + 1);
-					qs.setCond(4, true);
-					htmltext = event;
+					st.setCond(4, true);
+					final int score = st.getInt("score");
+					st.set("score", String.valueOf(score + 8));
+					takeItems(player, SALAD_RECIPE, 1);
 				}
 				else
 				{
-					htmltext = "30594-17.html";
+					htmltext = "30594-8.htm";
 				}
 				break;
 			}
-			case "30594-15.html":
+			case "30594-8b.htm":
 			{
-				final int i0 = qs.getMemoStateEx(1);
-				if (hasQuestItems(player, JONAS_SAUCE_RECIPE))
+				if (hasQuestItems(player, SAUCE_RECIPE))
 				{
-					takeItems(player, JONAS_SAUCE_RECIPE, 1);
-					qs.setMemoStateEx(1, i0 + 2);
-					qs.setCond(4, true);
-					htmltext = event;
+					st.setCond(4, true);
+					final int score = st.getInt("score");
+					st.set("score", String.valueOf(score + 16));
+					takeItems(player, SAUCE_RECIPE, 1);
 				}
 				else
 				{
-					htmltext = "30594-17.html";
+					htmltext = "30594-8.htm";
 				}
 				break;
 			}
-			case "30594-16.html":
+			case "30594-8c.htm":
 			{
-				final int i0 = qs.getMemoStateEx(1);
-				if (hasQuestItems(player, JONAS_STEAK_RECIPE))
+				if (hasQuestItems(player, STEAK_RECIPE))
 				{
-					takeItems(player, JONAS_STEAK_RECIPE, 1);
-					qs.setMemoStateEx(1, i0 + 3);
-					qs.setCond(4, true);
-					htmltext = event;
+					st.setCond(4, true);
+					final int score = st.getInt("score");
+					st.set("score", String.valueOf(score + 32));
+					takeItems(player, STEAK_RECIPE, 1);
 				}
 				else
 				{
-					htmltext = "30594-17.html";
+					htmltext = "30594-8.htm";
 				}
 				break;
 			}
 		}
+		
 		return htmltext;
 	}
 	
 	@Override
 	public String onTalk(Npc npc, Player player)
 	{
-		final QuestState qs = getQuestState(player, true);
 		String htmltext = getNoQuestMsg(player);
-		if (qs.isCreated())
+		final QuestState st = getQuestState(player, true);
+		
+		switch (st.getState())
 		{
-			htmltext = (player.getLevel() >= MIN_LEVEL) ? "30594-01.htm" : "30594-03.html";
-		}
-		else if (qs.isStarted())
-		{
-			switch (qs.getCond())
+			case State.CREATED:
 			{
-				case 1:
+				htmltext = (player.getLevel() < 20) ? "30594-0.htm" : "30594-1.htm";
+				break;
+			}
+			case State.STARTED:
+			{
+				final int cond = st.getCond();
+				if (cond == 1)
 				{
-					htmltext = "30594-04.html";
-					break;
+					htmltext = "30594-3.htm";
 				}
-				case 2:
+				else if (cond == 2)
 				{
-					htmltext = (hasQuestItems(player, THEME_OF_THE_FEAST)) ? "30594-11.html" : "30594-10.html";
-					break;
+					htmltext = (!hasQuestItems(player, MUSICAL_SCORE)) ? "30594-5.htm" : "30594-5a.htm";
 				}
-				case 3:
+				else if (cond == 3)
 				{
-					htmltext = "30594-13.html";
-					break;
+					htmltext = "30594-7.htm";
 				}
-				case 4:
+				else if (cond == 4)
 				{
-					if (hasQuestItems(player, RITRONS_DESSERT_RECIPE))
+					final String score = st.get("score");
+					if (REWARDS.containsKey(score) && hasQuestItems(player, RITRON_DESSERT))
 					{
-						takeItems(player, RITRONS_DESSERT_RECIPE, 1);
-						int item = 0;
-						int adena = 0;
-						int quantity = 0;
-						switch (qs.getMemoStateEx(1))
+						htmltext = "30594-10.htm";
+						
+						takeItems(player, RITRON_DESSERT, 1);
+						giveItems(player, REWARDS.get(score)[0], REWARDS.get(score)[1]);
+						
+						final int adena = REWARDS.get(score)[2];
+						if (adena > 0)
 						{
-							case 11:
-							{
-								item = RED_CRESCENT_EARRING;
-								quantity = 1;
-								adena = 5700;
-								break;
-							}
-							case 12:
-							{
-								item = CORAL_EARRING;
-								quantity = 2;
-								adena = 1200;
-								break;
-							}
-							case 13:
-							{
-								item = ENCHANTED_RING;
-								quantity = 1;
-								adena = 8100;
-								break;
-							}
-							case 21:
-							{
-								item = CORAL_EARRING;
-								quantity = 2;
-								break;
-							}
-							case 22:
-							{
-								item = ENCHANTED_RING;
-								quantity = 1;
-								adena = 6900;
-								break;
-							}
-							case 23:
-							{
-								item = NECKLACE_OF_DEVOTION;
-								quantity = 1;
-								break;
-							}
-							case 31:
-							{
-								item = BLUE_DIAMOND_NECKLACE;
-								quantity = 1;
-								adena = 25400;
-								break;
-							}
-							case 32:
-							{
-								item = RING_OF_DEVOTION;
-								quantity = 2;
-								adena = 8500;
-								break;
-							}
-							case 33:
-							{
-								item = ENCHANTED_EARRING;
-								quantity = 1;
-								adena = 2200;
-								break;
-							}
+							giveAdena(player, adena, true);
 						}
-						giveItems(player, item, quantity);
-						giveAdena(player, adena, true);
-						qs.exitQuest(true, true);
-						htmltext = "30594-20.html";
+						
+						st.exitQuest(true, true);
 					}
 					else
 					{
-						htmltext = "30594-19.html";
+						htmltext = "30594-9.htm";
 					}
-					break;
 				}
+				break;
 			}
 		}
+		
 		return htmltext;
 	}
 }

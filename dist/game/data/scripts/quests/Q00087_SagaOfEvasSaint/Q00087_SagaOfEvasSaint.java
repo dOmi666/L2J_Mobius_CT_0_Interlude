@@ -16,15 +16,12 @@
  */
 package quests.Q00087_SagaOfEvasSaint;
 
-import org.l2jmobius.gameserver.model.Location;
-
-import quests.AbstractSagaQuest;
+import quests.SagasSuperClass;
 
 /**
- * Saga of Eva's Saint (87)
  * @author Emperorc
  */
-public class Q00087_SagaOfEvasSaint extends AbstractSagaQuest
+public class Q00087_SagaOfEvasSaint extends SagasSuperClass
 {
 	public Q00087_SagaOfEvasSaint()
 	{
@@ -73,11 +70,23 @@ public class Q00087_SagaOfEvasSaint extends AbstractSagaQuest
 		{
 			0x1e
 		};
-		_npcSpawnLocations = new Location[]
+		_x = new int[]
 		{
-			new Location(164650, -74121, -2871),
-			new Location(46087, -36372, -1685),
-			new Location(46066, -36396, -1685)
+			164650,
+			46087,
+			46066
+		};
+		_y = new int[]
+		{
+			-74121,
+			-36372,
+			-36396
+		};
+		_z = new int[]
+		{
+			-2871,
+			-1685,
+			-1685
 		};
 		_text = new String[]
 		{

@@ -1235,7 +1235,7 @@
 		<node X="93365" Y="-54760" />
 	</zone>
 	<!-- Valakas Nest Lava -->
-	<zone name="balakas_lava_1" type="EffectZone" shape="NPoly" minZ="-1700" maxZ="-1500"> <!-- [26_14] -->
+	<zone name="valakas_lava_1" type="EffectZone" shape="NPoly" minZ="-1700" maxZ="-1500"> <!-- [26_14] -->
 		<stat name="skillIdLvl" val="4150-7;" /> <!-- s_area_fire7 -->
 		<stat name="chance" val="50" />
 		<!-- stat name="unitTick" val="9" / -->
@@ -1248,7 +1248,7 @@
 		<node X="213012" Y="-116444" />
 		<node X="212828" Y="-116928" />
 	</zone>
-	<zone name="balakas_lava_2" type="EffectZone" shape="NPoly" minZ="-1800" maxZ="-1600"> <!-- [26_14] -->
+	<zone name="valakas_lava_2" type="EffectZone" shape="NPoly" minZ="-1800" maxZ="-1600"> <!-- [26_14] -->
 		<stat name="skillIdLvl" val="4150-7;" /> <!-- s_area_fire7 -->
 		<stat name="chance" val="50" />
 		<!-- stat name="unitTick" val="9" / -->
@@ -1261,7 +1261,7 @@
 		<node X="212416" Y="-116144" />
 		<node X="212140" Y="-116336" />
 	</zone>
-	<zone name="balakas_lava_3" type="EffectZone" shape="NPoly" minZ="-1772" maxZ="-1572"> <!-- [26_14] -->
+	<zone name="valakas_lava_3" type="EffectZone" shape="NPoly" minZ="-1772" maxZ="-1572"> <!-- [26_14] -->
 		<stat name="skillIdLvl" val="4150-7;" /> <!-- s_area_fire7 -->
 		<stat name="chance" val="50" />
 		<!-- stat name="unitTick" val="9" / -->
@@ -1273,7 +1273,7 @@
 		<node X="214548" Y="-116352" />
 		<node X="214064" Y="-116232" />
 	</zone>
-	<zone name="balakas_lava_4" type="EffectZone" shape="NPoly" minZ="-1800" maxZ="-1600"> <!-- [26_14] -->
+	<zone name="valakas_lava_4" type="EffectZone" shape="NPoly" minZ="-1800" maxZ="-1600"> <!-- [26_14] -->
 		<stat name="skillIdLvl" val="4150-7;" /> <!-- s_area_fire7 -->
 		<stat name="chance" val="50" />
 		<!-- stat name="unitTick" val="9" / -->
@@ -1287,7 +1287,7 @@
 		<node X="214460" Y="-114824" />
 		<node X="214412" Y="-115080" />
 	</zone>
-	<zone name="balakas_lava_5" type="EffectZone" shape="NPoly" minZ="-1820" maxZ="-1620"> <!-- [26_14] -->
+	<zone name="valakas_lava_5" type="EffectZone" shape="NPoly" minZ="-1820" maxZ="-1620"> <!-- [26_14] -->
 		<stat name="skillIdLvl" val="4150-7;" /> <!-- s_area_fire7 -->
 		<stat name="chance" val="50" />
 		<!-- stat name="unitTick" val="9" / -->
@@ -1300,7 +1300,7 @@
 		<node X="214228" Y="-113884" />
 		<node X="214340" Y="-114148" />
 	</zone>
-	<zone name="balakas_lava_6" type="EffectZone" shape="NPoly" minZ="-1768" maxZ="-1568"> <!-- [26_14] -->
+	<zone name="valakas_lava_6" type="EffectZone" shape="NPoly" minZ="-1768" maxZ="-1568"> <!-- [26_14] -->
 		<stat name="skillIdLvl" val="4150-7;" /> <!-- s_area_fire7 -->
 		<stat name="chance" val="50" />
 		<!-- stat name="unitTick" val="9" / -->
@@ -1317,7 +1317,7 @@
 		<node X="212696" Y="-116036" />
 		<node X="213200" Y="-116136" />
 	</zone>
-	<zone name="balakas_lava_7" type="EffectZone" shape="NPoly" minZ="-1764" maxZ="-1564"> <!-- [26_14] -->
+	<zone name="valakas_lava_7" type="EffectZone" shape="NPoly" minZ="-1764" maxZ="-1564"> <!-- [26_14] -->
 		<stat name="skillIdLvl" val="4150-7;" /> <!-- s_area_fire7 -->
 		<stat name="chance" val="50" />
 		<!-- stat name="unitTick" val="9" / -->
@@ -1329,7 +1329,7 @@
 		<node X="211148" Y="-114340" />
 		<node X="210764" Y="-114116" />
 	</zone>
-	<zone name="balakas_lava_8" type="EffectZone" shape="NPoly" minZ="-1716" maxZ="-1516"> <!-- [26_14] -->
+	<zone name="valakas_lava_8" type="EffectZone" shape="NPoly" minZ="-1716" maxZ="-1516"> <!-- [26_14] -->
 		<stat name="skillIdLvl" val="4150-7;" /> <!-- s_area_fire7 -->
 		<stat name="chance" val="50" />
 		<!-- stat name="unitTick" val="9" / -->
@@ -1343,7 +1343,7 @@
 		<node X="212188" Y="-112604" />
 		<node X="212144" Y="-112820" />
 	</zone>
-	<zone name="balakas_lava_9" type="EffectZone" shape="NPoly" minZ="-1720" maxZ="-1520"> <!-- [26_14] -->
+	<zone name="valakas_lava_9" type="EffectZone" shape="NPoly" minZ="-1720" maxZ="-1520"> <!-- [26_14] -->
 		<stat name="skillIdLvl" val="4150-7;" /> <!-- s_area_fire7 -->
 		<stat name="chance" val="50" />
 		<!-- stat name="unitTick" val="9" / -->
@@ -1356,7 +1356,7 @@
 		<node X="211220" Y="-112780" />
 		<node X="211204" Y="-113400" />
 	</zone>
-	<zone name="balakas_lava_10" type="EffectZone" shape="NPoly" minZ="-1732" maxZ="-1532"> <!-- [26_14] -->
+	<zone name="valakas_lava_10" type="EffectZone" shape="NPoly" minZ="-1732" maxZ="-1532"> <!-- [26_14] -->
 		<stat name="skillIdLvl" val="4150-7;" /> <!-- s_area_fire7 -->
 		<stat name="chance" val="50" />
 		<!-- stat name="unitTick" val="9" / -->
@@ -1369,7 +1369,7 @@
 		<node X="210784" Y="-115612" />
 		<node X="210308" Y="-115904" />
 	</zone>
-	<zone name="balakas_lava_11" type="EffectZone" shape="NPoly" minZ="-1736" maxZ="-1536"> <!-- [26_14] -->
+	<zone name="valakas_lava_11" type="EffectZone" shape="NPoly" minZ="-1736" maxZ="-1536"> <!-- [26_14] -->
 		<stat name="skillIdLvl" val="4150-7;" /> <!-- s_area_fire7 -->
 		<stat name="chance" val="50" />
 		<!-- stat name="unitTick" val="9" / -->
@@ -1387,7 +1387,7 @@
 		<node X="210928" Y="-116296" />
 		<node X="210872" Y="-117028" />
 	</zone>
-	<zone name="balakas_lava_12" type="EffectZone" shape="NPoly" minZ="-1748" maxZ="-1548"> <!-- [26_14] -->
+	<zone name="valakas_lava_12" type="EffectZone" shape="NPoly" minZ="-1748" maxZ="-1548"> <!-- [26_14] -->
 		<stat name="skillIdLvl" val="4150-7;" /> <!-- s_area_fire7 -->
 		<stat name="chance" val="50" />
 		<!-- stat name="unitTick" val="9" / -->
@@ -1401,7 +1401,7 @@
 		<node X="212300" Y="-116812" />
 		<node X="211796" Y="-117168" />
 	</zone>
-	<zone name="balakas_lava_13" type="EffectZone" shape="NPoly" minZ="-1792" maxZ="-1592"> <!-- [26_14] -->
+	<zone name="valakas_lava_13" type="EffectZone" shape="NPoly" minZ="-1792" maxZ="-1592"> <!-- [26_14] -->
 		<stat name="skillIdLvl" val="4150-7;" /> <!-- s_area_fire7 -->
 		<stat name="chance" val="50" />
 		<!-- stat name="unitTick" val="9" / -->
@@ -1414,7 +1414,7 @@
 		<node X="212792" Y="-117456" />
 		<node X="212836" Y="-117916" />
 	</zone>
-	<zone name="balakas_lava_14" type="EffectZone" shape="NPoly" minZ="-1812" maxZ="-1612"> <!-- [26_14] -->
+	<zone name="valakas_lava_14" type="EffectZone" shape="NPoly" minZ="-1812" maxZ="-1612"> <!-- [26_14] -->
 		<stat name="skillIdLvl" val="4150-7;" /> <!-- s_area_fire7 -->
 		<stat name="chance" val="50" />
 		<!-- stat name="unitTick" val="9" / -->
@@ -1426,7 +1426,7 @@
 		<node X="213728" Y="-117728" />
 		<node X="213584" Y="-117748" />
 	</zone>
-	<zone name="balakas_lava_15" type="EffectZone" shape="NPoly" minZ="-1764" maxZ="-1564"> <!-- [26_14] -->
+	<zone name="valakas_lava_15" type="EffectZone" shape="NPoly" minZ="-1764" maxZ="-1564"> <!-- [26_14] -->
 		<stat name="skillIdLvl" val="4150-7;" /> <!-- s_area_fire7 -->
 		<stat name="chance" val="50" />
 		<!-- stat name="unitTick" val="9" / -->
@@ -1441,7 +1441,7 @@
 		<node X="214232" Y="-117560" />
 		<node X="214224" Y="-117412" />
 	</zone>
-	<zone name="balakas_lava_16" type="EffectZone" shape="NPoly" minZ="-1716" maxZ="-1516"> <!-- [26_14] -->
+	<zone name="valakas_lava_16" type="EffectZone" shape="NPoly" minZ="-1716" maxZ="-1516"> <!-- [26_14] -->
 		<stat name="skillIdLvl" val="4150-7;" /> <!-- s_area_fire7 -->
 		<stat name="chance" val="50" />
 		<!-- stat name="unitTick" val="9" / -->
@@ -1454,7 +1454,7 @@
 		<node X="214436" Y="-117300" />
 		<node X="214304" Y="-117592" />
 	</zone>
-	<zone name="balakas_lava_17" type="EffectZone" shape="NPoly" minZ="-1700" maxZ="-1500"> <!-- [26_14] -->
+	<zone name="valakas_lava_17" type="EffectZone" shape="NPoly" minZ="-1700" maxZ="-1500"> <!-- [26_14] -->
 		<stat name="skillIdLvl" val="4150-7;" /> <!-- s_area_fire7 -->
 		<stat name="chance" val="50" />
 		<!-- stat name="unitTick" val="9" / -->
@@ -1466,7 +1466,7 @@
 		<node X="215516" Y="-116568" />
 		<node X="215296" Y="-116592" />
 	</zone>
-	<zone name="balakas_lava_18" type="EffectZone" shape="NPoly" minZ="-1684" maxZ="-1484"> <!-- [26_14] -->
+	<zone name="valakas_lava_18" type="EffectZone" shape="NPoly" minZ="-1684" maxZ="-1484"> <!-- [26_14] -->
 		<stat name="skillIdLvl" val="4150-7;" /> <!-- s_area_fire7 -->
 		<stat name="chance" val="50" />
 		<!-- stat name="unitTick" val="9" / -->
@@ -1485,7 +1485,7 @@
 		<node X="215420" Y="-115756" />
 		<node X="215296" Y="-115852" />
 	</zone>
-	<zone name="balakas_lava_19" type="EffectZone" shape="NPoly" minZ="-1740" maxZ="-1540"> <!-- [26_14] -->
+	<zone name="valakas_lava_19" type="EffectZone" shape="NPoly" minZ="-1740" maxZ="-1540"> <!-- [26_14] -->
 		<stat name="skillIdLvl" val="4150-7;" /> <!-- s_area_fire7 -->
 		<stat name="chance" val="50" />
 		<!-- stat name="unitTick" val="9" / -->
@@ -1499,7 +1499,7 @@
 		<node X="214240" Y="-113388" />
 		<node X="215420" Y="-113568" />
 	</zone>
-	<zone name="balakas_lava_20" type="EffectZone" shape="NPoly" minZ="-1792" maxZ="-1592"> <!-- [26_14] -->
+	<zone name="valakas_lava_20" type="EffectZone" shape="NPoly" minZ="-1792" maxZ="-1592"> <!-- [26_14] -->
 		<stat name="skillIdLvl" val="4150-7;" /> <!-- s_area_fire7 -->
 		<stat name="chance" val="50" />
 		<!-- stat name="unitTick" val="9" / -->
@@ -1511,7 +1511,7 @@
 		<node X="213932" Y="-111516" />
 		<node X="213624" Y="-112404" />
 	</zone>
-	<zone name="balakas_lava_21" type="EffectZone" shape="NPoly" minZ="-1772" maxZ="-1572"> <!-- [26_14] -->
+	<zone name="valakas_lava_21" type="EffectZone" shape="NPoly" minZ="-1772" maxZ="-1572"> <!-- [26_14] -->
 		<stat name="skillIdLvl" val="4150-7;" /> <!-- s_area_fire7 -->
 		<stat name="chance" val="50" />
 		<!-- stat name="unitTick" val="9" / -->
@@ -1526,7 +1526,7 @@
 		<node X="211904" Y="-112736" />
 		<node X="212280" Y="-112092" />
 	</zone>
-	<zone name="balakas_lava_22" type="EffectZone" shape="NPoly" minZ="-1744" maxZ="-1544"> <!-- [26_14] -->
+	<zone name="valakas_lava_22" type="EffectZone" shape="NPoly" minZ="-1744" maxZ="-1544"> <!-- [26_14] -->
 		<stat name="skillIdLvl" val="4150-7;" /> <!-- s_area_fire7 -->
 		<stat name="chance" val="50" />
 		<!-- stat name="unitTick" val="9" / -->
@@ -1543,7 +1543,7 @@
 		<node X="211088" Y="-113220" />
 		<node X="210720" Y="-112888" />
 	</zone>
-	<zone name="balakas_lava_23" type="EffectZone" shape="NPoly" minZ="-1600" maxZ="-1400"> <!-- [26_14] -->
+	<zone name="valakas_lava_23" type="EffectZone" shape="NPoly" minZ="-1600" maxZ="-1400"> <!-- [26_14] -->
 		<stat name="skillIdLvl" val="4150-7;" /> <!-- s_area_fire7 -->
 		<stat name="chance" val="50" />
 		<!-- stat name="unitTick" val="9" / -->
@@ -1555,7 +1555,7 @@
 		<node X="210004" Y="-112864" />
 		<node X="209596" Y="-112916" />
 	</zone>
-	<zone name="balakas_lava_24" type="EffectZone" shape="NPoly" minZ="-1528" maxZ="-1328"> <!-- [26_14] -->
+	<zone name="valakas_lava_24" type="EffectZone" shape="NPoly" minZ="-1528" maxZ="-1328"> <!-- [26_14] -->
 		<stat name="skillIdLvl" val="4150-7;" /> <!-- s_area_fire7 -->
 		<stat name="chance" val="50" />
 		<!-- stat name="unitTick" val="9" / -->
@@ -1572,7 +1572,7 @@
 		<node X="209772" Y="-112672" />
 		<node X="209968" Y="-112884" />
 	</zone>
-	<zone name="balakas_lava_25" type="EffectZone" shape="NPoly" minZ="-1564" maxZ="-1364"> <!-- [26_14] -->
+	<zone name="valakas_lava_25" type="EffectZone" shape="NPoly" minZ="-1564" maxZ="-1364"> <!-- [26_14] -->
 		<stat name="skillIdLvl" val="4150-7;" /> <!-- s_area_fire7 -->
 		<stat name="chance" val="50" />
 		<!-- stat name="unitTick" val="9" / -->
@@ -1584,7 +1584,7 @@
 		<node X="210104" Y="-111444" />
 		<node X="209496" Y="-112008" />
 	</zone>
-	<zone name="balakas_lava_26" type="EffectZone" shape="NPoly" minZ="-1572" maxZ="-1372"> <!-- [26_14] -->
+	<zone name="valakas_lava_26" type="EffectZone" shape="NPoly" minZ="-1572" maxZ="-1372"> <!-- [26_14] -->
 		<stat name="skillIdLvl" val="4150-7;" /> <!-- s_area_fire7 -->
 		<stat name="chance" val="50" />
 		<!-- stat name="unitTick" val="9" / -->
@@ -1597,7 +1597,7 @@
 		<node X="210628" Y="-111792" />
 		<node X="210600" Y="-112004" />
 	</zone>
-	<zone name="balakas_lava_27" type="EffectZone" shape="NPoly" minZ="-1488" maxZ="-1288"> <!-- [26_14] -->
+	<zone name="valakas_lava_27" type="EffectZone" shape="NPoly" minZ="-1488" maxZ="-1288"> <!-- [26_14] -->
 		<stat name="skillIdLvl" val="4150-7;" /> <!-- s_area_fire7 -->
 		<stat name="chance" val="50" />
 		<!-- stat name="unitTick" val="9" / -->
@@ -1611,7 +1611,7 @@
 		<node X="210100" Y="-111432" />
 		<node X="210408" Y="-111488" />
 	</zone>
-	<zone name="balakas_lava_28" type="EffectZone" shape="NPoly" minZ="-1492" maxZ="-1292"> <!-- [26_14] -->
+	<zone name="valakas_lava_28" type="EffectZone" shape="NPoly" minZ="-1492" maxZ="-1292"> <!-- [26_14] -->
 		<stat name="skillIdLvl" val="4150-7;" /> <!-- s_area_fire7 -->
 		<stat name="chance" val="50" />
 		<!-- stat name="unitTick" val="9" / -->
@@ -1624,7 +1624,7 @@
 		<node X="212724" Y="-110460" />
 		<node X="212064" Y="-110576" />
 	</zone>
-	<zone name="balakas_lava_29" type="EffectZone" shape="NPoly" minZ="-1476" maxZ="-1276"> <!-- [26_14] -->
+	<zone name="valakas_lava_29" type="EffectZone" shape="NPoly" minZ="-1476" maxZ="-1276"> <!-- [26_14] -->
 		<stat name="skillIdLvl" val="4150-7;" /> <!-- s_area_fire7 -->
 		<stat name="chance" val="50" />
 		<!-- stat name="unitTick" val="9" / -->
@@ -1636,7 +1636,7 @@
 		<node X="212740" Y="-111304" />
 		<node X="212436" Y="-111620" />
 	</zone>
-	<zone name="balakas_lava_30" type="EffectZone" shape="NPoly" minZ="-1452" maxZ="-1252"> <!-- [26_14] -->
+	<zone name="valakas_lava_30" type="EffectZone" shape="NPoly" minZ="-1452" maxZ="-1252"> <!-- [26_14] -->
 		<stat name="skillIdLvl" val="4150-7;" /> <!-- s_area_fire7 -->
 		<stat name="chance" val="50" />
 		<!-- stat name="unitTick" val="9" / -->
@@ -1649,7 +1649,7 @@
 		<node X="213356" Y="-110388" />
 		<node X="213328" Y="-110760" />
 	</zone>
-	<zone name="balakas_lava_31" type="EffectZone" shape="NPoly" minZ="-1548" maxZ="-1348"> <!-- [26_14] -->
+	<zone name="valakas_lava_31" type="EffectZone" shape="NPoly" minZ="-1548" maxZ="-1348"> <!-- [26_14] -->
 		<stat name="skillIdLvl" val="4150-7;" /> <!-- s_area_fire7 -->
 		<stat name="chance" val="50" />
 		<!-- stat name="unitTick" val="9" / -->
@@ -1661,7 +1661,7 @@
 		<node X="213972" Y="-111020" />
 		<node X="213624" Y="-111248" />
 	</zone>
-	<zone name="balakas_lava_32" type="EffectZone" shape="NPoly" minZ="-1484" maxZ="-1284"> <!-- [26_14] -->
+	<zone name="valakas_lava_32" type="EffectZone" shape="NPoly" minZ="-1484" maxZ="-1284"> <!-- [26_14] -->
 		<stat name="skillIdLvl" val="4150-7;" /> <!-- s_area_fire7 -->
 		<stat name="chance" val="50" />
 		<!-- stat name="unitTick" val="9" / -->
@@ -1674,7 +1674,7 @@
 		<node X="215376" Y="-111736" />
 		<node X="214924" Y="-111792" />
 	</zone>
-	<zone name="balakas_lava_33" type="EffectZone" shape="NPoly" minZ="-1456" maxZ="-1256"> <!-- [26_14] -->
+	<zone name="valakas_lava_33" type="EffectZone" shape="NPoly" minZ="-1456" maxZ="-1256"> <!-- [26_14] -->
 		<stat name="skillIdLvl" val="4150-7;" /> <!-- s_area_fire7 -->
 		<stat name="chance" val="50" />
 		<!-- stat name="unitTick" val="9" / -->
@@ -1686,7 +1686,7 @@
 		<node X="215764" Y="-111180" />
 		<node X="215564" Y="-111180" />
 	</zone>
-	<zone name="balakas_lava_34" type="EffectZone" shape="NPoly" minZ="-1616" maxZ="-1416"> <!-- [26_14] -->
+	<zone name="valakas_lava_34" type="EffectZone" shape="NPoly" minZ="-1616" maxZ="-1416"> <!-- [26_14] -->
 		<stat name="skillIdLvl" val="4150-7;" /> <!-- s_area_fire7 -->
 		<stat name="chance" val="50" />
 		<!-- stat name="unitTick" val="9" / -->
@@ -1698,7 +1698,7 @@
 		<node X="216268" Y="-112392" />
 		<node X="215684" Y="-112660" />
 	</zone>
-	<zone name="balakas_lava_35" type="EffectZone" shape="NPoly" minZ="-1480" maxZ="-1280"> <!-- [26_14] -->
+	<zone name="valakas_lava_35" type="EffectZone" shape="NPoly" minZ="-1480" maxZ="-1280"> <!-- [26_14] -->
 		<stat name="skillIdLvl" val="4150-7;" /> <!-- s_area_fire7 -->
 		<stat name="chance" val="50" />
 		<!-- stat name="unitTick" val="9" / -->
@@ -1711,7 +1711,7 @@
 		<node X="216148" Y="-113132" />
 		<node X="215996" Y="-113324" />
 	</zone>
-	<zone name="balakas_lava_36" type="EffectZone" shape="NPoly" minZ="-1520" maxZ="-1320"> <!-- [26_14] -->
+	<zone name="valakas_lava_36" type="EffectZone" shape="NPoly" minZ="-1520" maxZ="-1320"> <!-- [26_14] -->
 		<stat name="skillIdLvl" val="4150-7;" /> <!-- s_area_fire7 -->
 		<stat name="chance" val="50" />
 		<!-- stat name="unitTick" val="9" / -->
@@ -1726,7 +1726,7 @@
 		<node X="216364" Y="-114832" />
 		<node X="216068" Y="-114768" />
 	</zone>
-	<zone name="balakas_lava_37" type="EffectZone" shape="NPoly" minZ="-1568" maxZ="-1368"> <!-- [26_14] -->
+	<zone name="valakas_lava_37" type="EffectZone" shape="NPoly" minZ="-1568" maxZ="-1368"> <!-- [26_14] -->
 		<stat name="skillIdLvl" val="4150-7;" /> <!-- s_area_fire7 -->
 		<stat name="chance" val="50" />
 		<!-- stat name="unitTick" val="9" / -->
@@ -1738,7 +1738,7 @@
 		<node X="216592" Y="-115580" />
 		<node X="216032" Y="-115452" />
 	</zone>
-	<zone name="balakas_lava_38" type="EffectZone" shape="NPoly" minZ="-1444" maxZ="-1244"> <!-- [26_14] -->
+	<zone name="valakas_lava_38" type="EffectZone" shape="NPoly" minZ="-1444" maxZ="-1244"> <!-- [26_14] -->
 		<stat name="skillIdLvl" val="4150-7;" /> <!-- s_area_fire7 -->
 		<stat name="chance" val="50" />
 		<!-- stat name="unitTick" val="9" / -->
@@ -1752,7 +1752,7 @@
 		<node X="215600" Y="-117324" />
 		<node X="215692" Y="-117736" />
 	</zone>
-	<zone name="balakas_lava_39" type="EffectZone" shape="NPoly" minZ="-1448" maxZ="-1248"> <!-- [26_14] -->
+	<zone name="valakas_lava_39" type="EffectZone" shape="NPoly" minZ="-1448" maxZ="-1248"> <!-- [26_14] -->
 		<stat name="skillIdLvl" val="4150-7;" /> <!-- s_area_fire7 -->
 		<stat name="chance" val="50" />
 		<!-- stat name="unitTick" val="9" / -->
@@ -1765,7 +1765,7 @@
 		<node X="215204" Y="-117084" />
 		<node X="214744" Y="-117508" />
 	</zone>
-	<zone name="balakas_lava_40" type="EffectZone" shape="NPoly" minZ="-1516" maxZ="-1316"> <!-- [26_14] -->
+	<zone name="valakas_lava_40" type="EffectZone" shape="NPoly" minZ="-1516" maxZ="-1316"> <!-- [26_14] -->
 		<stat name="skillIdLvl" val="4150-7;" /> <!-- s_area_fire7 -->
 		<stat name="chance" val="50" />
 		<!-- stat name="unitTick" val="9" / -->
@@ -1777,7 +1777,7 @@
 		<node X="214484" Y="-117908" />
 		<node X="214188" Y="-118000" />
 	</zone>
-	<zone name="balakas_lava_41" type="EffectZone" shape="NPoly" minZ="-1508" maxZ="-1308"> <!-- [26_14] -->
+	<zone name="valakas_lava_41" type="EffectZone" shape="NPoly" minZ="-1508" maxZ="-1308"> <!-- [26_14] -->
 		<stat name="skillIdLvl" val="4150-7" /> <!-- s_area_fire7 -->
 		<stat name="chance" val="50" />
 		<!-- stat name="unitTick" val="9" / -->
@@ -1790,7 +1790,7 @@
 		<node X="213776" Y="-118092" />
 		<node X="213312" Y="-118056" />
 	</zone>
-	<zone name="balakas_lava_42" type="EffectZone" shape="NPoly" minZ="-1480" maxZ="-1280"> <!-- [26_14] -->
+	<zone name="valakas_lava_42" type="EffectZone" shape="NPoly" minZ="-1480" maxZ="-1280"> <!-- [26_14] -->
 		<stat name="skillIdLvl" val="4150-7;" /> <!-- s_area_fire7 -->
 		<stat name="chance" val="50" />
 		<!-- stat name="unitTick" val="9" / -->
@@ -1803,7 +1803,7 @@
 		<node X="213008" Y="-118204" />
 		<node X="212668" Y="-118300" />
 	</zone>
-	<zone name="balakas_lava_43" type="EffectZone" shape="NPoly" minZ="-1500" maxZ="-1300"> <!-- [26_14] -->
+	<zone name="valakas_lava_43" type="EffectZone" shape="NPoly" minZ="-1500" maxZ="-1300"> <!-- [26_14] -->
 		<stat name="skillIdLvl" val="4150-7;" /> <!-- s_area_fire7 -->
 		<stat name="chance" val="50" />
 		<!-- stat name="unitTick" val="9" / -->
@@ -1817,7 +1817,7 @@
 		<node X="211676" Y="-118104" />
 		<node X="211880" Y="-118132" />
 	</zone>
-	<zone name="balakas_lava_44" type="EffectZone" shape="NPoly" minZ="-1576" maxZ="-1376"> <!-- [26_14] -->
+	<zone name="valakas_lava_44" type="EffectZone" shape="NPoly" minZ="-1576" maxZ="-1376"> <!-- [26_14] -->
 		<stat name="skillIdLvl" val="4150-7;" /> <!-- s_area_fire7 -->
 		<stat name="chance" val="50" />
 		<!-- stat name="unitTick" val="9" / -->
@@ -1829,7 +1829,7 @@
 		<node X="210832" Y="-116852" />
 		<node X="210296" Y="-117456" />
 	</zone>
-	<zone name="balakas_lava_45" type="EffectZone" shape="NPoly" minZ="-1556" maxZ="-1356"> <!-- [26_14] -->
+	<zone name="valakas_lava_45" type="EffectZone" shape="NPoly" minZ="-1556" maxZ="-1356"> <!-- [26_14] -->
 		<stat name="skillIdLvl" val="4150-7;" /> <!-- s_area_fire7 -->
 		<stat name="chance" val="50" />
 		<!-- stat name="unitTick" val="9" / -->
@@ -1841,7 +1841,7 @@
 		<node X="210756" Y="-116432" />
 		<node X="210080" Y="-115704" />
 	</zone>
-	<zone name="balakas_lava_46" type="EffectZone" shape="NPoly" minZ="-1508" maxZ="-1308"> <!-- [26_14] -->
+	<zone name="valakas_lava_46" type="EffectZone" shape="NPoly" minZ="-1508" maxZ="-1308"> <!-- [26_14] -->
 		<stat name="skillIdLvl" val="4150-7;" /> <!-- s_area_fire7 -->
 		<stat name="chance" val="50" />
 		<!-- stat name="unitTick" val="9" / -->
@@ -1854,7 +1854,7 @@
 		<node X="209064" Y="-115396" />
 		<node X="209064" Y="-116060" />
 	</zone>
-	<zone name="balakas_lava_47" type="EffectZone" shape="NPoly" minZ="-1544" maxZ="-1344"> <!-- [26_14] -->
+	<zone name="valakas_lava_47" type="EffectZone" shape="NPoly" minZ="-1544" maxZ="-1344"> <!-- [26_14] -->
 		<stat name="skillIdLvl" val="4150-7;" /> <!-- s_area_fire7 -->
 		<stat name="chance" val="50" />
 		<!-- stat name="unitTick" val="9" / -->
@@ -1866,7 +1866,7 @@
 		<node X="209852" Y="-114156" />
 		<node X="209528" Y="-114576" />
 	</zone>
-	<zone name="balakas_lava_48" type="EffectZone" shape="NPoly" minZ="-1656" maxZ="-1456"> <!-- [26_14] -->
+	<zone name="valakas_lava_48" type="EffectZone" shape="NPoly" minZ="-1656" maxZ="-1456"> <!-- [26_14] -->
 		<stat name="skillIdLvl" val="4150-7;" /> <!-- s_area_fire7 -->
 		<stat name="chance" val="50" />
 		<!-- stat name="unitTick" val="9" / -->
@@ -1878,7 +1878,7 @@
 		<node X="209648" Y="-113588" />
 		<node X="209452" Y="-113708" />
 	</zone>
-	<zone name="balakas_lava_49" type="EffectZone" shape="NPoly" minZ="-1608" maxZ="-1408"> <!-- [26_14] -->
+	<zone name="valakas_lava_49" type="EffectZone" shape="NPoly" minZ="-1608" maxZ="-1408"> <!-- [26_14] -->
 		<stat name="skillIdLvl" val="4150-7;" /> <!-- s_area_fire7 -->
 		<stat name="chance" val="50" />
 		<!-- stat name="unitTick" val="9" / -->
@@ -1892,7 +1892,7 @@
 	</zone>
 	<!-- Valakas Nest Critical Lava -->
 	<zone name="godard11_2614_area_01" type="EffectZone" shape="NPoly" minZ="-1426" maxZ="-1226">
-		<stat name="skillIdLvl" val="5596-1;" /> <!-- s_area_critical_fire1 -->
+		<stat name="skillIdLvl" val="4150-12;" /> <!-- s_area_critical_fire1 -->
 		<stat name="chance" val="50" />
 		<!-- stat name="unitTick" val="9" / -->
 		<stat name="initialDelay" val="1000" />
@@ -1904,7 +1904,7 @@
 		<node X="210031" Y="-111287" />
 	</zone>
 	<zone name="godard11_2614_area_02" type="EffectZone" shape="NPoly" minZ="-1236" maxZ="-1036">
-		<stat name="skillIdLvl" val="5596-1;" /> <!-- s_area_critical_fire1 -->
+		<stat name="skillIdLvl" val="4150-12;" /> <!-- s_area_critical_fire1 -->
 		<stat name="chance" val="50" />
 		<!-- stat name="unitTick" val="9" / -->
 		<stat name="initialDelay" val="1000" />
@@ -1916,7 +1916,7 @@
 		<node X="209779" Y="-111464" />
 	</zone>
 	<zone name="godard11_2614_area_03" type="EffectZone" shape="NPoly" minZ="-1519" maxZ="-1319">
-		<stat name="skillIdLvl" val="5596-1;" /> <!-- s_area_critical_fire1 -->
+		<stat name="skillIdLvl" val="4150-12;" /> <!-- s_area_critical_fire1 -->
 		<stat name="chance" val="50" />
 		<!-- stat name="unitTick" val="9" / -->
 		<stat name="initialDelay" val="1000" />
@@ -1928,7 +1928,7 @@
 		<node X="208910" Y="-115598" />
 	</zone>
 	<zone name="godard11_2614_area_04" type="EffectZone" shape="NPoly" minZ="-1220" maxZ="-1020">
-		<stat name="skillIdLvl" val="5596-1;" /> <!-- s_area_critical_fire1 -->
+		<stat name="skillIdLvl" val="4150-12;" /> <!-- s_area_critical_fire1 -->
 		<stat name="chance" val="50" />
 		<!-- stat name="unitTick" val="9" / -->
 		<stat name="initialDelay" val="1000" />
@@ -1938,192 +1938,6 @@
 		<node X="209511" Y="-116247" />
 		<node X="209405" Y="-115798" />
 		<node X="209059" Y="-115803" />
-	</zone>
-	<!-- Effect zones for Tower of Naia -->
-	<!-- Poison Zone for Naia's door -->
-	<zone name="18_25_core_naia" id="200100" type="EffectZone" shape="NPoly" minZ="-14240" maxZ="-13340">
-		<stat name="chance" val="100" />
-		<stat name="default_enabled" val="false" />
-		<stat name="initialDelay" val="1000" />
-		<stat name="reuse" val="5000" />
-		<stat name="skillIdLvl" val="4148-12;" /> <!-- s_area_poison12 -->
-		<node X="-46980" Y="245979" />
-		<node X="-43925" Y="245982" />
-		<node X="-43925" Y="248990" />
-		<node X="-46986" Y="248990" />
-	</zone>
-	<zone name="18_25_naia_pillar_green" id="200101" type="EffectZone" shape="NPoly" minZ="-12440" maxZ="-12240">
-		<stat name="chance" val="100" />
-		<stat name="default_enabled" val="false" />
-		<stat name="initialDelay" val="1000" />
-		<stat name="reuse" val="10000" />
-		<stat name="skillIdLvl" val="4625-8;" /> <!-- s_area_slow8 -->
-		<node X="-45029" Y="247050" />
-		<node X="-45009" Y="247046" />
-		<node X="-45008" Y="247062" />
-		<node X="-45026" Y="247065" />
-	</zone>
-	<zone name="18_25_naia_pillar_red" id="200102" type="EffectZone" shape="NPoly" minZ="-12440" maxZ="-12240">
-		<stat name="chance" val="100" />
-		<stat name="default_enabled" val="true" />
-		<stat name="initialDelay" val="1000" />
-		<stat name="reuse" val="10000" />
-		<stat name="skillIdLvl" val="4625-8;" /> <!-- s_area_slow8 -->
-		<node X="-45029" Y="247050" />
-		<node X="-45009" Y="247046" />
-		<node X="-45008" Y="247062" />
-		<node X="-45026" Y="247065" />
-	</zone>
-	<!-- Stakato Nest Buff -->
-	<zone name="22_16_stakato_mob_buff" id="200103" type="EffectZone" shape="NPoly" minZ="-6368" maxZ="-3296">
-		<stat name="skillIdLvl" val="6170-1;" /> <!-- s_area_stakato_nest_fury -->
-		<stat name="chance" val="100" />
-		<!-- stat name="unitTick" val="90" / -->
-		<stat name="targetClass" val="Npc" />
-		<stat name="default_enabled" val="false" />
-		<stat name="reuse" val="3000" /> <!-- Guess -->
-		<stat name="showDangerIcon" val="false" /> <!-- Guess -->
-		<node X="73945" Y="-57263" />
-		<node X="90046" Y="-57259" />
-		<node X="89999" Y="-41698" />
-		<node X="73982" Y="-41655" />
-	</zone>
-	<zone name="22_16_stakato_mob_buff_display" id="200104" type="EffectZone" shape="NPoly" minZ="-6368" maxZ="-3296">
-		<stat name="skillIdLvl" val="6169-1;" /> <!-- s_area_stakato_nest_fury_for_pc -->
-		<stat name="chance" val="100" />
-		<!-- stat name="unitTick" val="90" / -->
-		<stat name="default_enabled" val="false" />
-		<stat name="reuse" val="3000" /> <!-- Guess -->
-		<stat name="showDangerIcon" val="false" /> <!-- Guess -->
-		<node X="73945" Y="-57263" />
-		<node X="90046" Y="-57259" />
-		<node X="89999" Y="-41698" />
-		<node X="73982" Y="-41655" />
-	</zone>
-	<zone name="22_16_stakato_pc_buff" id="200105" type="EffectZone" shape="NPoly" minZ="-6368" maxZ="-3296">
-		<stat name="skillIdLvl" val="6171-1;" /> <!-- s_area_stakato_nest_replete_power -->
-		<stat name="chance" val="100" />
-		<!-- stat name="unitTick" val="90" / -->
-		<stat name="default_enabled" val="false" />
-		<stat name="reuse" val="3000" /> <!-- Guess -->
-		<stat name="showDangerIcon" val="false" /> <!-- Guess -->
-		<node X="73945" Y="-57263" />
-		<node X="90046" Y="-57259" />
-		<node X="89999" Y="-41698" />
-		<node X="73982" Y="-41655" />
-	</zone>
-	<!-- Primeval Isle - Lost Nest (Recharge Buff) -->
-	<zone name="20_17_ancient_tree_1" type="EffectZone" shape="NPoly" minZ="-3160" maxZ="-2660">
-		<stat name="skillIdLvl" val="5621-9;" /> <!-- s_area_recharge9 -->
-		<stat name="chance" val="100" />
-		<!-- stat name="unitTick" val="5" / -->
-		<stat name="initialDelay" val="1000" />
-		<stat name="default_enabled" val="true" />
-		<stat name="reuse" val="5000" /> <!-- Guess -->
-		<node X="20481" Y="-17577" />
-		<node X="21868" Y="-17768" />
-		<node X="22728" Y="-16287" />
-		<node X="21422" Y="-15075" />
-		<node X="20282" Y="-15490" />
-		<node X="19965" Y="-16508" />
-	</zone>
-	<zone name="20_17_ancient_tree_2" type="EffectZone" shape="NPoly" minZ="-3296" maxZ="-2596">
-		<stat name="skillIdLvl" val="5621-9;" /> <!-- s_area_recharge9 -->
-		<stat name="chance" val="100" />
-		<!-- stat name="unitTick" val="5" / -->
-		<stat name="initialDelay" val="1000" />
-		<stat name="default_enabled" val="true" />
-		<stat name="reuse" val="5000" /> <!-- Guess -->
-		<node X="16927" Y="-20305" />
-		<node X="18216" Y="-19597" />
-		<node X="18131" Y="-18320" />
-		<node X="17290" Y="-17980" />
-		<node X="16457" Y="-18612" />
-		<node X="16310" Y="-19917" />
-	</zone>
-	<zone name="20_17_ancient_tree_3" type="EffectZone" shape="NPoly" minZ="-3320" maxZ="-2620">
-		<stat name="skillIdLvl" val="5621-9;" /> <!-- s_area_recharge9 -->
-		<stat name="chance" val="100" />
-		<!-- stat name="unitTick" val="5" / -->
-		<stat name="initialDelay" val="1000" />
-		<stat name="default_enabled" val="true" />
-		<stat name="reuse" val="5000" /> <!-- Guess -->
-		<node X="14312" Y="-17248" />
-		<node X="15048" Y="-16780" />
-		<node X="15348" Y="-16056" />
-		<node X="15140" Y="-15352" />
-		<node X="14212" Y="-15048" />
-		<node X="13584" Y="-15512" />
-	</zone>
-	<zone name="20_17_ancient_tree_4" type="EffectZone" shape="NPoly" minZ="-2992" maxZ="-2292">
-		<stat name="skillIdLvl" val="5621-9;" /> <!-- s_area_recharge9 -->
-		<stat name="chance" val="100" />
-		<!-- stat name="unitTick" val="5" / -->
-		<stat name="initialDelay" val="1000" />
-		<stat name="default_enabled" val="true" />
-		<stat name="reuse" val="5000" /> <!-- Guess -->
-		<node X="18804" Y="-10888" />
-		<node X="19520" Y="-10108" />
-		<node X="18924" Y="-9308" />
-		<node X="17628" Y="-9444" />
-		<node X="17480" Y="-10268" />
-		<node X="18000" Y="-10884" />
-	</zone>
-	<zone name="20_17_ancient_tree_5" type="EffectZone" shape="NPoly" minZ="-3084" maxZ="-2384">
-		<stat name="skillIdLvl" val="5621-9;" /> <!-- s_area_recharge9 -->
-		<stat name="chance" val="100" />
-		<!-- stat name="unitTick" val="5" / -->
-		<stat name="initialDelay" val="1000" />
-		<stat name="default_enabled" val="true" />
-		<stat name="reuse" val="5000" /> <!-- Guess -->
-		<node X="20096" Y="-13772" />
-		<node X="20812" Y="-12992" />
-		<node X="20216" Y="-12192" />
-		<node X="18920" Y="-12328" />
-		<node X="18772" Y="-13152" />
-		<node X="19292" Y="-13768" />
-	</zone>
-	<zone name="20_17_ancient_tree_6" type="EffectZone" shape="NPoly" minZ="-2616" maxZ="-1916">
-		<stat name="skillIdLvl" val="5621-9;" /> <!-- s_area_recharge9 -->
-		<stat name="chance" val="100" />
-		<!-- stat name="unitTick" val="5" / -->
-		<stat name="initialDelay" val="1000" />
-		<stat name="default_enabled" val="true" />
-		<stat name="reuse" val="5000" /> <!-- Guess -->
-		<node X="24012" Y="-13092" />
-		<node X="24476" Y="-12324" />
-		<node X="24132" Y="-11512" />
-		<node X="22836" Y="-11648" />
-		<node X="22688" Y="-12472" />
-		<node X="23208" Y="-13088" />
-	</zone>
-	<zone name="20_17_ancient_tree_7" type="EffectZone" shape="NPoly" minZ="-2888" maxZ="-2188">
-		<stat name="skillIdLvl" val="5621-9;" /> <!-- s_area_recharge9 -->
-		<stat name="chance" val="100" />
-		<!-- stat name="unitTick" val="5" / -->
-		<stat name="initialDelay" val="1000" />
-		<stat name="default_enabled" val="true" />
-		<stat name="reuse" val="5000" /> <!-- Guess -->
-		<node X="23608" Y="-19512" />
-		<node X="23736" Y="-18792" />
-		<node X="23236" Y="-18164" />
-		<node X="22700" Y="-18300" />
-		<node X="22552" Y="-19124" />
-		<node X="23072" Y="-19740" />
-	</zone>
-	<zone name="20_17_ancient_tree_8" type="EffectZone" shape="NPoly" minZ="-2856" maxZ="-2156">
-		<stat name="skillIdLvl" val="5621-9;" /> <!-- s_area_recharge9 -->
-		<stat name="chance" val="100" />
-		<!-- stat name="unitTick" val="5" / -->
-		<stat name="initialDelay" val="1000" />
-		<stat name="default_enabled" val="true" />
-		<stat name="reuse" val="5000" /> <!-- Guess -->
-		<node X="27128" Y="-15708" />
-		<node X="27592" Y="-14940" />
-		<node X="27248" Y="-14128" />
-		<node X="25952" Y="-14264" />
-		<node X="25804" Y="-15088" />
-		<node X="26324" Y="-15704" />
 	</zone>
 	<zone name="Queen Ant Curse Zone" type="EffectZone" shape="NPoly" minZ="-5947" maxZ="-5547"> <!-- Custom -->
 		<stat name="affectedLvlMin" val="50" />

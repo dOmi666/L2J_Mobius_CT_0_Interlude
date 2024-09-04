@@ -16,15 +16,12 @@
  */
 package quests.Q00080_SagaOfTheWindRider;
 
-import org.l2jmobius.gameserver.model.Location;
-
-import quests.AbstractSagaQuest;
+import quests.SagasSuperClass;
 
 /**
- * Saga of the Wind Rider (80)
  * @author Emperorc
  */
-public class Q00080_SagaOfTheWindRider extends AbstractSagaQuest
+public class Q00080_SagaOfTheWindRider extends SagasSuperClass
 {
 	public Q00080_SagaOfTheWindRider()
 	{
@@ -73,11 +70,23 @@ public class Q00080_SagaOfTheWindRider extends AbstractSagaQuest
 		{
 			0x17
 		};
-		_npcSpawnLocations = new Location[]
+		_x = new int[]
 		{
-			new Location(161719, -92823, -1893),
-			new Location(124314, 82155, -2803),
-			new Location(124355, 82155, -2803)
+			161719,
+			124314,
+			124355
+		};
+		_y = new int[]
+		{
+			-92823,
+			82155,
+			82155
+		};
+		_z = new int[]
+		{
+			-1893,
+			-2803,
+			-2803
 		};
 		_text = new String[]
 		{

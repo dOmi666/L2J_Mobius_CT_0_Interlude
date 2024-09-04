@@ -16,6 +16,7 @@
  */
 package quests.Q00246_PossessorOfAPreciousSoul3;
 
+import org.l2jmobius.Config;
 import org.l2jmobius.commons.util.Rnd;
 import org.l2jmobius.gameserver.enums.QuestSound;
 import org.l2jmobius.gameserver.model.actor.Npc;
@@ -62,7 +63,7 @@ public class Q00246_PossessorOfAPreciousSoul3 extends Quest
 	}
 	
 	@Override
-	public String onAdvEvent(String event, Npc npc, Player player)
+	public String onEvent(String event, Npc npc, Player player)
 	{
 		String htmltext = event;
 		final QuestState st = player.getQuestState(getName());
@@ -240,6 +241,11 @@ public class Q00246_PossessorOfAPreciousSoul3 extends Quest
 			{
 				for (Player member : player.getParty().getMembers())
 				{
+					if (member.calculateDistance3D(npc) > Config.ALT_PARTY_RANGE)
+					{
+						continue;
+					}
+					
 					pst = member.getQuestState(getName());
 					if ((pst != null) && pst.isCond(4) && !hasQuestItems(member, RAIN_SONG))
 					{
@@ -283,7 +289,7 @@ public class Q00246_PossessorOfAPreciousSoul3 extends Quest
 					}
 					else
 					{
-						st.setCond(3);
+						st.setCond(3, true);
 					}
 				}
 			}

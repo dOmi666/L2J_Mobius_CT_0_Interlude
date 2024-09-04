@@ -26,7 +26,7 @@ import java.util.concurrent.ConcurrentHashMap;
 import java.util.logging.Logger;
 
 import org.l2jmobius.Config;
-import org.l2jmobius.gameserver.data.ItemTable;
+import org.l2jmobius.gameserver.data.xml.ItemData;
 import org.l2jmobius.gameserver.model.actor.Player;
 import org.l2jmobius.gameserver.model.item.ItemTemplate;
 import org.l2jmobius.gameserver.model.item.instance.Item;
@@ -244,7 +244,7 @@ public class TradeList
 			return null;
 		}
 		
-		final ItemTemplate item = ItemTable.getInstance().getTemplate(itemId);
+		final ItemTemplate item = ItemData.getInstance().getTemplate(itemId);
 		if (item == null)
 		{
 			LOGGER.warning(_owner.getName() + ": Attempt to add invalid item to TradeList!");
@@ -523,7 +523,7 @@ public class TradeList
 			{
 				continue;
 			}
-			final ItemTemplate template = ItemTable.getInstance().getTemplate(item.getItem().getId());
+			final ItemTemplate template = ItemData.getInstance().getTemplate(item.getItem().getId());
 			if (template == null)
 			{
 				continue;
@@ -552,7 +552,7 @@ public class TradeList
 			{
 				continue;
 			}
-			final ItemTemplate template = ItemTable.getInstance().getTemplate(item.getItem().getId());
+			final ItemTemplate template = ItemData.getInstance().getTemplate(item.getItem().getId());
 			if (template == null)
 			{
 				continue;
@@ -590,8 +590,8 @@ public class TradeList
 			// Transfer items
 			partnerList.TransferItems(_owner, partnerIU, ownerIU);
 			TransferItems(partnerList.getOwner(), ownerIU, partnerIU);
-			_owner.sendPacket(ownerIU);
-			_partner.sendPacket(partnerIU);
+			_owner.sendInventoryUpdate(ownerIU);
+			_partner.sendInventoryUpdate(partnerIU);
 			
 			// Update current load as well
 			StatusUpdate playerSU = new StatusUpdate(_owner);
@@ -695,7 +695,7 @@ public class TradeList
 				return 2;
 			}
 			
-			final ItemTemplate template = ItemTable.getInstance().getTemplate(item.getItemId());
+			final ItemTemplate template = ItemData.getInstance().getTemplate(item.getItemId());
 			if (template == null)
 			{
 				continue;
@@ -792,23 +792,23 @@ public class TradeList
 			SystemMessage msg;
 			if (newItem.isStackable())
 			{
-				msg = new SystemMessage(SystemMessageId.C1_PURCHASED_S3_S2_S);
+				msg = new SystemMessage(SystemMessageId.S1_PURCHASED_S3_S2_S);
 				msg.addString(player.getName());
 				msg.addItemName(newItem);
 				msg.addInt(item.getCount());
 				_owner.sendPacket(msg);
-				msg = new SystemMessage(SystemMessageId.YOU_HAVE_PURCHASED_S3_S2_S_FROM_C1);
+				msg = new SystemMessage(SystemMessageId.YOU_HAVE_PURCHASED_S3_S2_S_FROM_S1);
 				msg.addString(_owner.getName());
 				msg.addItemName(newItem);
 				msg.addInt(item.getCount());
 			}
 			else
 			{
-				msg = new SystemMessage(SystemMessageId.C1_PURCHASED_S2);
+				msg = new SystemMessage(SystemMessageId.S1_PURCHASED_S2);
 				msg.addString(player.getName());
 				msg.addItemName(newItem);
 				_owner.sendPacket(msg);
-				msg = new SystemMessage(SystemMessageId.YOU_HAVE_PURCHASED_S2_FROM_C1);
+				msg = new SystemMessage(SystemMessageId.YOU_HAVE_PURCHASED_S2_FROM_S1);
 				msg.addString(_owner.getName());
 				msg.addItemName(newItem);
 			}
@@ -816,8 +816,8 @@ public class TradeList
 		}
 		
 		// Send inventory update packet
-		_owner.sendPacket(ownerIU);
-		player.sendPacket(playerIU);
+		_owner.sendInventoryUpdate(ownerIU);
+		player.sendInventoryUpdate(playerIU);
 		return ok ? 0 : 2;
 	}
 	
@@ -956,23 +956,23 @@ public class TradeList
 			SystemMessage msg;
 			if (newItem.isStackable())
 			{
-				msg = new SystemMessage(SystemMessageId.YOU_HAVE_PURCHASED_S3_S2_S_FROM_C1);
+				msg = new SystemMessage(SystemMessageId.YOU_HAVE_PURCHASED_S3_S2_S_FROM_S1);
 				msg.addString(player.getName());
 				msg.addItemName(newItem);
 				msg.addInt(item.getCount());
 				_owner.sendPacket(msg);
-				msg = new SystemMessage(SystemMessageId.C1_PURCHASED_S3_S2_S);
+				msg = new SystemMessage(SystemMessageId.S1_PURCHASED_S3_S2_S);
 				msg.addString(_owner.getName());
 				msg.addItemName(newItem);
 				msg.addInt(item.getCount());
 			}
 			else
 			{
-				msg = new SystemMessage(SystemMessageId.YOU_HAVE_PURCHASED_S2_FROM_C1);
+				msg = new SystemMessage(SystemMessageId.YOU_HAVE_PURCHASED_S2_FROM_S1);
 				msg.addString(player.getName());
 				msg.addItemName(newItem);
 				_owner.sendPacket(msg);
-				msg = new SystemMessage(SystemMessageId.C1_PURCHASED_S2);
+				msg = new SystemMessage(SystemMessageId.S1_PURCHASED_S2);
 				msg.addString(_owner.getName());
 				msg.addItemName(newItem);
 			}
@@ -997,8 +997,8 @@ public class TradeList
 		if (ok)
 		{
 			// Send inventory update packet
-			_owner.sendPacket(ownerIU);
-			player.sendPacket(playerIU);
+			_owner.sendInventoryUpdate(ownerIU);
+			player.sendInventoryUpdate(playerIU);
 		}
 		return ok;
 	}

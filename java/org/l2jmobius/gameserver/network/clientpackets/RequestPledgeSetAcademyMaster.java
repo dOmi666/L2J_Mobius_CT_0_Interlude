@@ -16,12 +16,10 @@
  */
 package org.l2jmobius.gameserver.network.clientpackets;
 
-import org.l2jmobius.commons.network.ReadablePacket;
 import org.l2jmobius.gameserver.model.actor.Player;
 import org.l2jmobius.gameserver.model.clan.Clan;
 import org.l2jmobius.gameserver.model.clan.ClanMember;
 import org.l2jmobius.gameserver.model.clan.ClanPrivilege;
-import org.l2jmobius.gameserver.network.GameClient;
 import org.l2jmobius.gameserver.network.SystemMessageId;
 import org.l2jmobius.gameserver.network.serverpackets.SystemMessage;
 
@@ -29,24 +27,24 @@ import org.l2jmobius.gameserver.network.serverpackets.SystemMessage;
  * Format: (ch) dSS
  * @author -Wooden-
  */
-public class RequestPledgeSetAcademyMaster implements ClientPacket
+public class RequestPledgeSetAcademyMaster extends ClientPacket
 {
 	private String _currPlayerName;
 	private int _set; // 1 set, 0 delete
 	private String _targetPlayerName;
 	
 	@Override
-	public void read(ReadablePacket packet)
+	protected void readImpl()
 	{
-		_set = packet.readInt();
-		_currPlayerName = packet.readString();
-		_targetPlayerName = packet.readString();
+		_set = readInt();
+		_currPlayerName = readString();
+		_targetPlayerName = readString();
 	}
 	
 	@Override
-	public void run(GameClient client)
+	protected void runImpl()
 	{
-		final Player player = client.getPlayer();
+		final Player player = getPlayer();
 		final Clan clan = player.getClan();
 		if (clan == null)
 		{
@@ -105,7 +103,7 @@ public class RequestPledgeSetAcademyMaster implements ClientPacket
 			
 			apprenticeMember.saveApprenticeAndSponsor(0, 0);
 			sponsorMember.saveApprenticeAndSponsor(0, 0);
-			sm = new SystemMessage(SystemMessageId.S2_CLAN_MEMBER_C1_S_APPRENTICE_HAS_BEEN_REMOVED);
+			sm = new SystemMessage(SystemMessageId.S2_CLAN_MEMBER_S1_S_APPRENTICE_HAS_BEEN_REMOVED);
 		}
 		else
 		{

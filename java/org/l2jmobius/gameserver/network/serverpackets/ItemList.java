@@ -18,8 +18,10 @@ package org.l2jmobius.gameserver.network.serverpackets;
 
 import java.util.Collection;
 
+import org.l2jmobius.commons.network.WritableBuffer;
 import org.l2jmobius.gameserver.model.actor.Player;
 import org.l2jmobius.gameserver.model.item.instance.Item;
+import org.l2jmobius.gameserver.network.GameClient;
 import org.l2jmobius.gameserver.network.ServerPackets;
 
 public class ItemList extends AbstractItemPacket
@@ -34,14 +36,14 @@ public class ItemList extends AbstractItemPacket
 	}
 	
 	@Override
-	public void write()
+	public void writeImpl(GameClient client, WritableBuffer buffer)
 	{
-		ServerPackets.ITEM_LIST.writeId(this);
-		writeShort(_showWindow);
-		writeShort(_items.size());
+		ServerPackets.ITEM_LIST.writeId(this, buffer);
+		buffer.writeShort(_showWindow);
+		buffer.writeShort(_items.size());
 		for (Item item : _items)
 		{
-			writeItem(item);
+			writeItem(item, buffer);
 		}
 	}
 }

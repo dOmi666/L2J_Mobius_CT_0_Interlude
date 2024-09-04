@@ -34,7 +34,7 @@ import java.util.logging.Logger;
 import org.l2jmobius.Config;
 import org.l2jmobius.commons.util.Rnd;
 import org.l2jmobius.gameserver.ai.CtrlIntention;
-import org.l2jmobius.gameserver.data.ItemTable;
+import org.l2jmobius.gameserver.data.xml.ItemData;
 import org.l2jmobius.gameserver.data.xml.NpcData;
 import org.l2jmobius.gameserver.enums.QuestSound;
 import org.l2jmobius.gameserver.instancemanager.CastleManager;
@@ -42,6 +42,7 @@ import org.l2jmobius.gameserver.instancemanager.PcCafePointsManager;
 import org.l2jmobius.gameserver.instancemanager.ZoneManager;
 import org.l2jmobius.gameserver.model.Location;
 import org.l2jmobius.gameserver.model.Spawn;
+import org.l2jmobius.gameserver.model.StatSet;
 import org.l2jmobius.gameserver.model.actor.Attackable;
 import org.l2jmobius.gameserver.model.actor.Creature;
 import org.l2jmobius.gameserver.model.actor.Npc;
@@ -101,6 +102,9 @@ import org.l2jmobius.gameserver.model.events.listeners.FunctionEventListener;
 import org.l2jmobius.gameserver.model.events.listeners.RunnableEventListener;
 import org.l2jmobius.gameserver.model.events.returns.AbstractEventReturn;
 import org.l2jmobius.gameserver.model.events.returns.TerminateReturn;
+import org.l2jmobius.gameserver.model.events.timers.IEventTimerCancel;
+import org.l2jmobius.gameserver.model.events.timers.IEventTimerEvent;
+import org.l2jmobius.gameserver.model.events.timers.TimerHolder;
 import org.l2jmobius.gameserver.model.holders.ItemHolder;
 import org.l2jmobius.gameserver.model.holders.SkillHolder;
 import org.l2jmobius.gameserver.model.interfaces.IPositionable;
@@ -130,15 +134,60 @@ import org.l2jmobius.gameserver.util.MinionList;
 /**
  * @author UnAfraid
  */
-public abstract class AbstractScript extends ManagedScript
+public abstract class AbstractScript extends ManagedScript implements IEventTimerEvent<String>, IEventTimerCancel<String>
 {
 	public static final Logger LOGGER = Logger.getLogger(AbstractScript.class.getName());
 	private final Map<ListenerRegisterType, Set<Integer>> _registeredIds = new ConcurrentHashMap<>();
 	private final Collection<AbstractEventListener> _listeners = ConcurrentHashMap.newKeySet();
+	private TimerExecutor<String> _timerExecutor;
 	
 	public AbstractScript()
 	{
 		initializeAnnotationListeners();
+	}
+	
+	@Override
+	public void onTimerEvent(TimerHolder<String> holder)
+	{
+		onTimerEvent(holder.getEvent(), holder.getParams(), holder.getNpc(), holder.getPlayer());
+	}
+	
+	@Override
+	public void onTimerCancel(TimerHolder<String> holder)
+	{
+		onTimerCancel(holder.getEvent(), holder.getParams(), holder.getNpc(), holder.getPlayer());
+	}
+	
+	public void onTimerEvent(String event, StatSet params, Npc npc, Player player)
+	{
+		LOGGER.warning("[" + getClass().getSimpleName() + "]: Timer event arrived at non overriden onTimerEvent method event: " + event + " npc: " + npc + " player: " + player);
+	}
+	
+	public void onTimerCancel(String event, StatSet params, Npc npc, Player player)
+	{
+	}
+	
+	/**
+	 * @return the {@link TimerExecutor} object that manages timers
+	 */
+	public TimerExecutor<String> getTimers()
+	{
+		if (_timerExecutor == null)
+		{
+			synchronized (this)
+			{
+				if (_timerExecutor == null)
+				{
+					_timerExecutor = new TimerExecutor<>(this, this);
+				}
+			}
+		}
+		return _timerExecutor;
+	}
+	
+	public boolean hasTimers()
+	{
+		return _timerExecutor != null;
 	}
 	
 	private void initializeAnnotationListeners()
@@ -291,6 +340,10 @@ public abstract class AbstractScript extends ManagedScript
 	{
 		_listeners.forEach(AbstractEventListener::unregisterMe);
 		_listeners.clear();
+		if (_timerExecutor != null)
+		{
+			_timerExecutor.cancelAllTimers();
+		}
 		return true;
 	}
 	
@@ -1417,7 +1470,7 @@ public abstract class AbstractScript extends ManagedScript
 					}
 					case ITEM:
 					{
-						final ItemTemplate template = ItemTable.getInstance().getTemplate(id);
+						final ItemTemplate template = ItemData.getInstance().getTemplate(id);
 						if (template != null)
 						{
 							listeners.add(template.addListener(action.apply(template)));
@@ -1520,7 +1573,7 @@ public abstract class AbstractScript extends ManagedScript
 					}
 					case ITEM:
 					{
-						final ItemTemplate template = ItemTable.getInstance().getTemplate(id);
+						final ItemTemplate template = ItemData.getInstance().getTemplate(id);
 						if (template != null)
 						{
 							listeners.add(template.addListener(action.apply(template)));
@@ -2186,7 +2239,7 @@ public abstract class AbstractScript extends ManagedScript
 			return;
 		}
 		
-		final ItemTemplate item = ItemTable.getInstance().getTemplate(itemId);
+		final ItemTemplate item = ItemData.getInstance().getTemplate(itemId);
 		if (item == null)
 		{
 			return;
@@ -2496,7 +2549,7 @@ public abstract class AbstractScript extends ManagedScript
 			{
 				iu.addModifiedItem(itm);
 			}
-			player.sendPacket(iu);
+			player.sendInventoryUpdate(iu);
 			player.broadcastUserInfo();
 		}
 		return player.destroyItemByItemId("Quest", item.getId(), toDelete, player, true);
@@ -2622,6 +2675,29 @@ public abstract class AbstractScript extends ManagedScript
 	 * @return a random integer number from {@code min} to {@code max}
 	 */
 	public static int getRandom(int min, int max)
+	{
+		return Rnd.get(min, max);
+	}
+	
+	/**
+	 * Get a random long from 0 (inclusive) to {@code max} (exclusive).<br>
+	 * Use this method instead of importing {@link org.l2jmobius.commons.util.Rnd} utility.
+	 * @param max the maximum value for randomization
+	 * @return a random long number from 0 to {@code max - 1}
+	 */
+	public static long getRandom(long max)
+	{
+		return Rnd.get(max);
+	}
+	
+	/**
+	 * Get a random long from {@code min} (inclusive) to {@code max} (inclusive).<br>
+	 * Use this method instead of importing {@link org.l2jmobius.commons.util.Rnd} utility.
+	 * @param min the minimum value for randomization
+	 * @param max the maximum value for randomization
+	 * @return a random long number from {@code min} to {@code max}
+	 */
+	public static long getRandom(long min, long max)
 	{
 		return Rnd.get(min, max);
 	}

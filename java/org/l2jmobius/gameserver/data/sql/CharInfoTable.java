@@ -212,6 +212,28 @@ public class CharInfoTable
 		return 0;
 	}
 	
+	public int accountCharNumber(String account)
+	{
+		int number = 0;
+		try (Connection con = DatabaseFactory.getConnection();
+			PreparedStatement statement = con.prepareStatement("SELECT COUNT(char_name) FROM characters WHERE account_name=?"))
+		{
+			statement.setString(1, account);
+			try (ResultSet rset = statement.executeQuery())
+			{
+				if (rset.next())
+				{
+					number = rset.getInt(1);
+				}
+			}
+		}
+		catch (SQLException e)
+		{
+			LOGGER.log(Level.WARNING, "Couldn't check existing char number: " + e.getMessage(), e);
+		}
+		return number;
+	}
+	
 	public static CharInfoTable getInstance()
 	{
 		return SingletonHolder.INSTANCE;

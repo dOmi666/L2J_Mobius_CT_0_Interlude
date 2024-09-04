@@ -16,143 +16,130 @@
  */
 package quests.Q00644_GraveRobberAnnihilation;
 
-import java.util.HashMap;
-import java.util.Map;
-
+import org.l2jmobius.gameserver.enums.QuestSound;
 import org.l2jmobius.gameserver.model.actor.Npc;
 import org.l2jmobius.gameserver.model.actor.Player;
-import org.l2jmobius.gameserver.model.holders.ItemHolder;
 import org.l2jmobius.gameserver.model.quest.Quest;
 import org.l2jmobius.gameserver.model.quest.QuestState;
 import org.l2jmobius.gameserver.model.quest.State;
+import org.l2jmobius.gameserver.util.Util;
 
-/**
- * Grave Robber Annihilation (644)
- * @author netvirus
- */
 public class Q00644_GraveRobberAnnihilation extends Quest
 {
 	// NPC
 	private static final int KARUDA = 32017;
 	// Item
-	private static final int ORC_GOODS = 8088;
-	// Misc
-	private static final int MIN_LEVEL = 20;
-	private static final int ORC_GOODS_REQUIRED_COUNT = 120;
-	// Monsters
-	private static final Map<Integer, Double> MONSTER_DROP_CHANCES = new HashMap<>();
+	private static final int ORC_GRAVE_GOODS = 8088;
 	// Rewards
-	private static final Map<String, ItemHolder> REWARDS = new HashMap<>();
-	static
+	private static final int[][] REWARDS =
 	{
-		MONSTER_DROP_CHANCES.put(22003, 0.714); // Grave Robber Scout
-		MONSTER_DROP_CHANCES.put(22004, 0.841); // Grave Robber Lookout
-		MONSTER_DROP_CHANCES.put(22005, 0.778); // Grave Robber Ranger
-		MONSTER_DROP_CHANCES.put(22006, 0.746); // Grave Robber Guard
-		MONSTER_DROP_CHANCES.put(22008, 0.810); // Grave Robber Fighter
-		
-		REWARDS.put("varnish", new ItemHolder(1865, 30)); // Varnish
-		REWARDS.put("animalskin", new ItemHolder(1867, 40)); // Animal Skin
-		REWARDS.put("animalbone", new ItemHolder(1872, 40)); // Animal Bone
-		REWARDS.put("charcoal", new ItemHolder(1871, 30)); // Charcoal
-		REWARDS.put("coal", new ItemHolder(1870, 30)); // Coal
-		REWARDS.put("ironore", new ItemHolder(1869, 30)); // Iron Ore
-	}
+		// @formatter:off
+		{1865, 30},
+		{1867, 40},
+		{1872, 40},
+		{1871, 30},
+		{1870, 30},
+		{1869, 30}
+		// @formatter:on
+	};
 	
 	public Q00644_GraveRobberAnnihilation()
 	{
 		super(644);
+		registerQuestItems(ORC_GRAVE_GOODS);
 		addStartNpc(KARUDA);
 		addTalkId(KARUDA);
-		addKillId(MONSTER_DROP_CHANCES.keySet());
-		registerQuestItems(ORC_GOODS);
+		addKillId(22003, 22004, 22005, 22006, 22008);
 	}
 	
 	@Override
-	public String onAdvEvent(String event, Npc npc, Player player)
+	public String onEvent(String event, Npc npc, Player player)
 	{
-		final QuestState qs = getQuestState(player, false);
-		String htmltext = null;
-		if (qs == null)
+		String htmltext = event;
+		final QuestState st = getQuestState(player, false);
+		if (st == null)
 		{
 			return htmltext;
 		}
 		
-		switch (event)
+		if (event.equals("32017-02.htm"))
 		{
-			case "32017-03.htm":
-			{
-				if (qs.isCreated())
-				{
-					qs.startQuest();
-					htmltext = event;
-				}
-				break;
-			}
-			case "32017-06.html":
-			{
-				if (qs.isCond(2) && (getQuestItemsCount(player, ORC_GOODS) >= ORC_GOODS_REQUIRED_COUNT))
-				{
-					htmltext = event;
-				}
-				break;
-			}
-			case "varnish":
-			case "animalskin":
-			case "animalbone":
-			case "charcoal":
-			case "coal":
-			case "ironore":
-			{
-				if (qs.isCond(2))
-				{
-					final ItemHolder reward = REWARDS.get(event);
-					rewardItems(player, reward.getId(), reward.getCount());
-					qs.exitQuest(true, true);
-					htmltext = "32017-07.html";
-				}
-				break;
-			}
+			st.startQuest();
 		}
+		else if (Util.isDigit(event))
+		{
+			htmltext = "32017-04.htm";
+			takeItems(player, ORC_GRAVE_GOODS, -1);
+			
+			final int[] reward = REWARDS[Integer.parseInt(event)];
+			rewardItems(player, reward[0], reward[1]);
+			
+			st.exitQuest(true, true);
+		}
+		
 		return htmltext;
-	}
-	
-	@Override
-	public String onKill(Npc npc, Player killer, boolean isSummon)
-	{
-		final QuestState qs = getRandomPartyMemberState(killer, 1, 3, npc);
-		if ((qs != null) && giveItemRandomly(killer, npc, ORC_GOODS, 1, ORC_GOODS_REQUIRED_COUNT, MONSTER_DROP_CHANCES.get(npc.getId()), true))
-		{
-			qs.setCond(2, true);
-		}
-		return super.onKill(npc, killer, isSummon);
 	}
 	
 	@Override
 	public String onTalk(Npc npc, Player player)
 	{
-		final QuestState qs = getQuestState(player, true);
 		String htmltext = getNoQuestMsg(player);
-		switch (qs.getState())
+		final QuestState st = getQuestState(player, true);
+		
+		switch (st.getState())
 		{
 			case State.CREATED:
 			{
-				htmltext = ((player.getLevel() >= MIN_LEVEL) ? "32017-01.htm" : "32017-02.htm");
+				htmltext = (player.getLevel() < 20) ? "32017-06.htm" : "32017-01.htm";
 				break;
 			}
 			case State.STARTED:
 			{
-				if (qs.isCond(2) && (getQuestItemsCount(player, ORC_GOODS) >= ORC_GOODS_REQUIRED_COUNT))
+				final int cond = st.getCond();
+				if (cond == 1)
 				{
-					htmltext = "32017-04.html";
+					htmltext = "32017-05.htm";
 				}
-				else
+				else if (cond == 2)
 				{
-					htmltext = "32017-05.html";
+					htmltext = "32017-07.htm";
 				}
 				break;
 			}
 		}
+		
 		return htmltext;
+	}
+	
+	@Override
+	public String onKill(Npc npc, Player player, boolean isPet)
+	{
+		final QuestState qs = getRandomPartyMemberState(player, 1, 3, npc);
+		if (qs == null)
+		{
+			return null;
+		}
+		final Player partyMember = qs.getPlayer();
+		
+		final QuestState st = getQuestState(partyMember, false);
+		if (st == null)
+		{
+			return null;
+		}
+		
+		if (getRandomBoolean())
+		{
+			giveItems(partyMember, ORC_GRAVE_GOODS, 1);
+			if (getQuestItemsCount(partyMember, ORC_GRAVE_GOODS) < 120)
+			{
+				playSound(partyMember, QuestSound.ITEMSOUND_QUEST_ITEMGET);
+			}
+			else
+			{
+				st.setCond(2, true);
+			}
+		}
+		
+		return null;
 	}
 }

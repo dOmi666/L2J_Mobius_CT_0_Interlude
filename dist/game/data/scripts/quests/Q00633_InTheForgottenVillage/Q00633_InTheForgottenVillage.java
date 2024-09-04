@@ -19,171 +19,179 @@ package quests.Q00633_InTheForgottenVillage;
 import java.util.HashMap;
 import java.util.Map;
 
+import org.l2jmobius.gameserver.enums.QuestSound;
 import org.l2jmobius.gameserver.model.actor.Npc;
 import org.l2jmobius.gameserver.model.actor.Player;
-import org.l2jmobius.gameserver.model.holders.ItemChanceHolder;
 import org.l2jmobius.gameserver.model.quest.Quest;
 import org.l2jmobius.gameserver.model.quest.QuestState;
+import org.l2jmobius.gameserver.model.quest.State;
 
-/**
- * In The Forgotten Village (633)
- * @author netvirus
- */
 public class Q00633_InTheForgottenVillage extends Quest
 {
-	// NPC
+	// NPCs
 	private static final int MINA = 31388;
 	// Items
-	private static final int RIB_BONE_OF_A_BLACK_MAGUS = 7544;
-	private static final int ZOMBIES_LIVER = 7545;
-	// Misc
-	private static final int MIN_LEVEL = 65;
-	private static final int RIB_BONE_REQUIRED_COUNT = 200;
-	// Mobs
-	private static final Map<Integer, ItemChanceHolder> MOBS_DROP_CHANCES = new HashMap<>();
+	private static final int RIB_BONE = 7544;
+	private static final int ZOMBIE_LIVER = 7545;
+	// Monsters / Drop chances
+	private static final Map<Integer, Integer> MOBS = new HashMap<>();
 	static
 	{
-		MOBS_DROP_CHANCES.put(21553, new ItemChanceHolder(ZOMBIES_LIVER, 0.417)); // Trampled Man
-		MOBS_DROP_CHANCES.put(21554, new ItemChanceHolder(ZOMBIES_LIVER, 0.417)); // Trampled Man
-		MOBS_DROP_CHANCES.put(21557, new ItemChanceHolder(RIB_BONE_OF_A_BLACK_MAGUS, 0.394)); // Bone Snatcher
-		MOBS_DROP_CHANCES.put(21558, new ItemChanceHolder(RIB_BONE_OF_A_BLACK_MAGUS, 0.394)); // Bone Snatcher
-		MOBS_DROP_CHANCES.put(21559, new ItemChanceHolder(RIB_BONE_OF_A_BLACK_MAGUS, 0.436)); // Bone Maker
-		MOBS_DROP_CHANCES.put(21560, new ItemChanceHolder(RIB_BONE_OF_A_BLACK_MAGUS, 0.430)); // Bone Shaper
-		MOBS_DROP_CHANCES.put(21561, new ItemChanceHolder(ZOMBIES_LIVER, 0.538)); // Sacrificed Man
-		MOBS_DROP_CHANCES.put(21563, new ItemChanceHolder(RIB_BONE_OF_A_BLACK_MAGUS, 0.436)); // Bone Collector
-		MOBS_DROP_CHANCES.put(21564, new ItemChanceHolder(RIB_BONE_OF_A_BLACK_MAGUS, 0.414)); // Skull Collector
-		MOBS_DROP_CHANCES.put(21565, new ItemChanceHolder(RIB_BONE_OF_A_BLACK_MAGUS, 0.420)); // Bone Animator
-		MOBS_DROP_CHANCES.put(21566, new ItemChanceHolder(RIB_BONE_OF_A_BLACK_MAGUS, 0.460)); // Skull Animator
-		MOBS_DROP_CHANCES.put(21567, new ItemChanceHolder(RIB_BONE_OF_A_BLACK_MAGUS, 0.549)); // Bone Slayer
-		MOBS_DROP_CHANCES.put(21570, new ItemChanceHolder(ZOMBIES_LIVER, 0.508)); // Ghost of Betrayer
-		MOBS_DROP_CHANCES.put(21572, new ItemChanceHolder(RIB_BONE_OF_A_BLACK_MAGUS, 0.465)); // Bone Sweeper
-		MOBS_DROP_CHANCES.put(21574, new ItemChanceHolder(RIB_BONE_OF_A_BLACK_MAGUS, 0.586)); // Bone Grinder
-		MOBS_DROP_CHANCES.put(21575, new ItemChanceHolder(RIB_BONE_OF_A_BLACK_MAGUS, 0.329)); // Bone Grinder
-		MOBS_DROP_CHANCES.put(21578, new ItemChanceHolder(ZOMBIES_LIVER, 0.649)); // Behemoth Zombie
-		MOBS_DROP_CHANCES.put(21580, new ItemChanceHolder(RIB_BONE_OF_A_BLACK_MAGUS, 0.462)); // Bone Caster
-		MOBS_DROP_CHANCES.put(21581, new ItemChanceHolder(RIB_BONE_OF_A_BLACK_MAGUS, 0.505)); // Bone Puppeteer
-		MOBS_DROP_CHANCES.put(21583, new ItemChanceHolder(RIB_BONE_OF_A_BLACK_MAGUS, 0.475)); // Bone Scavenger
-		MOBS_DROP_CHANCES.put(21584, new ItemChanceHolder(RIB_BONE_OF_A_BLACK_MAGUS, 0.475)); // Bone Scavenger
-		MOBS_DROP_CHANCES.put(21596, new ItemChanceHolder(RIB_BONE_OF_A_BLACK_MAGUS, 0.543)); // Requiem Lord
-		MOBS_DROP_CHANCES.put(21597, new ItemChanceHolder(ZOMBIES_LIVER, 0.510)); // Requiem Behemoth
-		MOBS_DROP_CHANCES.put(21598, new ItemChanceHolder(ZOMBIES_LIVER, 0.572)); // Requiem Behemoth
-		MOBS_DROP_CHANCES.put(21599, new ItemChanceHolder(RIB_BONE_OF_A_BLACK_MAGUS, 0.580)); // Requiem Priest
-		MOBS_DROP_CHANCES.put(21600, new ItemChanceHolder(ZOMBIES_LIVER, 0.561)); // Requiem Behemoth
-		MOBS_DROP_CHANCES.put(21601, new ItemChanceHolder(RIB_BONE_OF_A_BLACK_MAGUS, 0.677)); // Requiem Behemoth
+		MOBS.put(21557, 328000); // Bone Snatcher
+		MOBS.put(21558, 328000); // Bone Snatcher
+		MOBS.put(21559, 337000); // Bone Maker
+		MOBS.put(21560, 337000); // Bone Shaper
+		MOBS.put(21563, 342000); // Bone Collector
+		MOBS.put(21564, 348000); // Skull Collector
+		MOBS.put(21565, 351000); // Bone Animator
+		MOBS.put(21566, 359000); // Skull Animator
+		MOBS.put(21567, 359000); // Bone Slayer
+		MOBS.put(21572, 365000); // Bone Sweeper
+		MOBS.put(21574, 383000); // Bone Grinder
+		MOBS.put(21575, 383000); // Bone Grinder
+		MOBS.put(21580, 385000); // Bone Caster
+		MOBS.put(21581, 395000); // Bone Puppeteer
+		MOBS.put(21583, 397000); // Bone Scavenger
+		MOBS.put(21584, 401000); // Bone Scavenger
+	}
+	private static final Map<Integer, Integer> UNDEADS = new HashMap<>();
+	static
+	{
+		UNDEADS.put(21553, 347000); // Trampled Man
+		UNDEADS.put(21554, 347000); // Trampled Man
+		UNDEADS.put(21561, 450000); // Sacrificed Man
+		UNDEADS.put(21578, 501000); // Behemoth Zombie
+		UNDEADS.put(21596, 359000); // Requiem Lord
+		UNDEADS.put(21597, 370000); // Requiem Behemoth
+		UNDEADS.put(21598, 441000); // Requiem Behemoth
+		UNDEADS.put(21599, 395000); // Requiem Priest
+		UNDEADS.put(21600, 408000); // Requiem Behemoth
+		UNDEADS.put(21601, 411000); // Requiem Behemoth
 	}
 	
 	public Q00633_InTheForgottenVillage()
 	{
 		super(633);
+		registerQuestItems(RIB_BONE, ZOMBIE_LIVER);
 		addStartNpc(MINA);
 		addTalkId(MINA);
-		addKillId(MOBS_DROP_CHANCES.keySet());
-		registerQuestItems(RIB_BONE_OF_A_BLACK_MAGUS, ZOMBIES_LIVER);
+		addKillId(MOBS.keySet());
+		addKillId(UNDEADS.keySet());
 	}
 	
 	@Override
-	public String onAdvEvent(String event, Npc npc, Player player)
+	public String onEvent(String event, Npc npc, Player player)
 	{
-		final QuestState qs = getQuestState(player, false);
-		String htmltext = null;
-		if (qs == null)
+		String htmltext = event;
+		final QuestState st = getQuestState(player, false);
+		if (st == null)
 		{
 			return htmltext;
 		}
 		
 		switch (event)
 		{
-			case "31388-03.htm":
+			case "31388-04.htm":
 			{
-				if (qs.isCreated())
-				{
-					qs.startQuest();
-					htmltext = event;
-				}
+				st.startQuest();
 				break;
 			}
-			case "31388-04.html":
-			case "31388-05.html":
-			case "31388-06.html":
+			case "31388-10.htm":
 			{
-				if (qs.isStarted())
-				{
-					htmltext = event;
-				}
+				takeItems(player, RIB_BONE, -1);
+				st.exitQuest(true, true);
 				break;
 			}
-			case "31388-07.html":
+			case "31388-09.htm":
 			{
-				if (qs.isCond(2))
+				if (getQuestItemsCount(player, RIB_BONE) >= 200)
 				{
-					if (getQuestItemsCount(player, RIB_BONE_OF_A_BLACK_MAGUS) >= RIB_BONE_REQUIRED_COUNT)
-					{
-						giveAdena(player, 25000, true);
-						addExpAndSp(player, 305235, 0);
-						takeItems(player, RIB_BONE_OF_A_BLACK_MAGUS, -1);
-						qs.setCond(1, true);
-						htmltext = event;
-					}
-					else
-					{
-						htmltext = "31388-08.html";
-					}
+					htmltext = "31388-08.htm";
+					takeItems(player, RIB_BONE, 200);
+					giveAdena(player, 25000, true);
+					addExpAndSp(player, 305235, 0);
 				}
-				break;
-			}
-			case "31388-09.html":
-			{
-				if (qs.isStarted())
-				{
-					qs.exitQuest(true, true);
-					htmltext = event;
-				}
+				st.setCond(1, true);
 				break;
 			}
 		}
+		
 		return htmltext;
-	}
-	
-	@Override
-	public String onKill(Npc npc, Player killer, boolean isSummon)
-	{
-		final QuestState qs = getRandomPartyMemberState(killer, -1, 3, npc);
-		if (qs != null)
-		{
-			final ItemChanceHolder info = MOBS_DROP_CHANCES.get(npc.getId());
-			switch (info.getId())
-			{
-				case RIB_BONE_OF_A_BLACK_MAGUS:
-				{
-					if (qs.isCond(1) && giveItemRandomly(qs.getPlayer(), npc, RIB_BONE_OF_A_BLACK_MAGUS, 1, RIB_BONE_REQUIRED_COUNT, info.getChance(), true))
-					{
-						qs.setCond(2);
-					}
-					break;
-				}
-				case ZOMBIES_LIVER:
-				{
-					giveItemRandomly(qs.getPlayer(), npc, ZOMBIES_LIVER, 1, 0, info.getChance(), true);
-					break;
-				}
-			}
-		}
-		return super.onKill(npc, killer, isSummon);
 	}
 	
 	@Override
 	public String onTalk(Npc npc, Player player)
 	{
-		final QuestState qs = getQuestState(player, true);
 		String htmltext = getNoQuestMsg(player);
-		if (qs.isCreated())
+		final QuestState st = getQuestState(player, true);
+		
+		switch (st.getState())
 		{
-			htmltext = ((player.getLevel() >= MIN_LEVEL) ? "31388-01.htm" : "31388-02.htm");
+			case State.CREATED:
+			{
+				htmltext = (player.getLevel() < 65) ? "31388-03.htm" : "31388-01.htm";
+				break;
+			}
+			case State.STARTED:
+			{
+				final int cond = st.getCond();
+				if (cond == 1)
+				{
+					htmltext = "31388-06.htm";
+				}
+				else if (cond == 2)
+				{
+					htmltext = "31388-05.htm";
+				}
+				break;
+			}
 		}
-		else if (qs.isStarted())
-		{
-			htmltext = ((getQuestItemsCount(player, RIB_BONE_OF_A_BLACK_MAGUS) >= RIB_BONE_REQUIRED_COUNT) ? "31388-04.html" : "31388-05.html");
-		}
+		
 		return htmltext;
+	}
+	
+	@Override
+	public String onKill(Npc npc, Player player, boolean isPet)
+	{
+		final int npcId = npc.getId();
+		if (UNDEADS.containsKey(npcId))
+		{
+			final QuestState st = getRandomPartyMemberState(player, -1, 3, npc);
+			if ((st == null) || !st.isStarted())
+			{
+				return null;
+			}
+			final Player partyMember = st.getPlayer();
+			
+			if (getRandom(1000000) < UNDEADS.get(npcId))
+			{
+				giveItems(partyMember, ZOMBIE_LIVER, 1);
+				playSound(partyMember, QuestSound.ITEMSOUND_QUEST_ITEMGET);
+			}
+		}
+		else if (MOBS.containsKey(npcId))
+		{
+			final Player partyMember = getRandomPartyMember(player, 1);
+			if (partyMember == null)
+			{
+				return null;
+			}
+			
+			final QuestState st = getQuestState(partyMember, false);
+			if (getRandom(1000000) < MOBS.get(npcId))
+			{
+				giveItems(partyMember, RIB_BONE, 1);
+				if (getQuestItemsCount(partyMember, RIB_BONE) < 200)
+				{
+					playSound(partyMember, QuestSound.ITEMSOUND_QUEST_ITEMGET);
+				}
+				else
+				{
+					st.setCond(2, true);
+				}
+			}
+		}
+		
+		return null;
 	}
 }

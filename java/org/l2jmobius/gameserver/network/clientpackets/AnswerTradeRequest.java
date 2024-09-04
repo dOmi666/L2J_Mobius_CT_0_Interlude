@@ -16,10 +16,8 @@
  */
 package org.l2jmobius.gameserver.network.clientpackets;
 
-import org.l2jmobius.commons.network.ReadablePacket;
 import org.l2jmobius.gameserver.model.World;
 import org.l2jmobius.gameserver.model.actor.Player;
-import org.l2jmobius.gameserver.network.GameClient;
 import org.l2jmobius.gameserver.network.SystemMessageId;
 import org.l2jmobius.gameserver.network.serverpackets.ActionFailed;
 import org.l2jmobius.gameserver.network.serverpackets.SystemMessage;
@@ -28,20 +26,20 @@ import org.l2jmobius.gameserver.network.serverpackets.TradeDone;
 /**
  * @version $Revision: 1.5.4.2 $ $Date: 2005/03/27 15:29:30 $
  */
-public class AnswerTradeRequest implements ClientPacket
+public class AnswerTradeRequest extends ClientPacket
 {
 	private int _response;
 	
 	@Override
-	public void read(ReadablePacket packet)
+	protected void readImpl()
 	{
-		_response = packet.readInt();
+		_response = readInt();
 	}
 	
 	@Override
-	public void run(GameClient client)
+	protected void runImpl()
 	{
-		final Player player = client.getPlayer();
+		final Player player = getPlayer();
 		if (player == null)
 		{
 			return;
@@ -78,7 +76,7 @@ public class AnswerTradeRequest implements ClientPacket
 		}
 		else
 		{
-			final SystemMessage msg = new SystemMessage(SystemMessageId.C1_HAS_DENIED_YOUR_REQUEST_TO_TRADE);
+			final SystemMessage msg = new SystemMessage(SystemMessageId.S1_HAS_DENIED_YOUR_REQUEST_TO_TRADE);
 			msg.addString(player.getName());
 			partner.sendPacket(msg);
 		}

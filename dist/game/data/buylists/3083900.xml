@@ -15,8 +15,6 @@
 	<item id="17" /> <!-- Wooden Arrow -->
 	<item id="1341" /> <!-- Bone Arrow -->
 	<item id="1342" /> <!-- Fine Steel Arrow -->
-	<item id="1343" /> <!-- Silver Arrow -->
-	<item id="1344" /> <!-- Mithril Arrow -->
 	<item id="1060" /> <!-- Lesser Healing Potion -->
 	<item id="1061" /> <!-- Healing Potion -->
 	<item id="1831" /> <!-- Antidote -->
@@ -41,9 +39,6 @@
 	<item id="5195" /> <!-- Rope of Magic: A-Grade -->
 	<item id="5196" /> <!-- Rope of Magic: S Grade -->
 	<item id="2130" /> <!-- Gemstone D -->
-	<item id="2131" /> <!-- Gemstone C -->
-	<item id="2132" /> <!-- Gemstone B -->
-	<item id="4679" /> <!-- Bless of Eva -->
 	<item id="8594" /> <!-- Scroll: Recovery (No Grade) -->
 	<item id="8595" /> <!-- Scroll: Recovery (Grade D) -->
 	<item id="8596" /> <!-- Scroll: Recovery (Grade C) -->
@@ -66,6 +61,4 @@
 	<item id="4626" /> <!-- Dice (Spade) -->
 	<item id="4627" /> <!-- Dice (Clover) -->
 	<item id="4628" /> <!-- Dice (Diamond) -->
-	<item id="8872" /> <!-- Flash Gunpowder -->
-	<item id="8629" /> <!-- Elixir of Mental Strength (D-Grade) -->
 </list>

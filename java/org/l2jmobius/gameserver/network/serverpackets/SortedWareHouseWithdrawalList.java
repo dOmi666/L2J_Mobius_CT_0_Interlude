@@ -22,6 +22,7 @@ import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
 
+import org.l2jmobius.commons.network.WritableBuffer;
 import org.l2jmobius.gameserver.data.xml.RecipeData;
 import org.l2jmobius.gameserver.enums.WarehouseListType;
 import org.l2jmobius.gameserver.model.RecipeList;
@@ -32,6 +33,7 @@ import org.l2jmobius.gameserver.model.item.instance.Item;
 import org.l2jmobius.gameserver.model.item.type.CrystalType;
 import org.l2jmobius.gameserver.model.item.type.EtcItemType;
 import org.l2jmobius.gameserver.model.item.type.MaterialType;
+import org.l2jmobius.gameserver.network.GameClient;
 import org.l2jmobius.gameserver.network.PacketLogger;
 import org.l2jmobius.gameserver.network.ServerPackets;
 
@@ -683,36 +685,36 @@ public class SortedWareHouseWithdrawalList extends ServerPacket
 	}
 	
 	@Override
-	public void write()
+	public void writeImpl(GameClient client, WritableBuffer buffer)
 	{
-		ServerPackets.WAREHOUSE_WITHDRAW_LIST.writeId(this);
+		ServerPackets.WAREHOUSE_WITHDRAW_LIST.writeId(this, buffer);
 		/*
 		 * 0x01-Private Warehouse 0x02-Clan Warehouse 0x03-Castle Warehouse 0x04-Warehouse
 		 */
-		writeShort(_whType);
-		writeInt((int) _playerAdena);
-		writeShort(_objects.size());
+		buffer.writeShort(_whType);
+		buffer.writeInt((int) _playerAdena);
+		buffer.writeShort(_objects.size());
 		for (WarehouseItem item : _objects)
 		{
-			writeShort(item.getItem().getType1());
-			writeInt(item.getObjectId());
-			writeInt(item.getItemId());
-			writeInt((int) item.getCount());
-			writeShort(item.getItem().getType2());
-			writeShort(item.getCustomType1());
-			writeInt(item.getItem().getBodyPart());
-			writeShort(item.getEnchantLevel());
-			writeShort(0);
-			writeShort(item.getCustomType2());
-			writeInt(item.getObjectId());
+			buffer.writeShort(item.getItem().getType1());
+			buffer.writeInt(item.getObjectId());
+			buffer.writeInt(item.getItemId());
+			buffer.writeInt((int) item.getCount());
+			buffer.writeShort(item.getItem().getType2());
+			buffer.writeShort(item.getCustomType1());
+			buffer.writeInt(item.getItem().getBodyPart());
+			buffer.writeShort(item.getEnchantLevel());
+			buffer.writeShort(0);
+			buffer.writeShort(item.getCustomType2());
+			buffer.writeInt(item.getObjectId());
 			if (item.isAugmented())
 			{
-				writeInt(0x0000FFFF & item.getAugmentationId());
-				writeInt(item.getAugmentationId() >> 16);
+				buffer.writeInt(0x0000FFFF & item.getAugmentationId());
+				buffer.writeInt(item.getAugmentationId() >> 16);
 			}
 			else
 			{
-				writeLong(0);
+				buffer.writeLong(0);
 			}
 		}
 	}

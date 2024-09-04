@@ -16,15 +16,12 @@
  */
 package quests.Q00079_SagaOfTheAdventurer;
 
-import org.l2jmobius.gameserver.model.Location;
-
-import quests.AbstractSagaQuest;
+import quests.SagasSuperClass;
 
 /**
- * Saga of the Adventurer (79)
  * @author Emperorc
  */
-public class Q00079_SagaOfTheAdventurer extends AbstractSagaQuest
+public class Q00079_SagaOfTheAdventurer extends SagasSuperClass
 {
 	public Q00079_SagaOfTheAdventurer()
 	{
@@ -73,11 +70,23 @@ public class Q00079_SagaOfTheAdventurer extends AbstractSagaQuest
 		{
 			0x08
 		};
-		_npcSpawnLocations = new Location[]
+		_x = new int[]
 		{
-			new Location(119518, -28658, -3811),
-			new Location(181205, 36676, -4816),
-			new Location(181215, 36676, -4812)
+			119518,
+			181205,
+			181215
+		};
+		_y = new int[]
+		{
+			-28658,
+			36676,
+			36676
+		};
+		_z = new int[]
+		{
+			-3811,
+			-4816,
+			-4812
 		};
 		_text = new String[]
 		{

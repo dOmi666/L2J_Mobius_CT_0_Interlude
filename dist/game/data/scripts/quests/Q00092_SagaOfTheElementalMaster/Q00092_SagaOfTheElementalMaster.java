@@ -16,15 +16,13 @@
  */
 package quests.Q00092_SagaOfTheElementalMaster;
 
-import org.l2jmobius.gameserver.model.Location;
-
-import quests.AbstractSagaQuest;
+import quests.SagasSuperClass;
 
 /**
  * Saga of the Elemental Master (92)
  * @author Emperorc
  */
-public class Q00092_SagaOfTheElementalMaster extends AbstractSagaQuest
+public class Q00092_SagaOfTheElementalMaster extends SagasSuperClass
 {
 	public Q00092_SagaOfTheElementalMaster()
 	{
@@ -73,11 +71,23 @@ public class Q00092_SagaOfTheElementalMaster extends AbstractSagaQuest
 		{
 			0x1c
 		};
-		_npcSpawnLocations = new Location[]
+		_x = new int[]
 		{
-			new Location(161719, -92823, -1893),
-			new Location(124376, 82127, -2796),
-			new Location(124355, 82155, -2803)
+			161719,
+			124376,
+			124355
+		};
+		_y = new int[]
+		{
+			-92823,
+			82127,
+			82155
+		};
+		_z = new int[]
+		{
+			-1893,
+			-2796,
+			-2803
 		};
 		_text = new String[]
 		{

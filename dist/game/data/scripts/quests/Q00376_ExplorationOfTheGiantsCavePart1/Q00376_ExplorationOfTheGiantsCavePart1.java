@@ -17,6 +17,7 @@
 package quests.Q00376_ExplorationOfTheGiantsCavePart1;
 
 import org.l2jmobius.commons.util.Rnd;
+import org.l2jmobius.gameserver.enums.QuestSound;
 import org.l2jmobius.gameserver.model.actor.Npc;
 import org.l2jmobius.gameserver.model.actor.Player;
 import org.l2jmobius.gameserver.model.quest.Quest;
@@ -72,10 +73,10 @@ public class Q00376_ExplorationOfTheGiantsCavePart1 extends Quest
 	}
 	
 	@Override
-	public String onAdvEvent(String event, Npc npc, Player player)
+	public String onEvent(String event, Npc npc, Player player)
 	{
 		String htmltext = event;
-		final QuestState st = player.getQuestState(getName());
+		final QuestState st = getQuestState(player, false);
 		if (st == null)
 		{
 			return htmltext;
@@ -171,7 +172,7 @@ public class Q00376_ExplorationOfTheGiantsCavePart1 extends Quest
 			return null;
 		}
 		
-		giveItemRandomly(partyMember, npc, PARCHMENT, 1, 0, 0.99, true);
+		giveItemRandomly(partyMember, npc, PARCHMENT, 1, 0, 0.2, true);
 		
 		// Drop mysterious book to person who still need it
 		partyMember = getRandomPartyMember(player, "condBook", "1");
@@ -186,9 +187,10 @@ public class Q00376_ExplorationOfTheGiantsCavePart1 extends Quest
 			return null;
 		}
 		
-		if (Rnd.get(1000) < 5)
+		if (Rnd.get(100d) < 0.1)
 		{
 			giveItems(partyMember, MYSTERIOUS_BOOK, 1);
+			playSound(partyMember, QuestSound.ITEMSOUND_QUEST_ITEMGET);
 			st.unset("condBook");
 		}
 		

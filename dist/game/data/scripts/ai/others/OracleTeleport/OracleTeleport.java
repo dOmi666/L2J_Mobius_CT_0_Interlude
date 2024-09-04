@@ -152,7 +152,7 @@ public class OracleTeleport extends AbstractNpcAI
 	}
 	
 	@Override
-	public String onAdvEvent(String event, Npc npc, Player player)
+	public String onEvent(String event, Npc npc, Player player)
 	{
 		String htmltext = "";
 		final QuestState qs = getQuestState(player, true);
@@ -344,7 +344,7 @@ public class OracleTeleport extends AbstractNpcAI
 			}
 			else if (player.getAllActiveQuests().size() > 40)
 			{
-				player.sendPacket(SystemMessageId.YOU_HAVE_TOO_MANY_ONGOING_QUESTS);
+				player.sendPacket(SystemMessageId.YOU_CURRENTLY_HAVE_TOO_MANY_QUESTS_IN_PROGRESS);
 				qs.exitQuest(true);
 			}
 			else if (!hasQuestItems(player, DIMENSIONAL_FRAGMENT))

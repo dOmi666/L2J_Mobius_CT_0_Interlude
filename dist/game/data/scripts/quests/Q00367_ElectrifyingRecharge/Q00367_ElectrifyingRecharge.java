@@ -19,244 +19,172 @@ package quests.Q00367_ElectrifyingRecharge;
 import org.l2jmobius.gameserver.enums.QuestSound;
 import org.l2jmobius.gameserver.model.actor.Npc;
 import org.l2jmobius.gameserver.model.actor.Player;
-import org.l2jmobius.gameserver.model.holders.SkillHolder;
 import org.l2jmobius.gameserver.model.quest.Quest;
 import org.l2jmobius.gameserver.model.quest.QuestState;
+import org.l2jmobius.gameserver.model.quest.State;
 import org.l2jmobius.gameserver.model.skill.Skill;
 
-/**
- * Electrifying Recharge! (367)
- * @author Adry_85, jurchiks
- */
 public class Q00367_ElectrifyingRecharge extends Quest
 {
-	// NPC
+	// NPCs
 	private static final int LORAIN = 30673;
-	// Monster
+	// Monsters
 	private static final int CATHEROK = 21035;
-	// Items
-	private static final int TITAN_LAMP1 = 5875;
-	private static final int TITAN_LAMP2 = 5876;
-	private static final int TITAN_LAMP3 = 5877;
-	private static final int TITAN_LAMP4 = 5878;
-	private static final int TITAN_LAMP5 = 5879;
-	private static final int BROKEN_TITAN_LAMP = 5880;
-	// Misc
-	private static final int MIN_LEVEL = 37;
-	// Skill
-	private static final Skill NPC_THUNDER_STORM = new SkillHolder(4072, 4).getSkill();
+	// Item
+	private static final int LORAIN_LAMP = 5875;
+	private static final int TITAN_LAMP_1 = 5876;
+	private static final int TITAN_LAMP_2 = 5877;
+	private static final int TITAN_LAMP_3 = 5878;
+	private static final int TITAN_LAMP_4 = 5879;
+	private static final int TITAN_LAMP_5 = 5880;
+	// Reward
+	private static final int[] REWARD =
+	{
+		4553,
+		4554,
+		4555,
+		4556,
+		4557,
+		4558,
+		4559,
+		4560,
+		4561,
+		4562,
+		4563,
+		4564
+	};
 	
 	public Q00367_ElectrifyingRecharge()
 	{
 		super(367);
+		registerQuestItems(LORAIN_LAMP, TITAN_LAMP_1, TITAN_LAMP_2, TITAN_LAMP_3, TITAN_LAMP_4, TITAN_LAMP_5);
 		addStartNpc(LORAIN);
 		addTalkId(LORAIN);
-		addAttackId(CATHEROK);
-		registerQuestItems(TITAN_LAMP1, TITAN_LAMP2, TITAN_LAMP3, TITAN_LAMP4, TITAN_LAMP5, BROKEN_TITAN_LAMP);
+		addSpellFinishedId(CATHEROK);
 	}
 	
 	@Override
-	public String onAdvEvent(String event, Npc npc, Player player)
+	public String onEvent(String event, Npc npc, Player player)
 	{
-		final QuestState qs = getQuestState(player, false);
-		if (qs == null)
+		String htmltext = event;
+		final QuestState st = getQuestState(player, false);
+		if (st == null)
 		{
-			return null;
+			return htmltext;
 		}
 		
-		String htmltext = null;
 		switch (event)
 		{
-			case "30673-02.htm":
+			case "30673-03.htm":
 			{
-				qs.startQuest();
-				giveItems(player, TITAN_LAMP1, 1);
-				htmltext = event;
+				st.startQuest();
+				giveItems(player, LORAIN_LAMP, 1);
 				break;
 			}
-			case "30673-05.html":
+			case "30673-09.htm":
 			{
-				htmltext = event;
+				playSound(player, QuestSound.ITEMSOUND_QUEST_ACCEPT);
+				giveItems(player, LORAIN_LAMP, 1);
 				break;
 			}
-			case "30673-06.html":
+			case "30673-08.htm":
 			{
-				qs.exitQuest(true, true);
-				htmltext = event;
+				st.exitQuest(true, true);
+				break;
+			}
+			case "30673-07.htm":
+			{
+				st.setCond(1);
+				playSound(player, QuestSound.ITEMSOUND_QUEST_ACCEPT);
+				giveItems(player, LORAIN_LAMP, 1);
 				break;
 			}
 		}
 		return htmltext;
-	}
-	
-	@Override
-	public String onAttack(Npc npc, Player attacker, int damage, boolean isSummon)
-	{
-		if (npc.isScriptValue(367))
-		{
-			return super.onAttack(npc, attacker, damage, isSummon);
-		}
-		
-		QuestState qs = getQuestState(attacker, false);
-		if ((qs == null) || !qs.isStarted())
-		{
-			return super.onAttack(npc, attacker, damage, isSummon);
-		}
-		
-		npc.setScriptValue(367);
-		
-		if ((NPC_THUNDER_STORM != null) //
-			&& (NPC_THUNDER_STORM.getMpConsume() < npc.getCurrentMp()) // has enough MP
-			&& (NPC_THUNDER_STORM.getHpConsume() < npc.getCurrentHp()) // has enough HP
-			&& (npc.getSkillRemainingReuseTime(NPC_THUNDER_STORM.getReuseHashCode()) <= 0)) // no reuse delay
-		{
-			npc.doCast(NPC_THUNDER_STORM, attacker, null);
-		}
-		
-		final Player luckyPlayer = getRandomPartyMember(attacker, npc);
-		if (luckyPlayer == null)
-		{
-			return super.onAttack(npc, attacker, damage, isSummon);
-		}
-		qs = getQuestState(luckyPlayer, false);
-		if ((qs != null) && qs.isStarted() && !hasQuestItems(luckyPlayer, TITAN_LAMP5))
-		{
-			final int random = getRandom(37);
-			if (random == 0)
-			{
-				if (hasQuestItems(luckyPlayer, TITAN_LAMP1))
-				{
-					giveItems(luckyPlayer, TITAN_LAMP2, 1);
-					takeItems(luckyPlayer, TITAN_LAMP1, -1);
-					playSound(luckyPlayer, QuestSound.ITEMSOUND_QUEST_MIDDLE);
-				}
-				else if (hasQuestItems(luckyPlayer, TITAN_LAMP2))
-				{
-					giveItems(luckyPlayer, TITAN_LAMP3, 1);
-					takeItems(luckyPlayer, TITAN_LAMP2, -1);
-					playSound(luckyPlayer, QuestSound.ITEMSOUND_QUEST_MIDDLE);
-				}
-				else if (hasQuestItems(luckyPlayer, TITAN_LAMP3))
-				{
-					giveItems(luckyPlayer, TITAN_LAMP4, 1);
-					takeItems(luckyPlayer, TITAN_LAMP3, -1);
-					playSound(luckyPlayer, QuestSound.ITEMSOUND_QUEST_MIDDLE);
-				}
-				else if (hasQuestItems(luckyPlayer, TITAN_LAMP4))
-				{
-					giveItems(luckyPlayer, TITAN_LAMP5, 1);
-					takeItems(luckyPlayer, TITAN_LAMP4, -1);
-					luckyPlayer.getQuestState(getName()).setCond(2, true);
-				}
-			}
-			else if ((random == 1) && !hasQuestItems(luckyPlayer, BROKEN_TITAN_LAMP))
-			{
-				giveItems(luckyPlayer, BROKEN_TITAN_LAMP, 1);
-				takeItems(luckyPlayer, -1, TITAN_LAMP1, TITAN_LAMP2, TITAN_LAMP3, TITAN_LAMP4);
-				playSound(luckyPlayer, QuestSound.ITEMSOUND_QUEST_ITEMGET);
-			}
-		}
-		return super.onAttack(npc, attacker, damage, isSummon);
 	}
 	
 	@Override
 	public String onTalk(Npc npc, Player player)
 	{
-		final QuestState qs = getQuestState(player, true);
 		String htmltext = getNoQuestMsg(player);
-		if (qs.isCreated())
+		final QuestState st = getQuestState(player, true);
+		
+		switch (st.getState())
 		{
-			htmltext = (player.getLevel() >= MIN_LEVEL) ? "30673-01.htm" : "30673-03.html";
-		}
-		else if (qs.isStarted())
-		{
-			if (!hasAtLeastOneQuestItem(player, TITAN_LAMP5, BROKEN_TITAN_LAMP))
+			case State.CREATED:
 			{
-				htmltext = "30673-04.html";
+				htmltext = (player.getLevel() < 37) ? "30673-02.htm" : "30673-01.htm";
+				break;
 			}
-			else if (hasQuestItems(player, BROKEN_TITAN_LAMP))
+			case State.STARTED:
 			{
-				giveItems(player, TITAN_LAMP1, 1);
-				takeItems(player, BROKEN_TITAN_LAMP, -1);
-				htmltext = "30673-07.html";
-			}
-			else if (hasQuestItems(player, TITAN_LAMP5))
-			{
-				final int itemId;
-				switch (getRandom(14))
+				final int cond = st.getCond();
+				if (cond == 1)
 				{
-					case 0:
+					if (hasQuestItems(player, 5880))
 					{
-						itemId = 4553; // Greater Dye of STR <Str+1 Con-1>
-						break;
+						htmltext = "30673-05.htm";
+						playSound(player, QuestSound.ITEMSOUND_QUEST_ACCEPT);
+						takeItems(player, 5880, 1);
+						giveItems(player, LORAIN_LAMP, 1);
 					}
-					case 1:
+					else if (hasQuestItems(player, 5876))
 					{
-						itemId = 4554; // Greater Dye of STR <Str+1 Dex-1>
-						break;
+						htmltext = "30673-04.htm";
+						takeItems(player, 5876, 1);
 					}
-					case 2:
+					else if (hasQuestItems(player, 5877))
 					{
-						itemId = 4555; // Greater Dye of CON <Con+1 Str-1>
-						break;
+						htmltext = "30673-04.htm";
+						takeItems(player, 5877, 1);
 					}
-					case 3:
+					else if (hasQuestItems(player, 5878))
 					{
-						itemId = 4556; // Greater Dye of CON <Con+1 Dex-1>
-						break;
+						htmltext = "30673-04.htm";
+						takeItems(player, 5878, 1);
 					}
-					case 4:
+					else
 					{
-						itemId = 4557; // Greater Dye of DEX <Dex+1 Str-1>
-						break;
-					}
-					case 5:
-					{
-						itemId = 4558; // Greater Dye of DEX <Dex+1 Con-1>
-						break;
-					}
-					case 6:
-					{
-						itemId = 4559; // Greater Dye of INT <Int+1 Men-1>
-						break;
-					}
-					case 7:
-					{
-						itemId = 4560; // Greater Dye of INT <Int+1 Wit-1>
-						break;
-					}
-					case 8:
-					{
-						itemId = 4561; // Greater Dye of MEN <Men+1 Int-1>
-						break;
-					}
-					case 9:
-					{
-						itemId = 4562; // Greater Dye of MEN <Men+1 Wit-1>
-						break;
-					}
-					case 10:
-					{
-						itemId = 4563; // Greater Dye of WIT <Wit+1 Int-1>
-						break;
-					}
-					case 11:
-					{
-						itemId = 4564; // Greater Dye of WIT <Wit+1 Men-1>
-						break;
-					}
-					default:
-					{
-						itemId = 4445; // Dye of STR <Str+1 Con-3>
-						break;
+						htmltext = "30673-03.htm";
 					}
 				}
-				rewardItems(player, itemId, 1);
-				takeItems(player, TITAN_LAMP5, -1);
-				giveItems(player, TITAN_LAMP1, 1);
-				htmltext = "30673-08.html";
+				else if ((cond == 2) && hasQuestItems(player, 5879))
+				{
+					htmltext = "30673-06.htm";
+					takeItems(player, 5879, 1);
+					rewardItems(player, REWARD[getRandom(REWARD.length)], 1);
+					playSound(player, QuestSound.ITEMSOUND_QUEST_FINISH);
+				}
+				break;
 			}
 		}
 		return htmltext;
+	}
+	
+	@Override
+	public String onSpellFinished(Npc npc, Player player, Skill skill)
+	{
+		final QuestState st = getQuestState(player, false);
+		if ((st == null) || !st.isCond(1))
+		{
+			return null;
+		}
+		
+		if ((skill.getId() == 4072) && hasQuestItems(player, LORAIN_LAMP))
+		{
+			final int randomItem = getRandom(5876, 5880);
+			takeItems(player, LORAIN_LAMP, 1);
+			giveItems(player, randomItem, 1);
+			if (randomItem == 5879)
+			{
+				st.setCond(2, true);
+			}
+			else
+			{
+				playSound(player, QuestSound.ITEMSOUND_QUEST_ITEMGET);
+			}
+		}
+		
+		return null;
 	}
 }

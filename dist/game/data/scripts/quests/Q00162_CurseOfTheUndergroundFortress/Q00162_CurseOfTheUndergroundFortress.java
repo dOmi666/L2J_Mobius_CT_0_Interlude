@@ -27,15 +27,14 @@ import org.l2jmobius.gameserver.model.quest.Quest;
 import org.l2jmobius.gameserver.model.quest.QuestState;
 import org.l2jmobius.gameserver.model.quest.State;
 
-/**
- * Curse of the Underground Fortress (162)
- * @author xban1x
- */
 public class Q00162_CurseOfTheUndergroundFortress extends Quest
 {
-	// NPC
-	private static final int UNOREN = 30147;
-	// Monsters
+	// Items
+	private static final int BONE_FRAGMENT = 1158;
+	private static final int ELF_SKULL = 1159;
+	// Rewards
+	private static final int BONE_SHIELD = 625;
+	// Drop chances
 	private static final Map<Integer, Integer> MONSTERS_SKULLS = new HashMap<>();
 	private static final Map<Integer, Integer> MONSTERS_BONES = new HashMap<>();
 	static
@@ -47,46 +46,84 @@ public class Q00162_CurseOfTheUndergroundFortress extends Quest
 		MONSTERS_BONES.put(20464, 23); // Dungeon Skeleton
 		MONSTERS_BONES.put(20504, 26); // Dread Soldier
 	}
-	// Items
-	private static final int BONE_SHIELD = 625;
-	private static final int BONE_FRAGMENT = 1158;
-	private static final int ELF_SKULL = 1159;
-	// Misc
-	private static final int MIN_LEVEL = 12;
-	private static final int REQUIRED_COUNT = 13;
 	
 	public Q00162_CurseOfTheUndergroundFortress()
 	{
 		super(162);
-		addStartNpc(UNOREN);
-		addTalkId(UNOREN);
+		registerQuestItems(BONE_FRAGMENT, ELF_SKULL);
+		addStartNpc(30147); // Unoren
+		addTalkId(30147);
 		addKillId(MONSTERS_SKULLS.keySet());
 		addKillId(MONSTERS_BONES.keySet());
-		registerQuestItems(BONE_FRAGMENT, ELF_SKULL);
 	}
 	
 	@Override
-	public String onAdvEvent(String event, Npc npc, Player player)
+	public String onEvent(String event, Npc npc, Player player)
 	{
-		final QuestState qs = getQuestState(player, false);
-		String htmltext = null;
-		if (qs != null)
+		String htmltext = event;
+		final QuestState st = getQuestState(player, false);
+		if (st == null)
 		{
-			switch (event)
+			return htmltext;
+		}
+		
+		if (event.equals("30147-04.htm"))
+		{
+			st.startQuest();
+		}
+		
+		return htmltext;
+	}
+	
+	@Override
+	public String onTalk(Npc npc, Player player)
+	{
+		String htmltext = getNoQuestMsg(player);
+		final QuestState st = getQuestState(player, true);
+		
+		switch (st.getState())
+		{
+			case State.CREATED:
 			{
-				case "30147-03.htm":
+				if (player.getRace() == Race.DARK_ELF)
 				{
-					htmltext = event;
-					break;
+					htmltext = "30147-00.htm";
 				}
-				case "30147-04.htm":
+				else if (player.getLevel() < 12)
 				{
-					qs.startQuest();
-					htmltext = event;
-					break;
+					htmltext = "30147-01.htm";
 				}
+				else
+				{
+					htmltext = "30147-02.htm";
+				}
+				break;
+			}
+			case State.STARTED:
+			{
+				final int cond = st.getCond();
+				if (cond == 1)
+				{
+					htmltext = "30147-05.htm";
+				}
+				else if (cond == 2)
+				{
+					htmltext = "30147-06.htm";
+					takeItems(player, ELF_SKULL, -1);
+					takeItems(player, BONE_FRAGMENT, -1);
+					giveItems(player, BONE_SHIELD, 1);
+					giveAdena(player, 24000, true);
+					st.exitQuest(false, true);
+				}
+				break;
+			}
+			case State.COMPLETED:
+			{
+				htmltext = getAlreadyCompletedMsg(player);
+				break;
 			}
 		}
+		
 		return htmltext;
 	}
 	
@@ -133,42 +170,5 @@ public class Q00162_CurseOfTheUndergroundFortress extends Quest
 			}
 		}
 		return super.onKill(npc, killer, isSummon);
-	}
-	
-	@Override
-	public String onTalk(Npc npc, Player player)
-	{
-		final QuestState qs = getQuestState(player, true);
-		String htmltext = getNoQuestMsg(player);
-		switch (qs.getState())
-		{
-			case State.CREATED:
-			{
-				htmltext = (player.getRace() != Race.DARK_ELF) ? (player.getLevel() >= MIN_LEVEL) ? "30147-02.htm" : "30147-01.htm" : "30147-00.htm";
-				break;
-			}
-			case State.STARTED:
-			{
-				if ((getQuestItemsCount(player, BONE_FRAGMENT) + getQuestItemsCount(player, ELF_SKULL)) >= REQUIRED_COUNT)
-				{
-					giveItems(player, BONE_SHIELD, 1);
-					addExpAndSp(player, 22652, 1004);
-					giveAdena(player, 24000, true);
-					qs.exitQuest(false, true);
-					htmltext = "30147-06.html";
-				}
-				else
-				{
-					htmltext = "30147-05.html";
-				}
-				break;
-			}
-			case State.COMPLETED:
-			{
-				htmltext = getAlreadyCompletedMsg(player);
-				break;
-			}
-		}
-		return htmltext;
 	}
 }

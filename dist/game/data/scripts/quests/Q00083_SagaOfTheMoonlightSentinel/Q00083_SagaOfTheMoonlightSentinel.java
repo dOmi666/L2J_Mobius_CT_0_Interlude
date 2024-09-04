@@ -16,15 +16,12 @@
  */
 package quests.Q00083_SagaOfTheMoonlightSentinel;
 
-import org.l2jmobius.gameserver.model.Location;
-
-import quests.AbstractSagaQuest;
+import quests.SagasSuperClass;
 
 /**
- * Saga of the Moonlight Sentinel (83)
  * @author Emperorc
  */
-public class Q00083_SagaOfTheMoonlightSentinel extends AbstractSagaQuest
+public class Q00083_SagaOfTheMoonlightSentinel extends SagasSuperClass
 {
 	public Q00083_SagaOfTheMoonlightSentinel()
 	{
@@ -73,11 +70,23 @@ public class Q00083_SagaOfTheMoonlightSentinel extends AbstractSagaQuest
 		{
 			0x18
 		};
-		_npcSpawnLocations = new Location[]
+		_x = new int[]
 		{
-			new Location(161719, -92823, -1893),
-			new Location(181227, 36703, -4816),
-			new Location(181215, 36676, -4812)
+			161719,
+			181227,
+			181215
+		};
+		_y = new int[]
+		{
+			-92823,
+			36703,
+			36676
+		};
+		_z = new int[]
+		{
+			-1893,
+			-4816,
+			-4812
 		};
 		_text = new String[]
 		{

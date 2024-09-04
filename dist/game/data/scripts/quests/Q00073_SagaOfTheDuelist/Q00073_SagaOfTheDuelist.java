@@ -16,25 +16,13 @@
  */
 package quests.Q00073_SagaOfTheDuelist;
 
-import org.l2jmobius.gameserver.model.Location;
-import org.l2jmobius.gameserver.model.actor.Npc;
-import org.l2jmobius.gameserver.model.actor.Player;
-import org.l2jmobius.gameserver.model.quest.QuestState;
-
-import quests.AbstractSagaQuest;
+import quests.SagasSuperClass;
 
 /**
- * Saga of the Duelist (73)
  * @author Emperorc
  */
-public class Q00073_SagaOfTheDuelist extends AbstractSagaQuest
+public class Q00073_SagaOfTheDuelist extends SagasSuperClass
 {
-	/**
-	 * Third Class Transfer Quest - Duelist: The quest asks for "Top-grade Meat" which can now be acquired directly through NPC Tunatun, instead of through an additional quest from NPC Tunatun.
-	 */
-	private static final int TUNATUN = 31537;
-	private static final int TOPQUALITYMEAT = 7546;
-	
 	public Q00073_SagaOfTheDuelist()
 	{
 		super(73);
@@ -82,11 +70,23 @@ public class Q00073_SagaOfTheDuelist extends AbstractSagaQuest
 		{
 			0x02
 		};
-		_npcSpawnLocations = new Location[]
+		_x = new int[]
 		{
-			new Location(164650, -74121, -2871),
-			new Location(47429, -56923, -2383),
-			new Location(47391, -56929, -2370)
+			164650,
+			47429,
+			47391
+		};
+		_y = new int[]
+		{
+			-74121,
+			-56923,
+			-56929
+		};
+		_z = new int[]
+		{
+			-2871,
+			-2383,
+			-2370
 		};
 		_text = new String[]
 		{
@@ -110,28 +110,5 @@ public class Q00073_SagaOfTheDuelist extends AbstractSagaQuest
 			"....! Fight...Defeat...It...Fight...Defeat...It..."
 		};
 		registerNPCs();
-		
-		addTalkId(TUNATUN);
-	}
-	
-	@Override
-	public String onTalk(Npc npc, Player player)
-	{
-		if (npc.getId() == TUNATUN)
-		{
-			final String htmltext = getNoQuestMsg(player);
-			final QuestState qs = getQuestState(player, false);
-			if ((qs != null) && qs.isCond(3))
-			{
-				if (!hasQuestItems(player, TOPQUALITYMEAT))
-				{
-					giveItems(player, TOPQUALITYMEAT, 1);
-					return "tunatun_01.htm";
-				}
-				return "tunatun_02.htm";
-			}
-			return htmltext;
-		}
-		return super.onTalk(npc, player);
 	}
 }

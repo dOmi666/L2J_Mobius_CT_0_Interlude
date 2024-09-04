@@ -20,7 +20,6 @@ import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
 
 import org.l2jmobius.Config;
-import org.l2jmobius.commons.network.ReadablePacket;
 import org.l2jmobius.commons.threads.ThreadPool;
 import org.l2jmobius.gameserver.LoginServerThread;
 import org.l2jmobius.gameserver.cache.HtmCache;
@@ -33,6 +32,7 @@ import org.l2jmobius.gameserver.data.xml.SkillTreeData;
 import org.l2jmobius.gameserver.enums.ChatType;
 import org.l2jmobius.gameserver.enums.IllegalActionPunishmentType;
 import org.l2jmobius.gameserver.enums.PlayerCondOverride;
+import org.l2jmobius.gameserver.enums.Race;
 import org.l2jmobius.gameserver.enums.TeleportWhereType;
 import org.l2jmobius.gameserver.instancemanager.CHSiegeManager;
 import org.l2jmobius.gameserver.instancemanager.CastleManager;
@@ -63,6 +63,7 @@ import org.l2jmobius.gameserver.model.siege.Castle;
 import org.l2jmobius.gameserver.model.siege.Siege;
 import org.l2jmobius.gameserver.model.siege.clanhalls.SiegableHall;
 import org.l2jmobius.gameserver.model.skill.CommonSkill;
+import org.l2jmobius.gameserver.model.skill.Skill;
 import org.l2jmobius.gameserver.model.variables.AccountVariables;
 import org.l2jmobius.gameserver.model.zone.ZoneId;
 import org.l2jmobius.gameserver.network.ConnectionState;
@@ -91,6 +92,7 @@ import org.l2jmobius.gameserver.network.serverpackets.SkillCoolTime;
 import org.l2jmobius.gameserver.network.serverpackets.SystemMessage;
 import org.l2jmobius.gameserver.network.serverpackets.UserInfo;
 import org.l2jmobius.gameserver.network.serverpackets.ValidateLocation;
+import org.l2jmobius.gameserver.taskmanager.GameTimeTaskManager;
 import org.l2jmobius.gameserver.util.BuilderUtil;
 import org.l2jmobius.gameserver.util.Util;
 
@@ -103,34 +105,35 @@ import org.l2jmobius.gameserver.util.Util;
  * packet format rev87 bddddbdcccccccccccccccccccc
  * <p>
  */
-public class EnterWorld implements ClientPacket
+public class EnterWorld extends ClientPacket
 {
 	private static final Map<String, ClientHardwareInfoHolder> TRACE_HWINFO = new ConcurrentHashMap<>();
 	
 	private final int[][] _tracert = new int[5][4];
 	
 	@Override
-	public void read(ReadablePacket packet)
+	protected void readImpl()
 	{
-		packet.readBytes(32); // Unknown Byte Array
-		packet.readInt(); // Unknown Value
-		packet.readInt(); // Unknown Value
-		packet.readInt(); // Unknown Value
-		packet.readInt(); // Unknown Value
-		packet.readBytes(32); // Unknown Byte Array
-		packet.readInt(); // Unknown Value
+		readBytes(32); // Unknown Byte Array
+		readInt(); // Unknown Value
+		readInt(); // Unknown Value
+		readInt(); // Unknown Value
+		readInt(); // Unknown Value
+		readBytes(32); // Unknown Byte Array
+		readInt(); // Unknown Value
 		for (int i = 0; i < 5; i++)
 		{
 			for (int o = 0; o < 4; o++)
 			{
-				_tracert[i][o] = packet.readByte();
+				_tracert[i][o] = readUnsignedByte();
 			}
 		}
 	}
 	
 	@Override
-	public void run(GameClient client)
+	protected void runImpl()
 	{
+		final GameClient client = getClient();
 		final Player player = client.getPlayer();
 		if (player == null)
 		{
@@ -266,7 +269,6 @@ public class EnterWorld implements ClientPacket
 					player.setSiegeState((byte) 1);
 					player.setSiegeSide(siege.getCastle().getResidenceId());
 				}
-				
 				else if (siege.checkIsDefender(clan))
 				{
 					player.setSiegeState((byte) 2);
@@ -403,7 +405,7 @@ public class EnterWorld implements ClientPacket
 		// Expand Skill
 		player.sendPacket(new ExStorageMaxCount(player));
 		player.sendPacket(new FriendList(player));
-		SystemMessage sm = new SystemMessage(SystemMessageId.YOUR_FRIEND_S1_JUST_LOGGED_IN);
+		SystemMessage sm = new SystemMessage(SystemMessageId.S1_FRIEND_HAS_LOGGED_IN);
 		sm.addString(player.getName());
 		for (int id : player.getFriendList())
 		{
@@ -421,7 +423,7 @@ public class EnterWorld implements ClientPacket
 		
 		if ((Config.SERVER_RESTART_SCHEDULE_ENABLED) && (Config.SERVER_RESTART_SCHEDULE_MESSAGE))
 		{
-			player.sendPacket(new CreatureSay(null, ChatType.BATTLEFIELD, "[SERVER]", "Next restart is scheduled at " + ServerRestartManager.getInstance().getNextRestartTime() + "."));
+			player.sendPacket(new CreatureSay(null, ChatType.WHISPER, "[SERVER]", "Next restart is scheduled at " + ServerRestartManager.getInstance().getNextRestartTime() + "."));
 		}
 		
 		if (showClanNotice)
@@ -636,6 +638,24 @@ public class EnterWorld implements ClientPacket
 			}, 5000);
 		}
 		
+		// Check if the player is a Dark Elf and has the Shadow Sense skill.
+		if ((player.getRace() == Race.DARK_ELF))
+		{
+			final Skill shadowSense = player.getKnownSkill(CommonSkill.SHADOW_SENSE.getId());
+			if (shadowSense != null)
+			{
+				boolean isNight = GameTimeTaskManager.getInstance().isNight();
+				if (isNight)
+				{
+					player.sendPacket(new SystemMessage(SystemMessageId.IT_IS_NOW_MIDNIGHT_AND_THE_EFFECT_OF_S1_CAN_BE_FELT).addSkillName(shadowSense));
+				}
+				else
+				{
+					player.sendPacket(new SystemMessage(SystemMessageId.IT_IS_DAWN_AND_THE_EFFECT_OF_S1_WILL_NOW_DISAPPEAR).addSkillName(shadowSense));
+				}
+			}
+		}
+		
 		// EnterWorld has finished.
 		player.setEnteredWorld();
 		
@@ -715,7 +735,7 @@ public class EnterWorld implements ClientPacket
 			final Player apprentice = World.getInstance().getPlayer(player.getApprentice());
 			if (apprentice != null)
 			{
-				final SystemMessage msg = new SystemMessage(SystemMessageId.YOUR_SPONSOR_C1_HAS_LOGGED_IN);
+				final SystemMessage msg = new SystemMessage(SystemMessageId.YOUR_SPONSOR_S1_HAS_LOGGED_IN);
 				msg.addString(player.getName());
 				apprentice.sendPacket(msg);
 			}

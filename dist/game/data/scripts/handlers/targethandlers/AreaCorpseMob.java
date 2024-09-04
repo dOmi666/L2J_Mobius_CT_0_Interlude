@@ -40,7 +40,7 @@ public class AreaCorpseMob implements ITargetTypeHandler
 		final List<WorldObject> targetList = new LinkedList<>();
 		if ((target == null) || !target.isAttackable() || !target.isDead())
 		{
-			creature.sendPacket(SystemMessageId.THAT_IS_AN_INCORRECT_TARGET);
+			creature.sendPacket(SystemMessageId.THAT_IS_THE_INCORRECT_TARGET);
 			return targetList;
 		}
 		

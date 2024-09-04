@@ -1,10 +1,10 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
 <list xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="../../xsd/skills.xsd">
-	<skill id="3600" levels="10" name="Special Ability: Anger">
+	<skill id="3600" levels="9" name="Special Ability: Anger">
 		<!-- Decreases the character's Maximum HP but increases P. Atk. Allows the character to attack multiple opponents. -->
-		<table name="#magicLevel">46 49 52 55 58 61 64 67 75 80</table>
-		<table name="#pAtk">20.44 22.64 24.77 26.78 28.59 30.12 31.30 39 45 78.33</table>
-		<table name="#pvpBonus">1 1 1 1 1 1 1.05 1.05 1.05 1.05</table>
+		<table name="#magicLevel">46 49 52 55 58 61 64 67 75</table>
+		<table name="#pAtk">20.44 22.64 24.77 26.78 28.59 30.12 31.30 39 45</table>
+		<table name="#pvpBonus">1 1 1 1 1 1 1.05 1.05 1.05</table>
 		<set name="icon" val="icon.skill1062" />
 		<set name="magicLevel" val="#magicLevel" />
 		<set name="operateType" val="P" />
@@ -20,11 +20,11 @@
 			</effect>
 		</for>
 	</skill>
-	<skill id="3601" levels="10" name="Special Ability: Haste">
+	<skill id="3601" levels="9" name="Special Ability: Haste">
 		<!-- Increases Atk.Spd., and enables the character to attack multiple opponents. -->
-		<table name="#magicLevel">46 49 52 55 58 61 64 67 75 84</table>
-		<table name="#pAtkSpd">1.08 1.07 1.07 1.07 1.06 1.06 1.06 1.06 1.07 1.09</table>
-		<table name="#pvpBonus">1 1 1 1 1 1 1.05 1.05 1.05 1.05</table>
+		<table name="#magicLevel">46 49 52 55 58 61 64 67 75</table>
+		<table name="#pAtkSpd">1.08 1.07 1.07 1.07 1.06 1.06 1.06 1.06 1.07</table>
+		<table name="#pvpBonus">1 1 1 1 1 1 1.05 1.05 1.05</table>
 		<set name="icon" val="icon.skill1086" />
 		<set name="magicLevel" val="#magicLevel" />
 		<set name="operateType" val="P" />
@@ -38,11 +38,11 @@
 			</effect>
 		</for>
 	</skill>
-	<skill id="3602" levels="10" name="Special Ability: Guidance">
+	<skill id="3602" levels="9" name="Special Ability: Guidance">
 		<!-- Increases Atk. Spd., and enables the character to attack multiple opponents and inflicts additional damage during PvP. -->
-		<table name="#accCombat">6.88 6.07 5.72 5.37 5.02 4.68 4.34 3.95 5.27 7.5</table>
-		<table name="#magicLevel">46 49 52 55 58 61 64 67 75 84</table>
-		<table name="#pvpBonus">1 1 1 1 1 1 1.05 1.05 1.05 1.05</table>
+		<table name="#accCombat">6.88 6.07 5.72 5.37 5.02 4.68 4.34 3.95 5.27</table>
+		<table name="#magicLevel">46 49 52 55 58 61 64 67 75</table>
+		<table name="#pvpBonus">1 1 1 1 1 1 1.05 1.05 1.05</table>
 		<set name="icon" val="icon.skill1240" />
 		<set name="magicLevel" val="#magicLevel" />
 		<set name="operateType" val="P" />
@@ -173,86 +173,65 @@
 			</effect>
 		</for>
 	</skill>
-	<skill id="3608" levels="3" name="Apella Heavy Armor Set">
+	<skill id="3608" levels="1" name="Apella Heavy Armor Set">
 		<!-- Increases maximum CP/CP regeneration and decreases experience value penalty if killed by another player. Casts a hold on an attacking player at a certain rate. -->
-		<table name="#maxCP">1035 1116 1116</table>
-		<table name="#mpConsumeRate">1 0.95 0.95</table>
-		<table name="#triggeredLevel">1 2 2</table>
-		<table name="#expLost">0.3 0.3 0.6</table>
 		<set name="icon" val="icon.armor_t1004_ul_i00" />
 		<set name="magicLevel" val="1" />
 		<set name="operateType" val="P" />
 		<set name="targetType" val="SELF" />
 		<for>
 			<effect name="Buff">
-				<add stat="maxCp" val="#maxCP" />
+				<add stat="maxCp" val="1035" />
 				<mul stat="regCp" val="1.4" />
-				<mul stat="reduceExpLostByPvp" val="#expLost" />
-				<mul stat="physicalMpConsumeRate" val="#mpConsumeRate" />
-				<mul stat="magicalMpConsumeRate" val="#mpConsumeRate" />
-				<mul stat="danceMpConsumeRate" val="#mpConsumeRate" />
+				<mul stat="reduceExpLostByPvp" val="0.3" />
 			</effect>
 			<effect name="TriggerSkillByDamage">
 				<param attackerType="Playable" minAttackerLevel="1" maxAttackerLevel="100" />
 				<param minDamage="50" />
 				<param chance="10" />
-				<param skillId="5605" skillLevel="#triggeredLevel" /> <!-- Power of Apella -->
+				<param skillId="5605" skillLevel="1" /> <!-- Power of Apella -->
 				<param targetType="SELF" />
 			</effect>
 		</for>
 	</skill>
-	<skill id="3609" levels="3" name="Apella Light Armor Set">
+	<skill id="3609" levels="1" name="Apella Light Armor Set">
 		<!-- Increases maximum CP/CP regeneration and decreases experience value penalty if killed by another player. Casts a Speed reduction curse on an attacking player. -->
-		<table name="#maxCP">1035 1116 1116</table>
-		<table name="#mpConsumeRate">1 0.95 0.95</table>
-		<table name="#triggeredLevel">1 2 2</table>
-		<table name="#expLost">0.3 0.3 0.6</table>
 		<set name="icon" val="icon.armor_t1005_ul_i00" />
 		<set name="magicLevel" val="1" />
 		<set name="operateType" val="P" />
 		<set name="targetType" val="SELF" />
 		<for>
 			<effect name="Buff">
-				<add stat="maxCp" val="#maxCP" />
+				<add stat="maxCp" val="1035" />
 				<mul stat="regCp" val="1.4" />
-				<mul stat="reduceExpLostByPvp" val="#expLost" />
-				<mul stat="physicalMpConsumeRate" val="#mpConsumeRate" />
-				<mul stat="magicalMpConsumeRate" val="#mpConsumeRate" />
-				<mul stat="danceMpConsumeRate" val="#mpConsumeRate" />
+				<mul stat="reduceExpLostByPvp" val="0.3" />
 			</effect>
 			<effect name="TriggerSkillByDamage">
 				<param attackerType="Playable" minAttackerLevel="1" maxAttackerLevel="100" />
 				<param minDamage="50" />
 				<param chance="10" />
-				<param skillId="5607" skillLevel="#triggeredLevel" /> <!-- Power of Apella -->
+				<param skillId="5607" skillLevel="1" /> <!-- Power of Apella -->
 				<param targetType="SELF" />
 			</effect>
 		</for>
 	</skill>
-	<skill id="3610" levels="3" name="Apella Robe Set">
+	<skill id="3610" levels="1" name="Apella Robe Set">
 		<!-- Increases maximum CP/CP regeneration and decreases experience value penalty if killed by a player. Casts an Atk. Spd. reduction curse on attacking player. -->
-		<table name="#maxCP">1035 1116 1116</table>
-		<table name="#mpConsumeRate">1 0.95 0.95</table>
-		<table name="#triggeredLevel">1 2 2</table>
-		<table name="#expLost">0.3 0.3 0.6</table>
 		<set name="icon" val="icon.armor_t1006_ul_i00" />
 		<set name="magicLevel" val="1" />
 		<set name="operateType" val="P" />
 		<set name="targetType" val="SELF" />
 		<for>
 			<effect name="Buff">
-				<add stat="maxCp" val="#maxCP" />
+				<add stat="maxCp" val="1035" />
 				<mul stat="regCp" val="1.4" />
-				<mul stat="reduceExpLostByPvp" val="#expLost" />
-				<mul stat="physicalMpConsumeRate" val="#mpConsumeRate" />
-				<mul stat="magicalMpConsumeRate" val="#mpConsumeRate" />
-				<mul stat="danceMpConsumeRate" val="#mpConsumeRate" />
+				<mul stat="reduceExpLostByPvp" val="0.3" />
 			</effect>
 			<effect name="TriggerSkillByDamage">
 				<param attackerType="Playable" minAttackerLevel="1" maxAttackerLevel="100" />
 				<param minDamage="50" />
 				<param chance="10" />
-				<param skillId="5608" skillLevel="#triggeredLevel" /> <!-- Power of Apella -->
+				<param skillId="5608" skillLevel="1" /> <!-- Power of Apella -->
 				<param targetType="SELF" />
 			</effect>
 		</for>

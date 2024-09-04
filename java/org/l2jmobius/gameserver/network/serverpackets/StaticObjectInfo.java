@@ -16,8 +16,10 @@
  */
 package org.l2jmobius.gameserver.network.serverpackets;
 
+import org.l2jmobius.commons.network.WritableBuffer;
 import org.l2jmobius.gameserver.model.actor.instance.Door;
 import org.l2jmobius.gameserver.model.actor.instance.StaticObject;
+import org.l2jmobius.gameserver.network.GameClient;
 import org.l2jmobius.gameserver.network.ServerPackets;
 
 /**
@@ -41,10 +43,10 @@ public class StaticObjectInfo extends ServerPacket
 	}
 	
 	@Override
-	public void write()
+	public void writeImpl(GameClient client, WritableBuffer buffer)
 	{
-		ServerPackets.STATIC_OBJECT.writeId(this);
-		writeInt(_staticObjectId);
-		writeInt(_objectId);
+		ServerPackets.STATIC_OBJECT.writeId(this, buffer);
+		buffer.writeInt(_staticObjectId);
+		buffer.writeInt(_objectId);
 	}
 }

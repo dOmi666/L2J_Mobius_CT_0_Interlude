@@ -26,6 +26,7 @@ import java.util.logging.Logger;
 
 import org.l2jmobius.Config;
 import org.l2jmobius.commons.database.DatabaseFactory;
+import org.l2jmobius.commons.network.WritableBuffer;
 import org.l2jmobius.gameserver.data.sql.ClanTable;
 import org.l2jmobius.gameserver.model.CharSelectInfoPackage;
 import org.l2jmobius.gameserver.model.World;
@@ -72,11 +73,11 @@ public class CharSelectionInfo extends ServerPacket
 	}
 	
 	@Override
-	public void write()
+	public void writeImpl(GameClient client, WritableBuffer buffer)
 	{
-		ServerPackets.CHAR_SELECT_INFO.writeId(this);
+		ServerPackets.CHAR_SELECT_INFO.writeId(this, buffer);
 		final int size = _characterPackages.size();
-		writeInt(size); // Created character count
+		buffer.writeInt(size); // Created character count
 		long lastAccess = 0;
 		if (_activeId == -1)
 		{
@@ -92,78 +93,78 @@ public class CharSelectionInfo extends ServerPacket
 		for (int i = 0; i < size; i++)
 		{
 			final CharSelectInfoPackage charInfoPackage = _characterPackages.get(i);
-			writeString(charInfoPackage.getName()); // Character name
-			writeInt(charInfoPackage.getObjectId()); // Character ID
-			writeString(_loginName); // Account name
-			writeInt(_sessionId); // Account ID
-			writeInt(charInfoPackage.getClanId()); // Clan ID
-			writeInt(0); // Builder level
-			writeInt(charInfoPackage.getSex()); // Sex
-			writeInt(charInfoPackage.getRace()); // Race
-			writeInt(charInfoPackage.getBaseClassId());
-			writeInt(1); // GameServerName
-			writeInt(0);
-			writeInt(0);
-			writeInt(0);
-			writeDouble(charInfoPackage.getCurrentHp());
-			writeDouble(charInfoPackage.getCurrentMp());
-			writeInt((int) charInfoPackage.getSp());
-			writeLong(charInfoPackage.getExp());
-			writeInt(charInfoPackage.getLevel());
-			writeInt(charInfoPackage.getKarma());
-			writeInt(0);
-			writeInt(0);
-			writeInt(0);
-			writeInt(0);
-			writeInt(0);
-			writeInt(0);
-			writeInt(0);
-			writeInt(0);
-			writeInt(0);
-			writeInt(charInfoPackage.getPaperdollObjectId(Inventory.PAPERDOLL_UNDER));
-			writeInt(charInfoPackage.getPaperdollObjectId(Inventory.PAPERDOLL_REAR));
-			writeInt(charInfoPackage.getPaperdollObjectId(Inventory.PAPERDOLL_LEAR));
-			writeInt(charInfoPackage.getPaperdollObjectId(Inventory.PAPERDOLL_NECK));
-			writeInt(charInfoPackage.getPaperdollObjectId(Inventory.PAPERDOLL_RFINGER));
-			writeInt(charInfoPackage.getPaperdollObjectId(Inventory.PAPERDOLL_LFINGER));
-			writeInt(charInfoPackage.getPaperdollObjectId(Inventory.PAPERDOLL_HEAD));
-			writeInt(charInfoPackage.getPaperdollObjectId(Inventory.PAPERDOLL_RHAND));
-			writeInt(charInfoPackage.getPaperdollObjectId(Inventory.PAPERDOLL_LHAND));
-			writeInt(charInfoPackage.getPaperdollObjectId(Inventory.PAPERDOLL_GLOVES));
-			writeInt(charInfoPackage.getPaperdollObjectId(Inventory.PAPERDOLL_CHEST));
-			writeInt(charInfoPackage.getPaperdollObjectId(Inventory.PAPERDOLL_LEGS));
-			writeInt(charInfoPackage.getPaperdollObjectId(Inventory.PAPERDOLL_FEET));
-			writeInt(charInfoPackage.getPaperdollObjectId(Inventory.PAPERDOLL_CLOAK));
-			writeInt(charInfoPackage.getPaperdollObjectId(Inventory.PAPERDOLL_RHAND));
-			writeInt(charInfoPackage.getPaperdollObjectId(Inventory.PAPERDOLL_HAIR));
-			writeInt(charInfoPackage.getPaperdollObjectId(Inventory.PAPERDOLL_HAIR2));
-			writeInt(charInfoPackage.getPaperdollItemId(Inventory.PAPERDOLL_UNDER));
-			writeInt(charInfoPackage.getPaperdollItemId(Inventory.PAPERDOLL_REAR));
-			writeInt(charInfoPackage.getPaperdollItemId(Inventory.PAPERDOLL_LEAR));
-			writeInt(charInfoPackage.getPaperdollItemId(Inventory.PAPERDOLL_NECK));
-			writeInt(charInfoPackage.getPaperdollItemId(Inventory.PAPERDOLL_RFINGER));
-			writeInt(charInfoPackage.getPaperdollItemId(Inventory.PAPERDOLL_LFINGER));
-			writeInt(charInfoPackage.getPaperdollItemId(Inventory.PAPERDOLL_HEAD));
-			writeInt(charInfoPackage.getPaperdollItemId(Inventory.PAPERDOLL_RHAND));
-			writeInt(charInfoPackage.getPaperdollItemId(Inventory.PAPERDOLL_LHAND));
-			writeInt(charInfoPackage.getPaperdollItemId(Inventory.PAPERDOLL_GLOVES));
-			writeInt(charInfoPackage.getPaperdollItemId(Inventory.PAPERDOLL_CHEST));
-			writeInt(charInfoPackage.getPaperdollItemId(Inventory.PAPERDOLL_LEGS));
-			writeInt(charInfoPackage.getPaperdollItemId(Inventory.PAPERDOLL_FEET));
-			writeInt(charInfoPackage.getPaperdollItemId(Inventory.PAPERDOLL_CLOAK));
-			writeInt(charInfoPackage.getPaperdollItemId(Inventory.PAPERDOLL_RHAND));
-			writeInt(charInfoPackage.getPaperdollItemId(Inventory.PAPERDOLL_HAIR));
-			writeInt(charInfoPackage.getPaperdollItemId(Inventory.PAPERDOLL_HAIR2));
-			writeInt(charInfoPackage.getHairStyle());
-			writeInt(charInfoPackage.getHairColor());
-			writeInt(charInfoPackage.getFace());
-			writeDouble(charInfoPackage.getMaxHp()); // Maximum HP
-			writeDouble(charInfoPackage.getMaxMp()); // Maximum MP
-			writeInt(charInfoPackage.getDeleteTimer() > 0 ? (int) ((charInfoPackage.getDeleteTimer() - System.currentTimeMillis()) / 1000) : 0);
-			writeInt(charInfoPackage.getClassId());
-			writeInt(i == _activeId);
-			writeByte(Math.min(charInfoPackage.getEnchantEffect(), 127));
-			writeInt(charInfoPackage.getAugmentationId());
+			buffer.writeString(charInfoPackage.getName()); // Character name
+			buffer.writeInt(charInfoPackage.getObjectId()); // Character ID
+			buffer.writeString(_loginName); // Account name
+			buffer.writeInt(_sessionId); // Account ID
+			buffer.writeInt(charInfoPackage.getClanId()); // Clan ID
+			buffer.writeInt(0); // Builder level
+			buffer.writeInt(charInfoPackage.getSex()); // Sex
+			buffer.writeInt(charInfoPackage.getRace()); // Race
+			buffer.writeInt(charInfoPackage.getBaseClassId());
+			buffer.writeInt(1); // GameServerName
+			buffer.writeInt(0);
+			buffer.writeInt(0);
+			buffer.writeInt(0);
+			buffer.writeDouble(charInfoPackage.getCurrentHp());
+			buffer.writeDouble(charInfoPackage.getCurrentMp());
+			buffer.writeInt((int) charInfoPackage.getSp());
+			buffer.writeLong(charInfoPackage.getExp());
+			buffer.writeInt(charInfoPackage.getLevel());
+			buffer.writeInt(charInfoPackage.getKarma());
+			buffer.writeInt(0);
+			buffer.writeInt(0);
+			buffer.writeInt(0);
+			buffer.writeInt(0);
+			buffer.writeInt(0);
+			buffer.writeInt(0);
+			buffer.writeInt(0);
+			buffer.writeInt(0);
+			buffer.writeInt(0);
+			buffer.writeInt(charInfoPackage.getPaperdollObjectId(Inventory.PAPERDOLL_UNDER));
+			buffer.writeInt(charInfoPackage.getPaperdollObjectId(Inventory.PAPERDOLL_REAR));
+			buffer.writeInt(charInfoPackage.getPaperdollObjectId(Inventory.PAPERDOLL_LEAR));
+			buffer.writeInt(charInfoPackage.getPaperdollObjectId(Inventory.PAPERDOLL_NECK));
+			buffer.writeInt(charInfoPackage.getPaperdollObjectId(Inventory.PAPERDOLL_RFINGER));
+			buffer.writeInt(charInfoPackage.getPaperdollObjectId(Inventory.PAPERDOLL_LFINGER));
+			buffer.writeInt(charInfoPackage.getPaperdollObjectId(Inventory.PAPERDOLL_HEAD));
+			buffer.writeInt(charInfoPackage.getPaperdollObjectId(Inventory.PAPERDOLL_RHAND));
+			buffer.writeInt(charInfoPackage.getPaperdollObjectId(Inventory.PAPERDOLL_LHAND));
+			buffer.writeInt(charInfoPackage.getPaperdollObjectId(Inventory.PAPERDOLL_GLOVES));
+			buffer.writeInt(charInfoPackage.getPaperdollObjectId(Inventory.PAPERDOLL_CHEST));
+			buffer.writeInt(charInfoPackage.getPaperdollObjectId(Inventory.PAPERDOLL_LEGS));
+			buffer.writeInt(charInfoPackage.getPaperdollObjectId(Inventory.PAPERDOLL_FEET));
+			buffer.writeInt(charInfoPackage.getPaperdollObjectId(Inventory.PAPERDOLL_CLOAK));
+			buffer.writeInt(charInfoPackage.getPaperdollObjectId(Inventory.PAPERDOLL_RHAND));
+			buffer.writeInt(charInfoPackage.getPaperdollObjectId(Inventory.PAPERDOLL_HAIR));
+			buffer.writeInt(charInfoPackage.getPaperdollObjectId(Inventory.PAPERDOLL_HAIR2));
+			buffer.writeInt(charInfoPackage.getPaperdollItemId(Inventory.PAPERDOLL_UNDER));
+			buffer.writeInt(charInfoPackage.getPaperdollItemId(Inventory.PAPERDOLL_REAR));
+			buffer.writeInt(charInfoPackage.getPaperdollItemId(Inventory.PAPERDOLL_LEAR));
+			buffer.writeInt(charInfoPackage.getPaperdollItemId(Inventory.PAPERDOLL_NECK));
+			buffer.writeInt(charInfoPackage.getPaperdollItemId(Inventory.PAPERDOLL_RFINGER));
+			buffer.writeInt(charInfoPackage.getPaperdollItemId(Inventory.PAPERDOLL_LFINGER));
+			buffer.writeInt(charInfoPackage.getPaperdollItemId(Inventory.PAPERDOLL_HEAD));
+			buffer.writeInt(charInfoPackage.getPaperdollItemId(Inventory.PAPERDOLL_RHAND));
+			buffer.writeInt(charInfoPackage.getPaperdollItemId(Inventory.PAPERDOLL_LHAND));
+			buffer.writeInt(charInfoPackage.getPaperdollItemId(Inventory.PAPERDOLL_GLOVES));
+			buffer.writeInt(charInfoPackage.getPaperdollItemId(Inventory.PAPERDOLL_CHEST));
+			buffer.writeInt(charInfoPackage.getPaperdollItemId(Inventory.PAPERDOLL_LEGS));
+			buffer.writeInt(charInfoPackage.getPaperdollItemId(Inventory.PAPERDOLL_FEET));
+			buffer.writeInt(charInfoPackage.getPaperdollItemId(Inventory.PAPERDOLL_CLOAK));
+			buffer.writeInt(charInfoPackage.getPaperdollItemId(Inventory.PAPERDOLL_RHAND));
+			buffer.writeInt(charInfoPackage.getPaperdollItemId(Inventory.PAPERDOLL_HAIR));
+			buffer.writeInt(charInfoPackage.getPaperdollItemId(Inventory.PAPERDOLL_HAIR2));
+			buffer.writeInt(charInfoPackage.getHairStyle());
+			buffer.writeInt(charInfoPackage.getHairColor());
+			buffer.writeInt(charInfoPackage.getFace());
+			buffer.writeDouble(charInfoPackage.getMaxHp()); // Maximum HP
+			buffer.writeDouble(charInfoPackage.getMaxMp()); // Maximum MP
+			buffer.writeInt(charInfoPackage.getDeleteTimer() > 0 ? (int) ((charInfoPackage.getDeleteTimer() - System.currentTimeMillis()) / 1000) : 0);
+			buffer.writeInt(charInfoPackage.getClassId());
+			buffer.writeInt(i == _activeId);
+			buffer.writeByte(Math.min(charInfoPackage.getEnchantEffect(), 127));
+			buffer.writeInt(charInfoPackage.getAugmentationId());
 		}
 	}
 	
@@ -188,7 +189,18 @@ public class CharSelectionInfo extends ServerPacket
 						if (Config.OFFLINE_DISCONNECT_SAME_ACCOUNT)
 						{
 							final Player player = World.getInstance().getPlayer(charInfopackage.getObjectId());
-							if (player != null)
+							if ((player != null) && player.isInStoreMode())
+							{
+								Disconnection.of(player).storeMe().deleteMe();
+								continue;
+							}
+						}
+						
+						// Disconnect offline play.
+						if (Config.OFFLINE_PLAY_DISCONNECT_SAME_ACCOUNT)
+						{
+							final Player player = World.getInstance().getPlayer(charInfopackage.getObjectId());
+							if ((player != null) && player.isOfflinePlay())
 							{
 								Disconnection.of(player).storeMe().deleteMe();
 							}

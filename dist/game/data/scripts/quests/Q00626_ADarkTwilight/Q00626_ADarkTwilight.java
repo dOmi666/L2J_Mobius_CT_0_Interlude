@@ -19,7 +19,6 @@ package quests.Q00626_ADarkTwilight;
 import java.util.HashMap;
 import java.util.Map;
 
-import org.l2jmobius.Config;
 import org.l2jmobius.gameserver.enums.QuestSound;
 import org.l2jmobius.gameserver.model.actor.Npc;
 import org.l2jmobius.gameserver.model.actor.Player;
@@ -27,159 +26,150 @@ import org.l2jmobius.gameserver.model.quest.Quest;
 import org.l2jmobius.gameserver.model.quest.QuestState;
 import org.l2jmobius.gameserver.model.quest.State;
 
-/**
- * A Dark Twilight (626)<br>
- * Original Jython script by disKret.
- * @author Citizen
- */
 public class Q00626_ADarkTwilight extends Quest
 {
-	// NPCs
+	// NPC
 	private static final int HIERARCH = 31517;
 	// Items
 	private static final int BLOOD_OF_SAINT = 7169;
-	// Monsters
-	private static final Map<Integer, Integer> MONSTERS = new HashMap<>();
+	// Drop chances
+	private static final Map<Integer, Integer> CHANCES = new HashMap<>();
 	static
 	{
-		MONSTERS.put(21520, 641); // Eye of Splendor
-		MONSTERS.put(21523, 648); // Flash of Splendor
-		MONSTERS.put(21524, 692); // Blade of Splendor
-		MONSTERS.put(21525, 710); // Blade of Splendor
-		MONSTERS.put(21526, 772); // Wisdom of Splendor
-		MONSTERS.put(21529, 639); // Soul of Splendor
-		MONSTERS.put(21530, 683); // Victory of Splendor
-		MONSTERS.put(21531, 767); // Punishment of Splendor
-		MONSTERS.put(21532, 795); // Shout of Splendor
-		MONSTERS.put(21535, 802); // Signet of Splendor
-		MONSTERS.put(21536, 774); // Crown of Splendor
-		MONSTERS.put(21539, 848); // Wailing of Splendor
-		MONSTERS.put(21540, 880); // Wailing of Splendor
-		MONSTERS.put(21658, 790); // Punishment of Splendor
+		CHANCES.put(21520, 533000);
+		CHANCES.put(21523, 566000);
+		CHANCES.put(21524, 603000);
+		CHANCES.put(21525, 603000);
+		CHANCES.put(21526, 587000);
+		CHANCES.put(21529, 606000);
+		CHANCES.put(21530, 560000);
+		CHANCES.put(21531, 669000);
+		CHANCES.put(21532, 651000);
+		CHANCES.put(21535, 672000);
+		CHANCES.put(21536, 597000);
+		CHANCES.put(21539, 739000);
+		CHANCES.put(21540, 739000);
+		CHANCES.put(21658, 669000);
 	}
-	
-	// Misc
-	private static final int MIN_LEVEL_REQUIRED = 60;
-	private static final int ITEMS_COUNT_REQUIRED = 300;
-	// Rewards
-	private static final int ADENA_COUNT = 100000;
-	private static final int XP_COUNT = 162773;
-	private static final int SP_COUNT = 12500;
 	
 	public Q00626_ADarkTwilight()
 	{
 		super(626);
+		registerQuestItems(BLOOD_OF_SAINT);
 		addStartNpc(HIERARCH);
 		addTalkId(HIERARCH);
-		addKillId(MONSTERS.keySet());
-		registerQuestItems(BLOOD_OF_SAINT);
+		addKillId(CHANCES.keySet());
 	}
 	
 	@Override
-	public String onAdvEvent(String event, Npc npc, Player player)
+	public String onEvent(String event, Npc npc, Player player)
 	{
-		final QuestState qs = getQuestState(player, false);
-		if (qs == null)
-		{
-			return null;
-		}
 		String htmltext = event;
+		final QuestState st = getQuestState(player, false);
+		if (st == null)
+		{
+			return htmltext;
+		}
+		
 		switch (event)
 		{
-			case "31517-05.html":
+			case "31517-03.htm":
 			{
+				st.startQuest();
 				break;
 			}
-			case "31517-02.htm":
+			case "reward1":
 			{
-				qs.startQuest();
-				break;
-			}
-			case "Exp":
-			{
-				if (getQuestItemsCount(player, BLOOD_OF_SAINT) < ITEMS_COUNT_REQUIRED)
+				if (getQuestItemsCount(player, BLOOD_OF_SAINT) == 300)
 				{
-					return "31517-06.html";
+					htmltext = "31517-07.htm";
+					takeItems(player, BLOOD_OF_SAINT, 300);
+					addExpAndSp(player, 162773, 12500);
+					st.exitQuest(false, true);
 				}
-				addExpAndSp(player, XP_COUNT, SP_COUNT);
-				qs.exitQuest(true, true);
-				htmltext = "31517-07.html";
-				break;
-			}
-			case "Adena":
-			{
-				if (getQuestItemsCount(player, BLOOD_OF_SAINT) < ITEMS_COUNT_REQUIRED)
+				else
 				{
-					return "31517-06.html";
+					htmltext = "31517-08.htm";
 				}
-				giveAdena(player, ADENA_COUNT, true);
-				qs.exitQuest(true, true);
-				htmltext = "31517-07.html";
 				break;
 			}
-			default:
+			case "reward2":
 			{
-				htmltext = null;
+				if (getQuestItemsCount(player, BLOOD_OF_SAINT) == 300)
+				{
+					htmltext = "31517-07.htm";
+					takeItems(player, BLOOD_OF_SAINT, 300);
+					giveAdena(player, 100000, true);
+					st.exitQuest(false, true);
+				}
+				else
+				{
+					htmltext = "31517-08.htm";
+				}
 				break;
 			}
 		}
 		return htmltext;
-	}
-	
-	@Override
-	public String onKill(Npc npc, Player killer, boolean isSummon)
-	{
-		final Player partyMember = getRandomPartyMember(killer, 1);
-		if (partyMember != null)
-		{
-			final QuestState qs = getQuestState(partyMember, false);
-			final float chance = MONSTERS.get(npc.getId()) * Config.RATE_QUEST_DROP;
-			if (getRandom(1000) < chance)
-			{
-				giveItems(partyMember, BLOOD_OF_SAINT, 1);
-				if (getQuestItemsCount(partyMember, BLOOD_OF_SAINT) < ITEMS_COUNT_REQUIRED)
-				{
-					playSound(partyMember, QuestSound.ITEMSOUND_QUEST_ITEMGET);
-				}
-				else
-				{
-					qs.setCond(2, true);
-				}
-			}
-		}
-		return super.onKill(npc, killer, isSummon);
 	}
 	
 	@Override
 	public String onTalk(Npc npc, Player player)
 	{
-		final QuestState qs = getQuestState(player, true);
 		String htmltext = getNoQuestMsg(player);
-		switch (qs.getState())
+		final QuestState st = getQuestState(player, true);
+		
+		switch (st.getState())
 		{
 			case State.CREATED:
 			{
-				htmltext = (player.getLevel() >= MIN_LEVEL_REQUIRED) ? "31517-01.htm" : "31517-00.htm";
+				htmltext = (player.getLevel() < 60) ? "31517-02.htm" : "31517-01.htm";
 				break;
 			}
 			case State.STARTED:
 			{
-				switch (qs.getCond())
+				final int cond = st.getCond();
+				if (cond == 1)
 				{
-					case 1:
-					{
-						htmltext = "31517-03.html";
-						break;
-					}
-					case 2:
-					{
-						htmltext = "31517-04.html";
-						break;
-					}
+					htmltext = "31517-05.htm";
+				}
+				else
+				{
+					htmltext = "31517-04.htm";
 				}
 				break;
 			}
+			case State.COMPLETED:
+			{
+				htmltext = getAlreadyCompletedMsg(player);
+				break;
+			}
 		}
+		
 		return htmltext;
+	}
+	
+	@Override
+	public String onKill(Npc npc, Player player, boolean isPet)
+	{
+		final QuestState st = getQuestState(player, false);
+		if ((st == null) || !st.isCond(1))
+		{
+			return null;
+		}
+		
+		if (getRandom(1000000) < CHANCES.get(npc.getId()))
+		{
+			giveItems(player, BLOOD_OF_SAINT, 1);
+			if (getQuestItemsCount(player, BLOOD_OF_SAINT) < 300)
+			{
+				playSound(player, QuestSound.ITEMSOUND_QUEST_ITEMGET);
+			}
+			else
+			{
+				st.setCond(2, true);
+			}
+		}
+		
+		return null;
 	}
 }

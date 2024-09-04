@@ -16,7 +16,6 @@
  */
 package quests.Q00647_InfluxOfMachines;
 
-import org.l2jmobius.commons.util.Rnd;
 import org.l2jmobius.gameserver.enums.QuestSound;
 import org.l2jmobius.gameserver.model.actor.Npc;
 import org.l2jmobius.gameserver.model.actor.Player;
@@ -26,21 +25,17 @@ import org.l2jmobius.gameserver.model.quest.State;
 
 public class Q00647_InfluxOfMachines extends Quest
 {
-	// Item
-	private static final int DESTROYED_GOLEM_SHARD = 8100;
-	
 	// NPC
 	private static final int GUTENHAGEN = 32069;
+	// Item
+	private static final int DESTROYED_GOLEM_SHARD = 8100;
 	
 	public Q00647_InfluxOfMachines()
 	{
 		super(647);
-		
 		registerQuestItems(DESTROYED_GOLEM_SHARD);
-		
 		addStartNpc(GUTENHAGEN);
 		addTalkId(GUTENHAGEN);
-		
 		for (int i = 22052; i < 22079; i++)
 		{
 			addKillId(i);
@@ -48,10 +43,10 @@ public class Q00647_InfluxOfMachines extends Quest
 	}
 	
 	@Override
-	public String onAdvEvent(String event, Npc npc, Player player)
+	public String onEvent(String event, Npc npc, Player player)
 	{
-		final String htmltext = event;
-		final QuestState st = player.getQuestState(getName());
+		String htmltext = event;
+		final QuestState st = getQuestState(player, false);
 		if (st == null)
 		{
 			return htmltext;
@@ -64,9 +59,8 @@ public class Q00647_InfluxOfMachines extends Quest
 		else if (event.equals("32069-06.htm"))
 		{
 			takeItems(player, DESTROYED_GOLEM_SHARD, -1);
-			giveItems(player, Rnd.get(4963, 4972), 1);
-			playSound(player, QuestSound.ITEMSOUND_QUEST_FINISH);
-			st.exitQuest(true);
+			giveItems(player, getRandom(4963, 4972), 1);
+			st.exitQuest(true, true);
 		}
 		
 		return htmltext;
@@ -75,15 +69,18 @@ public class Q00647_InfluxOfMachines extends Quest
 	@Override
 	public String onTalk(Npc npc, Player player)
 	{
-		final QuestState st = getQuestState(player, true);
 		String htmltext = getNoQuestMsg(player);
+		final QuestState st = getQuestState(player, true);
+		
 		switch (st.getState())
 		{
 			case State.CREATED:
+			{
 				htmltext = (player.getLevel() < 46) ? "32069-03.htm" : "32069-01.htm";
 				break;
-			
+			}
 			case State.STARTED:
+			{
 				final int cond = st.getCond();
 				if (cond == 1)
 				{
@@ -94,28 +91,39 @@ public class Q00647_InfluxOfMachines extends Quest
 					htmltext = "32069-05.htm";
 				}
 				break;
+			}
 		}
+		
 		return htmltext;
 	}
 	
 	@Override
 	public String onKill(Npc npc, Player player, boolean isPet)
 	{
-		final Player partyMember = getRandomPartyMember(player, 1);
-		if (partyMember == null)
+		final QuestState qs = getRandomPartyMemberState(player, 1, 3, npc);
+		if (qs == null)
 		{
 			return null;
 		}
+		final Player partyMember = qs.getPlayer();
 		
-		final QuestState st = partyMember.getQuestState(getName());
+		final QuestState st = getQuestState(partyMember, false);
 		if (st == null)
 		{
 			return null;
 		}
 		
-		if (giveItemRandomly(partyMember, npc, DESTROYED_GOLEM_SHARD, 1, 500, 0.3, true))
+		if (getRandom(10) < 3)
 		{
-			st.setCond(2);
+			giveItems(partyMember, DESTROYED_GOLEM_SHARD, 1);
+			if (getQuestItemsCount(partyMember, DESTROYED_GOLEM_SHARD) < 500)
+			{
+				playSound(partyMember, QuestSound.ITEMSOUND_QUEST_ITEMGET);
+			}
+			else
+			{
+				st.setCond(2, true);
+			}
 		}
 		
 		return null;

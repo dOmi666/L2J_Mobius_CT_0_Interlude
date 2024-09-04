@@ -65,7 +65,7 @@ public class AdminLevel implements IAdminCommandHandler
 		{
 			if ((targetChar == null) || !targetChar.isPlayer())
 			{
-				activeChar.sendPacket(SystemMessageId.THAT_IS_AN_INCORRECT_TARGET); // incorrect target!
+				activeChar.sendPacket(SystemMessageId.THAT_IS_THE_INCORRECT_TARGET); // incorrect target!
 				return false;
 			}
 			

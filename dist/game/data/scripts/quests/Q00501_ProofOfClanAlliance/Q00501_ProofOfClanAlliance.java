@@ -123,10 +123,10 @@ public class Q00501_ProofOfClanAlliance extends Quest
 	}
 	
 	@Override
-	public String onAdvEvent(String event, Npc npc, Player player)
+	public String onEvent(String event, Npc npc, Player player)
 	{
 		String htmltext = event;
-		final QuestState st = player.getQuestState(getName());
+		final QuestState st = getQuestState(player, false);
 		if (st == null)
 		{
 			return htmltext;
@@ -465,6 +465,7 @@ public class Q00501_ProofOfClanAlliance extends Quest
 				}
 				
 				giveItems(player, itemId, 1);
+				playSound(player, QuestSound.ITEMSOUND_QUEST_ITEMGET);
 			}
 		}
 		else if (CHEST_IDS.contains(npcId) && (cl.getInt("state") == 4))

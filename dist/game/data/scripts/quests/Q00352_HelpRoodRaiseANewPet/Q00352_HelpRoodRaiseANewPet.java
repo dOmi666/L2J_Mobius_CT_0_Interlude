@@ -16,167 +16,127 @@
  */
 package quests.Q00352_HelpRoodRaiseANewPet;
 
-import java.util.HashMap;
-import java.util.Map;
-
-import org.l2jmobius.Config;
+import org.l2jmobius.gameserver.enums.QuestSound;
 import org.l2jmobius.gameserver.model.actor.Npc;
 import org.l2jmobius.gameserver.model.actor.Player;
 import org.l2jmobius.gameserver.model.quest.Quest;
 import org.l2jmobius.gameserver.model.quest.QuestState;
-import org.l2jmobius.gameserver.util.Util;
+import org.l2jmobius.gameserver.model.quest.State;
 
-/**
- * Help Rood Raise A New Pet! (352)
- * @author Adry_85
- */
 public class Q00352_HelpRoodRaiseANewPet extends Quest
 {
-	private static class DropInfo
-	{
-		public int _firstChance;
-		public int _secondChance;
-		
-		public DropInfo(int firstChance, int secondChance)
-		{
-			_firstChance = firstChance;
-			_secondChance = secondChance;
-		}
-		
-		public int getFirstChance()
-		{
-			return _firstChance;
-		}
-		
-		public int getSecondChance()
-		{
-			return _secondChance;
-		}
-	}
-	
-	// NPC
-	private static final int ROOD = 31067;
 	// Items
-	private static final int LIENRIK_EGG1 = 5860;
-	private static final int LIENRIK_EGG2 = 5861;
-	// Misc
-	private static final int MIN_LEVEL = 39;
-	
-	private static final Map<Integer, DropInfo> MOBS = new HashMap<>();
-	static
-	{
-		MOBS.put(20786, new DropInfo(46, 48)); // lienrik
-		MOBS.put(21644, new DropInfo(46, 48)); // lienrik_a
-		MOBS.put(21645, new DropInfo(69, 71)); // lienrik_lad_a
-	}
+	private static final int LIENRIK_EGG_1 = 5860;
+	private static final int LIENRIK_EGG_2 = 5861;
 	
 	public Q00352_HelpRoodRaiseANewPet()
 	{
 		super(352);
-		addStartNpc(ROOD);
-		addTalkId(ROOD);
-		addKillId(MOBS.keySet());
-		registerQuestItems(LIENRIK_EGG1, LIENRIK_EGG2);
+		registerQuestItems(LIENRIK_EGG_1, LIENRIK_EGG_2);
+		addStartNpc(31067); // Rood
+		addTalkId(31067);
+		addKillId(20786, 20787, 21644, 21645);
 	}
 	
 	@Override
-	public String onAdvEvent(String event, Npc npc, Player player)
+	public String onEvent(String event, Npc npc, Player player)
 	{
-		final QuestState qs = getQuestState(player, false);
-		if (qs == null)
+		String htmltext = event;
+		final QuestState st = getQuestState(player, false);
+		if (st == null)
 		{
-			return null;
+			return htmltext;
 		}
 		
-		String htmltext = null;
-		switch (event)
+		if (event.equals("31067-04.htm"))
 		{
-			case "31067-02.htm":
-			case "31067-03.htm":
-			case "31067-07.html":
-			case "31067-10.html":
-			{
-				htmltext = event;
-				break;
-			}
-			case "31067-04.htm":
-			{
-				qs.setMemoState(1);
-				qs.startQuest();
-				htmltext = event;
-				break;
-			}
-			case "31067-08.html":
-			{
-				qs.exitQuest(true, true);
-				htmltext = event;
-				break;
-			}
+			st.startQuest();
 		}
+		else if (event.equals("31067-09.htm"))
+		{
+			st.exitQuest(true, true);
+		}
+		
 		return htmltext;
-	}
-	
-	@Override
-	public String onKill(Npc npc, Player killer, boolean isSummon)
-	{
-		final QuestState qs = getQuestState(killer, false);
-		if ((qs == null) || !Util.checkIfInRange(Config.ALT_PARTY_RANGE, npc, killer, true))
-		{
-			return null;
-		}
-		
-		final DropInfo info = MOBS.get(npc.getId());
-		final int random = getRandom(100);
-		if (random < info.getFirstChance())
-		{
-			giveItemRandomly(killer, npc, LIENRIK_EGG1, 1, 0, 1, true);
-		}
-		else if (random < info.getSecondChance())
-		{
-			giveItemRandomly(killer, npc, LIENRIK_EGG2, 1, 0, 1, true);
-		}
-		return super.onKill(npc, killer, isSummon);
 	}
 	
 	@Override
 	public String onTalk(Npc npc, Player player)
 	{
-		final QuestState qs = getQuestState(player, true);
 		String htmltext = getNoQuestMsg(player);
-		if (qs.isCreated())
+		final QuestState st = getQuestState(player, true);
+		
+		switch (st.getState())
 		{
-			htmltext = (player.getLevel() >= MIN_LEVEL) ? "31067-01.htm" : "31067-05.html";
-		}
-		else if (qs.isStarted())
-		{
-			final int lienrikEgg1Count = getQuestItemsCount(player, LIENRIK_EGG1);
-			final int lienrikEgg2Count = getQuestItemsCount(player, LIENRIK_EGG2);
-			if ((lienrikEgg1Count == 0) && (lienrikEgg2Count == 0))
+			case State.CREATED:
 			{
-				htmltext = "31067-06.html";
+				htmltext = (player.getLevel() < 39) ? "31067-00.htm" : "31067-01.htm";
+				break;
 			}
-			else if ((lienrikEgg1Count >= 1) && (lienrikEgg2Count == 0))
+			case State.STARTED:
 			{
-				if (lienrikEgg1Count >= 10)
+				final int eggs1 = getQuestItemsCount(player, LIENRIK_EGG_1);
+				final int eggs2 = getQuestItemsCount(player, LIENRIK_EGG_2);
+				if ((eggs1 + eggs2) == 0)
 				{
-					giveAdena(player, (lienrikEgg1Count * 34) + 4000, true);
+					htmltext = "31067-05.htm";
 				}
 				else
 				{
-					giveAdena(player, (lienrikEgg1Count * 34) + 2000, true);
+					int reward = 2000;
+					if ((eggs1 > 0) && (eggs2 == 0))
+					{
+						htmltext = "31067-06.htm";
+						reward += eggs1 * 34;
+						takeItems(player, LIENRIK_EGG_1, -1);
+						giveAdena(player, reward, true);
+					}
+					else if ((eggs1 == 0) && (eggs2 > 0))
+					{
+						htmltext = "31067-08.htm";
+						reward += eggs2 * 1025;
+						takeItems(player, LIENRIK_EGG_2, -1);
+						giveAdena(player, reward, true);
+					}
+					else if ((eggs1 > 0) && (eggs2 > 0))
+					{
+						htmltext = "31067-08.htm";
+						reward += (eggs1 * 34) + (eggs2 * 1025) + 2000;
+						takeItems(player, LIENRIK_EGG_1, -1);
+						takeItems(player, LIENRIK_EGG_2, -1);
+						giveAdena(player, reward, true);
+					}
 				}
-				
-				takeItems(player, LIENRIK_EGG1, -1);
-				htmltext = "31067-10.html";
-			}
-			else if (lienrikEgg1Count >= 1)
-			{
-				giveAdena(player, 4000 + ((lienrikEgg1Count * 34) + (lienrikEgg2Count * 1025)), true);
-				takeItems(player, LIENRIK_EGG1, -1);
-				takeItems(player, LIENRIK_EGG2, -1);
-				htmltext = "31067-11.html";
+				break;
 			}
 		}
+		
 		return htmltext;
+	}
+	
+	@Override
+	public String onKill(Npc npc, Player player, boolean isPet)
+	{
+		final QuestState st = getQuestState(player, false);
+		if ((st == null) || !st.isStarted())
+		{
+			return null;
+		}
+		
+		final int npcId = npc.getId();
+		final int random = getRandom(100);
+		final int chance = ((npcId == 20786) || (npcId == 21644)) ? 44 : 58;
+		if (random < chance)
+		{
+			giveItems(player, LIENRIK_EGG_1, 1);
+			playSound(player, QuestSound.ITEMSOUND_QUEST_ITEMGET);
+		}
+		else if (random < (chance + 4))
+		{
+			giveItems(player, LIENRIK_EGG_2, 1);
+			playSound(player, QuestSound.ITEMSOUND_QUEST_ITEMGET);
+		}
+		
+		return null;
 	}
 }

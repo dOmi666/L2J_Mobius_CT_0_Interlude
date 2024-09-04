@@ -16,13 +16,11 @@
  */
 package org.l2jmobius.gameserver.network.clientpackets;
 
-import org.l2jmobius.commons.network.ReadablePacket;
 import org.l2jmobius.gameserver.enums.PartyDistributionType;
 import org.l2jmobius.gameserver.model.BlockList;
 import org.l2jmobius.gameserver.model.Party;
 import org.l2jmobius.gameserver.model.World;
 import org.l2jmobius.gameserver.model.actor.Player;
-import org.l2jmobius.gameserver.network.GameClient;
 import org.l2jmobius.gameserver.network.SystemMessageId;
 import org.l2jmobius.gameserver.network.serverpackets.ActionFailed;
 import org.l2jmobius.gameserver.network.serverpackets.AskJoinParty;
@@ -32,22 +30,22 @@ import org.l2jmobius.gameserver.network.serverpackets.SystemMessage;
  * sample 29 42 00 00 10 01 00 00 00 format cdd
  * @version $Revision: 1.7.4.4 $ $Date: 2005/03/27 15:29:30 $
  */
-public class RequestJoinParty implements ClientPacket
+public class RequestJoinParty extends ClientPacket
 {
 	private String _name;
 	private int _partyDistributionTypeId;
 	
 	@Override
-	public void read(ReadablePacket packet)
+	protected void readImpl()
 	{
-		_name = packet.readString();
-		_partyDistributionTypeId = packet.readInt();
+		_name = readString();
+		_partyDistributionTypeId = readInt();
 	}
 	
 	@Override
-	public void run(GameClient client)
+	protected void runImpl()
 	{
-		final Player requestor = client.getPlayer();
+		final Player requestor = getPlayer();
 		if (requestor == null)
 		{
 			return;
@@ -68,29 +66,27 @@ public class RequestJoinParty implements ClientPacket
 		
 		if (requestor.isPartyBanned())
 		{
-			requestor.sendPacket(SystemMessageId.YOU_HAVE_BEEN_REPORTED_AS_AN_ILLEGAL_PROGRAM_USER_SO_PARTICIPATING_IN_A_PARTY_IS_NOT_ALLOWED);
+			requestor.sendMessage("You have been reported as an illegal program user, so participating in a party is not allowed.");
 			requestor.sendPacket(ActionFailed.STATIC_PACKET);
 			return;
 		}
 		
 		if (target.isPartyBanned())
 		{
-			final SystemMessage sm = new SystemMessage(SystemMessageId.C1_HAS_BEEN_REPORTED_AS_AN_ILLEGAL_PROGRAM_USER_AND_CANNOT_JOIN_A_PARTY);
-			sm.addString(target.getName());
-			requestor.sendPacket(sm);
+			requestor.sendMessage(target.getName() + " has been reported as an illegal program user and cannot join a party.");
 			return;
 		}
 		
 		if (!target.isVisibleFor(requestor))
 		{
-			requestor.sendPacket(SystemMessageId.THAT_IS_AN_INCORRECT_TARGET);
+			requestor.sendPacket(SystemMessageId.THAT_IS_THE_INCORRECT_TARGET);
 			return;
 		}
 		
 		SystemMessage sm;
 		if (target.isInParty())
 		{
-			sm = new SystemMessage(SystemMessageId.C1_IS_A_MEMBER_OF_ANOTHER_PARTY_AND_CANNOT_BE_INVITED);
+			sm = new SystemMessage(SystemMessageId.S1_IS_A_MEMBER_OF_ANOTHER_PARTY_AND_CANNOT_BE_INVITED);
 			sm.addString(target.getName());
 			requestor.sendPacket(sm);
 			return;
@@ -126,12 +122,12 @@ public class RequestJoinParty implements ClientPacket
 		{
 			if ((target.isInOlympiadMode() != requestor.isInOlympiadMode()) || (target.getOlympiadGameId() != requestor.getOlympiadGameId()) || (target.getOlympiadSide() != requestor.getOlympiadSide()))
 			{
-				requestor.sendPacket(SystemMessageId.A_USER_CURRENTLY_PARTICIPATING_IN_THE_OLYMPIAD_CANNOT_SEND_PARTY_AND_FRIEND_INVITATIONS);
+				requestor.sendMessage("A user currently participating in the Olympiad cannot send party and friend invitations.");
 				return;
 			}
 		}
 		
-		sm = new SystemMessage(SystemMessageId.C1_HAS_BEEN_INVITED_TO_THE_PARTY);
+		sm = new SystemMessage(SystemMessageId.YOU_HAVE_INVITED_S1_TO_YOUR_PARTY);
 		sm.addString(target.getName());
 		requestor.sendPacket(sm);
 		
@@ -185,7 +181,7 @@ public class RequestJoinParty implements ClientPacket
 		}
 		else
 		{
-			final SystemMessage sm = new SystemMessage(SystemMessageId.C1_IS_ON_ANOTHER_TASK_PLEASE_TRY_AGAIN_LATER);
+			final SystemMessage sm = new SystemMessage(SystemMessageId.S1_IS_BUSY_PLEASE_TRY_AGAIN_LATER);
 			sm.addString(target.getName());
 			requestor.sendPacket(sm);
 		}

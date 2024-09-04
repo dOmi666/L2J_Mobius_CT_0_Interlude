@@ -19,56 +19,54 @@ package quests.Q00603_DaimonTheWhiteEyedPart1;
 import java.util.HashMap;
 import java.util.Map;
 
+import org.l2jmobius.gameserver.enums.QuestSound;
 import org.l2jmobius.gameserver.model.actor.Npc;
 import org.l2jmobius.gameserver.model.actor.Player;
 import org.l2jmobius.gameserver.model.quest.Quest;
 import org.l2jmobius.gameserver.model.quest.QuestState;
 import org.l2jmobius.gameserver.model.quest.State;
 
-/**
- * Daimon the White-Eyed - Part 1 (603)
- * @author Pandragon
- */
 public class Q00603_DaimonTheWhiteEyedPart1 extends Quest
 {
-	// NPC
+	// NPCs
 	private static final int EYE_OF_ARGOS = 31683;
-	private static final int TABLET_1 = 31548;
-	private static final int TABLET_2 = 31549;
-	private static final int TABLET_3 = 31550;
-	private static final int TABLET_4 = 31551;
-	private static final int TABLET_5 = 31552;
-	// Items
-	private static final int SPIRIT_OF_DARKNESS = 7190;
-	private static final int BROKEN_CRYSTAL = 7191;
+	private static final int MYSTERIOUS_TABLET_1 = 31548;
+	private static final int MYSTERIOUS_TABLET_2 = 31549;
+	private static final int MYSTERIOUS_TABLET_3 = 31550;
+	private static final int MYSTERIOUS_TABLET_4 = 31551;
+	private static final int MYSTERIOUS_TABLET_5 = 31552;
 	// Monsters
-	private static final Map<Integer, Double> MONSTER_CHANCES = new HashMap<>();
+	private static final int CANYON_BANDERSNATCH_SLAVE = 21297;
+	private static final int BUFFALO_SLAVE = 21299;
+	private static final int GRENDEL_SLAVE = 21304;
+	// Items
+	private static final int EVIL_SPIRIT_BEADS = 7190;
+	private static final int BROKEN_CRYSTAL = 7191;
+	private static final int UNFINISHED_SUMMON_CRYSTAL = 7192;
+	// Drop chances
+	private static final Map<Integer, Integer> CHANCES = new HashMap<>();
 	static
 	{
-		MONSTER_CHANCES.put(21297, 0.5); // Canyon Bandersnatch Slave
-		MONSTER_CHANCES.put(21299, 0.519); // Buffalo Slave
-		MONSTER_CHANCES.put(21304, 0.673); // Grendel Slave
+		CHANCES.put(CANYON_BANDERSNATCH_SLAVE, 500000);
+		CHANCES.put(BUFFALO_SLAVE, 519000);
+		CHANCES.put(GRENDEL_SLAVE, 673000);
 	}
-	// Reward
-	private static final int UNFINISHED_CRYSTAL = 7192;
-	// Misc
-	private static final int MIN_LEVEL = 73;
 	
 	public Q00603_DaimonTheWhiteEyedPart1()
 	{
 		super(603);
+		registerQuestItems(EVIL_SPIRIT_BEADS, BROKEN_CRYSTAL);
 		addStartNpc(EYE_OF_ARGOS);
-		addTalkId(EYE_OF_ARGOS, TABLET_1, TABLET_2, TABLET_3, TABLET_4, TABLET_5);
-		addKillId(MONSTER_CHANCES.keySet());
-		registerQuestItems(SPIRIT_OF_DARKNESS, BROKEN_CRYSTAL);
+		addTalkId(EYE_OF_ARGOS, MYSTERIOUS_TABLET_1, MYSTERIOUS_TABLET_2, MYSTERIOUS_TABLET_3, MYSTERIOUS_TABLET_4, MYSTERIOUS_TABLET_5);
+		addKillId(BUFFALO_SLAVE, GRENDEL_SLAVE, CANYON_BANDERSNATCH_SLAVE);
 	}
 	
 	@Override
-	public String onAdvEvent(String event, Npc npc, Player player)
+	public String onEvent(String event, Npc npc, Player player)
 	{
-		final QuestState qs = getQuestState(player, false);
-		String htmltext = null;
-		if (qs == null)
+		String htmltext = event;
+		final QuestState st = getQuestState(player, false);
+		if (st == null)
 		{
 			return htmltext;
 		}
@@ -77,142 +75,206 @@ public class Q00603_DaimonTheWhiteEyedPart1 extends Quest
 		{
 			case "31683-03.htm":
 			{
-				if (qs.isCreated())
-				{
-					qs.set("tablet_" + TABLET_1, 0);
-					qs.set("tablet_" + TABLET_2, 0);
-					qs.set("tablet_" + TABLET_3, 0);
-					qs.set("tablet_" + TABLET_4, 0);
-					qs.set("tablet_" + TABLET_5, 0);
-					qs.startQuest();
-					htmltext = event;
-				}
+				st.startQuest();
 				break;
 			}
-			case "31548-02.html":
-			case "31549-02.html":
-			case "31550-02.html":
-			case "31551-02.html":
-			case "31552-02.html":
+			case "31683-06.htm":
 			{
-				if (qs.getCond() < 6)
+				if (getQuestItemsCount(player, BROKEN_CRYSTAL) > 4)
 				{
-					giveItems(player, BROKEN_CRYSTAL, 1);
-					qs.set("TABLET_" + npc.getId(), 1);
-					qs.setCond(qs.getCond() + 1, true);
-					htmltext = event;
-				}
-				break;
-			}
-			case "31683-06.html":
-			{
-				if (qs.isCond(6) && (getQuestItemsCount(player, BROKEN_CRYSTAL) >= 5))
-				{
+					st.setCond(7, true);
 					takeItems(player, BROKEN_CRYSTAL, -1);
-					qs.setCond(7, true);
-					htmltext = event;
+				}
+				else
+				{
+					htmltext = "31683-07.htm";
 				}
 				break;
 			}
-			case "31683-10.html":
+			case "31683-10.htm":
 			{
-				if (qs.isCond(8))
+				if (getQuestItemsCount(player, EVIL_SPIRIT_BEADS) > 199)
 				{
-					if (getQuestItemsCount(player, SPIRIT_OF_DARKNESS) >= 200)
-					{
-						takeItems(player, SPIRIT_OF_DARKNESS, -1);
-						giveItems(player, UNFINISHED_CRYSTAL, 1);
-						qs.exitQuest(true, true);
-						htmltext = event;
-					}
-					else
-					{
-						htmltext = "31683-11.html";
-					}
+					takeItems(player, EVIL_SPIRIT_BEADS, -1);
+					giveItems(player, UNFINISHED_SUMMON_CRYSTAL, 1);
+					st.exitQuest(true, true);
 				}
+				else
+				{
+					st.setCond(7);
+					htmltext = "31683-11.htm";
+				}
+				break;
+			}
+			case "31548-02.htm":
+			{
+				st.setCond(2, true);
+				giveItems(player, BROKEN_CRYSTAL, 1);
+				break;
+			}
+			case "31549-02.htm":
+			{
+				st.setCond(3, true);
+				giveItems(player, BROKEN_CRYSTAL, 1);
+				break;
+			}
+			case "31550-02.htm":
+			{
+				st.setCond(4, true);
+				giveItems(player, BROKEN_CRYSTAL, 1);
+				break;
+			}
+			case "31551-02.htm":
+			{
+				st.setCond(5, true);
+				giveItems(player, BROKEN_CRYSTAL, 1);
+				break;
+			}
+			case "31552-02.htm":
+			{
+				st.setCond(6, true);
+				giveItems(player, BROKEN_CRYSTAL, 1);
 				break;
 			}
 		}
+		
 		return htmltext;
 	}
 	
 	@Override
-	public String onTalk(Npc npc, Player talker)
+	public String onTalk(Npc npc, Player player)
 	{
-		final QuestState qs = getQuestState(talker, true);
-		String htmltext = getNoQuestMsg(talker);
-		switch (qs.getState())
+		String htmltext = getNoQuestMsg(player);
+		final QuestState st = getQuestState(player, true);
+		
+		switch (st.getState())
 		{
 			case State.CREATED:
 			{
-				if (npc.getId() == EYE_OF_ARGOS)
-				{
-					htmltext = ((talker.getLevel() < MIN_LEVEL) ? "31683-02.html" : "31683-01.htm");
-				}
+				htmltext = (player.getLevel() < 73) ? "31683-02.htm" : "31683-01.htm";
 				break;
 			}
 			case State.STARTED:
 			{
-				if (npc.getId() == EYE_OF_ARGOS)
+				final int cond = st.getCond();
+				switch (npc.getId())
 				{
-					switch (qs.getCond())
+					case EYE_OF_ARGOS:
 					{
-						case 1:
-						case 2:
-						case 3:
-						case 4:
-						case 5:
+						if (cond < 6)
 						{
-							htmltext = "31683-04.html";
-							break;
+							htmltext = "31683-04.htm";
 						}
-						case 6:
+						else if (cond == 6)
 						{
-							htmltext = "31683-05.html";
-							break;
+							htmltext = "31683-05.htm";
 						}
-						case 7:
+						else if (cond == 7)
 						{
-							htmltext = "31683-07.html";
-							break;
+							htmltext = "31683-08.htm";
 						}
-						case 8:
+						else if (cond == 8)
 						{
-							htmltext = "31683-08.html";
-							break;
+							htmltext = "31683-09.htm";
 						}
+						break;
+					}
+					case MYSTERIOUS_TABLET_1:
+					{
+						if (cond == 1)
+						{
+							htmltext = "31548-01.htm";
+						}
+						else
+						{
+							htmltext = "31548-03.htm";
+						}
+						break;
+					}
+					case MYSTERIOUS_TABLET_2:
+					{
+						if (cond == 2)
+						{
+							htmltext = "31549-01.htm";
+						}
+						else if (cond > 2)
+						{
+							htmltext = "31549-03.htm";
+						}
+						break;
+					}
+					case MYSTERIOUS_TABLET_3:
+					{
+						if (cond == 3)
+						{
+							htmltext = "31550-01.htm";
+						}
+						else if (cond > 3)
+						{
+							htmltext = "31550-03.htm";
+						}
+						break;
+					}
+					case MYSTERIOUS_TABLET_4:
+					{
+						if (cond == 4)
+						{
+							htmltext = "31551-01.htm";
+						}
+						else if (cond > 4)
+						{
+							htmltext = "31551-03.htm";
+						}
+						break;
+					}
+					case MYSTERIOUS_TABLET_5:
+					{
+						if (cond == 5)
+						{
+							htmltext = "31552-01.htm";
+						}
+						else if (cond > 5)
+						{
+							htmltext = "31552-03.htm";
+						}
+						break;
 					}
 				}
-				else if (qs.getInt("TABLET_" + npc.getId()) == 0)
-				{
-					htmltext = npc.getId() + "-01.html";
-				}
-				else
-				{
-					htmltext = npc.getId() + "-03.html";
-				}
-				break;
-			}
-			case State.COMPLETED:
-			{
-				htmltext = getAlreadyCompletedMsg(talker);
 				break;
 			}
 		}
+		
 		return htmltext;
 	}
 	
 	@Override
-	public String onKill(Npc npc, Player killer, boolean isSummon)
+	public String onKill(Npc npc, Player player, boolean isPet)
 	{
-		final QuestState qs = getRandomPartyMemberState(killer, 7, 3, npc);
-		if (qs != null)
+		final Player partyMember = getRandomPartyMember(player, 7);
+		if (partyMember == null)
 		{
-			if (giveItemRandomly(qs.getPlayer(), npc, SPIRIT_OF_DARKNESS, 1, 200, MONSTER_CHANCES.get(npc.getId()), true))
+			return null;
+		}
+		
+		final QuestState st = getQuestState(partyMember, false);
+		if (st == null)
+		{
+			return null;
+		}
+		
+		if (getRandom(1000000) < CHANCES.get(npc.getId()))
+		{
+			giveItems(partyMember, EVIL_SPIRIT_BEADS, 1);
+			if (getQuestItemsCount(partyMember, EVIL_SPIRIT_BEADS) < 200)
 			{
-				qs.setCond(8, true);
+				playSound(partyMember, QuestSound.ITEMSOUND_QUEST_ITEMGET);
+			}
+			else
+			{
+				st.setCond(8, true);
 			}
 		}
-		return super.onKill(npc, killer, isSummon);
+		
+		return null;
 	}
 }

@@ -106,10 +106,10 @@ public class Q00503_PursuitOfClanAmbition extends Quest
 	}
 	
 	@Override
-	public String onAdvEvent(String event, Npc npc, Player player)
+	public String onEvent(String event, Npc npc, Player player)
 	{
 		String htmltext = event;
-		final QuestState st = player.getQuestState(getName());
+		final QuestState st = getQuestState(player, false);
 		if (st == null)
 		{
 			return htmltext;
@@ -140,7 +140,7 @@ public class Q00503_PursuitOfClanAmbition extends Quest
 				takeItems(player, SCEPTER_JUDGEMENT, -1);
 				giveItems(player, PROOF_ASPIRATION, 1);
 				addExpAndSp(player, 0, 250000);
-				st.exitQuest(false);
+				st.exitQuest(false, true);
 				finishQuestToClan(player);
 				break;
 			}
@@ -154,7 +154,7 @@ public class Q00503_PursuitOfClanAmbition extends Quest
 				takeItems(player, SCEPTER_JUDGEMENT, -1);
 				giveItems(player, PROOF_ASPIRATION, 1);
 				addExpAndSp(player, 0, 250000);
-				st.exitQuest(false);
+				st.exitQuest(false, true);
 				finishQuestToClan(player);
 				break;
 			}
@@ -656,6 +656,23 @@ public class Q00503_PursuitOfClanAmbition extends Quest
 	}
 	
 	@Override
+	public String onAttack(Npc npc, Player attacker, int damage, boolean isSummon, Skill skill)
+	{
+		if ((skill == null) && ((npc.getMaxHp() / 2) > npc.getCurrentHp()))
+		{
+			if (getRandom(100) < 4)
+			{
+				addSpawn(IMPERIAL_SLAVE, npc.getX(), npc.getY(), npc.getZ(), npc.getHeading(), true, 0);
+			}
+			else
+			{
+				attacker.teleToLocation(185462, 20342, -3250);
+			}
+		}
+		return super.onAttack(npc, attacker, damage, isSummon, skill);
+	}
+	
+	@Override
 	public String onKill(Npc npc, Player player, boolean isPet)
 	{
 		QuestState st = null;
@@ -709,22 +726,5 @@ public class Q00503_PursuitOfClanAmbition extends Quest
 		}
 		
 		return null;
-	}
-	
-	@Override
-	public String onAttack(Npc npc, Player attacker, int damage, boolean isSummon, Skill skill)
-	{
-		if ((skill == null) && ((npc.getMaxHp() / 2) > npc.getCurrentHp()))
-		{
-			if (getRandom(100) < 4)
-			{
-				addSpawn(IMPERIAL_SLAVE, npc.getX(), npc.getY(), npc.getZ(), npc.getHeading(), true, 0);
-			}
-			else
-			{
-				attacker.teleToLocation(185462, 20342, -3250);
-			}
-		}
-		return super.onAttack(npc, attacker, damage, isSummon, skill);
 	}
 }

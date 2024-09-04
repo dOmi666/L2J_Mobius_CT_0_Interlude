@@ -18,10 +18,7 @@ package org.l2jmobius.gameserver.model.olympiad;
 
 import java.util.List;
 import java.util.concurrent.CopyOnWriteArrayList;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
-import org.l2jmobius.gameserver.data.xml.DoorData;
 import org.l2jmobius.gameserver.model.Location;
 import org.l2jmobius.gameserver.model.actor.Player;
 
@@ -30,12 +27,8 @@ import org.l2jmobius.gameserver.model.actor.Player;
  */
 class OlympiadStadium
 {
-	private static final Logger _log = Logger.getLogger(OlympiadStadium.class.getName());
-	
 	private boolean _freeToUse = true;
-	private static DoorData _doorTable;
 	private final int[] _coords = new int[3];
-	private final int[] _doors = new int[2];
 	private final List<Player> _spectators;
 	
 	public boolean isFreeToUse()
@@ -58,52 +51,17 @@ class OlympiadStadium
 		return _coords;
 	}
 	
-	public int[] getDoorID()
-	{
-		return _doors;
-	}
-	
-	public OlympiadStadium(int x, int y, int z, int d1, int d2)
+	public OlympiadStadium(int x, int y, int z)
 	{
 		_coords[0] = x;
 		_coords[1] = y;
 		_coords[2] = z;
-		_doors[0] = d1;
-		_doors[1] = d2;
 		_spectators = new CopyOnWriteArrayList<>();
-	}
-	
-	public void openDoors()
-	{
-		_doorTable = DoorData.getInstance();
-		try
-		{
-			_doorTable.getDoor(getDoorID()[0]).openMe();
-			_doorTable.getDoor(getDoorID()[1]).openMe();
-		}
-		catch (Exception e)
-		{
-			_log.log(Level.WARNING, "", e);
-		}
-	}
-	
-	public void closeDoors()
-	{
-		_doorTable = DoorData.getInstance();
-		try
-		{
-			_doorTable.getDoor(getDoorID()[0]).closeMe();
-			_doorTable.getDoor(getDoorID()[1]).closeMe();
-		}
-		catch (Exception e)
-		{
-			_log.log(Level.WARNING, "", e);
-		}
 	}
 	
 	protected void addSpectator(int id, Player spec, boolean storeCoords)
 	{
-		final Location loc = new Location(getCoordinates()[0] + 1200, getCoordinates()[1], getCoordinates()[2]);
+		final Location loc = new Location(getCoordinates()[0], getCoordinates()[1], getCoordinates()[2]);
 		spec.enterOlympiadObserverMode(loc, id, storeCoords);
 		_spectators.add(spec);
 	}

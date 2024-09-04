@@ -23,118 +23,94 @@ import org.l2jmobius.gameserver.model.quest.Quest;
 import org.l2jmobius.gameserver.model.quest.QuestState;
 import org.l2jmobius.gameserver.model.quest.State;
 
-/**
- * Alligator Hunter (338)
- * @author malyelfik
- */
 public class Q00338_AlligatorHunter extends Quest
 {
-	// NPC
-	private static final int ENVERUN = 30892;
-	
-	// Monster
-	private static final int ALLIGATOR = 20135;
-	
-	// Items
-	private static final int ALLIGATOR_LEATHER = 4337;
-	
-	// Misc
-	private static final int MIN_LEVEL = 40;
-	private static final int SECOND_CHANCE = 19;
+	// Item
+	private static final int ALLIGATOR_PELT = 4337;
 	
 	public Q00338_AlligatorHunter()
 	{
 		super(338);
-		addStartNpc(ENVERUN);
-		addTalkId(ENVERUN);
-		addKillId(ALLIGATOR);
-		
-		registerQuestItems(ALLIGATOR_LEATHER);
+		registerQuestItems(ALLIGATOR_PELT);
+		addStartNpc(30892); // Enverun
+		addTalkId(30892);
+		addKillId(20135); // Alligator
 	}
 	
 	@Override
-	public String onAdvEvent(String event, Npc npc, Player player)
+	public String onEvent(String event, Npc npc, Player player)
 	{
-		final QuestState qs = getQuestState(player, false);
-		if (qs == null)
+		String htmltext = event;
+		final QuestState st = getQuestState(player, false);
+		if (st == null)
 		{
-			return null;
+			return htmltext;
 		}
 		
-		String htmltext = event;
 		switch (event)
 		{
-			case "30892-03.htm":
+			case "30892-02.htm":
 			{
-				qs.startQuest();
+				st.startQuest();
 				break;
 			}
-			case "30892-06.html":
+			case "30892-05.htm":
 			{
-				if (!hasQuestItems(player, ALLIGATOR_LEATHER))
+				final int pelts = getQuestItemsCount(player, ALLIGATOR_PELT);
+				int reward = pelts * 40;
+				if (pelts > 10)
 				{
-					return "30892-05.html";
+					reward += 3430;
 				}
-				int amount = (getQuestItemsCount(player, ALLIGATOR_LEATHER) >= 10) ? 3430 : 0;
-				amount += 60 * getQuestItemsCount(player, ALLIGATOR_LEATHER);
-				giveAdena(player, amount, true);
-				takeItems(player, ALLIGATOR_LEATHER, -1);
+				takeItems(player, ALLIGATOR_PELT, -1);
+				giveAdena(player, reward, true);
 				break;
 			}
-			case "30892-10.html":
+			case "30892-08.htm":
 			{
-				qs.exitQuest(true, true);
-				break;
-			}
-			case "30892-07.html":
-			case "30892-08.html":
-			case "30892-09.html":
-			{
-				break;
-			}
-			default:
-			{
-				htmltext = null;
+				st.exitQuest(true, true);
 				break;
 			}
 		}
+		
 		return htmltext;
-	}
-	
-	@Override
-	public String onKill(Npc npc, Player player, boolean isSummon)
-	{
-		final QuestState qs = getQuestState(player, false);
-		if (qs != null)
-		{
-			giveItems(player, ALLIGATOR_LEATHER, 1);
-			if (getRandom(100) < SECOND_CHANCE)
-			{
-				giveItems(player, ALLIGATOR_LEATHER, 1);
-			}
-			playSound(player, QuestSound.ITEMSOUND_QUEST_ITEMGET);
-		}
-		return super.onKill(npc, player, isSummon);
 	}
 	
 	@Override
 	public String onTalk(Npc npc, Player player)
 	{
-		final QuestState qs = getQuestState(player, true);
 		String htmltext = getNoQuestMsg(player);
-		switch (qs.getState())
+		final QuestState st = getQuestState(player, true);
+		
+		switch (st.getState())
 		{
 			case State.CREATED:
 			{
-				htmltext = (player.getLevel() >= MIN_LEVEL) ? "30892-02.htm" : "30892-01.htm";
+				htmltext = (player.getLevel() < 40) ? "30892-00.htm" : "30892-01.htm";
 				break;
 			}
 			case State.STARTED:
 			{
-				htmltext = "30892-04.html";
+				htmltext = (hasQuestItems(player, ALLIGATOR_PELT)) ? "30892-03.htm" : "30892-04.htm";
 				break;
 			}
 		}
+		
 		return htmltext;
+	}
+	
+	@Override
+	public String onKill(Npc npc, Player player, boolean isPet)
+	{
+		final QuestState st = getQuestState(player, false);
+		if ((st == null) || !st.isStarted())
+		{
+			return null;
+		}
+		
+		giveItems(player, ALLIGATOR_PELT, 1);
+		playSound(player, QuestSound.ITEMSOUND_QUEST_ITEMGET);
+		
+		return null;
 	}
 }

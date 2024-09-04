@@ -16,26 +16,24 @@
  */
 package org.l2jmobius.gameserver.network.clientpackets;
 
-import org.l2jmobius.commons.network.ReadablePacket;
 import org.l2jmobius.gameserver.instancemanager.RecipeManager;
 import org.l2jmobius.gameserver.model.actor.Player;
-import org.l2jmobius.gameserver.network.GameClient;
 import org.l2jmobius.gameserver.network.SystemMessageId;
 
-public class RequestRecipeBookOpen implements ClientPacket
+public class RequestRecipeBookOpen extends ClientPacket
 {
 	private boolean _isDwarvenCraft;
 	
 	@Override
-	public void read(ReadablePacket packet)
+	protected void readImpl()
 	{
-		_isDwarvenCraft = packet.readInt() == 0;
+		_isDwarvenCraft = readInt() == 0;
 	}
 	
 	@Override
-	public void run(GameClient client)
+	protected void runImpl()
 	{
-		final Player player = client.getPlayer();
+		final Player player = getPlayer();
 		if (player == null)
 		{
 			return;
@@ -43,7 +41,7 @@ public class RequestRecipeBookOpen implements ClientPacket
 		
 		if (player.isCastingNow() || player.isCastingSimultaneouslyNow())
 		{
-			player.sendPacket(SystemMessageId.YOUR_RECIPE_BOOK_MAY_NOT_BE_ACCESSED_WHILE_USING_A_SKILL);
+			player.sendPacket(SystemMessageId.A_RECIPE_BOOK_MAY_NOT_BE_USED_WHILE_USING_A_SKILL);
 			return;
 		}
 		

@@ -16,15 +16,13 @@
  */
 package quests.Q00093_SagaOfTheSpectralMaster;
 
-import org.l2jmobius.gameserver.model.Location;
-
-import quests.AbstractSagaQuest;
+import quests.SagasSuperClass;
 
 /**
  * Saga of the Spectral Master (93)
  * @author Emperorc
  */
-public class Q00093_SagaOfTheSpectralMaster extends AbstractSagaQuest
+public class Q00093_SagaOfTheSpectralMaster extends SagasSuperClass
 {
 	public Q00093_SagaOfTheSpectralMaster()
 	{
@@ -73,11 +71,23 @@ public class Q00093_SagaOfTheSpectralMaster extends AbstractSagaQuest
 		{
 			0x29
 		};
-		_npcSpawnLocations = new Location[]
+		_x = new int[]
 		{
-			new Location(164650, -74121, -2871),
-			new Location(47429, -56923, -2383),
-			new Location(47391, -56929, -2370)
+			164650,
+			47429,
+			47391
+		};
+		_y = new int[]
+		{
+			-74121,
+			-56923,
+			-56929
+		};
+		_z = new int[]
+		{
+			-2871,
+			-2383,
+			-2370
 		};
 		_text = new String[]
 		{

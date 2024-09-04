@@ -97,7 +97,6 @@ public class QuestLink implements IBypassHandler
 		final StringBuilder sb = new StringBuilder(128);
 		sb.append("<html><body>");
 		String state = "";
-		// String color = "";
 		int questId = -1;
 		for (Quest quest : quests)
 		{
@@ -109,28 +108,17 @@ public class QuestLink implements IBypassHandler
 			final QuestState qs = player.getQuestState(quest.getName());
 			if ((qs == null) || qs.isCreated())
 			{
-				state = quest.isCustomQuest() ? "" : "01";
-				// if (quest.canStartQuest(player))
-				// {
-				// color = "bbaa88";
-				// }
-				// else
-				// {
-				// color = "a62f31";
-				// }
+				state = "";
 			}
 			else if (qs.isStarted())
 			{
-				state = quest.isCustomQuest() ? " (In Progress)" : "02";
-				// color = "ffdd66";
+				state = " (In Progress)";
 			}
 			else if (qs.isCompleted())
 			{
-				state = quest.isCustomQuest() ? " (Done)" : "03";
-				// color = "787878";
+				state = " (Done)";
 			}
-			sb.append("<a action=\"bypass -h npc_" + npc.getObjectId() + "_Quest " + quest.getName() + "\">");
-			// StringUtil.append(sb, "<font color=\"" + color + "\">[");
+			sb.append("<a action=\"bypass npc_" + npc.getObjectId() + "_Quest " + quest.getName() + "\">");
 			sb.append("[");
 			
 			if (quest.isCustomQuest())
@@ -139,10 +127,10 @@ public class QuestLink implements IBypassHandler
 			}
 			else
 			{
-				String localisation = NpcStringId.getNpcStringId(Integer.parseInt(quest.getNpcStringId() + state)).getText();
+				String localisation = NpcStringId.getNpcStringId(quest.getNpcStringId()).getText();
 				if (Config.MULTILANG_ENABLE)
 				{
-					final NpcStringId ns = NpcStringId.getNpcStringId(Integer.parseInt(quest.getNpcStringId() + state));
+					final NpcStringId ns = NpcStringId.getNpcStringId(quest.getNpcStringId());
 					if (ns != null)
 					{
 						final NSLocalisation nsl = ns.getLocalisation(player.getLang());
@@ -153,24 +141,24 @@ public class QuestLink implements IBypassHandler
 					}
 				}
 				sb.append(localisation);
+				sb.append(state);
 			}
-			// sb.append("]</font></a><br>");
 			sb.append("]</a><br>");
 			
 			if ((player.getApprentice() > 0) && (World.getInstance().getPlayer(player.getApprentice()) != null))
 			{
 				if (questId == TO_LEAD_AND_BE_LED)
 				{
-					String localisation = "<a action=\"bypass -h Quest Q00118_ToLeadAndBeLed sponsor\">[" + NpcStringId.getNpcStringId(Integer.parseInt(questId + state)).getText() + " (Sponsor)]</a><br>";
+					String localisation = "<a action=\"bypass Quest Q00118_ToLeadAndBeLed sponsor\">[" + NpcStringId.getNpcStringId(questId).getText() + state + " (Sponsor)]</a><br>";
 					if (Config.MULTILANG_ENABLE)
 					{
-						final NpcStringId ns = NpcStringId.getNpcStringId(Integer.parseInt(questId + state));
+						final NpcStringId ns = NpcStringId.getNpcStringId(questId);
 						if (ns != null)
 						{
 							final NSLocalisation nsl = ns.getLocalisation(player.getLang());
 							if (nsl != null)
 							{
-								localisation = "<a action=\"bypass -h Quest Q00118_ToLeadAndBeLed sponsor\">[" + nsl.getLocalisation(Collections.emptyList()) + " (Sponsor)]</a><br>";
+								localisation = "<a action=\"bypass Quest Q00118_ToLeadAndBeLed sponsor\">[" + nsl.getLocalisation(Collections.emptyList()) + state + " (Sponsor)]</a><br>";
 							}
 						}
 					}
@@ -179,16 +167,16 @@ public class QuestLink implements IBypassHandler
 				
 				if (questId == THE_LEADER_AND_THE_FOLLOWER)
 				{
-					String localisation = "<a action=\"bypass -h Quest Q00123_TheLeaderAndTheFollower sponsor\">[" + NpcStringId.getNpcStringId(Integer.parseInt(questId + state)).getText() + " (Sponsor)]</a><br>";
+					String localisation = "<a action=\"bypass Quest Q00123_TheLeaderAndTheFollower sponsor\">[" + NpcStringId.getNpcStringId(questId).getText() + state + " (Sponsor)]</a><br>";
 					if (Config.MULTILANG_ENABLE)
 					{
-						final NpcStringId ns = NpcStringId.getNpcStringId(Integer.parseInt(questId + state));
+						final NpcStringId ns = NpcStringId.getNpcStringId(questId);
 						if (ns != null)
 						{
 							final NSLocalisation nsl = ns.getLocalisation(player.getLang());
 							if (nsl != null)
 							{
-								localisation = "<a action=\"bypass -h Quest Q00123_TheLeaderAndTheFollower sponsor\">[" + nsl.getLocalisation(Collections.emptyList()) + " (Sponsor)]</a><br>";
+								localisation = "<a action=\"bypass Quest Q00123_TheLeaderAndTheFollower sponsor\">[" + nsl.getLocalisation(Collections.emptyList()) + state + " (Sponsor)]</a><br>";
 							}
 						}
 					}
@@ -227,7 +215,7 @@ public class QuestLink implements IBypassHandler
 		{
 			if (((q.getId() >= 1) && (q.getId() < 20000)) && ((player.getWeightPenalty() >= 3) || !player.isInventoryUnder90(true)))
 			{
-				player.sendPacket(SystemMessageId.UNABLE_TO_PROCESS_THIS_REQUEST_UNTIL_YOUR_INVENTORY_S_WEIGHT_AND_SLOT_COUNT_ARE_LESS_THAN_80_PERCENT_OF_CAPACITY);
+				player.sendPacket(SystemMessageId.PROGRESS_IN_A_QUEST_IS_POSSIBLE_ONLY_WHEN_YOUR_INVENTORY_S_WEIGHT_AND_VOLUME_ARE_LESS_THAN_80_PERCENT_OF_CAPACITY);
 				return;
 			}
 			

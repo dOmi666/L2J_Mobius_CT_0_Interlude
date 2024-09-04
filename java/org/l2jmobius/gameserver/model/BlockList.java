@@ -173,7 +173,7 @@ public class BlockList
 		final String charName = CharInfoTable.getInstance().getNameById(targetId);
 		if (listOwner.getFriendList().contains(targetId))
 		{
-			listOwner.sendPacket(SystemMessageId.THIS_PLAYER_IS_ALREADY_REGISTERED_ON_YOUR_FRIENDS_LIST);
+			listOwner.sendPacket(SystemMessageId.THIS_PLAYER_IS_ALREADY_REGISTERED_IN_YOUR_FRIENDS_LIST);
 			return;
 		}
 		
@@ -210,7 +210,7 @@ public class BlockList
 		final String charName = CharInfoTable.getInstance().getNameById(targetId);
 		if (!listOwner.getBlockList().getBlockList().contains(targetId))
 		{
-			sm = new SystemMessage(SystemMessageId.THAT_IS_AN_INCORRECT_TARGET);
+			sm = new SystemMessage(SystemMessageId.THAT_IS_THE_INCORRECT_TARGET);
 			listOwner.sendPacket(sm);
 			return;
 		}

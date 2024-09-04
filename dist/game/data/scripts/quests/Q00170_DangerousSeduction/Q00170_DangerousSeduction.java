@@ -24,51 +24,86 @@ import org.l2jmobius.gameserver.model.quest.Quest;
 import org.l2jmobius.gameserver.model.quest.QuestState;
 import org.l2jmobius.gameserver.model.quest.State;
 import org.l2jmobius.gameserver.network.NpcStringId;
-import org.l2jmobius.gameserver.network.serverpackets.NpcSay;
 
-/**
- * Dangerous Seduction (170)
- * @author malyelfik
- */
 public class Q00170_DangerousSeduction extends Quest
 {
-	// NPC
-	private static final int VELLIOR = 30305;
-	
-	// Monster
-	private static final int MERKENIS = 27022;
-	
 	// Item
 	private static final int NIGHTMARE_CRYSTAL = 1046;
-	
-	// Misc
-	private static final int MIN_LEVEL = 21;
 	
 	public Q00170_DangerousSeduction()
 	{
 		super(170);
-		addStartNpc(VELLIOR);
-		addTalkId(VELLIOR);
-		addKillId(MERKENIS);
-		
 		registerQuestItems(NIGHTMARE_CRYSTAL);
+		addStartNpc(30305); // Vellior
+		addTalkId(30305);
+		addKillId(27022); // Merkenis
 	}
 	
 	@Override
-	public String onAdvEvent(String event, Npc npc, Player player)
+	public String onEvent(String event, Npc npc, Player player)
 	{
-		final QuestState qs = getQuestState(player, false);
-		if (qs == null)
+		String htmltext = event;
+		final QuestState st = getQuestState(player, false);
+		if (st == null)
 		{
-			return null;
+			return htmltext;
 		}
 		
-		if (event.equalsIgnoreCase("30305-04.htm"))
+		if (event.equals("30305-04.htm"))
 		{
-			qs.startQuest();
-			return event;
+			st.startQuest();
 		}
-		return null;
+		
+		return htmltext;
+	}
+	
+	@Override
+	public String onTalk(Npc npc, Player player)
+	{
+		String htmltext = getNoQuestMsg(player);
+		final QuestState st = getQuestState(player, true);
+		
+		switch (st.getState())
+		{
+			case State.CREATED:
+			{
+				if (player.getRace() != Race.DARK_ELF)
+				{
+					htmltext = "30305-00.htm";
+				}
+				else if (player.getLevel() < 21)
+				{
+					htmltext = "30305-02.htm";
+				}
+				else
+				{
+					htmltext = "30305-03.htm";
+				}
+				break;
+			}
+			case State.STARTED:
+			{
+				if (hasQuestItems(player, NIGHTMARE_CRYSTAL))
+				{
+					htmltext = "30305-06.htm";
+					takeItems(player, NIGHTMARE_CRYSTAL, -1);
+					giveAdena(player, 102680, true);
+					st.exitQuest(false, true);
+				}
+				else
+				{
+					htmltext = "30305-05.htm";
+				}
+				break;
+			}
+			case State.COMPLETED:
+			{
+				htmltext = getAlreadyCompletedMsg(player);
+				break;
+			}
+		}
+		
+		return htmltext;
 	}
 	
 	@Override
@@ -79,44 +114,8 @@ public class Q00170_DangerousSeduction extends Quest
 		{
 			qs.setCond(2, true);
 			giveItems(player, NIGHTMARE_CRYSTAL, 1);
-			npc.broadcastPacket(new NpcSay(npc.getObjectId(), ChatType.NPC_GENERAL, npc.getId(), NpcStringId.SEND_MY_SOUL_TO_LICH_KING_ICARUS));
+			npc.broadcastSay(ChatType.NPC_GENERAL, NpcStringId.SEND_MY_SOUL_TO_LICH_KING_ICARUS);
 		}
 		return super.onKill(npc, player, isSummon);
-	}
-	
-	@Override
-	public String onTalk(Npc npc, Player player)
-	{
-		final QuestState qs = getQuestState(player, true);
-		String htmltext = getNoQuestMsg(player);
-		switch (qs.getState())
-		{
-			case State.CREATED:
-			{
-				htmltext = (player.getRace() == Race.DARK_ELF) ? (player.getLevel() >= MIN_LEVEL) ? "30305-01.htm" : "30305-02.htm" : "30305-03.htm";
-				break;
-			}
-			case State.STARTED:
-			{
-				if (qs.isCond(1))
-				{
-					htmltext = "30305-05.html";
-				}
-				else
-				{
-					giveAdena(player, 102680, true);
-					addExpAndSp(player, 38607, 4018);
-					qs.exitQuest(false, true);
-					htmltext = "30305-06.html";
-				}
-				break;
-			}
-			case State.COMPLETED:
-			{
-				htmltext = getAlreadyCompletedMsg(player);
-				break;
-			}
-		}
-		return htmltext;
 	}
 }

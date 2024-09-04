@@ -17,7 +17,6 @@
 package ai.bosses.Antharas;
 
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 
 import org.l2jmobius.Config;
@@ -26,7 +25,6 @@ import org.l2jmobius.gameserver.enums.MountType;
 import org.l2jmobius.gameserver.instancemanager.GrandBossManager;
 import org.l2jmobius.gameserver.instancemanager.ZoneManager;
 import org.l2jmobius.gameserver.model.Location;
-import org.l2jmobius.gameserver.model.Party;
 import org.l2jmobius.gameserver.model.StatSet;
 import org.l2jmobius.gameserver.model.World;
 import org.l2jmobius.gameserver.model.actor.Attackable;
@@ -110,7 +108,6 @@ public class Antharas extends AbstractNpcAI
 	private static final int IN_FIGHT = 2;
 	private static final int DEAD = 3;
 	// Misc
-	private static final int MAX_PEOPLE = 200; // Max allowed players
 	private GrandBoss _antharas = null;
 	private static long _lastAttack = 0;
 	private static int _minionCount = 0;
@@ -192,7 +189,7 @@ public class Antharas extends AbstractNpcAI
 	}
 	
 	@Override
-	public String onAdvEvent(String event, Npc npc, Player player)
+	public String onEvent(String event, Npc npc, Player player)
 	{
 		switch (event)
 		{
@@ -207,51 +204,13 @@ public class Antharas extends AbstractNpcAI
 				{
 					htmltext = "13001-02.html";
 				}
-				else if (zone.getPlayersInside().size() >= MAX_PEOPLE)
-				{
-					htmltext = "13001-04.html";
-				}
-				else if (player.isInParty())
-				{
-					final Party party = player.getParty();
-					final boolean isInCC = party.isInCommandChannel();
-					final List<Player> members = isInCC ? party.getCommandChannel().getMembers() : party.getMembers();
-					final boolean isPartyLeader = isInCC ? party.getCommandChannel().isLeader(player) : party.isLeader(player);
-					if (!isPartyLeader)
-					{
-						htmltext = "13001-05.html";
-					}
-					else if (!hasQuestItems(player, STONE))
-					{
-						htmltext = "13001-03.html";
-					}
-					else if (members.size() > (MAX_PEOPLE - zone.getPlayersInside().size()))
-					{
-						htmltext = "13001-04.html";
-					}
-					else
-					{
-						takeItems(player, STONE, 1);
-						for (Player member : members)
-						{
-							if (member.isInsideRadius3D(npc, 1000))
-							{
-								member.teleToLocation(179700 + getRandom(700), 113800 + getRandom(2100), -7709);
-							}
-						}
-						if (getStatus() != WAITING)
-						{
-							setStatus(WAITING);
-							startQuestTimer("SPAWN_ANTHARAS", Config.ANTHARAS_WAIT_TIME * 60000, null, null);
-						}
-					}
-				}
 				else if (!hasQuestItems(player, STONE))
 				{
 					htmltext = "13001-03.html";
 				}
-				else
+				else if (hasQuestItems(player, STONE))
 				{
+					takeItems(player, STONE, 1);
 					player.teleToLocation(179700 + getRandom(700), 113800 + getRandom(2100), -7709);
 					if (getStatus() != WAITING)
 					{
@@ -552,12 +511,12 @@ public class Antharas extends AbstractNpcAI
 							creature.deleteMe();
 						}
 					}
-					if (player != null) // Player dont will be null just when is this event called from GM command
+					if (player != null) // Player cannot be null when is this event is called from a GM command.
 					{
 						player.sendMessage(getClass().getSimpleName() + ": All minions have been deleted!");
 					}
 				}
-				else if (player != null) // Player dont will be null just when is this event called from GM command
+				else if (player != null) // Player cannot be null when is this event is called from a GM command.
 				{
 					player.sendMessage(getClass().getSimpleName() + ": You can't despawn minions right now!");
 				}
@@ -605,7 +564,7 @@ public class Antharas extends AbstractNpcAI
 				break;
 			}
 		}
-		return super.onAdvEvent(event, npc, player);
+		return super.onEvent(event, npc, player);
 	}
 	
 	@Override
@@ -678,7 +637,10 @@ public class Antharas extends AbstractNpcAI
 				zone.broadcastPacket(new SpecialCamera(npc, 1200, 20, -10, 0, 10000, 13000, 0, 0, 0, 0, 0));
 				zone.broadcastPacket(new PlaySound("BS01_D"));
 				addSpawn(CUBE, 177615, 114941, -7709, 0, false, 900000);
-				final long respawnTime = (Config.ANTHARAS_SPAWN_INTERVAL + getRandom(-Config.ANTHARAS_SPAWN_RANDOM, Config.ANTHARAS_SPAWN_RANDOM)) * 3600000;
+				
+				final long baseIntervalMillis = Config.ANTHARAS_SPAWN_INTERVAL * 3600000;
+				final long randomRangeMillis = Config.ANTHARAS_SPAWN_RANDOM * 3600000;
+				final long respawnTime = baseIntervalMillis + getRandom(-randomRangeMillis, randomRangeMillis);
 				setRespawn(respawnTime);
 				startQuestTimer("CLEAR_STATUS", respawnTime, null, null);
 				cancelQuestTimer("SET_REGEN", npc, null);

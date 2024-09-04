@@ -16,6 +16,9 @@
  */
 package quests.Q00004_LongLiveThePaagrioLord;
 
+import java.util.HashMap;
+import java.util.Map;
+
 import org.l2jmobius.gameserver.enums.QuestSound;
 import org.l2jmobius.gameserver.enums.Race;
 import org.l2jmobius.gameserver.model.actor.Npc;
@@ -23,163 +26,130 @@ import org.l2jmobius.gameserver.model.actor.Player;
 import org.l2jmobius.gameserver.model.quest.Quest;
 import org.l2jmobius.gameserver.model.quest.QuestState;
 import org.l2jmobius.gameserver.model.quest.State;
-import org.l2jmobius.gameserver.network.NpcStringId;
 
-/**
- * Long Live the Pa'agrio Lord (4)
- * @author malyelfik
- */
 public class Q00004_LongLiveThePaagrioLord extends Quest
 {
-	// NPCs
-	private static final int KUNAI = 30559;
-	private static final int USKA = 30560;
-	private static final int GROOKIN = 30562;
-	private static final int VARKEES = 30566;
 	private static final int NAKUSIN = 30578;
-	private static final int HESTUI = 30585;
-	private static final int URUTU = 30587;
-	// Items
-	private static final int CLUB = 4;
-	private static final int HONEY_KHANDAR = 1541;
-	private static final int BEAR_FUR_CLOAK = 1542;
-	private static final int BLOODY_AXE = 1543;
-	private static final int ANCESTOR_SKULL = 1544;
-	private static final int SPIDER_DUST = 1545;
-	private static final int DEEP_SEA_ORB = 1546;
-	// Misc
-	private static final int MIN_LEVEL = 2;
+	private static final Map<Integer, Integer> NPC_GIFTS = new HashMap<>();
+	static
+	{
+		NPC_GIFTS.put(30585, 1542);
+		NPC_GIFTS.put(30566, 1541);
+		NPC_GIFTS.put(30562, 1543);
+		NPC_GIFTS.put(30560, 1544);
+		NPC_GIFTS.put(30559, 1545);
+		NPC_GIFTS.put(30587, 1546);
+	}
 	
 	public Q00004_LongLiveThePaagrioLord()
 	{
 		super(4);
-		addStartNpc(NAKUSIN);
-		addTalkId(NAKUSIN, VARKEES, URUTU, HESTUI, KUNAI, USKA, GROOKIN);
-		registerQuestItems(HONEY_KHANDAR, BEAR_FUR_CLOAK, BLOODY_AXE, ANCESTOR_SKULL, SPIDER_DUST, DEEP_SEA_ORB);
+		registerQuestItems(1541, 1542, 1543, 1544, 1545, 1546);
+		addStartNpc(30578); // Nakusin
+		addTalkId(30578, 30585, 30566, 30562, 30560, 30559, 30587);
 	}
 	
 	@Override
-	public String onAdvEvent(String event, Npc npc, Player player)
+	public String onEvent(String event, Npc npc, Player player)
 	{
-		final QuestState qs = getQuestState(player, false);
-		if (qs == null)
+		String htmltext = event;
+		final QuestState st = getQuestState(player, false);
+		if (st == null)
 		{
-			return null;
+			return htmltext;
 		}
 		
-		String htmltext = event;
-		switch (event)
+		if (event.equals("30578-03.htm"))
 		{
-			case "30578-03.htm":
-			{
-				qs.startQuest();
-				break;
-			}
-			case "30578-05.html":
-			{
-				break;
-			}
-			default:
-			{
-				htmltext = null;
-				break;
-			}
+			st.startQuest();
 		}
+		
 		return htmltext;
 	}
 	
 	@Override
 	public String onTalk(Npc npc, Player player)
 	{
-		final QuestState qs = getQuestState(player, true);
 		String htmltext = getNoQuestMsg(player);
-		switch (npc.getId())
+		final QuestState st = getQuestState(player, true);
+		
+		switch (st.getState())
 		{
-			case NAKUSIN:
+			case State.CREATED:
 			{
-				switch (qs.getState())
+				if (player.getRace() != Race.ORC)
 				{
-					case State.CREATED:
+					htmltext = "30578-00.htm";
+				}
+				else if (player.getLevel() < 2)
+				{
+					htmltext = "30578-01.htm";
+				}
+				else
+				{
+					htmltext = "30578-02.htm";
+				}
+				break;
+			}
+			case State.STARTED:
+			{
+				final int cond = st.getCond();
+				final int npcId = npc.getId();
+				if (npcId == NAKUSIN)
+				{
+					if (cond == 1)
 					{
-						htmltext = (player.getRace() != Race.ORC) ? "30578-00.htm" : (player.getLevel() >= MIN_LEVEL) ? "30578-02.htm" : "30578-01.htm";
-						break;
+						htmltext = "30578-04.htm";
 					}
-					case State.STARTED:
+					else if (cond == 2)
 					{
-						if (qs.isCond(1))
+						htmltext = "30578-06.htm";
+						giveItems(player, 4, 1);
+						for (int item : NPC_GIFTS.values())
 						{
-							htmltext = "30578-04.html";
+							takeItems(player, item, -1);
+						}
+						
+						st.exitQuest(false, true);
+					}
+				}
+				else
+				{
+					final int i = NPC_GIFTS.get(npcId);
+					if (hasQuestItems(player, i))
+					{
+						htmltext = "30585-02.htm";
+					}
+					else
+					{
+						giveItems(player, i, 1);
+						htmltext = "30585-01.htm";
+						
+						int count = 0;
+						for (int item : NPC_GIFTS.values())
+						{
+							count += getQuestItemsCount(player, item);
+						}
+						
+						if (count == 6)
+						{
+							st.setCond(2, true);
 						}
 						else
 						{
-							giveItems(player, CLUB, 1);
-							// Newbie Guide
-							showOnScreenMsg(player, NpcStringId.DELIVERY_DUTY_COMPLETE_N_GO_FIND_THE_NEWBIE_GUIDE, 2, 5000);
-							addExpAndSp(player, 4254, 335);
-							giveAdena(player, 1850, true);
-							qs.exitQuest(false, true);
-							htmltext = "30578-06.html";
+							playSound(player, QuestSound.ITEMSOUND_QUEST_ITEMGET);
 						}
-						break;
-					}
-					case State.COMPLETED:
-					{
-						htmltext = getAlreadyCompletedMsg(player);
-						break;
 					}
 				}
 				break;
 			}
-			case VARKEES:
+			case State.COMPLETED:
 			{
-				htmltext = giveItem(player, qs, npc.getId(), HONEY_KHANDAR, getRegisteredItemIds());
-				break;
-			}
-			case URUTU:
-			{
-				htmltext = giveItem(player, qs, npc.getId(), DEEP_SEA_ORB, getRegisteredItemIds());
-				break;
-			}
-			case HESTUI:
-			{
-				htmltext = giveItem(player, qs, npc.getId(), BEAR_FUR_CLOAK, getRegisteredItemIds());
-				break;
-			}
-			case KUNAI:
-			{
-				htmltext = giveItem(player, qs, npc.getId(), SPIDER_DUST, getRegisteredItemIds());
-				break;
-			}
-			case USKA:
-			{
-				htmltext = giveItem(player, qs, npc.getId(), ANCESTOR_SKULL, getRegisteredItemIds());
-				break;
-			}
-			case GROOKIN:
-			{
-				htmltext = giveItem(player, qs, npc.getId(), BLOODY_AXE, getRegisteredItemIds());
+				htmltext = getAlreadyCompletedMsg(player);
 				break;
 			}
 		}
+		
 		return htmltext;
-	}
-	
-	private static String giveItem(Player player, QuestState qs, int npcId, int itemId, int... items)
-	{
-		if (!qs.isStarted())
-		{
-			return getNoQuestMsg(player);
-		}
-		else if (hasQuestItems(player, itemId))
-		{
-			return npcId + "-02.html";
-		}
-		giveItems(player, itemId, 1);
-		playSound(player, QuestSound.ITEMSOUND_QUEST_ITEMGET);
-		if (hasQuestItems(player, items))
-		{
-			qs.setCond(2, true);
-		}
-		return npcId + "-01.html";
 	}
 }

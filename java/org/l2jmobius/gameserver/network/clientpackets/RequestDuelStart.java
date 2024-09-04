@@ -16,10 +16,8 @@
  */
 package org.l2jmobius.gameserver.network.clientpackets;
 
-import org.l2jmobius.commons.network.ReadablePacket;
 import org.l2jmobius.gameserver.model.World;
 import org.l2jmobius.gameserver.model.actor.Player;
-import org.l2jmobius.gameserver.network.GameClient;
 import org.l2jmobius.gameserver.network.SystemMessageId;
 import org.l2jmobius.gameserver.network.serverpackets.ExDuelAskStart;
 import org.l2jmobius.gameserver.network.serverpackets.SystemMessage;
@@ -28,22 +26,22 @@ import org.l2jmobius.gameserver.network.serverpackets.SystemMessage;
  * Format:(ch) Sd
  * @author -Wooden-
  */
-public class RequestDuelStart implements ClientPacket
+public class RequestDuelStart extends ClientPacket
 {
 	private String _player;
 	private int _partyDuel;
 	
 	@Override
-	public void read(ReadablePacket packet)
+	protected void readImpl()
 	{
-		_player = packet.readString();
-		_partyDuel = packet.readInt();
+		_player = readString();
+		_partyDuel = readInt();
 	}
 	
 	@Override
-	public void run(GameClient client)
+	protected void runImpl()
 	{
-		final Player player = client.getPlayer();
+		final Player player = getPlayer();
 		final Player targetChar = World.getInstance().getPlayer(_player);
 		if (player == null)
 		{
@@ -74,7 +72,7 @@ public class RequestDuelStart implements ClientPacket
 		// Players may not be too far apart
 		else if (!player.isInsideRadius2D(targetChar, 250))
 		{
-			final SystemMessage msg = new SystemMessage(SystemMessageId.C1_CANNOT_RECEIVE_A_DUEL_CHALLENGE_BECAUSE_C1_IS_TOO_FAR_AWAY);
+			final SystemMessage msg = new SystemMessage(SystemMessageId.S1_CANNOT_RECEIVE_A_DUEL_CHALLENGE_BECAUSE_S1_IS_TOO_FAR_AWAY);
 			msg.addString(targetChar.getName());
 			player.sendPacket(msg);
 			return;
@@ -132,17 +130,17 @@ public class RequestDuelStart implements ClientPacket
 				{
 					player.onTransactionRequest(partyLeader);
 					partyLeader.sendPacket(new ExDuelAskStart(player.getName(), _partyDuel));
-					SystemMessage msg = new SystemMessage(SystemMessageId.C1_S_PARTY_HAS_BEEN_CHALLENGED_TO_A_DUEL);
+					SystemMessage msg = new SystemMessage(SystemMessageId.S1_S_PARTY_HAS_BEEN_CHALLENGED_TO_A_DUEL);
 					msg.addString(partyLeader.getName());
 					player.sendPacket(msg);
 					
-					msg = new SystemMessage(SystemMessageId.C1_S_PARTY_HAS_CHALLENGED_YOUR_PARTY_TO_A_DUEL);
+					msg = new SystemMessage(SystemMessageId.S1_S_PARTY_HAS_CHALLENGED_YOUR_PARTY_TO_A_DUEL);
 					msg.addString(player.getName());
 					targetChar.sendPacket(msg);
 				}
 				else
 				{
-					final SystemMessage msg = new SystemMessage(SystemMessageId.C1_IS_ON_ANOTHER_TASK_PLEASE_TRY_AGAIN_LATER);
+					final SystemMessage msg = new SystemMessage(SystemMessageId.S1_IS_BUSY_PLEASE_TRY_AGAIN_LATER);
 					msg.addString(partyLeader.getName());
 					player.sendPacket(msg);
 				}
@@ -155,17 +153,17 @@ public class RequestDuelStart implements ClientPacket
 			{
 				player.onTransactionRequest(targetChar);
 				targetChar.sendPacket(new ExDuelAskStart(player.getName(), _partyDuel));
-				SystemMessage msg = new SystemMessage(SystemMessageId.C1_HAS_BEEN_CHALLENGED_TO_A_DUEL);
+				SystemMessage msg = new SystemMessage(SystemMessageId.S1_HAS_BEEN_CHALLENGED_TO_A_DUEL);
 				msg.addString(targetChar.getName());
 				player.sendPacket(msg);
 				
-				msg = new SystemMessage(SystemMessageId.C1_HAS_CHALLENGED_YOU_TO_A_DUEL);
+				msg = new SystemMessage(SystemMessageId.S1_HAS_CHALLENGED_YOU_TO_A_DUEL);
 				msg.addString(player.getName());
 				targetChar.sendPacket(msg);
 			}
 			else
 			{
-				final SystemMessage msg = new SystemMessage(SystemMessageId.C1_IS_ON_ANOTHER_TASK_PLEASE_TRY_AGAIN_LATER);
+				final SystemMessage msg = new SystemMessage(SystemMessageId.S1_IS_BUSY_PLEASE_TRY_AGAIN_LATER);
 				msg.addString(targetChar.getName());
 				player.sendPacket(msg);
 			}

@@ -121,9 +121,7 @@ public class Folk extends Npc
 			{
 				if (player.getClassId().level() == 1)
 				{
-					final SystemMessage sm = new SystemMessage(SystemMessageId.THERE_ARE_NO_OTHER_SKILLS_TO_LEARN_PLEASE_COME_BACK_AFTER_S1ND_CLASS_CHANGE);
-					sm.addInt(2);
-					player.sendPacket(sm);
+					player.sendMessage("There are no other skills to learn. Please come back after 2nd class change.");
 				}
 				else
 				{

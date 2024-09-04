@@ -9,7 +9,7 @@
 		<set name="immediate_effect" val="true" />
 		<set name="material" val="LIQUID" />
 		<set name="weight" val="4" />
-		<set name="price" val="120" />
+		<set name="price" val="2" />
 		<set name="is_stackable" val="true" />
 	</item>
 	<item id="8501" type="EtcItem" name="Innadril's Luminous Lure">
@@ -21,7 +21,7 @@
 		<set name="immediate_effect" val="true" />
 		<set name="material" val="LIQUID" />
 		<set name="weight" val="3" />
-		<set name="price" val="120" />
+		<set name="price" val="2" />
 		<set name="is_stackable" val="true" />
 	</item>
 	<item id="8502" type="EtcItem" name="Goddard's Luminous Lure">
@@ -33,7 +33,7 @@
 		<set name="immediate_effect" val="true" />
 		<set name="material" val="LIQUID" />
 		<set name="weight" val="5" />
-		<set name="price" val="120" />
+		<set name="price" val="2" />
 		<set name="is_stackable" val="true" />
 	</item>
 	<item id="8503" type="EtcItem" name="Rune's Luminous Lure">
@@ -45,7 +45,7 @@
 		<set name="immediate_effect" val="true" />
 		<set name="material" val="LIQUID" />
 		<set name="weight" val="4" />
-		<set name="price" val="120" />
+		<set name="price" val="2" />
 		<set name="is_stackable" val="true" />
 	</item>
 	<item id="8504" type="EtcItem" name="Schuttgart's Luminous Lure">
@@ -57,7 +57,7 @@
 		<set name="immediate_effect" val="true" />
 		<set name="material" val="LIQUID" />
 		<set name="weight" val="3" />
-		<set name="price" val="120" />
+		<set name="price" val="2" />
 		<set name="is_stackable" val="true" />
 	</item>
 	<item id="8505" type="EtcItem" name="Green Luminous Lure - Low Grade">
@@ -81,7 +81,7 @@
 		<set name="immediate_effect" val="true" />
 		<set name="material" val="LIQUID" />
 		<set name="weight" val="4" />
-		<set name="price" val="120" />
+		<set name="price" val="100" />
 		<set name="is_stackable" val="true" />
 	</item>
 	<item id="8507" type="EtcItem" name="Green Colored Lure (High Grade)">
@@ -93,7 +93,7 @@
 		<set name="immediate_effect" val="true" />
 		<set name="material" val="LIQUID" />
 		<set name="weight" val="3" />
-		<set name="price" val="150" />
+		<set name="price" val="100" />
 		<set name="is_stackable" val="true" />
 	</item>
 	<item id="8508" type="EtcItem" name="Purple Luminous Lure - Low Grade">
@@ -105,7 +105,7 @@
 		<set name="immediate_effect" val="true" />
 		<set name="material" val="LIQUID" />
 		<set name="weight" val="5" />
-		<set name="price" val="150" />
+		<set name="price" val="180" />
 		<set name="is_stackable" val="true" />
 	</item>
 	<item id="8509" type="EtcItem" name="Purple Luminous Lure">
@@ -129,7 +129,7 @@
 		<set name="immediate_effect" val="true" />
 		<set name="material" val="LIQUID" />
 		<set name="weight" val="3" />
-		<set name="price" val="200" />
+		<set name="price" val="180" />
 		<set name="is_stackable" val="true" />
 	</item>
 	<item id="8511" type="EtcItem" name="Yellow Luminous Lure - Low Grade">
@@ -141,7 +141,7 @@
 		<set name="immediate_effect" val="true" />
 		<set name="material" val="LIQUID" />
 		<set name="weight" val="5" />
-		<set name="price" val="120" />
+		<set name="price" val="150" />
 		<set name="is_stackable" val="true" />
 	</item>
 	<item id="8512" type="EtcItem" name="Yellow Luminous Lure">
@@ -165,7 +165,7 @@
 		<set name="immediate_effect" val="true" />
 		<set name="material" val="LIQUID" />
 		<set name="weight" val="3" />
-		<set name="price" val="180" />
+		<set name="price" val="150" />
 		<set name="is_stackable" val="true" />
 	</item>
 	<item id="8514" type="EtcItem" name="Remnants of Old Dwarves' Dreams">
@@ -342,7 +342,7 @@
 		<set name="attack_range" val="500" />
 		<set name="damage_range" val="0;0;10;0" />
 		<set name="immediate_effect" val="true" />
-		<set name="crystal_count" val="743" />
+		<set name="crystal_count" val="965" />
 		<set name="crystal_type" val="D" />
 		<set name="material" val="STEEL" />
 		<set name="weight" val="1870" />
@@ -369,7 +369,7 @@
 		<set name="attack_range" val="40" />
 		<set name="damage_range" val="0;0;40;120" />
 		<set name="immediate_effect" val="true" />
-		<set name="crystal_count" val="1170" />
+		<set name="crystal_count" val="1520" />
 		<set name="crystal_type" val="D" />
 		<set name="material" val="STEEL" />
 		<set name="weight" val="1200" />
@@ -441,7 +441,7 @@
 		<set name="attack_range" val="40" />
 		<set name="damage_range" val="0;0;46;120" />
 		<set name="immediate_effect" val="true" />
-		<set name="crystal_count" val="743" />
+		<set name="crystal_count" val="965" />
 		<set name="crystal_type" val="D" />
 		<set name="material" val="BONE" />
 		<set name="weight" val="1060" />
@@ -467,7 +467,7 @@
 		<set name="attack_range" val="40" />
 		<set name="damage_range" val="0;0;40;120" />
 		<set name="immediate_effect" val="true" />
-		<set name="crystal_count" val="1170" />
+		<set name="crystal_count" val="1520" />
 		<set name="crystal_type" val="D" />
 		<set name="material" val="BONE" />
 		<set name="weight" val="1510" />
@@ -491,7 +491,7 @@
 		<set name="attack_range" val="40" />
 		<set name="damage_range" val="0;0;40;120" />
 		<set name="immediate_effect" val="true" />
-		<set name="crystal_count" val="1758" />
+		<set name="crystal_count" val="2284" />
 		<set name="crystal_type" val="D" />
 		<set name="material" val="FINE_STEEL" />
 		<set name="weight" val="1490" />
@@ -592,9 +592,9 @@
 		<set name="immediate_effect" val="true" />
 		<set name="material" val="LEATHER" />
 		<set name="weight" val="160" />
-		<set name="price" val="100000" /> <!-- H5 Price -->
+		<set name="price" val="200000" />
 		<set name="for_npc" val="true" />
-		<cond msgId="1518">
+		<cond msgId="600">
 			<player categoryType="BABY_PET_GROUP" />
 		</cond>
 		<for>
@@ -806,7 +806,7 @@
 		<set name="immediate_effect" val="true" />
 		<set name="material" val="WOOD" />
 		<set name="weight" val="10" />
-		<set name="price" val="2000000" />
+		<set name="price" val="500000" />
 	</item>
 	<item id="8561" type="Armor" name="Piggy Hat">
 		<!-- A fun, pig-shaped hair accessory. -->
@@ -816,7 +816,7 @@
 		<set name="immediate_effect" val="true" />
 		<set name="material" val="WOOD" />
 		<set name="weight" val="10" />
-		<set name="price" val="2000000" />
+		<set name="price" val="500000" />
 	</item>
 	<item id="8562" type="Armor" name="Jester Hat">
 		<!-- A festive jester hat with a split top. -->
@@ -826,7 +826,7 @@
 		<set name="immediate_effect" val="true" />
 		<set name="material" val="WOOD" />
 		<set name="weight" val="10" />
-		<set name="price" val="2000000" />
+		<set name="price" val="500000" />
 	</item>
 	<item id="8563" type="Armor" name="Wizard Hat">
 		<!-- A Wizard Hat with a wide brim and bent tip. -->
@@ -836,7 +836,7 @@
 		<set name="immediate_effect" val="true" />
 		<set name="material" val="WOOD" />
 		<set name="weight" val="10" />
-		<set name="price" val="2000000" />
+		<set name="price" val="500000" />
 	</item>
 	<item id="8564" type="Armor" name="Dapper Cap">
 		<!-- A stylish cap with a visor. -->
@@ -846,7 +846,7 @@
 		<set name="immediate_effect" val="true" />
 		<set name="material" val="WOOD" />
 		<set name="weight" val="10" />
-		<set name="price" val="2000000" />
+		<set name="price" val="500000" />
 	</item>
 	<item id="8565" type="Armor" name="Romantic Chapeau">
 		<!-- An extravagant chapeau adorned with feathers. -->
@@ -856,7 +856,7 @@
 		<set name="immediate_effect" val="true" />
 		<set name="material" val="WOOD" />
 		<set name="weight" val="10" />
-		<set name="price" val="2000000" />
+		<set name="price" val="500000" />
 	</item>
 	<item id="8566" type="Armor" name="Iron Circlet">
 		<!-- Hair accessory used in overseas events. This item is designed for use in events only and cannot be exchanged or dropped. -->

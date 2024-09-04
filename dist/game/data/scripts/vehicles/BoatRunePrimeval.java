@@ -91,7 +91,7 @@ public class BoatRunePrimeval implements Runnable
 	{
 		_boat = boat;
 		
-		ARRIVED_AT_RUNE = new CreatureSay(ChatType.BOAT, 801, SystemMessageId.WELCOME_TO_RUNE_HARBOR);
+		ARRIVED_AT_RUNE = new CreatureSay(ChatType.BOAT, 801, SystemMessageId.ARRIVED_AT_RUNE_HARBOR);
 		ARRIVED_AT_RUNE_2 = new CreatureSay(ChatType.BOAT, 801, SystemMessageId.THE_FERRY_WILL_LEAVE_FOR_PRIMEVAL_ISLE_AFTER_ANCHORING_FOR_THREE_MINUTES);
 		LEAVING_RUNE = new CreatureSay(ChatType.BOAT, 801, SystemMessageId.THE_FERRY_IS_NOW_DEPARTING_RUNE_HARBOR_FOR_PRIMEVAL_ISLE);
 		ARRIVED_AT_PRIMEVAL = new CreatureSay(ChatType.BOAT, 801, SystemMessageId.THE_FERRY_HAS_ARRIVED_AT_PRIMEVAL_ISLE);

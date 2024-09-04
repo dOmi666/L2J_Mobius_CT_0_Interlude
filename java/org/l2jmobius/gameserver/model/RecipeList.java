@@ -54,24 +54,14 @@ public class RecipeList
 	/** The quantity of Item crafted when using this RecipeList */
 	private final int _count;
 	
-	/** The Identifier of the Rare Item crafted with this RecipeList */
-	private int _rareItemId;
-	
-	/** The quantity of Rare Item crafted when using this RecipeList */
-	private int _rareCount;
-	
-	/** The chance of Rare Item crafted when using this RecipeList */
-	private int _rarity;
-	
 	/** If this a common or a dwarven recipe */
 	private final boolean _isDwarvenRecipe;
 	
 	/**
 	 * Constructor of RecipeList (create a new Recipe).
 	 * @param set
-	 * @param haveRare
 	 */
-	public RecipeList(StatSet set, boolean haveRare)
+	public RecipeList(StatSet set)
 	{
 		_recipes = new RecipeHolder[0];
 		_statUse = new RecipeStatHolder[0];
@@ -83,12 +73,6 @@ public class RecipeList
 		_successRate = set.getInt("successRate");
 		_itemId = set.getInt("itemId");
 		_count = set.getInt("count");
-		if (haveRare)
-		{
-			_rareItemId = set.getInt("rareItemId");
-			_rareCount = set.getInt("rareCount");
-			_rarity = set.getInt("rarity");
-		}
 		_isDwarvenRecipe = set.getBoolean("isDwarvenRecipe");
 	}
 	
@@ -188,31 +172,7 @@ public class RecipeList
 	}
 	
 	/**
-	 * @return the Identifier of the Rare Item crafted with this RecipeList.
-	 */
-	public int getRareItemId()
-	{
-		return _rareItemId;
-	}
-	
-	/**
-	 * @return the quantity of Rare Item crafted when using this RecipeList.
-	 */
-	public int getRareCount()
-	{
-		return _rareCount;
-	}
-	
-	/**
-	 * @return the chance of Rare Item crafted when using this RecipeList.
-	 */
-	public int getRarity()
-	{
-		return _rarity;
-	}
-	
-	/**
-	 * @return {@code true} if this a Dwarven recipe or {@code false} if its a Common recipe
+	 * @return {@code true} if this a Dwarven recipe or {@code false} if it is a Common recipe
 	 */
 	public boolean isDwarvenRecipe()
 	{

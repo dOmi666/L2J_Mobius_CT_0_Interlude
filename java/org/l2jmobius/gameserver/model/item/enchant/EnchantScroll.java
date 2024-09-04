@@ -126,6 +126,11 @@ public class EnchantScroll extends AbstractEnchantItem
 	 */
 	public double getChance(Player player, Item enchantItem)
 	{
+		if (enchantItem == null)
+		{
+			return -1;
+		}
+		
 		final int scrollGroupId = _items.getOrDefault(enchantItem.getId(), _scrollGroupId);
 		if (EnchantItemGroupsData.getInstance().getScrollGroup(scrollGroupId) == null)
 		{

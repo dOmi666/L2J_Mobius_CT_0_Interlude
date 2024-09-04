@@ -207,7 +207,7 @@ public class SignsPriest extends Npc
 					final int newSeal = Integer.parseInt(command.substring(15));
 					if (player.getClassId().level() >= 1)
 					{
-						// even if in htmls is said that ally can have castle too, but its not
+						// even if in htmls is said that ally can have castle too, but it is not
 						if ((cabal == SevenSigns.CABAL_DUSK) && Config.ALT_GAME_CASTLE_DUSK && (player.getClan() != null) && (player.getClan().getCastleId() > 0))
 						{
 							showChatWindow(player, SevenSigns.SEVEN_SIGNS_HTML_PATH + "signs_33_dusk_no.htm");
@@ -399,7 +399,7 @@ public class SignsPriest extends Npc
 					else
 					{
 						score = SevenSigns.getInstance().addPlayerStoneContrib(player.getObjectId(), blueContrib, greenContrib, redContrib);
-						sm = new SystemMessage(SystemMessageId.YOUR_CONTRIBUTION_SCORE_HAS_INCREASED_BY_S1);
+						sm = new SystemMessage(SystemMessageId.YOUR_CONTRIBUTION_SCORE_IS_INCREASED_BY_S1);
 						sm.addInt(score);
 						player.sendPacket(sm);
 						
@@ -528,7 +528,7 @@ public class SignsPriest extends Npc
 								else
 								{
 									contribScore = SevenSigns.getInstance().addPlayerStoneContrib(player.getObjectId(), blueContribCount, greenContribCount, redContribCount);
-									sm = new SystemMessage(SystemMessageId.YOUR_CONTRIBUTION_SCORE_HAS_INCREASED_BY_S1);
+									sm = new SystemMessage(SystemMessageId.YOUR_CONTRIBUTION_SCORE_IS_INCREASED_BY_S1);
 									sm.addInt(contribScore);
 									player.sendPacket(sm);
 									

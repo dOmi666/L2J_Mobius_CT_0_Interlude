@@ -101,8 +101,6 @@ public class PrimevalIsle extends AbstractNpcAI
 	private static final SkillHolder PHYSICALSPECIAL1 = new SkillHolder(5083, 4); // Stun
 	private static final SkillHolder PHYSICALSPECIAL2 = new SkillHolder(5081, 4); // Silence
 	private static final SkillHolder PHYSICALSPECIAL3 = new SkillHolder(5082, 4); // NPC Spinning, Slashing Trick
-	private static final SkillHolder CREW_SKILL = new SkillHolder(6172, 1); // Presentation - Tyranno
-	private static final SkillHolder INVIN_BUFF_ON = new SkillHolder(5225, 1); // Invincible
 	
 	private PrimevalIsle()
 	{
@@ -122,15 +120,6 @@ public class PrimevalIsle extends AbstractNpcAI
 	@Override
 	public String onSpellFinished(Npc npc, Player player, Skill skill)
 	{
-		if (skill.getId() == CREW_SKILL.getSkillId())
-		{
-			startQuestTimer("START_INVUL", 4000, npc, null);
-			final Npc target = (Npc) npc.getTarget();
-			if (target != null)
-			{
-				target.doDie(npc);
-			}
-		}
 		if (npc.isInCombat())
 		{
 			final Attackable mob = (Attackable) npc;
@@ -179,7 +168,7 @@ public class PrimevalIsle extends AbstractNpcAI
 	}
 	
 	@Override
-	public String onAdvEvent(String event, Npc npc, Player player)
+	public String onEvent(String event, Npc npc, Player player)
 	{
 		switch (event)
 		{
@@ -221,25 +210,8 @@ public class PrimevalIsle extends AbstractNpcAI
 				}
 				break;
 			}
-			case "START_INVUL":
-			{
-				if ((npc != null) && !npc.isDead())
-				{
-					npc.doCast(INVIN_BUFF_ON.getSkill());
-					startQuestTimer("START_INVUL_2", 30000, npc, null);
-				}
-				break;
-			}
-			case "START_INVUL_2":
-			{
-				if ((npc != null) && !npc.isDead())
-				{
-					INVIN_BUFF_ON.getSkill().applyEffects(npc, npc);
-				}
-				break;
-			}
 		}
-		return super.onAdvEvent(event, npc, player);
+		return super.onEvent(event, npc, player);
 	}
 	
 	@Override
@@ -294,7 +266,6 @@ public class PrimevalIsle extends AbstractNpcAI
 		else if (CommonUtil.contains(VEGETABLE, creature.getId()))
 		{
 			npc.setTarget(creature);
-			npc.doCast(CREW_SKILL.getSkill());
 			npc.setRunning();
 			npc.getAI().setIntention(CtrlIntention.AI_INTENTION_ATTACK, creature);
 		}

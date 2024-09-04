@@ -17,8 +17,6 @@
 package org.l2jmobius.gameserver.network.clientpackets;
 
 import org.l2jmobius.Config;
-import org.l2jmobius.commons.network.ReadablePacket;
-import org.l2jmobius.gameserver.enums.PrivateStoreType;
 import org.l2jmobius.gameserver.enums.Race;
 import org.l2jmobius.gameserver.model.World;
 import org.l2jmobius.gameserver.model.actor.Player;
@@ -26,7 +24,6 @@ import org.l2jmobius.gameserver.model.item.instance.Item;
 import org.l2jmobius.gameserver.model.item.type.CrystalType;
 import org.l2jmobius.gameserver.model.itemcontainer.PlayerInventory;
 import org.l2jmobius.gameserver.model.skill.CommonSkill;
-import org.l2jmobius.gameserver.network.GameClient;
 import org.l2jmobius.gameserver.network.PacketLogger;
 import org.l2jmobius.gameserver.network.SystemMessageId;
 import org.l2jmobius.gameserver.network.serverpackets.ActionFailed;
@@ -37,41 +34,41 @@ import org.l2jmobius.gameserver.util.Util;
 /**
  * @version $Revision: 1.2.2.3.2.5 $ $Date: 2005/03/27 15:29:30 $
  */
-public class RequestCrystallizeItem implements ClientPacket
+public class RequestCrystallizeItem extends ClientPacket
 {
 	private int _objectId;
 	private int _count;
 	
 	@Override
-	public void read(ReadablePacket packet)
+	protected void readImpl()
 	{
-		_objectId = packet.readInt();
-		_count = packet.readInt();
+		_objectId = readInt();
+		_count = readInt();
 	}
 	
 	@Override
-	public void run(GameClient client)
+	protected void runImpl()
 	{
-		final Player player = client.getPlayer();
+		final Player player = getPlayer();
 		if (player == null)
 		{
 			// PacketLogger.finer("RequestCrystalizeItem: activeChar was null");
 			return;
 		}
 		
-		if (!client.getFloodProtectors().canPerformTransaction())
+		if (!getClient().getFloodProtectors().canPerformTransaction())
 		{
 			player.sendMessage("You are crystallizing too fast.");
 			return;
 		}
 		
-		if (_count <= 0)
+		if (_count < 1)
 		{
 			Util.handleIllegalPlayerAction(player, "[RequestCrystallizeItem] count <= 0! ban! oid: " + _objectId + " owner: " + player.getName(), Config.DEFAULT_PUNISH);
 			return;
 		}
 		
-		if ((player.getPrivateStoreType() != PrivateStoreType.NONE) || player.isInCrystallize())
+		if (player.isInStoreMode() || player.isInCrystallize())
 		{
 			player.sendPacket(SystemMessageId.WHILE_OPERATING_A_PRIVATE_STORE_OR_WORKSHOP_YOU_CANNOT_DISCARD_DESTROY_OR_TRADE_AN_ITEM);
 			return;
@@ -84,7 +81,7 @@ public class RequestCrystallizeItem implements ClientPacket
 			player.sendPacket(ActionFailed.STATIC_PACKET);
 			if ((player.getRace() != Race.DWARF) && (player.getClassId().getId() != 117) && (player.getClassId().getId() != 55))
 			{
-				PacketLogger.info("Player " + client + " used crystalize with classid: " + player.getClassId().getId());
+				PacketLogger.info("Player " + getClient() + " used crystalize with classid: " + player.getClassId().getId());
 			}
 			return;
 		}
@@ -180,7 +177,7 @@ public class RequestCrystallizeItem implements ClientPacket
 			{
 				iu.addModifiedItem(item);
 			}
-			player.sendPacket(iu);
+			player.sendPacket(iu); // Sent inventory update for unequip instantly.
 			
 			if (itemToRemove.getEnchantLevel() > 0)
 			{
@@ -200,7 +197,7 @@ public class RequestCrystallizeItem implements ClientPacket
 		final Item removedItem = player.getInventory().destroyItem("Crystalize", _objectId, _count, player, null);
 		final InventoryUpdate iu = new InventoryUpdate();
 		iu.addRemovedItem(removedItem);
-		player.sendPacket(iu);
+		player.sendPacket(iu); // Sent inventory update for destruction instantly.
 		
 		// add crystals
 		final int crystalId = itemToRemove.getTemplate().getCrystalItemId();

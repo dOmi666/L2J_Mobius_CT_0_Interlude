@@ -16,107 +16,123 @@
  */
 package quests.Q00291_RevengeOfTheRedbonnet;
 
-import org.l2jmobius.Config;
+import org.l2jmobius.gameserver.enums.QuestSound;
 import org.l2jmobius.gameserver.model.actor.Npc;
 import org.l2jmobius.gameserver.model.actor.Player;
-import org.l2jmobius.gameserver.model.holders.ItemHolder;
 import org.l2jmobius.gameserver.model.quest.Quest;
 import org.l2jmobius.gameserver.model.quest.QuestState;
-import org.l2jmobius.gameserver.util.Util;
+import org.l2jmobius.gameserver.model.quest.State;
 
-/**
- * Revenge of the Redbonnet (291).
- * @author xban1x
- */
 public class Q00291_RevengeOfTheRedbonnet extends Quest
 {
-	// NPC
-	private static final int MARYSE_REDBONNET = 30553;
-	// Item
-	private static final ItemHolder BLACK_WOLF_PELT = new ItemHolder(1482, 40);
-	// Monster
-	private static final int BLACK_WOLF = 20317;
+	// Quest items
+	private static final int BLACK_WOLF_PELT = 1482;
 	// Rewards
 	private static final int SCROLL_OF_ESCAPE = 736;
-	private static final int GRANDMAS_PEARL = 1502;
-	private static final int GRANDMAS_MIRROR = 1503;
-	private static final int GRANDMAS_NECKLACE = 1504;
-	private static final int GRANDMAS_HAIRPIN = 1505;
-	// Misc
-	private static final int MIN_LEVEL = 4;
+	private static final int GRANDMA_PEARL = 1502;
+	private static final int GRANDMA_MIRROR = 1503;
+	private static final int GRANDMA_NECKLACE = 1504;
+	private static final int GRANDMA_HAIRPIN = 1505;
 	
 	public Q00291_RevengeOfTheRedbonnet()
 	{
 		super(291);
-		addStartNpc(MARYSE_REDBONNET);
-		addTalkId(MARYSE_REDBONNET);
-		addKillId(BLACK_WOLF);
-		registerQuestItems(BLACK_WOLF_PELT.getId());
+		registerQuestItems(BLACK_WOLF_PELT);
+		addStartNpc(30553); // Maryse Redbonnet
+		addTalkId(30553);
+		addKillId(20317);
 	}
 	
 	@Override
-	public String onAdvEvent(String event, Npc npc, Player player)
+	public String onEvent(String event, Npc npc, Player player)
 	{
-		final QuestState qs = getQuestState(player, false);
-		if ((qs != null) && event.equals("30553-03.htm"))
+		String htmltext = event;
+		final QuestState st = getQuestState(player, false);
+		if (st == null)
 		{
-			qs.startQuest();
-			return event;
+			return htmltext;
 		}
-		return null;
-	}
-	
-	@Override
-	public String onKill(Npc npc, Player killer, boolean isSummon)
-	{
-		final QuestState qs = getQuestState(killer, false);
-		if ((qs != null) && qs.isCond(1) && Util.checkIfInRange(Config.ALT_PARTY_RANGE, npc, killer, true) && giveItemRandomly(qs.getPlayer(), npc, BLACK_WOLF_PELT.getId(), 1, BLACK_WOLF_PELT.getCount(), 1, true))
+		
+		if (event.equals("30553-03.htm"))
 		{
-			qs.setCond(2);
+			st.startQuest();
 		}
-		return super.onKill(npc, killer, isSummon);
+		
+		return htmltext;
 	}
 	
 	@Override
 	public String onTalk(Npc npc, Player player)
 	{
-		final QuestState qs = getQuestState(player, true);
-		String html = getNoQuestMsg(player);
-		if (qs.isCreated())
+		String htmltext = getNoQuestMsg(player);
+		final QuestState st = getQuestState(player, true);
+		
+		switch (st.getState())
 		{
-			html = ((player.getLevel() >= MIN_LEVEL) ? "30553-02.htm" : "30553-01.htm");
+			case State.CREATED:
+			{
+				htmltext = (player.getLevel() < 4) ? "30553-01.htm" : "30553-02.htm";
+				break;
+			}
+			case State.STARTED:
+			{
+				final int cond = st.getCond();
+				if (cond == 1)
+				{
+					htmltext = "30553-04.htm";
+				}
+				else if (cond == 2)
+				{
+					htmltext = "30553-05.htm";
+					takeItems(player, BLACK_WOLF_PELT, -1);
+					
+					final int random = getRandom(100);
+					if (random < 3)
+					{
+						rewardItems(player, GRANDMA_PEARL, 1);
+					}
+					else if (random < 21)
+					{
+						rewardItems(player, GRANDMA_MIRROR, 1);
+					}
+					else if (random < 46)
+					{
+						rewardItems(player, GRANDMA_NECKLACE, 1);
+					}
+					else
+					{
+						rewardItems(player, SCROLL_OF_ESCAPE, 1);
+						rewardItems(player, GRANDMA_HAIRPIN, 1);
+					}
+					
+					st.exitQuest(true, true);
+				}
+				break;
+			}
 		}
-		else if (qs.isStarted())
+		
+		return htmltext;
+	}
+	
+	@Override
+	public String onKill(Npc npc, Player player, boolean isPet)
+	{
+		final QuestState st = getQuestState(player, false);
+		if ((st == null) || !st.isCond(1))
 		{
-			if (qs.isCond(2) && hasItem(player, BLACK_WOLF_PELT))
-			{
-				takeItem(player, BLACK_WOLF_PELT);
-				final int chance = getRandom(100);
-				if (chance <= 2)
-				{
-					giveItems(player, GRANDMAS_PEARL, 1);
-				}
-				else if (chance <= 20)
-				{
-					giveItems(player, GRANDMAS_MIRROR, 1);
-				}
-				else if (chance <= 45)
-				{
-					giveItems(player, GRANDMAS_NECKLACE, 1);
-				}
-				else
-				{
-					giveItems(player, GRANDMAS_HAIRPIN, 1);
-					giveItems(player, SCROLL_OF_ESCAPE, 1);
-				}
-				qs.exitQuest(true, true);
-				html = "30553-05.html";
-			}
-			else
-			{
-				html = "30553-04.html";
-			}
+			return null;
 		}
-		return html;
+		
+		giveItems(player, BLACK_WOLF_PELT, 1);
+		if (getQuestItemsCount(player, BLACK_WOLF_PELT) < 40)
+		{
+			playSound(player, QuestSound.ITEMSOUND_QUEST_ITEMGET);
+		}
+		else
+		{
+			st.setCond(2, true);
+		}
+		
+		return null;
 	}
 }

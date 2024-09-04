@@ -18,8 +18,6 @@ package org.l2jmobius.gameserver.model.actor.tasks.player;
 
 import org.l2jmobius.Config;
 import org.l2jmobius.gameserver.model.actor.Player;
-import org.l2jmobius.gameserver.network.SystemMessageId;
-import org.l2jmobius.gameserver.network.serverpackets.SystemMessage;
 
 /**
  * Task dedicated to reward player with fame while standing on siege zone.
@@ -50,9 +48,7 @@ public class FameTask implements Runnable
 		}
 		
 		_player.setFame(_player.getFame() + _value);
-		final SystemMessage sm = new SystemMessage(SystemMessageId.YOU_HAVE_ACQUIRED_S1_REPUTATION);
-		sm.addInt(_value);
-		_player.sendPacket(sm);
+		_player.sendMessage("You have acquired " + _value + " reputation.");
 		_player.updateUserInfo();
 	}
 }

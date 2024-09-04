@@ -540,7 +540,7 @@ public abstract class AbstractAI implements Ctrl
 					final WorldRegion region = _actor.getWorldRegion();
 					if ((region != null) && region.isActive() && !_actor.isMovementSuspended())
 					{
-						_actor.broadcastPacket(new MoveToPawn(_actor, (Creature) pawn, offset));
+						_actor.broadcastPacket(new MoveToPawn(_actor, pawn, offset));
 					}
 				}
 			}
@@ -707,6 +707,11 @@ public abstract class AbstractAI implements Ctrl
 			_actor.broadcastPacket(new AutoAttackStop(_actor.getObjectId()));
 			setAutoAttacking(false);
 		}
+	}
+	
+	public int getClientMovingToPawnOffset()
+	{
+		return _clientMovingToPawnOffset;
 	}
 	
 	/**

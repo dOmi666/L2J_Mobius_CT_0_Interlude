@@ -2,9 +2,6 @@
 <list applyTaxes="true" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="../xsd/multisell.xsd">
 	<npcs>
 		<npc>30846</npc> <!-- Wilbert -->
-		<npc>31271</npc> <!-- Hilda -->
-		<npc>31316</npc> <!-- Vincenz -->
-		<npc>31960</npc> <!-- Buryun -->
 	</npcs>
 	<item>
 		<!-- Shamshir -->
@@ -12,9 +9,9 @@
 		<!-- Caliburs -->
 		<ingredient count="1" id="75" />
 		<!-- Stone of Purity -->
-		<ingredient count="318" id="1875" />
+		<ingredient count="353" id="1875" />
 		<!-- Adena -->
-		<ingredient count="953100" id="57" />
+		<ingredient count="1059000" id="57" />
 		<!-- Shamshir*Caliburs -->
 		<production count="1" id="2576" />
 	</item>
@@ -24,9 +21,9 @@
 		<!-- Sword of Nightmare -->
 		<ingredient count="1" id="134" />
 		<!-- Stone of Purity -->
-		<ingredient count="318" id="1875" />
+		<ingredient count="353" id="1875" />
 		<!-- Adena -->
-		<ingredient count="953100" id="57" />
+		<ingredient count="1059000" id="57" />
 		<!-- Shamshir*Sword of Nightmare -->
 		<production count="1" id="2579" />
 	</item>
@@ -36,9 +33,9 @@
 		<!-- Tsurugi -->
 		<ingredient count="1" id="77" />
 		<!-- Stone of Purity -->
-		<ingredient count="318" id="1875" />
+		<ingredient count="353" id="1875" />
 		<!-- Adena -->
-		<ingredient count="953100" id="57" />
+		<ingredient count="1059000" id="57" />
 		<!-- Shamshir*Tsurugi -->
 		<production count="1" id="2580" />
 	</item>
@@ -48,9 +45,9 @@
 		<!-- Caliburs -->
 		<ingredient count="1" id="75" />
 		<!-- Stone of Purity -->
-		<ingredient count="318" id="1875" />
+		<ingredient count="353" id="1875" />
 		<!-- Adena -->
-		<ingredient count="953100" id="57" />
+		<ingredient count="1059000" id="57" />
 		<!-- Katana*Caliburs -->
 		<production count="1" id="2585" />
 	</item>
@@ -60,9 +57,9 @@
 		<!-- Sword of Nightmare -->
 		<ingredient count="1" id="134" />
 		<!-- Stone of Purity -->
-		<ingredient count="318" id="1875" />
+		<ingredient count="353" id="1875" />
 		<!-- Adena -->
-		<ingredient count="953100" id="57" />
+		<ingredient count="1059000" id="57" />
 		<!-- Katana*Sword of Nightmare -->
 		<production count="1" id="2588" />
 	</item>
@@ -72,9 +69,9 @@
 		<!-- Tsurugi -->
 		<ingredient count="1" id="77" />
 		<!-- Stone of Purity -->
-		<ingredient count="318" id="1875" />
+		<ingredient count="353" id="1875" />
 		<!-- Adena -->
-		<ingredient count="953100" id="57" />
+		<ingredient count="1059000" id="57" />
 		<!-- Katana*Tsurugi -->
 		<production count="1" id="2589" />
 	</item>
@@ -84,9 +81,9 @@
 		<!-- Caliburs -->
 		<ingredient count="1" id="75" />
 		<!-- Stone of Purity -->
-		<ingredient count="318" id="1875" />
+		<ingredient count="353" id="1875" />
 		<!-- Adena -->
-		<ingredient count="953100" id="57" />
+		<ingredient count="1059000" id="57" />
 		<!-- Spirit Sword*Caliburs -->
 		<production count="1" id="2593" />
 	</item>
@@ -96,9 +93,9 @@
 		<!-- Sword of Nightmare -->
 		<ingredient count="1" id="134" />
 		<!-- Stone of Purity -->
-		<ingredient count="318" id="1875" />
+		<ingredient count="353" id="1875" />
 		<!-- Adena -->
-		<ingredient count="953100" id="57" />
+		<ingredient count="1059000" id="57" />
 		<!-- Spirit Sword*Sword of Nightmare -->
 		<production count="1" id="2596" />
 	</item>
@@ -108,9 +105,9 @@
 		<!-- Tsurugi -->
 		<ingredient count="1" id="77" />
 		<!-- Stone of Purity -->
-		<ingredient count="318" id="1875" />
+		<ingredient count="353" id="1875" />
 		<!-- Adena -->
-		<ingredient count="953100" id="57" />
+		<ingredient count="1059000" id="57" />
 		<!-- Spirit Sword*Tsurugi -->
 		<production count="1" id="2597" />
 	</item>
@@ -120,9 +117,9 @@
 		<!-- Caliburs -->
 		<ingredient count="1" id="75" />
 		<!-- Stone of Purity -->
-		<ingredient count="318" id="1875" />
+		<ingredient count="353" id="1875" />
 		<!-- Adena -->
-		<ingredient count="953100" id="57" />
+		<ingredient count="1059000" id="57" />
 		<!-- Raid Sword*Caliburs -->
 		<production count="1" id="2600" />
 	</item>
@@ -132,9 +129,9 @@
 		<!-- Sword of Nightmare -->
 		<ingredient count="1" id="134" />
 		<!-- Stone of Purity -->
-		<ingredient count="318" id="1875" />
+		<ingredient count="353" id="1875" />
 		<!-- Adena -->
-		<ingredient count="953100" id="57" />
+		<ingredient count="1059000" id="57" />
 		<!-- Raid Sword*Sword of Nightmare -->
 		<production count="1" id="2603" />
 	</item>
@@ -144,9 +141,9 @@
 		<!-- Tsurugi -->
 		<ingredient count="1" id="77" />
 		<!-- Stone of Purity -->
-		<ingredient count="318" id="1875" />
+		<ingredient count="353" id="1875" />
 		<!-- Adena -->
-		<ingredient count="953100" id="57" />
+		<ingredient count="1059000" id="57" />
 		<!-- Raid Sword*Tsurugi -->
 		<production count="1" id="2604" />
 	</item>
@@ -156,9 +153,9 @@
 		<!-- Caliburs -->
 		<ingredient count="1" id="75" />
 		<!-- Stone of Purity -->
-		<ingredient count="41" id="1875" />
+		<ingredient count="45" id="1875" />
 		<!-- Adena -->
-		<ingredient count="121500" id="57" />
+		<ingredient count="135000" id="57" />
 		<!-- Caliburs*Caliburs -->
 		<production count="1" id="2606" />
 	</item>
@@ -168,9 +165,9 @@
 		<!-- Sword of Nightmare -->
 		<ingredient count="1" id="134" />
 		<!-- Stone of Purity -->
-		<ingredient count="41" id="1875" />
+		<ingredient count="45" id="1875" />
 		<!-- Adena -->
-		<ingredient count="121500" id="57" />
+		<ingredient count="135000" id="57" />
 		<!-- Caliburs*Sword of Nightmare -->
 		<production count="1" id="2609" />
 	</item>
@@ -180,9 +177,9 @@
 		<!-- Tsurugi -->
 		<ingredient count="1" id="77" />
 		<!-- Stone of Purity -->
-		<ingredient count="41" id="1875" />
+		<ingredient count="45" id="1875" />
 		<!-- Adena -->
-		<ingredient count="121500" id="57" />
+		<ingredient count="135000" id="57" />
 		<!-- Caliburs*Tsurugi -->
 		<production count="1" id="2610" />
 	</item>
@@ -192,9 +189,9 @@
 		<!-- Sword of Nightmare -->
 		<ingredient count="1" id="134" />
 		<!-- Stone of Purity -->
-		<ingredient count="41" id="1875" />
+		<ingredient count="45" id="1875" />
 		<!-- Adena -->
-		<ingredient count="121500" id="57" />
+		<ingredient count="135000" id="57" />
 		<!-- Sword of Nightmare*Sword of Nightmare -->
 		<production count="1" id="2621" />
 	</item>
@@ -204,9 +201,9 @@
 		<!-- Tsurugi -->
 		<ingredient count="1" id="77" />
 		<!-- Stone of Purity -->
-		<ingredient count="41" id="1875" />
+		<ingredient count="45" id="1875" />
 		<!-- Adena -->
-		<ingredient count="121500" id="57" />
+		<ingredient count="135000" id="57" />
 		<!-- Sword of Nightmare*Tsurugi -->
 		<production count="1" id="2622" />
 	</item>
@@ -216,9 +213,9 @@
 		<!-- Tsurugi -->
 		<ingredient count="1" id="77" />
 		<!-- Stone of Purity -->
-		<ingredient count="41" id="1875" />
+		<ingredient count="45" id="1875" />
 		<!-- Adena -->
-		<ingredient count="121500" id="57" />
+		<ingredient count="135000" id="57" />
 		<!-- Tsurugi*Tsurugi -->
 		<production count="1" id="2624" />
 	</item>
@@ -228,9 +225,9 @@
 		<!-- Samurai Longsword -->
 		<ingredient count="1" id="135" />
 		<!-- Stone of Purity -->
-		<ingredient count="263" id="1875" />
+		<ingredient count="292" id="1875" />
 		<!-- Adena -->
-		<ingredient count="788400" id="57" />
+		<ingredient count="876000" id="57" />
 		<!-- Shamshir*Samurai Long Sword -->
 		<production count="1" id="2581" />
 	</item>
@@ -240,9 +237,9 @@
 		<!-- Samurai Longsword -->
 		<ingredient count="1" id="135" />
 		<!-- Stone of Purity -->
-		<ingredient count="263" id="1875" />
+		<ingredient count="292" id="1875" />
 		<!-- Adena -->
-		<ingredient count="788400" id="57" />
+		<ingredient count="876000" id="57" />
 		<!-- Katana*Samurai Long Sword -->
 		<production count="1" id="2590" />
 	</item>
@@ -252,9 +249,9 @@
 		<!-- Samurai Longsword -->
 		<ingredient count="1" id="135" />
 		<!-- Stone of Purity -->
-		<ingredient count="263" id="1875" />
+		<ingredient count="292" id="1875" />
 		<!-- Adena -->
-		<ingredient count="788400" id="57" />
+		<ingredient count="876000" id="57" />
 		<!-- Spirit Sword*Samurai Long Sword -->
 		<production count="1" id="2598" />
 	</item>
@@ -264,9 +261,9 @@
 		<!-- Samurai Longsword -->
 		<ingredient count="1" id="135" />
 		<!-- Stone of Purity -->
-		<ingredient count="263" id="1875" />
+		<ingredient count="292" id="1875" />
 		<!-- Adena -->
-		<ingredient count="788400" id="57" />
+		<ingredient count="876000" id="57" />
 		<!-- Raid Sword*Samurai Long Sword -->
 		<production count="1" id="2605" />
 	</item>
@@ -276,9 +273,9 @@
 		<!-- Samurai Longsword -->
 		<ingredient count="1" id="135" />
 		<!-- Stone of Purity -->
-		<ingredient count="441" id="1875" />
+		<ingredient count="490" id="1875" />
 		<!-- Adena -->
-		<ingredient count="1323000" id="57" />
+		<ingredient count="1470000" id="57" />
 		<!-- Caliburs*Samurai Long Sword -->
 		<production count="1" id="2611" />
 	</item>
@@ -288,9 +285,9 @@
 		<!-- Samurai Longsword -->
 		<ingredient count="1" id="135" />
 		<!-- Stone of Purity -->
-		<ingredient count="441" id="1875" />
+		<ingredient count="490" id="1875" />
 		<!-- Adena -->
-		<ingredient count="1323000" id="57" />
+		<ingredient count="1470000" id="57" />
 		<!-- Sword of Nightmare*Samurai Long Sword -->
 		<production count="1" id="2623" />
 	</item>
@@ -300,9 +297,9 @@
 		<!-- Samurai Longsword -->
 		<ingredient count="1" id="135" />
 		<!-- Stone of Purity -->
-		<ingredient count="441" id="1875" />
+		<ingredient count="490" id="1875" />
 		<!-- Adena -->
-		<ingredient count="1323000" id="57" />
+		<ingredient count="1470000" id="57" />
 		<!-- Tsurugi*Samurai Long Sword -->
 		<production count="1" id="2625" />
 	</item>
@@ -312,9 +309,9 @@
 		<!-- Samurai Longsword -->
 		<ingredient count="1" id="135" />
 		<!-- Stone of Purity -->
-		<ingredient count="450" id="1875" />
+		<ingredient count="500" id="1875" />
 		<!-- Adena -->
-		<ingredient count="1350000" id="57" />
+		<ingredient count="1500000" id="57" />
 		<!-- Samurai Long Sword*Samurai Long Sword -->
 		<production count="1" id="2626" />
 	</item>

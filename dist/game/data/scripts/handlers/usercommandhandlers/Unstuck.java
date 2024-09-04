@@ -64,7 +64,7 @@ public class Unstuck implements IUserCommandHandler
 		final int unstuckTimer = (player.getAccessLevel().isGm() ? 1000 : Config.UNSTUCK_INTERVAL * 1000);
 		if (player.isInOlympiadMode())
 		{
-			player.sendPacket(SystemMessageId.YOU_CANNOT_USE_THAT_SKILL_IN_A_GRAND_OLYMPIAD_MATCH);
+			player.sendPacket(SystemMessageId.YOU_CANNOT_USE_THAT_SKILL_IN_A_GRAND_OLYMPIAD_GAMES_MATCH);
 			return false;
 		}
 		

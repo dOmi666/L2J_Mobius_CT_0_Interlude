@@ -96,7 +96,7 @@
 		<set name="etcitem_type" val="CASTLE_GUARD" />
 		<set name="immediate_effect" val="true" />
 		<set name="material" val="PAPER" />
-		<set name="price" val="80000" />
+		<set name="price" val="126000" />
 		<set name="is_stackable" val="true" />
 		<set name="handler" val="MercTicket" />
 	</item>

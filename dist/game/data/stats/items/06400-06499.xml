@@ -120,7 +120,7 @@
 	</item>
 	<item id="6411" type="EtcItem" name="Small Nimble Green Fish">
 		<!-- Double-click to randomly change into another item. The changed item can be used as an ingredient for general manufacture. -->
-		<set name="icon" val="icon.etc_tuna_i07" />
+		<set name="icon" val="icon.etc_tuna_i06" />
 		<set name="default_action" val="CAPSULE" />
 		<set name="immediate_effect" val="true" />
 		<set name="material" val="FISH" />
@@ -133,7 +133,7 @@
 	</item>
 	<item id="6412" type="EtcItem" name="Small Ugly Green Fish">
 		<!-- Double-click to randomly change into another item. The changed item can be used as an ingredient for general manufacture. -->
-		<set name="icon" val="icon.etc_angler_i07" />
+		<set name="icon" val="icon.etc_angler_i06" />
 		<set name="default_action" val="CAPSULE" />
 		<set name="immediate_effect" val="true" />
 		<set name="material" val="FISH" />
@@ -146,7 +146,7 @@
 	</item>
 	<item id="6413" type="EtcItem" name="Small Pudgy Green Fish">
 		<!-- Double-click to randomly change into another item. The changed item can be used as an ingredient for general manufacture. -->
-		<set name="icon" val="icon.etc_bream_i07" />
+		<set name="icon" val="icon.etc_bream_i06" />
 		<set name="default_action" val="CAPSULE" />
 		<set name="immediate_effect" val="true" />
 		<set name="material" val="FISH" />
@@ -159,7 +159,7 @@
 	</item>
 	<item id="6414" type="EtcItem" name="Nimble Green Fish">
 		<!-- Double-click to randomly change into another item. The changed item can be used as an ingredient for general manufacture. -->
-		<set name="icon" val="icon.etc_tuna_i07" />
+		<set name="icon" val="icon.etc_tuna_i06" />
 		<set name="default_action" val="CAPSULE" />
 		<set name="immediate_effect" val="true" />
 		<set name="material" val="FISH" />
@@ -172,7 +172,7 @@
 	</item>
 	<item id="6415" type="EtcItem" name="Ugly Green Fish">
 		<!-- Double-click to randomly change into another item. The changed item can be used as an ingredient for general manufacture. -->
-		<set name="icon" val="icon.etc_angler_i07" />
+		<set name="icon" val="icon.etc_angler_i06" />
 		<set name="default_action" val="CAPSULE" />
 		<set name="immediate_effect" val="true" />
 		<set name="material" val="FISH" />
@@ -185,7 +185,7 @@
 	</item>
 	<item id="6416" type="EtcItem" name="Pudgy Green Fish">
 		<!-- Double-click to randomly change into another item. The changed item can be used as an ingredient for general manufacture. -->
-		<set name="icon" val="icon.etc_bream_i07" />
+		<set name="icon" val="icon.etc_bream_i06" />
 		<set name="default_action" val="CAPSULE" />
 		<set name="immediate_effect" val="true" />
 		<set name="material" val="FISH" />
@@ -198,7 +198,7 @@
 	</item>
 	<item id="6417" type="EtcItem" name="Large Nimble Green Fish">
 		<!-- Double-click to randomly change into another item. The changed item can be used as an ingredient for general manufacture. -->
-		<set name="icon" val="icon.etc_tuna_i07" />
+		<set name="icon" val="icon.etc_tuna_i06" />
 		<set name="default_action" val="CAPSULE" />
 		<set name="immediate_effect" val="true" />
 		<set name="material" val="FISH" />
@@ -211,7 +211,7 @@
 	</item>
 	<item id="6418" type="EtcItem" name="Large Ugly Green Fish">
 		<!-- Double-click to randomly change into another item. The changed item can be used as an ingredient for general manufacture. -->
-		<set name="icon" val="icon.etc_angler_i07" />
+		<set name="icon" val="icon.etc_angler_i06" />
 		<set name="default_action" val="CAPSULE" />
 		<set name="immediate_effect" val="true" />
 		<set name="material" val="FISH" />
@@ -224,7 +224,7 @@
 	</item>
 	<item id="6419" type="EtcItem" name="Large Pudgy Green Fish">
 		<!-- Double-click to randomly change into another item. The changed item can be used as an ingredient for general manufacture. -->
-		<set name="icon" val="icon.etc_bream_i07" />
+		<set name="icon" val="icon.etc_bream_i06" />
 		<set name="default_action" val="CAPSULE" />
 		<set name="immediate_effect" val="true" />
 		<set name="material" val="FISH" />
@@ -237,7 +237,7 @@
 	</item>
 	<item id="6420" type="EtcItem" name="Small Jade Nimble Fish">
 		<!-- Double-click to randomly change into another item. The changed item can be used as an ingredient for general manufacture. -->
-		<set name="icon" val="icon.etc_tuna_i06" />
+		<set name="icon" val="icon.etc_tuna_i07" />
 		<set name="default_action" val="CAPSULE" />
 		<set name="immediate_effect" val="true" />
 		<set name="material" val="FISH" />
@@ -250,7 +250,7 @@
 	</item>
 	<item id="6421" type="EtcItem" name="Small Jade Ugly Fish">
 		<!-- Double-click to randomly change into another item. The changed item can be used as an ingredient for general manufacture. -->
-		<set name="icon" val="icon.etc_angler_i06" />
+		<set name="icon" val="icon.etc_angler_i07" />
 		<set name="default_action" val="CAPSULE" />
 		<set name="immediate_effect" val="true" />
 		<set name="material" val="FISH" />
@@ -263,7 +263,7 @@
 	</item>
 	<item id="6422" type="EtcItem" name="Small Jade Fat Fish">
 		<!-- Double-click to randomly change into another item. The changed item can be used as an ingredient for general manufacture. -->
-		<set name="icon" val="icon.etc_bream_i06" />
+		<set name="icon" val="icon.etc_bream_i07" />
 		<set name="default_action" val="CAPSULE" />
 		<set name="immediate_effect" val="true" />
 		<set name="material" val="FISH" />
@@ -276,7 +276,7 @@
 	</item>
 	<item id="6423" type="EtcItem" name="Jade Nimble Fish">
 		<!-- Double-click to randomly change into another item. The changed item can be used as an ingredient for general manufacture. -->
-		<set name="icon" val="icon.etc_tuna_i06" />
+		<set name="icon" val="icon.etc_tuna_i07" />
 		<set name="default_action" val="CAPSULE" />
 		<set name="immediate_effect" val="true" />
 		<set name="material" val="FISH" />
@@ -289,7 +289,7 @@
 	</item>
 	<item id="6424" type="EtcItem" name="Jade Ugly Fish">
 		<!-- Double-click to randomly change into another item. The changed item can be used as an ingredient for general manufacture. -->
-		<set name="icon" val="icon.etc_angler_i06" />
+		<set name="icon" val="icon.etc_angler_i07" />
 		<set name="default_action" val="CAPSULE" />
 		<set name="immediate_effect" val="true" />
 		<set name="material" val="FISH" />
@@ -302,7 +302,7 @@
 	</item>
 	<item id="6425" type="EtcItem" name="Jade Fat Fish">
 		<!-- Double-click to randomly change into another item. The changed item can be used as an ingredient for general manufacture. -->
-		<set name="icon" val="icon.etc_bream_i06" />
+		<set name="icon" val="icon.etc_bream_i07" />
 		<set name="default_action" val="CAPSULE" />
 		<set name="immediate_effect" val="true" />
 		<set name="material" val="FISH" />
@@ -315,7 +315,7 @@
 	</item>
 	<item id="6426" type="EtcItem" name="Big Jade Nimble Fish">
 		<!-- Double-click to randomly change into another item. The changed item can be used as an ingredient for general manufacture. -->
-		<set name="icon" val="icon.etc_tuna_i06" />
+		<set name="icon" val="icon.etc_tuna_i07" />
 		<set name="default_action" val="CAPSULE" />
 		<set name="immediate_effect" val="true" />
 		<set name="material" val="FISH" />
@@ -328,7 +328,7 @@
 	</item>
 	<item id="6427" type="EtcItem" name="Big Jade Ugly Fish">
 		<!-- Double-click to randomly change into another item. The changed item can be used as an ingredient for general manufacture. -->
-		<set name="icon" val="icon.etc_angler_i06" />
+		<set name="icon" val="icon.etc_angler_i07" />
 		<set name="default_action" val="CAPSULE" />
 		<set name="immediate_effect" val="true" />
 		<set name="material" val="FISH" />
@@ -341,7 +341,7 @@
 	</item>
 	<item id="6428" type="EtcItem" name="Big Jade Fat Fish">
 		<!-- Double-click to randomly change into another item. The changed item can be used as an ingredient for general manufacture. -->
-		<set name="icon" val="icon.etc_bream_i06" />
+		<set name="icon" val="icon.etc_bream_i07" />
 		<set name="default_action" val="CAPSULE" />
 		<set name="immediate_effect" val="true" />
 		<set name="material" val="FISH" />
@@ -1173,7 +1173,7 @@
 	</item>
 	<item id="6492" type="EtcItem" name="Small Green Treasure Chest">
 		<!-- Double-click to see the change. -->
-		<set name="icon" val="icon.etc_treasure_box_i07" />
+		<set name="icon" val="icon.etc_treasure_box_i06" />
 		<set name="default_action" val="CAPSULE" />
 		<set name="immediate_effect" val="true" />
 		<set name="material" val="FISH" />
@@ -1186,7 +1186,7 @@
 	</item>
 	<item id="6493" type="EtcItem" name="Green Treasure Chest">
 		<!-- Double-click to see the change. -->
-		<set name="icon" val="icon.etc_treasure_box_i07" />
+		<set name="icon" val="icon.etc_treasure_box_i06" />
 		<set name="default_action" val="CAPSULE" />
 		<set name="immediate_effect" val="true" />
 		<set name="material" val="FISH" />
@@ -1199,7 +1199,7 @@
 	</item>
 	<item id="6494" type="EtcItem" name="Big Green Treasure Chest">
 		<!-- Double-click to see the change. -->
-		<set name="icon" val="icon.etc_treasure_box_i07" />
+		<set name="icon" val="icon.etc_treasure_box_i06" />
 		<set name="default_action" val="CAPSULE" />
 		<set name="immediate_effect" val="true" />
 		<set name="material" val="FISH" />
@@ -1212,7 +1212,7 @@
 	</item>
 	<item id="6495" type="EtcItem" name="Small Jade Treasure Chest">
 		<!-- Double-click to see the change. -->
-		<set name="icon" val="icon.etc_treasure_box_i06" />
+		<set name="icon" val="icon.etc_treasure_box_i07" />
 		<set name="default_action" val="CAPSULE" />
 		<set name="immediate_effect" val="true" />
 		<set name="material" val="FISH" />
@@ -1225,7 +1225,7 @@
 	</item>
 	<item id="6496" type="EtcItem" name="Jade Treasure Chest">
 		<!-- Double-click to see the change. -->
-		<set name="icon" val="icon.etc_treasure_box_i06" />
+		<set name="icon" val="icon.etc_treasure_box_i07" />
 		<set name="default_action" val="CAPSULE" />
 		<set name="immediate_effect" val="true" />
 		<set name="material" val="FISH" />
@@ -1238,7 +1238,7 @@
 	</item>
 	<item id="6497" type="EtcItem" name="Big Jade Treasure Chest">
 		<!-- Double-click to see the change. -->
-		<set name="icon" val="icon.etc_treasure_box_i06" />
+		<set name="icon" val="icon.etc_treasure_box_i07" />
 		<set name="default_action" val="CAPSULE" />
 		<set name="immediate_effect" val="true" />
 		<set name="material" val="FISH" />

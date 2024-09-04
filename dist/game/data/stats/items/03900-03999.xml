@@ -9,9 +9,9 @@
 		<set name="immediate_effect" val="true" />
 		<set name="material" val="LEATHER" />
 		<set name="weight" val="160" />
-		<set name="price" val="283000" /> <!-- H5 Price -->
+		<set name="price" val="640000" />
 		<set name="for_npc" val="true" />
-		<cond msgId="1518">
+		<cond msgId="600">
 			<player categoryType="WOLF" />
 		</cond>
 		<for>
@@ -28,9 +28,9 @@
 		<set name="immediate_effect" val="true" />
 		<set name="material" val="LEATHER" />
 		<set name="weight" val="160" />
-		<set name="price" val="412500" /> <!-- H5 Price -->
+		<set name="price" val="940000" />
 		<set name="for_npc" val="true" />
-		<cond msgId="1518">
+		<cond msgId="600">
 			<player categoryType="WOLF" />
 		</cond>
 		<for>
@@ -50,9 +50,9 @@
 		<set name="immediate_effect" val="true" />
 		<set name="material" val="STEEL" />
 		<set name="weight" val="100" />
-		<set name="price" val="30500" /> <!-- H5 Price -->
+		<set name="price" val="61000" />
 		<set name="for_npc" val="true" />
-		<cond msgId="1518">
+		<cond msgId="600">
 			<player categoryType="WOLF" />
 		</cond>
 		<for>
@@ -74,9 +74,9 @@
 		<set name="immediate_effect" val="true" />
 		<set name="material" val="STEEL" />
 		<set name="weight" val="100" />
-		<set name="price" val="50000" /> <!-- H5 Price -->
+		<set name="price" val="100000" />
 		<set name="for_npc" val="true" />
-		<cond msgId="1518">
+		<cond msgId="600">
 			<player categoryType="WOLF" />
 		</cond>
 		<for>
@@ -98,9 +98,9 @@
 		<set name="immediate_effect" val="true" />
 		<set name="material" val="STEEL" />
 		<set name="weight" val="100" />
-		<set name="price" val="80000" /> <!-- H5 Price -->
+		<set name="price" val="160000" />
 		<set name="for_npc" val="true" />
-		<cond msgId="1518">
+		<cond msgId="600">
 			<player categoryType="WOLF" />
 		</cond>
 		<for>
@@ -122,9 +122,9 @@
 		<set name="immediate_effect" val="true" />
 		<set name="material" val="STEEL" />
 		<set name="weight" val="100" />
-		<set name="price" val="120000" /> <!-- H5 Price -->
+		<set name="price" val="240000" />
 		<set name="for_npc" val="true" />
-		<cond msgId="1518">
+		<cond msgId="600">
 			<player categoryType="WOLF" />
 		</cond>
 		<for>
@@ -146,9 +146,9 @@
 		<set name="immediate_effect" val="true" />
 		<set name="material" val="STEEL" />
 		<set name="weight" val="100" />
-		<set name="price" val="175000" /> <!-- H5 Price -->
+		<set name="price" val="350000" />
 		<set name="for_npc" val="true" />
-		<cond msgId="1518">
+		<cond msgId="600">
 			<player categoryType="WOLF" />
 		</cond>
 		<for>
@@ -170,9 +170,9 @@
 		<set name="immediate_effect" val="true" />
 		<set name="material" val="STEEL" />
 		<set name="weight" val="100" />
-		<set name="price" val="225000" /> <!-- H5 Price -->
+		<set name="price" val="450000" />
 		<set name="for_npc" val="true" />
-		<cond msgId="1518">
+		<cond msgId="600">
 			<player categoryType="WOLF" />
 		</cond>
 		<for>
@@ -194,9 +194,9 @@
 		<set name="immediate_effect" val="true" />
 		<set name="material" val="STEEL" />
 		<set name="weight" val="100" />
-		<set name="price" val="285000" /> <!-- H5 Price -->
+		<set name="price" val="570000" />
 		<set name="for_npc" val="true" />
-		<cond msgId="1518">
+		<cond msgId="600">
 			<player categoryType="WOLF" />
 		</cond>
 		<for>
@@ -218,9 +218,9 @@
 		<set name="immediate_effect" val="true" />
 		<set name="material" val="STEEL" />
 		<set name="weight" val="100" />
-		<set name="price" val="360000" /> <!-- H5 Price -->
+		<set name="price" val="720000" />
 		<set name="for_npc" val="true" />
-		<cond msgId="1518">
+		<cond msgId="600">
 			<player categoryType="WOLF" />
 		</cond>
 		<for>
@@ -242,9 +242,9 @@
 		<set name="immediate_effect" val="true" />
 		<set name="material" val="STEEL" />
 		<set name="weight" val="100" />
-		<set name="price" val="550000" /> <!-- H5 Price -->
+		<set name="price" val="1100000" />
 		<set name="for_npc" val="true" />
-		<cond msgId="1518">
+		<cond msgId="600">
 			<player categoryType="WOLF" />
 		</cond>
 		<for>
@@ -266,9 +266,9 @@
 		<set name="immediate_effect" val="true" />
 		<set name="material" val="STEEL" />
 		<set name="weight" val="100" />
-		<set name="price" val="750000" /> <!-- H5 Price -->
+		<set name="price" val="1500000" />
 		<set name="for_npc" val="true" />
-		<cond msgId="1518">
+		<cond msgId="600">
 			<player categoryType="WOLF" />
 		</cond>
 		<for>
@@ -287,9 +287,9 @@
 		<set name="immediate_effect" val="true" />
 		<set name="material" val="LEATHER" />
 		<set name="weight" val="160" />
-		<set name="price" val="58500" /> <!-- H5 Price -->
+		<set name="price" val="200000" />
 		<set name="for_npc" val="true" />
-		<cond msgId="1518">
+		<cond msgId="600">
 			<player categoryType="HATCHLING_GROUP" />
 		</cond>
 		<for>
@@ -306,9 +306,9 @@
 		<set name="immediate_effect" val="true" />
 		<set name="material" val="LEATHER" />
 		<set name="weight" val="160" />
-		<set name="price" val="86000" /> <!-- H5 Price -->
+		<set name="price" val="310000" />
 		<set name="for_npc" val="true" />
-		<cond msgId="1518">
+		<cond msgId="600">
 			<player categoryType="HATCHLING_GROUP" />
 		</cond>
 		<for>
@@ -325,9 +325,9 @@
 		<set name="immediate_effect" val="true" />
 		<set name="material" val="LEATHER" />
 		<set name="weight" val="160" />
-		<set name="price" val="113000" /> <!-- H5 Price -->
+		<set name="price" val="420000" />
 		<set name="for_npc" val="true" />
-		<cond msgId="1518">
+		<cond msgId="600">
 			<player categoryType="HATCHLING_GROUP" />
 		</cond>
 		<for>
@@ -344,9 +344,9 @@
 		<set name="immediate_effect" val="true" />
 		<set name="material" val="LEATHER" />
 		<set name="weight" val="160" />
-		<set name="price" val="145500" /> <!-- H5 Price -->
+		<set name="price" val="570000" />
 		<set name="for_npc" val="true" />
-		<cond msgId="1518">
+		<cond msgId="600">
 			<player categoryType="HATCHLING_GROUP" />
 		</cond>
 		<for>
@@ -363,9 +363,9 @@
 		<set name="immediate_effect" val="true" />
 		<set name="material" val="LEATHER" />
 		<set name="weight" val="160" />
-		<set name="price" val="186000" /> <!-- H5 Price -->
+		<set name="price" val="760000" />
 		<set name="for_npc" val="true" />
-		<cond msgId="1518">
+		<cond msgId="600">
 			<player categoryType="HATCHLING_GROUP" />
 		</cond>
 		<for>
@@ -382,9 +382,9 @@
 		<set name="immediate_effect" val="true" />
 		<set name="material" val="LEATHER" />
 		<set name="weight" val="160" />
-		<set name="price" val="283000" /> <!-- H5 Price -->
+		<set name="price" val="1100000" />
 		<set name="for_npc" val="true" />
-		<cond msgId="1518">
+		<cond msgId="600">
 			<player categoryType="HATCHLING_GROUP" />
 		</cond>
 		<for>
@@ -401,9 +401,9 @@
 		<set name="immediate_effect" val="true" />
 		<set name="material" val="LEATHER" />
 		<set name="weight" val="160" />
-		<set name="price" val="412500" /> <!-- H5 Price -->
+		<set name="price" val="1600000" />
 		<set name="for_npc" val="true" />
-		<cond msgId="1518">
+		<cond msgId="600">
 			<player categoryType="HATCHLING_GROUP" />
 		</cond>
 		<for>
@@ -423,9 +423,9 @@
 		<set name="immediate_effect" val="true" />
 		<set name="material" val="STEEL" />
 		<set name="weight" val="100" />
-		<set name="price" val="100000" /> <!-- H5 Price -->
+		<set name="price" val="197143" />
 		<set name="for_npc" val="true" />
-		<cond msgId="1518">
+		<cond msgId="600">
 			<player categoryType="HATCHLING_GROUP" />
 		</cond>
 		<for>
@@ -447,9 +447,9 @@
 		<set name="immediate_effect" val="true" />
 		<set name="material" val="STEEL" />
 		<set name="weight" val="100" />
-		<set name="price" val="155000" /> <!-- H5 Price -->
+		<set name="price" val="310000" />
 		<set name="for_npc" val="true" />
-		<cond msgId="1518">
+		<cond msgId="600">
 			<player categoryType="HATCHLING_GROUP" />
 		</cond>
 		<for>
@@ -471,9 +471,9 @@
 		<set name="immediate_effect" val="true" />
 		<set name="material" val="STEEL" />
 		<set name="weight" val="100" />
-		<set name="price" val="210000" /> <!-- H5 Price -->
+		<set name="price" val="420000" />
 		<set name="for_npc" val="true" />
-		<cond msgId="1518">
+		<cond msgId="600">
 			<player categoryType="HATCHLING_GROUP" />
 		</cond>
 		<for>
@@ -495,9 +495,9 @@
 		<set name="immediate_effect" val="true" />
 		<set name="material" val="STEEL" />
 		<set name="weight" val="100" />
-		<set name="price" val="285000" /> <!-- H5 Price -->
+		<set name="price" val="570000" />
 		<set name="for_npc" val="true" />
-		<cond msgId="1518">
+		<cond msgId="600">
 			<player categoryType="HATCHLING_GROUP" />
 		</cond>
 		<for>
@@ -519,9 +519,9 @@
 		<set name="immediate_effect" val="true" />
 		<set name="material" val="STEEL" />
 		<set name="weight" val="100" />
-		<set name="price" val="380000" /> <!-- H5 Price -->
+		<set name="price" val="760000" />
 		<set name="for_npc" val="true" />
-		<cond msgId="1518">
+		<cond msgId="600">
 			<player categoryType="HATCHLING_GROUP" />
 		</cond>
 		<for>
@@ -543,9 +543,9 @@
 		<set name="immediate_effect" val="true" />
 		<set name="material" val="STEEL" />
 		<set name="weight" val="100" />
-		<set name="price" val="550000" /> <!-- H5 Price -->
+		<set name="price" val="1100000" />
 		<set name="for_npc" val="true" />
-		<cond msgId="1518">
+		<cond msgId="600">
 			<player categoryType="HATCHLING_GROUP" />
 		</cond>
 		<for>
@@ -567,9 +567,9 @@
 		<set name="immediate_effect" val="true" />
 		<set name="material" val="STEEL" />
 		<set name="weight" val="100" />
-		<set name="price" val="800000" /> <!-- H5 Price -->
+		<set name="price" val="1600000" />
 		<set name="for_npc" val="true" />
-		<cond msgId="1518">
+		<cond msgId="600">
 			<player categoryType="HATCHLING_GROUP" />
 		</cond>
 		<for>
@@ -869,7 +869,7 @@
 		<set name="immediate_effect" val="true" />
 		<set name="material" val="PAPER" />
 		<set name="weight" val="20" />
-		<set name="price" val="5000" />
+		<set name="price" val="8000" />
 		<set name="is_stackable" val="true" />
 	</item>
 	<item id="3947" type="EtcItem" name="Blessed Spiritshot: No Grade">
@@ -892,7 +892,7 @@
 		<set name="crystal_type" val="D" />
 		<set name="material" val="PAPER" />
 		<set name="weight" val="5" />
-		<set name="price" val="28" />
+		<set name="price" val="45" />
 		<!-- <set name="enchant_enabled" val="true" />NOTE: Retail typo. -->
 		<set name="is_stackable" val="true" />
 		<set name="handler" val="BlessedSpiritShot" />
@@ -906,7 +906,7 @@
 		<set name="crystal_type" val="C" />
 		<set name="material" val="PAPER" />
 		<set name="weight" val="3" />
-		<set name="price" val="42" />
+		<set name="price" val="90" />
 		<!-- <set name="enchant_enabled" val="true" />NOTE: Retail typo. -->
 		<set name="is_stackable" val="true" />
 		<set name="handler" val="BlessedSpiritShot" />
@@ -1025,7 +1025,7 @@
 		<set name="default_action" val="SKILL_REDUCE" />
 		<set name="etcitem_type" val="SCROLL" />
 		<set name="material" val="PAPER" />
-		<set name="weight" val="120" />
+		<set name="weight" val="12" />
 		<set name="is_stackable" val="true" />
 		<set name="is_oly_restricted" val="true" />
 		<set name="handler" val="ItemSkills" />
@@ -1037,7 +1037,7 @@
 		<set name="default_action" val="SKILL_REDUCE" />
 		<set name="etcitem_type" val="SCROLL" />
 		<set name="material" val="PAPER" />
-		<set name="weight" val="120" />
+		<set name="weight" val="12" />
 		<set name="is_stackable" val="true" />
 		<set name="is_oly_restricted" val="true" />
 		<set name="handler" val="ItemSkills" />

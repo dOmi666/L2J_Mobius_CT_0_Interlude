@@ -23,65 +23,101 @@ import org.l2jmobius.gameserver.model.actor.Player;
 import org.l2jmobius.gameserver.model.quest.Quest;
 import org.l2jmobius.gameserver.model.quest.QuestState;
 import org.l2jmobius.gameserver.model.quest.State;
-import org.l2jmobius.gameserver.network.NpcStringId;
 
-/**
- * Offspring of Nightmares (169)
- * @author xban1x
- */
 public class Q00169_OffspringOfNightmares extends Quest
 {
-	// NPC
-	private static final int VLASTY = 30145;
-	// Monsters
-	private static final int LESSER_DARK_HORROR = 20025;
-	private static final int DARK_HORROR = 20105;
 	// Items
-	private static final int BONE_GAITERS = 31;
 	private static final int CRACKED_SKULL = 1030;
 	private static final int PERFECT_SKULL = 1031;
-	// Misc
-	private static final int MIN_LEVEL = 15;
+	private static final int BONE_GAITERS = 31;
 	
 	public Q00169_OffspringOfNightmares()
 	{
 		super(169);
-		addStartNpc(VLASTY);
-		addTalkId(VLASTY);
-		addKillId(LESSER_DARK_HORROR, DARK_HORROR);
 		registerQuestItems(CRACKED_SKULL, PERFECT_SKULL);
+		addStartNpc(30145); // Vlasty
+		addTalkId(30145);
+		addKillId(20105, 20025);
 	}
 	
 	@Override
-	public String onAdvEvent(String event, Npc npc, Player player)
+	public String onEvent(String event, Npc npc, Player player)
 	{
-		final QuestState qs = getQuestState(player, false);
-		String htmltext = null;
-		if (qs != null)
+		String htmltext = event;
+		final QuestState st = getQuestState(player, false);
+		if (st == null)
 		{
-			switch (event)
+			return htmltext;
+		}
+		
+		if (event.equals("30145-04.htm"))
+		{
+			st.startQuest();
+		}
+		else if (event.equals("30145-08.htm"))
+		{
+			final int reward = 17000 + (getQuestItemsCount(player, CRACKED_SKULL) * 20);
+			takeItems(player, PERFECT_SKULL, -1);
+			takeItems(player, CRACKED_SKULL, -1);
+			giveItems(player, BONE_GAITERS, 1);
+			giveAdena(player, reward, true);
+			st.exitQuest(false, true);
+		}
+		
+		return htmltext;
+	}
+	
+	@Override
+	public String onTalk(Npc npc, Player player)
+	{
+		String htmltext = getNoQuestMsg(player);
+		final QuestState st = getQuestState(player, true);
+		
+		switch (st.getState())
+		{
+			case State.CREATED:
 			{
-				case "30145-03.htm":
+				if (player.getRace() != Race.DARK_ELF)
 				{
-					qs.startQuest();
-					htmltext = event;
-					break;
+					htmltext = "30145-00.htm";
 				}
-				case "30145-07.html":
+				else if (player.getLevel() < 15)
 				{
-					if (qs.isCond(2) && hasQuestItems(player, PERFECT_SKULL))
+					htmltext = "30145-02.htm";
+				}
+				else
+				{
+					htmltext = "30145-03.htm";
+				}
+				break;
+			}
+			case State.STARTED:
+			{
+				final int cond = st.getCond();
+				if (cond == 1)
+				{
+					if (hasQuestItems(player, CRACKED_SKULL))
 					{
-						giveItems(player, BONE_GAITERS, 1);
-						addExpAndSp(player, 17475, 818);
-						giveAdena(player, 17030 + (10 * getQuestItemsCount(player, CRACKED_SKULL)), true);
-						qs.exitQuest(false, true);
-						showOnScreenMsg(player, NpcStringId.LAST_DUTY_COMPLETE_N_GO_FIND_THE_NEWBIE_GUIDE, 2, 5000); // TODO: Newbie Guide
-						htmltext = event;
+						htmltext = "30145-06.htm";
 					}
-					break;
+					else
+					{
+						htmltext = "30145-05.htm";
+					}
 				}
+				else if (cond == 2)
+				{
+					htmltext = "30145-07.htm";
+				}
+				break;
+			}
+			case State.COMPLETED:
+			{
+				htmltext = getAlreadyCompletedMsg(player);
+				break;
 			}
 		}
+		
 		return htmltext;
 	}
 	
@@ -103,42 +139,5 @@ public class Q00169_OffspringOfNightmares extends Quest
 			}
 		}
 		return super.onKill(npc, killer, isSummon);
-	}
-	
-	@Override
-	public String onTalk(Npc npc, Player player)
-	{
-		final QuestState qs = getQuestState(player, true);
-		String htmltext = getNoQuestMsg(player);
-		switch (qs.getState())
-		{
-			case State.CREATED:
-			{
-				htmltext = (player.getRace() == Race.DARK_ELF) ? (player.getLevel() >= MIN_LEVEL) ? "30145-02.htm" : "30145-01.htm" : "30145-00.htm";
-				break;
-			}
-			case State.STARTED:
-			{
-				if (hasQuestItems(player, CRACKED_SKULL) && !hasQuestItems(player, PERFECT_SKULL))
-				{
-					htmltext = "30145-05.html";
-				}
-				else if (qs.isCond(2) && hasQuestItems(player, PERFECT_SKULL))
-				{
-					htmltext = "30145-06.html";
-				}
-				else if (!hasQuestItems(player, CRACKED_SKULL, PERFECT_SKULL))
-				{
-					htmltext = "30145-04.html";
-				}
-				break;
-			}
-			case State.COMPLETED:
-			{
-				htmltext = getAlreadyCompletedMsg(player);
-				break;
-			}
-		}
-		return htmltext;
 	}
 }

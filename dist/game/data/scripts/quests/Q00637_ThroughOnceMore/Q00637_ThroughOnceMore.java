@@ -16,7 +16,6 @@
  */
 package quests.Q00637_ThroughOnceMore;
 
-import org.l2jmobius.Config;
 import org.l2jmobius.gameserver.enums.QuestSound;
 import org.l2jmobius.gameserver.model.actor.Npc;
 import org.l2jmobius.gameserver.model.actor.Player;
@@ -24,131 +23,129 @@ import org.l2jmobius.gameserver.model.quest.Quest;
 import org.l2jmobius.gameserver.model.quest.QuestState;
 import org.l2jmobius.gameserver.model.quest.State;
 
-/**
- * Through the Gate Once More (637)<br>
- * Original Jython script by BiTi! and DrLecter.
- * @author DS
- */
 public class Q00637_ThroughOnceMore extends Quest
 {
+	// NPC
 	private static final int FLAURON = 32010;
-	private static final int[] MOBS =
-	{
-		21565,
-		21566,
-		21567
-	};
-	private static final int VISITOR_MARK = 8064;
-	private static final int FADED_MARK = 8065;
-	private static final int NECRO_HEART = 8066;
-	private static final int MARK = 8067;
-	
-	private static final double DROP_CHANCE = 90;
+	// Items
+	private static final int FADED_VISITOR_MARK = 8065;
+	private static final int NECROMANCER_HEART = 8066;
+	// Reward
+	private static final int PAGAN_MARK = 8067;
 	
 	public Q00637_ThroughOnceMore()
 	{
 		super(637);
+		registerQuestItems(NECROMANCER_HEART);
 		addStartNpc(FLAURON);
 		addTalkId(FLAURON);
-		addKillId(MOBS);
-		registerQuestItems(NECRO_HEART);
+		addKillId(21565, 21566, 21567);
 	}
 	
 	@Override
-	public String onAdvEvent(String event, Npc npc, Player player)
+	public String onEvent(String event, Npc npc, Player player)
 	{
-		final QuestState qs = getQuestState(player, false);
-		if (qs == null)
+		String htmltext = event;
+		final QuestState st = getQuestState(player, false);
+		if (st == null)
 		{
-			return null;
+			return htmltext;
 		}
 		
-		if ("32010-03.htm".equals(event))
+		if (event.equals("32010-04.htm"))
 		{
-			qs.startQuest();
+			st.startQuest();
 		}
-		else if ("32010-10.htm".equals(event))
+		else if (event.equals("32010-10.htm"))
 		{
-			qs.exitQuest(true);
+			st.exitQuest(true);
 		}
-		return event;
-	}
-	
-	@Override
-	public String onKill(Npc npc, Player player, boolean isSummon)
-	{
-		final QuestState qs = getQuestState(player, false);
-		if ((qs != null) && (qs.getState() == State.STARTED))
-		{
-			final long count = getQuestItemsCount(player, NECRO_HEART);
-			if (count < 10)
-			{
-				int chance = (int) (Config.RATE_QUEST_DROP * DROP_CHANCE);
-				int numItems = chance / 100;
-				chance = chance % 100;
-				if (getRandom(100) < chance)
-				{
-					numItems++;
-				}
-				if (numItems > 0)
-				{
-					if ((count + numItems) >= 10)
-					{
-						numItems = 10 - (int) count;
-						qs.setCond(2, true);
-					}
-					else
-					{
-						playSound(player, QuestSound.ITEMSOUND_QUEST_ITEMGET);
-					}
-					
-					giveItems(player, NECRO_HEART, numItems);
-				}
-			}
-		}
-		return null;
+		
+		return htmltext;
 	}
 	
 	@Override
 	public String onTalk(Npc npc, Player player)
 	{
-		final QuestState qs = getQuestState(player, true);
-		final byte id = qs.getState();
-		if (id == State.CREATED)
+		String htmltext = getNoQuestMsg(player);
+		final QuestState st = getQuestState(player, true);
+		
+		switch (st.getState())
 		{
-			if (player.getLevel() > 72)
+			case State.CREATED:
 			{
-				if (hasQuestItems(player, FADED_MARK))
+				if ((player.getLevel() < 73) || !hasQuestItems(player, FADED_VISITOR_MARK))
 				{
-					return "32010-02.htm";
+					htmltext = "32010-01a.htm";
 				}
-				if (hasQuestItems(player, VISITOR_MARK))
+				else if (hasQuestItems(player, PAGAN_MARK))
 				{
-					qs.exitQuest(true);
-					return "32010-01a.htm";
+					htmltext = "32010-00.htm";
 				}
-				if (hasQuestItems(player, MARK))
+				else
 				{
-					qs.exitQuest(true);
-					return "32010-0.htm";
+					htmltext = "32010-01.htm";
 				}
+				break;
 			}
-			qs.exitQuest(true);
-			return "32010-01.htm";
+			case State.STARTED:
+			{
+				if (st.isCond(2))
+				{
+					if (getQuestItemsCount(player, NECROMANCER_HEART) == 10)
+					{
+						htmltext = "32010-06.htm";
+						takeItems(player, FADED_VISITOR_MARK, 1);
+						takeItems(player, NECROMANCER_HEART, -1);
+						giveItems(player, PAGAN_MARK, 1);
+						giveItems(player, 8273, 10);
+						st.exitQuest(true, true);
+					}
+					else
+					{
+						st.setCond(1);
+					}
+				}
+				else
+				{
+					htmltext = "32010-05.htm";
+				}
+				break;
+			}
 		}
-		else if (id == State.STARTED)
+		
+		return htmltext;
+	}
+	
+	@Override
+	public String onKill(Npc npc, Player player, boolean isPet)
+	{
+		final QuestState qs = getRandomPartyMemberState(player, 1, 3, npc);
+		if (qs == null)
 		{
-			if ((qs.isCond(2)) && (getQuestItemsCount(player, NECRO_HEART) == 10))
-			{
-				takeItems(player, NECRO_HEART, 10);
-				takeItems(player, FADED_MARK, 1);
-				giveItems(player, MARK, 1);
-				giveItems(player, 8273, 10);
-				qs.exitQuest(true, true);
-				return "32010-05.htm";
-			}
-			return "32010-04.htm";
+			return null;
 		}
-		return getNoQuestMsg(player);
+		final Player partyMember = qs.getPlayer();
+		
+		final QuestState st = getQuestState(partyMember, false);
+		if (st == null)
+		{
+			return null;
+		}
+		
+		if (getRandom(10) < 4)
+		{
+			giveItems(partyMember, NECROMANCER_HEART, 1);
+			if (getQuestItemsCount(partyMember, NECROMANCER_HEART) < 10)
+			{
+				playSound(partyMember, QuestSound.ITEMSOUND_QUEST_ITEMGET);
+			}
+			else
+			{
+				st.setCond(2, true);
+			}
+		}
+		
+		return null;
 	}
 }

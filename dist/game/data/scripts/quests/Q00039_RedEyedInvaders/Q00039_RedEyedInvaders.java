@@ -16,240 +16,192 @@
  */
 package quests.Q00039_RedEyedInvaders;
 
+import java.util.HashMap;
+import java.util.Map;
+
 import org.l2jmobius.gameserver.model.actor.Npc;
 import org.l2jmobius.gameserver.model.actor.Player;
-import org.l2jmobius.gameserver.model.holders.ItemHolder;
 import org.l2jmobius.gameserver.model.quest.Quest;
 import org.l2jmobius.gameserver.model.quest.QuestState;
+import org.l2jmobius.gameserver.model.quest.State;
 
-/**
- * Red-eyed Invaders (39)
- * @author janiko
- */
 public class Q00039_RedEyedInvaders extends Quest
 {
 	// NPCs
-	private static final int CAPTAIN_BATHIA = 30332;
-	private static final int GUARD_BABENCO = 30334;
+	private static final int BABENCO = 30334;
+	private static final int BATHIS = 30332;
 	// Monsters
-	private static final int MALE_LIZARDMAN = 20919;
-	private static final int MALE_LIZARDMAN_SCOUT = 20920;
-	private static final int MALE_LIZARDMAN_GUARD = 20921;
-	private static final int GIANT_ARANE = 20925;
+	private static final int MAILLE_LIZARDMAN = 20919;
+	private static final int MAILLE_LIZARDMAN_SCOUT = 20920;
+	private static final int MAILLE_LIZARDMAN_GUARD = 20921;
+	private static final int ARANEID = 20925;
 	// Items
-	private static final ItemHolder LIZ_NECKLACE_A = new ItemHolder(7178, 100);
-	private static final ItemHolder LIZ_NECKLACE_B = new ItemHolder(7179, 100);
-	private static final ItemHolder LIZ_PERFUME = new ItemHolder(7180, 30);
-	private static final ItemHolder LIZ_GEM = new ItemHolder(7181, 30);
+	private static final int BLACK_BONE_NECKLACE = 7178;
+	private static final int RED_BONE_NECKLACE = 7179;
+	private static final int INCENSE_POUCH = 7180;
+	private static final int GEM_OF_MAILLE = 7181;
+	// @formatter:off
+	// First droplist
+	private static final Map<Integer, int[]> FIRST_DP = new HashMap<>();
+	static
+	{
+		FIRST_DP.put(MAILLE_LIZARDMAN_GUARD, new int[]{RED_BONE_NECKLACE, BLACK_BONE_NECKLACE});
+		FIRST_DP.put(MAILLE_LIZARDMAN, new int[]{BLACK_BONE_NECKLACE, RED_BONE_NECKLACE});
+		FIRST_DP.put(MAILLE_LIZARDMAN_SCOUT, new int[]{BLACK_BONE_NECKLACE, RED_BONE_NECKLACE});
+	}
+	// Second droplist
+	private static final Map<Integer, int[]> SECOND_DP = new HashMap<>();
+	static
+	{
+		SECOND_DP.put(ARANEID, new int[]{GEM_OF_MAILLE, INCENSE_POUCH, 500000});
+		SECOND_DP.put(MAILLE_LIZARDMAN_GUARD, new int[]{INCENSE_POUCH, GEM_OF_MAILLE, 300000});
+		SECOND_DP.put(MAILLE_LIZARDMAN_SCOUT, new int[]{INCENSE_POUCH, GEM_OF_MAILLE, 250000});
+	}
+	// @formatter:on
 	// Rewards
-	private static final ItemHolder GREEN_HIGH_LURE = new ItemHolder(6521, 60);
-	private static final ItemHolder BABYDUCK_ROD = new ItemHolder(6529, 1);
-	private static final ItemHolder FISHING_SHOT_NONE = new ItemHolder(6535, 500);
-	// Misc
-	private static final int MIN_LEVEL = 20;
+	private static final int GREEN_COLORED_LURE_HG = 6521;
+	private static final int BABY_DUCK_RODE = 6529;
+	private static final int FISHING_SHOT_NG = 6535;
 	
 	public Q00039_RedEyedInvaders()
 	{
 		super(39);
-		addStartNpc(GUARD_BABENCO);
-		addTalkId(GUARD_BABENCO, CAPTAIN_BATHIA);
-		addKillId(MALE_LIZARDMAN_GUARD, MALE_LIZARDMAN_SCOUT, MALE_LIZARDMAN, GIANT_ARANE);
-		registerQuestItems(LIZ_NECKLACE_A.getId(), LIZ_NECKLACE_B.getId(), LIZ_PERFUME.getId(), LIZ_GEM.getId());
+		registerQuestItems(BLACK_BONE_NECKLACE, RED_BONE_NECKLACE, INCENSE_POUCH, GEM_OF_MAILLE);
+		addStartNpc(BABENCO);
+		addTalkId(BABENCO, BATHIS);
+		addKillId(MAILLE_LIZARDMAN, MAILLE_LIZARDMAN_SCOUT, MAILLE_LIZARDMAN_GUARD, ARANEID);
 	}
 	
 	@Override
-	public String onAdvEvent(String event, Npc npc, Player player)
+	public String onEvent(String event, Npc npc, Player player)
 	{
-		final QuestState qs = getQuestState(player, false);
-		String htmltext = null;
-		if (qs == null)
+		String htmltext = event;
+		final QuestState st = getQuestState(player, false);
+		if (st == null)
 		{
 			return htmltext;
 		}
+		
 		switch (event)
 		{
-			case "30334-03.htm":
+			case "30334-1.htm":
 			{
-				if (qs.isCreated())
-				{
-					qs.startQuest();
-					htmltext = event;
-				}
+				st.startQuest();
 				break;
 			}
-			case "30332-02.html":
+			case "30332-1.htm":
 			{
-				if (qs.isCond(1))
-				{
-					qs.setCond(2, true);
-					htmltext = event;
-				}
+				st.setCond(2, true);
 				break;
 			}
-			case "30332-05.html":
+			case "30332-3.htm":
 			{
-				if (qs.isCond(3))
-				{
-					if (hasAllItems(player, true, LIZ_NECKLACE_A, LIZ_NECKLACE_B))
-					{
-						qs.setCond(4, true);
-						takeAllItems(player, LIZ_NECKLACE_A, LIZ_NECKLACE_B);
-						htmltext = event;
-					}
-					else
-					{
-						htmltext = "30332-06.html";
-					}
-				}
+				st.setCond(4, true);
+				takeItems(player, BLACK_BONE_NECKLACE, -1);
+				takeItems(player, RED_BONE_NECKLACE, -1);
 				break;
 			}
-			case "30332-09.html":
+			case "30332-5.htm":
 			{
-				if (qs.isCond(5))
-				{
-					if (hasAllItems(player, true, LIZ_PERFUME, LIZ_GEM))
-					{
-						rewardItems(player, GREEN_HIGH_LURE);
-						rewardItems(player, BABYDUCK_ROD);
-						rewardItems(player, FISHING_SHOT_NONE);
-						addExpAndSp(player, 62366, 2783);
-						qs.exitQuest(false, true);
-						htmltext = event;
-					}
-					else
-					{
-						htmltext = "30332-10.html";
-					}
-				}
+				takeItems(player, INCENSE_POUCH, -1);
+				takeItems(player, GEM_OF_MAILLE, -1);
+				giveItems(player, GREEN_COLORED_LURE_HG, 60);
+				giveItems(player, BABY_DUCK_RODE, 1);
+				giveItems(player, FISHING_SHOT_NG, 500);
+				st.exitQuest(false, true);
 				break;
 			}
 		}
+		
 		return htmltext;
 	}
 	
 	@Override
-	public String onTalk(Npc npc, Player talker)
+	public String onTalk(Npc npc, Player player)
 	{
-		final QuestState qs = getQuestState(talker, true);
-		String htmltext = getNoQuestMsg(talker);
-		switch (npc.getId())
+		String htmltext = getNoQuestMsg(player);
+		final QuestState st = getQuestState(player, true);
+		
+		switch (st.getState())
 		{
-			case CAPTAIN_BATHIA:
+			case State.CREATED:
 			{
-				switch (qs.getCond())
+				htmltext = (player.getLevel() < 20) ? "30334-2.htm" : "30334-0.htm";
+				break;
+			}
+			case State.STARTED:
+			{
+				final int cond = st.getCond();
+				switch (npc.getId())
 				{
-					case 1:
+					case BABENCO:
 					{
-						htmltext = "30332-01.html";
+						htmltext = "30334-3.htm";
 						break;
 					}
-					case 2:
+					case BATHIS:
 					{
-						htmltext = "30332-03.html";
-						break;
-					}
-					case 3:
-					{
-						htmltext = "30332-04.html";
-						break;
-					}
-					case 4:
-					{
-						htmltext = "30332-07.html";
-						break;
-					}
-					case 5:
-					{
-						htmltext = "30332-08.html";
+						if (cond == 1)
+						{
+							htmltext = "30332-0.htm";
+						}
+						else if (cond == 2)
+						{
+							htmltext = "30332-2a.htm";
+						}
+						else if (cond == 3)
+						{
+							htmltext = "30332-2.htm";
+						}
+						else if (cond == 4)
+						{
+							htmltext = "30332-3a.htm";
+						}
+						else if (cond == 5)
+						{
+							htmltext = "30332-4.htm";
+						}
 						break;
 					}
 				}
 				break;
 			}
-			case GUARD_BABENCO:
+			case State.COMPLETED:
 			{
-				if (qs.isCreated())
-				{
-					htmltext = (talker.getLevel() >= MIN_LEVEL) ? "30334-01.htm" : "30334-02.htm";
-				}
-				else if (qs.isStarted() && qs.isCond(1))
-				{
-					htmltext = "30334-04.html";
-				}
-				else if (qs.isCompleted())
-				{
-					htmltext = getAlreadyCompletedMsg(talker);
-				}
+				htmltext = getAlreadyCompletedMsg(player);
 				break;
 			}
 		}
+		
 		return htmltext;
 	}
 	
 	@Override
-	public String onKill(Npc npc, Player killer, boolean isSummon)
+	public String onKill(Npc npc, Player player, boolean isPet)
 	{
-		switch (npc.getId())
+		final int npcId = npc.getId();
+		QuestState qs = getRandomPartyMemberState(player, 2, 3, npc);
+		if ((qs != null) && (npcId != ARANEID))
 		{
-			case MALE_LIZARDMAN:
+			final int[] list = FIRST_DP.get(npcId);
+			if (giveItemRandomly(qs.getPlayer(), npc, list[0], 1, 100, list[2] / 1000000d, true) && (getQuestItemsCount(qs.getPlayer(), list[1]) == 100))
 			{
-				final QuestState qs = getRandomPartyMemberState(killer, 2, 3, npc);
-				if ((qs != null) && giveItemRandomly(qs.getPlayer(), npc, LIZ_NECKLACE_A.getId(), 1, LIZ_NECKLACE_A.getCount(), 0.5, true) && hasItem(qs.getPlayer(), LIZ_NECKLACE_B))
-				{
-					qs.setCond(3);
-				}
-				break;
-			}
-			case MALE_LIZARDMAN_SCOUT:
-			{
-				if (getRandomBoolean())
-				{
-					final QuestState qs = getRandomPartyMemberState(killer, 2, 3, npc);
-					if ((qs != null) && giveItemRandomly(qs.getPlayer(), npc, LIZ_NECKLACE_A.getId(), 1, LIZ_NECKLACE_A.getCount(), 0.5, true) && hasItem(qs.getPlayer(), LIZ_NECKLACE_B))
-					{
-						qs.setCond(3);
-					}
-				}
-				else
-				{
-					final QuestState qs = getRandomPartyMemberState(killer, 4, 3, npc);
-					if ((qs != null) && giveItemRandomly(qs.getPlayer(), npc, LIZ_PERFUME.getId(), 1, LIZ_PERFUME.getCount(), 0.25, true) && hasItem(qs.getPlayer(), LIZ_GEM))
-					{
-						qs.setCond(5);
-					}
-				}
-				break;
-			}
-			case MALE_LIZARDMAN_GUARD:
-			{
-				if (getRandomBoolean())
-				{
-					final QuestState qs = getRandomPartyMemberState(killer, 2, 3, npc);
-					if ((qs != null) && giveItemRandomly(qs.getPlayer(), npc, LIZ_NECKLACE_B.getId(), 1, LIZ_NECKLACE_B.getCount(), 0.5, true) && hasItem(qs.getPlayer(), LIZ_NECKLACE_A))
-					{
-						qs.setCond(3);
-					}
-				}
-				else
-				{
-					final QuestState qs = getRandomPartyMemberState(killer, 4, 3, npc);
-					if ((qs != null) && giveItemRandomly(qs.getPlayer(), npc, LIZ_PERFUME.getId(), 1, LIZ_PERFUME.getCount(), 0.3, true) && hasItem(qs.getPlayer(), LIZ_GEM))
-					{
-						qs.setCond(5);
-					}
-				}
-				break;
-			}
-			case GIANT_ARANE:
-			{
-				final QuestState qs = getRandomPartyMemberState(killer, 4, 3, npc);
-				if ((qs != null) && giveItemRandomly(qs.getPlayer(), npc, LIZ_GEM.getId(), 1, LIZ_GEM.getCount(), 0.3, true) && hasItem(qs.getPlayer(), LIZ_PERFUME))
-				{
-					qs.setCond(5);
-				}
-				break;
+				qs.setCond(3, true);
 			}
 		}
-		return super.onKill(npc, killer, isSummon);
+		else
+		{
+			qs = getRandomPartyMemberState(player, 4, 3, npc);
+			if ((qs != null) && (npcId != MAILLE_LIZARDMAN))
+			{
+				final int[] list = SECOND_DP.get(npcId);
+				if (giveItemRandomly(qs.getPlayer(), npc, list[0], 1, 30, list[2] / 1000000d, true) && (getQuestItemsCount(qs.getPlayer(), list[1]) == 30))
+				{
+					qs.setCond(5, true);
+				}
+			}
+		}
+		
+		return super.onKill(npc, player, isPet);
 	}
 }

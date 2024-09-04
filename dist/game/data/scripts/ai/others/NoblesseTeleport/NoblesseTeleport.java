@@ -29,7 +29,7 @@ import ai.AbstractNpcAI;
 public class NoblesseTeleport extends AbstractNpcAI
 {
 	// Item
-	private static final int OLYMPIAD_TOKEN = 13722;
+	private static final int NOBLESSE_GATE_PASS = 6651;
 	// NPCs
 	private static final int[] NPCs =
 	{
@@ -60,11 +60,11 @@ public class NoblesseTeleport extends AbstractNpcAI
 	}
 	
 	@Override
-	public String onAdvEvent(String event, Npc npc, Player player)
+	public String onEvent(String event, Npc npc, Player player)
 	{
 		if ("teleportWithToken".equals(event))
 		{
-			if (hasQuestItems(player, OLYMPIAD_TOKEN))
+			if (hasQuestItems(player, NOBLESSE_GATE_PASS))
 			{
 				npc.showChatWindow(player, 3);
 			}
@@ -73,7 +73,7 @@ public class NoblesseTeleport extends AbstractNpcAI
 				return "noble-nopass.htm";
 			}
 		}
-		return super.onAdvEvent(event, npc, player);
+		return super.onEvent(event, npc, player);
 	}
 	
 	@Override

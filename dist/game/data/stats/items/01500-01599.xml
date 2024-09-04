@@ -62,7 +62,7 @@
 		<set name="immediate_effect" val="true" />
 		<set name="material" val="SILVER" />
 		<set name="weight" val="150" />
-		<set name="price" val="51" />
+		<set name="price" val="66" />
 		<for>
 			<add order="0" stat="mDef" val="15" />
 		</for>
@@ -75,7 +75,7 @@
 		<set name="immediate_effect" val="true" />
 		<set name="material" val="SILVER" />
 		<set name="weight" val="150" />
-		<set name="price" val="3600" />
+		<set name="price" val="4680" />
 		<for>
 			<add order="0" stat="mDef" val="21" />
 		</for>
@@ -88,7 +88,7 @@
 		<set name="immediate_effect" val="true" />
 		<set name="material" val="GOLD" />
 		<set name="weight" val="150" />
-		<set name="price" val="1800" />
+		<set name="price" val="2340" />
 		<for>
 			<add order="0" stat="mDef" val="11" />
 		</for>
@@ -101,7 +101,7 @@
 		<set name="immediate_effect" val="true" />
 		<set name="material" val="GOLD" />
 		<set name="weight" val="150" />
-		<set name="price" val="1800" />
+		<set name="price" val="2340" />
 		<for>
 			<add order="0" stat="mDef" val="11" />
 		</for>
@@ -118,7 +118,7 @@
 		<set name="immediate_effect" val="true" />
 		<set name="material" val="STEEL" />
 		<set name="weight" val="1450" />
-		<set name="price" val="19500" />
+		<set name="price" val="25500" />
 		<set name="soulshots" val="1" />
 		<set name="spiritshots" val="1" />
 		<for>
@@ -140,7 +140,7 @@
 		<set name="immediate_effect" val="true" />
 		<set name="material" val="STEEL" />
 		<set name="weight" val="1860" />
-		<set name="price" val="19500" />
+		<set name="price" val="25500" />
 		<set name="soulshots" val="1" />
 		<set name="spiritshots" val="1" />
 		<for>
@@ -229,7 +229,7 @@
 		<set name="immediate_effect" val="true" />
 		<set name="material" val="PAPER" />
 		<set name="weight" val="120" />
-		<set name="price" val="2450" />
+		<set name="price" val="10" />
 		<set name="is_stackable" val="true" />
 	</item>
 	<item id="1521" type="EtcItem" name="Amulet: Chant of Fire">
@@ -391,7 +391,7 @@
 		<set name="default_action" val="SKILL_REDUCE" />
 		<set name="etcitem_type" val="SCROLL" />
 		<set name="material" val="PAPER" />
-		<set name="weight" val="120" />
+		<set name="weight" val="12" />
 		<set name="price" val="150000" />
 		<set name="is_stackable" val="true" />
 		<set name="is_oly_restricted" val="true" />

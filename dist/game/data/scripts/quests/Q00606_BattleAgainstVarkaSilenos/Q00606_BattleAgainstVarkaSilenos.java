@@ -71,7 +71,7 @@ public class Q00606_BattleAgainstVarkaSilenos extends Quest
 	}
 	
 	@Override
-	public String onAdvEvent(String event, Npc npc, Player player)
+	public String onEvent(String event, Npc npc, Player player)
 	{
 		final QuestState qs = getQuestState(player, false);
 		if (qs == null)
@@ -121,7 +121,7 @@ public class Q00606_BattleAgainstVarkaSilenos extends Quest
 		final Player member = getRandomPartyMember(killer, 1);
 		if ((member != null) && (getRandom(1000) < MOBS.get(npc.getId())))
 		{
-			giveItems(member, MANE, 10);
+			giveItems(member, MANE, 1);
 			playSound(member, QuestSound.ITEMSOUND_QUEST_ITEMGET);
 		}
 		return super.onKill(npc, killer, isSummon);

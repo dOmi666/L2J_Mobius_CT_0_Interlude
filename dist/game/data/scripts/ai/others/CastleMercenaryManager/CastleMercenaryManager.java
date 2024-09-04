@@ -57,7 +57,7 @@ public class CastleMercenaryManager extends AbstractNpcAI
 	}
 	
 	@Override
-	public String onAdvEvent(String event, Npc npc, Player player)
+	public String onEvent(String event, Npc npc, Player player)
 	{
 		String htmltext = null;
 		final StringTokenizer st = new StringTokenizer(event, " ");
@@ -79,7 +79,7 @@ public class CastleMercenaryManager extends AbstractNpcAI
 				{
 					html.setHtml(getHtm(player, "mercmanager-limit.html"));
 				}
-				html.replace("%feud_name%", String.valueOf(1001000 + castle.getResidenceId()));
+				html.replace("%feud_name%", castle.getName());
 				player.sendPacket(html);
 				break;
 			}

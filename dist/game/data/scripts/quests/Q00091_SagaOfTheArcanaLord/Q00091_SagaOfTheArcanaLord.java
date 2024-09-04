@@ -16,15 +16,12 @@
  */
 package quests.Q00091_SagaOfTheArcanaLord;
 
-import org.l2jmobius.gameserver.model.Location;
-
-import quests.AbstractSagaQuest;
+import quests.SagasSuperClass;
 
 /**
- * Saga of the Arcana Lord (91)
  * @author Emperorc
  */
-public class Q00091_SagaOfTheArcanaLord extends AbstractSagaQuest
+public class Q00091_SagaOfTheArcanaLord extends SagasSuperClass
 {
 	public Q00091_SagaOfTheArcanaLord()
 	{
@@ -73,11 +70,23 @@ public class Q00091_SagaOfTheArcanaLord extends AbstractSagaQuest
 		{
 			0x0e
 		};
-		_npcSpawnLocations = new Location[]
+		_x = new int[]
 		{
-			new Location(119518, -28658, -3811),
-			new Location(181215, 36676, -4812),
-			new Location(181227, 36703, -4816)
+			119518,
+			181215,
+			181227
+		};
+		_y = new int[]
+		{
+			-28658,
+			36676,
+			36703
+		};
+		_z = new int[]
+		{
+			-3811,
+			-4812,
+			-4816
 		};
 		_text = new String[]
 		{

@@ -10,11 +10,11 @@
 		<set name="attack_range" val="40" />
 		<set name="damage_range" val="0;0;40;120" />
 		<set name="immediate_effect" val="true" />
-		<set name="crystal_count" val="1322" />
+		<set name="crystal_count" val="1720" />
 		<set name="crystal_type" val="C" />
 		<set name="material" val="MITHRIL" />
 		<set name="weight" val="1400" />
-		<set name="price" val="3304300" />
+		<set name="price" val="4300000" />
 		<set name="soulshots" val="3" />
 		<set name="spiritshots" val="3" />
 		<set name="enchant_enabled" val="true" />
@@ -38,11 +38,11 @@
 		<set name="attack_range" val="40" />
 		<set name="damage_range" val="0;0;40;120" />
 		<set name="immediate_effect" val="true" />
-		<set name="crystal_count" val="1322" />
+		<set name="crystal_count" val="1720" />
 		<set name="crystal_type" val="C" />
 		<set name="material" val="MITHRIL" />
 		<set name="weight" val="1400" />
-		<set name="price" val="3304300" />
+		<set name="price" val="4300000" />
 		<set name="soulshots" val="3" />
 		<set name="spiritshots" val="3" />
 		<set name="enchant_enabled" val="true" />
@@ -66,11 +66,11 @@
 		<set name="attack_range" val="40" />
 		<set name="damage_range" val="0;0;40;120" />
 		<set name="immediate_effect" val="true" />
-		<set name="crystal_count" val="1322" />
+		<set name="crystal_count" val="1720" />
 		<set name="crystal_type" val="C" />
 		<set name="material" val="FINE_STEEL" />
 		<set name="weight" val="1400" />
-		<set name="price" val="3304300" />
+		<set name="price" val="4300000" />
 		<set name="soulshots" val="3" />
 		<set name="spiritshots" val="3" />
 		<set name="enchant_enabled" val="true" />
@@ -94,11 +94,11 @@
 		<set name="attack_range" val="40" />
 		<set name="damage_range" val="0;0;40;120" />
 		<set name="immediate_effect" val="true" />
-		<set name="crystal_count" val="1322" />
+		<set name="crystal_count" val="1720" />
 		<set name="crystal_type" val="C" />
 		<set name="material" val="FINE_STEEL" />
 		<set name="weight" val="1400" />
-		<set name="price" val="3304300" />
+		<set name="price" val="4300000" />
 		<set name="soulshots" val="3" />
 		<set name="spiritshots" val="3" />
 		<set name="enchant_enabled" val="true" />
@@ -122,11 +122,11 @@
 		<set name="attack_range" val="40" />
 		<set name="damage_range" val="0;0;40;120" />
 		<set name="immediate_effect" val="true" />
-		<set name="crystal_count" val="1322" />
+		<set name="crystal_count" val="1720" />
 		<set name="crystal_type" val="C" />
 		<set name="material" val="FINE_STEEL" />
 		<set name="weight" val="1400" />
-		<set name="price" val="3304300" />
+		<set name="price" val="4300000" />
 		<set name="soulshots" val="3" />
 		<set name="spiritshots" val="3" />
 		<set name="enchant_enabled" val="true" />
@@ -150,11 +150,11 @@
 		<set name="attack_range" val="40" />
 		<set name="damage_range" val="0;0;40;120" />
 		<set name="immediate_effect" val="true" />
-		<set name="crystal_count" val="1322" />
+		<set name="crystal_count" val="1720" />
 		<set name="crystal_type" val="C" />
 		<set name="material" val="BLOOD_STEEL" />
 		<set name="weight" val="1400" />
-		<set name="price" val="3304300" />
+		<set name="price" val="4300000" />
 		<set name="soulshots" val="3" />
 		<set name="spiritshots" val="3" />
 		<set name="enchant_enabled" val="true" />
@@ -178,11 +178,11 @@
 		<set name="attack_range" val="40" />
 		<set name="damage_range" val="0;0;40;120" />
 		<set name="immediate_effect" val="true" />
-		<set name="crystal_count" val="1322" />
+		<set name="crystal_count" val="1720" />
 		<set name="crystal_type" val="C" />
 		<set name="material" val="BLOOD_STEEL" />
 		<set name="weight" val="1400" />
-		<set name="price" val="3304300" />
+		<set name="price" val="4300000" />
 		<set name="soulshots" val="3" />
 		<set name="spiritshots" val="3" />
 		<set name="enchant_enabled" val="true" />
@@ -206,11 +206,11 @@
 		<set name="attack_range" val="40" />
 		<set name="damage_range" val="0;0;40;120" />
 		<set name="immediate_effect" val="true" />
-		<set name="crystal_count" val="1322" />
+		<set name="crystal_count" val="1720" />
 		<set name="crystal_type" val="C" />
 		<set name="material" val="BLOOD_STEEL" />
-		<set name="weight" val="1400" />
-		<set name="price" val="3304300" />
+		<set name="weight" val="420" />
+		<set name="price" val="4300000" />
 		<set name="soulshots" val="3" />
 		<set name="spiritshots" val="3" />
 		<set name="enchant_enabled" val="true" />
@@ -234,11 +234,11 @@
 		<set name="attack_range" val="40" />
 		<set name="damage_range" val="0;0;40;120" />
 		<set name="immediate_effect" val="true" />
-		<set name="crystal_count" val="1885" />
+		<set name="crystal_count" val="2452" />
 		<set name="crystal_type" val="C" />
 		<set name="material" val="ORIHARUKON" />
 		<set name="weight" val="1380" />
-		<set name="price" val="4713500" />
+		<set name="price" val="6130000" />
 		<set name="soulshots" val="3" />
 		<set name="spiritshots" val="3" />
 		<set name="enchant_enabled" val="true" />
@@ -262,11 +262,11 @@
 		<set name="attack_range" val="40" />
 		<set name="damage_range" val="0;0;40;120" />
 		<set name="immediate_effect" val="true" />
-		<set name="crystal_count" val="1885" />
+		<set name="crystal_count" val="2452" />
 		<set name="crystal_type" val="C" />
 		<set name="material" val="ORIHARUKON" />
 		<set name="weight" val="1380" />
-		<set name="price" val="4713500" />
+		<set name="price" val="6130000" />
 		<set name="soulshots" val="3" />
 		<set name="spiritshots" val="3" />
 		<set name="enchant_enabled" val="true" />
@@ -290,11 +290,11 @@
 		<set name="attack_range" val="40" />
 		<set name="damage_range" val="0;0;40;120" />
 		<set name="immediate_effect" val="true" />
-		<set name="crystal_count" val="1885" />
+		<set name="crystal_count" val="2452" />
 		<set name="crystal_type" val="C" />
 		<set name="material" val="ORIHARUKON" />
 		<set name="weight" val="1380" />
-		<set name="price" val="4713500" />
+		<set name="price" val="6130000" />
 		<set name="soulshots" val="3" />
 		<set name="spiritshots" val="3" />
 		<set name="enchant_enabled" val="true" />
@@ -318,11 +318,11 @@
 		<set name="attack_range" val="40" />
 		<set name="damage_range" val="0;0;44;120" />
 		<set name="immediate_effect" val="true" />
-		<set name="crystal_count" val="705" />
+		<set name="crystal_count" val="916" />
 		<set name="crystal_type" val="C" />
 		<set name="material" val="BRONZE" />
 		<set name="weight" val="2010" />
-		<set name="price" val="1762900" />
+		<set name="price" val="2290000" />
 		<set name="soulshots" val="2" />
 		<set name="spiritshots" val="2" />
 		<set name="enchant_enabled" val="true" />
@@ -346,11 +346,11 @@
 		<set name="attack_range" val="40" />
 		<set name="damage_range" val="0;0;44;120" />
 		<set name="immediate_effect" val="true" />
-		<set name="crystal_count" val="705" />
+		<set name="crystal_count" val="916" />
 		<set name="crystal_type" val="C" />
 		<set name="material" val="BRONZE" />
 		<set name="weight" val="2010" />
-		<set name="price" val="1762900" />
+		<set name="price" val="2290000" />
 		<set name="soulshots" val="2" />
 		<set name="spiritshots" val="2" />
 		<set name="enchant_enabled" val="true" />
@@ -374,11 +374,11 @@
 		<set name="attack_range" val="40" />
 		<set name="damage_range" val="0;0;44;120" />
 		<set name="immediate_effect" val="true" />
-		<set name="crystal_count" val="705" />
+		<set name="crystal_count" val="916" />
 		<set name="crystal_type" val="C" />
 		<set name="material" val="BRONZE" />
-		<set name="weight" val="2010" />
-		<set name="price" val="1762900" />
+		<set name="weight" val="600" />
+		<set name="price" val="2290000" />
 		<set name="soulshots" val="2" />
 		<set name="spiritshots" val="2" />
 		<set name="enchant_enabled" val="true" />
@@ -402,11 +402,11 @@
 		<set name="attack_range" val="40" />
 		<set name="damage_range" val="0;0;40;120" />
 		<set name="immediate_effect" val="true" />
-		<set name="crystal_count" val="891" />
+		<set name="crystal_count" val="1157" />
 		<set name="crystal_type" val="B" />
 		<set name="material" val="ORIHARUKON" />
 		<set name="weight" val="1370" />
-		<set name="price" val="6680500" />
+		<set name="price" val="8680000" />
 		<set name="soulshots" val="1" />
 		<set name="spiritshots" val="1" />
 		<set name="enchant_enabled" val="true" />
@@ -430,11 +430,11 @@
 		<set name="attack_range" val="40" />
 		<set name="damage_range" val="0;0;40;120" />
 		<set name="immediate_effect" val="true" />
-		<set name="crystal_count" val="891" />
+		<set name="crystal_count" val="1157" />
 		<set name="crystal_type" val="B" />
 		<set name="material" val="ORIHARUKON" />
 		<set name="weight" val="1370" />
-		<set name="price" val="6680500" />
+		<set name="price" val="8680000" />
 		<set name="soulshots" val="1" />
 		<set name="spiritshots" val="1" />
 		<set name="enchant_enabled" val="true" />
@@ -458,11 +458,11 @@
 		<set name="attack_range" val="40" />
 		<set name="damage_range" val="0;0;40;120" />
 		<set name="immediate_effect" val="true" />
-		<set name="crystal_count" val="891" />
+		<set name="crystal_count" val="1157" />
 		<set name="crystal_type" val="B" />
 		<set name="material" val="ORIHARUKON" />
 		<set name="weight" val="1370" />
-		<set name="price" val="6680500" />
+		<set name="price" val="8680000" />
 		<set name="soulshots" val="1" />
 		<set name="spiritshots" val="1" />
 		<set name="enchant_enabled" val="true" />
@@ -486,11 +486,11 @@
 		<set name="attack_range" val="40" />
 		<set name="damage_range" val="0;0;40;120" />
 		<set name="immediate_effect" val="true" />
-		<set name="crystal_count" val="1346" />
+		<set name="crystal_count" val="1746" />
 		<set name="crystal_type" val="B" />
 		<set name="material" val="DAMASCUS" />
 		<set name="weight" val="1350" />
-		<set name="price" val="10091400" />
+		<set name="price" val="13100000" />
 		<set name="soulshots" val="1" />
 		<set name="spiritshots" val="1" />
 		<set name="enchant_enabled" val="true" />
@@ -514,11 +514,11 @@
 		<set name="attack_range" val="40" />
 		<set name="damage_range" val="0;0;40;120" />
 		<set name="immediate_effect" val="true" />
-		<set name="crystal_count" val="1346" />
+		<set name="crystal_count" val="1746" />
 		<set name="crystal_type" val="B" />
 		<set name="material" val="DAMASCUS" />
 		<set name="weight" val="1350" />
-		<set name="price" val="10091400" />
+		<set name="price" val="13100000" />
 		<set name="soulshots" val="1" />
 		<set name="spiritshots" val="1" />
 		<set name="enchant_enabled" val="true" />
@@ -542,11 +542,11 @@
 		<set name="attack_range" val="40" />
 		<set name="damage_range" val="0;0;40;120" />
 		<set name="immediate_effect" val="true" />
-		<set name="crystal_count" val="1346" />
+		<set name="crystal_count" val="1746" />
 		<set name="crystal_type" val="B" />
 		<set name="material" val="DAMASCUS" />
 		<set name="weight" val="1350" />
-		<set name="price" val="10091400" />
+		<set name="price" val="13100000" />
 		<set name="soulshots" val="1" />
 		<set name="spiritshots" val="1" />
 		<set name="enchant_enabled" val="true" />
@@ -651,11 +651,11 @@
 		<set name="attack_range" val="40" />
 		<set name="damage_range" val="0;0;44;120" />
 		<set name="immediate_effect" val="true" />
-		<set name="crystal_count" val="891" />
+		<set name="crystal_count" val="1157" />
 		<set name="crystal_type" val="B" />
 		<set name="material" val="STEEL" />
 		<set name="weight" val="1930" />
-		<set name="price" val="6680500" />
+		<set name="price" val="8680000" />
 		<set name="soulshots" val="1" />
 		<set name="spiritshots" val="1" />
 		<set name="enchant_enabled" val="true" />
@@ -679,11 +679,11 @@
 		<set name="attack_range" val="40" />
 		<set name="damage_range" val="0;0;44;120" />
 		<set name="immediate_effect" val="true" />
-		<set name="crystal_count" val="891" />
+		<set name="crystal_count" val="1157" />
 		<set name="crystal_type" val="B" />
 		<set name="material" val="STEEL" />
 		<set name="weight" val="1930" />
-		<set name="price" val="6680500" />
+		<set name="price" val="8680000" />
 		<set name="soulshots" val="1" />
 		<set name="spiritshots" val="1" />
 		<set name="enchant_enabled" val="true" />
@@ -707,11 +707,11 @@
 		<set name="attack_range" val="40" />
 		<set name="damage_range" val="0;0;44;120" />
 		<set name="immediate_effect" val="true" />
-		<set name="crystal_count" val="891" />
+		<set name="crystal_count" val="1157" />
 		<set name="crystal_type" val="B" />
 		<set name="material" val="STEEL" />
 		<set name="weight" val="1930" />
-		<set name="price" val="6680500" />
+		<set name="price" val="8680000" />
 		<set name="soulshots" val="1" />
 		<set name="spiritshots" val="1" />
 		<set name="enchant_enabled" val="true" />
@@ -735,11 +735,11 @@
 		<set name="attack_range" val="40" />
 		<set name="damage_range" val="0;0;40;120" />
 		<set name="immediate_effect" val="true" />
-		<set name="crystal_count" val="705" />
+		<set name="crystal_count" val="916" />
 		<set name="crystal_type" val="C" />
 		<set name="material" val="FINE_STEEL" />
 		<set name="weight" val="1710" />
-		<set name="price" val="1762900" />
+		<set name="price" val="2290000" />
 		<set name="soulshots" val="2" />
 		<set name="spiritshots" val="2" />
 		<set name="enchant_enabled" val="true" />
@@ -764,11 +764,11 @@
 		<set name="attack_range" val="40" />
 		<set name="damage_range" val="0;0;40;120" />
 		<set name="immediate_effect" val="true" />
-		<set name="crystal_count" val="705" />
+		<set name="crystal_count" val="916" />
 		<set name="crystal_type" val="C" />
 		<set name="material" val="FINE_STEEL" />
 		<set name="weight" val="1710" />
-		<set name="price" val="1762900" />
+		<set name="price" val="2290000" />
 		<set name="soulshots" val="2" />
 		<set name="spiritshots" val="2" />
 		<set name="enchant_enabled" val="true" />
@@ -793,11 +793,11 @@
 		<set name="attack_range" val="40" />
 		<set name="damage_range" val="0;0;40;120" />
 		<set name="immediate_effect" val="true" />
-		<set name="crystal_count" val="705" />
+		<set name="crystal_count" val="916" />
 		<set name="crystal_type" val="C" />
 		<set name="material" val="FINE_STEEL" />
 		<set name="weight" val="1710" />
-		<set name="price" val="1762900" />
+		<set name="price" val="2290000" />
 		<set name="soulshots" val="2" />
 		<set name="spiritshots" val="2" />
 		<set name="enchant_enabled" val="true" />
@@ -822,11 +822,11 @@
 		<set name="attack_range" val="40" />
 		<set name="damage_range" val="0;0;40;120" />
 		<set name="immediate_effect" val="true" />
-		<set name="crystal_count" val="705" />
+		<set name="crystal_count" val="916" />
 		<set name="crystal_type" val="C" />
 		<set name="material" val="FINE_STEEL" />
 		<set name="weight" val="1720" />
-		<set name="price" val="1762900" />
+		<set name="price" val="2290000" />
 		<set name="soulshots" val="2" />
 		<set name="spiritshots" val="2" />
 		<set name="enchant_enabled" val="true" />
@@ -851,11 +851,11 @@
 		<set name="attack_range" val="40" />
 		<set name="damage_range" val="0;0;40;120" />
 		<set name="immediate_effect" val="true" />
-		<set name="crystal_count" val="705" />
+		<set name="crystal_count" val="916" />
 		<set name="crystal_type" val="C" />
 		<set name="material" val="FINE_STEEL" />
 		<set name="weight" val="1720" />
-		<set name="price" val="1762900" />
+		<set name="price" val="2290000" />
 		<set name="soulshots" val="2" />
 		<set name="spiritshots" val="2" />
 		<set name="enchant_enabled" val="true" />
@@ -880,11 +880,11 @@
 		<set name="attack_range" val="40" />
 		<set name="damage_range" val="0;0;40;120" />
 		<set name="immediate_effect" val="true" />
-		<set name="crystal_count" val="705" />
+		<set name="crystal_count" val="916" />
 		<set name="crystal_type" val="C" />
 		<set name="material" val="FINE_STEEL" />
 		<set name="weight" val="1720" />
-		<set name="price" val="1762900" />
+		<set name="price" val="2290000" />
 		<set name="soulshots" val="2" />
 		<set name="spiritshots" val="2" />
 		<set name="enchant_enabled" val="true" />
@@ -909,11 +909,11 @@
 		<set name="attack_range" val="40" />
 		<set name="damage_range" val="0;0;40;120" />
 		<set name="immediate_effect" val="true" />
-		<set name="crystal_count" val="705" />
+		<set name="crystal_count" val="916" />
 		<set name="crystal_type" val="C" />
 		<set name="material" val="FINE_STEEL" />
 		<set name="weight" val="1690" />
-		<set name="price" val="1762900" />
+		<set name="price" val="2290000" />
 		<set name="soulshots" val="2" />
 		<set name="spiritshots" val="2" />
 		<set name="enchant_enabled" val="true" />
@@ -938,11 +938,11 @@
 		<set name="attack_range" val="40" />
 		<set name="damage_range" val="0;0;40;120" />
 		<set name="immediate_effect" val="true" />
-		<set name="crystal_count" val="705" />
+		<set name="crystal_count" val="916" />
 		<set name="crystal_type" val="C" />
 		<set name="material" val="FINE_STEEL" />
 		<set name="weight" val="1690" />
-		<set name="price" val="1762900" />
+		<set name="price" val="2290000" />
 		<set name="soulshots" val="2" />
 		<set name="spiritshots" val="2" />
 		<set name="enchant_enabled" val="true" />
@@ -967,11 +967,11 @@
 		<set name="attack_range" val="40" />
 		<set name="damage_range" val="0;0;40;120" />
 		<set name="immediate_effect" val="true" />
-		<set name="crystal_count" val="705" />
+		<set name="crystal_count" val="916" />
 		<set name="crystal_type" val="C" />
 		<set name="material" val="FINE_STEEL" />
 		<set name="weight" val="1690" />
-		<set name="price" val="1762900" />
+		<set name="price" val="2290000" />
 		<set name="soulshots" val="2" />
 		<set name="spiritshots" val="2" />
 		<set name="enchant_enabled" val="true" />
@@ -996,11 +996,11 @@
 		<set name="attack_range" val="40" />
 		<set name="damage_range" val="0;0;40;120" />
 		<set name="immediate_effect" val="true" />
-		<set name="crystal_count" val="705" />
+		<set name="crystal_count" val="916" />
 		<set name="crystal_type" val="C" />
 		<set name="material" val="FINE_STEEL" />
 		<set name="weight" val="1640" />
-		<set name="price" val="1762900" />
+		<set name="price" val="2290000" />
 		<set name="soulshots" val="2" />
 		<set name="spiritshots" val="2" />
 		<set name="enchant_enabled" val="true" />
@@ -1025,11 +1025,11 @@
 		<set name="attack_range" val="40" />
 		<set name="damage_range" val="0;0;40;120" />
 		<set name="immediate_effect" val="true" />
-		<set name="crystal_count" val="705" />
+		<set name="crystal_count" val="916" />
 		<set name="crystal_type" val="C" />
 		<set name="material" val="FINE_STEEL" />
 		<set name="weight" val="1640" />
-		<set name="price" val="1762900" />
+		<set name="price" val="2290000" />
 		<set name="soulshots" val="2" />
 		<set name="spiritshots" val="2" />
 		<set name="enchant_enabled" val="true" />
@@ -1054,11 +1054,11 @@
 		<set name="attack_range" val="40" />
 		<set name="damage_range" val="0;0;40;120" />
 		<set name="immediate_effect" val="true" />
-		<set name="crystal_count" val="705" />
+		<set name="crystal_count" val="916" />
 		<set name="crystal_type" val="C" />
 		<set name="material" val="FINE_STEEL" />
 		<set name="weight" val="1640" />
-		<set name="price" val="1762900" />
+		<set name="price" val="2290000" />
 		<set name="soulshots" val="2" />
 		<set name="spiritshots" val="2" />
 		<set name="enchant_enabled" val="true" />
@@ -1083,11 +1083,11 @@
 		<set name="attack_range" val="40" />
 		<set name="damage_range" val="0;0;40;120" />
 		<set name="immediate_effect" val="true" />
-		<set name="crystal_count" val="884" />
+		<set name="crystal_count" val="1148" />
 		<set name="crystal_type" val="C" />
 		<set name="material" val="FINE_STEEL" />
 		<set name="weight" val="1670" />
-		<set name="price" val="2209700" />
+		<set name="price" val="2870000" />
 		<set name="soulshots" val="2" />
 		<set name="spiritshots" val="2" />
 		<set name="enchant_enabled" val="true" />
@@ -1112,11 +1112,11 @@
 		<set name="attack_range" val="40" />
 		<set name="damage_range" val="0;0;40;120" />
 		<set name="immediate_effect" val="true" />
-		<set name="crystal_count" val="884" />
+		<set name="crystal_count" val="1148" />
 		<set name="crystal_type" val="C" />
 		<set name="material" val="FINE_STEEL" />
 		<set name="weight" val="1670" />
-		<set name="price" val="2209700" />
+		<set name="price" val="2870000" />
 		<set name="soulshots" val="2" />
 		<set name="spiritshots" val="2" />
 		<set name="enchant_enabled" val="true" />
@@ -1141,11 +1141,11 @@
 		<set name="attack_range" val="40" />
 		<set name="damage_range" val="0;0;40;120" />
 		<set name="immediate_effect" val="true" />
-		<set name="crystal_count" val="884" />
+		<set name="crystal_count" val="1148" />
 		<set name="crystal_type" val="C" />
 		<set name="material" val="FINE_STEEL" />
 		<set name="weight" val="1670" />
-		<set name="price" val="2209700" />
+		<set name="price" val="2870000" />
 		<set name="soulshots" val="2" />
 		<set name="spiritshots" val="2" />
 		<set name="enchant_enabled" val="true" />
@@ -1170,11 +1170,11 @@
 		<set name="attack_range" val="40" />
 		<set name="damage_range" val="0;0;40;120" />
 		<set name="immediate_effect" val="true" />
-		<set name="crystal_count" val="1322" />
+		<set name="crystal_count" val="1720" />
 		<set name="crystal_type" val="C" />
 		<set name="material" val="FINE_STEEL" />
 		<set name="weight" val="1660" />
-		<set name="price" val="3304300" />
+		<set name="price" val="4300000" />
 		<set name="soulshots" val="3" />
 		<set name="spiritshots" val="3" />
 		<set name="enchant_enabled" val="true" />
@@ -1199,11 +1199,11 @@
 		<set name="attack_range" val="40" />
 		<set name="damage_range" val="0;0;40;120" />
 		<set name="immediate_effect" val="true" />
-		<set name="crystal_count" val="1322" />
+		<set name="crystal_count" val="1720" />
 		<set name="crystal_type" val="C" />
 		<set name="material" val="FINE_STEEL" />
 		<set name="weight" val="1660" />
-		<set name="price" val="3304300" />
+		<set name="price" val="4300000" />
 		<set name="soulshots" val="3" />
 		<set name="spiritshots" val="3" />
 		<set name="enchant_enabled" val="true" />
@@ -1228,11 +1228,11 @@
 		<set name="attack_range" val="40" />
 		<set name="damage_range" val="0;0;40;120" />
 		<set name="immediate_effect" val="true" />
-		<set name="crystal_count" val="1322" />
+		<set name="crystal_count" val="1720" />
 		<set name="crystal_type" val="C" />
 		<set name="material" val="FINE_STEEL" />
 		<set name="weight" val="1660" />
-		<set name="price" val="3304300" />
+		<set name="price" val="4300000" />
 		<set name="soulshots" val="3" />
 		<set name="spiritshots" val="3" />
 		<set name="enchant_enabled" val="true" />
@@ -1257,11 +1257,11 @@
 		<set name="attack_range" val="40" />
 		<set name="damage_range" val="0;0;40;120" />
 		<set name="immediate_effect" val="true" />
-		<set name="crystal_count" val="1885" />
+		<set name="crystal_count" val="2452" />
 		<set name="crystal_type" val="C" />
 		<set name="material" val="FINE_STEEL" />
 		<set name="weight" val="1640" />
-		<set name="price" val="4713500" />
+		<set name="price" val="6130000" />
 		<set name="soulshots" val="3" />
 		<set name="spiritshots" val="3" />
 		<set name="enchant_enabled" val="true" />
@@ -1286,11 +1286,11 @@
 		<set name="attack_range" val="40" />
 		<set name="damage_range" val="0;0;40;120" />
 		<set name="immediate_effect" val="true" />
-		<set name="crystal_count" val="1885" />
+		<set name="crystal_count" val="2452" />
 		<set name="crystal_type" val="C" />
 		<set name="material" val="FINE_STEEL" />
 		<set name="weight" val="1640" />
-		<set name="price" val="4713500" />
+		<set name="price" val="6130000" />
 		<set name="soulshots" val="3" />
 		<set name="spiritshots" val="3" />
 		<set name="enchant_enabled" val="true" />
@@ -1315,11 +1315,11 @@
 		<set name="attack_range" val="40" />
 		<set name="damage_range" val="0;0;40;120" />
 		<set name="immediate_effect" val="true" />
-		<set name="crystal_count" val="1885" />
+		<set name="crystal_count" val="2452" />
 		<set name="crystal_type" val="C" />
 		<set name="material" val="FINE_STEEL" />
 		<set name="weight" val="1640" />
-		<set name="price" val="4713500" />
+		<set name="price" val="6130000" />
 		<set name="soulshots" val="3" />
 		<set name="spiritshots" val="3" />
 		<set name="enchant_enabled" val="true" />
@@ -1344,11 +1344,11 @@
 		<set name="attack_range" val="40" />
 		<set name="damage_range" val="0;0;40;120" />
 		<set name="immediate_effect" val="true" />
-		<set name="crystal_count" val="891" />
+		<set name="crystal_count" val="1157" />
 		<set name="crystal_type" val="B" />
 		<set name="material" val="FINE_STEEL" />
 		<set name="weight" val="1620" />
-		<set name="price" val="6680500" />
+		<set name="price" val="8680000" />
 		<set name="soulshots" val="1" />
 		<set name="spiritshots" val="1" />
 		<set name="enchant_enabled" val="true" />
@@ -1373,11 +1373,11 @@
 		<set name="attack_range" val="40" />
 		<set name="damage_range" val="0;0;40;120" />
 		<set name="immediate_effect" val="true" />
-		<set name="crystal_count" val="891" />
+		<set name="crystal_count" val="1157" />
 		<set name="crystal_type" val="B" />
 		<set name="material" val="FINE_STEEL" />
 		<set name="weight" val="1620" />
-		<set name="price" val="6680500" />
+		<set name="price" val="8680000" />
 		<set name="soulshots" val="1" />
 		<set name="spiritshots" val="1" />
 		<set name="enchant_enabled" val="true" />
@@ -1402,11 +1402,11 @@
 		<set name="attack_range" val="40" />
 		<set name="damage_range" val="0;0;40;120" />
 		<set name="immediate_effect" val="true" />
-		<set name="crystal_count" val="891" />
+		<set name="crystal_count" val="1157" />
 		<set name="crystal_type" val="B" />
 		<set name="material" val="FINE_STEEL" />
 		<set name="weight" val="1620" />
-		<set name="price" val="6680500" />
+		<set name="price" val="8680000" />
 		<set name="soulshots" val="1" />
 		<set name="spiritshots" val="1" />
 		<set name="enchant_enabled" val="true" />
@@ -1431,11 +1431,11 @@
 		<set name="attack_range" val="40" />
 		<set name="damage_range" val="0;0;40;120" />
 		<set name="immediate_effect" val="true" />
-		<set name="crystal_count" val="1346" />
+		<set name="crystal_count" val="1746" />
 		<set name="crystal_type" val="B" />
 		<set name="material" val="BONE" />
 		<set name="weight" val="1600" />
-		<set name="price" val="10091400" />
+		<set name="price" val="13100000" />
 		<set name="soulshots" val="1" />
 		<set name="spiritshots" val="1" />
 		<set name="enchant_enabled" val="true" />
@@ -1460,11 +1460,11 @@
 		<set name="attack_range" val="40" />
 		<set name="damage_range" val="0;0;40;120" />
 		<set name="immediate_effect" val="true" />
-		<set name="crystal_count" val="1346" />
+		<set name="crystal_count" val="1746" />
 		<set name="crystal_type" val="B" />
 		<set name="material" val="BONE" />
 		<set name="weight" val="1600" />
-		<set name="price" val="10091400" />
+		<set name="price" val="13100000" />
 		<set name="soulshots" val="1" />
 		<set name="spiritshots" val="1" />
 		<set name="enchant_enabled" val="true" />
@@ -1489,11 +1489,11 @@
 		<set name="attack_range" val="40" />
 		<set name="damage_range" val="0;0;40;120" />
 		<set name="immediate_effect" val="true" />
-		<set name="crystal_count" val="1346" />
+		<set name="crystal_count" val="1746" />
 		<set name="crystal_type" val="B" />
 		<set name="material" val="BONE" />
 		<set name="weight" val="1600" />
-		<set name="price" val="10091400" />
+		<set name="price" val="13100000" />
 		<set name="soulshots" val="1" />
 		<set name="spiritshots" val="1" />
 		<set name="enchant_enabled" val="true" />
@@ -1518,11 +1518,11 @@
 		<set name="attack_range" val="40" />
 		<set name="damage_range" val="0;0;40;120" />
 		<set name="immediate_effect" val="true" />
-		<set name="crystal_count" val="1346" />
+		<set name="crystal_count" val="1746" />
 		<set name="crystal_type" val="B" />
 		<set name="material" val="CHRYSOLITE" />
 		<set name="weight" val="1570" />
-		<set name="price" val="10091400" />
+		<set name="price" val="13100000" />
 		<set name="soulshots" val="1" />
 		<set name="spiritshots" val="1" />
 		<set name="enchant_enabled" val="true" />
@@ -1547,11 +1547,11 @@
 		<set name="attack_range" val="40" />
 		<set name="damage_range" val="0;0;40;120" />
 		<set name="immediate_effect" val="true" />
-		<set name="crystal_count" val="1346" />
+		<set name="crystal_count" val="1746" />
 		<set name="crystal_type" val="B" />
 		<set name="material" val="CHRYSOLITE" />
 		<set name="weight" val="1570" />
-		<set name="price" val="10091400" />
+		<set name="price" val="13100000" />
 		<set name="soulshots" val="1" />
 		<set name="spiritshots" val="1" />
 		<set name="enchant_enabled" val="true" />
@@ -1576,11 +1576,11 @@
 		<set name="attack_range" val="40" />
 		<set name="damage_range" val="0;0;40;120" />
 		<set name="immediate_effect" val="true" />
-		<set name="crystal_count" val="1346" />
+		<set name="crystal_count" val="1746" />
 		<set name="crystal_type" val="B" />
 		<set name="material" val="CHRYSOLITE" />
 		<set name="weight" val="1570" />
-		<set name="price" val="10091400" />
+		<set name="price" val="13100000" />
 		<set name="soulshots" val="1" />
 		<set name="spiritshots" val="1" />
 		<set name="enchant_enabled" val="true" />
@@ -1689,11 +1689,11 @@
 		<set name="attack_range" val="40" />
 		<set name="damage_range" val="0;0;40;120" />
 		<set name="immediate_effect" val="true" />
-		<set name="crystal_count" val="705" />
+		<set name="crystal_count" val="916" />
 		<set name="crystal_type" val="C" />
 		<set name="material" val="MITHRIL" />
 		<set name="weight" val="1040" />
-		<set name="price" val="1762900" />
+		<set name="price" val="2290000" />
 		<set name="soulshots" val="2" />
 		<set name="spiritshots" val="2" />
 		<set name="enchant_enabled" val="true" />
@@ -1719,11 +1719,11 @@
 		<set name="attack_range" val="40" />
 		<set name="damage_range" val="0;0;40;120" />
 		<set name="immediate_effect" val="true" />
-		<set name="crystal_count" val="705" />
+		<set name="crystal_count" val="916" />
 		<set name="crystal_type" val="C" />
 		<set name="material" val="MITHRIL" />
 		<set name="weight" val="1040" />
-		<set name="price" val="1762900" />
+		<set name="price" val="2290000" />
 		<set name="soulshots" val="2" />
 		<set name="spiritshots" val="2" />
 		<set name="enchant_enabled" val="true" />
@@ -1749,11 +1749,11 @@
 		<set name="attack_range" val="40" />
 		<set name="damage_range" val="0;0;40;120" />
 		<set name="immediate_effect" val="true" />
-		<set name="crystal_count" val="705" />
+		<set name="crystal_count" val="916" />
 		<set name="crystal_type" val="C" />
 		<set name="material" val="MITHRIL" />
 		<set name="weight" val="1040" />
-		<set name="price" val="1762900" />
+		<set name="price" val="2290000" />
 		<set name="soulshots" val="2" />
 		<set name="spiritshots" val="2" />
 		<set name="enchant_enabled" val="true" />
@@ -1778,11 +1778,11 @@
 		<set name="attack_range" val="40" />
 		<set name="damage_range" val="0;0;40;120" />
 		<set name="immediate_effect" val="true" />
-		<set name="crystal_count" val="705" />
+		<set name="crystal_count" val="916" />
 		<set name="crystal_type" val="C" />
 		<set name="material" val="FINE_STEEL" />
 		<set name="weight" val="1050" />
-		<set name="price" val="1762900" />
+		<set name="price" val="2290000" />
 		<set name="soulshots" val="2" />
 		<set name="spiritshots" val="2" />
 		<set name="enchant_enabled" val="true" />
@@ -1807,11 +1807,11 @@
 		<set name="attack_range" val="40" />
 		<set name="damage_range" val="0;0;40;120" />
 		<set name="immediate_effect" val="true" />
-		<set name="crystal_count" val="705" />
+		<set name="crystal_count" val="916" />
 		<set name="crystal_type" val="C" />
 		<set name="material" val="FINE_STEEL" />
 		<set name="weight" val="1050" />
-		<set name="price" val="1762900" />
+		<set name="price" val="2290000" />
 		<set name="soulshots" val="2" />
 		<set name="spiritshots" val="2" />
 		<set name="enchant_enabled" val="true" />
@@ -1836,11 +1836,11 @@
 		<set name="attack_range" val="40" />
 		<set name="damage_range" val="0;0;40;120" />
 		<set name="immediate_effect" val="true" />
-		<set name="crystal_count" val="705" />
+		<set name="crystal_count" val="916" />
 		<set name="crystal_type" val="C" />
 		<set name="material" val="FINE_STEEL" />
 		<set name="weight" val="1050" />
-		<set name="price" val="1762900" />
+		<set name="price" val="2290000" />
 		<set name="soulshots" val="2" />
 		<set name="spiritshots" val="2" />
 		<set name="enchant_enabled" val="true" />
@@ -1865,11 +1865,11 @@
 		<set name="attack_range" val="40" />
 		<set name="damage_range" val="0;0;40;120" />
 		<set name="immediate_effect" val="true" />
-		<set name="crystal_count" val="884" />
+		<set name="crystal_count" val="1148" />
 		<set name="crystal_type" val="C" />
 		<set name="material" val="FINE_STEEL" />
 		<set name="weight" val="1030" />
-		<set name="price" val="2209700" />
+		<set name="price" val="2870000" />
 		<set name="soulshots" val="2" />
 		<set name="spiritshots" val="2" />
 		<set name="enchant_enabled" val="true" />
@@ -1895,11 +1895,11 @@
 		<set name="attack_range" val="40" />
 		<set name="damage_range" val="0;0;40;120" />
 		<set name="immediate_effect" val="true" />
-		<set name="crystal_count" val="884" />
+		<set name="crystal_count" val="1148" />
 		<set name="crystal_type" val="C" />
 		<set name="material" val="FINE_STEEL" />
 		<set name="weight" val="1030" />
-		<set name="price" val="2209700" />
+		<set name="price" val="2870000" />
 		<set name="soulshots" val="2" />
 		<set name="spiritshots" val="2" />
 		<set name="enchant_enabled" val="true" />
@@ -1925,11 +1925,11 @@
 		<set name="attack_range" val="40" />
 		<set name="damage_range" val="0;0;40;120" />
 		<set name="immediate_effect" val="true" />
-		<set name="crystal_count" val="884" />
+		<set name="crystal_count" val="1148" />
 		<set name="crystal_type" val="C" />
 		<set name="material" val="FINE_STEEL" />
 		<set name="weight" val="1030" />
-		<set name="price" val="2209700" />
+		<set name="price" val="2870000" />
 		<set name="soulshots" val="2" />
 		<set name="spiritshots" val="2" />
 		<set name="enchant_enabled" val="true" />
@@ -1954,11 +1954,11 @@
 		<set name="attack_range" val="40" />
 		<set name="damage_range" val="0;0;40;120" />
 		<set name="immediate_effect" val="true" />
-		<set name="crystal_count" val="1322" />
+		<set name="crystal_count" val="1720" />
 		<set name="crystal_type" val="C" />
 		<set name="material" val="FINE_STEEL" />
 		<set name="weight" val="1020" />
-		<set name="price" val="3304300" />
+		<set name="price" val="4300000" />
 		<set name="soulshots" val="3" />
 		<set name="spiritshots" val="3" />
 		<set name="enchant_enabled" val="true" />
@@ -1983,11 +1983,11 @@
 		<set name="attack_range" val="40" />
 		<set name="damage_range" val="0;0;40;120" />
 		<set name="immediate_effect" val="true" />
-		<set name="crystal_count" val="1322" />
+		<set name="crystal_count" val="1720" />
 		<set name="crystal_type" val="C" />
 		<set name="material" val="FINE_STEEL" />
 		<set name="weight" val="1020" />
-		<set name="price" val="3304300" />
+		<set name="price" val="4300000" />
 		<set name="soulshots" val="3" />
 		<set name="spiritshots" val="3" />
 		<set name="enchant_enabled" val="true" />
@@ -2012,11 +2012,11 @@
 		<set name="attack_range" val="40" />
 		<set name="damage_range" val="0;0;40;120" />
 		<set name="immediate_effect" val="true" />
-		<set name="crystal_count" val="1322" />
+		<set name="crystal_count" val="1720" />
 		<set name="crystal_type" val="C" />
 		<set name="material" val="FINE_STEEL" />
 		<set name="weight" val="1020" />
-		<set name="price" val="3304300" />
+		<set name="price" val="4300000" />
 		<set name="soulshots" val="3" />
 		<set name="spiritshots" val="3" />
 		<set name="enchant_enabled" val="true" />
@@ -2041,11 +2041,11 @@
 		<set name="attack_range" val="40" />
 		<set name="damage_range" val="0;0;40;120" />
 		<set name="immediate_effect" val="true" />
-		<set name="crystal_count" val="1322" />
+		<set name="crystal_count" val="1720" />
 		<set name="crystal_type" val="C" />
 		<set name="material" val="FINE_STEEL" />
 		<set name="weight" val="1010" />
-		<set name="price" val="3304300" />
+		<set name="price" val="4300000" />
 		<set name="soulshots" val="3" />
 		<set name="spiritshots" val="3" />
 		<set name="enchant_enabled" val="true" />
@@ -2070,11 +2070,11 @@
 		<set name="attack_range" val="40" />
 		<set name="damage_range" val="0;0;40;120" />
 		<set name="immediate_effect" val="true" />
-		<set name="crystal_count" val="1322" />
+		<set name="crystal_count" val="1720" />
 		<set name="crystal_type" val="C" />
 		<set name="material" val="FINE_STEEL" />
 		<set name="weight" val="1010" />
-		<set name="price" val="3304300" />
+		<set name="price" val="4300000" />
 		<set name="soulshots" val="3" />
 		<set name="spiritshots" val="3" />
 		<set name="enchant_enabled" val="true" />
@@ -2099,11 +2099,11 @@
 		<set name="attack_range" val="40" />
 		<set name="damage_range" val="0;0;40;120" />
 		<set name="immediate_effect" val="true" />
-		<set name="crystal_count" val="1322" />
+		<set name="crystal_count" val="1720" />
 		<set name="crystal_type" val="C" />
 		<set name="material" val="FINE_STEEL" />
 		<set name="weight" val="1010" />
-		<set name="price" val="3304300" />
+		<set name="price" val="4300000" />
 		<set name="soulshots" val="3" />
 		<set name="spiritshots" val="3" />
 		<set name="enchant_enabled" val="true" />
@@ -2129,11 +2129,11 @@
 		<set name="attack_range" val="40" />
 		<set name="damage_range" val="0;0;40;120" />
 		<set name="immediate_effect" val="true" />
-		<set name="crystal_count" val="1885" />
+		<set name="crystal_count" val="2452" />
 		<set name="crystal_type" val="C" />
 		<set name="material" val="CRYSTAL" />
 		<set name="weight" val="1000" />
-		<set name="price" val="4713500" />
+		<set name="price" val="6130000" />
 		<set name="soulshots" val="3" />
 		<set name="spiritshots" val="3" />
 		<set name="enchant_enabled" val="true" />
@@ -2159,11 +2159,11 @@
 		<set name="attack_range" val="40" />
 		<set name="damage_range" val="0;0;40;120" />
 		<set name="immediate_effect" val="true" />
-		<set name="crystal_count" val="1885" />
+		<set name="crystal_count" val="2452" />
 		<set name="crystal_type" val="C" />
 		<set name="material" val="CRYSTAL" />
 		<set name="weight" val="1000" />
-		<set name="price" val="4713500" />
+		<set name="price" val="6130000" />
 		<set name="soulshots" val="3" />
 		<set name="spiritshots" val="3" />
 		<set name="enchant_enabled" val="true" />
@@ -2189,11 +2189,11 @@
 		<set name="attack_range" val="40" />
 		<set name="damage_range" val="0;0;40;120" />
 		<set name="immediate_effect" val="true" />
-		<set name="crystal_count" val="1885" />
+		<set name="crystal_count" val="2452" />
 		<set name="crystal_type" val="C" />
 		<set name="material" val="CRYSTAL" />
 		<set name="weight" val="1000" />
-		<set name="price" val="4713500" />
+		<set name="price" val="6130000" />
 		<set name="soulshots" val="3" />
 		<set name="spiritshots" val="3" />
 		<set name="enchant_enabled" val="true" />
@@ -2218,11 +2218,11 @@
 		<set name="attack_range" val="40" />
 		<set name="damage_range" val="0;0;40;120" />
 		<set name="immediate_effect" val="true" />
-		<set name="crystal_count" val="891" />
+		<set name="crystal_count" val="1157" />
 		<set name="crystal_type" val="B" />
 		<set name="material" val="MITHRIL" />
 		<set name="weight" val="980" />
-		<set name="price" val="6680500" />
+		<set name="price" val="8680000" />
 		<set name="soulshots" val="1" />
 		<set name="spiritshots" val="1" />
 		<set name="enchant_enabled" val="true" />
@@ -2247,11 +2247,11 @@
 		<set name="attack_range" val="40" />
 		<set name="damage_range" val="0;0;40;120" />
 		<set name="immediate_effect" val="true" />
-		<set name="crystal_count" val="891" />
+		<set name="crystal_count" val="1157" />
 		<set name="crystal_type" val="B" />
 		<set name="material" val="MITHRIL" />
 		<set name="weight" val="980" />
-		<set name="price" val="6680500" />
+		<set name="price" val="8680000" />
 		<set name="soulshots" val="1" />
 		<set name="spiritshots" val="1" />
 		<set name="enchant_enabled" val="true" />
@@ -2276,11 +2276,11 @@
 		<set name="attack_range" val="40" />
 		<set name="damage_range" val="0;0;40;120" />
 		<set name="immediate_effect" val="true" />
-		<set name="crystal_count" val="891" />
+		<set name="crystal_count" val="1157" />
 		<set name="crystal_type" val="B" />
 		<set name="material" val="MITHRIL" />
 		<set name="weight" val="980" />
-		<set name="price" val="6680500" />
+		<set name="price" val="8680000" />
 		<set name="soulshots" val="1" />
 		<set name="spiritshots" val="1" />
 		<set name="enchant_enabled" val="true" />
@@ -2305,11 +2305,11 @@
 		<set name="attack_range" val="40" />
 		<set name="damage_range" val="0;0;40;120" />
 		<set name="immediate_effect" val="true" />
-		<set name="crystal_count" val="1346" />
+		<set name="crystal_count" val="1746" />
 		<set name="crystal_type" val="B" />
 		<set name="material" val="BLOOD_STEEL" />
 		<set name="weight" val="970" />
-		<set name="price" val="10091400" />
+		<set name="price" val="13100000" />
 		<set name="soulshots" val="1" />
 		<set name="spiritshots" val="1" />
 		<set name="enchant_enabled" val="true" />
@@ -2335,11 +2335,11 @@
 		<set name="attack_range" val="40" />
 		<set name="damage_range" val="0;0;40;120" />
 		<set name="immediate_effect" val="true" />
-		<set name="crystal_count" val="1346" />
+		<set name="crystal_count" val="1746" />
 		<set name="crystal_type" val="B" />
 		<set name="material" val="BLOOD_STEEL" />
 		<set name="weight" val="970" />
-		<set name="price" val="10091400" />
+		<set name="price" val="13100000" />
 		<set name="soulshots" val="1" />
 		<set name="spiritshots" val="1" />
 		<set name="enchant_enabled" val="true" />
@@ -2365,11 +2365,11 @@
 		<set name="attack_range" val="40" />
 		<set name="damage_range" val="0;0;40;120" />
 		<set name="immediate_effect" val="true" />
-		<set name="crystal_count" val="1346" />
+		<set name="crystal_count" val="1746" />
 		<set name="crystal_type" val="B" />
 		<set name="material" val="BLOOD_STEEL" />
 		<set name="weight" val="970" />
-		<set name="price" val="10091400" />
+		<set name="price" val="13100000" />
 		<set name="soulshots" val="1" />
 		<set name="spiritshots" val="1" />
 		<set name="enchant_enabled" val="true" />
@@ -2490,7 +2490,7 @@
 		<set name="item_skill" val="3011-5" /> <!-- Special Ability: Focus -->
 		<for>
 			<set stat="pAtk" val="122" />
-			<set stat="mAtk" val="140" />
+			<set stat="mAtk" val="122" />
 			<set stat="critRate" val="12" />
 			<add stat="accCombat" val="-3.75" />
 			<set stat="pAtkSpd" val="433" />
@@ -2520,7 +2520,7 @@
 		<set name="item_skill" val="3019-5" /> <!-- Special Ability: Back Blow -->
 		<for>
 			<set stat="pAtk" val="122" />
-			<set stat="mAtk" val="140" />
+			<set stat="mAtk" val="122" />
 			<set stat="critRate" val="12" />
 			<add stat="accCombat" val="-3.75" />
 			<set stat="pAtkSpd" val="433" />
@@ -2550,7 +2550,7 @@
 		<set name="item_skill" val="3035-5" /> <!-- Special Ability: Mighty Mortal -->
 		<for>
 			<set stat="pAtk" val="122" />
-			<set stat="mAtk" val="140" />
+			<set stat="mAtk" val="122" />
 			<set stat="critRate" val="12" />
 			<add stat="accCombat" val="-3.75" />
 			<set stat="pAtkSpd" val="433" />
@@ -2568,11 +2568,11 @@
 		<set name="attack_range" val="40" />
 		<set name="damage_range" val="0;0;32;120" />
 		<set name="immediate_effect" val="true" />
-		<set name="crystal_count" val="705" />
+		<set name="crystal_count" val="916" />
 		<set name="crystal_type" val="C" />
 		<set name="material" val="FINE_STEEL" />
 		<set name="weight" val="1490" />
-		<set name="price" val="1762900" />
+		<set name="price" val="2290000" />
 		<set name="soulshots" val="2" />
 		<set name="spiritshots" val="2" />
 		<set name="enchant_enabled" val="true" />
@@ -2598,11 +2598,11 @@
 		<set name="attack_range" val="40" />
 		<set name="damage_range" val="0;0;32;120" />
 		<set name="immediate_effect" val="true" />
-		<set name="crystal_count" val="705" />
+		<set name="crystal_count" val="916" />
 		<set name="crystal_type" val="C" />
 		<set name="material" val="FINE_STEEL" />
 		<set name="weight" val="1490" />
-		<set name="price" val="1762900" />
+		<set name="price" val="2290000" />
 		<set name="soulshots" val="2" />
 		<set name="spiritshots" val="2" />
 		<set name="enchant_enabled" val="true" />
@@ -2628,11 +2628,11 @@
 		<set name="attack_range" val="40" />
 		<set name="damage_range" val="0;0;32;120" />
 		<set name="immediate_effect" val="true" />
-		<set name="crystal_count" val="705" />
+		<set name="crystal_count" val="916" />
 		<set name="crystal_type" val="C" />
 		<set name="material" val="FINE_STEEL" />
 		<set name="weight" val="1490" />
-		<set name="price" val="1762900" />
+		<set name="price" val="2290000" />
 		<set name="soulshots" val="2" />
 		<set name="spiritshots" val="2" />
 		<set name="enchant_enabled" val="true" />
@@ -2657,11 +2657,11 @@
 		<set name="attack_range" val="40" />
 		<set name="damage_range" val="0;0;40;90" />
 		<set name="immediate_effect" val="true" />
-		<set name="crystal_count" val="1322" />
+		<set name="crystal_count" val="1720" />
 		<set name="crystal_type" val="C" />
 		<set name="material" val="FINE_STEEL" />
 		<set name="weight" val="1480" />
-		<set name="price" val="3304300" />
+		<set name="price" val="4300000" />
 		<set name="soulshots" val="3" />
 		<set name="spiritshots" val="3" />
 		<set name="enchant_enabled" val="true" />
@@ -2686,11 +2686,11 @@
 		<set name="attack_range" val="40" />
 		<set name="damage_range" val="0;0;40;90" />
 		<set name="immediate_effect" val="true" />
-		<set name="crystal_count" val="1322" />
+		<set name="crystal_count" val="1720" />
 		<set name="crystal_type" val="C" />
 		<set name="material" val="FINE_STEEL" />
 		<set name="weight" val="1480" />
-		<set name="price" val="3304300" />
+		<set name="price" val="4300000" />
 		<set name="soulshots" val="3" />
 		<set name="spiritshots" val="3" />
 		<set name="enchant_enabled" val="true" />
@@ -2715,11 +2715,11 @@
 		<set name="attack_range" val="40" />
 		<set name="damage_range" val="0;0;40;90" />
 		<set name="immediate_effect" val="true" />
-		<set name="crystal_count" val="1322" />
+		<set name="crystal_count" val="1720" />
 		<set name="crystal_type" val="C" />
 		<set name="material" val="FINE_STEEL" />
 		<set name="weight" val="1480" />
-		<set name="price" val="3304300" />
+		<set name="price" val="4300000" />
 		<set name="soulshots" val="3" />
 		<set name="spiritshots" val="3" />
 		<set name="enchant_enabled" val="true" />
@@ -2744,11 +2744,11 @@
 		<set name="attack_range" val="40" />
 		<set name="damage_range" val="0;0;46;90" />
 		<set name="immediate_effect" val="true" />
-		<set name="crystal_count" val="1885" />
+		<set name="crystal_count" val="2452" />
 		<set name="crystal_type" val="C" />
 		<set name="material" val="CHRYSOLITE" />
 		<set name="weight" val="1460" />
-		<set name="price" val="4713500" />
+		<set name="price" val="6130000" />
 		<set name="soulshots" val="3" />
 		<set name="spiritshots" val="3" />
 		<set name="enchant_enabled" val="true" />
@@ -2774,11 +2774,11 @@
 		<set name="attack_range" val="40" />
 		<set name="damage_range" val="0;0;46;90" />
 		<set name="immediate_effect" val="true" />
-		<set name="crystal_count" val="1885" />
+		<set name="crystal_count" val="2452" />
 		<set name="crystal_type" val="C" />
 		<set name="material" val="CHRYSOLITE" />
 		<set name="weight" val="1460" />
-		<set name="price" val="4713500" />
+		<set name="price" val="6130000" />
 		<set name="soulshots" val="3" />
 		<set name="spiritshots" val="3" />
 		<set name="enchant_enabled" val="true" />
@@ -2804,11 +2804,11 @@
 		<set name="attack_range" val="40" />
 		<set name="damage_range" val="0;0;46;90" />
 		<set name="immediate_effect" val="true" />
-		<set name="crystal_count" val="1885" />
+		<set name="crystal_count" val="2452" />
 		<set name="crystal_type" val="C" />
 		<set name="material" val="CHRYSOLITE" />
 		<set name="weight" val="1460" />
-		<set name="price" val="4713500" />
+		<set name="price" val="6130000" />
 		<set name="soulshots" val="3" />
 		<set name="spiritshots" val="3" />
 		<set name="enchant_enabled" val="true" />
@@ -2833,11 +2833,11 @@
 		<set name="attack_range" val="40" />
 		<set name="damage_range" val="0;0;32;120" />
 		<set name="immediate_effect" val="true" />
-		<set name="crystal_count" val="884" />
+		<set name="crystal_count" val="1148" />
 		<set name="crystal_type" val="C" />
 		<set name="material" val="FINE_STEEL" />
 		<set name="weight" val="1490" />
-		<set name="price" val="2209700" />
+		<set name="price" val="2870000" />
 		<set name="soulshots" val="2" />
 		<set name="spiritshots" val="2" />
 		<set name="enchant_enabled" val="true" />
@@ -2862,11 +2862,11 @@
 		<set name="attack_range" val="40" />
 		<set name="damage_range" val="0;0;32;120" />
 		<set name="immediate_effect" val="true" />
-		<set name="crystal_count" val="884" />
+		<set name="crystal_count" val="1148" />
 		<set name="crystal_type" val="C" />
 		<set name="material" val="FINE_STEEL" />
 		<set name="weight" val="1490" />
-		<set name="price" val="2209700" />
+		<set name="price" val="2870000" />
 		<set name="soulshots" val="2" />
 		<set name="spiritshots" val="2" />
 		<set name="enchant_enabled" val="true" />

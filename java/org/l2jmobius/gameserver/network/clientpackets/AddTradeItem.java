@@ -16,39 +16,43 @@
  */
 package org.l2jmobius.gameserver.network.clientpackets;
 
-import org.l2jmobius.commons.network.ReadablePacket;
 import org.l2jmobius.gameserver.model.TradeItem;
 import org.l2jmobius.gameserver.model.TradeList;
 import org.l2jmobius.gameserver.model.World;
 import org.l2jmobius.gameserver.model.actor.Player;
-import org.l2jmobius.gameserver.network.GameClient;
 import org.l2jmobius.gameserver.network.PacketLogger;
 import org.l2jmobius.gameserver.network.SystemMessageId;
 import org.l2jmobius.gameserver.network.serverpackets.TradeOtherAdd;
 import org.l2jmobius.gameserver.network.serverpackets.TradeOwnAdd;
+import org.l2jmobius.gameserver.network.serverpackets.TradeUpdate;
 
 /**
  * @version $Revision: 1.5.2.2.2.5 $ $Date: 2005/03/27 15:29:29 $
  */
-public class AddTradeItem implements ClientPacket
+public class AddTradeItem extends ClientPacket
 {
 	private int _tradeId;
 	private int _objectId;
 	private int _count;
 	
 	@Override
-	public void read(ReadablePacket packet)
+	protected void readImpl()
 	{
-		_tradeId = packet.readInt();
-		_objectId = packet.readInt();
-		_count = packet.readInt();
+		_tradeId = readInt();
+		_objectId = readInt();
+		_count = readInt();
 	}
 	
 	@Override
-	public void run(GameClient client)
+	protected void runImpl()
 	{
-		final Player player = client.getPlayer();
+		final Player player = getPlayer();
 		if (player == null)
+		{
+			return;
+		}
+		
+		if (_count < 1)
 		{
 			return;
 		}
@@ -96,6 +100,7 @@ public class AddTradeItem implements ClientPacket
 		if (item != null)
 		{
 			player.sendPacket(new TradeOwnAdd(item));
+			player.sendPacket(new TradeUpdate(trade, player));
 			trade.getPartner().sendPacket(new TradeOtherAdd(item));
 		}
 	}

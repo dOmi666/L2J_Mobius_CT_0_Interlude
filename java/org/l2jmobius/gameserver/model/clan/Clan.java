@@ -23,7 +23,6 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.HashMap;
-import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
@@ -63,14 +62,12 @@ import org.l2jmobius.gameserver.model.skill.Skill;
 import org.l2jmobius.gameserver.model.zone.ZoneId;
 import org.l2jmobius.gameserver.network.SystemMessageId;
 import org.l2jmobius.gameserver.network.serverpackets.CreatureSay;
-import org.l2jmobius.gameserver.network.serverpackets.ItemList;
 import org.l2jmobius.gameserver.network.serverpackets.PledgeReceiveSubPledgeCreated;
 import org.l2jmobius.gameserver.network.serverpackets.PledgeShowInfoUpdate;
 import org.l2jmobius.gameserver.network.serverpackets.PledgeShowMemberListAll;
 import org.l2jmobius.gameserver.network.serverpackets.PledgeShowMemberListDeleteAll;
 import org.l2jmobius.gameserver.network.serverpackets.PledgeShowMemberListUpdate;
 import org.l2jmobius.gameserver.network.serverpackets.PledgeSkillList;
-import org.l2jmobius.gameserver.network.serverpackets.PledgeSkillList.SubPledgeSkill;
 import org.l2jmobius.gameserver.network.serverpackets.PledgeSkillListAdd;
 import org.l2jmobius.gameserver.network.serverpackets.ServerPacket;
 import org.l2jmobius.gameserver.network.serverpackets.StatusUpdate;
@@ -304,7 +301,7 @@ public class Clan implements IIdentifiable, INamable
 		}
 		
 		broadcastClanStatus();
-		broadcastToOnlineMembers(new SystemMessage(SystemMessageId.CLAN_LORD_PRIVILEGES_HAVE_BEEN_TRANSFERRED_TO_C1).addString(member.getName()));
+		broadcastToOnlineMembers(new SystemMessage(SystemMessageId.CLAN_LORD_PRIVILEGES_HAVE_BEEN_TRANSFERRED_TO_S1).addString(member.getName()));
 		
 		LOGGER.log(Level.INFO, "Leader of Clan: " + getName() + " changed to: " + member.getName() + " ex leader: " + exMember.getName());
 	}
@@ -1264,9 +1261,9 @@ public class Clan implements IIdentifiable, INamable
 	/**
 	 * @return all the clan skills.
 	 */
-	public Skill[] getAllSkills()
+	public Collection<Skill> getAllSkills()
 	{
-		return _skills.values().toArray(new Skill[_skills.values().size()]);
+		return _skills.values();
 	}
 	
 	/**
@@ -2111,7 +2108,7 @@ public class Clan implements IIdentifiable, INamable
 		return _reputationScore;
 	}
 	
-	public void setRank(int rank)
+	public synchronized void setRank(int rank)
 	{
 		_rank = rank;
 	}
@@ -2179,14 +2176,14 @@ public class Clan implements IIdentifiable, INamable
 		}
 		if (target.getClanId() != 0)
 		{
-			final SystemMessage sm = new SystemMessage(SystemMessageId.S1_IS_ALREADY_A_MEMBER_OF_ANOTHER_CLAN);
+			final SystemMessage sm = new SystemMessage(SystemMessageId.S1_IS_WORKING_WITH_ANOTHER_CLAN);
 			sm.addString(target.getName());
 			player.sendPacket(sm);
 			return false;
 		}
 		if (target.getClanJoinExpiryTime() > System.currentTimeMillis())
 		{
-			final SystemMessage sm = new SystemMessage(SystemMessageId.C1_CANNOT_JOIN_THE_CLAN_BECAUSE_ONE_DAY_HAS_NOT_YET_PASSED_SINCE_THEY_LEFT_ANOTHER_CLAN);
+			final SystemMessage sm = new SystemMessage(SystemMessageId.S1_CANNOT_JOIN_THE_CLAN_BECAUSE_ONE_DAY_HAS_NOT_YET_PASSED_SINCE_HE_SHE_LEFT_ANOTHER_CLAN);
 			sm.addString(target.getName());
 			player.sendPacket(sm);
 			return false;
@@ -2229,7 +2226,7 @@ public class Clan implements IIdentifiable, INamable
 		}
 		if ((player.getAllyId() == 0) || !player.isClanLeader() || (player.getClanId() != player.getAllyId()))
 		{
-			player.sendPacket(SystemMessageId.THIS_FEATURE_IS_ONLY_AVAILABLE_TO_ALLIANCE_LEADERS);
+			player.sendPacket(SystemMessageId.THIS_FEATURE_IS_ONLY_AVAILABLE_ALLIANCE_LEADERS);
 			return false;
 		}
 		final Clan leaderClan = player.getClan();
@@ -2273,7 +2270,7 @@ public class Clan implements IIdentifiable, INamable
 		{
 			if (targetClan.getAllyPenaltyType() == PENALTY_TYPE_CLAN_LEAVED)
 			{
-				final SystemMessage sm = new SystemMessage(SystemMessageId.S1_CLAN_CANNOT_JOIN_THE_ALLIANCE_BECAUSE_ONE_DAY_HAS_NOT_YET_PASSED_SINCE_THEY_LEFT_ANOTHER_ALLIANCE);
+				final SystemMessage sm = new SystemMessage(SystemMessageId.S1_CLAN_CANNOT_JOIN_THE_ALLIANCE_BECAUSE_ONE_DAY_HAS_NOT_YET_PASSED_SINCE_IT_LEFT_ANOTHER_ALLIANCE);
 				sm.addString(target.getClan().getName());
 				sm.addString(target.getClan().getAllyName());
 				player.sendPacket(sm);
@@ -2365,12 +2362,12 @@ public class Clan implements IIdentifiable, INamable
 		}
 		if ((_allyPenaltyExpiryTime > System.currentTimeMillis()) && (_allyPenaltyType == PENALTY_TYPE_DISSOLVE_ALLY))
 		{
-			player.sendPacket(SystemMessageId.YOU_CANNOT_CREATE_A_NEW_ALLIANCE_WITHIN_1_DAY_OF_DISSOLUTION);
+			player.sendPacket(SystemMessageId.YOU_CANNOT_CREATE_A_NEW_ALLIANCE_WITHIN_10_DAYS_AFTER_DISSOLUTION);
 			return;
 		}
 		if (_dissolvingExpiryTime > System.currentTimeMillis())
 		{
-			player.sendPacket(SystemMessageId.AS_YOU_ARE_CURRENTLY_SCHEDULE_FOR_CLAN_DISSOLUTION_NO_ALLIANCE_CAN_BE_CREATED);
+			player.sendPacket(SystemMessageId.YOU_MAY_NOT_CREATE_AN_ALLIANCE_DURING_THE_TERM_OF_DISSOLUTION_POSTPONEMENT);
 			return;
 		}
 		if (!Util.isAlphaNumeric(allyName))
@@ -2385,7 +2382,7 @@ public class Clan implements IIdentifiable, INamable
 		}
 		if (ClanTable.getInstance().isAllyExists(allyName))
 		{
-			player.sendPacket(SystemMessageId.THAT_ALLIANCE_NAME_ALREADY_EXISTS);
+			player.sendPacket(SystemMessageId.THIS_ALLIANCE_NAME_ALREADY_EXISTS);
 			return;
 		}
 		
@@ -2409,7 +2406,7 @@ public class Clan implements IIdentifiable, INamable
 		}
 		if (!player.isClanLeader() || (_clanId != _allyId))
 		{
-			player.sendPacket(SystemMessageId.THIS_FEATURE_IS_ONLY_AVAILABLE_TO_ALLIANCE_LEADERS);
+			player.sendPacket(SystemMessageId.THIS_FEATURE_IS_ONLY_AVAILABLE_ALLIANCE_LEADERS);
 			return;
 		}
 		if (player.isInsideZone(ZoneId.SIEGE))
@@ -2448,7 +2445,7 @@ public class Clan implements IIdentifiable, INamable
 		}
 		if (System.currentTimeMillis() < _dissolvingExpiryTime)
 		{
-			player.sendPacket(SystemMessageId.AS_YOU_ARE_CURRENTLY_SCHEDULE_FOR_CLAN_DISSOLUTION_YOUR_CLAN_LEVEL_CANNOT_BE_INCREASED);
+			player.sendPacket(SystemMessageId.YOU_CANNOT_RAISE_YOUR_CLAN_LEVEL_DURING_THE_TERM_OF_DISPERSION_POSTPONEMENT);
 			return false;
 		}
 		
@@ -2586,7 +2583,7 @@ public class Clan implements IIdentifiable, INamable
 		su.addAttribute(StatusUpdate.SP, (int) player.getSp());
 		player.sendPacket(su);
 		
-		player.sendPacket(new ItemList(player, false));
+		player.sendItemList(false);
 		changeLevel(_level + 1);
 		
 		// Notify to scripts
@@ -2613,6 +2610,7 @@ public class Clan implements IIdentifiable, INamable
 		}
 		
 		setLevel(level);
+		setRank(ClanTable.getInstance().getClanRank(this));
 		
 		if (_leader.isOnline())
 		{
@@ -2629,7 +2627,7 @@ public class Clan implements IIdentifiable, INamable
 		}
 		
 		// notify all the members about it
-		broadcastToOnlineMembers(new SystemMessage(SystemMessageId.YOUR_CLAN_S_LEVEL_HAS_INCREASED));
+		broadcastToOnlineMembers(new SystemMessage(SystemMessageId.YOUR_CLAN_S_SKILL_LEVEL_HAS_INCREASED));
 		broadcastToOnlineMembers(new PledgeShowInfoUpdate(this));
 	}
 	
@@ -2819,23 +2817,6 @@ public class Clan implements IIdentifiable, INamable
 		}
 		
 		return false;
-	}
-	
-	public List<SubPledgeSkill> getAllSubSkills()
-	{
-		final List<SubPledgeSkill> list = new LinkedList<>();
-		for (Skill skill : _subPledgeSkills.values())
-		{
-			list.add(new SubPledgeSkill(0, skill.getId(), skill.getLevel()));
-		}
-		for (SubPledge subunit : _subPledges.values())
-		{
-			for (Skill skill : subunit.getSkills())
-			{
-				list.add(new SubPledgeSkill(subunit.getId(), skill.getId(), skill.getLevel()));
-			}
-		}
-		return list;
 	}
 	
 	public void setNewLeaderId(int objectId, boolean storeInDb)

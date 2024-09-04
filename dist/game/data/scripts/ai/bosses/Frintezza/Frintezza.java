@@ -317,7 +317,7 @@ public class Frintezza extends AbstractNpcAI
 	}
 	
 	@Override
-	public String onAdvEvent(String event, Npc npc, Player player)
+	public String onEvent(String event, Npc npc, Player player)
 	{
 		long temp = 0;
 		if (event.equalsIgnoreCase("waiting"))
@@ -1038,7 +1038,7 @@ public class Frintezza extends AbstractNpcAI
 					if ((cha instanceof Player) && (Rnd.get(100) < 80))
 					{
 						skill.applyEffects(_frintezza, cha);
-						cha.sendPacket(new SystemMessage(SystemMessageId.S1_S_EFFECT_CAN_BE_FELT).addSkillName(5008, 4));
+						cha.sendPacket(new SystemMessage(SystemMessageId.THE_EFFECTS_OF_S1_FLOW_THROUGH_YOU).addSkillName(5008, 4));
 					}
 				}
 			}
@@ -1057,7 +1057,7 @@ public class Frintezza extends AbstractNpcAI
 						cha.getAI().setIntention(CtrlIntention.AI_INTENTION_IDLE);
 						skill.applyEffects(_frintezza, cha);
 						cha.startAbnormalVisualEffect(true, AbnormalVisualEffect.DANCE_ROOT);
-						cha.sendPacket(new SystemMessage(SystemMessageId.S1_S_EFFECT_CAN_BE_FELT).addSkillName(5008, 5));
+						cha.sendPacket(new SystemMessage(SystemMessageId.THE_EFFECTS_OF_S1_FLOW_THROUGH_YOU).addSkillName(5008, 5));
 					}
 				}
 				startQuestTimer("stop_effect", 25000, _frintezza, null);
@@ -1290,7 +1290,7 @@ public class Frintezza extends AbstractNpcAI
 			_zone.oustAllPlayers();
 		}
 		
-		return super.onAdvEvent(event, npc, player);
+		return super.onEvent(event, npc, player);
 	}
 	
 	@Override
@@ -1335,7 +1335,7 @@ public class Frintezza extends AbstractNpcAI
 				}
 				else if (player.getInventory().getItemByItemId(8073) == null)
 				{
-					htmltext = "<html><body>You dont have required item.</body></html>";
+					htmltext = "<html><body>You do n0t have the required item.</body></html>";
 				}
 				else
 				{
@@ -1467,8 +1467,10 @@ public class Frintezza extends AbstractNpcAI
 			startQuestTimer("minions_despawn", 60000, npc, null);
 			startQuestTimer("remove_players", 900000, npc, null);
 			GrandBossManager.getInstance().setStatus(FRINTEZZA, DEAD);
-			long respawnTime = Config.FRINTEZZA_SPAWN_INTERVAL + getRandom(-Config.FRINTEZZA_SPAWN_RANDOM, Config.FRINTEZZA_SPAWN_RANDOM);
-			respawnTime *= 3600000;
+			
+			final long baseIntervalMillis = Config.FRINTEZZA_SPAWN_INTERVAL * 3600000;
+			final long randomRangeMillis = Config.FRINTEZZA_SPAWN_RANDOM * 3600000;
+			final long respawnTime = baseIntervalMillis + getRandom(-randomRangeMillis, randomRangeMillis);
 			startQuestTimer("frintezza_unlock", respawnTime, npc, null);
 			// also save the respawn time so that the info is maintained past reboots
 			final StatSet info = GrandBossManager.getInstance().getStatSet(FRINTEZZA);

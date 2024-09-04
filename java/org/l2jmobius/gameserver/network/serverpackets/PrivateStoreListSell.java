@@ -16,9 +16,11 @@
  */
 package org.l2jmobius.gameserver.network.serverpackets;
 
+import org.l2jmobius.commons.network.WritableBuffer;
 import org.l2jmobius.gameserver.instancemanager.SellBuffsManager;
 import org.l2jmobius.gameserver.model.TradeItem;
 import org.l2jmobius.gameserver.model.actor.Player;
+import org.l2jmobius.gameserver.network.GameClient;
 import org.l2jmobius.gameserver.network.ServerPackets;
 
 public class PrivateStoreListSell extends ServerPacket
@@ -33,7 +35,7 @@ public class PrivateStoreListSell extends ServerPacket
 	}
 	
 	@Override
-	public void write()
+	public void writeImpl(GameClient client, WritableBuffer buffer)
 	{
 		if (_seller.isSellingBuffs())
 		{
@@ -41,23 +43,23 @@ public class PrivateStoreListSell extends ServerPacket
 		}
 		else
 		{
-			ServerPackets.PRIVATE_STORE_LIST_SELL.writeId(this);
-			writeInt(_seller.getObjectId());
-			writeInt(_seller.getSellList().isPackaged());
-			writeInt(_player.getAdena());
-			writeInt(_seller.getSellList().getItems().size());
+			ServerPackets.PRIVATE_STORE_LIST_SELL.writeId(this, buffer);
+			buffer.writeInt(_seller.getObjectId());
+			buffer.writeInt(_seller.getSellList().isPackaged());
+			buffer.writeInt(_player.getAdena());
+			buffer.writeInt(_seller.getSellList().getItems().size());
 			for (TradeItem item : _seller.getSellList().getItems())
 			{
-				writeInt(item.getItem().getType2());
-				writeInt(item.getObjectId());
-				writeInt(item.getItem().getId());
-				writeInt(item.getCount());
-				writeShort(0);
-				writeShort(item.getEnchant());
-				writeShort(item.getCustomType2());
-				writeInt(item.getItem().getBodyPart());
-				writeInt(item.getPrice()); // your price
-				writeInt(item.getItem().getReferencePrice()); // store price
+				buffer.writeInt(item.getItem().getType2());
+				buffer.writeInt(item.getObjectId());
+				buffer.writeInt(item.getItem().getId());
+				buffer.writeInt(item.getCount());
+				buffer.writeShort(0);
+				buffer.writeShort(item.getEnchant());
+				buffer.writeShort(item.getCustomType2());
+				buffer.writeInt(item.getItem().getBodyPart());
+				buffer.writeInt(item.getPrice()); // your price
+				buffer.writeInt(item.getItem().getReferencePrice()); // store price
 			}
 		}
 	}

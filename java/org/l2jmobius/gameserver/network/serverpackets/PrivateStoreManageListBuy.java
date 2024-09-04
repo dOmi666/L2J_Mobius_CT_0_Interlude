@@ -18,9 +18,11 @@ package org.l2jmobius.gameserver.network.serverpackets;
 
 import java.util.Collection;
 
+import org.l2jmobius.commons.network.WritableBuffer;
 import org.l2jmobius.gameserver.model.TradeItem;
 import org.l2jmobius.gameserver.model.actor.Player;
 import org.l2jmobius.gameserver.model.item.instance.Item;
+import org.l2jmobius.gameserver.network.GameClient;
 import org.l2jmobius.gameserver.network.ServerPackets;
 
 public class PrivateStoreManageListBuy extends ServerPacket
@@ -39,37 +41,37 @@ public class PrivateStoreManageListBuy extends ServerPacket
 	}
 	
 	@Override
-	public void write()
+	public void writeImpl(GameClient client, WritableBuffer buffer)
 	{
-		ServerPackets.PRIVATE_STORE_BUY_MANAGE_LIST.writeId(this);
+		ServerPackets.PRIVATE_STORE_BUY_MANAGE_LIST.writeId(this, buffer);
 		// section 1
-		writeInt(_objId);
-		writeInt((int) _playerAdena);
+		buffer.writeInt(_objId);
+		buffer.writeInt((int) _playerAdena);
 		// section2
-		writeInt(_itemList.size()); // inventory items for potential buy
+		buffer.writeInt(_itemList.size()); // inventory items for potential buy
 		for (Item item : _itemList)
 		{
-			writeInt(item.getId());
-			writeShort(0); // show enchant level as 0, as you can't buy enchanted weapons
-			writeInt(item.getCount());
-			writeInt(item.getReferencePrice());
-			writeShort(0);
-			writeInt(item.getTemplate().getBodyPart());
-			writeShort(item.getTemplate().getType2());
+			buffer.writeInt(item.getId());
+			buffer.writeShort(0); // show enchant level as 0, as you can't buy enchanted weapons
+			buffer.writeInt(item.getCount());
+			buffer.writeInt(item.getReferencePrice());
+			buffer.writeShort(0);
+			buffer.writeInt(item.getTemplate().getBodyPart());
+			buffer.writeShort(item.getTemplate().getType2());
 		}
 		// section 3
-		writeInt(_buyList.size()); // count for all items already added for buy
+		buffer.writeInt(_buyList.size()); // count for all items already added for buy
 		for (TradeItem item : _buyList)
 		{
-			writeInt(item.getItem().getId());
-			writeShort(0);
-			writeInt(item.getCount());
-			writeInt(item.getItem().getReferencePrice());
-			writeShort(0);
-			writeInt(item.getItem().getBodyPart());
-			writeShort(item.getItem().getType2());
-			writeInt(item.getPrice()); // your price
-			writeInt(item.getItem().getReferencePrice()); // fixed store price
+			buffer.writeInt(item.getItem().getId());
+			buffer.writeShort(0);
+			buffer.writeInt(item.getCount());
+			buffer.writeInt(item.getItem().getReferencePrice());
+			buffer.writeShort(0);
+			buffer.writeInt(item.getItem().getBodyPart());
+			buffer.writeShort(item.getItem().getType2());
+			buffer.writeInt(item.getPrice()); // your price
+			buffer.writeInt(item.getItem().getReferencePrice()); // fixed store price
 		}
 	}
 }

@@ -53,7 +53,7 @@ public class SiegeManager
 	private int _attackerRespawnDelay = 0; // Time in ms. Changeable in siege.config
 	private int _defenderMaxClans = 500; // Max number of clans
 	private int _flagMaxCount = 1; // Changeable in siege.config
-	private int _siegeClanMinLevel = 5; // Changeable in siege.config
+	private int _siegeClanMinLevel = 4; // Changeable in siege.config
 	private int _siegeLength = 120; // Time in minute. Changeable in siege.config
 	private int _bloodAllianceReward = 0; // Number of Blood Alliance items reward for successful castle defending
 	

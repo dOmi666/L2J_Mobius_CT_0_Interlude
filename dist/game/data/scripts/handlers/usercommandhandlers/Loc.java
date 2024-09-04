@@ -22,7 +22,6 @@ import org.l2jmobius.gameserver.instancemanager.MapRegionManager;
 import org.l2jmobius.gameserver.instancemanager.ZoneManager;
 import org.l2jmobius.gameserver.model.actor.Player;
 import org.l2jmobius.gameserver.model.zone.type.RespawnZone;
-import org.l2jmobius.gameserver.network.SystemMessageId;
 import org.l2jmobius.gameserver.network.serverpackets.SystemMessage;
 
 /**
@@ -49,23 +48,21 @@ public class Loc implements IUserCommandHandler
 			region = MapRegionManager.getInstance().getMapRegionLocId(player);
 		}
 		
-		SystemMessage sm;
 		if (region > 0)
 		{
-			sm = new SystemMessage(region);
+			final SystemMessage sm = new SystemMessage(region);
 			if (sm.getSystemMessageId().getParamCount() == 3)
 			{
 				sm.addInt(player.getX());
 				sm.addInt(player.getY());
 				sm.addInt(player.getZ());
 			}
+			player.sendPacket(sm);
 		}
 		else
 		{
-			sm = new SystemMessage(SystemMessageId.CURRENT_LOCATION_S1);
-			sm.addString(player.getX() + ", " + player.getY() + ", " + player.getZ());
+			player.sendMessage("Current location: " + player.getX() + ", " + player.getY() + ", " + player.getZ());
 		}
-		player.sendPacket(sm);
 		return true;
 	}
 	

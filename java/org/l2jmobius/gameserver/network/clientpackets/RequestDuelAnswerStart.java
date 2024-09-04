@@ -16,10 +16,8 @@
  */
 package org.l2jmobius.gameserver.network.clientpackets;
 
-import org.l2jmobius.commons.network.ReadablePacket;
 import org.l2jmobius.gameserver.instancemanager.DuelManager;
 import org.l2jmobius.gameserver.model.actor.Player;
-import org.l2jmobius.gameserver.network.GameClient;
 import org.l2jmobius.gameserver.network.SystemMessageId;
 import org.l2jmobius.gameserver.network.serverpackets.SystemMessage;
 
@@ -27,7 +25,7 @@ import org.l2jmobius.gameserver.network.serverpackets.SystemMessage;
  * Format:(ch) ddd
  * @author -Wooden-
  */
-public class RequestDuelAnswerStart implements ClientPacket
+public class RequestDuelAnswerStart extends ClientPacket
 {
 	private int _partyDuel;
 	@SuppressWarnings("unused")
@@ -35,17 +33,17 @@ public class RequestDuelAnswerStart implements ClientPacket
 	private int _response;
 	
 	@Override
-	public void read(ReadablePacket packet)
+	protected void readImpl()
 	{
-		_partyDuel = packet.readInt();
-		_unk1 = packet.readInt();
-		_response = packet.readInt();
+		_partyDuel = readInt();
+		_unk1 = readInt();
+		_response = readInt();
 	}
 	
 	@Override
-	public void run(GameClient client)
+	protected void runImpl()
 	{
-		final Player player = client.getPlayer();
+		final Player player = getPlayer();
 		if (player == null)
 		{
 			return;
@@ -63,7 +61,7 @@ public class RequestDuelAnswerStart implements ClientPacket
 			SystemMessage msg2 = null;
 			if (requestor.isInDuel())
 			{
-				msg1 = new SystemMessage(SystemMessageId.C1_CANNOT_DUEL_BECAUSE_C1_IS_ALREADY_ENGAGED_IN_A_DUEL);
+				msg1 = new SystemMessage(SystemMessageId.S1_CANNOT_DUEL_BECAUSE_S1_IS_ALREADY_ENGAGED_IN_A_DUEL);
 				msg1.addString(requestor.getName());
 				player.sendPacket(msg1);
 				return;
@@ -76,7 +74,7 @@ public class RequestDuelAnswerStart implements ClientPacket
 			
 			if (_partyDuel == 1)
 			{
-				msg1 = new SystemMessage(SystemMessageId.YOU_HAVE_ACCEPTED_C1_S_CHALLENGE_TO_A_PARTY_DUEL_THE_DUEL_WILL_BEGIN_IN_A_FEW_MOMENTS);
+				msg1 = new SystemMessage(SystemMessageId.YOU_HAVE_ACCEPTED_S1_S_CHALLENGE_TO_A_PARTY_DUEL_THE_DUEL_WILL_BEGIN_IN_A_FEW_MOMENTS);
 				msg1.addString(requestor.getName());
 				
 				msg2 = new SystemMessage(SystemMessageId.S1_HAS_ACCEPTED_YOUR_CHALLENGE_TO_DUEL_AGAINST_THEIR_PARTY_THE_DUEL_WILL_BEGIN_IN_A_FEW_MOMENTS);
@@ -84,10 +82,10 @@ public class RequestDuelAnswerStart implements ClientPacket
 			}
 			else
 			{
-				msg1 = new SystemMessage(SystemMessageId.YOU_HAVE_ACCEPTED_C1_S_CHALLENGE_A_DUEL_THE_DUEL_WILL_BEGIN_IN_A_FEW_MOMENTS);
+				msg1 = new SystemMessage(SystemMessageId.YOU_HAVE_ACCEPTED_S1_S_CHALLENGE_TO_A_DUEL_THE_DUEL_WILL_BEGIN_IN_A_FEW_MOMENTS);
 				msg1.addString(requestor.getName());
 				
-				msg2 = new SystemMessage(SystemMessageId.C1_HAS_ACCEPTED_YOUR_CHALLENGE_TO_A_DUEL_THE_DUEL_WILL_BEGIN_IN_A_FEW_MOMENTS);
+				msg2 = new SystemMessage(SystemMessageId.S1_HAS_ACCEPTED_YOUR_CHALLENGE_TO_A_DUEL_THE_DUEL_WILL_BEGIN_IN_A_FEW_MOMENTS);
 				msg2.addString(player.getName());
 			}
 			
@@ -98,9 +96,7 @@ public class RequestDuelAnswerStart implements ClientPacket
 		}
 		else if (_response == -1)
 		{
-			final SystemMessage sm = new SystemMessage(SystemMessageId.C1_IS_SET_TO_REFUSE_DUEL_REQUESTS_AND_CANNOT_RECEIVE_A_DUEL_REQUEST);
-			sm.addPcName(player);
-			requestor.sendPacket(sm);
+			requestor.sendMessage(player.getName() + " is set to refuse duel requests and cannot receive a duel request.");
 		}
 		else
 		{
@@ -111,7 +107,7 @@ public class RequestDuelAnswerStart implements ClientPacket
 			}
 			else
 			{
-				msg = new SystemMessage(SystemMessageId.C1_HAS_DECLINED_YOUR_CHALLENGE_TO_A_DUEL);
+				msg = new SystemMessage(SystemMessageId.S1_HAS_DECLINED_YOUR_CHALLENGE_TO_A_DUEL);
 				msg.addPcName(player);
 			}
 			requestor.sendPacket(msg);

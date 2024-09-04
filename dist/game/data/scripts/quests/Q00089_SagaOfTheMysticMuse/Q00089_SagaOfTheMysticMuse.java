@@ -16,15 +16,12 @@
  */
 package quests.Q00089_SagaOfTheMysticMuse;
 
-import org.l2jmobius.gameserver.model.Location;
-
-import quests.AbstractSagaQuest;
+import quests.SagasSuperClass;
 
 /**
- * Saga of the Mystic Muse (89)
  * @author Emperorc
  */
-public class Q00089_SagaOfTheMysticMuse extends AbstractSagaQuest
+public class Q00089_SagaOfTheMysticMuse extends SagasSuperClass
 {
 	public Q00089_SagaOfTheMysticMuse()
 	{
@@ -73,11 +70,23 @@ public class Q00089_SagaOfTheMysticMuse extends AbstractSagaQuest
 		{
 			0x1b
 		};
-		_npcSpawnLocations = new Location[]
+		_x = new int[]
 		{
-			new Location(119518, -28658, -3811),
-			new Location(181227, 36703, -4816),
-			new Location(181215, 36676, -4812)
+			119518,
+			181227,
+			181215
+		};
+		_y = new int[]
+		{
+			-28658,
+			36703,
+			36676
+		};
+		_z = new int[]
+		{
+			-3811,
+			-4816,
+			-4812
 		};
 		_text = new String[]
 		{

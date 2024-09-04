@@ -23,333 +23,156 @@ import org.l2jmobius.gameserver.model.quest.Quest;
 import org.l2jmobius.gameserver.model.quest.QuestState;
 import org.l2jmobius.gameserver.model.quest.State;
 
-/**
- * Sorrowful Sound of Flute (363)
- * @author Adry_85
- */
 public class Q00363_SorrowfulSoundOfFlute extends Quest
 {
 	// NPCs
-	private static final int ALDO = 30057;
-	private static final int HOLVAS = 30058;
-	private static final int POITAN = 30458;
-	private static final int RANSPO = 30594;
-	private static final int OPIX = 30595;
 	private static final int NANARIN = 30956;
+	private static final int OPIX = 30595;
+	private static final int ALDO = 30057;
+	private static final int RANSPO = 30594;
+	private static final int HOLVAS = 30058;
 	private static final int BARBADO = 30959;
+	private static final int POITAN = 30458;
 	// Items
-	private static final int EVENT_CLOTHES = 4318;
-	private static final int NANARINS_FLUTE = 4319;
-	private static final int SABRINS_BLACK_BEER = 4320;
+	private static final int NANARIN_FLUTE = 4319;
+	private static final int BLACK_BEER = 4320;
+	private static final int CLOTHES = 4318;
+	// Reward
 	private static final int THEME_OF_SOLITUDE = 4420;
-	// Misc
-	private static final int MIN_LEVEL = 15;
 	
 	public Q00363_SorrowfulSoundOfFlute()
 	{
 		super(363);
+		registerQuestItems(NANARIN_FLUTE, BLACK_BEER, CLOTHES);
 		addStartNpc(NANARIN);
-		addTalkId(NANARIN, POITAN, RANSPO, ALDO, HOLVAS, OPIX, BARBADO);
-		registerQuestItems(EVENT_CLOTHES, NANARINS_FLUTE, SABRINS_BLACK_BEER);
+		addTalkId(NANARIN, OPIX, ALDO, RANSPO, HOLVAS, BARBADO, POITAN);
 	}
 	
 	@Override
-	public String onAdvEvent(String event, Npc npc, Player player)
+	public String onEvent(String event, Npc npc, Player player)
 	{
-		final QuestState qs = getQuestState(player, false);
-		if (qs == null)
+		String htmltext = event;
+		final QuestState st = getQuestState(player, false);
+		if (st == null)
 		{
-			return null;
+			return htmltext;
 		}
 		
-		String htmltext = null;
 		switch (event)
 		{
-			case "START":
+			case "30956-02.htm":
 			{
-				if (player.getLevel() >= MIN_LEVEL)
-				{
-					qs.startQuest();
-					qs.setMemoState(2);
-					htmltext = "30956-02.htm";
-				}
-				else
-				{
-					htmltext = "30956-03.htm";
-				}
+				st.startQuest();
 				break;
 			}
-			case "30956-05.html":
+			case "30956-05.htm":
 			{
-				giveItems(player, EVENT_CLOTHES, 1);
-				qs.setMemoState(4);
-				qs.setCond(3, true);
-				htmltext = event;
+				st.setCond(3, true);
+				giveItems(player, CLOTHES, 1);
 				break;
 			}
-			case "30956-06.html":
+			case "30956-06.htm":
 			{
-				giveItems(player, NANARINS_FLUTE, 1);
-				qs.setMemoState(4);
-				qs.setCond(3, true);
-				htmltext = event;
+				st.setCond(3, true);
+				giveItems(player, NANARIN_FLUTE, 1);
 				break;
 			}
-			case "30956-07.html":
+			case "30956-07.htm":
 			{
-				giveItems(player, SABRINS_BLACK_BEER, 1);
-				qs.setMemoState(4);
-				qs.setCond(3, true);
-				htmltext = event;
+				st.setCond(3, true);
+				giveItems(player, BLACK_BEER, 1);
 				break;
 			}
 		}
+		
 		return htmltext;
 	}
 	
 	@Override
 	public String onTalk(Npc npc, Player player)
 	{
-		final QuestState qs = getQuestState(player, true);
 		String htmltext = getNoQuestMsg(player);
-		switch (qs.getState())
+		final QuestState st = getQuestState(player, true);
+		
+		switch (st.getState())
 		{
 			case State.CREATED:
 			{
-				if (npc.getId() == NANARIN)
-				{
-					htmltext = "30956-01.htm";
-				}
+				htmltext = (player.getLevel() < 15) ? "30956-03.htm" : "30956-01.htm";
 				break;
 			}
 			case State.STARTED:
 			{
+				final int cond = st.getCond();
 				switch (npc.getId())
 				{
 					case NANARIN:
 					{
-						switch (qs.getMemoState())
+						if (cond == 1)
 						{
-							case 2:
+							htmltext = "30956-02.htm";
+						}
+						else if (cond == 2)
+						{
+							htmltext = "30956-04.htm";
+						}
+						else if (cond == 3)
+						{
+							htmltext = "30956-08.htm";
+						}
+						else if (cond == 4)
+						{
+							if (st.getInt("success") == 1)
 							{
-								htmltext = "30956-04.html";
-								break;
+								htmltext = "30956-09.htm";
+								giveItems(player, THEME_OF_SOLITUDE, 1);
+								playSound(player, QuestSound.ITEMSOUND_QUEST_FINISH);
 							}
-							case 4:
+							else
 							{
-								htmltext = "30956-08.html";
-								break;
-							}
-							case 5:
-							{
-								rewardItems(player, THEME_OF_SOLITUDE, 1);
-								qs.exitQuest(true, true);
-								htmltext = "30956-09.html";
-								break;
-							}
-							case 6:
-							{
-								qs.exitQuest(true, false);
+								htmltext = "30956-10.htm";
 								playSound(player, QuestSound.ITEMSOUND_QUEST_GIVEUP);
-								htmltext = "30956-10.html";
-								break;
 							}
-						}
-						break;
-					}
-					case POITAN:
-					{
-						if (qs.isMemoState(2) && ((qs.getInt("ex") % 100) < 10))
-						{
-							final int ex = qs.getInt("ex");
-							qs.set("ex", ex + 11);
-							switch (getRandom(3))
-							{
-								case 0:
-								{
-									htmltext = "30458-01.html";
-									break;
-								}
-								case 1:
-								{
-									htmltext = "30458-02.html";
-									break;
-								}
-								case 2:
-								{
-									htmltext = "30458-03.html";
-									break;
-								}
-							}
-							qs.setCond(2, true);
-						}
-						else if ((qs.getMemoState() >= 2) && ((qs.getInt("ex") % 100) >= 10))
-						{
-							htmltext = "30458-04.html";
-						}
-						break;
-					}
-					case RANSPO:
-					{
-						if (qs.isMemoState(2) && ((qs.getInt("ex") % 10000) < 1000))
-						{
-							final int ex = qs.getInt("ex");
-							qs.set("ex", ex + 1001);
-							switch (getRandom(3))
-							{
-								case 0:
-								{
-									htmltext = "30594-01.html";
-									break;
-								}
-								case 1:
-								{
-									htmltext = "30594-02.html";
-									break;
-								}
-								case 2:
-								{
-									htmltext = "30594-03.html";
-									break;
-								}
-							}
-							qs.setCond(2, true);
-						}
-						else if ((qs.getMemoState() >= 2) && ((qs.getInt("ex") % 10000) >= 1000))
-						{
-							htmltext = "30594-04.html";
-						}
-						break;
-					}
-					case ALDO:
-					{
-						if (qs.isMemoState(2) && ((qs.getInt("ex") % 100000) < 10000))
-						{
-							final int ex = qs.getInt("ex");
-							qs.set("ex", ex + 10001);
-							switch (getRandom(3))
-							{
-								case 0:
-								{
-									htmltext = "30057-01.html";
-									break;
-								}
-								case 1:
-								{
-									htmltext = "30057-02.html";
-									break;
-								}
-								case 2:
-								{
-									htmltext = "30057-03.html";
-									break;
-								}
-							}
-							qs.setCond(2, true);
-						}
-						else if ((qs.getMemoState() >= 2) && ((qs.getInt("ex") % 100000) >= 10000))
-						{
-							htmltext = "30057-04.html";
-						}
-						break;
-					}
-					case HOLVAS:
-					{
-						if (qs.isMemoState(2) && ((qs.getInt("ex") % 1000) < 100))
-						{
-							final int ex = qs.getInt("ex");
-							qs.set("ex", ex + 101);
-							switch (getRandom(3))
-							{
-								case 0:
-								{
-									htmltext = "30058-01.html";
-									break;
-								}
-								case 1:
-								{
-									htmltext = "30058-02.html";
-									break;
-								}
-								case 2:
-								{
-									htmltext = "30058-03.html";
-									break;
-								}
-							}
-							qs.setCond(2, true);
-						}
-						else if ((qs.getMemoState() >= 2) && ((qs.getInt("ex") % 1000) >= 100))
-						{
-							htmltext = "30058-04.html";
+							st.exitQuest(true);
 						}
 						break;
 					}
 					case OPIX:
+					case POITAN:
+					case ALDO:
+					case RANSPO:
+					case HOLVAS:
 					{
-						if (qs.isMemoState(2) && (qs.getInt("ex") < 100000))
+						htmltext = npc.getId() + "-01.htm";
+						if (cond == 1)
 						{
-							final int ex = qs.getInt("ex");
-							qs.set("ex", ex + 100001);
-							switch (getRandom(3))
-							{
-								case 0:
-								{
-									htmltext = "30595-01.html";
-									break;
-								}
-								case 1:
-								{
-									htmltext = "30595-02.html";
-									break;
-								}
-								case 2:
-								{
-									htmltext = "30595-03.html";
-									break;
-								}
-							}
-							qs.setCond(2, true);
-						}
-						else if ((qs.getMemoState() >= 2) && (qs.getInt("ex") >= 100000))
-						{
-							htmltext = "30595-04.html";
+							st.setCond(2, true);
 						}
 						break;
 					}
 					case BARBADO:
 					{
-						if (qs.isMemoState(4))
+						if (cond == 3)
 						{
-							final int ex = (qs.getInt("ex") % 10) * 20;
-							if (getRandom(100) < ex)
+							st.setCond(4, true);
+							
+							if (hasQuestItems(player, NANARIN_FLUTE))
 							{
-								if (hasQuestItems(player, EVENT_CLOTHES))
-								{
-									takeItems(player, EVENT_CLOTHES, -1);
-								}
-								else if (hasQuestItems(player, NANARINS_FLUTE))
-								{
-									takeItems(player, NANARINS_FLUTE, -1);
-								}
-								else if (hasQuestItems(player, SABRINS_BLACK_BEER))
-								{
-									takeItems(player, SABRINS_BLACK_BEER, -1);
-								}
-								qs.setMemoState(5);
-								qs.setCond(4, true);
-								htmltext = "30959-01.html";
+								htmltext = "30959-02.htm";
+								st.set("success", "1");
 							}
 							else
 							{
-								qs.setMemoState(6);
-								qs.setCond(4, true);
-								htmltext = "30959-02.html";
+								htmltext = "30959-01.htm";
 							}
+							
+							takeItems(player, BLACK_BEER, -1);
+							takeItems(player, CLOTHES, -1);
+							takeItems(player, NANARIN_FLUTE, -1);
 						}
-						else if (qs.getMemoState() >= 5)
+						else if (cond == 4)
 						{
-							htmltext = "30959-03.html";
+							htmltext = "30959-03.htm";
 						}
 						break;
 					}
@@ -357,6 +180,7 @@ public class Q00363_SorrowfulSoundOfFlute extends Quest
 				break;
 			}
 		}
+		
 		return htmltext;
 	}
 }

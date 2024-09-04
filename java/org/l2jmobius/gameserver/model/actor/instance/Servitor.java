@@ -397,7 +397,7 @@ public class Servitor extends Summon implements Runnable
 		// check if the summon's lifetime has ran out
 		if (_lifeTimeRemaining < 0)
 		{
-			sendPacket(SystemMessageId.YOUR_SERVITOR_PASSED_AWAY);
+			sendPacket(SystemMessageId.SERVITOR_PASSED_AWAY);
 			unSummon(getOwner());
 			return;
 		}
@@ -420,7 +420,7 @@ public class Servitor extends Summon implements Runnable
 				}
 				else
 				{
-					sendPacket(SystemMessageId.SINCE_YOU_DO_NOT_HAVE_ENOUGH_ITEMS_TO_MAINTAIN_THE_SERVITOR_S_STAY_THE_SERVITOR_HAS_DISAPPEARED);
+					sendPacket(SystemMessageId.SINCE_YOU_DO_NOT_HAVE_ENOUGH_ITEMS_TO_MAINTAIN_THE_SERVITOR_S_STAY_THE_SERVITOR_WILL_DISAPPEAR);
 					unSummon(getOwner());
 				}
 			}

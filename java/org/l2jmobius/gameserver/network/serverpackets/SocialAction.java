@@ -16,19 +16,17 @@
  */
 package org.l2jmobius.gameserver.network.serverpackets;
 
+import org.l2jmobius.commons.network.WritableBuffer;
+import org.l2jmobius.gameserver.network.GameClient;
 import org.l2jmobius.gameserver.network.ServerPackets;
 
 public class SocialAction extends ServerPacket
 {
-	public static final int LEVEL_UP = 15; // 2122
+	public static final int LEVEL_UP = 15;
 	
 	private final int _objectId;
 	private final int _actionId;
 	
-	/**
-	 * @param objectId
-	 * @param actionId
-	 */
 	public SocialAction(int objectId, int actionId)
 	{
 		_objectId = objectId;
@@ -36,10 +34,16 @@ public class SocialAction extends ServerPacket
 	}
 	
 	@Override
-	public void write()
+	public void writeImpl(GameClient client, WritableBuffer buffer)
 	{
-		ServerPackets.SOCIAL_ACTION.writeId(this);
-		writeInt(_objectId);
-		writeInt(_actionId);
+		ServerPackets.SOCIAL_ACTION.writeId(this, buffer);
+		buffer.writeInt(_objectId);
+		buffer.writeInt(_actionId);
+	}
+	
+	@Override
+	public boolean canBeDropped(GameClient client)
+	{
+		return true;
 	}
 }

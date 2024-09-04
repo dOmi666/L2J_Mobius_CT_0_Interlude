@@ -18,13 +18,11 @@ package org.l2jmobius.gameserver.network.clientpackets;
 
 import java.util.List;
 
-import org.l2jmobius.commons.network.ReadablePacket;
 import org.l2jmobius.gameserver.enums.PlayerCondOverride;
 import org.l2jmobius.gameserver.model.actor.Player;
 import org.l2jmobius.gameserver.model.item.EtcItem;
 import org.l2jmobius.gameserver.model.item.ItemTemplate;
 import org.l2jmobius.gameserver.model.item.instance.Item;
-import org.l2jmobius.gameserver.network.GameClient;
 import org.l2jmobius.gameserver.network.SystemMessageId;
 import org.l2jmobius.gameserver.network.serverpackets.InventoryUpdate;
 import org.l2jmobius.gameserver.network.serverpackets.SystemMessage;
@@ -32,7 +30,7 @@ import org.l2jmobius.gameserver.network.serverpackets.SystemMessage;
 /**
  * @author Zoey76
  */
-public class RequestUnEquipItem implements ClientPacket
+public class RequestUnEquipItem extends ClientPacket
 {
 	private int _slot;
 	
@@ -40,15 +38,15 @@ public class RequestUnEquipItem implements ClientPacket
 	 * Packet type id 0x16 format: cd
 	 */
 	@Override
-	public void read(ReadablePacket packet)
+	protected void readImpl()
 	{
-		_slot = packet.readInt();
+		_slot = readInt();
 	}
 	
 	@Override
-	public void run(GameClient client)
+	protected void runImpl()
 	{
-		final Player player = client.getPlayer();
+		final Player player = getPlayer();
 		if (player == null)
 		{
 			return;
@@ -64,7 +62,7 @@ public class RequestUnEquipItem implements ClientPacket
 		// The English system message say weapon, but it's applied to any equipped item.
 		if (player.isAttackingNow() || player.isCastingNow() || player.isCastingSimultaneouslyNow())
 		{
-			player.sendPacket(SystemMessageId.YOU_CANNOT_CHANGE_WEAPONS_DURING_AN_ATTACK);
+			player.sendPacket(SystemMessageId.YOU_MAY_NOT_EQUIP_ITEMS_WHILE_CASTING_OR_PERFORMING_A_SKILL);
 			return;
 		}
 		
@@ -88,13 +86,13 @@ public class RequestUnEquipItem implements ClientPacket
 		
 		if (!player.getInventory().canManipulateWithItemId(item.getId()))
 		{
-			player.sendPacket(SystemMessageId.THAT_ITEM_CANNOT_BE_TAKEN_OFF);
+			player.sendMessage("That item cannot be taken off.");
 			return;
 		}
 		
 		if (item.isWeapon() && item.getWeaponItem().isForceEquip() && !player.canOverrideCond(PlayerCondOverride.ITEM_CONDITIONS))
 		{
-			player.sendPacket(SystemMessageId.THAT_ITEM_CANNOT_BE_TAKEN_OFF);
+			player.sendMessage("That item cannot be taken off.");
 			return;
 		}
 		
@@ -120,7 +118,7 @@ public class RequestUnEquipItem implements ClientPacket
 			
 			final InventoryUpdate iu = new InventoryUpdate();
 			iu.addItems(unequipped);
-			player.sendPacket(iu);
+			player.sendInventoryUpdate(iu);
 		}
 	}
 }

@@ -16,10 +16,6 @@
  */
 package org.l2jmobius.gameserver.model.actor.instance;
 
-import org.l2jmobius.gameserver.data.xml.CategoryData;
-import org.l2jmobius.gameserver.enums.CategoryType;
-import org.l2jmobius.gameserver.enums.ClassId;
-import org.l2jmobius.gameserver.enums.Race;
 import org.l2jmobius.gameserver.model.actor.templates.NpcTemplate;
 
 public class VillageMasterMystic extends VillageMaster
@@ -31,25 +27,5 @@ public class VillageMasterMystic extends VillageMaster
 	public VillageMasterMystic(NpcTemplate template)
 	{
 		super(template);
-	}
-	
-	@Override
-	protected final boolean checkVillageMasterRace(ClassId pClass)
-	{
-		if (pClass == null)
-		{
-			return false;
-		}
-		return (pClass.getRace() == Race.HUMAN) || (pClass.getRace() == Race.ELF);
-	}
-	
-	@Override
-	protected final boolean checkVillageMasterTeachType(ClassId pClass)
-	{
-		if (pClass == null)
-		{
-			return false;
-		}
-		return CategoryData.getInstance().isInCategory(CategoryType.MAGE_GROUP, pClass.getId());
 	}
 }

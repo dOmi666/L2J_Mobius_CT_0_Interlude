@@ -222,11 +222,11 @@
 		<set name="operateType" val="A1" />
 		<set name="targetType" val="NONE" />
 	</skill>
-	<skill id="2213" levels="22" name="Escape - to X Town">
-		<table name="#coordX">-84200 46915 9723 -45208 115158 -80831 -12728 15633 17860 83378 105760 111388 82916 85289 117052 146818 147922 43840 87326 149800 107946 -118092</table>
-		<table name="#coordY">244566 51441 15576 -112502 -178170 149808 122726 142962 170191 147999 113064 219331 53210 16225 76884 25807 -55316 -47779 -143370 -79999 -52280 46955</table>
-		<table name="#coordZ">-3728 -2976 -4568 -240 -880 -3040 -3112 -2696 -3496 -3400 -3176 -3544 -1488 -3672 -2688 -2008 -2728 -792 -1319 -5568 -2408 342</table>
-		<table name="#itemConsumeId">7117 7118 7119 7120 7121 7122 7123 7124 7125 7126 7127 7128 7129 7130 7131 7132 7133 7134 7135 7618 7619 9647</table>
+	<skill id="2213" levels="21" name="Escape - Talking Island Village">
+		<table name="#coordX">-84200 46915 9723 -45208 115158 -80831 -12728 15633 17860 83378 105760 111388 82916 85289 117052 146818 147922 43840 87326 149800 107946</table>
+		<table name="#coordY">244566 51441 15576 -112502 -178170 149808 122726 142962 170191 147999 113064 219331 53210 16225 76884 25807 -55316 -47779 -143370 -79999 -52280</table>
+		<table name="#coordZ">-3728 -2976 -4568 -240 -880 -3040 -3112 -2696 -3496 -3400 -3176 -3544 -1488 -3672 -2688 -2008 -2728 -792 -1319 -5568 -2408</table>
+		<table name="#itemConsumeId">7117 7118 7119 7120 7121 7122 7123 7124 7125 7126 7127 7128 7129 7130 7131 7132 7133 7134 7135 7618 7619</table>
 		<set name="hitTime" val="20000" />
 		<set name="isMagic" val="2" /> <!-- Static Skill -->
 		<set name="itemConsumeCount" val="1" />
@@ -1575,7 +1575,7 @@
 			<effect name="RestorationRandom" />
 		</for>
 	</skill>
-	<skill id="2274" levels="8" name="Fisherman's Potion Green">
+	<skill id="2274" levels="8" name="Fisherman's Potion – Green">
 		<!-- Fisherman's Potion Green. Fishing Mastery Level is now reduced.You can now catch green fish. -->
 		<table name="#active_skill_id_lvl">1315,4 1315,7 1315,10 1315,13 1315,16 1315,19 1315,22 1315,25</table>
 		<table name="#icons">icon.etc_oblivion_green_i00 icon.etc_oblivion_jade_i00 icon.etc_oblivion_blue_i00 icon.etc_oblivion_yellow_i00 icon.etc_oblivion_orange_i00 icon.etc_oblivion_violet_i00 icon.etc_oblivion_red_i00 icon.etc_oblivion_white_i00</table>
@@ -1730,7 +1730,7 @@
 		<set name="abnormalType" val="ATTACK_TIME_DOWN" />
 		<set name="effectPoint" val="100" />
 		<set name="hitTime" val="100" />
-		<set name="icon" val="BranchSys2.icon.etc_attack_sp_herb_i01" />
+		<set name="icon" val="icon.etc_attack_sp_herb_i00" />
 		<set name="isMagic" val="2" /> <!-- Static Skill -->
 		<set name="magicLevel" val="52" />
 		<set name="operateType" val="A2" />
@@ -1790,7 +1790,7 @@
 		<set name="abnormalType" val="SPEED_UP" />
 		<set name="effectPoint" val="100" />
 		<set name="hitTime" val="100" />
-		<set name="icon" val="BranchSys2.icon.etc_move_herb_i01" />
+		<set name="icon" val="icon.etc_move_herb_i00" />
 		<set name="isMagic" val="2" /> <!-- Static Skill -->
 		<set name="magicLevel" val="30" />
 		<set name="operateType" val="A2" />
@@ -1828,6 +1828,7 @@
 		<set name="isMagic" val="2" /> <!-- Static Skill -->
 		<set name="magicLevel" val="1" />
 		<set name="operateType" val="A1" />
+		<set name="reuseDelay" val="300000" />
 		<set name="targetType" val="SELF" />
 		<cond msgId="113" addName="1">
 			<player levelRange="#levelRange" />
@@ -1844,6 +1845,7 @@
 		<set name="isMagic" val="2" /> <!-- Static Skill -->
 		<set name="magicLevel" val="1" />
 		<set name="operateType" val="A1" />
+		<set name="reuseDelay" val="300000" />
 		<set name="targetType" val="SELF" />
 		<cond msgId="113" addName="1">
 			<player levelRange="#levelRange" />
@@ -1860,6 +1862,7 @@
 		<set name="isMagic" val="2" /> <!-- Static Skill -->
 		<set name="magicLevel" val="1" />
 		<set name="operateType" val="A1" />
+		<set name="reuseDelay" val="300000" />
 		<set name="targetType" val="SELF" />
 		<cond msgId="113" addName="1">
 			<player levelRange="#levelRange" />

@@ -16,15 +16,12 @@
  */
 package quests.Q00070_SagaOfThePhoenixKnight;
 
-import org.l2jmobius.gameserver.model.Location;
-
-import quests.AbstractSagaQuest;
+import quests.SagasSuperClass;
 
 /**
- * Saga of the Phoenix Knight (70)
  * @author Emperorc
  */
-public class Q00070_SagaOfThePhoenixKnight extends AbstractSagaQuest
+public class Q00070_SagaOfThePhoenixKnight extends SagasSuperClass
 {
 	public Q00070_SagaOfThePhoenixKnight()
 	{
@@ -73,11 +70,23 @@ public class Q00070_SagaOfThePhoenixKnight extends AbstractSagaQuest
 		{
 			0x05
 		};
-		_npcSpawnLocations = new Location[]
+		_x = new int[]
 		{
-			new Location(191046, -40640, -3042),
-			new Location(46087, -36372, -1685),
-			new Location(46066, -36396, -1685)
+			191046,
+			46087,
+			46066
+		};
+		_y = new int[]
+		{
+			-40640,
+			-36372,
+			-36396
+		};
+		_z = new int[]
+		{
+			-3042,
+			-1685,
+			-1685
 		};
 		_text = new String[]
 		{

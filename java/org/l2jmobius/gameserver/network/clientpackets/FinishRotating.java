@@ -17,39 +17,35 @@
 package org.l2jmobius.gameserver.network.clientpackets;
 
 import org.l2jmobius.Config;
-import org.l2jmobius.commons.network.ReadablePacket;
 import org.l2jmobius.gameserver.model.actor.Player;
-import org.l2jmobius.gameserver.network.GameClient;
 import org.l2jmobius.gameserver.network.serverpackets.StopRotation;
 
-/**
- * @version $Revision: 1.1.4.3 $ $Date: 2005/03/27 15:29:30 $
- */
-public class FinishRotating implements ClientPacket
+public class FinishRotating extends ClientPacket
 {
 	private int _degree;
 	
 	@Override
-	public void read(ReadablePacket packet)
+	protected void readImpl()
 	{
-		_degree = packet.readInt();
-		packet.readInt(); // Unknown.
+		_degree = readInt();
+		readInt(); // Unknown.
 	}
 	
 	@Override
-	public void run(GameClient client)
+	protected void runImpl()
 	{
 		if (!Config.ENABLE_KEYBOARD_MOVEMENT)
 		{
 			return;
 		}
 		
-		final Player player = client.getPlayer();
+		final Player player = getPlayer();
 		if (player == null)
 		{
 			return;
 		}
 		
+		player.setHeading(_degree);
 		player.broadcastPacket(new StopRotation(player.getObjectId(), _degree, 0));
 	}
 }

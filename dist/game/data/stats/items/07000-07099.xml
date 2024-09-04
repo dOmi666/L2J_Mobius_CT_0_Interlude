@@ -205,7 +205,7 @@
 		<set name="immediate_effect" val="true" />
 		<set name="material" val="BONE" />
 		<set name="weight" val="1380" />
-		<set name="price" val="9900" />
+		<set name="price" val="12900" />
 		<cond msgId="1518">
 			<and>
 				<player races="HUMAN,ELF,DARK_ELF,ORC,DWARF" />
@@ -923,7 +923,7 @@
 	</item>
 	<item id="7075" type="EtcItem" name="Entrance Pass to the Sepulcher">
 		<!-- Pass necessary for entry into the 4th sepulcher at the Imperial Tomb. Ask the Nameless Spirit at the entrance of the 4th sepulcher for directions. -->
-		<set name="icon" val="icon.etc_memopad_i00" />
+		<set name="icon" val="icon.etc_bead_silver_i00" />
 		<set name="immediate_effect" val="true" />
 		<set name="material" val="PAPER" />
 		<set name="is_stackable" val="true" />

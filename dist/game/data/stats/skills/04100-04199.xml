@@ -1291,9 +1291,9 @@
 			</effect>
 		</for>
 	</skill>
-	<skill id="4164" levels="18" name="Paralysis">
+	<skill id="4164" levels="9" name="Paralysis">
 		<!-- Paralyzes a target, instantly immobilizing it. -->
-		<table name="#magicLevel">40 44 48 52 56 60 64 68 72 74 76 78 80 81 82 83 84 85</table>
+		<table name="#magicLevel">40 44 48 52 56 60 64 68 72</table>
 		<set name="abnormalLevel" val="1" />
 		<set name="abnormalTime" val="120" />
 		<set name="abnormalType" val="PARALYZE" />
@@ -1317,11 +1317,11 @@
 			<effect name="Paralyze" />
 		</for>
 	</skill>
-	<skill id="4165" levels="17" name="Icy Air">
+	<skill id="4165" levels="9" name="Icy Air">
 		<!-- Inflicts continuous damage by Icy Air. Effect 5. -->
-		<table name="#abnormalLevels">5 5 5 6 6 7 7 8 8 8 8 8 8 8 8 8 8</table>
-		<table name="#dot">102 102 102 125 125 144 144 157 157 157 157 164 164 164 164 164 164</table>
-		<table name="#magicLevel">40 44 48 52 56 62 66 70 74 76 78 80 81 82 83 84 85</table>
+		<table name="#abnormalLevels">5 5 5 6 6 7 7 8 8</table>
+		<table name="#dot">102 102 102 125 125 144 144 157 157</table>
+		<table name="#magicLevel">40 44 48 52 56 62 66 70 74</table>
 		<set name="abnormalLevel" val="#abnormalLevels" />
 		<set name="abnormalTime" val="15" />
 		<set name="abnormalType" val="DOT_ATTR" />
@@ -1342,9 +1342,9 @@
 			</effect>
 		</for>
 	</skill>
-	<skill id="4166" levels="18" name="Shock">
+	<skill id="4166" levels="9" name="Shock">
 		<!-- A state of shock that temporarily prevents movement. -->
-		<table name="#magicLevel">40 44 48 52 56 60 64 68 72 74 76 78 80 81 82 83 84 85</table>
+		<table name="#magicLevel">40 44 48 52 56 60 64 68 72</table>
 		<set name="abnormalLevel" val="1" />
 		<set name="abnormalTime" val="9" />
 		<set name="abnormalType" val="STUN" />
@@ -1577,8 +1577,8 @@
 		<table name="#mpConsume">15 22 29 39 49 59 68 72 75 76 77 79</table>
 		<set name="affectRange" val="200" />
 		<set name="effectPoint" val="-100" />
-		<set name="hitTime" val="8500" />
-		<set name="magicLevel" val="1" />
+		<set name="hitTime" val="1500" />
+		<set name="magicLevel" val="#magicLevel" />
 		<set name="mpConsume" val="#mpConsume" />
 		<set name="operateType" val="A1" />
 		<set name="targetType" val="AURA" />

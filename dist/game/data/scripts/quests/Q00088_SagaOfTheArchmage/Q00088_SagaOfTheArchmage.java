@@ -16,15 +16,12 @@
  */
 package quests.Q00088_SagaOfTheArchmage;
 
-import org.l2jmobius.gameserver.model.Location;
-
-import quests.AbstractSagaQuest;
+import quests.SagasSuperClass;
 
 /**
- * Saga of the Archmage (88)
  * @author Emperorc
  */
-public class Q00088_SagaOfTheArchmage extends AbstractSagaQuest
+public class Q00088_SagaOfTheArchmage extends SagasSuperClass
 {
 	public Q00088_SagaOfTheArchmage()
 	{
@@ -73,11 +70,23 @@ public class Q00088_SagaOfTheArchmage extends AbstractSagaQuest
 		{
 			0x0c
 		};
-		_npcSpawnLocations = new Location[]
+		_x = new int[]
 		{
-			new Location(191046, -40640, -3042),
-			new Location(46066, -36396, -1685),
-			new Location(46087, -36372, -1685)
+			191046,
+			46066,
+			46087
+		};
+		_y = new int[]
+		{
+			-40640,
+			-36396,
+			-36372
+		};
+		_z = new int[]
+		{
+			-3042,
+			-1685,
+			-1685
 		};
 		_text = new String[]
 		{

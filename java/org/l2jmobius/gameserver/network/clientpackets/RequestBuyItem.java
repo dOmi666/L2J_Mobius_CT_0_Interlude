@@ -23,7 +23,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.l2jmobius.Config;
-import org.l2jmobius.commons.network.ReadablePacket;
 import org.l2jmobius.gameserver.data.xml.BuyListData;
 import org.l2jmobius.gameserver.model.WorldObject;
 import org.l2jmobius.gameserver.model.actor.Creature;
@@ -32,27 +31,26 @@ import org.l2jmobius.gameserver.model.actor.instance.Merchant;
 import org.l2jmobius.gameserver.model.buylist.BuyListHolder;
 import org.l2jmobius.gameserver.model.buylist.Product;
 import org.l2jmobius.gameserver.model.holders.ItemHolder;
-import org.l2jmobius.gameserver.network.GameClient;
 import org.l2jmobius.gameserver.network.PacketLogger;
 import org.l2jmobius.gameserver.network.SystemMessageId;
 import org.l2jmobius.gameserver.network.serverpackets.ActionFailed;
-import org.l2jmobius.gameserver.network.serverpackets.ItemList;
 import org.l2jmobius.gameserver.network.serverpackets.StatusUpdate;
 import org.l2jmobius.gameserver.util.Util;
 
-public class RequestBuyItem implements ClientPacket
+public class RequestBuyItem extends ClientPacket
 {
 	private static final int BATCH_LENGTH = 8;
+	private static final int CUSTOM_CB_SELL_LIST = 423;
 	
 	private int _listId;
 	private List<ItemHolder> _items = null;
 	
 	@Override
-	public void read(ReadablePacket packet)
+	protected void readImpl()
 	{
-		_listId = packet.readInt();
-		final int size = packet.readInt();
-		if ((size <= 0) || (size > Config.MAX_ITEM_IN_PACKET) || ((size * BATCH_LENGTH) != packet.getRemainingLength()))
+		_listId = readInt();
+		final int size = readInt();
+		if ((size <= 0) || (size > Config.MAX_ITEM_IN_PACKET) || ((size * BATCH_LENGTH) != remaining()))
 		{
 			return;
 		}
@@ -60,8 +58,8 @@ public class RequestBuyItem implements ClientPacket
 		_items = new ArrayList<>(size);
 		for (int i = 0; i < size; i++)
 		{
-			final int itemId = packet.readInt();
-			final int count = packet.readInt();
+			final int itemId = readInt();
+			final int count = readInt();
 			if ((count > Integer.MAX_VALUE) || (itemId < 1) || (count < 1))
 			{
 				_items = null;
@@ -79,15 +77,15 @@ public class RequestBuyItem implements ClientPacket
 	}
 	
 	@Override
-	public void run(GameClient client)
+	protected void runImpl()
 	{
-		final Player player = client.getPlayer();
+		final Player player = getPlayer();
 		if (player == null)
 		{
 			return;
 		}
 		
-		if (!client.getFloodProtectors().canPerformTransaction())
+		if (!getClient().getFloodProtectors().canPerformTransaction())
 		{
 			player.sendMessage("You are buying too fast.");
 			return;
@@ -109,7 +107,7 @@ public class RequestBuyItem implements ClientPacket
 		
 		final WorldObject target = player.getTarget();
 		Creature merchant = null;
-		if (!player.isGM())
+		if (!player.isGM() && (_listId != CUSTOM_CB_SELL_LIST))
 		{
 			if (!(target instanceof Merchant) || (!player.isInsideRadius3D(target, INTERACTION_DISTANCE)) || (player.getInstanceId() != target.getInstanceId()))
 			{
@@ -121,7 +119,7 @@ public class RequestBuyItem implements ClientPacket
 		
 		double castleTaxRate = 0;
 		double baseTaxRate = 0;
-		if ((merchant == null) && !player.isGM())
+		if ((merchant == null) && !player.isGM() && (_listId != CUSTOM_CB_SELL_LIST))
 		{
 			player.sendPacket(ActionFailed.STATIC_PACKET);
 			return;
@@ -191,7 +189,7 @@ public class RequestBuyItem implements ClientPacket
 			
 			if ((price == 0) && !player.isGM() && Config.ONLY_GM_ITEMS_FREE)
 			{
-				player.sendMessage("Ohh Cheat dont work? You have a problem now!");
+				player.sendMessage("Ohh Cheat does not work? You have a problem now!");
 				Util.handleIllegalPlayerAction(player, "Warning!! Character " + player.getName() + " of account " + player.getAccountName() + " tried buy item for 0 adena.", Config.DEFAULT_PUNISH);
 				return;
 			}
@@ -278,6 +276,7 @@ public class RequestBuyItem implements ClientPacket
 		final StatusUpdate su = new StatusUpdate(player);
 		su.addAttribute(StatusUpdate.CUR_LOAD, player.getCurrentLoad());
 		player.sendPacket(su);
-		player.sendPacket(new ItemList(player, true));
+		player.sendItemList(true);
+		player.sendPacket(SystemMessageId.THE_TRANSACTION_IS_COMPLETE);
 	}
 }

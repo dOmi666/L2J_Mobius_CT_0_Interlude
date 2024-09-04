@@ -87,9 +87,9 @@ public enum ExClientPackets
 		}
 	}
 	
-	private int _packetId;
-	private Supplier<ClientPacket> _packetSupplier;
-	private Set<ConnectionState> _connectionStates;
+	private final int _packetId;
+	private final Supplier<ClientPacket> _packetSupplier;
+	private final Set<ConnectionState> _connectionStates;
 	
 	ExClientPackets(int packetId, Supplier<ClientPacket> packetSupplier, ConnectionState... connectionStates)
 	{

@@ -75,7 +75,7 @@ public class Petition
 			else
 			{
 				// Ending petition consultation with <Player>.
-				SystemMessage sm = new SystemMessage(SystemMessageId.ENDING_PETITION_CONSULTATION_WITH_C1);
+				SystemMessage sm = new SystemMessage(SystemMessageId.ENDING_PETITION_CONSULTATION_WITH_S1);
 				sm.addString(_petitioner.getName());
 				_responder.sendPacket(sm);
 				
@@ -92,7 +92,7 @@ public class Petition
 		// End petition consultation and inform them, if they are still online. And if petitioner is online, enable Evaluation button
 		if ((_petitioner != null) && _petitioner.isOnline())
 		{
-			_petitioner.sendPacket(SystemMessageId.THIS_ENDS_THE_GM_PETITION_CONSULTATION_NPLEASE_GIVE_US_FEEDBACK_ON_THE_PETITION_SERVICE);
+			_petitioner.sendPacket(SystemMessageId.THIS_ENDS_THE_GM_PETITION_CONSULTATION_PLEASE_TAKE_A_MOMENT_TO_PROVIDE_FEEDBACK_ABOUT_THIS_SERVICE);
 			// _petitioner.sendPacket(PetitionVotePacket.STATIC_PACKET);
 		}
 		

@@ -24,81 +24,75 @@ import org.l2jmobius.gameserver.model.quest.Quest;
 import org.l2jmobius.gameserver.model.quest.QuestState;
 import org.l2jmobius.gameserver.model.quest.State;
 import org.l2jmobius.gameserver.network.NpcStringId;
-import org.l2jmobius.gameserver.network.serverpackets.NpcSay;
 
-/**
- * Blood Fiend (164)
- * @author xban1x
- */
 public class Q00164_BloodFiend extends Quest
 {
-	// NPC
-	private static final int CREAMEES = 30149;
-	// Monster
-	private static final int KIRUNAK = 27021;
 	// Item
 	private static final int KIRUNAK_SKULL = 1044;
-	// Misc
-	private static final int MIN_LEVEL = 21;
 	
 	public Q00164_BloodFiend()
 	{
 		super(164);
-		addStartNpc(CREAMEES);
-		addTalkId(CREAMEES);
-		addKillId(KIRUNAK);
 		registerQuestItems(KIRUNAK_SKULL);
+		addStartNpc(30149);
+		addTalkId(30149);
+		addKillId(27021);
 	}
 	
 	@Override
-	public String onAdvEvent(String event, Npc npc, Player player)
+	public String onEvent(String event, Npc npc, Player player)
 	{
-		final QuestState qs = getQuestState(player, false);
-		if ((qs != null) && event.equals("30149-04.htm"))
+		String htmltext = event;
+		final QuestState st = getQuestState(player, false);
+		if (st == null)
 		{
-			qs.startQuest();
-			return event;
+			return htmltext;
 		}
-		return null;
-	}
-	
-	@Override
-	public String onKill(Npc npc, Player killer, boolean isSummon)
-	{
-		final QuestState qs = getQuestState(killer, false);
-		if ((qs != null) && qs.isCond(1))
+		
+		if (event.equals("30149-04.htm"))
 		{
-			npc.broadcastPacket(new NpcSay(npc, ChatType.GENERAL, NpcStringId.I_HAVE_FULFILLED_MY_CONTRACT_WITH_TRADER_CREAMEES));
-			giveItems(killer, KIRUNAK_SKULL, 1);
-			qs.setCond(2, true);
+			st.startQuest();
 		}
-		return super.onKill(npc, killer, isSummon);
+		
+		return htmltext;
 	}
 	
 	@Override
 	public String onTalk(Npc npc, Player player)
 	{
-		final QuestState qs = getQuestState(player, true);
 		String htmltext = getNoQuestMsg(player);
-		switch (qs.getState())
+		final QuestState st = getQuestState(player, true);
+		
+		switch (st.getState())
 		{
 			case State.CREATED:
 			{
-				htmltext = (player.getRace() != Race.DARK_ELF) ? player.getLevel() >= MIN_LEVEL ? "30149-03.htm" : "30149-02.htm" : "30149-00.htm";
+				if (player.getRace() == Race.DARK_ELF)
+				{
+					htmltext = "30149-00.htm";
+				}
+				else if (player.getLevel() < 21)
+				{
+					htmltext = "30149-02.htm";
+				}
+				else
+				{
+					htmltext = "30149-03.htm";
+				}
 				break;
 			}
 			case State.STARTED:
 			{
-				if (qs.isCond(2) && hasQuestItems(player, KIRUNAK_SKULL))
+				if (hasQuestItems(player, KIRUNAK_SKULL))
 				{
+					htmltext = "30149-06.htm";
+					takeItems(player, KIRUNAK_SKULL, 1);
 					giveAdena(player, 42130, true);
-					addExpAndSp(player, 35637, 1854);
-					qs.exitQuest(false, true);
-					htmltext = "30149-06.html";
+					st.exitQuest(false, true);
 				}
 				else
 				{
-					htmltext = "30149-05.html";
+					htmltext = "30149-05.htm";
 				}
 				break;
 			}
@@ -108,6 +102,20 @@ public class Q00164_BloodFiend extends Quest
 				break;
 			}
 		}
+		
 		return htmltext;
+	}
+	
+	@Override
+	public String onKill(Npc npc, Player killer, boolean isSummon)
+	{
+		final QuestState qs = getQuestState(killer, false);
+		if ((qs != null) && qs.isCond(1))
+		{
+			npc.broadcastSay(ChatType.GENERAL, NpcStringId.I_HAVE_FULFILLED_MY_CONTRACT_WITH_TRADER_CREAMEES);
+			giveItems(killer, KIRUNAK_SKULL, 1);
+			qs.setCond(2, true);
+		}
+		return super.onKill(npc, killer, isSummon);
 	}
 }

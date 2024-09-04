@@ -16,488 +16,452 @@
  */
 package quests.Q00422_RepentYourSins;
 
-import org.l2jmobius.Config;
 import org.l2jmobius.gameserver.enums.QuestSound;
 import org.l2jmobius.gameserver.model.actor.Npc;
 import org.l2jmobius.gameserver.model.actor.Player;
 import org.l2jmobius.gameserver.model.actor.Summon;
-import org.l2jmobius.gameserver.model.item.instance.Item;
 import org.l2jmobius.gameserver.model.quest.Quest;
 import org.l2jmobius.gameserver.model.quest.QuestState;
-import org.l2jmobius.gameserver.util.Util;
+import org.l2jmobius.gameserver.model.quest.State;
 
-/**
- * Repent Your Sins (422)
- * @author ivantotov
- */
 public class Q00422_RepentYourSins extends Quest
 {
 	// NPCs
-	private static final int BLACKSMITH_PUSHKIN = 30300;
-	private static final int PIOTUR = 30597;
-	private static final int ELDER_CASIAN = 30612;
-	private static final int KATARI = 30668;
-	private static final int MAGISTER_JOAN = 30718;
 	private static final int BLACK_JUDGE = 30981;
+	private static final int KATARI = 30668;
+	private static final int PIOTUR = 30597;
+	private static final int CASIAN = 30612;
+	private static final int JOAN = 30718;
+	private static final int PUSHKIN = 30300;
 	// Items
-	private static final int RATMAN_SCAVENGERS_SKULL = 4326;
-	private static final int TUREK_WAR_HOUNDS_TAIL = 4327;
-	private static final int TYRANT_KINGPINS_HEART = 4328;
-	private static final int TRISALIM_TARANTULAS_VENOM_SAC = 4329;
-	private static final int PENITENTS_MANACLES1 = 4330;
+	private static final int RATMAN_SCAVENGER_SKULL = 4326;
+	private static final int TUREK_WAR_HOUND_TAIL = 4327;
+	private static final int TYRANT_KINGPIN_HEART = 4328;
+	private static final int TRISALIM_TARANTULA_VENOM_SAC = 4329;
+	private static final int QITEM_PENITENT_MANACLES = 4330;
 	private static final int MANUAL_OF_MANACLES = 4331;
-	private static final int PENITENTS_MANACLES = 4425;
-	// Reward
-	private static final int MANACLES_OF_PENITENT = 4426;
-	// Materials
+	private static final int PENITENT_MANACLES = 4425;
+	private static final int LEFT_PENITENT_MANACLES = 4426;
 	private static final int SILVER_NUGGET = 1873;
-	private static final int ADAMANTITE_NUGGET = 1877;
+	private static final int ADAMANTINE_NUGGET = 1877;
+	private static final int BLACKSMITH_FRAME = 1892;
 	private static final int COKES = 1879;
 	private static final int STEEL = 1880;
-	private static final int BLACKSMITHS_FRAME = 1892;
-	// Monster
-	private static final int SCAVENGER_WERERAT = 20039;
-	private static final int TYRANT_KINGPIN = 20193;
-	private static final int TUREK_WAR_HOUND = 20494;
-	private static final int TRISALIM_TARANTULA = 20561;
 	
 	public Q00422_RepentYourSins()
 	{
 		super(422);
+		registerQuestItems(RATMAN_SCAVENGER_SKULL, TUREK_WAR_HOUND_TAIL, TYRANT_KINGPIN_HEART, TRISALIM_TARANTULA_VENOM_SAC, MANUAL_OF_MANACLES, PENITENT_MANACLES, QITEM_PENITENT_MANACLES);
 		addStartNpc(BLACK_JUDGE);
-		addTalkId(BLACK_JUDGE, BLACKSMITH_PUSHKIN, PIOTUR, ELDER_CASIAN, KATARI, MAGISTER_JOAN);
-		addKillId(SCAVENGER_WERERAT, TYRANT_KINGPIN, TUREK_WAR_HOUND, TRISALIM_TARANTULA);
-		registerQuestItems(RATMAN_SCAVENGERS_SKULL, TUREK_WAR_HOUNDS_TAIL, TYRANT_KINGPINS_HEART, TRISALIM_TARANTULAS_VENOM_SAC, PENITENTS_MANACLES1, MANUAL_OF_MANACLES, PENITENTS_MANACLES);
+		addTalkId(BLACK_JUDGE, KATARI, PIOTUR, CASIAN, JOAN, PUSHKIN);
+		addKillId(20039, 20494, 20193, 20561);
 	}
 	
 	@Override
-	public String onAdvEvent(String event, Npc npc, Player player)
+	public String onEvent(String event, Npc npc, Player player)
 	{
-		final QuestState qs = getQuestState(player, false);
-		if (qs == null)
+		String htmltext = event;
+		final QuestState st = getQuestState(player, false);
+		if (st == null)
 		{
-			return null;
+			return htmltext;
 		}
 		
-		String htmltext = null;
 		switch (event)
 		{
-			case "ACCEPT":
+			case "Start":
 			{
-				qs.startQuest();
-				if ((player.getLevel() > 20) && (player.getLevel() < 31))
+				st.startQuest();
+				if (player.getLevel() <= 20)
 				{
-					playSound(player, QuestSound.ITEMSOUND_QUEST_ACCEPT);
-					qs.setMemoState(2);
-					qs.setCond(3);
-					htmltext = "30981-04.htm";
-				}
-				else if (player.getLevel() < 21)
-				{
-					qs.setMemoState(1);
-					qs.setMemoStateEx(1, 0);
-					qs.setCond(2);
 					htmltext = "30981-03.htm";
+					st.setCond(2);
 				}
-				else if ((player.getLevel() > 30) && (player.getLevel() < 41))
+				else if ((player.getLevel() >= 20) && (player.getLevel() <= 30))
 				{
-					qs.setMemoState(3);
-					qs.setCond(4);
+					htmltext = "30981-04.htm";
+					st.setCond(3);
+				}
+				else if ((player.getLevel() >= 30) && (player.getLevel() <= 40))
+				{
 					htmltext = "30981-05.htm";
+					st.setCond(4);
 				}
 				else
 				{
-					qs.setMemoState(4);
-					qs.setCond(5);
 					htmltext = "30981-06.htm";
+					st.setCond(5);
 				}
 				break;
 			}
-			case "30981-11.html":
+			case "30981-11.htm":
 			{
-				if ((qs.getMemoState() >= 9) && (qs.getMemoState() <= 12) && hasAtLeastOneQuestItem(player, MANACLES_OF_PENITENT, PENITENTS_MANACLES1))
+				if (!hasQuestItems(player, PENITENT_MANACLES))
 				{
-					if (hasQuestItems(player, PENITENTS_MANACLES1))
-					{
-						takeItems(player, PENITENTS_MANACLES1, 1);
-					}
+					final int cond = st.getCond();
 					
-					if (hasQuestItems(player, MANACLES_OF_PENITENT))
+					// Case you return back the qitem to Black Judge. She rewards you with the pet item.
+					if (cond == 15)
 					{
-						takeItems(player, MANACLES_OF_PENITENT, 1);
+						st.setCond(16);
+						st.set("level", String.valueOf(player.getLevel()));
+						playSound(player, QuestSound.ITEMSOUND_QUEST_ITEMGET);
+						takeItems(player, QITEM_PENITENT_MANACLES, -1);
+						giveItems(player, PENITENT_MANACLES, 1);
 					}
-					qs.setMemoStateEx(1, player.getLevel());
-					giveItems(player, PENITENTS_MANACLES, 1);
-					qs.setCond(16);
-					htmltext = event;
+					// Case you return back to Black Judge with leftover of previous quest.
+					else if (cond == 16)
+					{
+						st.set("level", String.valueOf(player.getLevel()));
+						playSound(player, QuestSound.ITEMSOUND_QUEST_ITEMGET);
+						takeItems(player, LEFT_PENITENT_MANACLES, -1);
+						giveItems(player, PENITENT_MANACLES, 1);
+					}
 				}
 				break;
 			}
-			case "30981-14.html":
-			case "30981-17.html":
+			case "30981-19.htm":
 			{
-				if ((qs.getMemoState() >= 9) && (qs.getMemoState() <= 12))
+				if (hasQuestItems(player, LEFT_PENITENT_MANACLES))
 				{
-					htmltext = event;
+					st.setState(State.STARTED);
+					st.setCond(16, true);
 				}
 				break;
 			}
-			case "30981-15t.html":
+			case "Pk":
 			{
-				final Item petItem = player.getInventory().getItemByItemId(PENITENTS_MANACLES);
-				final int petLevel = (petItem == null) ? 0 : petItem.getEnchantLevel();
-				if ((qs.getMemoState() >= 9) && (qs.getMemoState() <= 12) && (petLevel > qs.getMemoStateEx(1)))
+				final Summon pet = player.getSummon();
+				// If Sin Eater is currently summoned, show a warning.
+				if ((pet != null) && (pet.getId() == 12564))
 				{
-					final Summon summon = player.getSummon();
-					if (summon != null)
+					htmltext = "30981-16.htm";
+				}
+				else if (findSinEaterLvl(player) > st.getInt("level"))
+				{
+					takeItems(player, PENITENT_MANACLES, 1);
+					giveItems(player, LEFT_PENITENT_MANACLES, 1);
+					
+					final int removePkAmount = getRandom(10) + 1;
+					
+					// Player's PKs are lower than random amount ; finish the quest.
+					if (player.getPkKills() <= removePkAmount)
 					{
-						htmltext = event;
+						htmltext = "30981-15.htm";
+						st.exitQuest(true, true);
+						
+						player.setPkKills(0);
+						player.updateUserInfo();
 					}
+					// Player's PK are bigger than random amount ; continue the quest.
 					else
 					{
-						int i1 = 0;
-						if (player.getLevel() > qs.getMemoStateEx(1))
-						{
-							i1 = petLevel - qs.getMemoStateEx(1) - (player.getLevel() - qs.getMemoStateEx(1));
-						}
-						else
-						{
-							i1 = petLevel - qs.getMemoStateEx(1);
-						}
+						htmltext = "30981-14.htm";
+						st.set("level", String.valueOf(player.getLevel()));
+						playSound(player, QuestSound.ITEMSOUND_QUEST_MIDDLE);
 						
-						if (i1 < 0)
-						{
-							i1 = 0;
-						}
-						
-						final int i0 = getRandom(i1) + 1;
-						if (player.getPkKills() <= i0)
-						{
-							giveItems(player, MANACLES_OF_PENITENT, 1);
-							if (petItem != null)
-							{
-								takeItems(player, PENITENTS_MANACLES, -1);
-							}
-							htmltext = "30981-15.html";
-							player.setPkKills(0);
-							qs.exitQuest(true, true);
-						}
-						else
-						{
-							giveItems(player, MANACLES_OF_PENITENT, 1);
-							if (petItem != null)
-							{
-								takeItems(player, PENITENTS_MANACLES, -1);
-							}
-							htmltext = "30981-16.html";
-							player.setPkKills(player.getPkKills() - i0);
-							qs.setMemoStateEx(1, 0);
-						}
+						player.setPkKills(player.getPkKills() - removePkAmount);
+						player.updateUserInfo();
 					}
 				}
 				break;
 			}
-			case "30981-18.html":
+			case "Quit":
 			{
-				if ((qs.getMemoState() >= 9) && (qs.getMemoState() <= 12))
-				{
-					qs.exitQuest(true, true);
-					htmltext = event;
-				}
+				htmltext = "30981-20.htm";
+				takeItems(player, RATMAN_SCAVENGER_SKULL, -1);
+				takeItems(player, TUREK_WAR_HOUND_TAIL, -1);
+				takeItems(player, TYRANT_KINGPIN_HEART, -1);
+				takeItems(player, TRISALIM_TARANTULA_VENOM_SAC, -1);
+				takeItems(player, MANUAL_OF_MANACLES, -1);
+				takeItems(player, PENITENT_MANACLES, -1);
+				takeItems(player, QITEM_PENITENT_MANACLES, -1);
+				st.exitQuest(true, true);
 				break;
 			}
 		}
+		
 		return htmltext;
-	}
-	
-	@Override
-	public String onKill(Npc npc, Player killer, boolean isSummon)
-	{
-		final QuestState qs = getQuestState(killer, false);
-		if ((qs != null) && qs.isStarted() && Util.checkIfInRange(Config.ALT_PARTY_RANGE, npc, killer, true))
-		{
-			switch (npc.getId())
-			{
-				case SCAVENGER_WERERAT:
-				{
-					if (qs.isMemoState(5) && (getQuestItemsCount(killer, RATMAN_SCAVENGERS_SKULL) < 10))
-					{
-						if (getQuestItemsCount(killer, RATMAN_SCAVENGERS_SKULL) == 9)
-						{
-							giveItems(killer, RATMAN_SCAVENGERS_SKULL, 1);
-							playSound(killer, QuestSound.ITEMSOUND_QUEST_MIDDLE);
-						}
-						else
-						{
-							giveItems(killer, RATMAN_SCAVENGERS_SKULL, 1);
-							playSound(killer, QuestSound.ITEMSOUND_QUEST_ITEMGET);
-						}
-					}
-					break;
-				}
-				case TYRANT_KINGPIN:
-				{
-					if (qs.isMemoState(7) && !hasQuestItems(killer, TYRANT_KINGPINS_HEART))
-					{
-						giveItems(killer, TYRANT_KINGPINS_HEART, 1);
-						playSound(killer, QuestSound.ITEMSOUND_QUEST_MIDDLE);
-					}
-					break;
-				}
-				case TUREK_WAR_HOUND:
-				{
-					if (qs.isMemoState(6) && (getQuestItemsCount(killer, TUREK_WAR_HOUNDS_TAIL) < 10))
-					{
-						if (getQuestItemsCount(killer, TUREK_WAR_HOUNDS_TAIL) == 9)
-						{
-							giveItems(killer, TUREK_WAR_HOUNDS_TAIL, 1);
-							playSound(killer, QuestSound.ITEMSOUND_QUEST_MIDDLE);
-						}
-						else
-						{
-							giveItems(killer, TUREK_WAR_HOUNDS_TAIL, 1);
-							playSound(killer, QuestSound.ITEMSOUND_QUEST_ITEMGET);
-						}
-					}
-					break;
-				}
-				case TRISALIM_TARANTULA:
-				{
-					if (qs.isMemoState(8) && (getQuestItemsCount(killer, TRISALIM_TARANTULAS_VENOM_SAC) < 3))
-					{
-						if (getQuestItemsCount(killer, TRISALIM_TARANTULAS_VENOM_SAC) == 2)
-						{
-							giveItems(killer, TRISALIM_TARANTULAS_VENOM_SAC, 1);
-							playSound(killer, QuestSound.ITEMSOUND_QUEST_MIDDLE);
-						}
-						else
-						{
-							giveItems(killer, TRISALIM_TARANTULAS_VENOM_SAC, 1);
-							playSound(killer, QuestSound.ITEMSOUND_QUEST_ITEMGET);
-						}
-					}
-					break;
-				}
-			}
-		}
-		return super.onKill(npc, killer, isSummon);
 	}
 	
 	@Override
 	public String onTalk(Npc npc, Player player)
 	{
-		final QuestState qs = getQuestState(player, true);
-		final int memoState = qs.getMemoState();
-		String htmltext = getNoQuestMsg(player);
-		if (qs.isCreated())
+		String htmltext = getAlreadyCompletedMsg(player);
+		final QuestState st = player.getQuestState(getName());
+		if (st == null)
 		{
-			if (npc.getId() == BLACK_JUDGE)
+			return htmltext;
+		}
+		
+		switch (st.getState())
+		{
+			case State.CREATED:
 			{
-				if (player.getPkKills() == 0)
+				if (player.getPkKills() >= 1)
 				{
-					htmltext = "30981-01.htm";
+					htmltext = (hasQuestItems(player, LEFT_PENITENT_MANACLES)) ? "30981-18.htm" : "30981-02.htm";
 				}
 				else
 				{
-					htmltext = "30981-02.htm";
+					htmltext = "30981-01.htm";
 				}
+				break;
 			}
-		}
-		else if (qs.isStarted())
-		{
-			switch (npc.getId())
+			case State.STARTED:
 			{
-				case BLACK_JUDGE:
+				final int cond = st.getCond();
+				switch (npc.getId())
 				{
-					if (memoState == 1000)
+					case BLACK_JUDGE:
 					{
-						takeItems(player, PENITENTS_MANACLES, 1);
-					}
-					else if (memoState < 9)
-					{
-						htmltext = "30981-07.html";
-					}
-					else if ((memoState >= 9) && (memoState <= 12))
-					{
-						if (!hasAtLeastOneQuestItem(player, MANUAL_OF_MANACLES, MANACLES_OF_PENITENT, PENITENTS_MANACLES1, PENITENTS_MANACLES))
+						if (cond <= 9)
 						{
+							htmltext = "30981-07.htm";
+						}
+						else if ((cond > 9) && (cond < 14))
+						{
+							htmltext = "30981-08.htm";
+							st.setCond(14, true);
 							giveItems(player, MANUAL_OF_MANACLES, 1);
-							qs.setCond(14, true);
-							htmltext = "30981-08.html";
 						}
-						else if (hasQuestItems(player, MANUAL_OF_MANACLES) && !hasAtLeastOneQuestItem(player, MANACLES_OF_PENITENT, PENITENTS_MANACLES1, PENITENTS_MANACLES))
+						else if (cond == 14)
 						{
-							htmltext = "30981-09.html";
+							htmltext = "30981-09.htm";
 						}
-						else if (hasQuestItems(player, PENITENTS_MANACLES1) && !hasAtLeastOneQuestItem(player, MANUAL_OF_MANACLES, MANACLES_OF_PENITENT, PENITENTS_MANACLES))
+						else if (cond == 15)
 						{
-							htmltext = "30981-10.html";
+							htmltext = "30981-10.htm";
 						}
-						else if (hasQuestItems(player, PENITENTS_MANACLES))
+						else if (cond == 16)
 						{
-							final Item petItem = player.getInventory().getItemByItemId(PENITENTS_MANACLES);
-							final int petLevel = (petItem == null) ? 0 : petItem.getEnchantLevel();
-							if (petLevel < (qs.getMemoStateEx(1) + 1))
+							if (hasQuestItems(player, PENITENT_MANACLES))
 							{
-								htmltext = "30981-12.html";
+								htmltext = (findSinEaterLvl(player) > st.getInt("level")) ? "30981-13.htm" : "30981-12.htm";
 							}
 							else
 							{
-								htmltext = "30981-13.html";
+								htmltext = "30981-18.htm";
 							}
 						}
-						else if (hasQuestItems(player, MANACLES_OF_PENITENT) && !hasQuestItems(player, PENITENTS_MANACLES))
-						{
-							htmltext = "30981-16t.html";
-						}
+						break;
 					}
-					break;
-				}
-				case BLACKSMITH_PUSHKIN:
-				{
-					if ((memoState >= 9) && (memoState <= 12))
+					case KATARI:
 					{
-						if (!hasAtLeastOneQuestItem(player, PENITENTS_MANACLES1, PENITENTS_MANACLES, MANACLES_OF_PENITENT) && hasQuestItems(player, MANUAL_OF_MANACLES))
+						if (cond == 2)
 						{
-							if ((getQuestItemsCount(player, BLACKSMITHS_FRAME) > 0) && (getQuestItemsCount(player, STEEL) >= 5) && (getQuestItemsCount(player, ADAMANTITE_NUGGET) >= 2) && (getQuestItemsCount(player, SILVER_NUGGET) >= 10) && (getQuestItemsCount(player, COKES) >= 10))
+							htmltext = "30668-01.htm";
+							st.setCond(6, true);
+						}
+						else if (cond == 6)
+						{
+							if (getQuestItemsCount(player, RATMAN_SCAVENGER_SKULL) < 10)
 							{
+								htmltext = "30668-02.htm";
+							}
+							else
+							{
+								htmltext = "30668-03.htm";
+								st.setCond(10, true);
+								takeItems(player, RATMAN_SCAVENGER_SKULL, -1);
+							}
+						}
+						else if (cond == 10)
+						{
+							htmltext = "30668-04.htm";
+						}
+						break;
+					}
+					case PIOTUR:
+					{
+						if (cond == 3)
+						{
+							htmltext = "30597-01.htm";
+							st.setCond(7, true);
+						}
+						else if (cond == 7)
+						{
+							if (getQuestItemsCount(player, TUREK_WAR_HOUND_TAIL) < 10)
+							{
+								htmltext = "30597-02.htm";
+							}
+							else
+							{
+								htmltext = "30597-03.htm";
+								st.setCond(11, true);
+								takeItems(player, TUREK_WAR_HOUND_TAIL, -1);
+							}
+						}
+						else if (cond == 11)
+						{
+							htmltext = "30597-04.htm";
+						}
+						break;
+					}
+					case CASIAN:
+					{
+						if (cond == 4)
+						{
+							htmltext = "30612-01.htm";
+							st.setCond(8, true);
+						}
+						else if (cond == 8)
+						{
+							if (!hasQuestItems(player, TYRANT_KINGPIN_HEART))
+							{
+								htmltext = "30612-02.htm";
+							}
+							else
+							{
+								htmltext = "30612-03.htm";
+								st.setCond(12, true);
+								takeItems(player, TYRANT_KINGPIN_HEART, -1);
+							}
+						}
+						else if (cond == 12)
+						{
+							htmltext = "30612-04.htm";
+						}
+						break;
+					}
+					case JOAN:
+					{
+						if (cond == 5)
+						{
+							htmltext = "30718-01.htm";
+							st.setCond(9, true);
+						}
+						else if (cond == 9)
+						{
+							if (getQuestItemsCount(player, TRISALIM_TARANTULA_VENOM_SAC) < 3)
+							{
+								htmltext = "30718-02.htm";
+							}
+							else
+							{
+								htmltext = "30718-03.htm";
+								st.setCond(13, true);
+								takeItems(player, TRISALIM_TARANTULA_VENOM_SAC, -1);
+							}
+						}
+						else if (cond == 13)
+						{
+							htmltext = "30718-04.htm";
+						}
+						break;
+					}
+					case PUSHKIN:
+					{
+						if ((cond == 14) && (getQuestItemsCount(player, MANUAL_OF_MANACLES) == 1))
+						{
+							if ((getQuestItemsCount(player, SILVER_NUGGET) < 10) || (getQuestItemsCount(player, STEEL) < 5) || (getQuestItemsCount(player, ADAMANTINE_NUGGET) < 2) || (getQuestItemsCount(player, COKES) < 10) || (getQuestItemsCount(player, BLACKSMITH_FRAME) < 1))
+							{
+								htmltext = "30300-02.htm";
+							}
+							else
+							{
+								htmltext = "30300-01.htm";
+								st.setCond(15, true);
+								
+								takeItems(player, MANUAL_OF_MANACLES, 1);
 								takeItems(player, SILVER_NUGGET, 10);
-								takeItems(player, ADAMANTITE_NUGGET, 2);
+								takeItems(player, ADAMANTINE_NUGGET, 2);
 								takeItems(player, COKES, 10);
 								takeItems(player, STEEL, 5);
-								takeItems(player, BLACKSMITHS_FRAME, 1);
-								giveItems(player, PENITENTS_MANACLES1, 1);
-								takeItems(player, MANUAL_OF_MANACLES, 1);
-								qs.setCond(15, true);
-								htmltext = "30300-01.html";
-							}
-							else
-							{
-								htmltext = "30300-02.html";
+								takeItems(player, BLACKSMITH_FRAME, 1);
+								
+								giveItems(player, QITEM_PENITENT_MANACLES, 1);
 							}
 						}
-						else if (hasAtLeastOneQuestItem(player, PENITENTS_MANACLES1, PENITENTS_MANACLES, MANACLES_OF_PENITENT))
+						else if (hasAtLeastOneQuestItem(player, QITEM_PENITENT_MANACLES, PENITENT_MANACLES, LEFT_PENITENT_MANACLES))
 						{
-							htmltext = "30300-03.html";
+							htmltext = "30300-03.htm";
 						}
+						break;
 					}
-					break;
-					
 				}
-				case PIOTUR:
-				{
-					if (memoState == 2)
-					{
-						qs.setMemoState(6);
-						qs.setCond(7, true);
-						htmltext = "30597-01.html";
-					}
-					else if (memoState == 6)
-					{
-						if (getQuestItemsCount(player, TUREK_WAR_HOUNDS_TAIL) < 10)
-						{
-							htmltext = "30597-02.html";
-						}
-						else
-						{
-							takeItems(player, TUREK_WAR_HOUNDS_TAIL, -1);
-							qs.setMemoState(10);
-							qs.setCond(11, true);
-							htmltext = "30597-03.html";
-						}
-					}
-					else if (memoState == 10)
-					{
-						htmltext = "30597-04.html";
-					}
-					break;
-				}
-				case ELDER_CASIAN:
-				{
-					if (memoState == 3)
-					{
-						qs.setMemoState(7);
-						qs.setCond(8, true);
-						htmltext = "30612-01.html";
-					}
-					else if (memoState == 7)
-					{
-						if (!hasQuestItems(player, TYRANT_KINGPINS_HEART))
-						{
-							htmltext = "30612-02.html";
-						}
-						else
-						{
-							takeItems(player, TYRANT_KINGPINS_HEART, -1);
-							qs.setMemoState(11);
-							qs.setCond(12, true);
-							htmltext = "30612-03.html";
-						}
-					}
-					else if (memoState == 11)
-					{
-						htmltext = "30612-04.html";
-					}
-					break;
-				}
-				case KATARI:
-				{
-					if (memoState == 1)
-					{
-						qs.setMemoState(5);
-						qs.setCond(6, true);
-						htmltext = "30668-01.html";
-					}
-					else if (memoState == 5)
-					{
-						if (getQuestItemsCount(player, RATMAN_SCAVENGERS_SKULL) < 10)
-						{
-							htmltext = "30668-02.html";
-						}
-						else
-						{
-							takeItems(player, RATMAN_SCAVENGERS_SKULL, -1);
-							qs.setMemoState(9);
-							qs.setCond(10, true);
-							htmltext = "30668-03.html";
-						}
-					}
-					else if (memoState == 9)
-					{
-						htmltext = "30668-04.html";
-					}
-					break;
-				}
-				case MAGISTER_JOAN:
-				{
-					if (memoState == 4)
-					{
-						qs.setMemoState(8);
-						qs.setCond(9, true);
-						htmltext = "30718-01.html";
-					}
-					else if (memoState == 8)
-					{
-						if (getQuestItemsCount(player, TRISALIM_TARANTULAS_VENOM_SAC) < 3)
-						{
-							htmltext = "30718-02.html";
-						}
-						else
-						{
-							takeItems(player, TRISALIM_TARANTULAS_VENOM_SAC, -1);
-							qs.setMemoState(12);
-							qs.setCond(13, true);
-							htmltext = "30718-03.html";
-						}
-					}
-					else if (memoState == 12)
-					{
-						htmltext = "30718-04.html";
-					}
-					break;
-				}
+				break;
 			}
 		}
+		
 		return htmltext;
+	}
+	
+	@Override
+	public String onKill(Npc npc, Player player, boolean isPet)
+	{
+		final QuestState st = getQuestState(player, false);
+		if ((st == null) || !st.isStarted())
+		{
+			return null;
+		}
+		
+		switch (npc.getId())
+		{
+			case 20039:
+			{
+				if (st.isCond(6) && (getQuestItemsCount(player, RATMAN_SCAVENGER_SKULL) < 10))
+				{
+					giveItems(player, RATMAN_SCAVENGER_SKULL, 1);
+					if (getQuestItemsCount(player, RATMAN_SCAVENGER_SKULL) < 10)
+					{
+						playSound(player, QuestSound.ITEMSOUND_QUEST_ITEMGET);
+					}
+					else
+					{
+						playSound(player, QuestSound.ITEMSOUND_QUEST_MIDDLE);
+					}
+				}
+				break;
+			}
+			case 20494:
+			{
+				if (st.isCond(7) && (getQuestItemsCount(player, TUREK_WAR_HOUND_TAIL) < 10))
+				{
+					giveItems(player, TUREK_WAR_HOUND_TAIL, 1);
+					if (getQuestItemsCount(player, TUREK_WAR_HOUND_TAIL) < 10)
+					{
+						playSound(player, QuestSound.ITEMSOUND_QUEST_ITEMGET);
+					}
+					else
+					{
+						playSound(player, QuestSound.ITEMSOUND_QUEST_MIDDLE);
+					}
+				}
+				break;
+			}
+			case 20193:
+			{
+				if (st.isCond(8) && !hasQuestItems(player, TYRANT_KINGPIN_HEART))
+				{
+					giveItems(player, TYRANT_KINGPIN_HEART, 1);
+					playSound(player, QuestSound.ITEMSOUND_QUEST_MIDDLE);
+				}
+				break;
+			}
+			case 20561:
+			{
+				if (st.isCond(9) && (getQuestItemsCount(player, TRISALIM_TARANTULA_VENOM_SAC) < 3))
+				{
+					giveItems(player, TRISALIM_TARANTULA_VENOM_SAC, 1);
+					if (getQuestItemsCount(player, TRISALIM_TARANTULA_VENOM_SAC) < 3)
+					{
+						playSound(player, QuestSound.ITEMSOUND_QUEST_ITEMGET);
+					}
+					else
+					{
+						playSound(player, QuestSound.ITEMSOUND_QUEST_MIDDLE);
+					}
+				}
+				break;
+			}
+		}
+		
+		return null;
+	}
+	
+	private static int findSinEaterLvl(Player player)
+	{
+		return player.getInventory().getItemByItemId(PENITENT_MANACLES).getEnchantLevel();
 	}
 }

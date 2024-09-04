@@ -17,11 +17,9 @@
 package org.l2jmobius.gameserver.network.clientpackets;
 
 import org.l2jmobius.Config;
-import org.l2jmobius.commons.network.ReadablePacket;
 import org.l2jmobius.gameserver.data.xml.AdminData;
 import org.l2jmobius.gameserver.instancemanager.PetitionManager;
 import org.l2jmobius.gameserver.model.actor.Player;
-import org.l2jmobius.gameserver.network.GameClient;
 import org.l2jmobius.gameserver.network.SystemMessageId;
 import org.l2jmobius.gameserver.network.serverpackets.SystemMessage;
 
@@ -35,22 +33,22 @@ import org.l2jmobius.gameserver.network.serverpackets.SystemMessage;
  * </p>
  * @author -Wooden-, TempyIncursion
  */
-public class RequestPetition implements ClientPacket
+public class RequestPetition extends ClientPacket
 {
 	private String _content;
 	private int _type; // 1 = on : 0 = off;
 	
 	@Override
-	public void read(ReadablePacket packet)
+	protected void readImpl()
 	{
-		_content = packet.readString();
-		_type = packet.readInt();
+		_content = readString();
+		_type = readInt();
 	}
 	
 	@Override
-	public void run(GameClient client)
+	protected void runImpl()
 	{
-		final Player player = client.getPlayer();
+		final Player player = getPlayer();
 		if (player == null)
 		{
 			return;
@@ -101,11 +99,11 @@ public class RequestPetition implements ClientPacket
 		}
 		
 		final int petitionId = PetitionManager.getInstance().submitPetition(player, _content, _type);
-		SystemMessage sm = new SystemMessage(SystemMessageId.YOUR_PETITION_APPLICATION_HAS_BEEN_ACCEPTED_N_RECEIPT_NO_IS_S1);
+		SystemMessage sm = new SystemMessage(SystemMessageId.YOUR_PETITION_APPLICATION_HAS_BEEN_ACCEPTED_RECEIPT_NO_IS_S1);
 		sm.addInt(petitionId);
 		player.sendPacket(sm);
 		
-		sm = new SystemMessage(SystemMessageId.YOU_HAVE_SUBMITTED_S1_PETITION_S_N_YOU_MAY_SUBMIT_S2_MORE_PETITION_S_TODAY);
+		sm = new SystemMessage(SystemMessageId.YOU_HAVE_SUBMITTED_S1_PETITION_S_YOU_MAY_SUBMIT_S2_MORE_PETITION_S_TODAY);
 		sm.addInt(totalPetitions);
 		sm.addInt(Config.MAX_PETITIONS_PER_PLAYER - totalPetitions);
 		player.sendPacket(sm);

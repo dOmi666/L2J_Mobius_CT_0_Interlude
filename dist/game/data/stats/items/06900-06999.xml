@@ -34,7 +34,7 @@
 		<set name="immediate_effect" val="true" />
 		<set name="material" val="BONE" />
 		<set name="weight" val="1380" />
-		<set name="price" val="9900" />
+		<set name="price" val="12900" />
 		<cond msgId="1518">
 			<and>
 				<player races="HUMAN,ELF,DARK_ELF,ORC,DWARF" />
@@ -106,7 +106,7 @@
 		<set name="etcitem_type" val="MATERIAL" />
 		<set name="immediate_effect" val="true" />
 		<set name="material" val="LIQUID" />
-		<set name="weight" val="30" />
+		<set name="weight" val="60" />
 		<set name="price" val="50" />
 		<set name="is_stackable" val="true" />
 	</item>
@@ -116,7 +116,7 @@
 		<set name="etcitem_type" val="MATERIAL" />
 		<set name="immediate_effect" val="true" />
 		<set name="material" val="LIQUID" />
-		<set name="weight" val="30" />
+		<set name="weight" val="60" />
 		<set name="price" val="250" />
 		<set name="is_stackable" val="true" />
 	</item>
@@ -126,7 +126,7 @@
 		<set name="etcitem_type" val="MATERIAL" />
 		<set name="immediate_effect" val="true" />
 		<set name="material" val="LIQUID" />
-		<set name="weight" val="30" />
+		<set name="weight" val="60" />
 		<set name="price" val="1250" />
 		<set name="is_stackable" val="true" />
 	</item>
@@ -136,7 +136,7 @@
 		<set name="etcitem_type" val="MATERIAL" />
 		<set name="immediate_effect" val="true" />
 		<set name="material" val="LIQUID" />
-		<set name="weight" val="30" />
+		<set name="weight" val="60" />
 		<set name="price" val="200" />
 		<set name="is_stackable" val="true" />
 	</item>
@@ -146,7 +146,7 @@
 		<set name="etcitem_type" val="MATERIAL" />
 		<set name="immediate_effect" val="true" />
 		<set name="material" val="LIQUID" />
-		<set name="weight" val="30" />
+		<set name="weight" val="60" />
 		<set name="price" val="300" />
 		<set name="is_stackable" val="true" />
 	</item>
@@ -156,7 +156,7 @@
 		<set name="etcitem_type" val="MATERIAL" />
 		<set name="immediate_effect" val="true" />
 		<set name="material" val="LIQUID" />
-		<set name="weight" val="30" />
+		<set name="weight" val="60" />
 		<set name="price" val="500" />
 		<set name="is_stackable" val="true" />
 	</item>
@@ -166,7 +166,7 @@
 		<set name="etcitem_type" val="MATERIAL" />
 		<set name="immediate_effect" val="true" />
 		<set name="material" val="LIQUID" />
-		<set name="weight" val="30" />
+		<set name="weight" val="60" />
 		<set name="price" val="1000" />
 		<set name="is_stackable" val="true" />
 	</item>
@@ -176,7 +176,7 @@
 		<set name="etcitem_type" val="MATERIAL" />
 		<set name="immediate_effect" val="true" />
 		<set name="material" val="LIQUID" />
-		<set name="weight" val="30" />
+		<set name="weight" val="60" />
 		<set name="price" val="300" />
 		<set name="is_stackable" val="true" />
 	</item>
@@ -186,7 +186,7 @@
 		<set name="etcitem_type" val="MATERIAL" />
 		<set name="immediate_effect" val="true" />
 		<set name="material" val="LIQUID" />
-		<set name="weight" val="30" />
+		<set name="weight" val="60" />
 		<set name="price" val="450" />
 		<set name="is_stackable" val="true" />
 	</item>

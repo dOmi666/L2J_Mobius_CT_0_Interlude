@@ -20,7 +20,7 @@ import java.util.List;
 
 import org.l2jmobius.Config;
 import org.l2jmobius.commons.util.Rnd;
-import org.l2jmobius.gameserver.data.ItemTable;
+import org.l2jmobius.gameserver.data.xml.ItemData;
 import org.l2jmobius.gameserver.handler.IItemHandler;
 import org.l2jmobius.gameserver.model.ExtractableProduct;
 import org.l2jmobius.gameserver.model.actor.Playable;
@@ -53,6 +53,11 @@ public class ExtractableItems implements IItemHandler
 			return false;
 		}
 		
+		if (player.isMoving() && !player.isDisabled())
+		{
+			player.stopMove(player.getLocation());
+		}
+		
 		// destroy item
 		if (!player.destroyItem("Extract", item.getObjectId(), 1, player, true))
 		{
@@ -72,7 +77,7 @@ public class ExtractableItems implements IItemHandler
 					continue;
 				}
 				
-				if (ItemTable.getInstance().getTemplate(expi.getId()).isStackable() || (createItemAmount == 1))
+				if (ItemData.getInstance().getTemplate(expi.getId()).isStackable() || (createItemAmount == 1))
 				{
 					player.addItem("Extract", expi.getId(), createItemAmount, player, true);
 				}
@@ -90,7 +95,7 @@ public class ExtractableItems implements IItemHandler
 		
 		if (!created)
 		{
-			player.sendPacket(SystemMessageId.THERE_WAS_NOTHING_FOUND_INSIDE);
+			player.sendPacket(SystemMessageId.THERE_WAS_NOTHING_FOUND_INSIDE_OF_THAT);
 		}
 		return true;
 	}

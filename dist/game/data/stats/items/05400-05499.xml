@@ -832,7 +832,7 @@
 		<set name="immediate_effect" val="true" />
 		<set name="material" val="LIQUID" />
 		<set name="weight" val="30" />
-		<set name="price" val="366000" />
+		<set name="price" val="976000" />
 		<set name="recipe_id" val="590" />
 		<set name="is_stackable" val="true" />
 		<set name="handler" val="Recipes" />
@@ -1342,7 +1342,7 @@
 	</item>
 	<item id="5490" type="EtcItem" name="Phoenix Necklace Beads">
 		<!-- An essential ingredient needed by a Dwarf to make Phoenix Armor. It can be sold at a regular store. -->
-		<set name="icon" val="BranchSys2.icon.etc_phoenixnecklace_beads_i00" />
+		<set name="icon" val="icon.etc_crystal_ball_green_i00" />
 		<set name="etcitem_type" val="MATERIAL" />
 		<set name="immediate_effect" val="true" />
 		<set name="material" val="LIQUID" />
@@ -1352,7 +1352,7 @@
 	</item>
 	<item id="5491" type="EtcItem" name="Inferno Necklace Beads">
 		<!-- An essential ingredient needed by a Dwarf to make an Inferno Necklace. It can be sold at a regular store. -->
-		<set name="icon" val="BranchSys2.icon.etc_majesticnecklace_beads_i00" />
+		<set name="icon" val="icon.etc_crystal_ball_green_i00" />
 		<set name="etcitem_type" val="MATERIAL" />
 		<set name="immediate_effect" val="true" />
 		<set name="material" val="LIQUID" />

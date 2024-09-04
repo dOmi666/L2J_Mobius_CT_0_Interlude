@@ -482,7 +482,7 @@ public class Auctioneer extends Npc
 				}
 				else if (player.getClan() == null)
 				{
-					player.sendPacket(SystemMessageId.YOU_DO_NOT_MEET_THE_REQUIREMENTS_TO_PARTICIPATE_IN_AN_AUCTION);
+					player.sendPacket(SystemMessageId.YOU_CANNOT_PARTICIPATE_IN_AN_AUCTION);
 					return;
 				}
 			}

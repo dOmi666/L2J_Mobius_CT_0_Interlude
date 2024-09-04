@@ -16,147 +16,171 @@
  */
 package quests.Q00379_FantasyWine;
 
-import org.l2jmobius.Config;
+import org.l2jmobius.gameserver.enums.QuestSound;
 import org.l2jmobius.gameserver.model.actor.Npc;
 import org.l2jmobius.gameserver.model.actor.Player;
-import org.l2jmobius.gameserver.model.holders.ItemHolder;
 import org.l2jmobius.gameserver.model.quest.Quest;
 import org.l2jmobius.gameserver.model.quest.QuestState;
-import org.l2jmobius.gameserver.util.Util;
+import org.l2jmobius.gameserver.model.quest.State;
 
-/**
- * Fantasy Wine (379)
- * @author Adry_85
- */
 public class Q00379_FantasyWine extends Quest
 {
-	// NPC
+	// NPCs
 	private static final int HARLAN = 30074;
-	// Items
-	private static final ItemHolder LEAF_OF_EUCALYPTUS = new ItemHolder(5893, 80);
-	private static final ItemHolder STONE_OF_CHILL = new ItemHolder(5894, 100);
-	private static final int OLD_WINE_15_YEAR = 5956;
-	private static final int OLD_WINE_30_YEAR = 5957;
-	private static final int OLD_WINE_60_YEAR = 5958;
 	// Monsters
-	private static final int ENKU_ORC_CHAMPION = 20291;
-	private static final int ENKU_ORC_SHAMAN = 20292;
-	// Misc
-	private static final int MIN_LEVEL = 20;
+	private static final int ENKU_CHAMPION = 20291;
+	private static final int ENKU_SHAMAN = 20292;
+	// Items
+	private static final int LEAF = 5893;
+	private static final int STONE = 5894;
 	
 	public Q00379_FantasyWine()
 	{
 		super(379);
+		registerQuestItems(LEAF, STONE);
 		addStartNpc(HARLAN);
 		addTalkId(HARLAN);
-		addKillId(ENKU_ORC_CHAMPION, ENKU_ORC_SHAMAN);
-		registerQuestItems(LEAF_OF_EUCALYPTUS.getId(), STONE_OF_CHILL.getId());
+		addKillId(ENKU_CHAMPION, ENKU_SHAMAN);
 	}
 	
 	@Override
-	public String onAdvEvent(String event, Npc npc, Player player)
+	public String onEvent(String event, Npc npc, Player player)
 	{
-		final QuestState qs = getQuestState(player, false);
-		if (qs == null)
+		String htmltext = event;
+		final QuestState st = getQuestState(player, false);
+		if (st == null)
 		{
-			return null;
+			return htmltext;
 		}
 		
-		String htmltext = null;
 		switch (event)
 		{
-			case "30074-02.htm":
-			case "30074-03.htm":
-			case "30074-05.html":
+			case "30074-3.htm":
 			{
-				htmltext = event;
+				st.startQuest();
 				break;
 			}
-			case "30074-04.htm":
+			case "30074-6.htm":
 			{
-				qs.startQuest();
-				htmltext = event;
-				break;
-			}
-			case "30074-11.html":
-			{
-				if (hasAllItems(player, true, LEAF_OF_EUCALYPTUS, STONE_OF_CHILL))
+				takeItems(player, LEAF, 80);
+				takeItems(player, STONE, 100);
+				final int rand = getRandom(10);
+				if (rand < 3)
 				{
-					final int random = getRandom(10);
-					final int item;
-					if (random < 3)
-					{
-						item = OLD_WINE_15_YEAR;
-						htmltext = event;
-					}
-					else if (random < 9)
-					{
-						item = OLD_WINE_30_YEAR;
-						htmltext = "30074-12.html";
-					}
-					else
-					{
-						item = OLD_WINE_60_YEAR;
-						htmltext = "30074-13.html";
-					}
-					
-					giveItems(player, item, 1);
-					takeAllItems(player, LEAF_OF_EUCALYPTUS, STONE_OF_CHILL);
-					qs.exitQuest(true, true);
+					htmltext = "30074-6.htm";
+					giveItems(player, 5956, 1);
 				}
+				else if (rand < 9)
+				{
+					htmltext = "30074-7.htm";
+					giveItems(player, 5957, 1);
+				}
+				else
+				{
+					htmltext = "30074-8.htm";
+					giveItems(player, 5958, 1);
+				}
+				st.exitQuest(true, true);
 				break;
 			}
-		}
-		return htmltext;
-	}
-	
-	@Override
-	public String onKill(Npc npc, Player killer, boolean isSummon)
-	{
-		final QuestState qs = getQuestState(killer, false);
-		if ((qs == null) || !Util.checkIfInRange(Config.ALT_PARTY_RANGE, npc, killer, true))
-		{
-			return null;
+			case "30074-2a.htm":
+			{
+				st.exitQuest(true);
+				break;
+			}
 		}
 		
-		final ItemHolder dropItem = ((npc.getId() == ENKU_ORC_CHAMPION) ? LEAF_OF_EUCALYPTUS : STONE_OF_CHILL);
-		if (giveItemRandomly(killer, npc, dropItem.getId(), 1, dropItem.getCount(), 1, true) && hasAllItems(killer, true, LEAF_OF_EUCALYPTUS, STONE_OF_CHILL))
-		{
-			qs.setCond(2);
-		}
-		return super.onKill(npc, killer, isSummon);
+		return htmltext;
 	}
 	
 	@Override
 	public String onTalk(Npc npc, Player player)
 	{
-		final QuestState qs = getQuestState(player, true);
 		String htmltext = getNoQuestMsg(player);
-		if (qs.isCreated())
+		final QuestState st = getQuestState(player, true);
+		
+		switch (st.getState())
 		{
-			htmltext = (player.getLevel() >= MIN_LEVEL) ? "30074-01.htm" : "30074-06.html";
+			case State.CREATED:
+			{
+				htmltext = (player.getLevel() < 20) ? "30074-0a.htm" : "30074-0.htm";
+				break;
+			}
+			case State.STARTED:
+			{
+				final int leaf = getQuestItemsCount(player, LEAF);
+				final int stone = getQuestItemsCount(player, STONE);
+				if ((leaf == 80) && (stone == 100))
+				{
+					htmltext = "30074-5.htm";
+				}
+				else if (leaf == 80)
+				{
+					htmltext = "30074-4a.htm";
+				}
+				else if (stone == 100)
+				{
+					htmltext = "30074-4b.htm";
+				}
+				else
+				{
+					htmltext = "30074-4.htm";
+				}
+				break;
+			}
 		}
-		else if (qs.isStarted())
+		
+		return htmltext;
+	}
+	
+	@Override
+	public String onKill(Npc npc, Player player, boolean isPet)
+	{
+		final QuestState st = getQuestState(player, false);
+		if ((st == null) || !st.isCond(1))
 		{
-			final boolean hasLeafOfEucalyptus = hasItem(player, LEAF_OF_EUCALYPTUS);
-			final boolean hasStoneOfChill = hasItem(player, STONE_OF_CHILL);
-			if (!hasLeafOfEucalyptus && !hasStoneOfChill)
+			return null;
+		}
+		
+		if (npc.getId() == ENKU_CHAMPION)
+		{
+			giveItems(player, LEAF, 1);
+			if (getQuestItemsCount(player, LEAF) < 80)
 			{
-				htmltext = "30074-07.html";
-			}
-			else if (hasLeafOfEucalyptus && !hasStoneOfChill)
-			{
-				htmltext = "30074-08.html";
-			}
-			else if (!hasLeafOfEucalyptus)
-			{
-				htmltext = "30074-09.html";
+				playSound(player, QuestSound.ITEMSOUND_QUEST_ITEMGET);
 			}
 			else
 			{
-				htmltext = "30074-10.html";
+				if (getQuestItemsCount(player, STONE) >= 100)
+				{
+					st.setCond(2, true);
+				}
+				else
+				{
+					playSound(player, QuestSound.ITEMSOUND_QUEST_ITEMGET);
+				}
 			}
 		}
-		return htmltext;
+		else
+		{
+			giveItems(player, STONE, 1);
+			if (getQuestItemsCount(player, STONE) < 100)
+			{
+				playSound(player, QuestSound.ITEMSOUND_QUEST_ITEMGET);
+			}
+			else
+			{
+				if (getQuestItemsCount(player, LEAF) >= 80)
+				{
+					st.setCond(2, true);
+				}
+				else
+				{
+					playSound(player, QuestSound.ITEMSOUND_QUEST_ITEMGET);
+				}
+			}
+		}
+		
+		return null;
 	}
 }

@@ -23,147 +23,135 @@ import org.l2jmobius.gameserver.model.quest.Quest;
 import org.l2jmobius.gameserver.model.quest.QuestState;
 import org.l2jmobius.gameserver.model.quest.State;
 
-/**
- * Shadow of Light (602)<br>
- * Original Jython script by disKret.
- * @author malyelfik
- */
 public class Q00602_ShadowOfLight extends Quest
 {
-	// NPC
-	private static final int EYE_OF_ARGOS = 31683;
-	// Item
 	private static final int EYE_OF_DARKNESS = 7189;
-	// Monsters
-	private static final int[] MOBS =
+	private static final int[][] REWARDS =
 	{
-		21299,
-		21304
-	};
-	
-	// Reward
-	private static final int[][] REWARD =
-	{
-		{
-			6699,
-			40000,
-			120000,
-			20000
-		},
-		{
-			6698,
-			60000,
-			110000,
-			15000
-		},
-		{
-			6700,
-			40000,
-			150000,
-			10000
-		},
-		{
-			0,
-			100000,
-			140000,
-			11250
-		}
+		// @formatter:off
+		{6699, 40000, 120000, 20000, 20},
+		{6698, 60000, 110000, 15000, 40},
+		{6700, 40000, 150000, 10000, 50},
+		{0, 100000, 140000, 11250, 100}
+		// @formatter:on
 	};
 	
 	public Q00602_ShadowOfLight()
 	{
 		super(602);
-		addStartNpc(EYE_OF_ARGOS);
-		addTalkId(EYE_OF_ARGOS);
-		addKillId(MOBS);
 		registerQuestItems(EYE_OF_DARKNESS);
+		addStartNpc(31683); // Eye of Argos
+		addTalkId(31683);
+		addKillId(21299, 21304);
 	}
 	
 	@Override
-	public String onAdvEvent(String event, Npc npc, Player player)
+	public String onEvent(String event, Npc npc, Player player)
 	{
-		final QuestState qs = getQuestState(player, false);
-		if (qs == null)
-		{
-			return null;
-		}
-		
 		String htmltext = event;
-		switch (event)
+		final QuestState st = getQuestState(player, false);
+		if (st == null)
 		{
-			case "31683-02.htm":
-			{
-				qs.startQuest();
-				break;
-			}
-			case "31683-05.html":
-			{
-				if (getQuestItemsCount(player, EYE_OF_DARKNESS) < 100)
-				{
-					return "31683-06.html";
-				}
-				final int i = getRandom(4);
-				if (i < 3)
-				{
-					giveItems(player, REWARD[i][0], 3);
-				}
-				giveAdena(player, REWARD[i][1], true);
-				addExpAndSp(player, REWARD[i][2], REWARD[i][3]);
-				qs.exitQuest(true, true);
-				break;
-			}
-			default:
-			{
-				htmltext = null;
-				break;
-			}
-		}
-		return htmltext;
-	}
-	
-	@Override
-	public String onKill(Npc npc, Player player, boolean isSummon)
-	{
-		final QuestState qs = getQuestState(player, false);
-		if (qs == null)
-		{
-			return super.onKill(npc, player, isSummon);
+			return htmltext;
 		}
 		
-		final int chance = (npc.getId() == MOBS[0]) ? 560 : 800;
-		if (qs.isCond(1) && (getRandom(1000) < chance))
+		if (event.equals("31683-02.htm"))
 		{
-			giveItems(player, EYE_OF_DARKNESS, 1);
-			if (getQuestItemsCount(player, EYE_OF_DARKNESS) == 100)
+			if (player.getLevel() < 68)
 			{
-				qs.setCond(2, true);
+				htmltext = "31683-02a.htm";
 			}
 			else
 			{
-				playSound(player, QuestSound.ITEMSOUND_QUEST_ITEMGET);
+				st.startQuest();
 			}
 		}
-		return super.onKill(npc, player, isSummon);
+		else if (event.equals("31683-05.htm"))
+		{
+			takeItems(player, EYE_OF_DARKNESS, -1);
+			
+			final int random = getRandom(100);
+			for (int[] element : REWARDS)
+			{
+				if (random < element[4])
+				{
+					giveAdena(player, element[1], true);
+					
+					if (element[0] != 0)
+					{
+						giveItems(player, element[0], 3);
+					}
+					
+					addExpAndSp(player, element[2], element[3]);
+					break;
+				}
+			}
+			st.exitQuest(true, true);
+		}
+		
+		return htmltext;
 	}
 	
 	@Override
 	public String onTalk(Npc npc, Player player)
 	{
-		final QuestState qs = getQuestState(player, true);
 		String htmltext = getNoQuestMsg(player);
-		switch (qs.getState())
+		final QuestState st = getQuestState(player, true);
+		
+		switch (st.getState())
 		{
 			case State.CREATED:
 			{
-				htmltext = (player.getLevel() >= 68) ? "31683-01.htm" : "31683-00.htm";
+				htmltext = "31683-01.htm";
 				break;
 			}
 			case State.STARTED:
 			{
-				htmltext = (qs.isCond(1)) ? "31683-03.html" : "31683-04.html";
+				final int cond = st.getCond();
+				if (cond == 1)
+				{
+					htmltext = "31683-03.htm";
+				}
+				else if (cond == 2)
+				{
+					htmltext = "31683-04.htm";
+				}
 				break;
 			}
 		}
+		
 		return htmltext;
+	}
+	
+	@Override
+	public String onKill(Npc npc, Player player, boolean isPet)
+	{
+		final QuestState qs = getRandomPartyMemberState(player, 1, 3, npc);
+		if (qs == null)
+		{
+			return null;
+		}
+		final Player partyMember = qs.getPlayer();
+		
+		final QuestState st = getQuestState(partyMember, false);
+		if (st == null)
+		{
+			return null;
+		}
+		
+		if (getRandom(100) < (npc.getId() == 21299 ? 45 : 50))
+		{
+			giveItems(partyMember, EYE_OF_DARKNESS, 1);
+			if (getQuestItemsCount(partyMember, EYE_OF_DARKNESS) < 100)
+			{
+				playSound(partyMember, QuestSound.ITEMSOUND_QUEST_ITEMGET);
+			}
+			else
+			{
+				st.setCond(2, true);
+			}
+		}
+		
+		return null;
 	}
 }

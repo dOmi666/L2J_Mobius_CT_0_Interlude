@@ -20,28 +20,26 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 
 import org.l2jmobius.commons.database.DatabaseFactory;
-import org.l2jmobius.commons.network.ReadablePacket;
 import org.l2jmobius.gameserver.model.actor.Player;
-import org.l2jmobius.gameserver.network.GameClient;
 import org.l2jmobius.gameserver.network.PacketLogger;
 import org.l2jmobius.gameserver.network.SystemMessageId;
 import org.l2jmobius.gameserver.network.serverpackets.FriendPacket;
 import org.l2jmobius.gameserver.network.serverpackets.SystemMessage;
 
-public class RequestAnswerFriendInvite implements ClientPacket
+public class RequestAnswerFriendInvite extends ClientPacket
 {
 	private int _response;
 	
 	@Override
-	public void read(ReadablePacket packet)
+	protected void readImpl()
 	{
-		_response = packet.readInt();
+		_response = readInt();
 	}
 	
 	@Override
-	public void run(GameClient client)
+	protected void runImpl()
 	{
-		final Player player = client.getPlayer();
+		final Player player = getPlayer();
 		if (player == null)
 		{
 			return;
@@ -56,7 +54,7 @@ public class RequestAnswerFriendInvite implements ClientPacket
 		if (player.getFriendList().contains(requestor.getObjectId()) //
 			|| requestor.getFriendList().contains(player.getObjectId()))
 		{
-			requestor.sendPacket(SystemMessageId.THIS_PLAYER_IS_ALREADY_REGISTERED_ON_YOUR_FRIENDS_LIST);
+			requestor.sendPacket(SystemMessageId.THIS_PLAYER_IS_ALREADY_REGISTERED_IN_YOUR_FRIENDS_LIST);
 			return;
 		}
 		
@@ -70,7 +68,7 @@ public class RequestAnswerFriendInvite implements ClientPacket
 				statement.setInt(3, player.getObjectId());
 				statement.setInt(4, requestor.getObjectId());
 				statement.execute();
-				SystemMessage msg = new SystemMessage(SystemMessageId.THAT_PERSON_HAS_BEEN_SUCCESSFULLY_ADDED_TO_YOUR_FRIEND_LIST);
+				SystemMessage msg = new SystemMessage(SystemMessageId.YOU_HAVE_SUCCEEDED_IN_INVITING_A_FRIEND_TO_YOUR_FRIENDS_LIST);
 				requestor.sendPacket(msg);
 				
 				// Player added to your friend list

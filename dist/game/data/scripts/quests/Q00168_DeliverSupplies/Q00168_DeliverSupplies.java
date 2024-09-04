@@ -16,9 +16,6 @@
  */
 package quests.Q00168_DeliverSupplies;
 
-import java.util.HashMap;
-import java.util.Map;
-
 import org.l2jmobius.gameserver.enums.Race;
 import org.l2jmobius.gameserver.model.actor.Npc;
 import org.l2jmobius.gameserver.model.actor.Player;
@@ -26,10 +23,6 @@ import org.l2jmobius.gameserver.model.quest.Quest;
 import org.l2jmobius.gameserver.model.quest.QuestState;
 import org.l2jmobius.gameserver.model.quest.State;
 
-/**
- * Deliver Supplies (168)
- * @author xban1x
- */
 public class Q00168_DeliverSupplies extends Quest
 {
 	// NPCs
@@ -38,145 +31,170 @@ public class Q00168_DeliverSupplies extends Quest
 	private static final int KRISTIN = 30357;
 	private static final int HARANT = 30360;
 	// Items
-	private static final int JENNAS_LETTER = 1153;
-	private static final int SENTRY_BLADE1 = 1154;
-	private static final int SENTRY_BLADE2 = 1155;
-	private static final int SENTRY_BLADE3 = 1156;
+	private static final int JENNA_LETTER = 1153;
+	private static final int SENTRY_BLADE_1 = 1154;
+	private static final int SENTRY_BLADE_2 = 1155;
+	private static final int SENTRY_BLADE_3 = 1156;
 	private static final int OLD_BRONZE_SWORD = 1157;
-	// Misc
-	private static final int MIN_LEVEL = 3;
-	private static final Map<Integer, Integer> SENTRIES = new HashMap<>();
-	static
-	{
-		SENTRIES.put(KRISTIN, SENTRY_BLADE3);
-		SENTRIES.put(ROSELYN, SENTRY_BLADE2);
-	}
 	
 	public Q00168_DeliverSupplies()
 	{
 		super(168);
+		registerQuestItems(JENNA_LETTER, SENTRY_BLADE_1, SENTRY_BLADE_2, SENTRY_BLADE_3, OLD_BRONZE_SWORD);
 		addStartNpc(JENNA);
 		addTalkId(JENNA, ROSELYN, KRISTIN, HARANT);
-		registerQuestItems(JENNAS_LETTER, SENTRY_BLADE1, SENTRY_BLADE2, SENTRY_BLADE3, OLD_BRONZE_SWORD);
 	}
 	
 	@Override
-	public String onAdvEvent(String event, Npc npc, Player player)
+	public String onEvent(String event, Npc npc, Player player)
 	{
-		final QuestState qs = getQuestState(player, false);
-		if ((qs != null) && event.equals("30349-03.htm"))
+		String htmltext = event;
+		final QuestState st = getQuestState(player, false);
+		if (st == null)
 		{
-			qs.startQuest();
-			giveItems(player, JENNAS_LETTER, 1);
-			return event;
+			return htmltext;
 		}
-		return null;
+		
+		if (event.equals("30349-03.htm"))
+		{
+			st.startQuest();
+			giveItems(player, JENNA_LETTER, 1);
+		}
+		
+		return htmltext;
 	}
 	
 	@Override
 	public String onTalk(Npc npc, Player player)
 	{
-		final QuestState qs = getQuestState(player, true);
 		String htmltext = getNoQuestMsg(player);
-		switch (npc.getId())
+		final QuestState st = getQuestState(player, true);
+		
+		switch (st.getState())
 		{
-			case JENNA:
+			case State.CREATED:
 			{
-				switch (qs.getState())
+				if (player.getRace() != Race.DARK_ELF)
 				{
-					case State.CREATED:
+					htmltext = "30349-00.htm";
+				}
+				else if (player.getLevel() < 3)
+				{
+					htmltext = "30349-01.htm";
+				}
+				else
+				{
+					htmltext = "30349-02.htm";
+				}
+				break;
+			}
+			case State.STARTED:
+			{
+				final int cond = st.getCond();
+				switch (npc.getId())
+				{
+					case JENNA:
 					{
-						htmltext = (player.getRace() == Race.DARK_ELF) ? (player.getLevel() >= MIN_LEVEL) ? "30349-02.htm" : "30349-01.htm" : "30349-00.htm";
-						break;
-					}
-					case State.STARTED:
-					{
-						switch (qs.getCond())
+						if (cond == 1)
 						{
-							case 1:
-							{
-								if (hasQuestItems(player, JENNAS_LETTER))
-								{
-									htmltext = "30349-04.html";
-								}
-								break;
-							}
-							case 2:
-							{
-								if (hasQuestItems(player, SENTRY_BLADE1, SENTRY_BLADE2, SENTRY_BLADE3))
-								{
-									takeItems(player, SENTRY_BLADE1, -1);
-									qs.setCond(3, true);
-									htmltext = "30349-05.html";
-								}
-								break;
-							}
-							case 3:
-							{
-								if (hasAtLeastOneQuestItem(player, SENTRY_BLADE2, SENTRY_BLADE3))
-								{
-									htmltext = "30349-07.html";
-								}
-								break;
-							}
-							case 4:
-							{
-								if (getQuestItemsCount(player, OLD_BRONZE_SWORD) >= 2)
-								{
-									giveAdena(player, 820, true);
-									qs.exitQuest(false, true);
-									htmltext = "30349-07.html";
-								}
-								break;
-							}
+							htmltext = "30349-04.htm";
+						}
+						else if (cond == 2)
+						{
+							htmltext = "30349-05.htm";
+							st.setCond(3, true);
+							takeItems(player, SENTRY_BLADE_1, 1);
+						}
+						else if (cond == 3)
+						{
+							htmltext = "30349-07.htm";
+						}
+						else if (cond == 4)
+						{
+							htmltext = "30349-06.htm";
+							takeItems(player, OLD_BRONZE_SWORD, 2);
+							giveAdena(player, 820, true);
+							st.exitQuest(false, true);
 						}
 						break;
 					}
-					case State.COMPLETED:
+					case HARANT:
 					{
-						htmltext = getAlreadyCompletedMsg(player);
+						if (cond == 1)
+						{
+							htmltext = "30360-01.htm";
+							st.setCond(2, true);
+							takeItems(player, JENNA_LETTER, 1);
+							giveItems(player, SENTRY_BLADE_1, 1);
+							giveItems(player, SENTRY_BLADE_2, 1);
+							giveItems(player, SENTRY_BLADE_3, 1);
+						}
+						else if (cond == 2)
+						{
+							htmltext = "30360-02.htm";
+						}
+						break;
+					}
+					case ROSELYN:
+					{
+						if (cond == 3)
+						{
+							if (hasQuestItems(player, SENTRY_BLADE_2))
+							{
+								htmltext = "30355-01.htm";
+								takeItems(player, SENTRY_BLADE_2, 1);
+								giveItems(player, OLD_BRONZE_SWORD, 1);
+								if (getQuestItemsCount(player, OLD_BRONZE_SWORD) == 2)
+								{
+									st.setCond(4, true);
+								}
+							}
+							else
+							{
+								htmltext = "30355-02.htm";
+							}
+						}
+						else if (cond == 4)
+						{
+							htmltext = "30355-02.htm";
+						}
+						break;
+					}
+					case KRISTIN:
+					{
+						if (cond == 3)
+						{
+							if (hasQuestItems(player, SENTRY_BLADE_3))
+							{
+								htmltext = "30357-01.htm";
+								takeItems(player, SENTRY_BLADE_3, 1);
+								giveItems(player, OLD_BRONZE_SWORD, 1);
+								if (getQuestItemsCount(player, OLD_BRONZE_SWORD) == 2)
+								{
+									st.setCond(4, true);
+								}
+							}
+							else
+							{
+								htmltext = "30357-02.htm";
+							}
+						}
+						else if (cond == 4)
+						{
+							htmltext = "30357-02.htm";
+						}
 						break;
 					}
 				}
 				break;
 			}
-			case HARANT:
+			case State.COMPLETED:
 			{
-				if (qs.isCond(1) && hasQuestItems(player, JENNAS_LETTER))
-				{
-					takeItems(player, JENNAS_LETTER, -1);
-					giveItems(player, SENTRY_BLADE1, 1);
-					giveItems(player, SENTRY_BLADE2, 1);
-					giveItems(player, SENTRY_BLADE3, 1);
-					qs.setCond(2, true);
-					htmltext = "30360-01.html";
-				}
-				else if (qs.isCond(2))
-				{
-					htmltext = "30360-02.html";
-				}
-				break;
-			}
-			case ROSELYN:
-			case KRISTIN:
-			{
-				if (qs.isCond(3) && hasQuestItems(player, SENTRIES.get(npc.getId())))
-				{
-					takeItems(player, SENTRIES.get(npc.getId()), -1);
-					giveItems(player, OLD_BRONZE_SWORD, 1);
-					if (getQuestItemsCount(player, OLD_BRONZE_SWORD) >= 2)
-					{
-						qs.setCond(4, true);
-					}
-					htmltext = npc.getId() + "-01.html";
-				}
-				else if (!hasQuestItems(player, SENTRIES.get(npc.getId())) && hasQuestItems(player, OLD_BRONZE_SWORD))
-				{
-					htmltext = npc.getId() + "-02.html";
-				}
+				htmltext = getAlreadyCompletedMsg(player);
 				break;
 			}
 		}
+		
 		return htmltext;
 	}
 }

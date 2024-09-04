@@ -1053,9 +1053,9 @@
 			<effect name="PhysicalAttack" />
 		</for>
 	</skill>
-	<skill id="4642" levels="9" name="NPC Fast Spell Casting">
-		<table name="#magicLevel">20 40 60 70 75 80 85 90 95</table>
-		<table name="#mAtkSpd">1.05 1.07 1.1 1.12 1.15 1.17 1.2 1.22 1.25</table>
+	<skill id="4642" levels="3" name="NPC Fast Spell Casting">
+		<table name="#magicLevel">20 40 60</table>
+		<table name="#mAtkSpd">1.05 1.07 1.1</table>
 		<set name="magicLevel" val="#magicLevel" />
 		<set name="operateType" val="P" />
 		<set name="targetType" val="SELF" />
@@ -1731,6 +1731,17 @@
 			<effect name="Stun" />
 		</for>
 	</skill>
+	<skill id="4671" levels="1" name="AV - Teleport">
+		<set name="castRange" val="1500" />
+		<set name="effectRange" val="2000" />
+		<set name="magicLevel" val="40" />
+		<set name="operateType" val="A1" />
+		<set name="targetType" val="ONE" />
+		<for>
+			<effect name="TeleportToTarget" />
+			<effect name="TargetMe" />
+		</for>
+	</skill>
 	<skill id="4672" levels="1" name="NPC Corpse Remove">
 		<set name="castRange" val="900" />
 		<set name="isMagic" val="2" /> <!-- Static Skill -->
@@ -1897,9 +1908,9 @@
 		<set name="elementPower" val="180" />
 		<set name="fanRange" val="0,15,250,160" />
 		<set name="hitTime" val="1000" />
-		<set name="magicLevel" val="85" />
+		<set name="magicLevel" val="75" />
 		<set name="operateType" val="A1" />
-		<set name="power" val="30416" />
+		<set name="power" val="23397" />
 		<set name="targetType" val="FRONT_AREA" />
 		<set name="trait" val="VALAKAS" />
 		<for>
@@ -1917,9 +1928,9 @@
 		<set name="elementPower" val="180" />
 		<set name="fanRange" val="0,-15,250,160" />
 		<set name="hitTime" val="1000" />
-		<set name="magicLevel" val="85" />
+		<set name="magicLevel" val="75" />
 		<set name="operateType" val="A1" />
-		<set name="power" val="30416" />
+		<set name="power" val="23397" />
 		<set name="targetType" val="FRONT_AREA" />
 		<set name="trait" val="VALAKAS" />
 		<for>
@@ -1945,9 +1956,9 @@
 		<set name="icon" val="icon.skill4683" />
 		<set name="isDebuff" val="true" />
 		<set name="lvlBonusRate" val="2" />
-		<set name="magicLevel" val="85" />
+		<set name="magicLevel" val="75" />
 		<set name="operateType" val="A2" />
-		<set name="power" val="648" />
+		<set name="power" val="499" />
 		<set name="targetType" val="FRONT_AREA" />
 		<for>
 			<effect name="MagicalAttack" />
@@ -1975,9 +1986,9 @@
 		<set name="icon" val="icon.skill4683" />
 		<set name="isDebuff" val="true" />
 		<set name="lvlBonusRate" val="2" />
-		<set name="magicLevel" val="85" />
+		<set name="magicLevel" val="75" />
 		<set name="operateType" val="A2" />
-		<set name="power" val="648" />
+		<set name="power" val="499" />
 		<set name="targetType" val="FRONT_AREA" />
 		<for>
 			<effect name="MagicalAttack" />
@@ -1995,9 +2006,9 @@
 		<set name="elementPower" val="180" />
 		<set name="fanRange" val="0,180,1000,120" />
 		<set name="hitTime" val="3000" />
-		<set name="magicLevel" val="85" />
+		<set name="magicLevel" val="75" />
 		<set name="operateType" val="A1" />
-		<set name="power" val="48391" />
+		<set name="power" val="37224" />
 		<set name="targetType" val="BEHIND_AURA" />
 		<for>
 			<effect name="PhysicalAttack" />
@@ -2043,9 +2054,9 @@
 		<set name="icon" val="icon.skill4688" />
 		<set name="isDebuff" val="true" />
 		<set name="lvlBonusRate" val="1" />
-		<set name="magicLevel" val="85" />
+		<set name="magicLevel" val="75" />
 		<set name="operateType" val="A2" />
-		<set name="power" val="27849" />
+		<set name="power" val="21423" />
 		<set name="targetType" val="BEHIND_AURA" />
 		<set name="trait" val="SHOCK" />
 		<for>
@@ -2075,7 +2086,7 @@
 		<set name="icon" val="icon.skill4689" />
 		<set name="isDebuff" val="true" />
 		<set name="lvlBonusRate" val="#lvlDepend" />
-		<set name="magicLevel" val="85" />
+		<set name="magicLevel" val="75" />
 		<set name="operateType" val="A2" />
 		<set name="targetType" val="FRONT_AURA" />
 		<set name="trait" val="DERANGEMENT" />
@@ -2090,17 +2101,17 @@
 		<set name="element" val="0" /> <!-- Fire -->
 		<set name="elementPower" val="180" />
 		<set name="hitTime" val="8000" />
-		<set name="magicLevel" val="85" />
+		<set name="magicLevel" val="75" />
 		<set name="operateType" val="A1" />
-		<set name="power" val="1084" />
+		<set name="power" val="834" />
 		<set name="targetType" val="AURA" />
 		<for>
 			<effect name="MagicalAttack" />
 		</for>
 	</skill>
-	<skill id="4691" levels="5" name="Valakas Regeneration">
-		<table name="#abnormalLevels">11 12 13 14 15</table>
-		<table name="#regHp">0.15 0.3 0.5 0.8 1</table>
+	<skill id="4691" levels="4" name="Valakas Regeneration">
+		<table name="#abnormalLevels">11 12 13 14</table>
+		<table name="#regHp">0.15 0.3 0.5 0.8</table>
 		<set name="abnormalLevel" val="#abnormalLevels" />
 		<set name="abnormalTime" val="1800" />
 		<set name="abnormalType" val="HP_REGEN_DOWN" />

@@ -21,7 +21,6 @@ import java.util.concurrent.TimeUnit;
 import org.l2jmobius.Config;
 import org.l2jmobius.gameserver.model.actor.Player;
 import org.l2jmobius.gameserver.model.clan.Clan;
-import org.l2jmobius.gameserver.network.GameClient;
 import org.l2jmobius.gameserver.network.SystemMessageId;
 import org.l2jmobius.gameserver.network.serverpackets.PledgeShowMemberListDelete;
 import org.l2jmobius.gameserver.network.serverpackets.SystemMessage;
@@ -29,12 +28,17 @@ import org.l2jmobius.gameserver.network.serverpackets.SystemMessage;
 /**
  * @version $Revision: 1.3.2.1.2.3 $ $Date: 2005/03/27 15:29:30 $
  */
-public class RequestWithdrawalPledge implements ClientPacket
+public class RequestWithdrawalPledge extends ClientPacket
 {
 	@Override
-	public void run(GameClient client)
+	protected void readImpl()
 	{
-		final Player player = client.getPlayer();
+	}
+	
+	@Override
+	protected void runImpl()
+	{
+		final Player player = getPlayer();
 		if (player == null)
 		{
 			return;
@@ -46,12 +50,12 @@ public class RequestWithdrawalPledge implements ClientPacket
 		}
 		if (player.isClanLeader())
 		{
-			player.sendPacket(SystemMessageId.A_CLAN_LEADER_CANNOT_WITHDRAW_FROM_THEIR_OWN_CLAN);
+			player.sendPacket(SystemMessageId.THE_CLAN_LEADER_CANNOT_WITHDRAW);
 			return;
 		}
 		if (player.isInCombat())
 		{
-			player.sendPacket(SystemMessageId.YOU_CANNOT_LEAVE_A_CLAN_WHILE_ENGAGED_IN_COMBAT);
+			player.sendPacket(SystemMessageId.ONE_CANNOT_LEAVE_ONE_S_CLAN_DURING_COMBAT);
 			return;
 		}
 		

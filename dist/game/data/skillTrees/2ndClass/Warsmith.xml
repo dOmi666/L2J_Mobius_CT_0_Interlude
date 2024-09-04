@@ -2,14 +2,11 @@
 <list xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="../../xsd/skillTrees.xsd">
 	<!-- Warsmith -->
 	<skillTree type="classSkillTree" classId="57" parentClassId="56">
-		<skill skillName="Blunt Weapon Mastery" skillId="205" skillLevel="9" getLevel="40" levelUpSp="11000" learnedByNpc="true" />
-		<skill skillName="Blunt Weapon Mastery" skillId="205" skillLevel="10" getLevel="40" levelUpSp="11000" learnedByNpc="true" />
-		<skill skillName="Blunt Weapon Mastery" skillId="205" skillLevel="11" getLevel="40" levelUpSp="11000" learnedByNpc="true" />
+		<skill skillName="Blunt Mastery" skillId="205" skillLevel="9" getLevel="40" levelUpSp="11000" learnedByNpc="true" />
+		<skill skillName="Blunt Mastery" skillId="205" skillLevel="10" getLevel="40" levelUpSp="11000" learnedByNpc="true" />
+		<skill skillName="Blunt Mastery" skillId="205" skillLevel="11" getLevel="40" levelUpSp="11000" learnedByNpc="true" />
 		<skill skillName="Crystallize" skillId="248" skillLevel="2" getLevel="40" levelUpSp="33000" learnedByNpc="true" />
 		<skill skillName="Fast HP Recovery" skillId="212" skillLevel="3" getLevel="40" levelUpSp="33000" learnedByNpc="true" />
-		<skill skillName="Fatal Strike" skillId="190" skillLevel="1" getLevel="40" levelUpSp="11000" learnedByNpc="true" />
-		<skill skillName="Fatal Strike" skillId="190" skillLevel="2" getLevel="40" levelUpSp="11000" learnedByNpc="true" />
-		<skill skillName="Fatal Strike" skillId="190" skillLevel="3" getLevel="40" levelUpSp="11000" learnedByNpc="true" />
 		<skill skillName="Hammer Crush" skillId="260" skillLevel="1" getLevel="40" levelUpSp="11000" learnedByNpc="true" />
 		<skill skillName="Hammer Crush" skillId="260" skillLevel="2" getLevel="40" levelUpSp="11000" learnedByNpc="true" />
 		<skill skillName="Hammer Crush" skillId="260" skillLevel="3" getLevel="40" levelUpSp="11000" learnedByNpc="true" />
@@ -26,15 +23,12 @@
 		<skill skillName="Whirlwind" skillId="36" skillLevel="1" getLevel="40" levelUpSp="11000" learnedByNpc="true" />
 		<skill skillName="Whirlwind" skillId="36" skillLevel="2" getLevel="40" levelUpSp="11000" learnedByNpc="true" />
 		<skill skillName="Whirlwind" skillId="36" skillLevel="3" getLevel="40" levelUpSp="11000" learnedByNpc="true" />
-		<skill skillName="Blunt Weapon Mastery" skillId="205" skillLevel="12" getLevel="43" levelUpSp="13000" learnedByNpc="true" />
-		<skill skillName="Blunt Weapon Mastery" skillId="205" skillLevel="13" getLevel="43" levelUpSp="13000" learnedByNpc="true" />
-		<skill skillName="Blunt Weapon Mastery" skillId="205" skillLevel="14" getLevel="43" levelUpSp="13000" learnedByNpc="true" />
+		<skill skillName="Blunt Mastery" skillId="205" skillLevel="12" getLevel="43" levelUpSp="13000" learnedByNpc="true" />
+		<skill skillName="Blunt Mastery" skillId="205" skillLevel="13" getLevel="43" levelUpSp="13000" learnedByNpc="true" />
+		<skill skillName="Blunt Mastery" skillId="205" skillLevel="14" getLevel="43" levelUpSp="13000" learnedByNpc="true" />
 		<skill skillName="Boost HP" skillId="211" skillLevel="4" getLevel="43" levelUpSp="38000" learnedByNpc="true" />
 		<skill skillName="Create Item" skillId="172" skillLevel="5" getLevel="43" levelUpSp="38000" learnedByNpc="true" />
 		<skill skillName="Fast HP Recovery" skillId="212" skillLevel="4" getLevel="43" levelUpSp="38000" learnedByNpc="true" />
-		<skill skillName="Fatal Strike" skillId="190" skillLevel="4" getLevel="43" levelUpSp="13000" learnedByNpc="true" />
-		<skill skillName="Fatal Strike" skillId="190" skillLevel="5" getLevel="43" levelUpSp="13000" learnedByNpc="true" />
-		<skill skillName="Fatal Strike" skillId="190" skillLevel="6" getLevel="43" levelUpSp="13000" learnedByNpc="true" />
 		<skill skillName="Hammer Crush" skillId="260" skillLevel="4" getLevel="43" levelUpSp="13000" learnedByNpc="true" />
 		<skill skillName="Hammer Crush" skillId="260" skillLevel="5" getLevel="43" levelUpSp="13000" learnedByNpc="true" />
 		<skill skillName="Hammer Crush" skillId="260" skillLevel="6" getLevel="43" levelUpSp="13000" learnedByNpc="true" />
@@ -52,12 +46,9 @@
 		<skill skillName="Whirlwind" skillId="36" skillLevel="5" getLevel="43" levelUpSp="13000" learnedByNpc="true" />
 		<skill skillName="Whirlwind" skillId="36" skillLevel="6" getLevel="43" levelUpSp="13000" learnedByNpc="true" />
 		<skill skillName="Bandage" skillId="34" skillLevel="2" getLevel="46" levelUpSp="46000" learnedByNpc="true" />
-		<skill skillName="Blunt Weapon Mastery" skillId="205" skillLevel="15" getLevel="46" levelUpSp="15000" learnedByNpc="true" />
-		<skill skillName="Blunt Weapon Mastery" skillId="205" skillLevel="16" getLevel="46" levelUpSp="15000" learnedByNpc="true" />
-		<skill skillName="Blunt Weapon Mastery" skillId="205" skillLevel="17" getLevel="46" levelUpSp="15000" learnedByNpc="true" />
-		<skill skillName="Fatal Strike" skillId="190" skillLevel="7" getLevel="46" levelUpSp="15000" learnedByNpc="true" />
-		<skill skillName="Fatal Strike" skillId="190" skillLevel="8" getLevel="46" levelUpSp="15000" learnedByNpc="true" />
-		<skill skillName="Fatal Strike" skillId="190" skillLevel="9" getLevel="46" levelUpSp="15000" learnedByNpc="true" />
+		<skill skillName="Blunt Mastery" skillId="205" skillLevel="15" getLevel="46" levelUpSp="15000" learnedByNpc="true" />
+		<skill skillName="Blunt Mastery" skillId="205" skillLevel="16" getLevel="46" levelUpSp="15000" learnedByNpc="true" />
+		<skill skillName="Blunt Mastery" skillId="205" skillLevel="17" getLevel="46" levelUpSp="15000" learnedByNpc="true" />
 		<skill skillName="Hammer Crush" skillId="260" skillLevel="7" getLevel="46" levelUpSp="15000" learnedByNpc="true" />
 		<skill skillName="Hammer Crush" skillId="260" skillLevel="8" getLevel="46" levelUpSp="15000" learnedByNpc="true" />
 		<skill skillName="Hammer Crush" skillId="260" skillLevel="9" getLevel="46" levelUpSp="15000" learnedByNpc="true" />
@@ -75,14 +66,11 @@
 		<skill skillName="Whirlwind" skillId="36" skillLevel="7" getLevel="46" levelUpSp="15000" learnedByNpc="true" />
 		<skill skillName="Whirlwind" skillId="36" skillLevel="8" getLevel="46" levelUpSp="15000" learnedByNpc="true" />
 		<skill skillName="Whirlwind" skillId="36" skillLevel="9" getLevel="46" levelUpSp="15000" learnedByNpc="true" />
-		<skill skillName="Blunt Weapon Mastery" skillId="205" skillLevel="18" getLevel="49" levelUpSp="20000" learnedByNpc="true" />
-		<skill skillName="Blunt Weapon Mastery" skillId="205" skillLevel="19" getLevel="49" levelUpSp="20000" learnedByNpc="true" />
-		<skill skillName="Blunt Weapon Mastery" skillId="205" skillLevel="20" getLevel="49" levelUpSp="20000" learnedByNpc="true" />
+		<skill skillName="Blunt Mastery" skillId="205" skillLevel="18" getLevel="49" levelUpSp="20000" learnedByNpc="true" />
+		<skill skillName="Blunt Mastery" skillId="205" skillLevel="19" getLevel="49" levelUpSp="20000" learnedByNpc="true" />
+		<skill skillName="Blunt Mastery" skillId="205" skillLevel="20" getLevel="49" levelUpSp="20000" learnedByNpc="true" />
 		<skill skillName="Boost HP" skillId="211" skillLevel="5" getLevel="49" levelUpSp="61000" learnedByNpc="true" />
 		<skill skillName="Create Item" skillId="172" skillLevel="6" getLevel="49" levelUpSp="61000" learnedByNpc="true" />
-		<skill skillName="Fatal Strike" skillId="190" skillLevel="10" getLevel="49" levelUpSp="20000" learnedByNpc="true" />
-		<skill skillName="Fatal Strike" skillId="190" skillLevel="11" getLevel="49" levelUpSp="20000" learnedByNpc="true" />
-		<skill skillName="Fatal Strike" skillId="190" skillLevel="12" getLevel="49" levelUpSp="20000" learnedByNpc="true" />
 		<skill skillName="Hammer Crush" skillId="260" skillLevel="10" getLevel="49" levelUpSp="20000" learnedByNpc="true" />
 		<skill skillName="Hammer Crush" skillId="260" skillLevel="11" getLevel="49" levelUpSp="20000" learnedByNpc="true" />
 		<skill skillName="Hammer Crush" skillId="260" skillLevel="12" getLevel="49" levelUpSp="20000" learnedByNpc="true" />
@@ -100,14 +88,11 @@
 		<skill skillName="Whirlwind" skillId="36" skillLevel="10" getLevel="49" levelUpSp="20000" learnedByNpc="true" />
 		<skill skillName="Whirlwind" skillId="36" skillLevel="11" getLevel="49" levelUpSp="20000" learnedByNpc="true" />
 		<skill skillName="Whirlwind" skillId="36" skillLevel="12" getLevel="49" levelUpSp="20000" learnedByNpc="true" />
-		<skill skillName="Blunt Weapon Mastery" skillId="205" skillLevel="21" getLevel="52" levelUpSp="42000" learnedByNpc="true" />
-		<skill skillName="Blunt Weapon Mastery" skillId="205" skillLevel="22" getLevel="52" levelUpSp="42000" learnedByNpc="true" />
-		<skill skillName="Blunt Weapon Mastery" skillId="205" skillLevel="23" getLevel="52" levelUpSp="42000" learnedByNpc="true" />
+		<skill skillName="Blunt Mastery" skillId="205" skillLevel="21" getLevel="52" levelUpSp="42000" learnedByNpc="true" />
+		<skill skillName="Blunt Mastery" skillId="205" skillLevel="22" getLevel="52" levelUpSp="42000" learnedByNpc="true" />
+		<skill skillName="Blunt Mastery" skillId="205" skillLevel="23" getLevel="52" levelUpSp="42000" learnedByNpc="true" />
 		<skill skillName="Crystallize" skillId="248" skillLevel="3" getLevel="52" levelUpSp="125000" learnedByNpc="true" />
 		<skill skillName="Fast HP Recovery" skillId="212" skillLevel="5" getLevel="52" levelUpSp="125000" learnedByNpc="true" />
-		<skill skillName="Fatal Strike" skillId="190" skillLevel="13" getLevel="52" levelUpSp="42000" learnedByNpc="true" />
-		<skill skillName="Fatal Strike" skillId="190" skillLevel="14" getLevel="52" levelUpSp="42000" learnedByNpc="true" />
-		<skill skillName="Fatal Strike" skillId="190" skillLevel="15" getLevel="52" levelUpSp="42000" learnedByNpc="true" />
 		<skill skillName="Hammer Crush" skillId="260" skillLevel="13" getLevel="52" levelUpSp="42000" learnedByNpc="true" />
 		<skill skillName="Hammer Crush" skillId="260" skillLevel="14" getLevel="52" levelUpSp="42000" learnedByNpc="true" />
 		<skill skillName="Hammer Crush" skillId="260" skillLevel="15" getLevel="52" levelUpSp="42000" learnedByNpc="true" />
@@ -124,14 +109,11 @@
 		<skill skillName="Whirlwind" skillId="36" skillLevel="13" getLevel="52" levelUpSp="42000" learnedByNpc="true" />
 		<skill skillName="Whirlwind" skillId="36" skillLevel="14" getLevel="52" levelUpSp="42000" learnedByNpc="true" />
 		<skill skillName="Whirlwind" skillId="36" skillLevel="15" getLevel="52" levelUpSp="42000" learnedByNpc="true" />
-		<skill skillName="Blunt Weapon Mastery" skillId="205" skillLevel="24" getLevel="55" levelUpSp="57000" learnedByNpc="true" />
-		<skill skillName="Blunt Weapon Mastery" skillId="205" skillLevel="25" getLevel="55" levelUpSp="57000" learnedByNpc="true" />
-		<skill skillName="Blunt Weapon Mastery" skillId="205" skillLevel="26" getLevel="55" levelUpSp="57000" learnedByNpc="true" />
+		<skill skillName="Blunt Mastery" skillId="205" skillLevel="24" getLevel="55" levelUpSp="57000" learnedByNpc="true" />
+		<skill skillName="Blunt Mastery" skillId="205" skillLevel="25" getLevel="55" levelUpSp="57000" learnedByNpc="true" />
+		<skill skillName="Blunt Mastery" skillId="205" skillLevel="26" getLevel="55" levelUpSp="57000" learnedByNpc="true" />
 		<skill skillName="Boost HP" skillId="211" skillLevel="6" getLevel="55" levelUpSp="171000" learnedByNpc="true" />
 		<skill skillName="Create Item" skillId="172" skillLevel="7" getLevel="55" levelUpSp="171000" learnedByNpc="true" />
-		<skill skillName="Fatal Strike" skillId="190" skillLevel="16" getLevel="55" levelUpSp="57000" learnedByNpc="true" />
-		<skill skillName="Fatal Strike" skillId="190" skillLevel="17" getLevel="55" levelUpSp="57000" learnedByNpc="true" />
-		<skill skillName="Fatal Strike" skillId="190" skillLevel="18" getLevel="55" levelUpSp="57000" learnedByNpc="true" />
 		<skill skillName="Hammer Crush" skillId="260" skillLevel="16" getLevel="55" levelUpSp="57000" learnedByNpc="true" />
 		<skill skillName="Hammer Crush" skillId="260" skillLevel="17" getLevel="55" levelUpSp="57000" learnedByNpc="true" />
 		<skill skillName="Hammer Crush" skillId="260" skillLevel="18" getLevel="55" levelUpSp="57000" learnedByNpc="true" />
@@ -148,13 +130,10 @@
 		<skill skillName="Whirlwind" skillId="36" skillLevel="16" getLevel="55" levelUpSp="57000" learnedByNpc="true" />
 		<skill skillName="Whirlwind" skillId="36" skillLevel="17" getLevel="55" levelUpSp="57000" learnedByNpc="true" />
 		<skill skillName="Whirlwind" skillId="36" skillLevel="18" getLevel="55" levelUpSp="57000" learnedByNpc="true" />
-		<skill skillName="Blunt Weapon Mastery" skillId="205" skillLevel="27" getLevel="58" levelUpSp="61000" learnedByNpc="true" />
-		<skill skillName="Blunt Weapon Mastery" skillId="205" skillLevel="28" getLevel="58" levelUpSp="61000" learnedByNpc="true" />
-		<skill skillName="Blunt Weapon Mastery" skillId="205" skillLevel="29" getLevel="58" levelUpSp="61000" learnedByNpc="true" />
+		<skill skillName="Blunt Mastery" skillId="205" skillLevel="27" getLevel="58" levelUpSp="61000" learnedByNpc="true" />
+		<skill skillName="Blunt Mastery" skillId="205" skillLevel="28" getLevel="58" levelUpSp="61000" learnedByNpc="true" />
+		<skill skillName="Blunt Mastery" skillId="205" skillLevel="29" getLevel="58" levelUpSp="61000" learnedByNpc="true" />
 		<skill skillName="Fast HP Recovery" skillId="212" skillLevel="6" getLevel="58" levelUpSp="183000" learnedByNpc="true" />
-		<skill skillName="Fatal Strike" skillId="190" skillLevel="19" getLevel="58" levelUpSp="61000" learnedByNpc="true" />
-		<skill skillName="Fatal Strike" skillId="190" skillLevel="20" getLevel="58" levelUpSp="61000" learnedByNpc="true" />
-		<skill skillName="Fatal Strike" skillId="190" skillLevel="21" getLevel="58" levelUpSp="61000" learnedByNpc="true" />
 		<skill skillName="Hammer Crush" skillId="260" skillLevel="19" getLevel="58" levelUpSp="61000" learnedByNpc="true" />
 		<skill skillName="Hammer Crush" skillId="260" skillLevel="20" getLevel="58" levelUpSp="61000" learnedByNpc="true" />
 		<skill skillName="Hammer Crush" skillId="260" skillLevel="21" getLevel="58" levelUpSp="61000" learnedByNpc="true" />
@@ -175,11 +154,9 @@
 		<skill skillName="Whirlwind" skillId="36" skillLevel="19" getLevel="58" levelUpSp="61000" learnedByNpc="true" />
 		<skill skillName="Whirlwind" skillId="36" skillLevel="20" getLevel="58" levelUpSp="61000" learnedByNpc="true" />
 		<skill skillName="Whirlwind" skillId="36" skillLevel="21" getLevel="58" levelUpSp="61000" learnedByNpc="true" />
-		<skill skillName="Blunt Weapon Mastery" skillId="205" skillLevel="30" getLevel="60" levelUpSp="161000" learnedByNpc="true" />
-		<skill skillName="Blunt Weapon Mastery" skillId="205" skillLevel="31" getLevel="60" levelUpSp="161000" learnedByNpc="true" />
+		<skill skillName="Blunt Mastery" skillId="205" skillLevel="30" getLevel="60" levelUpSp="161000" learnedByNpc="true" />
+		<skill skillName="Blunt Mastery" skillId="205" skillLevel="31" getLevel="60" levelUpSp="161000" learnedByNpc="true" />
 		<skill skillName="Crystallize" skillId="248" skillLevel="4" getLevel="60" levelUpSp="322000" learnedByNpc="true" />
-		<skill skillName="Fatal Strike" skillId="190" skillLevel="22" getLevel="60" levelUpSp="161000" learnedByNpc="true" />
-		<skill skillName="Fatal Strike" skillId="190" skillLevel="23" getLevel="60" levelUpSp="161000" learnedByNpc="true" />
 		<skill skillName="Hammer Crush" skillId="260" skillLevel="22" getLevel="60" levelUpSp="161000" learnedByNpc="true" />
 		<skill skillName="Hammer Crush" skillId="260" skillLevel="23" getLevel="60" levelUpSp="161000" learnedByNpc="true" />
 		<skill skillName="Heavy Armor Mastery" skillId="231" skillLevel="35" getLevel="60" levelUpSp="161000" learnedByNpc="true" />
@@ -192,12 +169,10 @@
 		<skill skillName="Whirlwind" skillId="36" skillLevel="22" getLevel="60" levelUpSp="161000" learnedByNpc="true" />
 		<skill skillName="Whirlwind" skillId="36" skillLevel="23" getLevel="60" levelUpSp="161000" learnedByNpc="true" />
 		<skill skillName="Bandage" skillId="34" skillLevel="3" getLevel="62" levelUpSp="360000" learnedByNpc="true" />
-		<skill skillName="Blunt Weapon Mastery" skillId="205" skillLevel="32" getLevel="62" levelUpSp="180000" learnedByNpc="true" />
-		<skill skillName="Blunt Weapon Mastery" skillId="205" skillLevel="33" getLevel="62" levelUpSp="180000" learnedByNpc="true" />
+		<skill skillName="Blunt Mastery" skillId="205" skillLevel="32" getLevel="62" levelUpSp="180000" learnedByNpc="true" />
+		<skill skillName="Blunt Mastery" skillId="205" skillLevel="33" getLevel="62" levelUpSp="180000" learnedByNpc="true" />
 		<skill skillName="Boost HP" skillId="211" skillLevel="7" getLevel="62" levelUpSp="360000" learnedByNpc="true" />
 		<skill skillName="Create Item" skillId="172" skillLevel="8" getLevel="62" levelUpSp="360000" learnedByNpc="true" />
-		<skill skillName="Fatal Strike" skillId="190" skillLevel="24" getLevel="62" levelUpSp="180000" learnedByNpc="true" />
-		<skill skillName="Fatal Strike" skillId="190" skillLevel="25" getLevel="62" levelUpSp="180000" learnedByNpc="true" />
 		<skill skillName="Hammer Crush" skillId="260" skillLevel="24" getLevel="62" levelUpSp="180000" learnedByNpc="true" />
 		<skill skillName="Hammer Crush" skillId="260" skillLevel="25" getLevel="62" levelUpSp="180000" learnedByNpc="true" />
 		<skill skillName="Heavy Armor Mastery" skillId="231" skillLevel="37" getLevel="62" levelUpSp="180000" learnedByNpc="true" />
@@ -209,10 +184,8 @@
 		<skill skillName="Summon Big Boom" skillId="301" skillLevel="2" getLevel="62" levelUpSp="360000" learnedByNpc="true" />
 		<skill skillName="Whirlwind" skillId="36" skillLevel="24" getLevel="62" levelUpSp="180000" learnedByNpc="true" />
 		<skill skillName="Whirlwind" skillId="36" skillLevel="25" getLevel="62" levelUpSp="180000" learnedByNpc="true" />
-		<skill skillName="Blunt Weapon Mastery" skillId="205" skillLevel="34" getLevel="64" levelUpSp="270000" learnedByNpc="true" />
-		<skill skillName="Blunt Weapon Mastery" skillId="205" skillLevel="35" getLevel="64" levelUpSp="270000" learnedByNpc="true" />
-		<skill skillName="Fatal Strike" skillId="190" skillLevel="26" getLevel="64" levelUpSp="270000" learnedByNpc="true" />
-		<skill skillName="Fatal Strike" skillId="190" skillLevel="27" getLevel="64" levelUpSp="270000" learnedByNpc="true" />
+		<skill skillName="Blunt Mastery" skillId="205" skillLevel="34" getLevel="64" levelUpSp="270000" learnedByNpc="true" />
+		<skill skillName="Blunt Mastery" skillId="205" skillLevel="35" getLevel="64" levelUpSp="270000" learnedByNpc="true" />
 		<skill skillName="Hammer Crush" skillId="260" skillLevel="26" getLevel="64" levelUpSp="270000" learnedByNpc="true" />
 		<skill skillName="Hammer Crush" skillId="260" skillLevel="27" getLevel="64" levelUpSp="270000" learnedByNpc="true" />
 		<skill skillName="Heavy Armor Mastery" skillId="231" skillLevel="39" getLevel="64" levelUpSp="270000" learnedByNpc="true" />
@@ -225,11 +198,9 @@
 		<skill skillName="Vital Force" skillId="148" skillLevel="7" getLevel="64" levelUpSp="530000" learnedByNpc="true" />
 		<skill skillName="Whirlwind" skillId="36" skillLevel="26" getLevel="64" levelUpSp="270000" learnedByNpc="true" />
 		<skill skillName="Whirlwind" skillId="36" skillLevel="27" getLevel="64" levelUpSp="270000" learnedByNpc="true" />
-		<skill skillName="Blunt Weapon Mastery" skillId="205" skillLevel="36" getLevel="66" levelUpSp="290000" learnedByNpc="true" />
-		<skill skillName="Blunt Weapon Mastery" skillId="205" skillLevel="37" getLevel="66" levelUpSp="290000" learnedByNpc="true" />
+		<skill skillName="Blunt Mastery" skillId="205" skillLevel="36" getLevel="66" levelUpSp="290000" learnedByNpc="true" />
+		<skill skillName="Blunt Mastery" skillId="205" skillLevel="37" getLevel="66" levelUpSp="290000" learnedByNpc="true" />
 		<skill skillName="Boost HP" skillId="211" skillLevel="8" getLevel="66" levelUpSp="580000" learnedByNpc="true" />
-		<skill skillName="Fatal Strike" skillId="190" skillLevel="28" getLevel="66" levelUpSp="290000" learnedByNpc="true" />
-		<skill skillName="Fatal Strike" skillId="190" skillLevel="29" getLevel="66" levelUpSp="290000" learnedByNpc="true" />
 		<skill skillName="Hammer Crush" skillId="260" skillLevel="28" getLevel="66" levelUpSp="290000" learnedByNpc="true" />
 		<skill skillName="Hammer Crush" skillId="260" skillLevel="29" getLevel="66" levelUpSp="290000" learnedByNpc="true" />
 		<skill skillName="Heavy Armor Mastery" skillId="231" skillLevel="41" getLevel="66" levelUpSp="290000" learnedByNpc="true" />
@@ -245,11 +216,9 @@
 		<skill skillName="Whirlwind" skillId="36" skillLevel="29" getLevel="66" levelUpSp="290000" learnedByNpc="true" />
 		<skill skillName="Wrath" skillId="320" skillLevel="1" getLevel="66" levelUpSp="290000" learnedByNpc="true" />
 		<skill skillName="Wrath" skillId="320" skillLevel="2" getLevel="66" levelUpSp="290000" learnedByNpc="true" />
-		<skill skillName="Blunt Weapon Mastery" skillId="205" skillLevel="38" getLevel="68" levelUpSp="350000" learnedByNpc="true" />
-		<skill skillName="Blunt Weapon Mastery" skillId="205" skillLevel="39" getLevel="68" levelUpSp="350000" learnedByNpc="true" />
+		<skill skillName="Blunt Mastery" skillId="205" skillLevel="38" getLevel="68" levelUpSp="350000" learnedByNpc="true" />
+		<skill skillName="Blunt Mastery" skillId="205" skillLevel="39" getLevel="68" levelUpSp="350000" learnedByNpc="true" />
 		<skill skillName="Fast HP Recovery" skillId="212" skillLevel="7" getLevel="68" levelUpSp="710000" learnedByNpc="true" />
-		<skill skillName="Fatal Strike" skillId="190" skillLevel="30" getLevel="68" levelUpSp="350000" learnedByNpc="true" />
-		<skill skillName="Fatal Strike" skillId="190" skillLevel="31" getLevel="68" levelUpSp="350000" learnedByNpc="true" />
 		<skill skillName="Hammer Crush" skillId="260" skillLevel="30" getLevel="68" levelUpSp="350000" learnedByNpc="true" />
 		<skill skillName="Hammer Crush" skillId="260" skillLevel="31" getLevel="68" levelUpSp="350000" learnedByNpc="true" />
 		<skill skillName="Heavy Armor Mastery" skillId="231" skillLevel="43" getLevel="68" levelUpSp="350000" learnedByNpc="true" />
@@ -264,13 +233,11 @@
 		<skill skillName="Whirlwind" skillId="36" skillLevel="31" getLevel="68" levelUpSp="350000" learnedByNpc="true" />
 		<skill skillName="Wrath" skillId="320" skillLevel="3" getLevel="68" levelUpSp="350000" learnedByNpc="true" />
 		<skill skillName="Wrath" skillId="320" skillLevel="4" getLevel="68" levelUpSp="350000" learnedByNpc="true" />
-		<skill skillName="Blunt Weapon Mastery" skillId="205" skillLevel="40" getLevel="70" levelUpSp="390000" learnedByNpc="true" />
-		<skill skillName="Blunt Weapon Mastery" skillId="205" skillLevel="41" getLevel="70" levelUpSp="390000" learnedByNpc="true" />
+		<skill skillName="Blunt Mastery" skillId="205" skillLevel="40" getLevel="70" levelUpSp="390000" learnedByNpc="true" />
+		<skill skillName="Blunt Mastery" skillId="205" skillLevel="41" getLevel="70" levelUpSp="390000" learnedByNpc="true" />
 		<skill skillName="Boost HP" skillId="211" skillLevel="9" getLevel="70" levelUpSp="780000" learnedByNpc="true" />
 		<skill skillName="Create Item" skillId="172" skillLevel="9" getLevel="70" levelUpSp="780000" learnedByNpc="true" />
 		<skill skillName="Crystallize" skillId="248" skillLevel="5" getLevel="70" levelUpSp="780000" learnedByNpc="true" />
-		<skill skillName="Fatal Strike" skillId="190" skillLevel="32" getLevel="70" levelUpSp="390000" learnedByNpc="true" />
-		<skill skillName="Fatal Strike" skillId="190" skillLevel="33" getLevel="70" levelUpSp="390000" learnedByNpc="true" />
 		<skill skillName="Hammer Crush" skillId="260" skillLevel="32" getLevel="70" levelUpSp="390000" learnedByNpc="true" />
 		<skill skillName="Hammer Crush" skillId="260" skillLevel="33" getLevel="70" levelUpSp="390000" learnedByNpc="true" />
 		<skill skillName="Heavy Armor Mastery" skillId="231" skillLevel="45" getLevel="70" levelUpSp="390000" learnedByNpc="true" />
@@ -284,10 +251,8 @@
 		<skill skillName="Whirlwind" skillId="36" skillLevel="33" getLevel="70" levelUpSp="390000" learnedByNpc="true" />
 		<skill skillName="Wrath" skillId="320" skillLevel="5" getLevel="70" levelUpSp="390000" learnedByNpc="true" />
 		<skill skillName="Wrath" skillId="320" skillLevel="6" getLevel="70" levelUpSp="390000" learnedByNpc="true" />
-		<skill skillName="Blunt Weapon Mastery" skillId="205" skillLevel="42" getLevel="72" levelUpSp="600000" learnedByNpc="true" />
-		<skill skillName="Blunt Weapon Mastery" skillId="205" skillLevel="43" getLevel="72" levelUpSp="600000" learnedByNpc="true" />
-		<skill skillName="Fatal Strike" skillId="190" skillLevel="34" getLevel="72" levelUpSp="600000" learnedByNpc="true" />
-		<skill skillName="Fatal Strike" skillId="190" skillLevel="35" getLevel="72" levelUpSp="600000" learnedByNpc="true" />
+		<skill skillName="Blunt Mastery" skillId="205" skillLevel="42" getLevel="72" levelUpSp="600000" learnedByNpc="true" />
+		<skill skillName="Blunt Mastery" skillId="205" skillLevel="43" getLevel="72" levelUpSp="600000" learnedByNpc="true" />
 		<skill skillName="Hammer Crush" skillId="260" skillLevel="34" getLevel="72" levelUpSp="600000" learnedByNpc="true" />
 		<skill skillName="Hammer Crush" skillId="260" skillLevel="35" getLevel="72" levelUpSp="600000" learnedByNpc="true" />
 		<skill skillName="Heavy Armor Mastery" skillId="231" skillLevel="47" getLevel="72" levelUpSp="600000" learnedByNpc="true" />
@@ -302,12 +267,10 @@
 		<skill skillName="Whirlwind" skillId="36" skillLevel="35" getLevel="72" levelUpSp="600000" learnedByNpc="true" />
 		<skill skillName="Wrath" skillId="320" skillLevel="7" getLevel="72" levelUpSp="600000" learnedByNpc="true" />
 		<skill skillName="Wrath" skillId="320" skillLevel="8" getLevel="72" levelUpSp="600000" learnedByNpc="true" />
-		<skill skillName="Blunt Weapon Mastery" skillId="205" skillLevel="44" getLevel="74" levelUpSp="1000000" learnedByNpc="true" />
-		<skill skillName="Blunt Weapon Mastery" skillId="205" skillLevel="45" getLevel="74" levelUpSp="1000000" learnedByNpc="true" />
+		<skill skillName="Blunt Mastery" skillId="205" skillLevel="44" getLevel="74" levelUpSp="1000000" learnedByNpc="true" />
+		<skill skillName="Blunt Mastery" skillId="205" skillLevel="45" getLevel="74" levelUpSp="1000000" learnedByNpc="true" />
 		<skill skillName="Boost HP" skillId="211" skillLevel="10" getLevel="74" levelUpSp="2000000" learnedByNpc="true" />
 		<skill skillName="Fast HP Recovery" skillId="212" skillLevel="8" getLevel="74" levelUpSp="2000000" learnedByNpc="true" />
-		<skill skillName="Fatal Strike" skillId="190" skillLevel="36" getLevel="74" levelUpSp="1000000" learnedByNpc="true" />
-		<skill skillName="Fatal Strike" skillId="190" skillLevel="37" getLevel="74" levelUpSp="1000000" learnedByNpc="true" />
 		<skill skillName="Hammer Crush" skillId="260" skillLevel="36" getLevel="74" levelUpSp="1000000" learnedByNpc="true" />
 		<skill skillName="Hammer Crush" skillId="260" skillLevel="37" getLevel="74" levelUpSp="1000000" learnedByNpc="true" />
 		<skill skillName="Heavy Armor Mastery" skillId="231" skillLevel="49" getLevel="74" levelUpSp="1000000" learnedByNpc="true" />

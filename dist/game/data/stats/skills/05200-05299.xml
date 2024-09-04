@@ -1,12 +1,12 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
 <list xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="../../xsd/skills.xsd">
-	<skill id="5200" levels="8" name="Pet Recharge">
+	<skill id="5200" levels="3" name="Pet Recharge">
 		<!-- Regenerates MP. -->
-		<table name="#amount">120 124 128 138 144 149 153 155</table>
-		<table name="#effectPoints">604 617 630 659 676 689 700 709</table>
-		<table name="#magicLevel">65 67 69 75 80 85 90 95</table>
-		<table name="#mpConsume">96 99 102 110 116 120 122 124</table>
-		<table name="#mpInitialConsume">24 25 26 28 29 30 31 31</table>
+		<table name="#amount">120 124 128</table>
+		<table name="#effectPoints">604 617 630</table>
+		<table name="#magicLevel">65 67 69</table>
+		<table name="#mpConsume">96 99 102</table>
+		<table name="#mpInitialConsume">24 25 26</table>
 		<set name="castRange" val="400" />
 		<set name="effectPoint" val="#effectPoints" />
 		<set name="effectRange" val="900" />
@@ -25,14 +25,14 @@
 			</effect>
 		</for>
 	</skill>
-	<skill id="5201" levels="6" name="Pet Concentration">
+	<skill id="5201" levels="2" name="Pet Concentration">
 		<!-- Temporarily lowers the probability of magic being canceled due to damage taken taken. -->
-		<table name="#abnormalLevels">1 2 3 4 5 6</table>
-		<table name="#cancel">18 25 36 42 48 53</table>
-		<table name="#effectPoints">204 285 418 495 566 624</table>
-		<table name="#magicLevel">20 30 44 52 60 68</table>
-		<table name="#mpConsume">16 21 31 38 44 51</table>
-		<table name="#mpInitialConsume">4 6 8 10 11 13</table>
+		<table name="#abnormalLevels">1 2</table>
+		<table name="#cancel">18 25</table>
+		<table name="#effectPoints">204 285</table>
+		<table name="#magicLevel">20 30</table>
+		<table name="#mpConsume">16 21</table>
+		<table name="#mpInitialConsume">4 6</table>
 		<set name="abnormalLevel" val="#abnormalLevels" />
 		<set name="abnormalTime" val="120" />
 		<set name="abnormalType" val="CANCEL_PROB_DOWN" />

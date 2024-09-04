@@ -16,339 +16,265 @@
  */
 package quests.Q00414_PathOfTheOrcRaider;
 
-import org.l2jmobius.Config;
 import org.l2jmobius.gameserver.enums.ClassId;
 import org.l2jmobius.gameserver.enums.QuestSound;
 import org.l2jmobius.gameserver.model.actor.Npc;
 import org.l2jmobius.gameserver.model.actor.Player;
 import org.l2jmobius.gameserver.model.quest.Quest;
 import org.l2jmobius.gameserver.model.quest.QuestState;
+import org.l2jmobius.gameserver.model.quest.State;
 import org.l2jmobius.gameserver.network.serverpackets.SocialAction;
-import org.l2jmobius.gameserver.util.Util;
 
-/**
- * Path Of The Orc Raider (414)
- * @author ivantotov
- */
 public class Q00414_PathOfTheOrcRaider extends Quest
 {
 	// NPCs
-	private static final int PREFECT_KARUKIA = 30570;
-	private static final int PREFRCT_KASMAN = 30501;
-	private static final int PREFRCT_TAZEER = 31978;
+	private static final int KARUKIA = 30570;
+	private static final int KASMAN = 30501;
+	private static final int TAZEER = 31978;
+	// Monsters
+	private static final int GOBLIN_TOMB_RAIDER_LEADER = 20320;
+	private static final int KURUKA_RATMAN_LEADER = 27045;
+	private static final int UMBAR_ORC = 27054;
+	private static final int TIMORA_ORC = 27320;
 	// Items
 	private static final int GREEN_BLOOD = 1578;
 	private static final int GOBLIN_DWELLING_MAP = 1579;
 	private static final int KURUKA_RATMAN_TOOTH = 1580;
-	private static final int BETRAYER_UMBAR_REPORT = 1589;
-	private static final int BETRAYER_ZAKAN_REPORT = 1590;
+	private static final int BETRAYER_REPORT_1 = 1589;
+	private static final int BETRAYER_REPORT_2 = 1590;
 	private static final int HEAD_OF_BETRAYER = 1591;
-	private static final int TIMORA_ORC_HEAD = 8544;
-	// Reward
 	private static final int MARK_OF_RAIDER = 1592;
-	// Quest Monster
-	private static final int KURUKA_RATMAN_LEADER = 27045;
-	private static final int UMBAR_ORC = 27054;
-	private static final int TIMORA_ORC = 27320;
-	// Monster
-	private static final int GOBLIN_TOMB_RAIDER_LEADER = 20320;
-	// Misc
-	private static final int MIN_LEVEL = 18;
+	private static final int TIMORA_ORC_HEAD = 8544;
 	
 	public Q00414_PathOfTheOrcRaider()
 	{
 		super(414);
-		addStartNpc(PREFECT_KARUKIA);
-		addTalkId(PREFECT_KARUKIA, PREFRCT_KASMAN, PREFRCT_TAZEER);
-		addKillId(KURUKA_RATMAN_LEADER, UMBAR_ORC, TIMORA_ORC, GOBLIN_TOMB_RAIDER_LEADER);
-		registerQuestItems(GREEN_BLOOD, GOBLIN_DWELLING_MAP, KURUKA_RATMAN_TOOTH, BETRAYER_UMBAR_REPORT, BETRAYER_ZAKAN_REPORT, HEAD_OF_BETRAYER, TIMORA_ORC_HEAD);
+		registerQuestItems(GREEN_BLOOD, GOBLIN_DWELLING_MAP, KURUKA_RATMAN_TOOTH, BETRAYER_REPORT_1, BETRAYER_REPORT_2, HEAD_OF_BETRAYER, TIMORA_ORC_HEAD);
+		addStartNpc(KARUKIA);
+		addTalkId(KARUKIA, KASMAN, TAZEER);
+		addKillId(GOBLIN_TOMB_RAIDER_LEADER, KURUKA_RATMAN_LEADER, UMBAR_ORC, TIMORA_ORC);
 	}
 	
 	@Override
-	public String onAdvEvent(String event, Npc npc, Player player)
+	public String onEvent(String event, Npc npc, Player player)
 	{
-		final QuestState qs = getQuestState(player, false);
-		if (qs == null)
+		String htmltext = event;
+		final QuestState st = getQuestState(player, false);
+		if (st == null)
 		{
-			return null;
+			return htmltext;
 		}
 		
-		String htmltext = null;
 		switch (event)
 		{
-			case "ACCEPT":
+			case "30570-05.htm":
 			{
-				if (player.getClassId() == ClassId.ORC_FIGHTER)
+				if (player.getClassId() != ClassId.ORC_FIGHTER)
 				{
-					if (player.getLevel() >= MIN_LEVEL)
-					{
-						if (hasQuestItems(player, MARK_OF_RAIDER))
-						{
-							htmltext = "30570-04.htm";
-						}
-						else
-						{
-							if (!hasQuestItems(player, GOBLIN_DWELLING_MAP))
-							{
-								giveItems(player, GOBLIN_DWELLING_MAP, 1);
-							}
-							qs.startQuest();
-							htmltext = "30570-05.htm";
-						}
-					}
-					else
-					{
-						htmltext = "30570-02.htm";
-					}
+					htmltext = (player.getClassId() == ClassId.ORC_RAIDER) ? "30570-02a.htm" : "30570-03.htm";
 				}
-				else if (player.getClassId() == ClassId.ORC_RAIDER)
+				else if (player.getLevel() < 19)
 				{
-					htmltext = "30570-02a.htm";
+					htmltext = "30570-02.htm";
+				}
+				else if (hasQuestItems(player, MARK_OF_RAIDER))
+				{
+					htmltext = "30570-04.htm";
 				}
 				else
 				{
-					htmltext = "30570-03.htm";
+					st.startQuest();
+					giveItems(player, GOBLIN_DWELLING_MAP, 1);
 				}
 				break;
 			}
-			case "30570-07a.html":
+			case "30570-07a.htm":
 			{
-				if (hasQuestItems(player, GOBLIN_DWELLING_MAP) && (getQuestItemsCount(player, KURUKA_RATMAN_TOOTH) >= 10))
-				{
-					takeItems(player, GOBLIN_DWELLING_MAP, 1);
-					takeItems(player, KURUKA_RATMAN_TOOTH, -1);
-					giveItems(player, BETRAYER_UMBAR_REPORT, 1);
-					giveItems(player, BETRAYER_ZAKAN_REPORT, 1);
-					qs.setCond(3, true);
-					htmltext = event;
-				}
+				st.setCond(3, true);
+				takeItems(player, GOBLIN_DWELLING_MAP, 1);
+				takeItems(player, KURUKA_RATMAN_TOOTH, -1);
+				giveItems(player, BETRAYER_REPORT_1, 1);
+				giveItems(player, BETRAYER_REPORT_2, 1);
 				break;
 			}
-			case "30570-07b.html":
+			case "30570-07b.htm":
 			{
-				if (hasQuestItems(player, GOBLIN_DWELLING_MAP) && (getQuestItemsCount(player, KURUKA_RATMAN_TOOTH) >= 10))
-				{
-					takeItems(player, GOBLIN_DWELLING_MAP, 1);
-					takeItems(player, KURUKA_RATMAN_TOOTH, -1);
-					qs.setCond(5, true);
-					qs.setMemoState(2);
-					htmltext = event;
-				}
+				st.setCond(5, true);
+				takeItems(player, GOBLIN_DWELLING_MAP, 1);
+				takeItems(player, KURUKA_RATMAN_TOOTH, -1);
 				break;
 			}
-			case "31978-04.html":
+			case "31978-03.htm":
 			{
-				if (qs.isMemoState(2))
-				{
-					htmltext = event;
-				}
-				break;
-			}
-			case "31978-02.html":
-			{
-				if (qs.isMemoState(2))
-				{
-					qs.setMemoState(3);
-					qs.setCond(6, true);
-					htmltext = event;
-				}
+				st.setCond(6, true);
 				break;
 			}
 		}
+		
 		return htmltext;
-	}
-	
-	@Override
-	public String onKill(Npc npc, Player killer, boolean isSummon)
-	{
-		final QuestState qs = getQuestState(killer, false);
-		if ((qs != null) && qs.isStarted() && Util.checkIfInRange(Config.ALT_PARTY_RANGE, npc, killer, true))
-		{
-			switch (npc.getId())
-			{
-				case GOBLIN_TOMB_RAIDER_LEADER:
-				{
-					if (hasQuestItems(killer, GOBLIN_DWELLING_MAP) && (getQuestItemsCount(killer, KURUKA_RATMAN_TOOTH) < 10) && (getQuestItemsCount(killer, GREEN_BLOOD) <= 20))
-					{
-						if (getRandom(100) < (getQuestItemsCount(killer, GREEN_BLOOD) * 5))
-						{
-							takeItems(killer, GREEN_BLOOD, -1);
-							addAttackDesire(addSpawn(KURUKA_RATMAN_LEADER, npc, true, 0, true), killer);
-						}
-						else
-						{
-							giveItems(killer, GREEN_BLOOD, 1);
-							playSound(killer, QuestSound.ITEMSOUND_QUEST_ITEMGET);
-						}
-					}
-					break;
-				}
-				case KURUKA_RATMAN_LEADER:
-				{
-					if (hasQuestItems(killer, GOBLIN_DWELLING_MAP) && (getQuestItemsCount(killer, KURUKA_RATMAN_TOOTH) < 10))
-					{
-						takeItems(killer, GREEN_BLOOD, -1);
-						if (getQuestItemsCount(killer, KURUKA_RATMAN_TOOTH) >= 9)
-						{
-							giveItems(killer, KURUKA_RATMAN_TOOTH, 1);
-							qs.setCond(2, true);
-						}
-						else
-						{
-							giveItems(killer, KURUKA_RATMAN_TOOTH, 1);
-							playSound(killer, QuestSound.ITEMSOUND_QUEST_ITEMGET);
-						}
-					}
-					break;
-				}
-				case UMBAR_ORC:
-				{
-					if (hasAtLeastOneQuestItem(killer, BETRAYER_UMBAR_REPORT, BETRAYER_ZAKAN_REPORT) && (getQuestItemsCount(killer, HEAD_OF_BETRAYER) < 2) && (getRandom(10) < 2))
-					{
-						giveItems(killer, HEAD_OF_BETRAYER, 1);
-						if (hasQuestItems(killer, BETRAYER_ZAKAN_REPORT))
-						{
-							takeItems(killer, BETRAYER_ZAKAN_REPORT, 1);
-						}
-						else if (hasQuestItems(killer, BETRAYER_UMBAR_REPORT))
-						{
-							takeItems(killer, BETRAYER_UMBAR_REPORT, 1);
-						}
-						if (getQuestItemsCount(killer, HEAD_OF_BETRAYER) == 2)
-						{
-							qs.setCond(4, true);
-						}
-						else
-						{
-							playSound(killer, QuestSound.ITEMSOUND_QUEST_ITEMGET);
-						}
-					}
-					break;
-				}
-				case TIMORA_ORC:
-				{
-					if (qs.isMemoState(3) && !hasQuestItems(killer, TIMORA_ORC_HEAD) && (getRandom(100) < 60))
-					{
-						giveItems(killer, TIMORA_ORC_HEAD, 1);
-						qs.setCond(7, true);
-					}
-					break;
-				}
-			}
-		}
-		return super.onKill(npc, killer, isSummon);
 	}
 	
 	@Override
 	public String onTalk(Npc npc, Player player)
 	{
-		final QuestState qs = getQuestState(player, true);
 		String htmltext = getNoQuestMsg(player);
-		if (qs.isCreated() || qs.isCompleted())
+		final QuestState st = getQuestState(player, true);
+		
+		switch (st.getState())
 		{
-			if (npc.getId() == PREFECT_KARUKIA)
+			case State.CREATED:
 			{
 				htmltext = "30570-01.htm";
+				break;
 			}
-		}
-		else if (qs.isStarted())
-		{
-			switch (npc.getId())
+			case State.STARTED:
 			{
-				case PREFECT_KARUKIA:
+				final int cond = st.getCond();
+				switch (npc.getId())
 				{
-					if (hasQuestItems(player, GOBLIN_DWELLING_MAP) && (getQuestItemsCount(player, KURUKA_RATMAN_TOOTH) < 10))
+					case KARUKIA:
 					{
-						htmltext = "30570-06.html";
-					}
-					else if (hasQuestItems(player, GOBLIN_DWELLING_MAP) && (getQuestItemsCount(player, KURUKA_RATMAN_TOOTH) >= 10))
-					{
-						if (!hasAtLeastOneQuestItem(player, BETRAYER_UMBAR_REPORT, BETRAYER_ZAKAN_REPORT))
+						if (cond == 1)
 						{
-							htmltext = "30570-07.html";
+							htmltext = "30570-06.htm";
 						}
-					}
-					else if (hasQuestItems(player, HEAD_OF_BETRAYER) || hasAtLeastOneQuestItem(player, BETRAYER_UMBAR_REPORT, BETRAYER_ZAKAN_REPORT))
-					{
-						htmltext = "30570-08.html";
-					}
-					else if (qs.isMemoState(2))
-					{
-						htmltext = "30570-07b.html";
-					}
-					break;
-				}
-				case PREFRCT_KASMAN:
-				{
-					if (!hasQuestItems(player, HEAD_OF_BETRAYER) && (getQuestItemsCount(player, BETRAYER_UMBAR_REPORT, BETRAYER_ZAKAN_REPORT) >= 2))
-					{
-						htmltext = "30501-01.html";
-					}
-					else if (getQuestItemsCount(player, HEAD_OF_BETRAYER) == 1)
-					{
-						htmltext = "30501-02.html";
-					}
-					else if (getQuestItemsCount(player, HEAD_OF_BETRAYER) == 2)
-					{
-						giveAdena(player, 163800, true);
-						giveItems(player, MARK_OF_RAIDER, 1);
-						final int level = player.getLevel();
-						if (level >= 20)
+						else if (cond == 2)
 						{
-							addExpAndSp(player, 320534, 21312);
+							htmltext = "30570-07.htm";
 						}
-						else if (level == 19)
+						else if ((cond == 3) || (cond == 4))
 						{
-							addExpAndSp(player, 456128, 28010);
+							htmltext = "30570-08.htm";
 						}
-						else
+						else if (cond == 5)
 						{
-							addExpAndSp(player, 591724, 34708);
+							htmltext = "30570-07b.htm";
 						}
-						qs.exitQuest(false, true);
-						player.sendPacket(new SocialAction(player.getObjectId(), 3));
-						htmltext = "30501-03.html";
+						break;
 					}
-					break;
-				}
-				case PREFRCT_TAZEER:
-				{
-					if (qs.isMemoState(2))
+					case KASMAN:
 					{
-						htmltext = "31978-01.html";
-					}
-					else if (qs.isMemoState(3))
-					{
-						if (!hasQuestItems(player, TIMORA_ORC_HEAD))
+						if (cond == 3)
 						{
-							htmltext = "31978-03.html";
+							htmltext = "30501-01.htm";
 						}
-						else
+						else if (cond == 4)
 						{
-							giveAdena(player, 81900, true);
-							giveItems(player, MARK_OF_RAIDER, 1);
-							final int level = player.getLevel();
-							if (level >= 20)
+							if (getQuestItemsCount(player, HEAD_OF_BETRAYER) == 1)
 							{
-								addExpAndSp(player, 160267, 10656);
-							}
-							else if (level == 19)
-							{
-								addExpAndSp(player, 228064, 14005);
+								htmltext = "30501-02.htm";
 							}
 							else
 							{
-								addExpAndSp(player, 295862, 17354);
+								htmltext = "30501-03.htm";
+								takeItems(player, BETRAYER_REPORT_1, 1);
+								takeItems(player, BETRAYER_REPORT_2, 1);
+								takeItems(player, HEAD_OF_BETRAYER, -1);
+								giveItems(player, MARK_OF_RAIDER, 1);
+								addExpAndSp(player, 3200, 2360);
+								player.broadcastPacket(new SocialAction(player.getObjectId(), 3));
+								st.exitQuest(true, true);
 							}
-							qs.exitQuest(false, true);
-							player.sendPacket(new SocialAction(player.getObjectId(), 3));
-							htmltext = "31978-05.html";
 						}
+						break;
 					}
-					break;
+					case TAZEER:
+					{
+						if (cond == 5)
+						{
+							htmltext = "31978-01.htm";
+						}
+						else if (cond == 6)
+						{
+							htmltext = "31978-04.htm";
+						}
+						else if (cond == 7)
+						{
+							htmltext = "31978-05.htm";
+							takeItems(player, TIMORA_ORC_HEAD, 1);
+							giveItems(player, MARK_OF_RAIDER, 1);
+							addExpAndSp(player, 3200, 2360);
+							player.broadcastPacket(new SocialAction(player.getObjectId(), 3));
+							st.exitQuest(true, true);
+						}
+						break;
+					}
 				}
+				break;
 			}
 		}
+		
 		return htmltext;
+	}
+	
+	@Override
+	public String onKill(Npc npc, Player player, boolean isPet)
+	{
+		final QuestState st = getQuestState(player, false);
+		if ((st == null) || !st.isStarted())
+		{
+			return null;
+		}
+		
+		switch (npc.getId())
+		{
+			case GOBLIN_TOMB_RAIDER_LEADER:
+			{
+				if (st.isCond(1))
+				{
+					if (getQuestItemsCount(player, GREEN_BLOOD) <= getRandom(20))
+					{
+						playSound(player, QuestSound.ITEMSOUND_QUEST_ITEMGET);
+						giveItems(player, GREEN_BLOOD, 1);
+					}
+					else
+					{
+						takeItems(player, GREEN_BLOOD, -1);
+						addSpawn(KURUKA_RATMAN_LEADER, npc, false, 300000);
+					}
+				}
+				break;
+			}
+			case KURUKA_RATMAN_LEADER:
+			{
+				if (st.isCond(1))
+				{
+					giveItems(player, KURUKA_RATMAN_TOOTH, 1);
+					if (getQuestItemsCount(player, KURUKA_RATMAN_TOOTH) < 10)
+					{
+						playSound(player, QuestSound.ITEMSOUND_QUEST_ITEMGET);
+					}
+					else
+					{
+						st.setCond(2, true);
+					}
+				}
+				break;
+			}
+			case UMBAR_ORC:
+			{
+				if ((st.isCond(3) || st.isCond(4)) && (getQuestItemsCount(player, HEAD_OF_BETRAYER) < 2) && (getRandom(10) < 2))
+				{
+					if (st.isCond(3))
+					{
+						st.setCond(4, true);
+					}
+					
+					giveItems(player, HEAD_OF_BETRAYER, 1);
+				}
+				break;
+			}
+			case TIMORA_ORC:
+			{
+				if (st.isCond(6) && (getRandom(10) < 6))
+				{
+					giveItems(player, TIMORA_ORC_HEAD, 1);
+					st.setCond(7, true);
+				}
+				break;
+			}
+		}
+		
+		return null;
 	}
 }

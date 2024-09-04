@@ -16,40 +16,38 @@
  */
 package org.l2jmobius.gameserver.network.clientpackets;
 
-import org.l2jmobius.commons.network.ReadablePacket;
 import org.l2jmobius.gameserver.data.sql.CrestTable;
 import org.l2jmobius.gameserver.enums.CrestType;
 import org.l2jmobius.gameserver.model.Crest;
 import org.l2jmobius.gameserver.model.actor.Player;
 import org.l2jmobius.gameserver.model.clan.Clan;
 import org.l2jmobius.gameserver.model.clan.ClanPrivilege;
-import org.l2jmobius.gameserver.network.GameClient;
 import org.l2jmobius.gameserver.network.SystemMessageId;
 
 /**
  * Client packet for setting/deleting clan crest.
  */
-public class RequestSetPledgeCrest implements ClientPacket
+public class RequestSetPledgeCrest extends ClientPacket
 {
 	private int _length;
 	private byte[] _data = null;
 	
 	@Override
-	public void read(ReadablePacket packet)
+	protected void readImpl()
 	{
-		_length = packet.readInt();
+		_length = readInt();
 		if (_length > 256)
 		{
 			return;
 		}
 		
-		_data = packet.readBytes(_length);
+		_data = readBytes(_length);
 	}
 	
 	@Override
-	public void run(GameClient client)
+	protected void runImpl()
 	{
-		final Player player = client.getPlayer();
+		final Player player = getPlayer();
 		if (player == null)
 		{
 			return;
@@ -57,13 +55,13 @@ public class RequestSetPledgeCrest implements ClientPacket
 		
 		if ((_length < 0))
 		{
-			player.sendPacket(SystemMessageId.THE_SIZE_OF_THE_UPLOADED_CREST_OR_INSIGNIA_DOES_NOT_MEET_THE_STANDARD_REQUIREMENTS);
+			player.sendMessage("The size of the uploaded crest or insignia does not meet the standard requirements.");
 			return;
 		}
 		
 		if (_length > 256)
 		{
-			player.sendPacket(SystemMessageId.THE_SIZE_OF_THE_IMAGE_FILE_IS_INAPPROPRIATE_PLEASE_ADJUST_TO_16X12_PIXELS);
+			player.sendPacket(SystemMessageId.THE_SIZE_OF_THE_IMAGE_FILE_IS_INAPPROPRIATE_PLEASE_ADJUST_TO_16_12);
 			return;
 		}
 		
@@ -75,7 +73,7 @@ public class RequestSetPledgeCrest implements ClientPacket
 		
 		if (clan.getDissolvingExpiryTime() > System.currentTimeMillis())
 		{
-			player.sendPacket(SystemMessageId.AS_YOU_ARE_CURRENTLY_SCHEDULE_FOR_CLAN_DISSOLUTION_YOU_CANNOT_REGISTER_OR_DELETE_A_CLAN_CREST);
+			player.sendPacket(SystemMessageId.DURING_THE_GRACE_PERIOD_FOR_DISSOLVING_A_CLAN_THE_REGISTRATION_OR_DELETION_OF_A_CLAN_S_CREST_IS_NOT_ALLOWED);
 			return;
 		}
 		
@@ -105,7 +103,7 @@ public class RequestSetPledgeCrest implements ClientPacket
 			if (crest != null)
 			{
 				clan.changeClanCrest(crest.getId());
-				player.sendPacket(SystemMessageId.THE_CREST_WAS_SUCCESSFULLY_REGISTERED);
+				player.sendMessage("The crest was successfully registered.");
 			}
 		}
 	}

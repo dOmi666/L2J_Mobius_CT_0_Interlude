@@ -27,15 +27,9 @@ import org.l2jmobius.gameserver.model.quest.Quest;
 import org.l2jmobius.gameserver.model.quest.QuestState;
 import org.l2jmobius.gameserver.model.quest.State;
 
-/**
- * Shilen's Hunt (165)
- * @author xban1x
- */
 public class Q00165_ShilensHunt extends Quest
 {
-	// NPC
-	private static final int NELSYA = 30348;
-	// Monsters
+	// NPCs
 	private static final Map<Integer, Integer> MONSTERS = new HashMap<>();
 	static
 	{
@@ -45,76 +39,73 @@ public class Q00165_ShilensHunt extends Quest
 		MONSTERS.put(20536, 2); // Elder Brown Keltir
 	}
 	// Items
-	private static final int LESSER_HEALING_POTION = 1060;
 	private static final int DARK_BEZOAR = 1160;
-	// Misc
-	private static final int MIN_LEVEL = 3;
-	private static final int REQUIRED_COUNT = 13;
+	private static final int LESSER_HEALING_POTION = 1060;
 	
 	public Q00165_ShilensHunt()
 	{
 		super(165);
-		addStartNpc(NELSYA);
-		addTalkId(NELSYA);
-		addKillId(MONSTERS.keySet());
 		registerQuestItems(DARK_BEZOAR);
+		addStartNpc(30348); // Nelsya
+		addTalkId(30348);
+		addKillId(MONSTERS.keySet());
 	}
 	
 	@Override
-	public String onAdvEvent(String event, Npc npc, Player player)
+	public String onEvent(String event, Npc npc, Player player)
 	{
-		final QuestState qs = getQuestState(player, false);
-		if ((qs != null) && event.equalsIgnoreCase("30348-03.htm"))
+		String htmltext = event;
+		final QuestState st = getQuestState(player, false);
+		if (st == null)
 		{
-			qs.startQuest();
-			return event;
+			return htmltext;
 		}
-		return null;
-	}
-	
-	@Override
-	public String onKill(Npc npc, Player killer, boolean isSummon)
-	{
-		final QuestState qs = getQuestState(killer, false);
-		if ((qs != null) && qs.isCond(1) && (getRandom(3) < MONSTERS.get(npc.getId())))
+		
+		if (event.equals("30348-03.htm"))
 		{
-			giveItems(killer, DARK_BEZOAR, 1);
-			if (getQuestItemsCount(killer, DARK_BEZOAR) < REQUIRED_COUNT)
-			{
-				playSound(killer, QuestSound.ITEMSOUND_QUEST_ITEMGET);
-			}
-			else
-			{
-				qs.setCond(2, true);
-			}
+			st.startQuest();
 		}
-		return super.onKill(npc, killer, isSummon);
+		
+		return htmltext;
 	}
 	
 	@Override
 	public String onTalk(Npc npc, Player player)
 	{
-		final QuestState qs = getQuestState(player, true);
 		String htmltext = getNoQuestMsg(player);
-		switch (qs.getState())
+		final QuestState st = getQuestState(player, true);
+		
+		switch (st.getState())
 		{
 			case State.CREATED:
 			{
-				htmltext = (player.getRace() == Race.DARK_ELF) ? (player.getLevel() >= MIN_LEVEL) ? "30348-02.htm" : "30348-01.htm" : "30348-00.htm";
+				if (player.getRace() != Race.DARK_ELF)
+				{
+					htmltext = "30348-00.htm";
+				}
+				else if (player.getLevel() < 3)
+				{
+					htmltext = "30348-01.htm";
+				}
+				else
+				{
+					htmltext = "30348-02.htm";
+				}
 				break;
 			}
 			case State.STARTED:
 			{
-				if (qs.isCond(2) && (getQuestItemsCount(player, DARK_BEZOAR) >= REQUIRED_COUNT))
+				if (getQuestItemsCount(player, DARK_BEZOAR) >= 13)
 				{
-					giveItems(player, LESSER_HEALING_POTION, 5);
+					htmltext = "30348-05.htm";
+					takeItems(player, DARK_BEZOAR, -1);
+					rewardItems(player, LESSER_HEALING_POTION, 5);
 					addExpAndSp(player, 1000, 0);
-					qs.exitQuest(false, true);
-					htmltext = "30348-05.html";
+					st.exitQuest(false, true);
 				}
 				else
 				{
-					htmltext = "30348-04.html";
+					htmltext = "30348-04.htm";
 				}
 				break;
 			}
@@ -124,6 +115,26 @@ public class Q00165_ShilensHunt extends Quest
 				break;
 			}
 		}
+		
 		return htmltext;
+	}
+	
+	@Override
+	public String onKill(Npc npc, Player killer, boolean isSummon)
+	{
+		final QuestState qs = getQuestState(killer, false);
+		if ((qs != null) && qs.isCond(1) && (getRandom(3) < MONSTERS.get(npc.getId())))
+		{
+			giveItems(killer, DARK_BEZOAR, 1);
+			if (getQuestItemsCount(killer, DARK_BEZOAR) < 13)
+			{
+				playSound(killer, QuestSound.ITEMSOUND_QUEST_ITEMGET);
+			}
+			else
+			{
+				qs.setCond(2, true);
+			}
+		}
+		return super.onKill(npc, killer, isSummon);
 	}
 }

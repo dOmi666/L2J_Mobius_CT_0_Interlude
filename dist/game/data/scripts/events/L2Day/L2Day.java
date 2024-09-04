@@ -58,23 +58,6 @@ public class L2Day extends LongTimeEvent
 	// Rewards
 	private static final ItemChanceHolder[] L2_REWARDS =
 	{
-		new ItemChanceHolder(10260, 90, 3), // Alacrity Juice
-		new ItemChanceHolder(10261, 85, 3), // Accuracy Juice
-		new ItemChanceHolder(10262, 80, 3), // Critical Hit Juice
-		new ItemChanceHolder(10263, 75, 3), // Critical Rate Juice
-		new ItemChanceHolder(10264, 70, 3), // Casting Spd. Juice
-		new ItemChanceHolder(10265, 65, 3), // Evasion Juice
-		new ItemChanceHolder(10266, 60, 3), // M. Atk. Juice
-		new ItemChanceHolder(10267, 55, 3), // Power Juice
-		new ItemChanceHolder(10268, 50, 3), // Speed Juice
-		new ItemChanceHolder(10269, 45, 3), // Defense Juice
-		new ItemChanceHolder(10270, 40, 3), // MP Consumption Juice
-		new ItemChanceHolder(9546, 37, 2), // Fire Stone
-		new ItemChanceHolder(9547, 34, 2), // Water Stone
-		new ItemChanceHolder(9548, 31, 2), // Earth Stone
-		new ItemChanceHolder(9549, 28, 2), // Wind Stone
-		new ItemChanceHolder(9550, 25, 2), // Dark Stone
-		new ItemChanceHolder(9551, 22, 2), // Holy Stone
 		new ItemChanceHolder(8947, 19, 1), // L2day - Rabbit Ears
 		new ItemChanceHolder(8948, 16, 1), // L2day - Little Angel Wings
 		new ItemChanceHolder(8949, 13, 1), // L2day - Fairy Antennae
@@ -86,23 +69,6 @@ public class L2Day extends LongTimeEvent
 	};
 	private static final ItemChanceHolder[] NC_REWARDS =
 	{
-		new ItemChanceHolder(10260, 90, 2), // Alacrity Juice
-		new ItemChanceHolder(10261, 85, 2), // Accuracy Juice
-		new ItemChanceHolder(10262, 80, 2), // Critical Hit Juice
-		new ItemChanceHolder(10263, 75, 2), // Critical Rate Juice
-		new ItemChanceHolder(10264, 70, 2), // Casting Spd. Juice
-		new ItemChanceHolder(10265, 65, 2), // Evasion Juice
-		new ItemChanceHolder(10266, 60, 2), // M. Atk. Juice
-		new ItemChanceHolder(10267, 55, 2), // Power Juice
-		new ItemChanceHolder(10268, 50, 2), // Speed Juice
-		new ItemChanceHolder(10269, 45, 2), // Defense Juice
-		new ItemChanceHolder(10270, 40, 2), // MP Consumption Juice
-		new ItemChanceHolder(9546, 37, 1), // Fire Stone
-		new ItemChanceHolder(9547, 34, 1), // Water Stone
-		new ItemChanceHolder(9548, 31, 1), // Earth Stone
-		new ItemChanceHolder(9549, 28, 1), // Wind Stone
-		new ItemChanceHolder(9550, 25, 1), // Dark Stone
-		new ItemChanceHolder(9551, 22, 1), // Holy Stone
 		new ItemChanceHolder(8948, 19, 1), // L2day - Little Angel Wings
 		new ItemChanceHolder(8949, 16, 1), // L2day - Fairy Antennae
 		new ItemChanceHolder(8950, 13, 1), // L2day - Feathered Hat
@@ -114,23 +80,6 @@ public class L2Day extends LongTimeEvent
 	};
 	private static final ItemChanceHolder[] CH_REWARDS =
 	{
-		new ItemChanceHolder(10260, 90, 1), // Alacrity Juice
-		new ItemChanceHolder(10261, 85, 1), // Accuracy Juice
-		new ItemChanceHolder(10262, 80, 1), // Critical Hit Juice
-		new ItemChanceHolder(10263, 75, 1), // Critical Rate Juice
-		new ItemChanceHolder(10264, 70, 1), // Casting Spd. Juice
-		new ItemChanceHolder(10265, 65, 1), // Evasion Juice
-		new ItemChanceHolder(10266, 60, 1), // M. Atk. Juice
-		new ItemChanceHolder(10267, 55, 1), // Power Juice
-		new ItemChanceHolder(10268, 50, 1), // Speed Juice
-		new ItemChanceHolder(10269, 45, 1), // Defense Juice
-		new ItemChanceHolder(10270, 40, 1), // MP Consumption Juice
-		new ItemChanceHolder(9546, 37, 1), // Fire Stone
-		new ItemChanceHolder(9547, 34, 1), // Water Stone
-		new ItemChanceHolder(9548, 31, 1), // Earth Stone
-		new ItemChanceHolder(9549, 28, 1), // Wind Stone
-		new ItemChanceHolder(9550, 25, 1), // Dark Stone
-		new ItemChanceHolder(9551, 22, 1), // Holy Stone
 		new ItemChanceHolder(8949, 19, 1), // L2day - Fairy Antennae
 		new ItemChanceHolder(8950, 16, 1), // L2day - Feathered Hat
 		new ItemChanceHolder(8951, 13, 1), // L2day - Artisan's Goggles
@@ -149,7 +98,7 @@ public class L2Day extends LongTimeEvent
 	}
 	
 	@Override
-	public String onAdvEvent(String event, Npc npc, Player player)
+	public String onEvent(String event, Npc npc, Player player)
 	{
 		String htmltext = event;
 		switch (event)

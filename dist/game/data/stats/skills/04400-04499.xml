@@ -243,9 +243,9 @@
 			</effect>
 		</for>
 	</skill>
-	<skill id="4415" levels="26" name="Bare Hands">
-		<table name="#pAtk">1 1.38 1 1.38 1 1.38 0.87 1.21 2.22 2.5 1 1.38 1.16 1.62 1.16 1.62 1.16 1.62 1.16 1.62 1.08 1.62 0.93 1.62 1.38 1.62</table>
-		<table name="#pAtkSpd">1 0.71 1 0.71 1 0.71 1.14 0.82 0.89 0.64 1 0.71 0.85 0.61 0.85 0.61 0.85 0.61 0.85 0.61 0.92 0.61 1.07 0.61 0.62 0.61</table>
+	<skill id="4415" levels="20" name="Bare Hands">
+		<table name="#pAtk">1 1.38 1 1.38 1 1.38 0.87 1.21 2.22 2.5 1 1.38 1.16 1.62 1.16 1.62 1.16 1.62 1.16 1.62</table>
+		<table name="#pAtkSpd">1 0.71 1 0.71 1 0.71 1.14 0.82 0.89 0.64 1 0.71 0.85 0.61 0.85 0.61 0.85 0.61 0.85 0.61</table>
 		<set name="magicLevel" val="1" />
 		<set name="operateType" val="P" />
 		<set name="targetType" val="SELF" />
@@ -256,27 +256,27 @@
 			</effect>
 		</for>
 	</skill>
-	<skill id="4416" levels="25" name="Undead">
+	<skill id="4416" levels="24" name="Undead">
 		<!-- Called out of their graves by black magic, a curse or the power of an evil mind, most of these creatures lack intelligence and can perform only simple actions. However, some high-ranking undead possess great knowledge and sophistication even when compared to ordinary humanoids. -->
-		<table name="#icons">icon.skill4290 icon.skill4291 icon.skill4292 icon.skill4293 icon.skill4294 icon.skill4295 icon.skill4296 icon.skill4297 icon.skill4298 icon.skill4299 icon.skill4300 icon.skill4301 icon.skill4302 icon.skill4416_human icon.skill4416_elf icon.skill4416_darkelf icon.skill4416_orc icon.skill4416_dwarf icon.skill4416_etc icon.skill4416_none icon.skill4416_siegeweapon icon.skill4416_castleguard icon.skill4416_mercenary icon.skill4416_none icon.skill4296</table>
-		<table name="#pDefAnimals">0 0 0 -15 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0</table>
-		<table name="#pDefBeasts">0 0 -15 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0</table>
-		<table name="#pDefBlunts">0 0 0 0 0 0 0 0 -15 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0</table>
-		<table name="#pDefBows">0 0 0 -15 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0</table>
-		<table name="#pDefBugs">0 0 0 0 0 0 0 0 0 0 0 -15 0 0 0 0 0 0 0 0 0 0 0 0 0</table>
-		<table name="#pDefDragons">0 0 0 0 0 0 0 0 0 -15 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0</table>
-		<table name="#pDefDuals">0 0 0 0 0 0 0 0 0 -15 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0</table>
-		<table name="#pDefGiants">0 0 0 0 0 0 0 0 0 0 -15 0 0 0 0 0 0 0 0 0 0 0 0 0 0</table>
-		<table name="#pDefMagicCreatures">0 -15 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0</table>
-		<table name="#pDefPlants">0 0 0 0 -15 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0</table>
-		<table name="#pDefShocks">0 0 0 0 0 0 0 0 0 0 15 0 0 0 0 0 0 0 0 0 0 0 0 0 0</table>
-		<table name="#pDefSwords">0 0 0 0 0 0 0 0 0 -15 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0</table>
+		<table name="#icons">icon.skill4290 icon.skill4291 icon.skill4292 icon.skill4293 icon.skill4294 icon.skill4295 icon.skill4296 icon.skill4297 icon.skill4298 icon.skill4299 icon.skill4300 icon.skill4301 icon.skill4302 icon.skill4416_human icon.skill4416_elf icon.skill4416_darkelf icon.skill4416_orc icon.skill4416_dwarf icon.skill4416_etc icon.skill4416_none icon.skill4416_siegeweapon icon.skill4416_castleguard icon.skill4416_mercenary icon.skill4416_none</table>
+		<table name="#pDefAnimals">1 1 1 0.85 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1</table>
+		<table name="#pDefBeasts">1 1 0.85 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1</table>
+		<table name="#pDefBlunts">1 1 1 1 1 1 1 1 0.85 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1</table>
+		<table name="#pDefBows">1 1 1 0.85 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1</table>
+		<table name="#pDefBugs">1 1 1 1 1 1 1 1 1 1 1 0.85 1 1 1 1 1 1 1 1 1 1 1 1</table>
+		<table name="#pDefDragons">1 1 1 1 1 1 1 1 1 0.85 1 1 1 1 1 1 1 1 1 1 1 1 1 1</table>
+		<table name="#pDefDuals">1 1 1 1 1 1 1 1 1 0.85 1 1 1 1 1 1 1 1 1 1 1 1 1 1</table>
+		<table name="#pDefGiants">1 1 1 1 1 1 1 1 1 1 0.85 1 1 1 1 1 1 1 1 1 1 1 1 1</table>
+		<table name="#pDefMagicCreatures">1 0.85 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1</table>
+		<table name="#pDefPlants">1 1 1 1 0.85 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1</table>
+		<table name="#pDefShocks">0 0 0 0 0 0 0 0 0 0 15 0 0 0 0 0 0 0 0 0 0 0 0 0</table>
+		<table name="#pDefSwords">1 1 1 1 1 1 1 1 1 0.85 1 1 1 1 1 1 1 1 1 1 1 1 1 1</table>
 		<set name="icon" val="#icons" />
 		<set name="magicLevel" val="1" />
 		<set name="operateType" val="P" />
 		<set name="targetType" val="SELF" />
 		<for>
-			<effect name="DefenceTrait"> <!-- TODO: Verify me! -->
+			<effect name="DefenceTrait">
 				<param CONSTRUCT_WEAKNESS="#pDefMagicCreatures" />
 				<param BEAST_WEAKNESS="#pDefBeasts" />
 				<param ANIMAL_WEAKNESS="#pDefAnimals" />
@@ -1636,7 +1636,7 @@
 			</effect>
 		</for>
 	</skill>
-	<skill id="4494" levels="2" name="Raid Boss">
+	<skill id="4494" levels="1" name="Raid Boss">
 		<!-- If the person who made the greatest contribution is 3 or more levels higher than the raid monster, then the item/adena rewards will decrease. If the difference is 9 or more levels, the monster will drop nothing at all. -->
 		<set name="icon" val="icon.skillraid" />
 		<set name="magicLevel" val="1" />

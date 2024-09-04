@@ -189,7 +189,7 @@ public class Q00611_AllianceWithVarkaSilenos extends Quest
 	}
 	
 	@Override
-	public String onAdvEvent(String event, Npc npc, Player player)
+	public String onEvent(String event, Npc npc, Player player)
 	{
 		final QuestState qs = getQuestState(player, false);
 		if (qs == null)
@@ -295,7 +295,8 @@ public class Q00611_AllianceWithVarkaSilenos extends Quest
 			final DropInfo info = MOBS.get(npc.getId());
 			if ((qs.getCond() >= info.getMinCond()) && (qs.getCond() < 6) && canGetItem(qs, info.getItemId()) && (getRandom(1000) < info.getChance()))
 			{
-				giveItems(member, info.getItemId(), 5);
+				giveItems(member, info.getItemId(), 1);
+				playSound(member, QuestSound.ITEMSOUND_QUEST_MIDDLE);
 			}
 		}
 		return super.onKill(npc, killer, isSummon);

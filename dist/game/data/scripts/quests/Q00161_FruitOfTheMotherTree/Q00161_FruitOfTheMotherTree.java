@@ -23,118 +23,112 @@ import org.l2jmobius.gameserver.model.quest.Quest;
 import org.l2jmobius.gameserver.model.quest.QuestState;
 import org.l2jmobius.gameserver.model.quest.State;
 
-/**
- * Fruit of the Mother Tree (161)
- * @author malyelfik
- */
 public class Q00161_FruitOfTheMotherTree extends Quest
 {
 	// NPCs
 	private static final int ANDELLIA = 30362;
 	private static final int THALIA = 30371;
 	// Items
-	private static final int ANDELLRIAS_LETTER = 1036;
+	private static final int ANDELLIA_LETTER = 1036;
 	private static final int MOTHERTREE_FRUIT = 1037;
-	// Misc
-	private static final int MIN_LEVEL = 3;
 	
 	public Q00161_FruitOfTheMotherTree()
 	{
 		super(161);
+		registerQuestItems(ANDELLIA_LETTER, MOTHERTREE_FRUIT);
 		addStartNpc(ANDELLIA);
 		addTalkId(ANDELLIA, THALIA);
-		registerQuestItems(ANDELLRIAS_LETTER, MOTHERTREE_FRUIT);
 	}
 	
 	@Override
-	public String onAdvEvent(String event, Npc npc, Player player)
+	public String onEvent(String event, Npc npc, Player player)
 	{
-		final QuestState qs = getQuestState(player, false);
-		if (qs == null)
+		String htmltext = event;
+		final QuestState st = getQuestState(player, false);
+		if (st == null)
 		{
-			return null;
+			return htmltext;
 		}
 		
-		String htmltext = event;
-		switch (event)
+		if (event.equals("30362-04.htm"))
 		{
-			case "30362-04.htm":
-			{
-				qs.startQuest();
-				giveItems(player, ANDELLRIAS_LETTER, 1);
-				break;
-			}
-			case "30371-03.html":
-			{
-				break;
-			}
-			default:
-			{
-				htmltext = null;
-				break;
-			}
+			st.startQuest();
+			giveItems(player, ANDELLIA_LETTER, 1);
 		}
+		
 		return htmltext;
 	}
 	
 	@Override
 	public String onTalk(Npc npc, Player player)
 	{
-		final QuestState qs = getQuestState(player, true);
 		String htmltext = getNoQuestMsg(player);
-		switch (npc.getId())
+		final QuestState st = getQuestState(player, true);
+		
+		switch (st.getState())
 		{
-			case ANDELLIA:
+			case State.CREATED:
 			{
-				switch (qs.getState())
+				if (player.getRace() != Race.ELF)
 				{
-					case State.CREATED:
+					htmltext = "30362-00.htm";
+				}
+				else if (player.getLevel() < 3)
+				{
+					htmltext = "30362-02.htm";
+				}
+				else
+				{
+					htmltext = "30362-03.htm";
+				}
+				break;
+			}
+			case State.STARTED:
+			{
+				final int cond = st.getCond();
+				switch (npc.getId())
+				{
+					case ANDELLIA:
 					{
-						htmltext = (player.getRace() == Race.ELF) ? (player.getLevel() >= MIN_LEVEL) ? "30362-03.htm" : "30362-02.htm" : "30362-01.htm";
-						break;
-					}
-					case State.STARTED:
-					{
-						if (qs.isCond(1))
+						if (cond == 1)
 						{
-							htmltext = "30362-05.html";
+							htmltext = "30362-05.htm";
 						}
-						else if (qs.isCond(2) && hasQuestItems(player, MOTHERTREE_FRUIT))
+						else if (cond == 2)
 						{
+							htmltext = "30362-06.htm";
+							takeItems(player, MOTHERTREE_FRUIT, 1);
 							giveAdena(player, 1000, true);
 							addExpAndSp(player, 1000, 0);
-							qs.exitQuest(false, true);
-							htmltext = "30362-06.html";
+							st.exitQuest(false, true);
 						}
 						break;
 					}
-					case State.COMPLETED:
+					case THALIA:
 					{
-						htmltext = getAlreadyCompletedMsg(player);
+						if (cond == 1)
+						{
+							htmltext = "30371-01.htm";
+							st.setCond(2, true);
+							takeItems(player, ANDELLIA_LETTER, 1);
+							giveItems(player, MOTHERTREE_FRUIT, 1);
+						}
+						else if (cond == 2)
+						{
+							htmltext = "30371-02.htm";
+						}
 						break;
 					}
 				}
 				break;
 			}
-			case THALIA:
+			case State.COMPLETED:
 			{
-				if (qs.isStarted())
-				{
-					if (qs.isCond(1) && hasQuestItems(player, ANDELLRIAS_LETTER))
-					{
-						takeItems(player, ANDELLRIAS_LETTER, -1);
-						giveItems(player, MOTHERTREE_FRUIT, 1);
-						qs.setCond(2, true);
-						htmltext = "30371-01.html";
-					}
-					else if (qs.isCond(2) && hasQuestItems(player, MOTHERTREE_FRUIT))
-					{
-						htmltext = "30371-02.html";
-					}
-				}
+				htmltext = getAlreadyCompletedMsg(player);
 				break;
 			}
 		}
+		
 		return htmltext;
 	}
 }

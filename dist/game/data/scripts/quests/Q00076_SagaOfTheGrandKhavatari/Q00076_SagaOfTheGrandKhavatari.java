@@ -16,15 +16,12 @@
  */
 package quests.Q00076_SagaOfTheGrandKhavatari;
 
-import org.l2jmobius.gameserver.model.Location;
-
-import quests.AbstractSagaQuest;
+import quests.SagasSuperClass;
 
 /**
- * Saga of the Grand Khavatari (76)
  * @author Emperorc
  */
-public class Q00076_SagaOfTheGrandKhavatari extends AbstractSagaQuest
+public class Q00076_SagaOfTheGrandKhavatari extends SagasSuperClass
 {
 	public Q00076_SagaOfTheGrandKhavatari()
 	{
@@ -73,11 +70,23 @@ public class Q00076_SagaOfTheGrandKhavatari extends AbstractSagaQuest
 		{
 			0x30
 		};
-		_npcSpawnLocations = new Location[]
+		_x = new int[]
 		{
-			new Location(161719, -92823, -1893),
-			new Location(124355, 82155, -2803),
-			new Location(124376, 82127, -2796)
+			161719,
+			124355,
+			124376
+		};
+		_y = new int[]
+		{
+			-92823,
+			82155,
+			82127
+		};
+		_z = new int[]
+		{
+			-1893,
+			-2803,
+			-2796
 		};
 		_text = new String[]
 		{

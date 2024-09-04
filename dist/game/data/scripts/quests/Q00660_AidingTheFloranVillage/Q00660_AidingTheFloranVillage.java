@@ -16,363 +16,321 @@
  */
 package quests.Q00660_AidingTheFloranVillage;
 
-import java.util.HashMap;
-import java.util.Map;
-
 import org.l2jmobius.gameserver.enums.QuestSound;
 import org.l2jmobius.gameserver.model.actor.Npc;
 import org.l2jmobius.gameserver.model.actor.Player;
-import org.l2jmobius.gameserver.model.holders.ItemChanceHolder;
 import org.l2jmobius.gameserver.model.quest.Quest;
 import org.l2jmobius.gameserver.model.quest.QuestState;
 import org.l2jmobius.gameserver.model.quest.State;
 
-/**
- * Aiding the Floran Village (660)
- * @author Zoey76
- */
 public class Q00660_AidingTheFloranVillage extends Quest
 {
-	// NPC
-	private static final int ALEX = 30291;
+	// NPCs
 	private static final int MARIA = 30608;
-	// Items
-	private static final int SCROLL_ENCHANT_WEAPON_D_GRADE = 955;
-	private static final int SCROLL_ENCHANT_ARMOR_D_GRADE = 956;
-	private static final int WATCHING_EYES = 8074;
-	private static final int ROUGHLY_HEWN_ROCK_GOLEM_SHARD = 8075;
-	private static final int DELU_LIZARDMANS_SCALE = 8076;
-	// Misc
-	private static final int MIN_LEVEL = 30;
-	private static final int ADENA_REWARD_1 = 13000;
-	private static final int ADENA_REWARD_2 = 1000;
-	private static final int ADENA_REWARD_3 = 20000;
-	private static final int ADENA_REWARD_4 = 2000;
-	private static final int ADENA_REWARD_5 = 45000;
-	private static final int ADENA_REWARD_6 = 5000;
-	private static final int DELU_LIZARDMAN_COMMANDER_DOUBLE_ITEM_CHANCE = 33;
+	private static final int ALEX = 30291;
 	// Monsters
-	private static final int DELU_LIZARDMAN_COMMANDER = 21107; // Delu Lizardman Commander
-	
-	private static final Map<Integer, ItemChanceHolder> MONSTERS = new HashMap<>();
-	static
-	{
-		MONSTERS.put(21102, new ItemChanceHolder(WATCHING_EYES, 0.500)); // Watchman of the Plains
-		MONSTERS.put(21106, new ItemChanceHolder(WATCHING_EYES, 0.630)); // Cursed Seer
-		MONSTERS.put(21103, new ItemChanceHolder(ROUGHLY_HEWN_ROCK_GOLEM_SHARD, 0.520)); // Roughly Hewn Rock Golem
-		MONSTERS.put(20781, new ItemChanceHolder(DELU_LIZARDMANS_SCALE, 0.650)); // Delu Lizardman Shaman
-		MONSTERS.put(21104, new ItemChanceHolder(DELU_LIZARDMANS_SCALE, 0.650)); // Delu Lizardman Supplier
-		MONSTERS.put(21105, new ItemChanceHolder(DELU_LIZARDMANS_SCALE, 0.750)); // Delu Lizardman Special Agent
-	}
+	private static final int PLAIN_WATCHMAN = 21102;
+	private static final int ROCK_GOLEM = 21103;
+	private static final int LIZARDMEN_SUPPLIER = 21104;
+	private static final int LIZARDMEN_AGENT = 21105;
+	private static final int CURSED_SEER = 21106;
+	private static final int LIZARDMEN_COMMANDER = 21107;
+	private static final int LIZARDMEN_SHAMAN = 20781;
+	// Items
+	private static final int WATCHING_EYES = 8074;
+	private static final int GOLEM_SHARD = 8075;
+	private static final int LIZARDMEN_SCALE = 8076;
+	// Rewards
+	private static final int ADENA = 57;
+	private static final int ENCHANT_WEAPON_D = 955;
+	private static final int ENCHANT_ARMOR_D = 956;
 	
 	public Q00660_AidingTheFloranVillage()
 	{
 		super(660);
+		registerQuestItems(WATCHING_EYES, LIZARDMEN_SCALE, GOLEM_SHARD);
 		addStartNpc(MARIA, ALEX);
 		addTalkId(MARIA, ALEX);
-		addKillId(MONSTERS.keySet());
-		addKillId(DELU_LIZARDMAN_COMMANDER);
-		registerQuestItems(WATCHING_EYES, ROUGHLY_HEWN_ROCK_GOLEM_SHARD, DELU_LIZARDMANS_SCALE);
+		addKillId(CURSED_SEER, PLAIN_WATCHMAN, ROCK_GOLEM, LIZARDMEN_SHAMAN, LIZARDMEN_SUPPLIER, LIZARDMEN_COMMANDER, LIZARDMEN_AGENT);
 	}
 	
 	@Override
-	public String onAdvEvent(String event, Npc npc, Player player)
+	public String onEvent(String event, Npc npc, Player player)
 	{
-		final QuestState qs = getQuestState(player, false);
-		if (qs == null)
+		String htmltext = event;
+		final QuestState st = getQuestState(player, false);
+		if (st == null)
 		{
-			return null;
+			return htmltext;
 		}
 		
-		String htmltext = null;
 		switch (event)
 		{
-			case "30608-06.htm":
+			case "30608-04.htm":
 			{
-				if (player.getLevel() >= MIN_LEVEL)
+				st.startQuest();
+				break;
+			}
+			case "30291-02.htm":
+			{
+				if (player.getLevel() < 30)
 				{
-					qs.startQuest();
-					htmltext = event;
+					htmltext = "30291-02a.htm";
 				}
 				else
 				{
-					htmltext = "30608-06a.htm";
+					st.startQuest();
+					st.setCond(2);
 				}
 				break;
 			}
-			case "30608-02.htm":
-			case "30608-03.html":
-			case "30291-07.html":
-			case "30291-09.html":
-			case "30291-10.html":
-			case "30291-14.html":
-			case "30291-18.html":
+			case "30291-05.htm":
 			{
-				htmltext = event;
+				final int count = getQuestItemsCount(player, WATCHING_EYES) + getQuestItemsCount(player, LIZARDMEN_SCALE) + getQuestItemsCount(player, GOLEM_SHARD);
+				if (count == 0)
+				{
+					htmltext = "30291-05a.htm";
+				}
+				else
+				{
+					takeItems(player, GOLEM_SHARD, -1);
+					takeItems(player, LIZARDMEN_SCALE, -1);
+					takeItems(player, WATCHING_EYES, -1);
+					rewardItems(player, ADENA, (count * 100) + ((count >= 45) ? 9000 : 0));
+				}
 				break;
 			}
-			case "30291-03.htm":
+			case "30291-06.htm":
 			{
-				if (player.getLevel() >= MIN_LEVEL)
+				st.exitQuest(true, true);
+				break;
+			}
+			case "30291-11.htm":
+			{
+				if (!verifyAndRemoveItems(player, 100))
 				{
-					if (qs.isCreated())
+					htmltext = "30291-11a.htm";
+				}
+				else
+				{
+					if (getRandom(10) < 8)
 					{
-						qs.setState(State.STARTED);
-						qs.setCond(2);
-						playSound(player, QuestSound.ITEMSOUND_QUEST_ACCEPT);
-					}
-					htmltext = event;
-				}
-				else
-				{
-					htmltext = "30291-02.htm";
-				}
-				break;
-			}
-			case "30291-06.html":
-			{
-				final int itemCount = getQuestItemsCount(player, WATCHING_EYES) + getQuestItemsCount(player, ROUGHLY_HEWN_ROCK_GOLEM_SHARD) + getQuestItemsCount(player, DELU_LIZARDMANS_SCALE);
-				if (itemCount > 0)
-				{
-					giveAdena(player, itemCount * 100, true);
-					takeItems(player, -1, WATCHING_EYES, ROUGHLY_HEWN_ROCK_GOLEM_SHARD, DELU_LIZARDMANS_SCALE);
-					htmltext = event;
-				}
-				else
-				{
-					htmltext = "30291-08.html";
-				}
-				break;
-			}
-			case "30291-08a.html":
-			{
-				qs.exitQuest(true, true);
-				takeItems(player, -1, WATCHING_EYES, ROUGHLY_HEWN_ROCK_GOLEM_SHARD, DELU_LIZARDMANS_SCALE);
-				htmltext = event;
-				break;
-			}
-			case "30291-12.html":
-			{
-				final int itemCount1 = getQuestItemsCount(player, WATCHING_EYES);
-				final int itemCount2 = getQuestItemsCount(player, ROUGHLY_HEWN_ROCK_GOLEM_SHARD);
-				final int itemCount3 = getQuestItemsCount(player, DELU_LIZARDMANS_SCALE);
-				final int itemCount = itemCount1 + itemCount2 + itemCount3;
-				if (itemCount < 100)
-				{
-					htmltext = "30291-11.html";
-				}
-				else
-				{
-					tradeItems(player, 100, itemCount1, itemCount2, itemCount3);
-					if (getRandom(99) > 50)
-					{
-						giveItems(player, SCROLL_ENCHANT_ARMOR_D_GRADE, 1);
-						giveAdena(player, ADENA_REWARD_1, true);
-						htmltext = event;
+						rewardItems(player, ADENA, 1000);
 					}
 					else
 					{
-						giveAdena(player, ADENA_REWARD_2, true);
-						htmltext = "30291-13.html";
+						rewardItems(player, ADENA, 13000);
+						rewardItems(player, ENCHANT_ARMOR_D, 1);
 					}
 				}
 				break;
 			}
-			case "30291-16.html":
+			case "30291-12.htm":
 			{
-				final int itemCount1 = getQuestItemsCount(player, WATCHING_EYES);
-				final int itemCount2 = getQuestItemsCount(player, ROUGHLY_HEWN_ROCK_GOLEM_SHARD);
-				final int itemCount3 = getQuestItemsCount(player, DELU_LIZARDMANS_SCALE);
-				final int itemCount = itemCount1 + itemCount2 + itemCount3;
-				if (itemCount < 200)
+				if (!verifyAndRemoveItems(player, 200))
 				{
-					htmltext = "30291-15.html";
+					htmltext = "30291-12a.htm";
 				}
 				else
 				{
-					tradeItems(player, 200, itemCount1, itemCount2, itemCount3);
-					if (getRandom(100) >= 50)
+					final int luck = getRandom(15);
+					if (luck < 8)
 					{
-						if (getRandom(2) == 0)
-						{
-							giveItems(player, SCROLL_ENCHANT_ARMOR_D_GRADE, 1);
-							giveAdena(player, ADENA_REWARD_3, true);
-						}
-						else
-						{
-							giveItems(player, SCROLL_ENCHANT_WEAPON_D_GRADE, 1);
-						}
-						htmltext = event;
+						rewardItems(player, ADENA, 2000);
+					}
+					else if (luck < 12)
+					{
+						rewardItems(player, ADENA, 20000);
+						rewardItems(player, ENCHANT_ARMOR_D, 1);
 					}
 					else
 					{
-						giveAdena(player, ADENA_REWARD_4, true);
-						htmltext = "30291-17.html";
+						rewardItems(player, ENCHANT_WEAPON_D, 1);
 					}
 				}
 				break;
 			}
-			case "30291-20.html":
+			case "30291-13.htm":
 			{
-				final int itemCount1 = getQuestItemsCount(player, WATCHING_EYES);
-				final int itemCount2 = getQuestItemsCount(player, ROUGHLY_HEWN_ROCK_GOLEM_SHARD);
-				final int itemCount3 = getQuestItemsCount(player, DELU_LIZARDMANS_SCALE);
-				final int itemCount = itemCount1 + itemCount2 + itemCount3;
-				if (itemCount < 500)
+				if (!verifyAndRemoveItems(player, 500))
 				{
-					htmltext = "30291-19.html";
+					htmltext = "30291-13a.htm";
 				}
 				else
 				{
-					tradeItems(player, 500, itemCount1, itemCount2, itemCount3);
-					if (getRandom(100) >= 50)
+					if (getRandom(10) < 8)
 					{
-						giveItems(player, SCROLL_ENCHANT_WEAPON_D_GRADE, 1);
-						giveAdena(player, ADENA_REWARD_5, true);
-						htmltext = event;
+						rewardItems(player, ADENA, 5000);
 					}
 					else
 					{
-						giveAdena(player, ADENA_REWARD_6, true);
-						htmltext = "30291-21.html";
+						rewardItems(player, ADENA, 45000);
+						rewardItems(player, ENCHANT_WEAPON_D, 1);
 					}
 				}
 				break;
 			}
-			case "30291-22.html":
+			case "30291-17.htm":
 			{
-				final int itemCount = getQuestItemsCount(player, WATCHING_EYES) + getQuestItemsCount(player, ROUGHLY_HEWN_ROCK_GOLEM_SHARD) + getQuestItemsCount(player, DELU_LIZARDMANS_SCALE);
-				if (itemCount <= 0)
+				final int count = getQuestItemsCount(player, WATCHING_EYES) + getQuestItemsCount(player, LIZARDMEN_SCALE) + getQuestItemsCount(player, GOLEM_SHARD);
+				if (count != 0)
 				{
-					htmltext = "30291-23.html";
+					htmltext = "30291-17a.htm";
+					takeItems(player, WATCHING_EYES, -1);
+					takeItems(player, LIZARDMEN_SCALE, -1);
+					takeItems(player, GOLEM_SHARD, -1);
+					rewardItems(player, ADENA, (count * 100) + ((count >= 45) ? 9000 : 0));
 				}
-				else
-				{
-					giveAdena(player, itemCount * 100, true);
-					htmltext = event;
-				}
-				
-				takeItems(player, -1, WATCHING_EYES, ROUGHLY_HEWN_ROCK_GOLEM_SHARD, DELU_LIZARDMANS_SCALE);
-				qs.exitQuest(true, true);
+				st.exitQuest(true, true);
 				break;
 			}
 		}
+		
 		return htmltext;
-	}
-	
-	@Override
-	public String onKill(Npc npc, Player player, boolean isSummon)
-	{
-		final QuestState qs = getRandomPartyMemberState(player, 2, 2, npc);
-		if (qs != null)
-		{
-			final ItemChanceHolder item = MONSTERS.get(npc.getId());
-			if (item != null)
-			{
-				giveItemRandomly(player, npc, item.getId(), item.getCount(), 0, item.getChance(), true);
-			}
-			else
-			{
-				if (getRandom(100) < DELU_LIZARDMAN_COMMANDER_DOUBLE_ITEM_CHANCE)
-				{
-					giveItems(player, DELU_LIZARDMANS_SCALE, 2);
-				}
-				else
-				{
-					giveItems(player, DELU_LIZARDMANS_SCALE, 1);
-				}
-				playSound(player, QuestSound.ITEMSOUND_QUEST_MIDDLE);
-			}
-		}
-		return super.onKill(npc, player, isSummon);
 	}
 	
 	@Override
 	public String onTalk(Npc npc, Player player)
 	{
-		final QuestState qs = getQuestState(player, true);
 		String htmltext = getNoQuestMsg(player);
-		if (qs.isCreated())
+		final QuestState st = getQuestState(player, true);
+		
+		switch (st.getState())
 		{
-			switch (npc.getId())
+			case State.CREATED:
 			{
-				case MARIA:
+				switch (npc.getId())
 				{
-					htmltext = player.getLevel() >= MIN_LEVEL ? "30608-01.htm" : "30608-04.html";
-					break;
+					case MARIA:
+						htmltext = (player.getLevel() < 30) ? "30608-01.htm" : "30608-02.htm";
+						break;
+					
+					case ALEX:
+						htmltext = "30291-01.htm";
+						break;
 				}
-				case ALEX:
-				{
-					htmltext = player.getLevel() >= MIN_LEVEL ? "30291-01.htm" : "30291-02.htm";
-					break;
-				}
+				break;
 			}
-		}
-		else if (qs.isStarted())
-		{
-			switch (npc.getId())
+			case State.STARTED:
 			{
-				case MARIA:
+				switch (npc.getId())
 				{
-					htmltext = "30608-05.html";
-					break;
-				}
-				case ALEX:
-				{
-					switch (qs.getCond())
+					case MARIA:
 					{
-						case 1:
-						{
-							// Quest started with Maria.
-							qs.setCond(2, true);
-							htmltext = "30291-04.html";
-							break;
-						}
-						case 2:
-						{
-							htmltext = "30291-05.html";
-							break;
-						}
+						htmltext = "30608-06.htm";
+						break;
 					}
-					break;
+					case ALEX:
+					{
+						final int cond = st.getCond();
+						if (cond == 1)
+						{
+							htmltext = "30291-03.htm";
+							st.setCond(2, true);
+						}
+						else if (cond == 2)
+						{
+							htmltext = (hasAtLeastOneQuestItem(player, WATCHING_EYES, LIZARDMEN_SCALE, GOLEM_SHARD)) ? "30291-04.htm" : "30291-05a.htm";
+						}
+						break;
+					}
 				}
+				break;
 			}
 		}
+		
 		return htmltext;
 	}
 	
-	private void tradeItems(Player player, int requiredValue, int itemCount1, int itemCount2, int itemCount3)
+	@Override
+	public String onKill(Npc npc, Player player, boolean isPet)
 	{
-		int required = requiredValue;
-		if (itemCount1 < required)
+		final QuestState qs = getRandomPartyMemberState(player, 2, 3, npc);
+		if (qs == null)
 		{
-			takeItems(player, WATCHING_EYES, itemCount1);
-			required -= itemCount1;
+			return null;
 		}
-		else
+		final Player partyMember = qs.getPlayer();
+		
+		final QuestState st = getQuestState(partyMember, false);
+		if (st == null)
 		{
-			takeItems(player, WATCHING_EYES, required);
-			required = 0;
+			return null;
 		}
 		
-		if (itemCount2 < required)
+		switch (npc.getId())
 		{
-			takeItems(player, ROUGHLY_HEWN_ROCK_GOLEM_SHARD, itemCount2);
-			required -= itemCount2;
-		}
-		else
-		{
-			takeItems(player, ROUGHLY_HEWN_ROCK_GOLEM_SHARD, required);
-			required = 0;
+			case PLAIN_WATCHMAN:
+			case CURSED_SEER:
+			{
+				if (getRandom(100) < 79)
+				{
+					giveItems(partyMember, WATCHING_EYES, 1);
+					playSound(partyMember, QuestSound.ITEMSOUND_QUEST_ITEMGET);
+				}
+				break;
+			}
+			case ROCK_GOLEM:
+			{
+				if (getRandom(100) < 75)
+				{
+					giveItems(partyMember, GOLEM_SHARD, 1);
+					playSound(partyMember, QuestSound.ITEMSOUND_QUEST_ITEMGET);
+				}
+				break;
+			}
+			case LIZARDMEN_SHAMAN:
+			case LIZARDMEN_SUPPLIER:
+			case LIZARDMEN_AGENT:
+			case LIZARDMEN_COMMANDER:
+			{
+				if (getRandom(100) < 67)
+				{
+					giveItems(partyMember, LIZARDMEN_SCALE, 1);
+					playSound(partyMember, QuestSound.ITEMSOUND_QUEST_ITEMGET);
+				}
+				break;
+			}
 		}
 		
-		if (itemCount3 < required)
+		return null;
+	}
+	
+	/**
+	 * This method drops items following current counts.
+	 * @param player The Player to affect.
+	 * @param numberToVerify The count of qItems to drop from the different categories.
+	 * @return false when counter isn't reached, true otherwise.
+	 */
+	private static boolean verifyAndRemoveItems(Player player, int numberToVerify)
+	{
+		final int eyes = getQuestItemsCount(player, WATCHING_EYES);
+		final int scale = getQuestItemsCount(player, LIZARDMEN_SCALE);
+		final int shard = getQuestItemsCount(player, GOLEM_SHARD);
+		if ((eyes + scale + shard) < numberToVerify)
 		{
-			takeItems(player, DELU_LIZARDMANS_SCALE, itemCount3);
+			return false;
+		}
+		
+		if (eyes >= numberToVerify)
+		{
+			takeItems(player, WATCHING_EYES, numberToVerify);
 		}
 		else
 		{
-			takeItems(player, DELU_LIZARDMANS_SCALE, required);
+			int currentNumber = numberToVerify - eyes;
+			takeItems(player, WATCHING_EYES, -1);
+			if (scale >= currentNumber)
+			{
+				takeItems(player, LIZARDMEN_SCALE, currentNumber);
+			}
+			else
+			{
+				currentNumber -= scale;
+				takeItems(player, LIZARDMEN_SCALE, -1);
+				takeItems(player, GOLEM_SHARD, currentNumber);
+			}
 		}
+		return true;
 	}
 }

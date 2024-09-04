@@ -71,7 +71,7 @@ public class AdminPetition implements IAdminCommandHandler
 			
 			if (PetitionManager.getInstance().isPetitionInProcess(petitionId))
 			{
-				activeChar.sendPacket(SystemMessageId.YOUR_PETITION_IS_BEING_PROCESSED);
+				activeChar.sendPacket(SystemMessageId.PETITION_UNDER_PROCESS);
 				return true;
 			}
 			
@@ -92,7 +92,7 @@ public class AdminPetition implements IAdminCommandHandler
 		{
 			if (PetitionManager.getInstance().isPetitionInProcess())
 			{
-				activeChar.sendPacket(SystemMessageId.YOUR_PETITION_IS_BEING_PROCESSED);
+				activeChar.sendPacket(SystemMessageId.PETITION_UNDER_PROCESS);
 				return false;
 			}
 			PetitionManager.getInstance().clearPendingPetitions();
@@ -105,7 +105,7 @@ public class AdminPetition implements IAdminCommandHandler
 				final WorldObject targetChar = activeChar.getTarget();
 				if ((targetChar == null) || !targetChar.isPlayer())
 				{
-					activeChar.sendPacket(SystemMessageId.THAT_IS_AN_INCORRECT_TARGET);
+					activeChar.sendPacket(SystemMessageId.THAT_IS_THE_INCORRECT_TARGET);
 					return false;
 				}
 				final Player targetPlayer = (Player) targetChar;

@@ -46,7 +46,7 @@ public abstract class PlayableAI extends CreatureAI
 			{
 				// If attacker have karma and have level >= 10 than his target and target have
 				// Newbie Protection Buff,
-				_actor.getActingPlayer().sendPacket(SystemMessageId.THAT_IS_AN_INCORRECT_TARGET);
+				_actor.getActingPlayer().sendPacket(SystemMessageId.THAT_IS_THE_INCORRECT_TARGET);
 				clientActionFailed();
 				return;
 			}
@@ -55,21 +55,21 @@ public abstract class PlayableAI extends CreatureAI
 			{
 				// If target have karma and have level >= 10 than his target and actor have
 				// Newbie Protection Buff,
-				_actor.getActingPlayer().sendPacket(SystemMessageId.THAT_IS_AN_INCORRECT_TARGET);
+				_actor.getActingPlayer().sendPacket(SystemMessageId.THAT_IS_THE_INCORRECT_TARGET);
 				clientActionFailed();
 				return;
 			}
 			
 			if (target.getActingPlayer().isCursedWeaponEquipped() && (_actor.getActingPlayer().getLevel() <= 20))
 			{
-				_actor.getActingPlayer().sendPacket(SystemMessageId.THAT_IS_AN_INCORRECT_TARGET);
+				_actor.getActingPlayer().sendPacket(SystemMessageId.THAT_IS_THE_INCORRECT_TARGET);
 				clientActionFailed();
 				return;
 			}
 			
 			if (_actor.getActingPlayer().isCursedWeaponEquipped() && (target.getActingPlayer().getLevel() <= 20))
 			{
-				_actor.getActingPlayer().sendPacket(SystemMessageId.THAT_IS_AN_INCORRECT_TARGET);
+				_actor.getActingPlayer().sendPacket(SystemMessageId.THAT_IS_THE_INCORRECT_TARGET);
 				clientActionFailed();
 				return;
 			}
@@ -87,7 +87,7 @@ public abstract class PlayableAI extends CreatureAI
 			{
 				// If attacker have karma and have level >= 10 than his target and target have
 				// Newbie Protection Buff,
-				_actor.getActingPlayer().sendPacket(SystemMessageId.THAT_IS_AN_INCORRECT_TARGET);
+				_actor.getActingPlayer().sendPacket(SystemMessageId.THAT_IS_THE_INCORRECT_TARGET);
 				clientActionFailed();
 				_actor.setCastingNow(false);
 				return;
@@ -97,7 +97,7 @@ public abstract class PlayableAI extends CreatureAI
 			{
 				// If target have karma and have level >= 10 than his target and actor have
 				// Newbie Protection Buff,
-				_actor.getActingPlayer().sendPacket(SystemMessageId.THAT_IS_AN_INCORRECT_TARGET);
+				_actor.getActingPlayer().sendPacket(SystemMessageId.THAT_IS_THE_INCORRECT_TARGET);
 				clientActionFailed();
 				_actor.setCastingNow(false);
 				return;
@@ -105,7 +105,7 @@ public abstract class PlayableAI extends CreatureAI
 			
 			if (target.getActingPlayer().isCursedWeaponEquipped() && ((_actor.getActingPlayer().getLevel() <= 20) || (target.getActingPlayer().getLevel() <= 20)))
 			{
-				_actor.getActingPlayer().sendPacket(SystemMessageId.THAT_IS_AN_INCORRECT_TARGET);
+				_actor.getActingPlayer().sendPacket(SystemMessageId.THAT_IS_THE_INCORRECT_TARGET);
 				clientActionFailed();
 				_actor.setCastingNow(false);
 				return;

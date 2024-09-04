@@ -47,7 +47,7 @@
 		<set name="immediate_effect" val="true" />
 		<set name="material" val="LIQUID" />
 		<set name="weight" val="30" />
-		<set name="price" val="45800" />
+		<set name="price" val="36000" />
 		<set name="recipe_id" val="791" />
 		<set name="is_stackable" val="true" />
 		<set name="handler" val="Recipes" />
@@ -255,7 +255,7 @@
 		<set name="immediate_effect" val="true" />
 		<set name="material" val="LIQUID" />
 		<set name="weight" val="30" />
-		<set name="price" val="86000" />
+		<set name="price" val="57400" />
 		<set name="recipe_id" val="790" />
 		<set name="is_stackable" val="true" />
 		<set name="handler" val="Recipes" />
@@ -307,7 +307,7 @@
 		<set name="immediate_effect" val="true" />
 		<set name="material" val="LIQUID" />
 		<set name="weight" val="30" />
-		<set name="price" val="262000" />
+		<set name="price" val="366000" />
 		<set name="recipe_id" val="803" />
 		<set name="is_stackable" val="true" />
 		<set name="handler" val="Recipes" />
@@ -320,7 +320,7 @@
 		<set name="immediate_effect" val="true" />
 		<set name="material" val="LIQUID" />
 		<set name="weight" val="30" />
-		<set name="price" val="262000" />
+		<set name="price" val="366000" />
 		<set name="recipe_id" val="802" />
 		<set name="is_stackable" val="true" />
 		<set name="handler" val="Recipes" />
@@ -458,7 +458,7 @@
 		<set name="immediate_effect" val="true" />
 		<set name="material" val="LIQUID" />
 		<set name="weight" val="60" />
-		<set name="price" val="19757" />
+		<set name="price" val="18929" />
 		<set name="is_stackable" val="true" />
 	</item>
 	<item id="8338" type="EtcItem" name="Axe of Eclipse Head">
@@ -528,7 +528,7 @@
 		<set name="immediate_effect" val="true" />
 		<set name="material" val="LIQUID" />
 		<set name="weight" val="60" />
-		<set name="price" val="43818" />
+		<set name="price" val="43655" />
 		<set name="is_stackable" val="true" />
 	</item>
 	<item id="8345" type="EtcItem" name="Karik Horn Piece">
@@ -538,7 +538,7 @@
 		<set name="immediate_effect" val="true" />
 		<set name="material" val="LIQUID" />
 		<set name="weight" val="60" />
-		<set name="price" val="36800" />
+		<set name="price" val="37340" />
 		<set name="is_stackable" val="true" />
 	</item>
 	<item id="8346" type="EtcItem" name="Hammer Piece of Destroyer">
@@ -748,7 +748,7 @@
 		<set name="immediate_effect" val="true" />
 		<set name="material" val="PAPER" />
 		<set name="weight" val="30" />
-		<set name="price" val="400000" />
+		<set name="price" val="144000" />
 		<set name="recipe_id" val="820" />
 		<set name="is_stackable" val="true" />
 		<set name="handler" val="Recipes" />
@@ -774,7 +774,7 @@
 		<set name="immediate_effect" val="true" />
 		<set name="material" val="PAPER" />
 		<set name="weight" val="30" />
-		<set name="price" val="400000" />
+		<set name="price" val="144000" />
 		<set name="recipe_id" val="822" />
 		<set name="is_stackable" val="true" />
 		<set name="handler" val="Recipes" />
@@ -800,7 +800,7 @@
 		<set name="immediate_effect" val="true" />
 		<set name="material" val="PAPER" />
 		<set name="weight" val="30" />
-		<set name="price" val="400000" />
+		<set name="price" val="144000" />
 		<set name="recipe_id" val="824" />
 		<set name="is_stackable" val="true" />
 		<set name="handler" val="Recipes" />

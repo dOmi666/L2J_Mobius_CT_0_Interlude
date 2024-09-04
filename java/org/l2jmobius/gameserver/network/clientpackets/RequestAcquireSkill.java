@@ -17,7 +17,6 @@
 package org.l2jmobius.gameserver.network.clientpackets;
 
 import org.l2jmobius.Config;
-import org.l2jmobius.commons.network.ReadablePacket;
 import org.l2jmobius.gameserver.data.xml.SkillData;
 import org.l2jmobius.gameserver.data.xml.SkillTreeData;
 import org.l2jmobius.gameserver.enums.AcquireSkillType;
@@ -36,7 +35,6 @@ import org.l2jmobius.gameserver.model.holders.ItemHolder;
 import org.l2jmobius.gameserver.model.holders.SkillHolder;
 import org.l2jmobius.gameserver.model.skill.CommonSkill;
 import org.l2jmobius.gameserver.model.skill.Skill;
-import org.l2jmobius.gameserver.network.GameClient;
 import org.l2jmobius.gameserver.network.PacketLogger;
 import org.l2jmobius.gameserver.network.SystemMessageId;
 import org.l2jmobius.gameserver.network.serverpackets.ExStorageMaxCount;
@@ -49,24 +47,24 @@ import org.l2jmobius.gameserver.util.Util;
  * Request Acquire Skill client packet implementation.
  * @author Zoey76
  */
-public class RequestAcquireSkill implements ClientPacket
+public class RequestAcquireSkill extends ClientPacket
 {
 	private int _id;
 	private int _level;
 	private AcquireSkillType _skillType;
 	
 	@Override
-	public void read(ReadablePacket packet)
+	protected void readImpl()
 	{
-		_id = packet.readInt();
-		_level = packet.readInt();
-		_skillType = AcquireSkillType.getAcquireSkillType(packet.readInt());
+		_id = readInt();
+		_level = readInt();
+		_skillType = AcquireSkillType.getAcquireSkillType(readInt());
 	}
 	
 	@Override
-	public void run(GameClient client)
+	protected void runImpl()
 	{
-		final Player player = client.getPlayer();
+		final Player player = getPlayer();
 		if (player == null)
 		{
 			return;
@@ -189,7 +187,7 @@ public class RequestAcquireSkill implements ClientPacket
 			// Hack check.
 			if (skillLearn.getGetLevel() > player.getLevel())
 			{
-				player.sendPacket(SystemMessageId.YOU_DO_NOT_MEET_THE_SKILL_LEVEL_REQUIREMENTS);
+				player.sendMessage("You do not meet the skill level requirements.");
 				Util.handleIllegalPlayerAction(player, player + ", level " + player.getLevel() + " is requesting skill Id: " + _id + " level " + _level + " without having minimum required level, " + skillLearn.getGetLevel() + "!", IllegalActionPunishmentType.NONE);
 				return false;
 			}

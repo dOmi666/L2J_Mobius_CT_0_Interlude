@@ -26,395 +26,393 @@ import org.l2jmobius.gameserver.model.quest.Quest;
 import org.l2jmobius.gameserver.model.quest.QuestState;
 import org.l2jmobius.gameserver.model.quest.State;
 
-/**
- * Quest for Fishing Shot (426)<br>
- * @author Zealar
- */
 public class Q00426_QuestForFishingShot extends Quest
 {
-	private static final int[] NPC = new int[]
-	{
-		31562, // Klufe
-		31563, // Perelin
-		31564, // Mishini
-		31565, // Ogord
-		31566, // Ropfi
-		31567, // Bleaker
-		31568, // Pamfus
-		31569, // Cyano
-		31570, // Lanosco
-		31571, // Hufs
-		31572, // O'Fulle
-		31573, // Monakan
-		31574, // Willie
-		31575, // Litulon
-		31576, // Berix
-		31577, // Linnaeus
-		31578, // Hilgendorf
-		31579, // Klaus
-		31696, // Platis
-		31697, // Eindarkner
-		31989, // Batidae
-		32007, // Galba
-	};
-	private static final Map<Integer, ChanceReward> MOBS = new HashMap<>(250);
-	static
-	{
-		MOBS.put(20005, new ChanceReward(45, 1)); // Imp Elder
-		MOBS.put(20013, new ChanceReward(100, 1)); // Dryad
-		MOBS.put(20016, new ChanceReward(100, 1)); // Stone Golem
-		MOBS.put(20017, new ChanceReward(115, 1)); // Vuku Orc Fighter
-		MOBS.put(20030, new ChanceReward(105, 1)); // Langk Lizardman
-		MOBS.put(20132, new ChanceReward(70, 1)); // Werewolf
-		MOBS.put(20038, new ChanceReward(135, 1)); // Venomous Spider
-		MOBS.put(20044, new ChanceReward(125, 1)); // Lirein Elder
-		MOBS.put(20046, new ChanceReward(100, 1)); // Stink Zombie
-		MOBS.put(20047, new ChanceReward(100, 1)); // Sukar Wererat Leader
-		MOBS.put(20050, new ChanceReward(140, 1)); // Arachnid Predator
-		MOBS.put(20058, new ChanceReward(140, 1)); // Ol Mahum Guard
-		MOBS.put(20063, new ChanceReward(160, 1)); // Ol Mahum Shooter
-		MOBS.put(20066, new ChanceReward(170, 1)); // Ol Mahum Captain
-		MOBS.put(20070, new ChanceReward(180, 1)); // Lesser Basilisk
-		MOBS.put(20074, new ChanceReward(195, 1)); // Androscorpio
-		MOBS.put(20077, new ChanceReward(205, 1)); // Androscorpio Hunter
-		MOBS.put(20078, new ChanceReward(205, 1)); // Whispering Wind
-		MOBS.put(20079, new ChanceReward(205, 1)); // Ant
-		MOBS.put(20080, new ChanceReward(220, 1)); // Ant Captain
-		MOBS.put(20081, new ChanceReward(370, 1)); // Ant Overseer
-		MOBS.put(20083, new ChanceReward(245, 1)); // Granite Golem
-		MOBS.put(20084, new ChanceReward(255, 1)); // Ant Patrol
-		MOBS.put(20085, new ChanceReward(265, 1)); // Puncher
-		MOBS.put(20087, new ChanceReward(565, 1)); // Ant Soldier
-		MOBS.put(20088, new ChanceReward(605, 1)); // Ant Warrior Captain
-		MOBS.put(20089, new ChanceReward(250, 1)); // Noble Ant
-		MOBS.put(20100, new ChanceReward(85, 1)); // Skeleton Archer
-		MOBS.put(20103, new ChanceReward(110, 1)); // Giant Spider
-		MOBS.put(20105, new ChanceReward(110, 1)); // Dark Horror
-		MOBS.put(20115, new ChanceReward(190, 1)); // Undine Noble
-		MOBS.put(20120, new ChanceReward(20, 1)); // Wolf
-		MOBS.put(20131, new ChanceReward(45, 1)); // Orc Grunt
-		MOBS.put(20135, new ChanceReward(360, 1)); // Alligator
-		MOBS.put(20157, new ChanceReward(235, 1)); // Marsh Stakato
-		MOBS.put(20162, new ChanceReward(195, 1)); // Ogre
-		MOBS.put(20176, new ChanceReward(280, 1)); // Wyrm
-		MOBS.put(20211, new ChanceReward(170, 1)); // Ol Mahum Captain
-		MOBS.put(20225, new ChanceReward(160, 1)); // Giant Mist Leech
-		MOBS.put(20227, new ChanceReward(180, 1)); // Horror Mist Ripper
-		MOBS.put(20230, new ChanceReward(260, 1)); // Marsh Stakato Worker
-		MOBS.put(20232, new ChanceReward(245, 1)); // Marsh Stakato Soldier
-		MOBS.put(20234, new ChanceReward(290, 1)); // Marsh Stakato Drone
-		MOBS.put(20241, new ChanceReward(700, 1)); // Hunter Gargoyle
-		MOBS.put(20267, new ChanceReward(215, 1)); // Breka Orc
-		MOBS.put(20268, new ChanceReward(295, 1)); // Breka Orc Archer
-		MOBS.put(20269, new ChanceReward(255, 1)); // Breka Orc Shaman
-		MOBS.put(20270, new ChanceReward(365, 1)); // Breka Orc Overlord
-		MOBS.put(20271, new ChanceReward(295, 1)); // Breka Orc Warrior
-		MOBS.put(20286, new ChanceReward(700, 1)); // Hunter Gargoyle
-		MOBS.put(20308, new ChanceReward(110, 1)); // Hook Spider
-		MOBS.put(20312, new ChanceReward(45, 1)); // Rakeclaw Imp Hunter
-		MOBS.put(20317, new ChanceReward(20, 1)); // Black Wolf
-		MOBS.put(20324, new ChanceReward(85, 1)); // Goblin Brigand Lieutenant
-		MOBS.put(20333, new ChanceReward(100, 1)); // Greystone Golem
-		MOBS.put(20341, new ChanceReward(100, 1)); // Undead Slave
-		MOBS.put(20346, new ChanceReward(85, 1)); // Darkstone Golem
-		MOBS.put(20349, new ChanceReward(850, 1)); // Cave Bat
-		MOBS.put(20356, new ChanceReward(165, 1)); // Langk Lizardman Leader
-		MOBS.put(20357, new ChanceReward(140, 1)); // Langk Lizardman Lieutenant
-		MOBS.put(20363, new ChanceReward(70, 1)); // Maraku Werewolf
-		MOBS.put(20368, new ChanceReward(85, 1)); // Grave Keeper
-		MOBS.put(20371, new ChanceReward(100, 1)); // Mist Terror
-		MOBS.put(20386, new ChanceReward(85, 1)); // Balor Orc Fighter
-		MOBS.put(20389, new ChanceReward(90, 1)); // Boogle Ratman
-		MOBS.put(20403, new ChanceReward(110, 1)); // Hunter Tarantula
-		MOBS.put(20404, new ChanceReward(95, 1)); // Silent Horror
-		MOBS.put(20433, new ChanceReward(100, 1)); // Festering Bat
-		MOBS.put(20436, new ChanceReward(140, 1)); // Ol Mahum Supplier
-		MOBS.put(20448, new ChanceReward(45, 1)); // Utuku Orc Grunt
-		MOBS.put(20456, new ChanceReward(20, 1)); // Ashen Wolf
-		MOBS.put(20463, new ChanceReward(85, 1)); // Dungeon Skeleton Archer
-		MOBS.put(20470, new ChanceReward(45, 1)); // Kaboo Orc Grunt
-		MOBS.put(20471, new ChanceReward(85, 1)); // Kaboo Orc Fighter
-		MOBS.put(20475, new ChanceReward(20, 1)); // Kasha Wolf
-		MOBS.put(20478, new ChanceReward(110, 1)); // Kasha Blade Spider
-		MOBS.put(20487, new ChanceReward(90, 1)); // Kuruka Ratman
-		MOBS.put(20511, new ChanceReward(100, 1)); // Pitchstone Golem
-		MOBS.put(20525, new ChanceReward(20, 1)); // Gray Wolf
-		MOBS.put(20528, new ChanceReward(100, 1)); // Goblin Lord
-		MOBS.put(20536, new ChanceReward(15, 1)); // Elder Brown Keltir
-		MOBS.put(20537, new ChanceReward(15, 1)); // Elder Red Keltir
-		MOBS.put(20538, new ChanceReward(15, 1)); // Elder Prairie Keltir
-		MOBS.put(20539, new ChanceReward(15, 1)); // Elder Longtail Keltir
-		MOBS.put(20544, new ChanceReward(15, 1)); // Elder Keltir
-		MOBS.put(20550, new ChanceReward(300, 1)); // Guardian Basilisk
-		MOBS.put(20551, new ChanceReward(300, 1)); // Road Scavenger
-		MOBS.put(20552, new ChanceReward(650, 1)); // Fettered Soul
-		MOBS.put(20553, new ChanceReward(335, 1)); // Windsus
-		MOBS.put(20554, new ChanceReward(390, 1)); // Grandis
-		MOBS.put(20555, new ChanceReward(350, 1)); // Giant Fungus
-		MOBS.put(20557, new ChanceReward(390, 1)); // Dire Wyrm
-		MOBS.put(20559, new ChanceReward(420, 1)); // Rotting Golem
-		MOBS.put(20560, new ChanceReward(440, 1)); // Trisalim Spider
-		MOBS.put(20562, new ChanceReward(485, 1)); // Spore Zombie
-		MOBS.put(20573, new ChanceReward(545, 1)); // Tarlk Basilisk
-		MOBS.put(20575, new ChanceReward(645, 1)); // Oel Mahum Warrior
-		MOBS.put(20630, new ChanceReward(350, 1)); // Taik Orc
-		MOBS.put(20632, new ChanceReward(475, 1)); // Taik Orc Warrior
-		MOBS.put(20634, new ChanceReward(960, 1)); // Taik Orc Captain
-		MOBS.put(20636, new ChanceReward(495, 1)); // Forest of Mirrors Ghost
-		MOBS.put(20638, new ChanceReward(540, 1)); // Forest of Mirrors Ghost
-		MOBS.put(20641, new ChanceReward(680, 1)); // Harit Lizardman Grunt
-		MOBS.put(20643, new ChanceReward(660, 1)); // Harit Lizardman Warrior
-		MOBS.put(20644, new ChanceReward(645, 1)); // Harit Lizardman Shaman
-		MOBS.put(20659, new ChanceReward(440, 1)); // Grave Wanderer
-		MOBS.put(20661, new ChanceReward(575, 1)); // Hatar Ratman Thief
-		MOBS.put(20663, new ChanceReward(525, 1)); // Hatar Hanishee
-		MOBS.put(20665, new ChanceReward(680, 1)); // Taik Orc Supply
-		MOBS.put(20667, new ChanceReward(730, 1)); // Farcran
-		MOBS.put(20766, new ChanceReward(210, 1)); // Scout of the Plains
-		MOBS.put(20781, new ChanceReward(270, 1)); // Delu Lizardman Shaman
-		MOBS.put(20783, new ChanceReward(140, 1)); // Dread Wolf
-		MOBS.put(20784, new ChanceReward(155, 1)); // Tasaba Lizardman
-		MOBS.put(20786, new ChanceReward(170, 1)); // Lienrik
-		MOBS.put(20788, new ChanceReward(325, 1)); // Rakul
-		MOBS.put(20790, new ChanceReward(390, 1)); // Dailaon
-		MOBS.put(20792, new ChanceReward(620, 1)); // Farhite
-		MOBS.put(20794, new ChanceReward(635, 1)); // Blade Stakato
-		MOBS.put(20796, new ChanceReward(640, 1)); // Blade Stakato Warrior
-		MOBS.put(20798, new ChanceReward(850, 1)); // Water Giant
-		MOBS.put(20800, new ChanceReward(740, 1)); // Eva's Seeker
-		MOBS.put(20802, new ChanceReward(900, 1)); // Theeder Mage
-		MOBS.put(20804, new ChanceReward(775, 1)); // Crokian Lad
-		MOBS.put(20806, new ChanceReward(805, 1)); // Crokian Lad Warrior
-		MOBS.put(20833, new ChanceReward(455, 1)); // Zaken's Archer
-		MOBS.put(20834, new ChanceReward(680, 1)); // Mardian
-		MOBS.put(20836, new ChanceReward(785, 1)); // Pirate Zombie
-		MOBS.put(20837, new ChanceReward(835, 1)); // Tainted Ogre
-		MOBS.put(20839, new ChanceReward(430, 1)); // Unpleasant Humming
-		MOBS.put(20841, new ChanceReward(460, 1)); // Fiend Archer
-		MOBS.put(20845, new ChanceReward(605, 1)); // Pirate Zombie Captain
-		MOBS.put(20847, new ChanceReward(570, 1)); // Veil Master
-		MOBS.put(20849, new ChanceReward(585, 1)); // Light Worm
-		MOBS.put(20936, new ChanceReward(290, 1)); // Tanor Silenos
-		MOBS.put(20937, new ChanceReward(315, 1)); // Tanor Silenos Grunt
-		MOBS.put(20939, new ChanceReward(385, 1)); // Tanor Silenos Warrior
-		MOBS.put(20940, new ChanceReward(500, 1)); // Tanor Silenos Shaman
-		MOBS.put(20941, new ChanceReward(460, 1)); // Tanor Silenos Chieftain
-		MOBS.put(20943, new ChanceReward(345, 1)); // Nightmare Keeper
-		MOBS.put(20944, new ChanceReward(335, 1)); // Nightmare Lord
-		MOBS.put(21100, new ChanceReward(125, 1)); // Langk Lizardman Sentinel
-		MOBS.put(21101, new ChanceReward(155, 1)); // Langk Lizardman Shaman
-		MOBS.put(21103, new ChanceReward(215, 1)); // Roughly Hewn Rock Golem
-		MOBS.put(21105, new ChanceReward(310, 1)); // Delu Lizardman Special Agent
-		MOBS.put(21107, new ChanceReward(600, 1)); // Delu Lizardman Commander
-		MOBS.put(21117, new ChanceReward(120, 1)); // Kasha Imp
-		MOBS.put(21023, new ChanceReward(170, 1)); // Sobbing Wind
-		MOBS.put(21024, new ChanceReward(175, 1)); // Babbling Wind
-		MOBS.put(21025, new ChanceReward(185, 1)); // Giggling Wind
-		MOBS.put(21026, new ChanceReward(200, 1)); // Singing Wind
-		MOBS.put(21034, new ChanceReward(195, 1)); // Ogre
-		MOBS.put(21125, new ChanceReward(12, 1)); // Northern Trimden
-		MOBS.put(21263, new ChanceReward(650, 1)); // Ol Mahum Transcender
-		MOBS.put(21520, new ChanceReward(880, 1)); // Eye of Splendor
-		MOBS.put(21526, new ChanceReward(970, 1)); // Wisdom of Splendor
-		MOBS.put(21536, new ChanceReward(985, 1)); // Crown of Splendor
-		MOBS.put(21602, new ChanceReward(555, 1)); // Zaken's Pikeman
-		MOBS.put(21603, new ChanceReward(750, 1)); // Zaken's Pikeman
-		MOBS.put(21605, new ChanceReward(620, 1)); // Zaken's Archer
-		MOBS.put(21606, new ChanceReward(875, 1)); // Zaken's Archer
-		MOBS.put(21611, new ChanceReward(590, 1)); // Unpleasant Humming
-		MOBS.put(21612, new ChanceReward(835, 1)); // Unpleasant Humming
-		MOBS.put(21617, new ChanceReward(615, 1)); // Fiend Archer
-		MOBS.put(21618, new ChanceReward(875, 1)); // Fiend Archer
-		MOBS.put(21635, new ChanceReward(775, 1)); // Veil Master
-		MOBS.put(21638, new ChanceReward(165, 1)); // Dread Wolf
-		MOBS.put(21639, new ChanceReward(185, 1)); // Tasaba Lizardman
-		MOBS.put(21641, new ChanceReward(195, 1)); // Ogre
-		MOBS.put(21644, new ChanceReward(170, 1)); // Lienrik
-		MOBS.put(20579, new ChanceReward(420, 2)); // Leto Lizardman Soldier
-		MOBS.put(20639, new ChanceReward(280, 2)); // Mirror
-		MOBS.put(20646, new ChanceReward(145, 2)); // Halingka
-		MOBS.put(20648, new ChanceReward(120, 2)); // Paliote
-		MOBS.put(20650, new ChanceReward(460, 2)); // Kranrot
-		MOBS.put(20651, new ChanceReward(260, 2)); // Gamlin
-		MOBS.put(20652, new ChanceReward(335, 2)); // Leogul
-		MOBS.put(20657, new ChanceReward(630, 2)); // Lesser Giant Mage
-		MOBS.put(20658, new ChanceReward(570, 2)); // Lesser Giant Elder
-		MOBS.put(20808, new ChanceReward(50, 2)); // Nos Lad
-		MOBS.put(20809, new ChanceReward(865, 2)); // Ghost of the Tower
-		MOBS.put(20832, new ChanceReward(700, 2)); // Zaken's Pikeman
-		MOBS.put(20979, new ChanceReward(980, 2)); // Elmoradan's Maid
-		MOBS.put(20991, new ChanceReward(665, 2)); // Swamp Tribe
-		MOBS.put(20994, new ChanceReward(590, 2)); // Garden Guard Leader
-		MOBS.put(21261, new ChanceReward(170, 2)); // Ol Mahum Transcender
-		MOBS.put(21263, new ChanceReward(795, 2)); // Ol Mahum Transcender
-		MOBS.put(21508, new ChanceReward(100, 2)); // Splinter Stakato
-		MOBS.put(21510, new ChanceReward(280, 2)); // Splinter Stakato Soldier
-		MOBS.put(21511, new ChanceReward(995, 2)); // Splinter Stakato Drone
-		MOBS.put(21512, new ChanceReward(995, 2)); // Splinter Stakato Drone
-		MOBS.put(21514, new ChanceReward(185, 2)); // Needle Stakato Worker
-		MOBS.put(21516, new ChanceReward(495, 2)); // Needle Stakato Drone
-		MOBS.put(21517, new ChanceReward(495, 2)); // Needle Stakato Drone
-		MOBS.put(21518, new ChanceReward(255, 2)); // Frenzy Stakato Soldier
-		MOBS.put(21636, new ChanceReward(950, 2)); // Veil Master
-		MOBS.put(20655, new ChanceReward(110, 3)); // Lesser Giant Shooter
-		MOBS.put(20656, new ChanceReward(150, 3)); // Lesser Giant Scout
-		MOBS.put(20772, new ChanceReward(105, 3)); // Barif's Pet
-		MOBS.put(20810, new ChanceReward(50, 3)); // Hallate's Seer
-		MOBS.put(20812, new ChanceReward(490, 3)); // Archer of Despair
-		MOBS.put(20814, new ChanceReward(775, 3)); // Blader of Despair
-		MOBS.put(20816, new ChanceReward(875, 3)); // Hallate's Royal Guard
-		MOBS.put(20819, new ChanceReward(280, 3)); // Archer of Abyss
-		MOBS.put(20955, new ChanceReward(670, 3)); // Ghostly Warrior
-		MOBS.put(20978, new ChanceReward(555, 3)); // Elmoradan's Archer Escort
-		MOBS.put(21058, new ChanceReward(355, 3)); // Beast Lord
-		MOBS.put(21060, new ChanceReward(45, 3)); // Beast Seer
-		MOBS.put(21075, new ChanceReward(110, 3)); // Slaughter Bathin
-		MOBS.put(21078, new ChanceReward(610, 3)); // Magus Valac
-		MOBS.put(21081, new ChanceReward(955, 3)); // Power Angel Amon
-		MOBS.put(21264, new ChanceReward(920, 3)); // Ol Mahum Transcender
-		MOBS.put(20815, new ChanceReward(205, 4)); // Hound Dog of Hallate
-		MOBS.put(20822, new ChanceReward(100, 4)); // Hallate's Maid
-		MOBS.put(20824, new ChanceReward(665, 4)); // Hallate's Commander
-		MOBS.put(20825, new ChanceReward(620, 4)); // Hallate's Inspector
-		MOBS.put(20983, new ChanceReward(205, 4)); // Binder
-		MOBS.put(21314, new ChanceReward(145, 4)); // Hot Springs Bandersnatchling
-		MOBS.put(21316, new ChanceReward(235, 4)); // Hot Springs Flava
-		MOBS.put(21318, new ChanceReward(280, 4)); // Hot Springs Antelope
-		MOBS.put(21320, new ChanceReward(355, 4)); // Hot Springs Yeti
-		MOBS.put(21322, new ChanceReward(430, 4)); // Hot Springs Bandersnatch
-		MOBS.put(21376, new ChanceReward(280, 4)); // Scarlet Stakato Worker
-		MOBS.put(21378, new ChanceReward(375, 4)); // Scarlet Stakato Noble
-		MOBS.put(21380, new ChanceReward(375, 4)); // Tepra Scarab
-		MOBS.put(21387, new ChanceReward(640, 4)); // Arimanes of Destruction
-		MOBS.put(21393, new ChanceReward(935, 4)); // Magma Drake
-		MOBS.put(21395, new ChanceReward(855, 4)); // Elder Lavasaurus
-		MOBS.put(21652, new ChanceReward(375, 4)); // Scarlet Stakato Noble
-		MOBS.put(21655, new ChanceReward(640, 4)); // Arimanes of Destruction
-		MOBS.put(21657, new ChanceReward(935, 4)); // Magma Drake
-		MOBS.put(20828, new ChanceReward(935, 5)); // Platinum Tribe Shaman
-		MOBS.put(21061, new ChanceReward(530, 5)); // Hallate's Guardian
-		MOBS.put(21069, new ChanceReward(825, 5)); // Platinum Guardian Prefect
-		MOBS.put(21382, new ChanceReward(125, 5)); // Mercenary of Destruction
-		MOBS.put(21384, new ChanceReward(400, 5)); // Necromancer of Destruction
-		MOBS.put(21390, new ChanceReward(750, 5)); // Ashuras of Destruction
-		MOBS.put(21654, new ChanceReward(400, 5)); // Necromancer of Destruction
-		MOBS.put(21656, new ChanceReward(750, 5)); // Ashuras of Destruction
-	}
-	private static final Map<Integer, ChanceReward> MOBS_SPECIAL = new HashMap<>(5);
-	static
-	{
-		MOBS_SPECIAL.put(20829, new ChanceReward(115, 6)); // Platinum Tribe Overlord
-		MOBS_SPECIAL.put(20859, new ChanceReward(890, 8)); // Guardian Angel
-		MOBS_SPECIAL.put(21066, new ChanceReward(5, 5)); // Platinum Guardian Shaman
-		MOBS_SPECIAL.put(21068, new ChanceReward(565, 11)); // Guardian Archangel
-		MOBS_SPECIAL.put(21071, new ChanceReward(400, 12)); // Seal Archangel
-	}
 	private static final int SWEET_FLUID = 7586;
+	private static final Map<Integer, Integer> MOBS1 = new HashMap<>();
+	static
+	{
+		MOBS1.put(20005, 45);
+		MOBS1.put(20013, 100);
+		MOBS1.put(20016, 100);
+		MOBS1.put(20017, 115);
+		MOBS1.put(20030, 105);
+		MOBS1.put(20132, 70);
+		MOBS1.put(20038, 135);
+		MOBS1.put(20044, 125);
+		MOBS1.put(20046, 100);
+		MOBS1.put(20047, 100);
+		MOBS1.put(20050, 140);
+		MOBS1.put(20058, 140);
+		MOBS1.put(20063, 160);
+		MOBS1.put(20066, 170);
+		MOBS1.put(20070, 180);
+		MOBS1.put(20074, 195);
+		MOBS1.put(20077, 205);
+		MOBS1.put(20078, 205);
+		MOBS1.put(20079, 205);
+		MOBS1.put(20080, 220);
+		MOBS1.put(20081, 370);
+		MOBS1.put(20083, 245);
+		MOBS1.put(20084, 255);
+		MOBS1.put(20085, 265);
+		MOBS1.put(20087, 565);
+		MOBS1.put(20088, 605);
+		MOBS1.put(20089, 250);
+		MOBS1.put(20100, 85);
+		MOBS1.put(20103, 110);
+		MOBS1.put(20105, 110);
+		MOBS1.put(20115, 190);
+		MOBS1.put(20120, 20);
+		MOBS1.put(20131, 45);
+		MOBS1.put(20135, 360);
+		MOBS1.put(20157, 235);
+		MOBS1.put(20162, 195);
+		MOBS1.put(20176, 280);
+		MOBS1.put(20211, 170);
+		MOBS1.put(20225, 160);
+		MOBS1.put(20227, 180);
+		MOBS1.put(20230, 260);
+		MOBS1.put(20232, 245);
+		MOBS1.put(20234, 290);
+		MOBS1.put(20241, 700);
+		MOBS1.put(20267, 215);
+		MOBS1.put(20268, 295);
+		MOBS1.put(20269, 255);
+		MOBS1.put(20270, 365);
+		MOBS1.put(20271, 295);
+		MOBS1.put(20286, 700);
+		MOBS1.put(20308, 110);
+		MOBS1.put(20312, 45);
+		MOBS1.put(20317, 20);
+		MOBS1.put(20324, 85);
+		MOBS1.put(20333, 100);
+		MOBS1.put(20341, 100);
+		MOBS1.put(20346, 85);
+		MOBS1.put(20349, 850);
+		MOBS1.put(20356, 165);
+		MOBS1.put(20357, 140);
+		MOBS1.put(20363, 70);
+		MOBS1.put(20368, 85);
+		MOBS1.put(20371, 100);
+		MOBS1.put(20386, 85);
+		MOBS1.put(20389, 90);
+		MOBS1.put(20403, 110);
+		MOBS1.put(20404, 95);
+		MOBS1.put(20433, 100);
+		MOBS1.put(20436, 140);
+		MOBS1.put(20448, 45);
+		MOBS1.put(20456, 20);
+		MOBS1.put(20463, 85);
+		MOBS1.put(20470, 45);
+		MOBS1.put(20471, 85);
+		MOBS1.put(20475, 20);
+		MOBS1.put(20478, 110);
+		MOBS1.put(20487, 90);
+		MOBS1.put(20511, 100);
+		MOBS1.put(20525, 20);
+		MOBS1.put(20528, 100);
+		MOBS1.put(20536, 15);
+		MOBS1.put(20537, 15);
+		MOBS1.put(20538, 15);
+		MOBS1.put(20539, 15);
+		MOBS1.put(20544, 15);
+		MOBS1.put(20550, 300);
+		MOBS1.put(20551, 300);
+		MOBS1.put(20552, 650);
+		MOBS1.put(20553, 335);
+		MOBS1.put(20554, 390);
+		MOBS1.put(20555, 350);
+		MOBS1.put(20557, 390);
+		MOBS1.put(20559, 420);
+		MOBS1.put(20560, 440);
+		MOBS1.put(20562, 485);
+		MOBS1.put(20573, 545);
+		MOBS1.put(20575, 645);
+		MOBS1.put(20630, 350);
+		MOBS1.put(20632, 475);
+		MOBS1.put(20634, 960);
+		MOBS1.put(20636, 495);
+		MOBS1.put(20638, 540);
+		MOBS1.put(20641, 680);
+		MOBS1.put(20643, 660);
+		MOBS1.put(20644, 645);
+		MOBS1.put(20659, 440);
+		MOBS1.put(20661, 575);
+		MOBS1.put(20663, 525);
+		MOBS1.put(20665, 680);
+		MOBS1.put(20667, 730);
+		MOBS1.put(20766, 210);
+		MOBS1.put(20781, 270);
+		MOBS1.put(20783, 140);
+		MOBS1.put(20784, 155);
+		MOBS1.put(20786, 170);
+		MOBS1.put(20788, 325);
+		MOBS1.put(20790, 390);
+		MOBS1.put(20792, 620);
+		MOBS1.put(20794, 635);
+		MOBS1.put(20796, 640);
+		MOBS1.put(20798, 850);
+		MOBS1.put(20800, 740);
+		MOBS1.put(20802, 900);
+		MOBS1.put(20804, 775);
+		MOBS1.put(20806, 805);
+		MOBS1.put(20833, 455);
+		MOBS1.put(20834, 680);
+		MOBS1.put(20836, 785);
+		MOBS1.put(20837, 835);
+		MOBS1.put(20839, 430);
+		MOBS1.put(20841, 460);
+		MOBS1.put(20845, 605);
+		MOBS1.put(20847, 570);
+		MOBS1.put(20849, 585);
+		MOBS1.put(20936, 290);
+		MOBS1.put(20937, 315);
+		MOBS1.put(20939, 385);
+		MOBS1.put(20940, 500);
+		MOBS1.put(20941, 460);
+		MOBS1.put(20943, 345);
+		MOBS1.put(20944, 335);
+		MOBS1.put(21100, 125);
+		MOBS1.put(21101, 155);
+		MOBS1.put(21103, 215);
+		MOBS1.put(21105, 310);
+		MOBS1.put(21107, 600);
+		MOBS1.put(21117, 120);
+		MOBS1.put(21023, 170);
+		MOBS1.put(21024, 175);
+		MOBS1.put(21025, 185);
+		MOBS1.put(21026, 200);
+		MOBS1.put(21034, 195);
+		MOBS1.put(21125, 12);
+		MOBS1.put(21263, 650);
+		MOBS1.put(21520, 880);
+		MOBS1.put(21526, 970);
+		MOBS1.put(21536, 985);
+		MOBS1.put(21602, 555);
+		MOBS1.put(21603, 750);
+		MOBS1.put(21605, 620);
+		MOBS1.put(21606, 875);
+		MOBS1.put(21611, 590);
+		MOBS1.put(21612, 835);
+		MOBS1.put(21617, 615);
+		MOBS1.put(21618, 875);
+		MOBS1.put(21635, 775);
+		MOBS1.put(21638, 165);
+		MOBS1.put(21639, 185);
+		MOBS1.put(21641, 195);
+		MOBS1.put(21644, 170);
+	}
+	private static final Map<Integer, Integer> MOBS2 = new HashMap<>();
+	static
+	{
+		MOBS2.put(20579, 420);
+		MOBS2.put(20639, 280);
+		MOBS2.put(20646, 145);
+		MOBS2.put(20648, 120);
+		MOBS2.put(20650, 460);
+		MOBS2.put(20651, 260);
+		MOBS2.put(20652, 335);
+		MOBS2.put(20657, 630);
+		MOBS2.put(20658, 570);
+		MOBS2.put(20808, 50);
+		MOBS2.put(20809, 865);
+		MOBS2.put(20832, 700);
+		MOBS2.put(20979, 980);
+		MOBS2.put(20991, 665);
+		MOBS2.put(20994, 590);
+		MOBS2.put(21261, 170);
+		MOBS2.put(21263, 795);
+		MOBS2.put(21508, 100);
+		MOBS2.put(21510, 280);
+		MOBS2.put(21511, 995);
+		MOBS2.put(21512, 995);
+		MOBS2.put(21514, 185);
+		MOBS2.put(21516, 495);
+		MOBS2.put(21517, 495);
+		MOBS2.put(21518, 255);
+		MOBS2.put(21636, 950);
+	}
+	private static final Map<Integer, Integer> MOBS3 = new HashMap<>();
+	static
+	{
+		MOBS3.put(20655, 110);
+		MOBS3.put(20656, 150);
+		MOBS3.put(20772, 105);
+		MOBS3.put(20810, 50);
+		MOBS3.put(20812, 490);
+		MOBS3.put(20814, 775);
+		MOBS3.put(20816, 875);
+		MOBS3.put(20819, 280);
+		MOBS3.put(20955, 670);
+		MOBS3.put(20978, 555);
+		MOBS3.put(21058, 355);
+		MOBS3.put(21060, 45);
+		MOBS3.put(21075, 110);
+		MOBS3.put(21078, 610);
+		MOBS3.put(21081, 955);
+		MOBS3.put(21264, 920);
+	}
+	private static final Map<Integer, Integer> MOBS4 = new HashMap<>();
+	static
+	{
+		MOBS4.put(20815, 205);
+		MOBS4.put(20822, 100);
+		MOBS4.put(20824, 665);
+		MOBS4.put(20825, 620);
+		MOBS4.put(20983, 205);
+		MOBS4.put(21314, 145);
+		MOBS4.put(21316, 235);
+		MOBS4.put(21318, 280);
+		MOBS4.put(21320, 355);
+		MOBS4.put(21322, 430);
+		MOBS4.put(21376, 280);
+		MOBS4.put(21378, 375);
+		MOBS4.put(21380, 375);
+		MOBS4.put(21387, 640);
+		MOBS4.put(21393, 935);
+		MOBS4.put(21395, 855);
+		MOBS4.put(21652, 375);
+		MOBS4.put(21655, 640);
+		MOBS4.put(21657, 935);
+	}
+	private static final Map<Integer, Integer> MOBS5 = new HashMap<>();
+	static
+	{
+		MOBS5.put(20828, 935);
+		MOBS5.put(21061, 530);
+		MOBS5.put(21069, 825);
+		MOBS5.put(21382, 125);
+		MOBS5.put(21384, 400);
+		MOBS5.put(21390, 750);
+		MOBS5.put(21654, 400);
+		MOBS5.put(21656, 750);
+	}
+	private static final Map<Integer, int[]> MOB_SPECIAL = new HashMap<>();
+	static
+	{
+		// @formatter:off
+		MOB_SPECIAL.put(20829, new int[]{115, 6});
+		MOB_SPECIAL.put(20859, new int[]{890, 8});
+		MOB_SPECIAL.put(21066, new int[]{5, 5});
+		MOB_SPECIAL.put(21068, new int[]{565, 11});
+		MOB_SPECIAL.put(21071, new int[]{400, 12});
+		// @formatter:on
+	}
 	
 	public Q00426_QuestForFishingShot()
 	{
 		super(426);
-		addStartNpc(NPC);
-		addTalkId(NPC);
-		addKillId(MOBS.keySet());
 		registerQuestItems(SWEET_FLUID);
+		addStartNpc(31562, 31563, 31564, 31565, 31566, 31567, 31568, 31569, 31570, 31571, 31572, 31573, 31574, 31575, 31576, 31577, 31578, 31579, 31696, 31697, 31989, 32007);
+		addTalkId(31562, 31563, 31564, 31565, 31566, 31567, 31568, 31569, 31570, 31571, 31572, 31573, 31574, 31575, 31576, 31577, 31578, 31579, 31696, 31697, 31989, 32007);
+		addKillId(MOBS1.keySet());
+		addKillId(MOBS2.keySet());
+		addKillId(MOBS3.keySet());
+		addKillId(MOBS4.keySet());
+		addKillId(MOBS5.keySet());
+		addKillId(MOB_SPECIAL.keySet());
 	}
 	
-	private static class ChanceReward
+	@Override
+	public String onEvent(String event, Npc npc, Player player)
 	{
-		final int chance;
-		final int reward;
+		String htmltext = event;
+		final QuestState st = getQuestState(player, false);
+		if (st == null)
+		{
+			return htmltext;
+		}
 		
-		ChanceReward(int chance, int reward)
+		if (event.equals("03.htm"))
 		{
-			this.chance = chance;
-			this.reward = reward;
+			st.startQuest();
 		}
-	}
-	
-	@Override
-	public String onAdvEvent(String event, Npc npc, Player player)
-	{
-		final QuestState qs = getQuestState(player, false);
-		if (qs == null)
+		else if (event.equals("08.htm"))
 		{
-			return null;
+			st.exitQuest(true, true);
 		}
-		switch (event)
-		{
-			case "QUEST_ACEPT":
-			{
-				qs.startQuest();
-				return "03.htm";
-			}
-			case "1":
-			{
-				return "06.html";
-			}
-			case "2":
-			{
-				return "07.html";
-			}
-			case "3":
-			{
-				qs.exitQuest(true);
-				return "08.html";
-			}
-		}
-		return event;
-	}
-	
-	@Override
-	public String onKill(Npc npc, Player killer, boolean isSummon)
-	{
-		final QuestState qs = getRandomPartyMemberState(killer, -1, 2, npc);
-		if (qs != null)
-		{
-			if (MOBS_SPECIAL.containsKey(npc.getId()))
-			{
-				if (getRandom(1000) <= MOBS_SPECIAL.get(npc.getId()).chance)
-				{
-					rewardItems(qs.getPlayer(), SWEET_FLUID, MOBS_SPECIAL.get(npc.getId()).reward + 1);
-				}
-				else
-				{
-					rewardItems(qs.getPlayer(), SWEET_FLUID, MOBS_SPECIAL.get(npc.getId()).reward);
-				}
-				playSound(qs.getPlayer(), QuestSound.ITEMSOUND_QUEST_ITEMGET);
-			}
-			else
-			{
-				if (getRandom(1000) <= MOBS.get(npc.getId()).chance)
-				{
-					rewardItems(qs.getPlayer(), SWEET_FLUID, MOBS.get(npc.getId()).reward);
-					playSound(qs.getPlayer(), QuestSound.ITEMSOUND_QUEST_ITEMGET);
-				}
-			}
-		}
-		return super.onKill(npc, killer, isSummon);
+		
+		return htmltext;
 	}
 	
 	@Override
 	public String onTalk(Npc npc, Player player)
 	{
-		final String htmltext = getNoQuestMsg(player);
-		final QuestState qs = getQuestState(player, true);
+		String htmltext = getNoQuestMsg(player);
+		final QuestState st = getQuestState(player, true);
 		
-		switch (qs.getState())
+		switch (st.getState())
 		{
 			case State.CREATED:
 			{
-				return "01.htm";
+				htmltext = "01.htm";
+				break;
 			}
 			case State.STARTED:
 			{
-				if (!hasQuestItems(player, SWEET_FLUID))
-				{
-					return "04.html";
-				}
-				return "05.html";
+				htmltext = (hasQuestItems(player, SWEET_FLUID)) ? "05.htm" : "04.htm";
+				break;
 			}
 		}
+		
 		return htmltext;
+	}
+	
+	@Override
+	public String onKill(Npc npc, Player player, boolean isPet)
+	{
+		final QuestState st = getRandomPartyMemberState(player, -1, 3, npc);
+		if ((st == null) || !st.isStarted())
+		{
+			return null;
+		}
+		final Player partyMember = st.getPlayer();
+		
+		int drop = 0;
+		int chance = 0;
+		final int npcId = npc.getId();
+		if (MOBS1.containsKey(npcId))
+		{
+			chance = MOBS1.get(npcId);
+		}
+		else if (MOBS2.containsKey(npcId))
+		{
+			chance = MOBS2.get(npcId);
+			drop = 1;
+		}
+		else if (MOBS3.containsKey(npcId))
+		{
+			chance = MOBS3.get(npcId);
+			drop = 2;
+		}
+		else if (MOBS4.containsKey(npcId))
+		{
+			chance = MOBS4.get(npcId);
+			drop = 3;
+		}
+		else if (MOBS5.containsKey(npcId))
+		{
+			chance = MOBS5.get(npcId);
+			drop = 4;
+		}
+		else if (MOB_SPECIAL.containsKey(npcId))
+		{
+			chance = MOB_SPECIAL.get(npcId)[0];
+			drop = MOB_SPECIAL.get(npcId)[1];
+		}
+		
+		if (getRandom(1000) <= chance)
+		{
+			drop++;
+		}
+		
+		if (drop != 0)
+		{
+			playSound(partyMember, QuestSound.ITEMSOUND_QUEST_ITEMGET);
+			rewardItems(partyMember, SWEET_FLUID, drop);
+		}
+		
+		return null;
 	}
 }

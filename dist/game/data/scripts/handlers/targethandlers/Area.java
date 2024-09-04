@@ -40,7 +40,7 @@ public class Area implements ITargetTypeHandler
 		final List<WorldObject> targetList = new LinkedList<>();
 		if ((target == null) || (((target == creature) || target.isAlikeDead()) && (skill.getCastRange() >= 0)) || (!(target.isAttackable() || target.isPlayable())))
 		{
-			creature.sendPacket(SystemMessageId.THAT_IS_AN_INCORRECT_TARGET);
+			creature.sendPacket(SystemMessageId.THAT_IS_THE_INCORRECT_TARGET);
 			return targetList;
 		}
 		

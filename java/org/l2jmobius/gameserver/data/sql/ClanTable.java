@@ -103,6 +103,8 @@ public class ClanTable
 		LOGGER.info(getClass().getSimpleName() + ": Restored " + cids.size() + " clans from the database.");
 		allianceCheck();
 		restoreClanWars();
+		
+		ThreadPool.scheduleAtFixedRate(this::updateClanRanks, 1000, 1200000); // 20 minutes.
 	}
 	
 	/**
@@ -159,7 +161,7 @@ public class ClanTable
 		
 		if (10 > player.getLevel())
 		{
-			player.sendPacket(SystemMessageId.YOU_DO_NOT_MEET_THE_CRITERIA_IN_ORDER_TO_CREATE_A_CLAN);
+			player.sendPacket(SystemMessageId.YOU_DO_NOT_MEET_THE_CRITERIA_IR_ORDER_TO_CREATE_A_CLAN);
 			return null;
 		}
 		if (0 != player.getClanId())
@@ -396,7 +398,7 @@ public class ClanTable
 		// msg.addString(clan1.getName());
 		// clan2.broadcastToOnlineMembers(msg);
 		// clan1 declared clan war.
-		msg = new SystemMessage(SystemMessageId.S1_HAS_DECLARED_A_CLAN_WAR);
+		msg = new SystemMessage(SystemMessageId.THE_CLAN_S1_HAS_DECLARED_A_CLAN_WAR);
 		msg.addString(clan1.getName());
 		clan2.broadcastToOnlineMembers(msg);
 	}
@@ -525,6 +527,33 @@ public class ClanTable
 		{
 			clan.updateClanInDB();
 		}
+	}
+	
+	private void updateClanRanks()
+	{
+		for (Clan clan : _clans.values())
+		{
+			clan.setRank(getClanRank(clan));
+		}
+	}
+	
+	public int getClanRank(Clan clan)
+	{
+		if (clan.getLevel() < 3)
+		{
+			return 0;
+		}
+		
+		int rank = 1;
+		for (Clan c : _clans.values())
+		{
+			if ((clan != c) && ((clan.getLevel() < c.getLevel()) || ((clan.getLevel() == c.getLevel()) && (clan.getReputationScore() <= c.getReputationScore()))))
+			{
+				rank++;
+			}
+		}
+		
+		return rank;
 	}
 	
 	public static ClanTable getInstance()

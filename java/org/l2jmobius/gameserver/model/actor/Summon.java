@@ -25,8 +25,8 @@ import org.l2jmobius.commons.util.Rnd;
 import org.l2jmobius.gameserver.ai.CreatureAI;
 import org.l2jmobius.gameserver.ai.CtrlIntention;
 import org.l2jmobius.gameserver.ai.SummonAI;
-import org.l2jmobius.gameserver.data.ItemTable;
 import org.l2jmobius.gameserver.data.xml.ExperienceData;
+import org.l2jmobius.gameserver.data.xml.ItemData;
 import org.l2jmobius.gameserver.enums.InstanceType;
 import org.l2jmobius.gameserver.enums.Race;
 import org.l2jmobius.gameserver.enums.ShotType;
@@ -407,7 +407,7 @@ public abstract class Summon extends Playable
 				if ((getInventory() != null) && (getInventory().getSize() > 0))
 				{
 					_owner.setPetInvItems(true);
-					sendPacket(SystemMessageId.THERE_ARE_ITEMS_IN_YOUR_PET_INVENTORY_RENDERING_YOU_UNABLE_TO_SELL_TRADE_DROP_PET_SUMMONING_ITEMS_PLEASE_EMPTY_YOUR_PET_INVENTORY);
+					_owner.sendMessage("There are items in your Pet Inventory rendering you unable to sell/trade/drop pet summoning items. Please empty your Pet Inventory.");
 				}
 				else
 				{
@@ -439,7 +439,7 @@ public abstract class Summon extends Playable
 			{
 				for (int itemId : owner.getAutoSoulShot())
 				{
-					final String handler = ((EtcItem) ItemTable.getInstance().getTemplate(itemId)).getHandlerName();
+					final String handler = ((EtcItem) ItemData.getInstance().getTemplate(itemId)).getHandlerName();
 					if ((handler != null) && handler.contains("Beast"))
 					{
 						owner.disableAutoShot(itemId);
@@ -692,7 +692,7 @@ public abstract class Summon extends Playable
 			
 			if (_owner.isSiegeFriend(target))
 			{
-				sendPacket(SystemMessageId.FORCE_ATTACK_IS_IMPOSSIBLE_AGAINST_A_TEMPORARY_ALLIED_MEMBER_DURING_A_SIEGE);
+				_owner.sendMessage("Force attack is impossible against a temporary allied member during a siege.");
 				sendPacket(ActionFailed.STATIC_PACKET);
 				return false;
 			}
@@ -800,7 +800,7 @@ public abstract class Summon extends Playable
 		super.reduceCurrentHp(damage, attacker, skill);
 		if ((_owner != null) && (attacker != null))
 		{
-			final SystemMessage sm = new SystemMessage(SystemMessageId.YOUR_PET_RECEIVED_S2_DAMAGE_BY_C1);
+			final SystemMessage sm = new SystemMessage(SystemMessageId.YOUR_PET_RECEIVED_S2_DAMAGE_CAUSED_BY_S1);
 			sm.addInt((int) damage);
 			sm.addString(attacker.getName());
 			sendPacket(sm);
@@ -814,7 +814,7 @@ public abstract class Summon extends Playable
 		if (!actingPlayer.checkPvpSkill(getTarget(), skill) && !actingPlayer.getAccessLevel().allowPeaceAttack())
 		{
 			// Send a System Message to the Player
-			actingPlayer.sendPacket(SystemMessageId.THAT_IS_AN_INCORRECT_TARGET);
+			actingPlayer.sendPacket(SystemMessageId.THAT_IS_THE_INCORRECT_TARGET);
 			
 			// Send a Server->Client packet ActionFailed to the Player
 			actingPlayer.sendPacket(ActionFailed.STATIC_PACKET);
@@ -1004,7 +1004,7 @@ public abstract class Summon extends Playable
 		
 		if (_owner.isSiegeFriend(target))
 		{
-			sendPacket(SystemMessageId.FORCE_ATTACK_IS_IMPOSSIBLE_AGAINST_A_TEMPORARY_ALLIED_MEMBER_DURING_A_SIEGE);
+			_owner.sendMessage("Force attack is impossible against a temporary allied member during a siege.");
 			sendPacket(ActionFailed.STATIC_PACKET);
 			return false;
 		}

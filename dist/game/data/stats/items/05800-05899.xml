@@ -456,7 +456,7 @@
 		<set name="etcitem_type" val="MATURECROP" />
 		<set name="material" val="PAPER" />
 		<set name="weight" val="1" />
-		<set name="price" val="300" />
+		<set name="price" val="200" />
 		<set name="is_stackable" val="true" />
 	</item>
 	<item id="5844" type="EtcItem" name="Mature Alternative Desert Coda">
@@ -577,7 +577,7 @@
 		<set name="default_action" val="SKILL_REDUCE" />
 		<set name="etcitem_type" val="SCROLL" />
 		<set name="material" val="PAPER" />
-		<set name="weight" val="120" />
+		<set name="weight" val="12" />
 		<set name="price" val="100000" />
 		<set name="is_stackable" val="true" />
 		<set name="is_oly_restricted" val="true" />
@@ -590,7 +590,7 @@
 		<set name="default_action" val="SKILL_REDUCE" />
 		<set name="etcitem_type" val="SCROLL" />
 		<set name="material" val="PAPER" />
-		<set name="weight" val="120" />
+		<set name="weight" val="12" />
 		<set name="price" val="80000" />
 		<set name="is_stackable" val="true" />
 		<set name="is_oly_restricted" val="true" />

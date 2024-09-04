@@ -16,8 +16,10 @@
  */
 package org.l2jmobius.gameserver.network.serverpackets;
 
+import org.l2jmobius.commons.network.WritableBuffer;
 import org.l2jmobius.gameserver.model.actor.Creature;
 import org.l2jmobius.gameserver.model.actor.Player;
+import org.l2jmobius.gameserver.network.GameClient;
 import org.l2jmobius.gameserver.network.ServerPackets;
 
 /**
@@ -40,11 +42,11 @@ public class MyTargetSelected extends ServerPacket
 	}
 	
 	@Override
-	public void write()
+	public void writeImpl(GameClient client, WritableBuffer buffer)
 	{
-		ServerPackets.MY_TARGET_SELECTED.writeId(this);
-		writeInt(_objectId);
-		writeShort(_color);
-		writeInt(0);
+		ServerPackets.MY_TARGET_SELECTED.writeId(this, buffer);
+		buffer.writeInt(_objectId);
+		buffer.writeShort(_color);
+		buffer.writeInt(0);
 	}
 }

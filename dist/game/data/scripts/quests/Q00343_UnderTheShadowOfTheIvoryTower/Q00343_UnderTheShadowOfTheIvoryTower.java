@@ -16,616 +16,425 @@
  */
 package quests.Q00343_UnderTheShadowOfTheIvoryTower;
 
-import org.l2jmobius.Config;
-import org.l2jmobius.gameserver.enums.CategoryType;
 import org.l2jmobius.gameserver.enums.QuestSound;
 import org.l2jmobius.gameserver.model.actor.Npc;
 import org.l2jmobius.gameserver.model.actor.Player;
 import org.l2jmobius.gameserver.model.quest.Quest;
 import org.l2jmobius.gameserver.model.quest.QuestState;
-import org.l2jmobius.gameserver.util.Util;
 
 /**
- * Under The Shadow Of The Ivory Tower (343)
- * @author ivantotov
+ * Adapted from FirstTeam Interlude
  */
 public class Q00343_UnderTheShadowOfTheIvoryTower extends Quest
 {
 	// NPCs
-	private static final int MAGIC_TRADER_CEMA = 30834;
-	private static final int LICH_KING_ICARUS = 30835;
-	private static final int COLLECTOR_MARSHA = 30934;
-	private static final int COLLECTOR_TRUMPIN = 30935;
-	// Item
-	private static final int NEBULITE_ORB = 4364;
-	// Rewards
-	private static final int TOWER_SHIELD = 103;
-	private static final int NICKLACE_OF_MAGIC = 118;
-	private static final int SAGES_BLOOD = 316;
-	private static final int SQUARE_SHIELD = 630;
-	private static final int SCROLL_OF_ESCAPE = 736;
-	private static final int RING_OF_AGES = 885;
-	private static final int NICKLACE_OF_MERMAID = 917;
-	private static final int SCROLL_ENCHANT_WEAPON_C_GRADE = 951;
-	private static final int SCROLL_ENCHANT_WEAPON_D_GRADE = 955;
-	private static final int SPIRITSHOT_D_GRADE = 2510;
-	private static final int SPIRITSHOT_C_GRADE = 2511;
-	private static final int ECTOPLASM_LIQUEUR = 4365;
-	// Monster
-	private static final int MANASHEN_GARGOYLE = 20563;
-	private static final int ENCHANTED_MONSTEREYE = 20564;
-	private static final int ENCHANTED_STONE_GOLEM = 20565;
-	private static final int ENCHANTED_IRON_GOLEM = 20566;
+	private static final int CEMA = 30834;
+	private static final int ICARUS = 30835;
+	private static final int MARSHA = 30934;
+	private static final int TRUMPIN = 30935;
+	private static final int[] MONSTERS = new int[]
+	{
+		20563,
+		20564,
+		20565,
+		20566
+	};
+	// Items
+	private static final int ORB = 4364;
+	private static final int ECTOPLASM = 4365;
 	// Misc
-	private static final int MIN_LEVEL = 40;
+	private static final int CHANCE = 50;
+	private static final int[] ALLOWED_CLASSES =
+	{
+		11,
+		12,
+		13,
+		14,
+		26,
+		27,
+		28,
+		39,
+		40,
+		41
+	};
 	
 	public Q00343_UnderTheShadowOfTheIvoryTower()
 	{
 		super(343);
-		addStartNpc(MAGIC_TRADER_CEMA);
-		addTalkId(MAGIC_TRADER_CEMA, LICH_KING_ICARUS, COLLECTOR_MARSHA, COLLECTOR_TRUMPIN);
-		addKillId(MANASHEN_GARGOYLE, ENCHANTED_MONSTEREYE, ENCHANTED_STONE_GOLEM, ENCHANTED_IRON_GOLEM);
+		addStartNpc(CEMA);
+		addTalkId(CEMA, ICARUS, MARSHA, TRUMPIN);
+		addKillId(MONSTERS);
+		registerQuestItems(ORB);
 	}
 	
 	@Override
-	public String onAdvEvent(String event, Npc npc, Player player)
+	public String onEvent(String event, Npc npc, Player player)
 	{
-		final QuestState qs = getQuestState(player, false);
-		if (qs == null)
+		String htmltext = event;
+		final QuestState st = getQuestState(player, false);
+		if (st == null)
 		{
-			return null;
+			return htmltext;
 		}
 		
-		String htmltext = null;
+		final int random1 = getRandom(3);
+		final int random2 = getRandom(2);
+		final int orbs = getQuestItemsCount(player, ORB);
 		switch (event)
 		{
-			case "30834-05.htm":
+			case "30834-03.htm":
 			{
-				if (qs.isCreated())
-				{
-					qs.setMemoState(1);
-					qs.setMemoStateEx(1, 0);
-					qs.startQuest();
-					htmltext = event;
-				}
+				st.startQuest();
 				break;
 			}
-			case "30834-04.htm":
+			case "30834-08.htm":
 			{
-				if (player.isInCategory(CategoryType.WIZARD_GROUP) && (player.getLevel() >= MIN_LEVEL))
+				if (orbs > 0)
 				{
-					htmltext = event;
-				}
-				break;
-			}
-			case "30834-08.html":
-			{
-				if (hasQuestItems(player, NEBULITE_ORB))
-				{
-					giveAdena(player, (getQuestItemsCount(player, NEBULITE_ORB) * 120), true);
-					takeItems(player, NEBULITE_ORB, -1);
-					htmltext = event;
+					giveAdena(player, orbs * 125, true);
+					takeItems(player, ORB, -1);
 				}
 				else
 				{
-					htmltext = "30834-08a.html";
+					htmltext = "30834-08.htm";
 				}
 				break;
 			}
-			case "30834-11.html":
+			case "30834-09.htm":
 			{
-				qs.exitQuest(true, true);
-				htmltext = event;
+				st.exitQuest(true, true);
 				break;
 			}
-			case "30835-02.html":
+			case "30934-02.htm":
+			case "30934-03.htm":
 			{
-				if (!hasQuestItems(player, ECTOPLASM_LIQUEUR))
+				if (orbs < 10)
 				{
-					htmltext = event;
+					htmltext = "noorbs.htm";
 				}
-				else
+				else if ("30934-03.htm".equals(event))
 				{
-					final int chance = getRandom(1000);
-					if (chance <= 119)
+					if (orbs >= 10)
 					{
-						giveItems(player, SCROLL_ENCHANT_WEAPON_D_GRADE, 1);
-					}
-					else if (chance <= 169)
-					{
-						giveItems(player, SCROLL_ENCHANT_WEAPON_C_GRADE, 1);
-					}
-					else if (chance <= 329)
-					{
-						giveItems(player, SPIRITSHOT_C_GRADE, getRandom(200) + 401);
-					}
-					else if (chance <= 559)
-					{
-						giveItems(player, SPIRITSHOT_D_GRADE, getRandom(200) + 401);
-					}
-					else if (chance <= 561)
-					{
-						giveItems(player, SAGES_BLOOD, 1);
-					}
-					else if (chance <= 578)
-					{
-						giveItems(player, SQUARE_SHIELD, 1);
-					}
-					else if (chance <= 579)
-					{
-						giveItems(player, NICKLACE_OF_MAGIC, 1);
-					}
-					else if (chance <= 581)
-					{
-						giveItems(player, RING_OF_AGES, 1);
-					}
-					else if (chance <= 582)
-					{
-						giveItems(player, TOWER_SHIELD, 1);
-					}
-					else if (chance <= 584)
-					{
-						giveItems(player, NICKLACE_OF_MERMAID, 1);
+						takeItems(player, ORB, 10);
+						st.set("playing", "1");
 					}
 					else
 					{
-						giveItems(player, SCROLL_OF_ESCAPE, 1);
-					}
-					
-					takeItems(player, ECTOPLASM_LIQUEUR, 1);
-					htmltext = "30835-03.html";
-				}
-				break;
-			}
-			case "30934-05.html":
-			{
-				if (qs.isMemoState(1))
-				{
-					if (qs.getMemoStateEx(1) >= 25)
-					{
-						htmltext = event;
-					}
-					else if ((qs.getMemoStateEx(1) >= 1) && (qs.getMemoStateEx(1) < 25) && (getQuestItemsCount(player, NEBULITE_ORB) < 10))
-					{
-						htmltext = "30934-06.html";
-					}
-					else if ((qs.getMemoStateEx(1) >= 1) && (qs.getMemoStateEx(1) < 25) && (getQuestItemsCount(player, NEBULITE_ORB) > 10))
-					{
-						qs.setMemoState(2);
-						takeItems(player, NEBULITE_ORB, 10);
-						htmltext = "30934-07.html";
+						htmltext = "noorbs.htm";
 					}
 				}
 				break;
 			}
-			case "30934-08a.html":
+			case "30934-04.htm":
 			{
-				if (qs.isMemoState(2))
+				if (st.getInt("playing") > 0)
 				{
-					final int i0 = getRandom(100);
-					final int i1 = getRandom(3);
-					if ((i0 < 20) && (i1 == 0))
+					switch (random1)
 					{
-						qs.setMemoStateEx(1, qs.getMemoStateEx(1) + 4);
-						qs.set("param1", 0);
-						htmltext = event;
-					}
-					else if ((i0 < 20) && (i1 == 1))
-					{
-						qs.set("param1", 1);
-						htmltext = "30934-08b.html";
-					}
-					else if ((i0 < 20) && (i1 == 2))
-					{
-						qs.set("param1", 2);
-						htmltext = "30934-08c.html";
-					}
-					else if ((i0 >= 20) && (i0 < 50) && (i1 == 0))
-					{
-						if (getRandom(2) == 0)
+						case 0:
 						{
-							qs.set("param1", 0);
+							htmltext = "30934-05.htm";
+							giveItems(player, ORB, 10);
+							break;
 						}
-						else
+						case 1:
 						{
-							qs.set("param1", 1);
+							htmltext = "30934-06.htm";
+							break;
 						}
-						htmltext = "30934-09a.html";
-					}
-					else if ((i0 >= 20) && (i0 < 50) && (i1 == 1))
-					{
-						if (getRandom(2) == 0)
+						default:
 						{
-							qs.set("param1", 1);
+							htmltext = "30934-04.htm";
+							giveItems(player, ORB, 20);
+							break;
 						}
-						else
-						{
-							qs.set("param1", 2);
-						}
-						htmltext = "30934-09b.html";
 					}
-					else if ((i0 >= 20) && (i0 < 50) && (i1 == 2))
-					{
-						if (getRandom(2) == 0)
-						{
-							qs.set("param1", 2);
-						}
-						else
-						{
-							qs.set("param1", 0);
-						}
-						htmltext = "30934-09c.html";
-					}
-					else
-					{
-						qs.set("param1", getRandom(3));
-						htmltext = "30934-10.html";
-					}
-				}
-				break;
-			}
-			case "30934-11a.html":
-			{
-				if (qs.isMemoState(2))
-				{
-					if (qs.getInt("param1") == 0)
-					{
-						giveItems(player, NEBULITE_ORB, 10);
-						qs.set("param1", 4);
-						htmltext = event;
-					}
-					else if (qs.getInt("param1") == 1)
-					{
-						htmltext = "30934-11b.html";
-					}
-					else if (qs.getInt("param1") == 2)
-					{
-						giveItems(player, NEBULITE_ORB, 20);
-						qs.set("param1", 4);
-						htmltext = "30934-11c.html";
-					}
-					qs.setMemoState(1);
-				}
-				break;
-			}
-			case "30934-12a.html":
-			{
-				if (qs.isMemoState(2))
-				{
-					if (qs.getInt("param1") == 0)
-					{
-						giveItems(player, NEBULITE_ORB, 20);
-						qs.set("param1", 4);
-						htmltext = event;
-					}
-					else if (qs.getInt("param1") == 1)
-					{
-						giveItems(player, NEBULITE_ORB, 10);
-						qs.set("param1", 4);
-						htmltext = "30934-12b.html";
-					}
-					else if (qs.getInt("param1") == 2)
-					{
-						htmltext = "30934-12c.html";
-					}
-					qs.setMemoState(1);
-				}
-				break;
-			}
-			case "30934-13a.html":
-			{
-				if (qs.isMemoState(2))
-				{
-					if (qs.getInt("param1") == 0)
-					{
-						htmltext = event;
-					}
-					else if (qs.getInt("param1") == 1)
-					{
-						giveItems(player, NEBULITE_ORB, 20);
-						qs.set("param1", 4);
-						htmltext = "30934-13b.html";
-					}
-					else if (qs.getInt("param1") == 2)
-					{
-						giveItems(player, NEBULITE_ORB, 10);
-						qs.set("param1", 4);
-						htmltext = "30934-13c.html";
-					}
-					qs.setMemoState(1);
-				}
-				break;
-			}
-			case "30935-03.html":
-			{
-				if (getQuestItemsCount(player, NEBULITE_ORB) < 10)
-				{
-					htmltext = event;
+					st.unset("playing");
 				}
 				else
 				{
-					qs.set("param2", getRandom(2));
-					htmltext = "30935-04.html";
+					htmltext = "Player is cheating";
+					takeItems(player, ORB, -1);
+					st.exitQuest(true);
 				}
 				break;
 			}
-			case "30935-05.html":
+			case "30934-05.htm":
 			{
-				if ((qs.getInt("param1") == 0) && (qs.getInt("param2") == 0) && (getQuestItemsCount(player, NEBULITE_ORB) >= 10))
+				if (st.getInt("playing") > 0)
 				{
-					qs.set("param1", 1);
-					qs.set("param2", 2);
-					htmltext = event;
+					switch (random1)
+					{
+						case 0:
+						{
+							htmltext = "30934-04.htm";
+							giveItems(player, ORB, 20);
+							break;
+						}
+						case 1:
+						{
+							htmltext = "30934-05.htm";
+							giveItems(player, ORB, 10);
+							break;
+						}
+						default:
+						{
+							htmltext = "30934-06.htm";
+							break;
+						}
+					}
+					st.unset("playing");
 				}
-				else if ((qs.getInt("param1") == 1) && (qs.getInt("param2") == 0) && (getQuestItemsCount(player, NEBULITE_ORB) >= 10))
+				else
 				{
-					qs.set("param1", 2);
-					qs.set("param2", 2);
-					htmltext = "30935-05a.html";
-				}
-				else if ((qs.getInt("param1") == 2) && (qs.getInt("param2") == 0) && (getQuestItemsCount(player, NEBULITE_ORB) >= 10))
-				{
-					qs.set("param1", 3);
-					qs.set("param2", 2);
-					htmltext = "30935-05b.html";
-				}
-				else if ((qs.getInt("param1") == 3) && (qs.getInt("param2") == 0) && (getQuestItemsCount(player, NEBULITE_ORB) >= 10))
-				{
-					qs.set("param1", 4);
-					qs.set("param2", 2);
-					htmltext = "30935-05c.html";
-				}
-				else if ((qs.getInt("param1") == 4) && (qs.getInt("param2") == 0) && (getQuestItemsCount(player, NEBULITE_ORB) >= 10))
-				{
-					qs.set("param1", 0);
-					qs.set("param2", 2);
-					giveItems(player, NEBULITE_ORB, 310);
-					htmltext = "30935-05d.html";
-				}
-				else if ((qs.getInt("param2") == 1) && (getQuestItemsCount(player, NEBULITE_ORB) >= 10))
-				{
-					takeItems(player, NEBULITE_ORB, 10);
-					qs.set("param1", 0);
-					qs.set("param2", 2);
-					htmltext = "30935-06.html";
-				}
-				else if (getQuestItemsCount(player, NEBULITE_ORB) < 10)
-				{
-					htmltext = "30935-03.html";
+					htmltext = "Player is cheating";
+					takeItems(player, ORB, -1);
+					st.exitQuest(true);
 				}
 				break;
 			}
-			case "30935-07.html":
+			case "30934-06.htm":
 			{
-				if ((qs.getInt("param2") == 0) && (getQuestItemsCount(player, NEBULITE_ORB) >= 10))
+				if (st.getInt("playing") > 0)
 				{
-					takeItems(player, NEBULITE_ORB, 10);
-					qs.set("param1", 0);
-					qs.set("param2", 2);
-					htmltext = event;
+					switch (random1)
+					{
+						case 0:
+						{
+							htmltext = "30934-04.htm";
+							giveItems(player, ORB, 20);
+							break;
+						}
+						case 1:
+						{
+							htmltext = "30934-06.htm";
+							break;
+						}
+						default:
+						{
+							htmltext = "30934-05.htm";
+							giveItems(player, ORB, 10);
+							break;
+						}
+					}
+					st.unset("playing");
 				}
-				else if ((qs.getInt("param1") == 0) && (qs.getInt("param2") == 1) && (getQuestItemsCount(player, NEBULITE_ORB) >= 10))
+				else
 				{
-					qs.set("param1", 1);
-					qs.set("param2", 2);
-					htmltext = "30935-08.html";
-				}
-				else if ((qs.getInt("param1") == 1) && (qs.getInt("param2") == 1) && (getQuestItemsCount(player, NEBULITE_ORB) >= 10))
-				{
-					qs.set("param1", 2);
-					qs.set("param2", 2);
-					htmltext = "30935-08a.html";
-				}
-				else if ((qs.getInt("param1") == 2) && (qs.getInt("param2") == 1) && (getQuestItemsCount(player, NEBULITE_ORB) >= 10))
-				{
-					qs.set("param1", 3);
-					qs.set("param2", 2);
-					htmltext = "30935-08b.html";
-				}
-				else if ((qs.getInt("param1") == 3) && (qs.getInt("param2") == 1) && (getQuestItemsCount(player, NEBULITE_ORB) >= 10))
-				{
-					qs.set("param1", 4);
-					qs.set("param2", 2);
-					htmltext = "30935-08c.html";
-				}
-				else if ((qs.getInt("param1") == 4) && (qs.getInt("param2") == 1) && (getQuestItemsCount(player, NEBULITE_ORB) >= 10))
-				{
-					qs.set("param1", 0);
-					qs.set("param2", 2);
-					giveItems(player, NEBULITE_ORB, 310);
-					htmltext = "30935-08d.html";
-				}
-				else if (getQuestItemsCount(player, NEBULITE_ORB) < 10)
-				{
-					htmltext = "30935-03.html";
+					htmltext = "Player is cheating";
+					takeItems(player, ORB, -1);
+					st.exitQuest(true);
 				}
 				break;
 			}
-			case "30935-09.html":
+			case "30935-02.htm":
+			case "30935-03.htm":
 			{
-				if (qs.getInt("param1") == 1)
+				st.unset("toss");
+				if (orbs < 10)
 				{
-					qs.set("param1", 0);
-					qs.set("param2", 2);
-					giveItems(player, NEBULITE_ORB, 10);
-					htmltext = event;
-				}
-				else if (qs.getInt("param1") == 2)
-				{
-					qs.set("param1", 0);
-					qs.set("param2", 2);
-					giveItems(player, NEBULITE_ORB, 30);
-					htmltext = "30935-09a.html";
-				}
-				else if (qs.getInt("param1") == 3)
-				{
-					qs.set("param1", 0);
-					qs.set("param2", 2);
-					giveItems(player, NEBULITE_ORB, 70);
-					htmltext = "30935-09b.html";
-				}
-				else if (qs.getInt("param1") == 4)
-				{
-					qs.set("param1", 0);
-					qs.set("param2", 2);
-					giveItems(player, NEBULITE_ORB, 150);
-					htmltext = "30935-09c.html";
+					htmltext = "noorbs.htm";
 				}
 				break;
 			}
-			case "30935-10.html":
+			case "30935-05.htm":
 			{
-				qs.set("param1", 0);
-				qs.set("param2", 2);
-				htmltext = event;
+				if (orbs >= 10)
+				{
+					if (random2 == 0)
+					{
+						final int toss = st.getInt("toss");
+						if (toss == 4)
+						{
+							st.unset("toss");
+							giveItems(player, ORB, 150);
+							htmltext = "30935-07.htm";
+						}
+						else
+						{
+							st.set("toss", String.valueOf(toss + 1));
+							htmltext = "30935-04.htm";
+						}
+					}
+					else
+					{
+						st.unset("toss");
+						takeItems(player, ORB, 10);
+					}
+				}
+				else
+				{
+					htmltext = "noorbs.htm";
+				}
 				break;
 			}
-			case "30834-04a.html":
-			case "30834-06a.html":
-			case "30834-09a.html":
-			case "30834-09b.html":
-			case "30834-11a.html":
-			case "30834-09.html":
-			case "30834-10.html":
-			case "30835-04.html":
-			case "30835-05.html":
-			case "30934-03a.html":
-			case "30935-01.html":
-			case "30935-01a.html":
-			case "30935-01b.html":
+			case "30935-06.htm":
 			{
-				htmltext = event;
+				if (orbs >= 10)
+				{
+					final int toss = st.getInt("toss");
+					st.unset("toss");
+					switch (toss)
+					{
+						case 1:
+						{
+							giveItems(player, ORB, 10);
+							break;
+						}
+						case 2:
+						{
+							giveItems(player, ORB, 30);
+							break;
+						}
+						case 3:
+						{
+							giveItems(player, ORB, 70);
+							break;
+						}
+						case 4:
+						{
+							giveItems(player, ORB, 150);
+							break;
+						}
+					}
+				}
+				else
+				{
+					htmltext = "noorbs.htm";
+				}
+				break;
+			}
+			case "30835-02.htm":
+			{
+				if (getQuestItemsCount(player, ECTOPLASM) > 0)
+				{
+					takeItems(player, ECTOPLASM, 1);
+					final int random3 = getRandom(1000);
+					if (random3 <= 119)
+					{
+						giveItems(player, 955, 1);
+					}
+					else if (random3 <= 169)
+					{
+						giveItems(player, 951, 1);
+					}
+					else if (random3 <= 329)
+					{
+						giveItems(player, 2511, (getRandom(200) + 401));
+					}
+					else if (random3 <= 559)
+					{
+						giveItems(player, 2510, (getRandom(200) + 401));
+					}
+					else if (random3 <= 561)
+					{
+						giveItems(player, 316, 1);
+					}
+					else if (random3 <= 578)
+					{
+						giveItems(player, 630, 1);
+					}
+					else if (random3 <= 579)
+					{
+						giveItems(player, 188, 1);
+					}
+					else if (random3 <= 581)
+					{
+						giveItems(player, 885, 1);
+					}
+					else if (random3 <= 582)
+					{
+						giveItems(player, 103, 1);
+					}
+					else if (random3 <= 584)
+					{
+						giveItems(player, 917, 1);
+					}
+					else
+					{
+						giveItems(player, 736, 1);
+					}
+				}
+				else
+				{
+					htmltext = "30835-03.htm";
+				}
 				break;
 			}
 		}
 		return htmltext;
-	}
-	
-	@Override
-	public String onKill(Npc npc, Player killer, boolean isSummon)
-	{
-		final QuestState qs = getQuestState(killer, false);
-		if ((qs != null) && qs.isStarted() && Util.checkIfInRange(Config.ALT_PARTY_RANGE, npc, killer, true))
-		{
-			switch (npc.getId())
-			{
-				case MANASHEN_GARGOYLE:
-				case ENCHANTED_MONSTEREYE:
-				{
-					if (getRandom(100) < 63)
-					{
-						giveItems(killer, NEBULITE_ORB, 1);
-						playSound(killer, QuestSound.ITEMSOUND_QUEST_ITEMGET);
-					}
-					
-					if ((qs.getMemoStateEx(1) > 1) && (getRandom(100) <= 12))
-					{
-						qs.setMemoStateEx(1, qs.getMemoStateEx(1) - 1);
-					}
-					break;
-				}
-				case ENCHANTED_STONE_GOLEM:
-				{
-					if (getRandom(100) < 65)
-					{
-						giveItems(killer, NEBULITE_ORB, 1);
-						playSound(killer, QuestSound.ITEMSOUND_QUEST_ITEMGET);
-					}
-					
-					if ((qs.getMemoStateEx(1) > 1) && (getRandom(100) <= 12))
-					{
-						qs.setMemoStateEx(1, qs.getMemoStateEx(1) - 1);
-					}
-					break;
-				}
-				case ENCHANTED_IRON_GOLEM:
-				{
-					if (getRandom(100) < 68)
-					{
-						giveItems(killer, NEBULITE_ORB, 1);
-						playSound(killer, QuestSound.ITEMSOUND_QUEST_ITEMGET);
-					}
-					
-					if ((qs.getMemoStateEx(1) > 1) && (getRandom(100) <= 13))
-					{
-						qs.setMemoStateEx(1, qs.getMemoStateEx(1) - 1);
-					}
-					break;
-				}
-			}
-		}
-		return super.onKill(npc, killer, isSummon);
 	}
 	
 	@Override
 	public String onTalk(Npc npc, Player player)
 	{
-		final QuestState qs = getQuestState(player, true);
 		String htmltext = getNoQuestMsg(player);
-		if (qs.isCreated())
+		final QuestState st = getQuestState(player, true);
+		
+		switch (npc.getId())
 		{
-			if (npc.getId() == MAGIC_TRADER_CEMA)
+			case CEMA:
 			{
-				if (player.isInCategory(CategoryType.WIZARD_GROUP))
+				if (!st.isStarted())
 				{
-					if (player.getLevel() >= MIN_LEVEL)
+					for (int classId : ALLOWED_CLASSES)
 					{
-						htmltext = "30834-03.htm";
+						if ((st.getPlayer().getClassId().getId() == classId) && (st.getPlayer().getLevel() >= 40))
+						{
+							htmltext = "30834-01.htm";
+						}
 					}
-					else
+					if (!"30834-01.htm".equals(htmltext))
 					{
-						htmltext = "30834-02.htm";
+						htmltext = "30834-07.htm";
+						st.exitQuest(true);
 					}
+				}
+				else if (getQuestItemsCount(player, ORB) > 0)
+				{
+					htmltext = "30834-06.htm";
 				}
 				else
 				{
-					htmltext = "30834-01.htm";
+					htmltext = "30834-05.htm";
 				}
+				break;
 			}
-		}
-		else if (qs.isStarted())
-		{
-			switch (npc.getId())
+			case ICARUS:
 			{
-				case MAGIC_TRADER_CEMA:
-				{
-					if (!hasQuestItems(player, NEBULITE_ORB))
-					{
-						htmltext = "30834-06.html";
-					}
-					else
-					{
-						htmltext = "30834-07.html";
-					}
-					break;
-				}
-				case LICH_KING_ICARUS:
-				{
-					htmltext = "30835-01.html";
-					break;
-				}
-				case COLLECTOR_MARSHA:
-				{
-					if (qs.getMemoStateEx(1) == 0)
-					{
-						qs.setMemoStateEx(1, 1);
-						htmltext = "30934-03.html";
-					}
-					else
-					{
-						qs.setMemoState(1);
-						htmltext = "30934-04.html";
-					}
-					break;
-				}
-				case COLLECTOR_TRUMPIN:
-				{
-					qs.set("param1", 0);
-					htmltext = "30935-01.html";
-					break;
-				}
+				htmltext = "30835-01.htm";
+				break;
+			}
+			case MARSHA:
+			{
+				htmltext = "30934-01.htm";
+				break;
+			}
+			case TRUMPIN:
+			{
+				htmltext = "30935-01.htm";
+				break;
 			}
 		}
 		return htmltext;
+	}
+	
+	@Override
+	public String onKill(Npc npc, Player player, boolean isPet)
+	{
+		final QuestState st = getQuestState(player, false);
+		if ((st == null) || !st.isStarted())
+		{
+			return null;
+		}
+		
+		if (getRandom(100) < CHANCE)
+		{
+			giveItems(player, ORB, 1);
+			playSound(player, QuestSound.ITEMSOUND_QUEST_ITEMGET);
+		}
+		
+		return null;
 	}
 }

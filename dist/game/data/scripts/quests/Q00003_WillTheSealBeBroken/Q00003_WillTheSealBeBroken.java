@@ -57,7 +57,7 @@ public class Q00003_WillTheSealBeBroken extends Quest
 	}
 	
 	@Override
-	public String onAdvEvent(String event, Npc npc, Player player)
+	public String onEvent(String event, Npc npc, Player player)
 	{
 		final QuestState qs = getQuestState(player, false);
 		if (qs == null)
@@ -80,6 +80,41 @@ public class Q00003_WillTheSealBeBroken extends Quest
 			default:
 			{
 				htmltext = null;
+				break;
+			}
+		}
+		return htmltext;
+	}
+	
+	@Override
+	public String onTalk(Npc npc, Player player)
+	{
+		final QuestState qs = getQuestState(player, true);
+		String htmltext = getNoQuestMsg(player);
+		switch (qs.getState())
+		{
+			case State.CREATED:
+			{
+				htmltext = (player.getRace() != Race.DARK_ELF) ? "30141-00.htm" : (player.getLevel() >= MIN_LEVEL) ? "30141-02.htm" : "30141-01.html";
+				break;
+			}
+			case State.STARTED:
+			{
+				if (qs.isCond(1))
+				{
+					htmltext = "30141-04.html";
+				}
+				else
+				{
+					giveItems(player, ENCHANT, 1);
+					qs.exitQuest(false, true);
+					htmltext = "30141-06.html";
+				}
+				break;
+			}
+			case State.COMPLETED:
+			{
+				htmltext = getAlreadyCompletedMsg(player);
 				break;
 			}
 		}
@@ -117,41 +152,6 @@ public class Q00003_WillTheSealBeBroken extends Quest
 			}
 		}
 		return super.onKill(npc, player, isSummon);
-	}
-	
-	@Override
-	public String onTalk(Npc npc, Player player)
-	{
-		final QuestState qs = getQuestState(player, true);
-		String htmltext = getNoQuestMsg(player);
-		switch (qs.getState())
-		{
-			case State.CREATED:
-			{
-				htmltext = (player.getRace() != Race.DARK_ELF) ? "30141-00.htm" : (player.getLevel() >= MIN_LEVEL) ? "30141-02.htm" : "30141-01.html";
-				break;
-			}
-			case State.STARTED:
-			{
-				if (qs.isCond(1))
-				{
-					htmltext = "30141-04.html";
-				}
-				else
-				{
-					giveItems(player, ENCHANT, 1);
-					qs.exitQuest(false, true);
-					htmltext = "30141-06.html";
-				}
-				break;
-			}
-			case State.COMPLETED:
-			{
-				htmltext = getAlreadyCompletedMsg(player);
-				break;
-			}
-		}
-		return htmltext;
 	}
 	
 	private void giveItem(Player player, QuestState qs, int item, int... items)

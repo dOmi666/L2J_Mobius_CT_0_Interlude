@@ -16,15 +16,13 @@
  */
 package quests.Q00098_SagaOfTheShillienSaint;
 
-import org.l2jmobius.gameserver.model.Location;
-
-import quests.AbstractSagaQuest;
+import quests.SagasSuperClass;
 
 /**
  * Saga of the Shillien Saint (98)
  * @author Emperorc
  */
-public class Q00098_SagaOfTheShillienSaint extends AbstractSagaQuest
+public class Q00098_SagaOfTheShillienSaint extends SagasSuperClass
 {
 	public Q00098_SagaOfTheShillienSaint()
 	{
@@ -73,11 +71,23 @@ public class Q00098_SagaOfTheShillienSaint extends AbstractSagaQuest
 		{
 			0x2b
 		};
-		_npcSpawnLocations = new Location[]
+		_x = new int[]
 		{
-			new Location(119518, -28658, -3811),
-			new Location(181215, 36676, -4812),
-			new Location(181227, 36703, -4816)
+			119518,
+			181215,
+			181227
+		};
+		_y = new int[]
+		{
+			-28658,
+			36676,
+			36703
+		};
+		_z = new int[]
+		{
+			-3811,
+			-4812,
+			-4816
 		};
 		_text = new String[]
 		{

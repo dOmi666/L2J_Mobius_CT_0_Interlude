@@ -144,7 +144,7 @@ public class Hero
 		}
 		catch (SQLException e)
 		{
-			LOGGER.warning("Hero System: Couldnt load Heroes: " + e.getMessage());
+			LOGGER.warning("Hero System: Could not load Heroes: " + e.getMessage());
 		}
 		
 		LOGGER.info("Hero System: Loaded " + HEROES.size() + " Heroes.");
@@ -210,7 +210,7 @@ public class Hero
 		}
 		catch (SQLException e)
 		{
-			LOGGER.warning("Hero System: Couldnt load Hero Message for CharId: " + charId + ": " + e.getMessage());
+			LOGGER.warning("Hero System: Could not load Hero Message for CharId: " + charId + ": " + e.getMessage());
 		}
 	}
 	
@@ -262,7 +262,7 @@ public class Hero
 		}
 		catch (SQLException e)
 		{
-			LOGGER.warning("Hero System: Couldnt load Hero Diary for CharId: " + charId + ": " + e.getMessage());
+			LOGGER.warning("Hero System: Could not load Hero Diary for CharId: " + charId + ": " + e.getMessage());
 		}
 	}
 	
@@ -385,7 +385,7 @@ public class Hero
 		}
 		catch (SQLException e)
 		{
-			LOGGER.warning("Hero System: Couldnt load Hero fights history for CharId: " + charId + ": " + e);
+			LOGGER.warning("Hero System: Could not load Hero fights history for CharId: " + charId + ": " + e);
 		}
 	}
 	
@@ -621,7 +621,7 @@ public class Hero
 			
 			if (!iu.getItems().isEmpty())
 			{
-				player.sendPacket(iu);
+				player.sendInventoryUpdate(iu);
 			}
 			player.broadcastUserInfo();
 		}
@@ -744,7 +744,7 @@ public class Hero
 		}
 		catch (SQLException e)
 		{
-			LOGGER.warning("Hero System: Couldnt update Heroes: " + e.getMessage());
+			LOGGER.warning("Hero System: Could not update Heroes: " + e.getMessage());
 		}
 	}
 	
@@ -907,7 +907,7 @@ public class Hero
 		if ((clan != null) && (clan.getLevel() >= 5))
 		{
 			clan.addReputationScore(Config.HERO_POINTS);
-			final SystemMessage sm = new SystemMessage(SystemMessageId.CLAN_MEMBER_C1_WAS_NAMED_A_HERO_S2_POINTS_HAVE_BEEN_ADDED_TO_YOUR_CLAN_S_REPUTATION_SCORE);
+			final SystemMessage sm = new SystemMessage(SystemMessageId.CLAN_MEMBER_S1_WAS_NAMED_A_HERO_2S_POINTS_HAVE_BEEN_ADDED_TO_YOUR_CLAN_S_REPUTATION_SCORE);
 			sm.addString(CharInfoTable.getInstance().getNameById(player.getObjectId()));
 			sm.addInt(Config.HERO_POINTS);
 			clan.broadcastToOnlineMembers(sm);

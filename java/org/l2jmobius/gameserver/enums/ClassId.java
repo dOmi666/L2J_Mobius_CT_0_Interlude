@@ -16,6 +16,7 @@
  */
 package org.l2jmobius.gameserver.enums;
 
+import java.util.EnumSet;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Map;
@@ -158,6 +159,8 @@ public enum ClassId implements IIdentifiable
 	/** List of available Class for next transfer **/
 	private final Set<ClassId> _nextClassIds = new HashSet<>(1);
 	
+	private static final Set<ClassId> priestSet = EnumSet.of(CLERIC, BISHOP, PROPHET, ORACLE, ELDER, SHILLIEN_ORACLE, SHILLIEN_ELDER, CARDINAL, HIEROPHANT, EVA_SAINT, SHILLIEN_SAINT);
+	
 	private static Map<Integer, ClassId> _classIdMap = new HashMap<>(ClassId.values().length);
 	static
 	{
@@ -266,6 +269,44 @@ public enum ClassId implements IIdentifiable
 		}
 		
 		return _parent.childOf(cid);
+	}
+	
+	public boolean isOfRace(Race pRace)
+	{
+		return _race == pRace;
+	}
+	
+	public boolean isOfType(ClassType pType)
+	{
+		switch (pType)
+		{
+			case FIGTHER:
+			{
+				return !_isMage;
+			}
+			case PRIEST:
+			{
+				if (!_isMage)
+				{
+					return false;
+				}
+				if (priestSet.contains(this))
+				{
+					return true;
+				}
+				return false;
+				
+			}
+			default:
+			{
+				if (_isMage && !priestSet.contains(this))
+				{
+					return true;
+				}
+				return false;
+			}
+		}
+		
 	}
 	
 	/**

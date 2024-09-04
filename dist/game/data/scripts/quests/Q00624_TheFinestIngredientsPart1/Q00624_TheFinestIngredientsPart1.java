@@ -16,10 +16,6 @@
  */
 package quests.Q00624_TheFinestIngredientsPart1;
 
-import java.util.HashMap;
-import java.util.Map;
-
-import org.l2jmobius.Config;
 import org.l2jmobius.gameserver.enums.QuestSound;
 import org.l2jmobius.gameserver.model.actor.Npc;
 import org.l2jmobius.gameserver.model.actor.Player;
@@ -27,14 +23,13 @@ import org.l2jmobius.gameserver.model.quest.Quest;
 import org.l2jmobius.gameserver.model.quest.QuestState;
 import org.l2jmobius.gameserver.model.quest.State;
 
-/**
- * The Finest Ingredients - Part 1.
- * @author Citizen, jurchiks, xban1x
- */
 public class Q00624_TheFinestIngredientsPart1 extends Quest
 {
-	// NPC
-	private static final int JEREMY = 31521;
+	// Monsters
+	private static final int NEPENTHES = 21319;
+	private static final int ATROX = 21321;
+	private static final int ATROXSPAWN = 21317;
+	private static final int BANDERSNATCH = 21314;
 	// Items
 	private static final int TRUNK_OF_NEPENTHES = 7202;
 	private static final int FOOT_OF_BANDERSNATCHLING = 7203;
@@ -42,120 +37,158 @@ public class Q00624_TheFinestIngredientsPart1 extends Quest
 	// Rewards
 	private static final int ICE_CRYSTAL = 7080;
 	private static final int SOY_SAUCE_JAR = 7205;
-	// Misc
-	private static final int MIN_LEVEL = 73;
-	private static final Map<Integer, Integer> MONSTER_DROPS = new HashMap<>();
-	static
-	{
-		MONSTER_DROPS.put(21314, FOOT_OF_BANDERSNATCHLING); // Hot Springs Bandersnatchling
-		MONSTER_DROPS.put(21317, SECRET_SPICE); // Hot Springs Atroxspawn
-		MONSTER_DROPS.put(21319, TRUNK_OF_NEPENTHES); // Hot Springs Nepenthes
-		MONSTER_DROPS.put(21321, SECRET_SPICE); // Hot Springs Atrox
-	}
 	
 	public Q00624_TheFinestIngredientsPart1()
 	{
 		super(624);
-		addStartNpc(JEREMY);
-		addTalkId(JEREMY);
-		addKillId(MONSTER_DROPS.keySet());
 		registerQuestItems(TRUNK_OF_NEPENTHES, FOOT_OF_BANDERSNATCHLING, SECRET_SPICE);
+		addStartNpc(31521); // Jeremy
+		addTalkId(31521);
+		addKillId(NEPENTHES, ATROX, ATROXSPAWN, BANDERSNATCH);
 	}
 	
 	@Override
-	public String onAdvEvent(String event, Npc npc, Player player)
+	public String onEvent(String event, Npc npc, Player player)
 	{
-		final QuestState qs = getQuestState(player, false);
-		String htmltext = null;
-		if (qs != null)
+		String htmltext = event;
+		final QuestState st = getQuestState(player, false);
+		if (st == null)
 		{
-			switch (event)
-			{
-				case "31521-02.htm":
-				{
-					qs.startQuest();
-					htmltext = event;
-					break;
-				}
-				case "31521-05.html":
-				{
-					if (qs.isCond(2) && (getQuestItemsCount(player, getRegisteredItemIds()) == 150))
-					{
-						giveItems(player, ICE_CRYSTAL, 1);
-						giveItems(player, SOY_SAUCE_JAR, 1);
-						qs.exitQuest(true, true);
-						htmltext = "31521-05.html";
-					}
-					else
-					{
-						htmltext = "31521-06.html";
-					}
-					break;
-				}
-			}
+			return htmltext;
 		}
-		return htmltext;
-	}
-	
-	@Override
-	public String onKill(Npc npc, Player killer, boolean isSummon)
-	{
-		final Player partyMember = getRandomPartyMember(killer, 1);
-		if ((partyMember != null) && partyMember.isInsideRadius3D(npc, Config.ALT_PARTY_RANGE))
+		
+		if (event.equals("31521-02.htm"))
 		{
-			final int item = MONSTER_DROPS.get(npc.getId());
-			final int count = getQuestItemsCount(partyMember, item);
-			if ((count + 1) >= 50)
+			st.startQuest();
+		}
+		else if (event.equals("31521-05.htm"))
+		{
+			if ((getQuestItemsCount(player, TRUNK_OF_NEPENTHES) >= 50) && (getQuestItemsCount(player, FOOT_OF_BANDERSNATCHLING) >= 50) && (getQuestItemsCount(player, SECRET_SPICE) >= 50))
 			{
-				if (count < 50)
-				{
-					giveItems(partyMember, item, 50 - count);
-					playSound(partyMember, QuestSound.ITEMSOUND_QUEST_FANFARE_MIDDLE);
-				}
-				if (getQuestItemsCount(partyMember, getRegisteredItemIds()) == 150)
-				{
-					getQuestState(partyMember, false).setCond(2, true);
-				}
+				takeItems(player, TRUNK_OF_NEPENTHES, -1);
+				takeItems(player, FOOT_OF_BANDERSNATCHLING, -1);
+				takeItems(player, SECRET_SPICE, -1);
+				giveItems(player, ICE_CRYSTAL, 1);
+				giveItems(player, SOY_SAUCE_JAR, 1);
+				st.exitQuest(true, true);
 			}
 			else
 			{
-				giveItems(partyMember, item, 1);
-				playSound(partyMember, QuestSound.ITEMSOUND_QUEST_ITEMGET);
+				st.setCond(1);
+				htmltext = "31521-07.htm";
 			}
 		}
-		return super.onKill(npc, killer, isSummon);
+		
+		return htmltext;
 	}
 	
 	@Override
 	public String onTalk(Npc npc, Player player)
 	{
-		final QuestState qs = getQuestState(player, true);
 		String htmltext = getNoQuestMsg(player);
-		switch (qs.getState())
+		final QuestState st = getQuestState(player, true);
+		
+		switch (st.getState())
 		{
 			case State.CREATED:
 			{
-				htmltext = (player.getLevel() >= MIN_LEVEL) ? "31521-01.htm" : "31521-00.htm";
+				htmltext = (player.getLevel() < 73) ? "31521-03.htm" : "31521-01.htm";
 				break;
 			}
 			case State.STARTED:
 			{
-				switch (qs.getCond())
+				final int cond = st.getCond();
+				if (cond == 1)
 				{
-					case 1:
+					htmltext = "31521-06.htm";
+				}
+				else if (cond == 2)
+				{
+					if ((getQuestItemsCount(player, TRUNK_OF_NEPENTHES) >= 50) && (getQuestItemsCount(player, FOOT_OF_BANDERSNATCHLING) >= 50) && (getQuestItemsCount(player, SECRET_SPICE) >= 50))
 					{
-						htmltext = "31521-03.html";
-						break;
+						htmltext = "31521-04.htm";
 					}
-					case 2:
+					else
 					{
-						htmltext = "31521-04.html";
-						break;
+						htmltext = "31521-07.htm";
 					}
 				}
 				break;
 			}
 		}
+		
 		return htmltext;
+	}
+	
+	@Override
+	public String onKill(Npc npc, Player player, boolean isPet)
+	{
+		final QuestState qs = getRandomPartyMemberState(player, 1, 3, npc);
+		if (qs == null)
+		{
+			return null;
+		}
+		final Player partyMember = qs.getPlayer();
+		
+		final QuestState st = getQuestState(partyMember, false);
+		if (st == null)
+		{
+			return null;
+		}
+		
+		switch (npc.getId())
+		{
+			case NEPENTHES:
+			{
+				if (getQuestItemsCount(partyMember, TRUNK_OF_NEPENTHES) < 50)
+				{
+					giveItems(partyMember, TRUNK_OF_NEPENTHES, 1);
+					if ((getQuestItemsCount(partyMember, TRUNK_OF_NEPENTHES) >= 50) && (getQuestItemsCount(player, FOOT_OF_BANDERSNATCHLING) >= 50) && (getQuestItemsCount(player, SECRET_SPICE) >= 50))
+					{
+						st.setCond(2, true);
+					}
+					else
+					{
+						playSound(partyMember, QuestSound.ITEMSOUND_QUEST_ITEMGET);
+					}
+				}
+				break;
+			}
+			case ATROX:
+			case ATROXSPAWN:
+			{
+				if (getQuestItemsCount(partyMember, SECRET_SPICE) < 50)
+				{
+					giveItems(partyMember, SECRET_SPICE, 1);
+					if ((getQuestItemsCount(partyMember, SECRET_SPICE) >= 50) && (getQuestItemsCount(player, TRUNK_OF_NEPENTHES) >= 50) && (getQuestItemsCount(player, FOOT_OF_BANDERSNATCHLING) >= 50))
+					{
+						st.setCond(2, true);
+					}
+					else
+					{
+						playSound(partyMember, QuestSound.ITEMSOUND_QUEST_ITEMGET);
+					}
+				}
+				break;
+			}
+			case BANDERSNATCH:
+			{
+				if (getQuestItemsCount(partyMember, FOOT_OF_BANDERSNATCHLING) < 50)
+				{
+					giveItems(partyMember, FOOT_OF_BANDERSNATCHLING, 1);
+					if ((getQuestItemsCount(partyMember, FOOT_OF_BANDERSNATCHLING) >= 50) && (getQuestItemsCount(player, TRUNK_OF_NEPENTHES) >= 50) && (getQuestItemsCount(player, SECRET_SPICE) >= 50))
+					{
+						st.setCond(2, true);
+					}
+					else
+					{
+						playSound(partyMember, QuestSound.ITEMSOUND_QUEST_ITEMGET);
+					}
+				}
+				break;
+			}
+		}
+		
+		return null;
 	}
 }

@@ -18,16 +18,20 @@ package org.l2jmobius.gameserver.network.clientpackets;
 
 import org.l2jmobius.gameserver.data.xml.PlayerTemplateData;
 import org.l2jmobius.gameserver.enums.ClassId;
-import org.l2jmobius.gameserver.network.GameClient;
 import org.l2jmobius.gameserver.network.serverpackets.NewCharacterSuccess;
 
 /**
  * @author Zoey76
  */
-public class NewCharacter implements ClientPacket
+public class NewCharacter extends ClientPacket
 {
 	@Override
-	public void run(GameClient client)
+	protected void readImpl()
+	{
+	}
+	
+	@Override
+	protected void runImpl()
 	{
 		final NewCharacterSuccess ct = new NewCharacterSuccess();
 		ct.addChar(PlayerTemplateData.getInstance().getTemplate(ClassId.FIGHTER)); // Human Figther
@@ -39,6 +43,6 @@ public class NewCharacter implements ClientPacket
 		ct.addChar(PlayerTemplateData.getInstance().getTemplate(ClassId.ORC_FIGHTER)); // Orc Fighter
 		ct.addChar(PlayerTemplateData.getInstance().getTemplate(ClassId.ORC_MAGE)); // Orc Mystic
 		ct.addChar(PlayerTemplateData.getInstance().getTemplate(ClassId.DWARVEN_FIGHTER)); // Dwarf Fighter
-		client.sendPacket(ct);
+		getClient().sendPacket(ct);
 	}
 }

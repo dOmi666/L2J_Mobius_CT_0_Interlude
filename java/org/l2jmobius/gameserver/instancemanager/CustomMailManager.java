@@ -32,7 +32,7 @@ import org.l2jmobius.commons.threads.ThreadPool;
 import org.l2jmobius.gameserver.enums.ChatType;
 import org.l2jmobius.gameserver.model.World;
 import org.l2jmobius.gameserver.model.actor.Player;
-import org.l2jmobius.gameserver.model.holders.ItemHolder;
+import org.l2jmobius.gameserver.model.holders.ItemEnchantHolder;
 import org.l2jmobius.gameserver.network.serverpackets.CreatureSay;
 import org.l2jmobius.gameserver.util.Util;
 
@@ -64,28 +64,30 @@ public class CustomMailManager
 						// Create message.
 						final String items = rs.getString("items");
 						player.sendPacket(new CreatureSay(null, ChatType.WHISPER, rs.getString("subject"), rs.getString("message")));
-						final List<ItemHolder> itemHolders = new ArrayList<>();
+						final List<ItemEnchantHolder> itemHolders = new ArrayList<>();
 						for (String str : items.split(";"))
 						{
 							if (str.contains(" "))
 							{
-								final String itemId = str.split(" ")[0];
-								final String itemCount = str.split(" ")[1];
+								final String[] split = str.split(" ");
+								final String itemId = split[0];
+								final String itemCount = split[1];
+								final String enchant = split.length > 2 ? split[2] : "0";
 								if (Util.isDigit(itemId) && Util.isDigit(itemCount))
 								{
-									itemHolders.add(new ItemHolder(Integer.parseInt(itemId), Integer.parseInt(itemCount)));
+									itemHolders.add(new ItemEnchantHolder(Integer.parseInt(itemId), Integer.parseInt(itemCount), Integer.parseInt(enchant)));
 								}
 							}
 							else if (Util.isDigit(str))
 							{
-								itemHolders.add(new ItemHolder(Integer.parseInt(str), 1));
+								itemHolders.add(new ItemEnchantHolder(Integer.parseInt(str), 1));
 							}
 						}
 						if (!itemHolders.isEmpty())
 						{
-							for (ItemHolder itemHolder : itemHolders)
+							for (ItemEnchantHolder itemHolder : itemHolders)
 							{
-								player.addItem("Custom-Mail", itemHolder.getId(), itemHolder.getCount(), null, true);
+								player.addItem("Custom-Mail", itemHolder.getId(), itemHolder.getCount(), itemHolder.getEnchantLevel(), null, true);
 							}
 						}
 						

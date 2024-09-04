@@ -23,259 +23,207 @@ import org.l2jmobius.gameserver.model.quest.Quest;
 import org.l2jmobius.gameserver.model.quest.QuestState;
 import org.l2jmobius.gameserver.model.quest.State;
 
-/**
- * Jovial Accordion (364)
- * @author Adry_85
- */
 public class Q00364_JovialAccordion extends Quest
 {
 	// NPCs
+	private static final int BARBADO = 30959;
+	private static final int SWAN = 30957;
 	private static final int SABRIN = 30060;
 	private static final int XABER = 30075;
-	private static final int SWAN = 30957;
-	private static final int BARBADO = 30959;
-	private static final int BEER_CHEST = 30960;
 	private static final int CLOTH_CHEST = 30961;
+	private static final int BEER_CHEST = 30960;
 	// Items
-	private static final int STOLEN_BLACK_BEER = 4321;
-	private static final int STOLEN_EVENT_CLOTHES = 4322;
-	private static final int CLOTHES_CHEST_KEY = 4323;
-	private static final int BEER_CHEST_KEY = 4324;
-	private static final int THEME_OF_THE_FEAST = 4421;
-	// Misc
-	private static final int MIN_LEVEL = 15;
+	private static final int KEY_1 = 4323;
+	private static final int KEY_2 = 4324;
+	private static final int STOLEN_BEER = 4321;
+	private static final int STOLEN_CLOTHES = 4322;
+	private static final int ECHO = 4421;
 	
 	public Q00364_JovialAccordion()
 	{
 		super(364);
+		registerQuestItems(KEY_1, KEY_2, STOLEN_BEER, STOLEN_CLOTHES);
 		addStartNpc(BARBADO);
-		addTalkId(BARBADO, BEER_CHEST, CLOTH_CHEST, SABRIN, XABER, SWAN);
-		registerQuestItems(STOLEN_BLACK_BEER, STOLEN_EVENT_CLOTHES, CLOTHES_CHEST_KEY, BEER_CHEST_KEY);
+		addTalkId(BARBADO, SWAN, SABRIN, XABER, CLOTH_CHEST, BEER_CHEST);
 	}
 	
 	@Override
-	public String onAdvEvent(String event, Npc npc, Player player)
+	public String onEvent(String event, Npc npc, Player player)
 	{
-		final QuestState qs = getQuestState(player, false);
-		if (qs == null)
+		String htmltext = event;
+		final QuestState st = getQuestState(player, false);
+		if (st == null)
 		{
-			return null;
+			return htmltext;
 		}
 		
-		String htmltext = null;
 		switch (event)
 		{
-			case "START":
+			case "30959-02.htm":
 			{
-				if (player.getLevel() >= MIN_LEVEL)
-				{
-					qs.startQuest();
-					qs.setMemoState(1);
-					htmltext = "30959-02.htm";
-				}
-				else
-				{
-					htmltext = "30959-03.htm";
-				}
+				st.startQuest();
+				st.set("items", "0");
 				break;
 			}
-			case "OPEN_CHEST":
+			case "30957-02.htm":
 			{
-				if (hasQuestItems(player, BEER_CHEST_KEY))
+				st.setCond(2, true);
+				giveItems(player, KEY_1, 1);
+				giveItems(player, KEY_2, 1);
+				break;
+			}
+			case "30960-04.htm":
+			{
+				if (hasQuestItems(player, KEY_2))
 				{
+					takeItems(player, KEY_2, 1);
 					if (getRandomBoolean())
 					{
-						giveItems(player, STOLEN_BLACK_BEER, 1);
-						htmltext = "30960-02.html";
+						htmltext = "30960-02.htm";
+						giveItems(player, STOLEN_BEER, 1);
+						playSound(player, QuestSound.ITEMSOUND_QUEST_ITEMGET);
 					}
-					else
-					{
-						htmltext = "30960-03.html";
-					}
-					takeItems(player, BEER_CHEST_KEY, -1);
-				}
-				else
-				{
-					htmltext = "30960-04.html";
 				}
 				break;
 			}
-			case "OPEN_CLOTH_CHEST":
+			case "30961-04.htm":
 			{
-				if (hasQuestItems(player, CLOTHES_CHEST_KEY))
+				if (hasQuestItems(player, KEY_1))
 				{
+					takeItems(player, KEY_1, 1);
 					if (getRandomBoolean())
 					{
-						giveItems(player, STOLEN_EVENT_CLOTHES, 1);
-						htmltext = "30961-02.html";
+						htmltext = "30961-02.htm";
+						giveItems(player, STOLEN_CLOTHES, 1);
+						playSound(player, QuestSound.ITEMSOUND_QUEST_ITEMGET);
 					}
-					else
-					{
-						htmltext = "30961-03.html";
-					}
-					takeItems(player, CLOTHES_CHEST_KEY, -1);
 				}
-				else
-				{
-					htmltext = "30961-04.html";
-				}
-				break;
-			}
-			case "30957-02.html":
-			{
-				giveItems(player, CLOTHES_CHEST_KEY, 1);
-				giveItems(player, BEER_CHEST_KEY, 1);
-				qs.setMemoState(2);
-				qs.setCond(2, true);
-				htmltext = event;
 				break;
 			}
 		}
+		
 		return htmltext;
 	}
 	
 	@Override
 	public String onTalk(Npc npc, Player player)
 	{
-		final QuestState qs = getQuestState(player, true);
 		String htmltext = getNoQuestMsg(player);
-		switch (qs.getState())
+		final QuestState st = getQuestState(player, true);
+		
+		switch (st.getState())
 		{
 			case State.CREATED:
 			{
-				if (npc.getId() == BARBADO)
-				{
-					htmltext = "30959-01.htm";
-				}
+				htmltext = (player.getLevel() < 15) ? "30959-00.htm" : "30959-01.htm";
 				break;
 			}
 			case State.STARTED:
 			{
+				final int cond = st.getCond();
+				final int stolenItems = st.getInt("items");
 				switch (npc.getId())
 				{
 					case BARBADO:
 					{
-						switch (qs.getMemoState())
+						if ((cond == 1) || (cond == 2))
 						{
-							case 1:
-							case 2:
-							case 3:
-							case 4:
-							{
-								htmltext = "30959-04.html";
-								break;
-							}
-							case 5:
-							{
-								rewardItems(player, THEME_OF_THE_FEAST, 1);
-								qs.exitQuest(true, true);
-								htmltext = "30959-05.html";
-								break;
-							}
+							htmltext = "30959-03.htm";
 						}
-						break;
-					}
-					case BEER_CHEST:
-					{
-						htmltext = "30960-01.html";
-						break;
-					}
-					case CLOTH_CHEST:
-					{
-						htmltext = "30961-01.html";
-						break;
-					}
-					case SABRIN:
-					{
-						if (hasQuestItems(player, STOLEN_BLACK_BEER))
+						else if (cond == 3)
 						{
-							takeItems(player, STOLEN_BLACK_BEER, -1);
-							htmltext = "30060-01.html";
-							if (qs.isMemoState(2))
-							{
-								qs.setMemoState(3);
-							}
-							else if (qs.isMemoState(3))
-							{
-								qs.setMemoState(4);
-							}
-						}
-						else
-						{
-							htmltext = "30060-02.html";
-						}
-						break;
-					}
-					case XABER:
-					{
-						if (hasQuestItems(player, STOLEN_EVENT_CLOTHES))
-						{
-							takeItems(player, STOLEN_EVENT_CLOTHES, -1);
-							htmltext = "30075-01.html";
-							if (qs.isMemoState(2))
-							{
-								qs.setMemoState(3);
-							}
-							else if (qs.isMemoState(3))
-							{
-								qs.setMemoState(4);
-							}
-						}
-						else
-						{
-							htmltext = "30075-02.html";
+							htmltext = "30959-04.htm";
+							giveItems(player, ECHO, 1);
+							st.exitQuest(true, true);
 						}
 						break;
 					}
 					case SWAN:
 					{
-						switch (qs.getMemoState())
+						if (cond == 1)
 						{
-							case 1:
+							htmltext = "30957-01.htm";
+						}
+						else if (cond == 2)
+						{
+							if (stolenItems > 0)
 							{
-								htmltext = "30957-01.html";
-								break;
-							}
-							case 2:
-							case 3:
-							{
-								if (hasAtLeastOneQuestItem(player, BEER_CHEST_KEY, CLOTHES_CHEST_KEY, STOLEN_BLACK_BEER, STOLEN_EVENT_CLOTHES))
+								st.setCond(3, true);
+								
+								if (stolenItems == 2)
 								{
-									htmltext = "30957-03.html";
-								}
-								else if (!hasQuestItems(player, BEER_CHEST_KEY, CLOTHES_CHEST_KEY, STOLEN_BLACK_BEER, STOLEN_EVENT_CLOTHES))
-								{
-									if (qs.isMemoState(2))
-									{
-										playSound(player, QuestSound.ITEMSOUND_QUEST_GIVEUP);
-										qs.exitQuest(true, true);
-										htmltext = "30957-06.html";
-									}
-									else
-									{
-										qs.setMemoState(5);
-										qs.setCond(3, true);
-										htmltext = "30957-04.html";
-									}
-								}
-								break;
-							}
-							case 4:
-							{
-								if (!hasQuestItems(player, BEER_CHEST_KEY, CLOTHES_CHEST_KEY, STOLEN_BLACK_BEER, STOLEN_EVENT_CLOTHES))
-								{
-									qs.setMemoState(5);
-									qs.setCond(3, true);
+									htmltext = "30957-04.htm";
 									giveAdena(player, 100, true);
-									htmltext = "30957-05.html";
 								}
-								break;
+								else
+								{
+									htmltext = "30957-05.htm";
+								}
 							}
-							case 5:
+							else
 							{
-								htmltext = "30957-07.html";
-								break;
+								if (!hasQuestItems(player, KEY_1) && !hasQuestItems(player, KEY_2))
+								{
+									htmltext = "30957-06.htm";
+									st.exitQuest(true, true);
+								}
+								else
+								{
+									htmltext = "30957-03.htm";
+								}
 							}
+						}
+						else if (cond == 3)
+						{
+							htmltext = "30957-07.htm";
+						}
+						break;
+					}
+					case BEER_CHEST:
+					{
+						htmltext = "30960-03.htm";
+						if ((cond == 2) && hasQuestItems(player, KEY_2))
+						{
+							htmltext = "30960-01.htm";
+						}
+						break;
+					}
+					case CLOTH_CHEST:
+					{
+						htmltext = "30961-03.htm";
+						if ((cond == 2) && hasQuestItems(player, KEY_1))
+						{
+							htmltext = "30961-01.htm";
+						}
+						break;
+					}
+					case SABRIN:
+					{
+						if (hasQuestItems(player, STOLEN_BEER))
+						{
+							htmltext = "30060-01.htm";
+							st.set("items", String.valueOf(stolenItems + 1));
+							playSound(player, QuestSound.ITEMSOUND_QUEST_ITEMGET);
+							takeItems(player, STOLEN_BEER, 1);
+						}
+						else
+						{
+							htmltext = "30060-02.htm";
+						}
+						break;
+					}
+					case XABER:
+					{
+						if (hasQuestItems(player, STOLEN_CLOTHES))
+						{
+							htmltext = "30075-01.htm";
+							st.set("items", String.valueOf(stolenItems + 1));
+							playSound(player, QuestSound.ITEMSOUND_QUEST_ITEMGET);
+							takeItems(player, STOLEN_CLOTHES, 1);
+						}
+						else
+						{
+							htmltext = "30075-02.htm";
 						}
 						break;
 					}
@@ -283,6 +231,7 @@ public class Q00364_JovialAccordion extends Quest
 				break;
 			}
 		}
+		
 		return htmltext;
 	}
 }

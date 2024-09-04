@@ -1684,4 +1684,14 @@ public class EffectList
 	{
 		return (_effectFlags & flag.getMask()) != 0;
 	}
+	
+	/**
+	 * Check if target is affected by AbnormalType.
+	 * @param type the AbnormalType
+	 * @return boolean true if affected
+	 */
+	public boolean isAffectedByAbnormalType(AbnormalType type)
+	{
+		return _stackedEffects.containsKey(type);
+	}
 }

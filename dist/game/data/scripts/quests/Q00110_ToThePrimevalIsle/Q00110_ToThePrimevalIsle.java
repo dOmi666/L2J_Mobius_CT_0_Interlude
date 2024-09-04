@@ -22,10 +22,6 @@ import org.l2jmobius.gameserver.model.quest.Quest;
 import org.l2jmobius.gameserver.model.quest.QuestState;
 import org.l2jmobius.gameserver.model.quest.State;
 
-/**
- * To the Primeval Isle (110)
- * @author Adry_85
- */
 public class Q00110_ToThePrimevalIsle extends Quest
 {
 	// NPCs
@@ -37,78 +33,73 @@ public class Q00110_ToThePrimevalIsle extends Quest
 	public Q00110_ToThePrimevalIsle()
 	{
 		super(110);
+		registerQuestItems(ANCIENT_BOOK);
 		addStartNpc(ANTON);
 		addTalkId(ANTON, MARQUEZ);
-		registerQuestItems(ANCIENT_BOOK);
 	}
 	
 	@Override
-	public String onAdvEvent(String event, Npc npc, Player player)
+	public String onEvent(String event, Npc npc, Player player)
 	{
-		final QuestState qs = getQuestState(player, false);
-		if (qs == null)
+		String htmltext = event;
+		final QuestState st = getQuestState(player, false);
+		if (st == null)
 		{
-			return getNoQuestMsg(player);
+			return htmltext;
 		}
 		
-		switch (event)
+		if (event.equals("31338-02.htm"))
 		{
-			case "31338-1.html":
-			{
-				giveItems(player, ANCIENT_BOOK, 1);
-				qs.startQuest();
-				break;
-			}
-			case "32113-2.html":
-			case "32113-2a.html":
-			{
-				giveAdena(player, 191678, true);
-				addExpAndSp(player, 251602, 25245);
-				qs.exitQuest(false, true);
-				break;
-			}
+			st.startQuest();
+			giveItems(player, ANCIENT_BOOK, 1);
 		}
-		return event;
+		else if (event.equals("32113-03.htm") && hasQuestItems(player, ANCIENT_BOOK))
+		{
+			takeItems(player, ANCIENT_BOOK, 1);
+			giveAdena(player, 169380, true);
+			st.exitQuest(false, true);
+		}
+		
+		return htmltext;
 	}
 	
 	@Override
 	public String onTalk(Npc npc, Player player)
 	{
-		final QuestState qs = getQuestState(player, true);
 		String htmltext = getNoQuestMsg(player);
-		switch (npc.getId())
+		final QuestState st = getQuestState(player, true);
+		
+		switch (st.getState())
 		{
-			case ANTON:
+			case State.CREATED:
 			{
-				switch (qs.getState())
+				htmltext = (player.getLevel() < 75) ? "31338-00.htm" : "31338-01.htm";
+				break;
+			}
+			case State.STARTED:
+			{
+				switch (npc.getId())
 				{
-					case State.CREATED:
+					case ANTON:
 					{
-						htmltext = (player.getLevel() < 75) ? "31338-0a.htm" : "31338-0b.htm";
+						htmltext = "31338-01c.htm";
 						break;
 					}
-					case State.STARTED:
+					case MARQUEZ:
 					{
-						htmltext = "31338-1a.html";
-						break;
-					}
-					case State.COMPLETED:
-					{
-						htmltext = getAlreadyCompletedMsg(player);
+						htmltext = "32113-01.htm";
 						break;
 					}
 				}
 				break;
 			}
-			case MARQUEZ:
+			case State.COMPLETED:
 			{
-				if (qs.isCond(1))
-				{
-					htmltext = "32113-1.html";
-				}
+				htmltext = getAlreadyCompletedMsg(player);
 				break;
 			}
 		}
+		
 		return htmltext;
 	}
 }

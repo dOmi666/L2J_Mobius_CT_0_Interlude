@@ -16,7 +16,7 @@
 		<set name="immediate_effect" val="true" />
 		<set name="material" val="CRYSTAL" />
 		<set name="weight" val="10" />
-		<set name="price" val="10000" /> <!-- H5 Price -->
+		<set name="price" val="100000" />
 		<set name="is_stackable" val="true" />
 	</item>
 	<item id="4402" type="EtcItem" name="Blue Dimensional Stone">
@@ -25,7 +25,7 @@
 		<set name="immediate_effect" val="true" />
 		<set name="material" val="CRYSTAL" />
 		<set name="weight" val="10" />
-		<set name="price" val="10000" /> <!-- H5 Price -->
+		<set name="price" val="100000" />
 		<set name="is_stackable" val="true" />
 	</item>
 	<item id="4403" type="EtcItem" name="Red Dimensional Stone">
@@ -34,7 +34,7 @@
 		<set name="immediate_effect" val="true" />
 		<set name="material" val="CRYSTAL" />
 		<set name="weight" val="10" />
-		<set name="price" val="10000" /> <!-- H5 Price -->
+		<set name="price" val="100000" />
 		<set name="is_stackable" val="true" />
 	</item>
 	<item id="4404" type="EtcItem" name="Green Dimensional Stone - Shard">
@@ -473,7 +473,7 @@
 		<set name="immediate_effect" val="true" />
 		<set name="material" val="LIQUID" />
 		<set name="weight" val="150" />
-		<set name="price" val="5100" />
+		<set name="price" val="510" />
 		<set name="is_stackable" val="true" />
 	</item>
 	<item id="4446" type="EtcItem" name="Dye of STR (Str+1 Dex-3)">
@@ -483,7 +483,7 @@
 		<set name="immediate_effect" val="true" />
 		<set name="material" val="LIQUID" />
 		<set name="weight" val="150" />
-		<set name="price" val="5100" />
+		<set name="price" val="510" />
 		<set name="is_stackable" val="true" />
 	</item>
 	<item id="4447" type="EtcItem" name="Dye of CON (Con+1 Str-3)">
@@ -493,7 +493,7 @@
 		<set name="immediate_effect" val="true" />
 		<set name="material" val="LIQUID" />
 		<set name="weight" val="150" />
-		<set name="price" val="5100" />
+		<set name="price" val="510" />
 		<set name="is_stackable" val="true" />
 	</item>
 	<item id="4448" type="EtcItem" name="Dye of CON (Con+1 Dex-3)">
@@ -503,7 +503,7 @@
 		<set name="immediate_effect" val="true" />
 		<set name="material" val="LIQUID" />
 		<set name="weight" val="150" />
-		<set name="price" val="5100" />
+		<set name="price" val="510" />
 		<set name="is_stackable" val="true" />
 	</item>
 	<item id="4449" type="EtcItem" name="Dye of DEX (Dex+1 Str-3)">
@@ -513,7 +513,7 @@
 		<set name="immediate_effect" val="true" />
 		<set name="material" val="LIQUID" />
 		<set name="weight" val="150" />
-		<set name="price" val="5100" />
+		<set name="price" val="510" />
 		<set name="is_stackable" val="true" />
 	</item>
 	<item id="4450" type="EtcItem" name="Dye of DEX (Dex+1 Con-3)">
@@ -523,7 +523,7 @@
 		<set name="immediate_effect" val="true" />
 		<set name="material" val="LIQUID" />
 		<set name="weight" val="150" />
-		<set name="price" val="5100" />
+		<set name="price" val="510" />
 		<set name="is_stackable" val="true" />
 	</item>
 	<item id="4451" type="EtcItem" name="Dye of INT (Int+1 Men-3)">
@@ -533,7 +533,7 @@
 		<set name="immediate_effect" val="true" />
 		<set name="material" val="LIQUID" />
 		<set name="weight" val="150" />
-		<set name="price" val="5100" />
+		<set name="price" val="510" />
 		<set name="is_stackable" val="true" />
 	</item>
 	<item id="4452" type="EtcItem" name="Dye of INT (Int+1 Wit-3)">
@@ -543,7 +543,7 @@
 		<set name="immediate_effect" val="true" />
 		<set name="material" val="LIQUID" />
 		<set name="weight" val="150" />
-		<set name="price" val="5100" />
+		<set name="price" val="510" />
 		<set name="is_stackable" val="true" />
 	</item>
 	<item id="4453" type="EtcItem" name="Dye of MEN (Men+1 Int-3)">
@@ -553,7 +553,7 @@
 		<set name="immediate_effect" val="true" />
 		<set name="material" val="LIQUID" />
 		<set name="weight" val="150" />
-		<set name="price" val="5100" />
+		<set name="price" val="510" />
 		<set name="is_stackable" val="true" />
 	</item>
 	<item id="4454" type="EtcItem" name="Dye of MEN (Men+1 Wit-3)">
@@ -563,7 +563,7 @@
 		<set name="immediate_effect" val="true" />
 		<set name="material" val="LIQUID" />
 		<set name="weight" val="150" />
-		<set name="price" val="5100" />
+		<set name="price" val="510" />
 		<set name="is_stackable" val="true" />
 	</item>
 	<item id="4455" type="EtcItem" name="Dye of WIT (Wit+1 Int-3)">
@@ -573,7 +573,7 @@
 		<set name="immediate_effect" val="true" />
 		<set name="material" val="LIQUID" />
 		<set name="weight" val="150" />
-		<set name="price" val="5100" />
+		<set name="price" val="510" />
 		<set name="is_stackable" val="true" />
 	</item>
 	<item id="4456" type="EtcItem" name="Dye of WIT (Wit+1 Men-3)">
@@ -583,7 +583,7 @@
 		<set name="immediate_effect" val="true" />
 		<set name="material" val="LIQUID" />
 		<set name="weight" val="150" />
-		<set name="price" val="5100" />
+		<set name="price" val="510" />
 		<set name="is_stackable" val="true" />
 	</item>
 	<item id="4457" type="EtcItem" name="Dye of STR (Str+1 Con-2)">
@@ -593,7 +593,7 @@
 		<set name="immediate_effect" val="true" />
 		<set name="material" val="LIQUID" />
 		<set name="weight" val="150" />
-		<set name="price" val="12000" />
+		<set name="price" val="1200" />
 		<set name="is_stackable" val="true" />
 	</item>
 	<item id="4458" type="EtcItem" name="Dye of STR (Str+1 Dex-2)">
@@ -603,7 +603,7 @@
 		<set name="immediate_effect" val="true" />
 		<set name="material" val="LIQUID" />
 		<set name="weight" val="150" />
-		<set name="price" val="12000" />
+		<set name="price" val="1200" />
 		<set name="is_stackable" val="true" />
 	</item>
 	<item id="4459" type="EtcItem" name="Dye of CON (Con+1 Str-2)">
@@ -613,7 +613,7 @@
 		<set name="immediate_effect" val="true" />
 		<set name="material" val="LIQUID" />
 		<set name="weight" val="150" />
-		<set name="price" val="12000" />
+		<set name="price" val="1200" />
 		<set name="is_stackable" val="true" />
 	</item>
 	<item id="4460" type="EtcItem" name="Dye of CON (Con+1 Dex-2)">
@@ -623,7 +623,7 @@
 		<set name="immediate_effect" val="true" />
 		<set name="material" val="LIQUID" />
 		<set name="weight" val="150" />
-		<set name="price" val="12000" />
+		<set name="price" val="1200" />
 		<set name="is_stackable" val="true" />
 	</item>
 	<item id="4461" type="EtcItem" name="Dye of DEX (Dex+1 Str-2)">
@@ -633,7 +633,7 @@
 		<set name="immediate_effect" val="true" />
 		<set name="material" val="LIQUID" />
 		<set name="weight" val="150" />
-		<set name="price" val="12000" />
+		<set name="price" val="1200" />
 		<set name="is_stackable" val="true" />
 	</item>
 	<item id="4462" type="EtcItem" name="Dye of DEX (Dex+1 Con-2)">
@@ -643,7 +643,7 @@
 		<set name="immediate_effect" val="true" />
 		<set name="material" val="LIQUID" />
 		<set name="weight" val="150" />
-		<set name="price" val="12000" />
+		<set name="price" val="1200" />
 		<set name="is_stackable" val="true" />
 	</item>
 	<item id="4463" type="EtcItem" name="Dye of INT (Int+1 Men-2)">
@@ -653,7 +653,7 @@
 		<set name="immediate_effect" val="true" />
 		<set name="material" val="LIQUID" />
 		<set name="weight" val="150" />
-		<set name="price" val="12000" />
+		<set name="price" val="1200" />
 		<set name="is_stackable" val="true" />
 	</item>
 	<item id="4464" type="EtcItem" name="Dye of INT (Int+1 Wit-2)">
@@ -663,7 +663,7 @@
 		<set name="immediate_effect" val="true" />
 		<set name="material" val="LIQUID" />
 		<set name="weight" val="150" />
-		<set name="price" val="12000" />
+		<set name="price" val="1200" />
 		<set name="is_stackable" val="true" />
 	</item>
 	<item id="4465" type="EtcItem" name="Dye of MEN (Men+1 Int-2)">
@@ -673,7 +673,7 @@
 		<set name="immediate_effect" val="true" />
 		<set name="material" val="LIQUID" />
 		<set name="weight" val="150" />
-		<set name="price" val="12000" />
+		<set name="price" val="1200" />
 		<set name="is_stackable" val="true" />
 	</item>
 	<item id="4466" type="EtcItem" name="Dye of MEN (Men+1 Wit-2)">
@@ -683,7 +683,7 @@
 		<set name="immediate_effect" val="true" />
 		<set name="material" val="LIQUID" />
 		<set name="weight" val="150" />
-		<set name="price" val="12000" />
+		<set name="price" val="1200" />
 		<set name="is_stackable" val="true" />
 	</item>
 	<item id="4467" type="EtcItem" name="Dye of WIT (Wit+1 Int-2)">
@@ -693,7 +693,7 @@
 		<set name="immediate_effect" val="true" />
 		<set name="material" val="LIQUID" />
 		<set name="weight" val="150" />
-		<set name="price" val="12000" />
+		<set name="price" val="1200" />
 		<set name="is_stackable" val="true" />
 	</item>
 	<item id="4468" type="EtcItem" name="Dye of WIT (Wit+1 Men-2)">
@@ -703,7 +703,7 @@
 		<set name="immediate_effect" val="true" />
 		<set name="material" val="LIQUID" />
 		<set name="weight" val="150" />
-		<set name="price" val="12000" />
+		<set name="price" val="1200" />
 		<set name="is_stackable" val="true" />
 	</item>
 	<item id="4469" type="EtcItem" name="Dye of STR (Str+1 Con-1)">
@@ -713,7 +713,7 @@
 		<set name="immediate_effect" val="true" />
 		<set name="material" val="LIQUID" />
 		<set name="weight" val="150" />
-		<set name="price" val="35000" />
+		<set name="price" val="3500" />
 		<set name="is_stackable" val="true" />
 	</item>
 	<item id="4470" type="EtcItem" name="Dye of STR (Str+1 Dex-1)">
@@ -723,7 +723,7 @@
 		<set name="immediate_effect" val="true" />
 		<set name="material" val="LIQUID" />
 		<set name="weight" val="150" />
-		<set name="price" val="35000" />
+		<set name="price" val="3500" />
 		<set name="is_stackable" val="true" />
 	</item>
 	<item id="4471" type="EtcItem" name="Dye of CON (Con+1 Str-1)">
@@ -733,7 +733,7 @@
 		<set name="immediate_effect" val="true" />
 		<set name="material" val="LIQUID" />
 		<set name="weight" val="150" />
-		<set name="price" val="35000" />
+		<set name="price" val="3500" />
 		<set name="is_stackable" val="true" />
 	</item>
 	<item id="4472" type="EtcItem" name="Dye of CON (Con+1 Dex-1)">
@@ -743,7 +743,7 @@
 		<set name="immediate_effect" val="true" />
 		<set name="material" val="LIQUID" />
 		<set name="weight" val="150" />
-		<set name="price" val="35000" />
+		<set name="price" val="3500" />
 		<set name="is_stackable" val="true" />
 	</item>
 	<item id="4473" type="EtcItem" name="Dye of DEX (Dex+1 Str-1)">
@@ -753,7 +753,7 @@
 		<set name="immediate_effect" val="true" />
 		<set name="material" val="LIQUID" />
 		<set name="weight" val="150" />
-		<set name="price" val="35000" />
+		<set name="price" val="3500" />
 		<set name="is_stackable" val="true" />
 	</item>
 	<item id="4474" type="EtcItem" name="Dye of DEX (Dex+1 Con-1)">
@@ -763,7 +763,7 @@
 		<set name="immediate_effect" val="true" />
 		<set name="material" val="LIQUID" />
 		<set name="weight" val="150" />
-		<set name="price" val="35000" />
+		<set name="price" val="3500" />
 		<set name="is_stackable" val="true" />
 	</item>
 	<item id="4475" type="EtcItem" name="Dye of INT (Int+1 Men-1)">
@@ -773,7 +773,7 @@
 		<set name="immediate_effect" val="true" />
 		<set name="material" val="LIQUID" />
 		<set name="weight" val="150" />
-		<set name="price" val="35000" />
+		<set name="price" val="3500" />
 		<set name="is_stackable" val="true" />
 	</item>
 	<item id="4476" type="EtcItem" name="Dye of INT (Int+1 Wit-1)">
@@ -783,7 +783,7 @@
 		<set name="immediate_effect" val="true" />
 		<set name="material" val="LIQUID" />
 		<set name="weight" val="150" />
-		<set name="price" val="35000" />
+		<set name="price" val="3500" />
 		<set name="is_stackable" val="true" />
 	</item>
 	<item id="4477" type="EtcItem" name="Dye of MEN (Men+1 Int-1)">
@@ -793,7 +793,7 @@
 		<set name="immediate_effect" val="true" />
 		<set name="material" val="LIQUID" />
 		<set name="weight" val="150" />
-		<set name="price" val="35000" />
+		<set name="price" val="3500" />
 		<set name="is_stackable" val="true" />
 	</item>
 	<item id="4478" type="EtcItem" name="Dye of MEN (Men+1 Wit-1)">
@@ -803,7 +803,7 @@
 		<set name="immediate_effect" val="true" />
 		<set name="material" val="LIQUID" />
 		<set name="weight" val="150" />
-		<set name="price" val="35000" />
+		<set name="price" val="3500" />
 		<set name="is_stackable" val="true" />
 	</item>
 	<item id="4479" type="EtcItem" name="Dye of WIT (Wit+1 Int-1)">
@@ -813,7 +813,7 @@
 		<set name="immediate_effect" val="true" />
 		<set name="material" val="LIQUID" />
 		<set name="weight" val="150" />
-		<set name="price" val="35000" />
+		<set name="price" val="3500" />
 		<set name="is_stackable" val="true" />
 	</item>
 	<item id="4480" type="EtcItem" name="Dye of WIT (Wit+1 Men-1)">
@@ -823,7 +823,7 @@
 		<set name="immediate_effect" val="true" />
 		<set name="material" val="LIQUID" />
 		<set name="weight" val="150" />
-		<set name="price" val="35000" />
+		<set name="price" val="3500" />
 		<set name="is_stackable" val="true" />
 	</item>
 	<item id="4481" type="EtcItem" name="Greater Dye of STR (Str+1 Con-3)">
@@ -833,7 +833,7 @@
 		<set name="immediate_effect" val="true" />
 		<set name="material" val="LIQUID" />
 		<set name="weight" val="150" />
-		<set name="price" val="12000" />
+		<set name="price" val="1200" />
 		<set name="is_stackable" val="true" />
 	</item>
 	<item id="4482" type="EtcItem" name="Greater Dye of STR (Str+1 Dex-3)">
@@ -843,7 +843,7 @@
 		<set name="immediate_effect" val="true" />
 		<set name="material" val="LIQUID" />
 		<set name="weight" val="150" />
-		<set name="price" val="12000" />
+		<set name="price" val="1200" />
 		<set name="is_stackable" val="true" />
 	</item>
 	<item id="4483" type="EtcItem" name="Greater Dye of CON(Con+1 Str-3)">
@@ -853,7 +853,7 @@
 		<set name="immediate_effect" val="true" />
 		<set name="material" val="LIQUID" />
 		<set name="weight" val="150" />
-		<set name="price" val="12000" />
+		<set name="price" val="1200" />
 		<set name="is_stackable" val="true" />
 	</item>
 	<item id="4484" type="EtcItem" name="Greater Dye of CON(Con+1 Dex-3)">
@@ -863,7 +863,7 @@
 		<set name="immediate_effect" val="true" />
 		<set name="material" val="LIQUID" />
 		<set name="weight" val="150" />
-		<set name="price" val="12000" />
+		<set name="price" val="1200" />
 		<set name="is_stackable" val="true" />
 	</item>
 	<item id="4485" type="EtcItem" name="Greater Dye of DEX (Dex+1 Str-3)">
@@ -873,7 +873,7 @@
 		<set name="immediate_effect" val="true" />
 		<set name="material" val="LIQUID" />
 		<set name="weight" val="150" />
-		<set name="price" val="12000" />
+		<set name="price" val="1200" />
 		<set name="is_stackable" val="true" />
 	</item>
 	<item id="4486" type="EtcItem" name="Greater Dye of DEX (Dex+1 Con-3)">
@@ -883,7 +883,7 @@
 		<set name="immediate_effect" val="true" />
 		<set name="material" val="LIQUID" />
 		<set name="weight" val="150" />
-		<set name="price" val="12000" />
+		<set name="price" val="1200" />
 		<set name="is_stackable" val="true" />
 	</item>
 	<item id="4487" type="EtcItem" name="Greater Dye of INT (Int+1 Men-3)">
@@ -893,7 +893,7 @@
 		<set name="immediate_effect" val="true" />
 		<set name="material" val="LIQUID" />
 		<set name="weight" val="150" />
-		<set name="price" val="12000" />
+		<set name="price" val="1200" />
 		<set name="is_stackable" val="true" />
 	</item>
 	<item id="4488" type="EtcItem" name="Greater Dye of INT (Int+1 Wit-3)">
@@ -903,7 +903,7 @@
 		<set name="immediate_effect" val="true" />
 		<set name="material" val="LIQUID" />
 		<set name="weight" val="150" />
-		<set name="price" val="12000" />
+		<set name="price" val="1200" />
 		<set name="is_stackable" val="true" />
 	</item>
 	<item id="4489" type="EtcItem" name="Greater Dye of MEN (Men+1 Int-3)">
@@ -913,7 +913,7 @@
 		<set name="immediate_effect" val="true" />
 		<set name="material" val="LIQUID" />
 		<set name="weight" val="150" />
-		<set name="price" val="12000" />
+		<set name="price" val="1200" />
 		<set name="is_stackable" val="true" />
 	</item>
 	<item id="4490" type="EtcItem" name="Greater Dye of MEN (Men+1 Wit-3)">
@@ -923,7 +923,7 @@
 		<set name="immediate_effect" val="true" />
 		<set name="material" val="LIQUID" />
 		<set name="weight" val="150" />
-		<set name="price" val="12000" />
+		<set name="price" val="1200" />
 		<set name="is_stackable" val="true" />
 	</item>
 	<item id="4491" type="EtcItem" name="Greater Dye of WIT (Wit+1 Int-3)">
@@ -933,7 +933,7 @@
 		<set name="immediate_effect" val="true" />
 		<set name="material" val="LIQUID" />
 		<set name="weight" val="150" />
-		<set name="price" val="12000" />
+		<set name="price" val="1200" />
 		<set name="is_stackable" val="true" />
 	</item>
 	<item id="4492" type="EtcItem" name="Greater Dye of WIT (Wit+1 Men-3)">
@@ -943,7 +943,7 @@
 		<set name="immediate_effect" val="true" />
 		<set name="material" val="LIQUID" />
 		<set name="weight" val="150" />
-		<set name="price" val="12000" />
+		<set name="price" val="1200" />
 		<set name="is_stackable" val="true" />
 	</item>
 	<item id="4493" type="EtcItem" name="Greater Dye of STR (Str+1 Con-2)">
@@ -953,7 +953,7 @@
 		<set name="immediate_effect" val="true" />
 		<set name="material" val="LIQUID" />
 		<set name="weight" val="150" />
-		<set name="price" val="21000" />
+		<set name="price" val="2100" />
 		<set name="is_stackable" val="true" />
 	</item>
 	<item id="4494" type="EtcItem" name="Greater Dye of STR (Str+1 Dex-2)">
@@ -963,7 +963,7 @@
 		<set name="immediate_effect" val="true" />
 		<set name="material" val="LIQUID" />
 		<set name="weight" val="150" />
-		<set name="price" val="21000" />
+		<set name="price" val="2100" />
 		<set name="is_stackable" val="true" />
 	</item>
 	<item id="4495" type="EtcItem" name="Greater Dye of CON (Con+1 Str-2)">
@@ -973,7 +973,7 @@
 		<set name="immediate_effect" val="true" />
 		<set name="material" val="LIQUID" />
 		<set name="weight" val="150" />
-		<set name="price" val="21000" />
+		<set name="price" val="2100" />
 		<set name="is_stackable" val="true" />
 	</item>
 	<item id="4496" type="EtcItem" name="Greater Dye of CON (Con+1 Dex-2)">
@@ -983,7 +983,7 @@
 		<set name="immediate_effect" val="true" />
 		<set name="material" val="LIQUID" />
 		<set name="weight" val="150" />
-		<set name="price" val="21000" />
+		<set name="price" val="2100" />
 		<set name="is_stackable" val="true" />
 	</item>
 	<item id="4497" type="EtcItem" name="Greater Dye of DEX (Dex+1 Str-2)">
@@ -993,7 +993,7 @@
 		<set name="immediate_effect" val="true" />
 		<set name="material" val="LIQUID" />
 		<set name="weight" val="150" />
-		<set name="price" val="21000" />
+		<set name="price" val="2100" />
 		<set name="is_stackable" val="true" />
 	</item>
 	<item id="4498" type="EtcItem" name="Greater Dye of DEX (Dex+1 Con-2)">
@@ -1003,7 +1003,7 @@
 		<set name="immediate_effect" val="true" />
 		<set name="material" val="LIQUID" />
 		<set name="weight" val="150" />
-		<set name="price" val="21000" />
+		<set name="price" val="2100" />
 		<set name="is_stackable" val="true" />
 	</item>
 	<item id="4499" type="EtcItem" name="Greater Dye of INT (Int+1 Men-2)">
@@ -1013,7 +1013,7 @@
 		<set name="immediate_effect" val="true" />
 		<set name="material" val="LIQUID" />
 		<set name="weight" val="150" />
-		<set name="price" val="21000" />
+		<set name="price" val="2100" />
 		<set name="is_stackable" val="true" />
 	</item>
 </list>

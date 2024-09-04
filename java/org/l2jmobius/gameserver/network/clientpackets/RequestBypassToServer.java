@@ -19,13 +19,13 @@ package org.l2jmobius.gameserver.network.clientpackets;
 import java.util.StringTokenizer;
 
 import org.l2jmobius.Config;
-import org.l2jmobius.commons.network.ReadablePacket;
 import org.l2jmobius.commons.util.CommonUtil;
 import org.l2jmobius.gameserver.ai.CtrlIntention;
 import org.l2jmobius.gameserver.handler.AdminCommandHandler;
 import org.l2jmobius.gameserver.handler.BypassHandler;
 import org.l2jmobius.gameserver.handler.CommunityBoardHandler;
 import org.l2jmobius.gameserver.handler.IBypassHandler;
+import org.l2jmobius.gameserver.instancemanager.CaptchaManager;
 import org.l2jmobius.gameserver.model.World;
 import org.l2jmobius.gameserver.model.WorldObject;
 import org.l2jmobius.gameserver.model.actor.Creature;
@@ -39,7 +39,6 @@ import org.l2jmobius.gameserver.model.item.instance.Item;
 import org.l2jmobius.gameserver.model.olympiad.Hero;
 import org.l2jmobius.gameserver.model.olympiad.Olympiad;
 import org.l2jmobius.gameserver.network.Disconnection;
-import org.l2jmobius.gameserver.network.GameClient;
 import org.l2jmobius.gameserver.network.PacketLogger;
 import org.l2jmobius.gameserver.network.serverpackets.ActionFailed;
 import org.l2jmobius.gameserver.network.serverpackets.LeaveWorld;
@@ -50,7 +49,7 @@ import org.l2jmobius.gameserver.util.Util;
  * RequestBypassToServer client packet implementation.
  * @author HorridoJoho
  */
-public class RequestBypassToServer implements ClientPacket
+public class RequestBypassToServer extends ClientPacket
 {
 	// FIXME: This is for compatibility, will be changed when bypass functionality got an overhaul by NosBit
 	private static final String[] _possibleNonHtmlCommands =
@@ -62,22 +61,23 @@ public class RequestBypassToServer implements ClientPacket
 		"_match",
 		"_diary",
 		"OlympiadArenaChange",
-		"manor_menu_select"
+		"manor_menu_select",
+		"report"
 	};
 	
 	// S
 	private String _command;
 	
 	@Override
-	public void read(ReadablePacket packet)
+	protected void readImpl()
 	{
-		_command = packet.readString();
+		_command = readString();
 	}
 	
 	@Override
-	public void run(GameClient client)
+	protected void runImpl()
 	{
-		final Player player = client.getPlayer();
+		final Player player = getPlayer();
 		if (player == null)
 		{
 			return;
@@ -86,7 +86,7 @@ public class RequestBypassToServer implements ClientPacket
 		if (_command.isEmpty())
 		{
 			PacketLogger.warning(player + " sent empty bypass!");
-			Disconnection.of(client, player).defaultSequence(LeaveWorld.STATIC_PACKET);
+			Disconnection.of(getClient(), player).defaultSequence(LeaveWorld.STATIC_PACKET);
 			return;
 		}
 		
@@ -116,7 +116,7 @@ public class RequestBypassToServer implements ClientPacket
 			}
 		}
 		
-		if (!client.getFloodProtectors().canUseServerBypass())
+		if (!getClient().getFloodProtectors().canUseServerBypass())
 		{
 			return;
 		}
@@ -225,6 +225,10 @@ public class RequestBypassToServer implements ClientPacket
 					EventDispatcher.getInstance().notifyEventAsync(new OnNpcManorBypass(player, lastNpc, ask, state, time), lastNpc);
 				}
 			}
+			else if (_command.startsWith("report"))
+			{
+				CaptchaManager.getInstance().analyseBypass(_command, player);
+			}
 			else
 			{
 				final IBypassHandler handler = BypassHandler.getInstance().getHandler(_command);
@@ -249,7 +253,7 @@ public class RequestBypassToServer implements ClientPacket
 				}
 				else
 				{
-					PacketLogger.warning(client + " sent not handled RequestBypassToServer: [" + _command + "]");
+					PacketLogger.warning(getClient() + " sent not handled RequestBypassToServer: [" + _command + "]");
 				}
 			}
 		}

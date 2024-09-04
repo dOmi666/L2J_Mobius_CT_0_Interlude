@@ -17,7 +17,6 @@
 package org.l2jmobius.gameserver.model.zone.type;
 
 import org.l2jmobius.Config;
-import org.l2jmobius.gameserver.data.xml.SkillData;
 import org.l2jmobius.gameserver.enums.MountType;
 import org.l2jmobius.gameserver.enums.TeleportWhereType;
 import org.l2jmobius.gameserver.instancemanager.CHSiegeManager;
@@ -27,8 +26,6 @@ import org.l2jmobius.gameserver.model.actor.Player;
 import org.l2jmobius.gameserver.model.actor.Summon;
 import org.l2jmobius.gameserver.model.siege.Siegable;
 import org.l2jmobius.gameserver.model.siege.clanhalls.SiegableHall;
-import org.l2jmobius.gameserver.model.skill.BuffInfo;
-import org.l2jmobius.gameserver.model.skill.Skill;
 import org.l2jmobius.gameserver.model.zone.AbstractZoneSettings;
 import org.l2jmobius.gameserver.model.zone.ZoneId;
 import org.l2jmobius.gameserver.model.zone.ZoneType;
@@ -227,28 +224,6 @@ public class SiegeZone extends ZoneType
 			summon.abortCast();
 			summon.stopAllEffects();
 			summon.unSummon(player);
-		}
-	}
-	
-	@Override
-	public void onDieInside(Creature creature)
-	{
-		if (!getSettings().isActiveSiege() || !creature.isPlayer() || !creature.getActingPlayer().isRegisteredOnThisSiegeField(getSettings().getSiegeableId()))
-		{
-			return;
-		}
-		
-		int level = 1;
-		final BuffInfo info = creature.getEffectList().getBuffInfoBySkillId(5660);
-		if (info != null)
-		{
-			level = Math.min(level + info.getSkill().getLevel(), 5);
-		}
-		
-		final Skill skill = SkillData.getInstance().getSkill(5660, level);
-		if (skill != null)
-		{
-			skill.applyEffects(creature, creature);
 		}
 	}
 	

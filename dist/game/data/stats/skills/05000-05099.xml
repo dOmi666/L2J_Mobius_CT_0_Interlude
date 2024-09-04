@@ -266,7 +266,7 @@
 	<skill id="5014" levels="3" name="Frintezza's Daemon Attack">
 		<!-- Demon 1 general attack. -->
 		<table name="#baseCritRate">6 8 10</table>
-		<table name="#magicLevel">85 85 90</table>
+		<table name="#magicLevel">85 85 85</table>
 		<table name="#power">15835 19096 16176</table>
 		<set name="affectRange" val="150" />
 		<set name="baseCritRate" val="#baseCritRate" />
@@ -533,14 +533,14 @@
 		<set name="operateType" val="P" />
 		<set name="targetType" val="SELF" />
 	</skill>
-	<skill id="5032" levels="1" name="Raid Boss - Level 80">
+	<skill id="5032" levels="1" name="Raid Boss - Level 87">
 		<!-- Although he appears human, he is actually a high-ranking Angel who directly interacts with Einhasad and worships the Grail. Recently an ancient religious document found in the Tower of Insolence provided proof that the Grail is hidden in the Monastery of Silence. Since then, adherents of the Pagan Temple have frequently tried to steal it, but none has avoided the judgment of the Ruler of Splendor. -->
 		<set name="icon" val="icon.skillraid" />
 		<set name="magicLevel" val="1" />
 		<set name="operateType" val="P" />
 		<set name="targetType" val="SELF" />
 	</skill>
-	<skill id="5033" levels="1" name="Raid Boss - Level 80">
+	<skill id="5033" levels="1" name="Raid Boss - Level 87">
 		<!-- This aristocrat of Rune secretly worships Triol, even conducting the occasional bloody worship ceremony in the Temple. Despite her claims of nobility, much of her background is still unknown. -->
 		<set name="icon" val="icon.skillraid" />
 		<set name="magicLevel" val="1" />
@@ -673,15 +673,15 @@
 			<effect name="PhysicalAttack" />
 		</for>
 	</skill>
-	<skill id="5044" levels="3" name="NPC Ultimate Defense">
-		<table name="#abnormalLevels">1 2 2</table>
-		<table name="#abnormalTime">30 30 5</table>
-		<table name="#magicLevel">20 46 1</table>
-		<table name="#mDef">1350 2700 9000</table>
-		<table name="#mpConsume">10 21 0</table>
-		<table name="#pDef">1800 3600 9000</table>
-		<table name="#reuseDelay">1800000 1800000 5000</table>
-		<table name="#time">30 30 5</table>
+	<skill id="5044" levels="2" name="NPC Ultimate Defense">
+		<table name="#abnormalLevels">1 2</table>
+		<table name="#abnormalTime">30 30</table>
+		<table name="#magicLevel">20 46</table>
+		<table name="#mDef">1350 2700</table>
+		<table name="#mpConsume">10 21</table>
+		<table name="#pDef">1800 3600</table>
+		<table name="#reuseDelay">1800000 1800000</table>
+		<table name="#time">30 30</table>
 		<set name="abnormalLevel" val="#abnormalLevels" />
 		<set name="abnormalTime" val="#abnormalTime" />
 		<set name="abnormalType" val="PD_UP_SPECIAL" />
@@ -1190,24 +1190,25 @@
 	</skill>
 	<skill id="5081" levels="4" name="Silence">
 		<!-- Blocks the ability to use physical skills. -->
+		<table name="#magicLevel">80 82 84 86</table>
 		<table name="#mpConsume">75 75 75 20</table>
-		<table name="#power">1715 3540 7306 8602</table>
-		<set name="abnormalLevel" val="0" />
+		<table name="#power">3000 3200 3400 3600</table>
+		<set name="abnormalLevel" val="1" />
 		<set name="abnormalTime" val="15" />
 		<set name="abnormalType" val="SILENCE_PHYSICAL" />
 		<set name="abnormalVisualEffect" val="SILENCE" />
 		<set name="activateRate" val="0" />
-		<set name="blowChance" val="20" />
+		<set name="blowChance" val="15" />
 		<set name="castRange" val="40" />
-		<set name="coolTime" val="800" />
 		<set name="effectPoint" val="-100" />
-		<set name="effectRange" val="200" />
+		<set name="effectRange" val="60" />
 		<set name="hitTime" val="1500" />
 		<set name="icon" val="icon.skill5081" />
 		<set name="isDebuff" val="true" />
-		<set name="magicLevel" val="85" />
+		<set name="magicLevel" val="#magicLevel" />
 		<set name="mpConsume" val="#mpConsume" />
 		<set name="operateType" val="A2" />
+		<set name="reuseDelay" val="8000" />
 		<set name="power" val="#power" />
 		<set name="targetType" val="ONE" />
 		<for>
@@ -1263,20 +1264,22 @@
 		</for>
 	</skill>
 	<skill id="5084" levels="4" name="NPC Blinding Blow">
+		<table name="#power">3000 3200 3400 3600</table>
 		<set name="abnormalLevel" val="1" />
 		<set name="abnormalTime" val="15" />
 		<set name="abnormalType" val="SPEED_UP_SPECIAL" />
 		<set name="blowChance" val="15" />
 		<set name="castRange" val="40" />
 		<set name="coolTime" val="720" />
-		<set name="effectPoint" val="-100" />
-		<set name="effectRange" val="200" />
+		<set name="effectPoint" val="-307" />
+		<set name="effectRange" val="60" />
 		<set name="hitTime" val="1080" />
-		<set name="magicLevel" val="85" />
+		<set name="magicLevel" val="80" />
 		<set name="mpConsume" val="83" />
 		<set name="nextActionAttack" val="true" />
-		<set name="operateType" val="A3" />
-		<set name="power" val="6335" />
+		<set name="operateType" val="A1" />
+		<set name="reuseDelay" val="15000" />
+		<set name="power" val="#power" />
 		<set name="targetType" val="ONE" />
 		<for>
 			<effect name="FatalBlow" />

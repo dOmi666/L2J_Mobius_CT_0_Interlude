@@ -23,21 +23,15 @@ import org.l2jmobius.gameserver.model.quest.Quest;
 import org.l2jmobius.gameserver.model.quest.QuestState;
 import org.l2jmobius.gameserver.model.quest.State;
 
-/**
- * Into the City of Humans (9)
- * @author malyelfik
- */
 public class Q00009_IntoTheCityOfHumans extends Quest
 {
 	// NPCs
 	private static final int PETUKAI = 30583;
 	private static final int TANAPI = 30571;
 	private static final int TAMIL = 30576;
-	// Items
-	private static final int SCROLL_OF_ESCAPE_GIRAN = 7559;
+	// Rewards
 	private static final int MARK_OF_TRAVELER = 7570;
-	// Misc
-	private static final int MIN_LEVEL = 3;
+	private static final int SOE_GIRAN = 7126;
 	
 	public Q00009_IntoTheCityOfHumans()
 	{
@@ -47,92 +41,102 @@ public class Q00009_IntoTheCityOfHumans extends Quest
 	}
 	
 	@Override
-	public String onAdvEvent(String event, Npc npc, Player player)
+	public String onEvent(String event, Npc npc, Player player)
 	{
-		final QuestState qs = getQuestState(player, false);
-		if (qs == null)
+		String htmltext = event;
+		final QuestState st = getQuestState(player, false);
+		if (st == null)
 		{
-			return null;
+			return htmltext;
 		}
 		
-		String htmltext = event;
 		switch (event)
 		{
-			case "30583-04.htm":
+			case "30583-01.htm":
 			{
-				qs.startQuest();
+				st.startQuest();
 				break;
 			}
-			case "30576-02.html":
+			case "30571-01.htm":
+			{
+				st.setCond(2, true);
+				break;
+			}
+			case "30576-01.htm":
 			{
 				giveItems(player, MARK_OF_TRAVELER, 1);
-				giveItems(player, SCROLL_OF_ESCAPE_GIRAN, 1);
-				qs.exitQuest(false, true);
-				break;
-			}
-			case "30571-02.html":
-			{
-				qs.setCond(2, true);
-				break;
-			}
-			default:
-			{
-				htmltext = null;
+				rewardItems(player, SOE_GIRAN, 1);
+				st.exitQuest(false, true);
 				break;
 			}
 		}
+		
 		return htmltext;
 	}
 	
 	@Override
 	public String onTalk(Npc npc, Player player)
 	{
-		final QuestState qs = getQuestState(player, true);
 		String htmltext = getNoQuestMsg(player);
-		switch (npc.getId())
+		final QuestState st = getQuestState(player, true);
+		
+		switch (st.getState())
 		{
-			case PETUKAI:
+			case State.CREATED:
 			{
-				switch (qs.getState())
+				if ((player.getLevel() >= 3) && (player.getRace() == Race.ORC))
 				{
-					case State.CREATED:
+					htmltext = "30583-00.htm";
+				}
+				else
+				{
+					htmltext = "30583-00a.htm";
+				}
+				break;
+			}
+			case State.STARTED:
+			{
+				final int cond = st.getCond();
+				switch (npc.getId())
+				{
+					case PETUKAI:
 					{
-						htmltext = (player.getLevel() >= MIN_LEVEL) ? (player.getRace() == Race.ORC) ? "30583-01.htm" : "30583-02.html" : "30583-03.html";
-						break;
-					}
-					case State.STARTED:
-					{
-						if (qs.isCond(1))
+						if (cond == 1)
 						{
-							htmltext = "30583-05.html";
+							htmltext = "30583-01a.htm";
 						}
 						break;
 					}
-					case State.COMPLETED:
+					case TANAPI:
 					{
-						htmltext = getAlreadyCompletedMsg(player);
+						if (cond == 1)
+						{
+							htmltext = "30571-00.htm";
+						}
+						else if (cond == 2)
+						{
+							htmltext = "30571-01a.htm";
+						}
+						break;
+					}
+					case TAMIL:
+					{
+						if (cond == 2)
+						{
+							htmltext = "30576-00.htm";
+						}
 						break;
 					}
 				}
 				break;
 			}
-			case TANAPI:
+			case State.COMPLETED:
 			{
-				if (qs.isStarted())
-				{
-					htmltext = (qs.isCond(1)) ? "30571-01.html" : "30571-03.html";
-				}
-				break;
-			}
-			case TAMIL:
-			{
-				if (qs.isStarted() && qs.isCond(2))
-				{
-					htmltext = "30576-01.html";
-				}
+				htmltext = getAlreadyCompletedMsg(player);
 				break;
 			}
 		}
+		
 		return htmltext;
 	}
 }

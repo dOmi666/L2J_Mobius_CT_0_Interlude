@@ -23,115 +23,103 @@ import org.l2jmobius.gameserver.model.actor.Npc;
 import org.l2jmobius.gameserver.model.actor.Player;
 import org.l2jmobius.gameserver.model.quest.Quest;
 import org.l2jmobius.gameserver.model.quest.QuestState;
+import org.l2jmobius.gameserver.model.quest.State;
 
-/**
- * Warehouse Keeper's Ambition (357)
- * @author Janiko, Pandragon
- */
 public class Q00357_WarehouseKeepersAmbition extends Quest
 {
-	// NPC
-	private static final int SILVA = 30686;
+	// Monsters
+	private static final int FOREST_RUNNER = 20594;
+	private static final int FLINE_ELDER = 20595;
+	private static final int LIELE_ELDER = 20596;
+	private static final int VALLEY_TREANT_ELDER = 20597;
 	// Item
 	private static final int JADE_CRYSTAL = 5867;
-	// Monsters
+	// Drop chances
 	private static final Map<Integer, Double> DROP_DATA = new HashMap<>();
 	static
 	{
-		DROP_DATA.put(20594, 0.577); // Forest Runner
-		DROP_DATA.put(20595, 0.6); // Fline Elder
-		DROP_DATA.put(20596, 0.638); // Liele Elder
-		DROP_DATA.put(20597, 0.062); // Valley Treant Elder
+		DROP_DATA.put(FOREST_RUNNER, 0.577); // Forest Runner
+		DROP_DATA.put(FLINE_ELDER, 0.6); // Fline Elder
+		DROP_DATA.put(LIELE_ELDER, 0.638); // Liele Elder
+		DROP_DATA.put(VALLEY_TREANT_ELDER, 0.062); // Valley Treant Elder
 	}
-	// Misc
-	private static final int MIN_LEVEL = 47;
 	
 	public Q00357_WarehouseKeepersAmbition()
 	{
 		super(357);
-		addStartNpc(SILVA);
-		addTalkId(SILVA);
-		addKillId(DROP_DATA.keySet());
 		registerQuestItems(JADE_CRYSTAL);
+		addStartNpc(30686); // Silva
+		addTalkId(30686);
+		addKillId(FOREST_RUNNER, FLINE_ELDER, LIELE_ELDER, VALLEY_TREANT_ELDER);
 	}
 	
 	@Override
-	public String onAdvEvent(String event, Npc npc, Player player)
+	public String onEvent(String event, Npc npc, Player player)
 	{
-		final QuestState qs = getQuestState(player, false);
-		String htmltext = null;
-		if (qs != null)
+		String htmltext = event;
+		final QuestState st = getQuestState(player, false);
+		if (st == null)
 		{
-			switch (event)
+			return htmltext;
+		}
+		
+		switch (event)
+		{
+			case "30686-2.htm":
 			{
-				case "30686-01.htm":
-				case "30686-03.htm":
-				case "30686-04.htm":
-				case "30686-10.html":
+				st.startQuest();
+				break;
+			}
+			case "30686-7.htm":
+			{
+				final int count = getQuestItemsCount(player, JADE_CRYSTAL);
+				if (count == 0)
 				{
-					htmltext = event;
-					break;
+					htmltext = "30686-4.htm";
 				}
-				case "30686-05.htm":
+				else
 				{
-					if (qs.isCreated())
+					int reward = (count * 425) + 3500;
+					if (count >= 100)
 					{
-						qs.startQuest();
-						htmltext = event;
+						reward += 7400;
 					}
-					break;
+					
+					takeItems(player, JADE_CRYSTAL, -1);
+					giveAdena(player, reward, true);
 				}
-				case "30686-09.html":
-				{
-					final int crystalCount = getQuestItemsCount(player, JADE_CRYSTAL);
-					if (crystalCount > 0)
-					{
-						int adenaReward = crystalCount * 425;
-						if (crystalCount < 100)
-						{
-							adenaReward += 13500;
-							htmltext = "30686-08.html";
-						}
-						else
-						{
-							adenaReward += 40500;
-							htmltext = event;
-						}
-						giveAdena(player, adenaReward, true);
-						takeItems(player, JADE_CRYSTAL, -1);
-					}
-					break;
-				}
-				case "30686-11.html":
-				{
-					final int crystalCount = getQuestItemsCount(player, JADE_CRYSTAL);
-					if (crystalCount > 0)
-					{
-						giveAdena(player, (crystalCount * 425) + ((crystalCount >= 100) ? 40500 : 0), true);
-						takeItems(player, JADE_CRYSTAL, -1);
-					}
-					qs.exitQuest(true, true);
-					htmltext = event;
-					break;
-				}
+				break;
+			}
+			case "30686-8.htm":
+			{
+				st.exitQuest(true, true);
+				break;
 			}
 		}
+		
 		return htmltext;
 	}
 	
 	@Override
-	public String onTalk(Npc npc, Player talker)
+	public String onTalk(Npc npc, Player player)
 	{
-		final QuestState qs = getQuestState(talker, true);
-		String htmltext = getNoQuestMsg(talker);
-		if (qs.isCreated())
+		String htmltext = getNoQuestMsg(player);
+		final QuestState st = getQuestState(player, true);
+		
+		switch (st.getState())
 		{
-			htmltext = ((talker.getLevel() < MIN_LEVEL) ? "30686-01.html" : "30686-02.htm");
+			case State.CREATED:
+			{
+				htmltext = (player.getLevel() < 47) ? "30686-0a.htm" : "30686-0.htm";
+				break;
+			}
+			case State.STARTED:
+			{
+				htmltext = (!hasQuestItems(player, JADE_CRYSTAL)) ? "30686-4.htm" : "30686-6.htm";
+				break;
+			}
 		}
-		else if (qs.isStarted())
-		{
-			htmltext = (hasQuestItems(talker, JADE_CRYSTAL)) ? "30686-07.html" : "30686-06.html";
-		}
+		
 		return htmltext;
 	}
 	

@@ -16,196 +16,213 @@
  */
 package quests.Q00380_BringOutTheFlavorOfIngredients;
 
-import java.util.HashMap;
-import java.util.Map;
-
 import org.l2jmobius.gameserver.enums.QuestSound;
 import org.l2jmobius.gameserver.model.actor.Npc;
 import org.l2jmobius.gameserver.model.actor.Player;
-import org.l2jmobius.gameserver.model.holders.ItemChanceHolder;
 import org.l2jmobius.gameserver.model.quest.Quest;
 import org.l2jmobius.gameserver.model.quest.QuestState;
 import org.l2jmobius.gameserver.model.quest.State;
 
-/**
- * Bring Out the Flavor of Ingredients! (380)
- * @author Pandragon
- */
 public class Q00380_BringOutTheFlavorOfIngredients extends Quest
 {
-	// NPC
-	private static final int ROLLAND = 30069;
-	// Items
-	private static final int ANTIDOTE = 1831;
-	private static final int RITRON_FRUIT = 5895;
-	private static final int MOON_FLOWER = 5896;
-	private static final int LEECH_FLUIDS = 5897;
 	// Monsters
-	private static final Map<Integer, ItemChanceHolder> MONSTER_CHANCES = new HashMap<>();
-	static
-	{
-		MONSTER_CHANCES.put(20205, new ItemChanceHolder(RITRON_FRUIT, 0.1, 4)); // Dire Wolf
-		MONSTER_CHANCES.put(20206, new ItemChanceHolder(MOON_FLOWER, 0.5, 20)); // Kadif Werewolf
-		MONSTER_CHANCES.put(20225, new ItemChanceHolder(LEECH_FLUIDS, 0.5, 10)); // Giant Mist Leech
-	}
+	private static final int DIRE_WOLF = 20205;
+	private static final int KADIF_WEREWOLF = 20206;
+	private static final int GIANT_MIST_LEECH = 20225;
+	// Items
+	private static final int RITRON_FRUIT = 5895;
+	private static final int MOON_FACE_FLOWER = 5896;
+	private static final int LEECH_FLUIDS = 5897;
+	private static final int ANTIDOTE = 1831;
 	// Rewards
-	private static final int RITRON_RECIPE = 5959;
-	private static final int RITRON_DESSERT = 5960;
-	// Misc
-	private static final int MIN_LEVEL = 24;
+	private static final int RITRON_JELLY = 5960;
+	private static final int JELLY_RECIPE = 5959;
 	
 	public Q00380_BringOutTheFlavorOfIngredients()
 	{
 		super(380);
-		addStartNpc(ROLLAND);
-		addTalkId(ROLLAND);
-		addKillId(MONSTER_CHANCES.keySet());
-		registerQuestItems(RITRON_FRUIT, MOON_FLOWER, LEECH_FLUIDS);
+		registerQuestItems(RITRON_FRUIT, MOON_FACE_FLOWER, LEECH_FLUIDS);
+		addStartNpc(30069); // Rollant
+		addTalkId(30069);
+		addKillId(DIRE_WOLF, KADIF_WEREWOLF, GIANT_MIST_LEECH);
 	}
 	
 	@Override
-	public String onAdvEvent(String event, Npc npc, Player player)
+	public String onEvent(String event, Npc npc, Player player)
 	{
-		final QuestState qs = getQuestState(player, false);
-		String htmltext = null;
-		if (qs != null)
+		String htmltext = event;
+		final QuestState st = getQuestState(player, false);
+		if (st == null)
 		{
-			switch (event)
-			{
-				case "30069-03.htm":
-				case "30069-04.htm":
-				case "30069-06.html":
-				{
-					htmltext = event;
-					break;
-				}
-				case "30069-05.htm":
-				{
-					if (qs.isCreated())
-					{
-						qs.startQuest();
-						htmltext = event;
-					}
-					break;
-				}
-				case "30069-13.html":
-				{
-					if (qs.isCond(9))
-					{
-						rewardItems(player, RITRON_RECIPE, 1);
-						qs.exitQuest(true, true);
-						htmltext = event;
-					}
-					break;
-				}
-			}
+			return htmltext;
 		}
+		
+		if (event.equals("30069-04.htm"))
+		{
+			st.startQuest();
+		}
+		else if (event.equals("30069-12.htm"))
+		{
+			giveItems(player, JELLY_RECIPE, 1);
+			st.exitQuest(true, true);
+		}
+		
 		return htmltext;
 	}
 	
 	@Override
-	public String onTalk(Npc npc, Player talker)
+	public String onTalk(Npc npc, Player player)
 	{
-		final QuestState qs = getQuestState(talker, true);
-		String htmltext = getNoQuestMsg(talker);
-		switch (qs.getState())
+		String htmltext = getNoQuestMsg(player);
+		final QuestState st = getQuestState(player, true);
+		
+		switch (st.getState())
 		{
 			case State.CREATED:
 			{
-				htmltext = (talker.getLevel() >= MIN_LEVEL) ? "30069-02.htm" : "30069-01.htm";
+				htmltext = (player.getLevel() < 24) ? "30069-00.htm" : "30069-01.htm";
 				break;
 			}
 			case State.STARTED:
 			{
-				switch (qs.getCond())
+				final int cond = st.getCond();
+				if (cond == 1)
 				{
-					case 1:
-					case 2:
-					case 3:
-					case 4:
+					htmltext = "30069-06.htm";
+				}
+				else if (cond == 2)
+				{
+					if (getQuestItemsCount(player, ANTIDOTE) >= 2)
 					{
-						if ((getQuestItemsCount(talker, ANTIDOTE) >= 2) && (getQuestItemsCount(talker, RITRON_FRUIT) >= 4) && (getQuestItemsCount(talker, MOON_FLOWER) >= 20) && (getQuestItemsCount(talker, LEECH_FLUIDS) >= 10))
-						{
-							takeItems(talker, ANTIDOTE, 2);
-							takeItems(talker, -1, RITRON_FRUIT, MOON_FLOWER, LEECH_FLUIDS);
-							qs.setCond(5, true);
-							htmltext = "30069-08.html";
-						}
-						else
-						{
-							htmltext = "30069-07.html";
-						}
-						break;
+						htmltext = "30069-07.htm";
+						st.setCond(3, true);
+						takeItems(player, RITRON_FRUIT, -1);
+						takeItems(player, MOON_FACE_FLOWER, -1);
+						takeItems(player, LEECH_FLUIDS, -1);
+						takeItems(player, ANTIDOTE, 2);
 					}
-					case 5:
+					else
 					{
-						qs.setCond(6, true);
-						htmltext = "30069-09.html";
-						break;
+						htmltext = "30069-06.htm";
 					}
-					case 6:
+				}
+				else if (cond == 3)
+				{
+					htmltext = "30069-08.htm";
+					st.setCond(4, true);
+				}
+				else if (cond == 4)
+				{
+					htmltext = "30069-09.htm";
+					st.setCond(5, true);
+				}
+				else if (cond == 5)
+				{
+					htmltext = "30069-10.htm";
+					st.setCond(6, true);
+				}
+				else if (cond == 6)
+				{
+					giveItems(player, RITRON_JELLY, 1);
+					if (getRandom(100) < 55)
 					{
-						qs.setCond(7, true);
-						htmltext = "30069-10.html";
-						break;
+						htmltext = "30069-11.htm";
 					}
-					case 7:
+					else
 					{
-						qs.setCond(8, true);
-						htmltext = "30069-11.html";
-						break;
-					}
-					case 8:
-					{
-						rewardItems(talker, RITRON_DESSERT, 1);
-						if (getRandom(100) < 56)
-						{
-							htmltext = "30069-15.html";
-							qs.exitQuest(true, true);
-						}
-						else
-						{
-							qs.setCond(9, true);
-							htmltext = "30069-12.html";
-						}
-						break;
-					}
-					case 9:
-					{
-						htmltext = "30069-12.html";
-						break;
+						htmltext = "30069-13.htm";
+						st.exitQuest(true, true);
 					}
 				}
 				break;
 			}
-			case State.COMPLETED:
-			{
-				htmltext = getAlreadyCompletedMsg(talker);
-				break;
-			}
 		}
+		
 		return htmltext;
 	}
 	
 	@Override
-	public String onKill(Npc npc, Player killer, boolean isSummon)
+	public String onKill(Npc npc, Player player, boolean isPet)
 	{
-		final QuestState qs = getRandomPartyMemberState(killer, -1, 3, npc);
-		if ((qs != null) && (qs.getCond() < 4))
+		final QuestState st = getQuestState(player, false);
+		if ((st == null) || !st.isCond(1))
 		{
-			final ItemChanceHolder item = MONSTER_CHANCES.get(npc.getId());
-			if (giveItemRandomly(qs.getPlayer(), npc, item.getId(), 1, item.getCount(), item.getChance(), false))
+			return null;
+		}
+		
+		switch (npc.getId())
+		{
+			case DIRE_WOLF:
 			{
-				if ((getQuestItemsCount(killer, RITRON_FRUIT) >= 3) && (getQuestItemsCount(killer, MOON_FLOWER) >= 20) && (getQuestItemsCount(killer, LEECH_FLUIDS) >= 10))
+				if ((getRandom(10) < 1) && (getQuestItemsCount(player, RITRON_FRUIT) < 4))
 				{
-					qs.setCond(qs.getCond() + 1, true);
+					giveItems(player, RITRON_FRUIT, 1);
+					if (getQuestItemsCount(player, RITRON_FRUIT) < 4)
+					{
+						playSound(player, QuestSound.ITEMSOUND_QUEST_ITEMGET);
+					}
+					else
+					{
+						if ((getQuestItemsCount(player, MOON_FACE_FLOWER) == 20) && (getQuestItemsCount(player, LEECH_FLUIDS) == 10))
+						{
+							st.setCond(2, true);
+						}
+						else
+						{
+							playSound(player, QuestSound.ITEMSOUND_QUEST_ITEMGET);
+						}
+					}
 				}
-				else
+				break;
+			}
+			case KADIF_WEREWOLF:
+			{
+				if ((getRandom(10) < 5) && (getQuestItemsCount(player, MOON_FACE_FLOWER) < 20))
 				{
-					playSound(killer, QuestSound.ITEMSOUND_QUEST_ITEMGET);
+					giveItems(player, MOON_FACE_FLOWER, 1);
+					if (getQuestItemsCount(player, MOON_FACE_FLOWER) < 20)
+					{
+						playSound(player, QuestSound.ITEMSOUND_QUEST_ITEMGET);
+					}
+					else
+					{
+						if ((getQuestItemsCount(player, RITRON_FRUIT) == 4) && (getQuestItemsCount(player, LEECH_FLUIDS) == 10))
+						{
+							st.setCond(2, true);
+						}
+						else
+						{
+							playSound(player, QuestSound.ITEMSOUND_QUEST_ITEMGET);
+						}
+					}
 				}
+				break;
+			}
+			case GIANT_MIST_LEECH:
+			{
+				if ((getRandom(10) < 5) && (getQuestItemsCount(player, LEECH_FLUIDS) < 10))
+				{
+					giveItems(player, LEECH_FLUIDS, 1);
+					if (getQuestItemsCount(player, LEECH_FLUIDS) < 10)
+					{
+						playSound(player, QuestSound.ITEMSOUND_QUEST_ITEMGET);
+					}
+					else
+					{
+						if ((getQuestItemsCount(player, RITRON_FRUIT) == 4) && (getQuestItemsCount(player, MOON_FACE_FLOWER) == 20))
+						{
+							st.setCond(2, true);
+						}
+						else
+						{
+							playSound(player, QuestSound.ITEMSOUND_QUEST_ITEMGET);
+						}
+					}
+				}
+				break;
 			}
 		}
-		return super.onKill(npc, killer, isSummon);
+		
+		return null;
 	}
 }

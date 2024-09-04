@@ -16,19 +16,13 @@
  */
 package quests.Q00345_MethodToRaiseTheDead;
 
-import org.l2jmobius.Config;
 import org.l2jmobius.gameserver.enums.QuestSound;
 import org.l2jmobius.gameserver.model.actor.Npc;
 import org.l2jmobius.gameserver.model.actor.Player;
-import org.l2jmobius.gameserver.model.itemcontainer.Inventory;
 import org.l2jmobius.gameserver.model.quest.Quest;
 import org.l2jmobius.gameserver.model.quest.QuestState;
-import org.l2jmobius.gameserver.util.Util;
+import org.l2jmobius.gameserver.model.quest.State;
 
-/**
- * Method to Raise the Dead (345)
- * @author Adry_85
- */
 public class Q00345_MethodToRaiseTheDead extends Quest
 {
 	// NPCs
@@ -37,388 +31,234 @@ public class Q00345_MethodToRaiseTheDead extends Quest
 	private static final int ORPHEUS = 30971;
 	private static final int MEDIUM_JAR = 30973;
 	// Items
-	private static final int IMPERIAL_DIAMOND = 3456;
-	private static final int VICTIMS_ARM_BONE = 4274;
-	private static final int VICTIMS_THIGH_BONE = 4275;
-	private static final int VICTIMS_SKULL = 4276;
-	private static final int VICTIMS_RIB_BONE = 4277;
-	private static final int VICTIMS_SPINE = 4278;
+	private static final int VICTIM_ARM_BONE = 4274;
+	private static final int VICTIM_THIGH_BONE = 4275;
+	private static final int VICTIM_SKULL = 4276;
+	private static final int VICTIM_RIB_BONE = 4277;
+	private static final int VICTIM_SPINE = 4278;
 	private static final int USELESS_BONE_PIECES = 4280;
 	private static final int POWDER_TO_SUMMON_DEAD_SOULS = 4281;
-	private static final int BILL_OF_IASON_HEINE = 4407;
-	// Misc
-	private static final int MIN_LEVEL = 35;
-	// Monsters
-	private static final int CROKIAN = 20789;
-	private static final int CROKIAN_WARRIOR = 20791;
+	// Rewards
+	private static final int BILL_OF_IASON_HEINE = 4310;
+	private static final int IMPERIAL_DIAMOND = 3456;
 	
 	public Q00345_MethodToRaiseTheDead()
 	{
 		super(345);
+		registerQuestItems(VICTIM_ARM_BONE, VICTIM_THIGH_BONE, VICTIM_SKULL, VICTIM_RIB_BONE, VICTIM_SPINE, POWDER_TO_SUMMON_DEAD_SOULS, USELESS_BONE_PIECES);
 		addStartNpc(DOROTHY);
-		addTalkId(DOROTHY, ORPHEUS, MEDIUM_JAR, XENOVIA);
-		addKillId(CROKIAN, CROKIAN_WARRIOR);
-		registerQuestItems(VICTIMS_ARM_BONE, VICTIMS_THIGH_BONE, VICTIMS_SKULL, VICTIMS_RIB_BONE, VICTIMS_SPINE, USELESS_BONE_PIECES, POWDER_TO_SUMMON_DEAD_SOULS);
+		addTalkId(DOROTHY, XENOVIA, MEDIUM_JAR, ORPHEUS);
+		addKillId(20789, 20791);
 	}
 	
 	@Override
-	public String onAdvEvent(String event, Npc npc, Player player)
+	public String onEvent(String event, Npc npc, Player player)
 	{
-		final QuestState qs = getQuestState(player, false);
-		if (qs == null)
+		String htmltext = event;
+		final QuestState st = getQuestState(player, false);
+		if (st == null)
 		{
-			return null;
+			return htmltext;
 		}
 		
-		String htmltext = null;
 		switch (event)
 		{
-			case "30970-02.htm":
+			case "30970-03.htm":
 			{
-				qs.startQuest();
-				htmltext = event;
+				st.startQuest();
 				break;
 			}
-			case "30970-03.html":
+			case "30970-06.htm":
 			{
-				qs.setMemoState(1);
-				htmltext = event;
+				st.setCond(2, true);
 				break;
 			}
-			case "30970-07.html":
+			case "30912-04.htm":
 			{
-				if (hasQuestItems(player, VICTIMS_ARM_BONE, VICTIMS_THIGH_BONE, VICTIMS_SKULL, VICTIMS_RIB_BONE, VICTIMS_SPINE))
+				if (player.getAdena() >= 1000)
 				{
-					qs.setMemoState(2);
-					qs.setCond(2, true);
-					htmltext = event;
+					htmltext = "30912-03.htm";
+					st.setCond(3, true);
+					takeItems(player, 57, 1000);
+					giveItems(player, POWDER_TO_SUMMON_DEAD_SOULS, 1);
 				}
 				break;
 			}
-			case "30971-02.html":
-			case "30912-05.html":
+			case "30973-04.htm":
 			{
-				htmltext = event;
-				break;
-			}
-			case "30971-03.html":
-			{
-				final int uselessBonePiecesCount = getQuestItemsCount(player, USELESS_BONE_PIECES);
-				if (uselessBonePiecesCount > 0)
+				if (st.isCond(3))
 				{
-					giveAdena(player, uselessBonePiecesCount * 104, true);
-					takeItems(player, USELESS_BONE_PIECES, -1);
-					htmltext = event;
-				}
-				break;
-			}
-			case "30973-02.html":
-			{
-				final int memoStateEx = qs.getMemoStateEx(1);
-				if (memoStateEx == 1)
-				{
-					htmltext = event;
-				}
-				else if (memoStateEx == 2)
-				{
-					htmltext = "30973-04.html";
-				}
-				else if (memoStateEx == 3)
-				{
-					htmltext = "30973-06.html";
-				}
-				break;
-			}
-			case "30973-03.html":
-			{
-				if (qs.isMemoState(7) && (qs.getMemoStateEx(1) == 1))
-				{
-					qs.setMemoState(8);
-					qs.setCond(6, true);
-					htmltext = event;
-				}
-				break;
-			}
-			case "30973-05.html":
-			{
-				if (qs.isMemoState(7) && (qs.getMemoStateEx(1) == 2))
-				{
-					qs.setMemoState(8);
-					qs.setCond(6, true);
-					htmltext = event;
-				}
-				break;
-			}
-			case "30973-07.html":
-			{
-				if (qs.isMemoState(7) && (qs.getMemoStateEx(1) == 3))
-				{
-					qs.setMemoState(8);
-					qs.setCond(7, true);
-					htmltext = event;
-				}
-				break;
-			}
-			case "30912-02.html":
-			{
-				if (qs.isMemoState(2))
-				{
-					htmltext = event;
-				}
-				break;
-			}
-			case "30912-03.html":
-			{
-				if (qs.isMemoState(2))
-				{
-					if (player.getAdena() >= 1000)
+					final int chance = getRandom(3);
+					if (chance == 0)
 					{
-						giveItems(player, POWDER_TO_SUMMON_DEAD_SOULS, 1);
-						takeItems(player, Inventory.ADENA_ID, 1000);
-						qs.setMemoState(3);
-						qs.setCond(3, true);
-						htmltext = event;
+						st.setCond(6, true);
+						htmltext = "30973-02a.htm";
+					}
+					else if (chance == 1)
+					{
+						st.setCond(6, true);
+						htmltext = "30973-02b.htm";
 					}
 					else
 					{
-						htmltext = "30912-04.html";
+						st.setCond(7, true);
+						htmltext = "30973-02c.htm";
 					}
+					
+					takeItems(player, POWDER_TO_SUMMON_DEAD_SOULS, -1);
+					takeItems(player, VICTIM_ARM_BONE, -1);
+					takeItems(player, VICTIM_THIGH_BONE, -1);
+					takeItems(player, VICTIM_SKULL, -1);
+					takeItems(player, VICTIM_RIB_BONE, -1);
+					takeItems(player, VICTIM_SPINE, -1);
+				}
+				break;
+			}
+			case "30971-02a.htm":
+			{
+				if (hasQuestItems(player, USELESS_BONE_PIECES))
+				{
+					htmltext = "30971-02.htm";
+				}
+				break;
+			}
+			case "30971-03.htm":
+			{
+				if (hasQuestItems(player, USELESS_BONE_PIECES))
+				{
+					final int amount = getQuestItemsCount(player, USELESS_BONE_PIECES) * 104;
+					takeItems(player, USELESS_BONE_PIECES, -1);
+					giveAdena(player, amount, true);
+				}
+				else
+				{
+					htmltext = "30971-02a.htm";
 				}
 				break;
 			}
 		}
-		return htmltext;
-	}
-	
-	@Override
-	public String onKill(Npc npc, Player killer, boolean isSummon)
-	{
-		final QuestState qs = getRandomPartyMemberState(killer, 1, 3, npc);
-		if ((qs == null) || !Util.checkIfInRange(Config.ALT_PARTY_RANGE, npc, killer, true))
-		{
-			return null;
-		}
 		
-		final int random = getRandom(100);
-		if (random <= 5)
-		{
-			if (!hasQuestItems(qs.getPlayer(), VICTIMS_ARM_BONE))
-			{
-				giveItems(qs.getPlayer(), VICTIMS_ARM_BONE, 1);
-			}
-			else
-			{
-				giveItems(qs.getPlayer(), USELESS_BONE_PIECES, 1);
-			}
-			
-			playSound(qs.getPlayer(), QuestSound.ITEMSOUND_QUEST_ITEMGET);
-		}
-		else if (random <= 11)
-		{
-			if (!hasQuestItems(qs.getPlayer(), VICTIMS_THIGH_BONE))
-			{
-				giveItems(qs.getPlayer(), VICTIMS_THIGH_BONE, 1);
-			}
-			else
-			{
-				giveItems(qs.getPlayer(), USELESS_BONE_PIECES, 1);
-			}
-			
-			playSound(qs.getPlayer(), QuestSound.ITEMSOUND_QUEST_ITEMGET);
-		}
-		else if (random <= 17)
-		{
-			if (!hasQuestItems(qs.getPlayer(), VICTIMS_SKULL))
-			{
-				giveItems(qs.getPlayer(), VICTIMS_SKULL, 1);
-			}
-			else
-			{
-				giveItems(qs.getPlayer(), USELESS_BONE_PIECES, 1);
-			}
-			
-			playSound(qs.getPlayer(), QuestSound.ITEMSOUND_QUEST_ITEMGET);
-		}
-		else if (random <= 23)
-		{
-			if (!hasQuestItems(qs.getPlayer(), VICTIMS_RIB_BONE))
-			{
-				giveItems(qs.getPlayer(), VICTIMS_RIB_BONE, 1);
-			}
-			else
-			{
-				giveItems(qs.getPlayer(), USELESS_BONE_PIECES, 1);
-			}
-			
-			playSound(qs.getPlayer(), QuestSound.ITEMSOUND_QUEST_ITEMGET);
-		}
-		else if (random <= 29)
-		{
-			if (!hasQuestItems(qs.getPlayer(), VICTIMS_SPINE))
-			{
-				giveItems(qs.getPlayer(), VICTIMS_SPINE, 1);
-			}
-			else
-			{
-				giveItems(qs.getPlayer(), USELESS_BONE_PIECES, 1);
-			}
-			
-			playSound(qs.getPlayer(), QuestSound.ITEMSOUND_QUEST_ITEMGET);
-		}
-		else if (random <= 60)
-		{
-			giveItems(qs.getPlayer(), USELESS_BONE_PIECES, 1);
-		}
-		return super.onKill(npc, killer, isSummon);
+		return htmltext;
 	}
 	
 	@Override
 	public String onTalk(Npc npc, Player player)
 	{
-		final QuestState qs = getQuestState(player, true);
 		String htmltext = getNoQuestMsg(player);
-		if (qs.isCreated())
+		final QuestState st = getQuestState(player, true);
+		
+		switch (st.getState())
 		{
-			htmltext = (player.getLevel() >= MIN_LEVEL) ? "30970-01.htm" : "30970-04.htm";
-		}
-		else if (qs.isStarted())
-		{
-			switch (npc.getId())
+			case State.CREATED:
 			{
-				case DOROTHY:
+				htmltext = (player.getLevel() < 35) ? "30970-00.htm" : "30970-01.htm";
+				break;
+			}
+			case State.STARTED:
+			{
+				final int cond = st.getCond();
+				switch (npc.getId())
 				{
-					switch (qs.getMemoState())
+					case DOROTHY:
 					{
-						case 0:
+						if (cond == 1)
 						{
-							htmltext = "30970-03.html";
-							qs.setMemoState(1);
-							break;
+							htmltext = (!hasQuestItems(player, VICTIM_ARM_BONE, VICTIM_THIGH_BONE, VICTIM_SKULL, VICTIM_RIB_BONE, VICTIM_SPINE)) ? "30970-04.htm" : "30970-05.htm";
 						}
-						case 1:
+						else if (cond == 2)
 						{
-							htmltext = (!hasQuestItems(player, VICTIMS_ARM_BONE, VICTIMS_THIGH_BONE, VICTIMS_SKULL, VICTIMS_RIB_BONE, VICTIMS_SPINE)) ? "30970-05.html" : "30970-06.html";
-							break;
+							htmltext = "30970-07.htm";
 						}
-						case 2:
+						else if ((cond > 2) && (cond < 6))
 						{
-							htmltext = "30970-08.html";
-							break;
+							htmltext = "30970-08.htm";
 						}
-						case 3:
+						else
 						{
-							htmltext = "30970-09.html";
-							break;
-						}
-						case 7:
-						{
-							htmltext = "30970-10.html";
-							break;
-						}
-						case 8:
-						{
-							final int memoStateEx = qs.getMemoStateEx(1);
-							final int uselessBonePiecesCount = getQuestItemsCount(player, USELESS_BONE_PIECES);
-							if ((memoStateEx == 1) || (memoStateEx == 2))
+							// Shared part between cond 6 and 7.
+							final int amount = getQuestItemsCount(player, USELESS_BONE_PIECES) * 70;
+							takeItems(player, USELESS_BONE_PIECES, -1);
+							
+							// Scaried little girl
+							if (cond == 7)
 							{
-								giveItems(player, BILL_OF_IASON_HEINE, 3);
-								giveAdena(player, 5390 + (70 * uselessBonePiecesCount), true);
-								htmltext = "30970-11.html";
-							}
-							else if (memoStateEx == 3)
-							{
-								if (getRandom(100) <= 92)
-								{
-									giveItems(player, BILL_OF_IASON_HEINE, 5);
-								}
-								else
+								htmltext = "30970-10.htm";
+								giveAdena(player, 3040 + amount, true);
+								
+								// Reward can be either an Imperial Diamond or bills.
+								if (getRandom(100) < 10)
 								{
 									giveItems(player, IMPERIAL_DIAMOND, 1);
 								}
-								
-								giveAdena(player, 3040 + (70 * uselessBonePiecesCount), true);
-								htmltext = "30970-12.html";
+								else
+								{
+									giveItems(player, BILL_OF_IASON_HEINE, 5);
+								}
 							}
-							
-							qs.exitQuest(true, true);
-							break;
-						}
-					}
-					break;
-				}
-				case ORPHEUS:
-				{
-					if (hasQuestItems(player, USELESS_BONE_PIECES))
-					{
-						htmltext = "30971-01.html";
-					}
-					break;
-				}
-				case MEDIUM_JAR:
-				{
-					switch (qs.getMemoState())
-					{
-						case 3:
-						{
-							takeItems(player, -1, POWDER_TO_SUMMON_DEAD_SOULS, VICTIMS_ARM_BONE, VICTIMS_THIGH_BONE, VICTIMS_SKULL, VICTIMS_RIB_BONE, VICTIMS_SPINE);
-							qs.setMemoState(7);
-							
-							final int random = getRandom(100);
-							if (random <= 39)
-							{
-								qs.setMemoStateEx(1, 1);
-							}
-							else if (random <= 79)
-							{
-								qs.setMemoStateEx(1, 2);
-							}
+							// Friends of Dorothy
 							else
 							{
-								qs.setMemoStateEx(1, 3);
+								htmltext = "30970-09.htm";
+								giveAdena(player, 5390 + amount, true);
+								giveItems(player, BILL_OF_IASON_HEINE, 3);
 							}
-							
-							htmltext = "30973-01.html";
-							break;
+							st.exitQuest(true, true);
 						}
-						case 7:
-						{
-							final int memoStateEx = qs.getMemoStateEx(1);
-							if (memoStateEx == 1)
-							{
-								htmltext = "30973-08.html";
-							}
-							else if (memoStateEx == 2)
-							{
-								htmltext = "30973-09.html";
-							}
-							else if (memoStateEx == 3)
-							{
-								htmltext = "30973-10.html";
-							}
-							break;
-						}
-						case 8:
-						{
-							htmltext = "30973-11.html";
-							break;
-						}
+						break;
 					}
-					break;
-				}
-				case XENOVIA:
-				{
-					if (qs.isMemoState(2))
+					case XENOVIA:
 					{
-						htmltext = "30912-01.html";
+						if (cond == 2)
+						{
+							htmltext = "30912-01.htm";
+						}
+						else if (cond > 2)
+						{
+							htmltext = "30912-06.htm";
+						}
+						break;
 					}
-					else if (qs.isMemoState(7) || qs.isMemoState(8) || hasQuestItems(player, POWDER_TO_SUMMON_DEAD_SOULS))
+					case MEDIUM_JAR:
 					{
-						htmltext = "30912-06.html";
+						htmltext = "30973-01.htm";
+						break;
 					}
-					break;
+					case ORPHEUS:
+					{
+						htmltext = "30971-01.htm";
+						break;
+					}
 				}
+				break;
 			}
 		}
+		
 		return htmltext;
+	}
+	
+	@Override
+	public String onKill(Npc npc, Player player, boolean isPet)
+	{
+		final QuestState st = getQuestState(player, false);
+		if ((st == null) || !st.isCond(1))
+		{
+			return null;
+		}
+		
+		if (getRandom(4) == 0)
+		{
+			final int randomPart = getRandom(VICTIM_ARM_BONE, VICTIM_SPINE);
+			if (!hasQuestItems(player, randomPart))
+			{
+				playSound(player, QuestSound.ITEMSOUND_QUEST_ITEMGET);
+				giveItems(player, randomPart, 1);
+				return null;
+			}
+		}
+		
+		playSound(player, QuestSound.ITEMSOUND_QUEST_ITEMGET);
+		giveItems(player, USELESS_BONE_PIECES, 1);
+		
+		return null;
 	}
 }

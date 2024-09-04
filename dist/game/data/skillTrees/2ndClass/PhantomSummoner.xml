@@ -184,7 +184,6 @@
 		<skill skillName="Summon Spark Cubic" skillId="1281" skillLevel="2" getLevel="44" levelUpSp="35000" learnedByNpc="true" />
 		<skill skillName="Mass Summon Phantom Cubic" skillId="1330" skillLevel="2" getLevel="44" levelUpSp="35000" learnedByNpc="true" />
 		<skill skillName="Wind Shackle" skillId="1206" skillLevel="7" getLevel="44" levelUpSp="35000" learnedByNpc="true" />
-		<skill skillName="Curse Poison" skillId="1168" skillLevel="4" getLevel="44" levelUpSp="35000" learnedByNpc="true" />
 		<skill skillName="Servitor Heal" skillId="1127" skillLevel="19" getLevel="48" levelUpSp="22000" learnedByNpc="true" />
 		<skill skillName="Servitor Heal" skillId="1127" skillLevel="20" getLevel="48" levelUpSp="22000" learnedByNpc="true" />
 		<skill skillName="Servitor Heal" skillId="1127" skillLevel="21" getLevel="48" levelUpSp="22000" learnedByNpc="true" />
@@ -214,7 +213,6 @@
 		<skill skillName="Servitor Empowerment" skillId="1299" skillLevel="1" getLevel="52" levelUpSp="90000" learnedByNpc="true" />
 		<skill skillName="Mass Summon Phantom Cubic" skillId="1330" skillLevel="3" getLevel="52" levelUpSp="90000" learnedByNpc="true" />
 		<skill skillName="Wind Shackle" skillId="1206" skillLevel="9" getLevel="52" levelUpSp="90000" learnedByNpc="true" />
-		<skill skillName="Curse Poison" skillId="1168" skillLevel="5" getLevel="52" levelUpSp="90000" learnedByNpc="true" />
 		<skill skillName="Servitor Heal" skillId="1127" skillLevel="25" getLevel="56" levelUpSp="32000" learnedByNpc="true" />
 		<skill skillName="Servitor Heal" skillId="1127" skillLevel="26" getLevel="56" levelUpSp="32000" learnedByNpc="true" />
 		<skill skillName="Servitor Heal" skillId="1127" skillLevel="27" getLevel="56" levelUpSp="32000" learnedByNpc="true" />
@@ -271,7 +269,6 @@
 		<skill skillName="Wind Shackle" skillId="1206" skillLevel="13" getLevel="62" levelUpSp="220000" learnedByNpc="true" />
 		<skill skillName="Betray" skillId="1380" skillLevel="4" getLevel="62" levelUpSp="220000" learnedByNpc="true" />
 		<skill skillName="Mass Surrender to Wind" skillId="1385" skillLevel="2" getLevel="62" levelUpSp="220000" learnedByNpc="true" />
-		<skill skillName="Curse Poison" skillId="1168" skillLevel="6" getLevel="62" levelUpSp="220000" learnedByNpc="true" />
 		<skill skillName="Servitor Heal" skillId="1127" skillLevel="34" getLevel="64" levelUpSp="160000" learnedByNpc="true" />
 		<skill skillName="Servitor Heal" skillId="1127" skillLevel="35" getLevel="64" levelUpSp="160000" learnedByNpc="true" />
 		<skill skillName="Servitor Recharge" skillId="1126" skillLevel="23" getLevel="64" levelUpSp="160000" learnedByNpc="true" />
@@ -333,7 +330,6 @@
 		<skill skillName="Summon Nightshade" skillId="1333" skillLevel="9" getLevel="72" levelUpSp="940000" learnedByNpc="true" />
 		<skill skillName="Wind Shackle" skillId="1206" skillLevel="18" getLevel="72" levelUpSp="940000" learnedByNpc="true" />
 		<skill skillName="Betray" skillId="1380" skillLevel="9" getLevel="72" levelUpSp="940000" learnedByNpc="true" />
-		<skill skillName="Curse Poison" skillId="1168" skillLevel="7" getLevel="72" levelUpSp="940000" learnedByNpc="true" />
 		<skill skillName="Servitor Heal" skillId="1127" skillLevel="44" getLevel="74" levelUpSp="610000" learnedByNpc="true" />
 		<skill skillName="Servitor Heal" skillId="1127" skillLevel="45" getLevel="74" levelUpSp="610000" learnedByNpc="true" />
 		<skill skillName="Servitor Recharge" skillId="1126" skillLevel="33" getLevel="74" levelUpSp="610000" learnedByNpc="true" />

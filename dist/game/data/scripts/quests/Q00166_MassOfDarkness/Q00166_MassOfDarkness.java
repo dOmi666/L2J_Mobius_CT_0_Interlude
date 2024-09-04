@@ -16,21 +16,14 @@
  */
 package quests.Q00166_MassOfDarkness;
 
-import java.util.HashMap;
-import java.util.Map;
-
+import org.l2jmobius.gameserver.enums.QuestSound;
 import org.l2jmobius.gameserver.enums.Race;
 import org.l2jmobius.gameserver.model.actor.Npc;
 import org.l2jmobius.gameserver.model.actor.Player;
 import org.l2jmobius.gameserver.model.quest.Quest;
 import org.l2jmobius.gameserver.model.quest.QuestState;
 import org.l2jmobius.gameserver.model.quest.State;
-import org.l2jmobius.gameserver.network.NpcStringId;
 
-/**
- * Mass of Darkness (166)
- * @author xban1x
- */
 public class Q00166_MassOfDarkness extends Quest
 {
 	// NPCs
@@ -42,103 +35,156 @@ public class Q00166_MassOfDarkness extends Quest
 	private static final int UNDRIAS_LETTER = 1088;
 	private static final int CEREMONIAL_DAGGER = 1089;
 	private static final int DREVIANT_WINE = 1090;
-	private static final int GARMIELS_SCRIPTURE = 1091;
-	// Misc
-	private static final int MIN_LEVEL = 2;
-	private static final Map<Integer, Integer> NPCs = new HashMap<>();
-	static
-	{
-		NPCs.put(IRIA, CEREMONIAL_DAGGER);
-		NPCs.put(DORANKUS, DREVIANT_WINE);
-		NPCs.put(TRUDY, GARMIELS_SCRIPTURE);
-	}
+	private static final int GARMIEL_SCRIPTURE = 1091;
 	
 	public Q00166_MassOfDarkness()
 	{
 		super(166);
+		registerQuestItems(UNDRIAS_LETTER, CEREMONIAL_DAGGER, DREVIANT_WINE, GARMIEL_SCRIPTURE);
 		addStartNpc(UNDRIAS);
 		addTalkId(UNDRIAS, IRIA, DORANKUS, TRUDY);
-		registerQuestItems(UNDRIAS_LETTER, CEREMONIAL_DAGGER, DREVIANT_WINE, GARMIELS_SCRIPTURE);
 	}
 	
 	@Override
-	public String onAdvEvent(String event, Npc npc, Player player)
+	public String onEvent(String event, Npc npc, Player player)
 	{
-		final QuestState qs = getQuestState(player, false);
-		if ((qs != null) && event.equals("30130-03.htm"))
+		final String htmltext = event;
+		final QuestState st = getQuestState(player, false);
+		if (st == null)
 		{
-			qs.startQuest();
-			giveItems(player, UNDRIAS_LETTER, 1);
-			return event;
+			return htmltext;
 		}
-		return null;
+		
+		if (event.equals("30130-04.htm"))
+		{
+			st.startQuest();
+			giveItems(player, UNDRIAS_LETTER, 1);
+		}
+		
+		return htmltext;
 	}
 	
 	@Override
 	public String onTalk(Npc npc, Player player)
 	{
-		final QuestState qs = getQuestState(player, true);
 		String htmltext = getNoQuestMsg(player);
-		switch (npc.getId())
+		final QuestState st = getQuestState(player, true);
+		
+		switch (st.getState())
 		{
-			case UNDRIAS:
+			case State.CREATED:
 			{
-				switch (qs.getState())
+				if (player.getRace() != Race.DARK_ELF)
 				{
-					case State.CREATED:
+					htmltext = "30130-00.htm";
+				}
+				else if (player.getLevel() < 2)
+				{
+					htmltext = "30130-02.htm";
+				}
+				else
+				{
+					htmltext = "30130-03.htm";
+				}
+				break;
+			}
+			case State.STARTED:
+			{
+				final int cond = st.getCond();
+				switch (npc.getId())
+				{
+					case UNDRIAS:
 					{
-						htmltext = (player.getRace() == Race.DARK_ELF) ? (player.getLevel() >= MIN_LEVEL) ? "30130-02.htm" : "30130-01.htm" : "30130-00.htm";
+						if (cond == 1)
+						{
+							htmltext = "30130-05.htm";
+						}
+						else if (cond == 2)
+						{
+							htmltext = "30130-06.htm";
+							takeItems(player, CEREMONIAL_DAGGER, 1);
+							takeItems(player, DREVIANT_WINE, 1);
+							takeItems(player, GARMIEL_SCRIPTURE, 1);
+							takeItems(player, UNDRIAS_LETTER, 1);
+							giveAdena(player, 500, true);
+							addExpAndSp(player, 500, 0);
+							st.exitQuest(false, true);
+						}
 						break;
 					}
-					case State.STARTED:
+					case IRIA:
 					{
-						if (qs.isCond(2) && hasQuestItems(player, UNDRIAS_LETTER, CEREMONIAL_DAGGER, DREVIANT_WINE, GARMIELS_SCRIPTURE))
+						if ((cond == 1) && !hasQuestItems(player, CEREMONIAL_DAGGER))
 						{
-							showOnScreenMsg(player, NpcStringId.DELIVERY_DUTY_COMPLETE_N_GO_FIND_THE_NEWBIE_GUIDE, 2, 5000); // TODO: Newbie Guide
-							addExpAndSp(player, 5672, 466);
-							giveAdena(player, 2966, true);
-							qs.exitQuest(false, true);
-							htmltext = "30130-05.html";
+							htmltext = "30135-01.htm";
+							giveItems(player, CEREMONIAL_DAGGER, 1);
+							if (hasQuestItems(player, DREVIANT_WINE, GARMIEL_SCRIPTURE))
+							{
+								st.setCond(2, true);
+							}
+							else
+							{
+								playSound(player, QuestSound.ITEMSOUND_QUEST_ITEMGET);
+							}
 						}
-						else
+						else if (cond == 2)
 						{
-							htmltext = "30130-04.html";
+							htmltext = "30135-02.htm";
 						}
 						break;
 					}
-					case State.COMPLETED:
+					case DORANKUS:
 					{
-						htmltext = getAlreadyCompletedMsg(player);
+						if ((cond == 1) && !hasQuestItems(player, DREVIANT_WINE))
+						{
+							htmltext = "30139-01.htm";
+							giveItems(player, DREVIANT_WINE, 1);
+							if (hasQuestItems(player, CEREMONIAL_DAGGER, GARMIEL_SCRIPTURE))
+							{
+								st.setCond(2, true);
+							}
+							else
+							{
+								playSound(player, QuestSound.ITEMSOUND_QUEST_ITEMGET);
+							}
+						}
+						else if (cond == 2)
+						{
+							htmltext = "30139-02.htm";
+						}
+						break;
+					}
+					case TRUDY:
+					{
+						if ((cond == 1) && !hasQuestItems(player, GARMIEL_SCRIPTURE))
+						{
+							htmltext = "30143-01.htm";
+							giveItems(player, GARMIEL_SCRIPTURE, 1);
+							if (hasQuestItems(player, CEREMONIAL_DAGGER, DREVIANT_WINE))
+							{
+								st.setCond(2, true);
+							}
+							else
+							{
+								playSound(player, QuestSound.ITEMSOUND_QUEST_ITEMGET);
+							}
+						}
+						else if (cond == 2)
+						{
+							htmltext = "30143-02.htm";
+						}
 						break;
 					}
 				}
 				break;
 			}
-			case IRIA:
-			case DORANKUS:
-			case TRUDY:
+			case State.COMPLETED:
 			{
-				if (qs.isStarted())
-				{
-					final int npcId = npc.getId();
-					final int itemId = NPCs.get(npcId);
-					if (qs.isCond(1) && !hasQuestItems(player, itemId))
-					{
-						giveItems(player, itemId, 1);
-						if (hasQuestItems(player, CEREMONIAL_DAGGER, DREVIANT_WINE, GARMIELS_SCRIPTURE))
-						{
-							qs.setCond(2, true);
-						}
-						htmltext = npcId + "-01.html";
-					}
-					else
-					{
-						htmltext = npcId + "-02.html";
-					}
-					break;
-				}
+				htmltext = getAlreadyCompletedMsg(player);
+				break;
 			}
 		}
+		
 		return htmltext;
 	}
 }

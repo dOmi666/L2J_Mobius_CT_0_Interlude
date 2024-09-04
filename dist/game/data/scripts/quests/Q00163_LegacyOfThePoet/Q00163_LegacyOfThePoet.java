@@ -56,7 +56,7 @@ public class Q00163_LegacyOfThePoet extends Quest
 	}
 	
 	@Override
-	public String onAdvEvent(String event, Npc npc, Player player)
+	public String onEvent(String event, Npc npc, Player player)
 	{
 		final QuestState qs = getQuestState(player, false);
 		String htmltext = null;
@@ -76,6 +76,41 @@ public class Q00163_LegacyOfThePoet extends Quest
 					htmltext = event;
 					break;
 				}
+			}
+		}
+		return htmltext;
+	}
+	
+	@Override
+	public String onTalk(Npc npc, Player player)
+	{
+		final QuestState qs = getQuestState(player, true);
+		String htmltext = getNoQuestMsg(player);
+		switch (qs.getState())
+		{
+			case State.CREATED:
+			{
+				htmltext = (player.getRace() != Race.DARK_ELF) ? (player.getLevel() >= MIN_LEVEL) ? "30220-02.htm" : "30220-01.htm" : "30220-00.htm";
+				break;
+			}
+			case State.STARTED:
+			{
+				if (hasQuestItems(player, RUMIELS_1ST_POEM, RUMIELS_2ND_POEM, RUMIELS_3RD_POEM, RUMIELS_4TH_POEM))
+				{
+					giveAdena(player, 13890, true);
+					qs.exitQuest(false, true);
+					htmltext = "30220-07.html";
+				}
+				else
+				{
+					htmltext = "30220-06.html";
+				}
+				break;
+			}
+			case State.COMPLETED:
+			{
+				htmltext = getAlreadyCompletedMsg(player);
+				break;
 			}
 		}
 		return htmltext;
@@ -137,41 +172,5 @@ public class Q00163_LegacyOfThePoet extends Quest
 			}
 		}
 		return super.onKill(npc, killer, isSummon);
-	}
-	
-	@Override
-	public String onTalk(Npc npc, Player player)
-	{
-		final QuestState qs = getQuestState(player, true);
-		String htmltext = getNoQuestMsg(player);
-		switch (qs.getState())
-		{
-			case State.CREATED:
-			{
-				htmltext = (player.getRace() != Race.DARK_ELF) ? (player.getLevel() >= MIN_LEVEL) ? "30220-02.htm" : "30220-01.htm" : "30220-00.htm";
-				break;
-			}
-			case State.STARTED:
-			{
-				if (hasQuestItems(player, RUMIELS_1ST_POEM, RUMIELS_2ND_POEM, RUMIELS_3RD_POEM, RUMIELS_4TH_POEM))
-				{
-					addExpAndSp(player, 21643, 943);
-					giveAdena(player, 13890, true);
-					qs.exitQuest(false, true);
-					htmltext = "30220-07.html";
-				}
-				else
-				{
-					htmltext = "30220-06.html";
-				}
-				break;
-			}
-			case State.COMPLETED:
-			{
-				htmltext = getAlreadyCompletedMsg(player);
-				break;
-			}
-		}
-		return htmltext;
 	}
 }

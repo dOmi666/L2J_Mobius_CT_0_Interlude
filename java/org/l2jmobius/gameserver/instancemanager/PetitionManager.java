@@ -84,12 +84,12 @@ public class PetitionManager
 		currPetition.sendPetitionerPacket(new SystemMessage(SystemMessageId.PETITION_APPLICATION_ACCEPTED));
 		
 		// Petition application accepted. Reciept No. is <ID>
-		SystemMessage sm = new SystemMessage(SystemMessageId.YOUR_PETITION_APPLICATION_HAS_BEEN_ACCEPTED_N_RECEIPT_NO_IS_S1);
+		SystemMessage sm = new SystemMessage(SystemMessageId.YOUR_PETITION_APPLICATION_HAS_BEEN_ACCEPTED_RECEIPT_NO_IS_S1);
 		sm.addInt(currPetition.getId());
 		currPetition.sendResponderPacket(sm);
 		
 		// Petition consultation with <Player> underway.
-		sm = new SystemMessage(SystemMessageId.STARTING_PETITION_CONSULTATION_WITH_C1);
+		sm = new SystemMessage(SystemMessageId.PETITION_CONSULTATION_WITH_S1_UNDER_WAY);
 		sm.addString(currPetition.getPetitioner().getName());
 		currPetition.sendResponderPacket(sm);
 		
@@ -344,7 +344,7 @@ public class PetitionManager
 	public void sendPendingPetitionList(Player player)
 	{
 		final StringBuilder htmlContent = new StringBuilder(600 + (_pendingPetitions.size() * 300));
-		htmlContent.append("<html><body><center><table width=270><tr><td width=45><button value=\"Main\" action=\"bypass -h admin_admin\" width=45 height=15 back=\"sek.cbui94\" fore=\"sek.cbui92\"></td><td width=180><center>Petition Menu</center></td><td width=45><button value=\"Back\" action=\"bypass -h admin_admin7\" width=45 height=15 back=\"sek.cbui94\" fore=\"sek.cbui92\"></td></tr></table><br><table width=\"270\"><tr><td><table width=\"270\"><tr><td><button value=\"Reset\" action=\"bypass -h admin_reset_petitions\" width=\"80\" height=\"15\" back=\"sek.cbui94\" fore=\"sek.cbui92\"></td><td align=right><button value=\"Refresh\" action=\"bypass -h admin_view_petitions\" width=\"80\" height=\"15\" back=\"sek.cbui94\" fore=\"sek.cbui92\"></td></tr></table><br></td></tr>");
+		htmlContent.append("<html><body><center><table width=270><tr><td width=45><button value=\"Main\" action=\"bypass admin_admin\" width=45 height=15 back=\"sek.cbui94\" fore=\"sek.cbui92\"></td><td width=180><center>Petition Menu</center></td><td width=45><button value=\"Back\" action=\"bypass admin_admin7\" width=45 height=15 back=\"sek.cbui94\" fore=\"sek.cbui92\"></td></tr></table><br><table width=\"270\"><tr><td><table width=\"270\"><tr><td><button value=\"Reset\" action=\"bypass -h admin_reset_petitions\" width=\"80\" height=\"15\" back=\"sek.cbui94\" fore=\"sek.cbui92\"></td><td align=right><button value=\"Refresh\" action=\"bypass -h admin_view_petitions\" width=\"80\" height=\"15\" back=\"sek.cbui94\" fore=\"sek.cbui92\"></td></tr></table><br></td></tr>");
 		
 		final SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm");
 		if (_pendingPetitions.isEmpty())

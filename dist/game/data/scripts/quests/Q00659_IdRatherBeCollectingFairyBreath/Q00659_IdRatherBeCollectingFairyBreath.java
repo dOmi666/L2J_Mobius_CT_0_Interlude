@@ -16,119 +16,115 @@
  */
 package quests.Q00659_IdRatherBeCollectingFairyBreath;
 
-import java.util.HashMap;
-import java.util.Map;
-
+import org.l2jmobius.gameserver.enums.QuestSound;
 import org.l2jmobius.gameserver.model.actor.Npc;
 import org.l2jmobius.gameserver.model.actor.Player;
 import org.l2jmobius.gameserver.model.quest.Quest;
 import org.l2jmobius.gameserver.model.quest.QuestState;
+import org.l2jmobius.gameserver.model.quest.State;
 
-/**
- * I'd Rather Be Collecting Fairy Breath (659)
- * @author Adry_85
- */
 public class Q00659_IdRatherBeCollectingFairyBreath extends Quest
 {
-	// NPC
+	// NPCs
 	private static final int GALATEA = 30634;
+	// Monsters
+	private static final int SOBBING_WIND = 21023;
+	private static final int BABBLING_WIND = 21024;
+	private static final int GIGGLING_WIND = 21025;
 	// Item
 	private static final int FAIRY_BREATH = 8286;
-	// Misc
-	private static final int MIN_LEVEL = 26;
-	// Mobs
-	private static final Map<Integer, Double> MOBS = new HashMap<>();
-	static
-	{
-		MOBS.put(20078, 0.98); // whispering_wind
-		MOBS.put(21023, 0.82); // sobing_wind
-		MOBS.put(21024, 0.86); // babbleing_wind
-		MOBS.put(21025, 0.90); // giggleing_wind
-		MOBS.put(21026, 0.96); // singing_wind
-	}
 	
 	public Q00659_IdRatherBeCollectingFairyBreath()
 	{
 		super(659);
+		registerQuestItems(FAIRY_BREATH);
 		addStartNpc(GALATEA);
 		addTalkId(GALATEA);
-		addKillId(MOBS.keySet());
-		registerQuestItems(FAIRY_BREATH);
+		addKillId(GIGGLING_WIND, BABBLING_WIND, SOBBING_WIND);
 	}
 	
 	@Override
-	public String onAdvEvent(String event, Npc npc, Player player)
+	public String onEvent(String event, Npc npc, Player player)
 	{
-		final QuestState qs = getQuestState(player, false);
-		if (qs == null)
+		String htmltext = event;
+		final QuestState st = getQuestState(player, false);
+		if (st == null)
 		{
-			return null;
+			return htmltext;
 		}
 		
-		String htmltext = null;
 		switch (event)
 		{
-			case "30634-02.htm":
+			case "30634-03.htm":
 			{
-				qs.startQuest();
-				htmltext = event;
+				st.startQuest();
 				break;
 			}
-			case "REWARD":
+			case "30634-06.htm":
 			{
-				if (hasQuestItems(player, FAIRY_BREATH))
+				final int count = getQuestItemsCount(player, FAIRY_BREATH);
+				if (count > 0)
 				{
-					final int count = getQuestItemsCount(player, FAIRY_BREATH);
-					final int bonus = ((count >= 10) ? 5365 : 0);
-					takeItems(player, FAIRY_BREATH, -1);
-					giveAdena(player, (count * 50) + bonus, true);
-					htmltext = "30634-05.html";
-				}
-				else
-				{
-					htmltext = "30634-06.html";
+					takeItems(player, FAIRY_BREATH, count);
+					if (count < 10)
+					{
+						giveAdena(player, count * 50, true);
+					}
+					else
+					{
+						giveAdena(player, (count * 50) + 5365, true);
+					}
 				}
 				break;
 			}
-			case "30634-07.html":
+			case "30634-08.htm":
 			{
-				htmltext = event;
-				break;
-			}
-			case "30634-08.html":
-			{
-				qs.exitQuest(true, true);
-				htmltext = event;
+				st.exitQuest(true);
 				break;
 			}
 		}
+		
 		return htmltext;
-	}
-	
-	@Override
-	public String onKill(Npc npc, Player player, boolean isSummon)
-	{
-		final QuestState qs = getRandomPartyMemberState(player, -1, 3, npc);
-		if (qs != null)
-		{
-			giveItemRandomly(player, npc, FAIRY_BREATH, 1, 0, MOBS.get(npc.getId()), true);
-		}
-		return super.onKill(npc, player, isSummon);
 	}
 	
 	@Override
 	public String onTalk(Npc npc, Player player)
 	{
-		final QuestState qs = getQuestState(player, true);
 		String htmltext = getNoQuestMsg(player);
-		if (qs.isCreated())
+		final QuestState st = getQuestState(player, true);
+		
+		switch (st.getState())
 		{
-			htmltext = ((player.getLevel() >= MIN_LEVEL) ? "30634-01.htm" : "30634-03.html");
+			case State.CREATED:
+			{
+				htmltext = (player.getLevel() < 26) ? "30634-01.htm" : "30634-02.htm";
+				break;
+			}
+			case State.STARTED:
+			{
+				htmltext = (!hasQuestItems(player, FAIRY_BREATH)) ? "30634-04.htm" : "30634-05.htm";
+				break;
+			}
 		}
-		else if (qs.isStarted())
-		{
-			htmltext = (hasQuestItems(player, FAIRY_BREATH) ? "30634-04.html" : "30634-09.html");
-		}
+		
 		return htmltext;
+	}
+	
+	@Override
+	public String onKill(Npc npc, Player player, boolean isPet)
+	{
+		final QuestState st = getQuestState(player, false);
+		if ((st == null) || !st.isStarted())
+		{
+			return null;
+		}
+		
+		if (getRandom(10) < 9)
+		{
+			giveItems(player, FAIRY_BREATH, 1);
+			playSound(player, QuestSound.ITEMSOUND_QUEST_ITEMGET);
+		}
+		
+		return null;
 	}
 }

@@ -1,8 +1,4 @@
 /*
- * This file is part of the L2J Mobius project.
- * 
- * This program is free software: you can redistribute it and/or modify
- * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
  * (at your option) any later version.
  * 
@@ -16,283 +12,210 @@
  */
 package quests.Q00045_ToTalkingIsland;
 
-import java.util.HashMap;
-import java.util.Map;
-
+import org.l2jmobius.gameserver.enums.Race;
 import org.l2jmobius.gameserver.model.actor.Npc;
 import org.l2jmobius.gameserver.model.actor.Player;
-import org.l2jmobius.gameserver.model.holders.ItemHolder;
 import org.l2jmobius.gameserver.model.quest.Quest;
 import org.l2jmobius.gameserver.model.quest.QuestState;
 import org.l2jmobius.gameserver.model.quest.State;
 
-import quests.Q00006_StepIntoTheFuture.Q00006_StepIntoTheFuture;
-
-/**
- * To Talking Island (45)
- * @author janiko
- */
 public class Q00045_ToTalkingIsland extends Quest
 {
-	// Npcs
+	// NPCs
 	private static final int GALLADUCCI = 30097;
 	private static final int GENTLER = 30094;
 	private static final int SANDRA = 30090;
 	private static final int DUSTIN = 30116;
 	// Items
-	private static final int MARK_OF_TRAVELER = 7570;
-	private static final int GALLADUCCIS_ORDER_1 = 7563;
-	private static final int GALLADUCCIS_ORDER_2 = 7564;
-	private static final int GALLADUCCIS_ORDER_3 = 7565;
-	private static final int PURIFIED_MAGIC_NECKLACE = 7566;
-	private static final int GEMSTONE_POWDER = 7567;
+	private static final int ORDER_DOCUMENT_1 = 7563;
+	private static final int ORDER_DOCUMENT_2 = 7564;
+	private static final int ORDER_DOCUMENT_3 = 7565;
 	private static final int MAGIC_SWORD_HILT = 7568;
-	// Misc
-	private static final int MIN_LEVEL = 3;
-	// Reward
-	private static final int SCROLL_OF_ESCAPE_TALKING_ISLAND_VILLAGE = 7554;
-	// Get condition for each npc
-	private static Map<Integer, ItemHolder> NPC_ITEMS = new HashMap<>();
-	static
-	{
-		NPC_ITEMS.put(GENTLER, new ItemHolder(1, GALLADUCCIS_ORDER_1));
-		NPC_ITEMS.put(SANDRA, new ItemHolder(3, GALLADUCCIS_ORDER_2));
-		NPC_ITEMS.put(DUSTIN, new ItemHolder(5, GALLADUCCIS_ORDER_3));
-	}
+	private static final int GEMSTONE_POWDER = 7567;
+	private static final int PURIFIED_MAGIC_NECKLACE = 7566;
+	private static final int MARK_OF_TRAVELER = 7570;
+	private static final int SCROLL_OF_ESCAPE_SPECIAL = 7554;
 	
 	public Q00045_ToTalkingIsland()
 	{
 		super(45);
+		registerQuestItems(ORDER_DOCUMENT_1, ORDER_DOCUMENT_2, ORDER_DOCUMENT_3, MAGIC_SWORD_HILT, GEMSTONE_POWDER, PURIFIED_MAGIC_NECKLACE);
 		addStartNpc(GALLADUCCI);
-		addTalkId(GALLADUCCI);
-		addTalkId(NPC_ITEMS.keySet());
-		registerQuestItems(GALLADUCCIS_ORDER_1, GALLADUCCIS_ORDER_2, GALLADUCCIS_ORDER_3, PURIFIED_MAGIC_NECKLACE, GEMSTONE_POWDER, MAGIC_SWORD_HILT);
+		addTalkId(GALLADUCCI, GENTLER, SANDRA, DUSTIN);
 	}
 	
 	@Override
-	public String onAdvEvent(String event, Npc npc, Player player)
+	public String onEvent(String event, Npc npc, Player player)
 	{
-		final QuestState qs = getQuestState(player, false);
-		String htmltext = null;
-		if (qs == null)
+		String htmltext = event;
+		final QuestState st = getQuestState(player, false);
+		if (st == null)
 		{
 			return htmltext;
 		}
+		
 		switch (event)
 		{
-			case "30097-04.htm":
+			case "30097-03.htm":
 			{
-				if (qs.isCreated())
-				{
-					qs.startQuest();
-					giveItems(player, GALLADUCCIS_ORDER_1, 1);
-					htmltext = event;
-				}
+				st.startQuest();
+				giveItems(player, ORDER_DOCUMENT_1, 1);
 				break;
 			}
-			case "30094-02.html":
+			case "30094-02.htm":
 			{
-				if (qs.isCond(1) && hasQuestItems(player, GALLADUCCIS_ORDER_1))
-				{
-					takeItems(player, GALLADUCCIS_ORDER_1, 1);
-					giveItems(player, MAGIC_SWORD_HILT, 1);
-					qs.setCond(2, true);
-					htmltext = event;
-				}
-				else
-				{
-					htmltext = "30094-03.html";
-				}
+				st.setCond(2, true);
+				takeItems(player, ORDER_DOCUMENT_1, 1);
+				giveItems(player, MAGIC_SWORD_HILT, 1);
 				break;
 			}
-			case "30097-07.html":
+			case "30097-06.htm":
 			{
-				if (qs.isCond(2) && hasQuestItems(player, MAGIC_SWORD_HILT))
-				{
-					takeItems(player, MAGIC_SWORD_HILT, 1);
-					giveItems(player, GALLADUCCIS_ORDER_2, 1);
-					qs.setCond(3, true);
-					htmltext = event;
-				}
-				else
-				{
-					htmltext = "30097-08.html";
-				}
+				st.setCond(3, true);
+				takeItems(player, MAGIC_SWORD_HILT, 1);
+				giveItems(player, ORDER_DOCUMENT_2, 1);
 				break;
 			}
-			case "30090-02.html":
+			case "30090-02.htm":
 			{
-				if (qs.isCond(3) && hasQuestItems(player, GALLADUCCIS_ORDER_2))
-				{
-					takeItems(player, GALLADUCCIS_ORDER_2, 1);
-					giveItems(player, GEMSTONE_POWDER, 1);
-					qs.setCond(4, true);
-					htmltext = event;
-				}
-				else
-				{
-					htmltext = "30090-03.html";
-				}
+				st.setCond(4, true);
+				takeItems(player, ORDER_DOCUMENT_2, 1);
+				giveItems(player, GEMSTONE_POWDER, 1);
 				break;
 			}
-			case "30097-11.html":
+			case "30097-09.htm":
 			{
-				if (qs.isCond(4) && hasQuestItems(player, GEMSTONE_POWDER))
-				{
-					takeItems(player, GEMSTONE_POWDER, 1);
-					giveItems(player, GALLADUCCIS_ORDER_3, 1);
-					qs.setCond(5, true);
-					htmltext = event;
-				}
-				else
-				{
-					htmltext = "30097-12.html";
-				}
+				st.setCond(5, true);
+				takeItems(player, GEMSTONE_POWDER, 1);
+				giveItems(player, ORDER_DOCUMENT_3, 1);
 				break;
 			}
-			case "30116-02.html":
+			case "30116-02.htm":
 			{
-				if (qs.isCond(5) && hasQuestItems(player, GALLADUCCIS_ORDER_3))
-				{
-					takeItems(player, GALLADUCCIS_ORDER_3, 1);
-					giveItems(player, PURIFIED_MAGIC_NECKLACE, 1);
-					qs.setCond(6, true);
-					htmltext = event;
-				}
-				else
-				{
-					htmltext = "30116-03.html";
-				}
+				st.setCond(6, true);
+				takeItems(player, ORDER_DOCUMENT_3, 1);
+				giveItems(player, PURIFIED_MAGIC_NECKLACE, 1);
 				break;
 			}
-			case "30097-15.html":
+			case "30097-12.htm":
 			{
-				if (qs.isCond(6) && hasQuestItems(player, PURIFIED_MAGIC_NECKLACE))
-				{
-					giveItems(player, SCROLL_OF_ESCAPE_TALKING_ISLAND_VILLAGE, 1);
-					qs.exitQuest(false, true);
-					htmltext = event;
-				}
-				else
-				{
-					htmltext = "30097-16.html";
-				}
+				takeItems(player, MARK_OF_TRAVELER, -1);
+				takeItems(player, PURIFIED_MAGIC_NECKLACE, 1);
+				rewardItems(player, SCROLL_OF_ESCAPE_SPECIAL, 1);
+				st.exitQuest(false, true);
 				break;
 			}
 		}
+		
 		return htmltext;
 	}
 	
 	@Override
-	public String onTalk(Npc npc, Player talker)
+	public String onTalk(Npc npc, Player player)
 	{
-		QuestState qs = getQuestState(talker, true);
-		String htmltext = getNoQuestMsg(talker);
+		String htmltext = getNoQuestMsg(player);
+		final QuestState st = getQuestState(player, true);
 		
-		switch (npc.getId())
+		switch (st.getState())
 		{
-			case GALLADUCCI:
+			case State.CREATED:
 			{
-				switch (qs.getState())
+				if ((player.getRace() == Race.HUMAN) && (player.getLevel() >= 3))
 				{
-					case State.CREATED:
+					if (hasQuestItems(player, MARK_OF_TRAVELER))
 					{
-						if (talker.getLevel() < MIN_LEVEL)
+						htmltext = "30097-02.htm";
+					}
+					else
+					{
+						htmltext = "30097-01.htm";
+					}
+				}
+				else
+				{
+					htmltext = "30097-01a.htm";
+				}
+				break;
+			}
+			case State.STARTED:
+			{
+				final int cond = st.getCond();
+				switch (npc.getId())
+				{
+					case GALLADUCCI:
+					{
+						if (cond == 1)
 						{
-							htmltext = "30097-03.html";
+							htmltext = "30097-04.htm";
 						}
-						else
+						else if (cond == 2)
 						{
-							qs = talker.getQuestState(Q00006_StepIntoTheFuture.class.getSimpleName());
-							if ((qs != null) && qs.isCompleted() && hasQuestItems(talker, MARK_OF_TRAVELER))
-							{
-								htmltext = "30097-01.htm";
-							}
-							else
-							{
-								htmltext = "30097-02.html";
-							}
+							htmltext = "30097-05.htm";
+						}
+						else if (cond == 3)
+						{
+							htmltext = "30097-07.htm";
+						}
+						else if (cond == 4)
+						{
+							htmltext = "30097-08.htm";
+						}
+						else if (cond == 5)
+						{
+							htmltext = "30097-10.htm";
+						}
+						else if (cond == 6)
+						{
+							htmltext = "30097-11.htm";
 						}
 						break;
 					}
-					case State.STARTED:
+					case GENTLER:
 					{
-						switch (qs.getCond())
+						if (cond == 1)
 						{
-							case 1:
-							{
-								htmltext = "30097-05.html";
-								break;
-							}
-							case 2:
-							{
-								if (hasQuestItems(talker, MAGIC_SWORD_HILT))
-								{
-									htmltext = "30097-06.html";
-								}
-								break;
-							}
-							case 3:
-							{
-								htmltext = "30097-09.html";
-								break;
-							}
-							case 4:
-							{
-								if (hasQuestItems(talker, GEMSTONE_POWDER))
-								{
-									htmltext = "30097-10.html";
-								}
-								break;
-							}
-							case 5:
-							{
-								htmltext = "30097-13.html";
-								break;
-							}
-							case 6:
-							{
-								if (hasQuestItems(talker, PURIFIED_MAGIC_NECKLACE))
-								{
-									htmltext = "30097-14.html";
-								}
-								break;
-							}
+							htmltext = "30094-01.htm";
+						}
+						else if (cond > 1)
+						{
+							htmltext = "30094-03.htm";
 						}
 						break;
 					}
-					case State.COMPLETED:
+					case SANDRA:
 					{
-						htmltext = getAlreadyCompletedMsg(talker);
+						if (cond == 3)
+						{
+							htmltext = "30090-01.htm";
+						}
+						else if (cond > 3)
+						{
+							htmltext = "30090-03.htm";
+						}
+						break;
+					}
+					case DUSTIN:
+					{
+						if (cond == 5)
+						{
+							htmltext = "30116-01.htm";
+						}
+						else if (cond == 6)
+						{
+							htmltext = "30116-03.htm";
+						}
 						break;
 					}
 				}
 				break;
 			}
-			case GENTLER:
-			case SANDRA:
-			case DUSTIN:
+			case State.COMPLETED:
 			{
-				if (qs.isStarted())
-				{
-					final ItemHolder i = NPC_ITEMS.get(npc.getId());
-					final int cond = i.getId();
-					if (qs.isCond(cond))
-					{
-						final int itemId = i.getCount();
-						if (hasQuestItems(talker, itemId))
-						{
-							htmltext = npc.getId() + "-01.html";
-						}
-					}
-					else if (qs.isCond(cond + 1))
-					{
-						htmltext = npc.getId() + "-04.html";
-					}
-				}
+				htmltext = getAlreadyCompletedMsg(player);
 				break;
 			}
 		}
+		
 		return htmltext;
 	}
 }

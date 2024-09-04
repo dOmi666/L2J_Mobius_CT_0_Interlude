@@ -2,7 +2,7 @@
 <list xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="../../xsd/items.xsd">
 	<item id="4200" type="EtcItem" name="Spellbook: Restore Life">
 		<!-- Spellbook needed to learn Restore Life. Used by Bishops. -->
-		<set name="icon" val="icon.etc_spell_books_assistance_i00" />
+		<set name="icon" val="icon.etc_spell_books_defighter_i00" />
 		<set name="immediate_effect" val="true" />
 		<set name="material" val="PAPER" />
 		<set name="weight" val="120" />
@@ -254,7 +254,7 @@
 		<set name="immediate_effect" val="true" />
 		<set name="material" val="BONE" />
 		<set name="weight" val="1380" />
-		<set name="price" val="9900" />
+		<set name="price" val="12900" />
 		<set name="is_tradable" val="false" />
 		<set name="is_dropable" val="false" />
 		<set name="is_destroyable" val="false" />
@@ -274,7 +274,7 @@
 		<set name="immediate_effect" val="true" />
 		<set name="material" val="BONE" />
 		<set name="weight" val="1380" />
-		<set name="price" val="9900" />
+		<set name="price" val="12900" />
 		<set name="is_tradable" val="false" />
 		<set name="is_dropable" val="false" />
 		<set name="is_destroyable" val="false" />
@@ -295,7 +295,7 @@
 		<set name="immediate_effect" val="true" />
 		<set name="material" val="BRONZE" />
 		<set name="weight" val="8920" />
-		<set name="price" val="37820" />
+		<set name="price" val="49200" />
 		<set name="is_tradable" val="false" />
 		<set name="is_dropable" val="false" />
 		<set name="is_destroyable" val="false" />
@@ -315,7 +315,7 @@
 		<set name="immediate_effect" val="true" />
 		<set name="material" val="BRONZE" />
 		<set name="weight" val="3960" />
-		<set name="price" val="23600" />
+		<set name="price" val="30700" />
 		<set name="is_tradable" val="false" />
 		<set name="is_dropable" val="false" />
 		<set name="is_destroyable" val="false" />
@@ -334,7 +334,7 @@
 		<set name="immediate_effect" val="true" />
 		<set name="material" val="LEATHER" />
 		<set name="weight" val="650" />
-		<set name="price" val="9500" />
+		<set name="price" val="12300" />
 		<set name="is_tradable" val="false" />
 		<set name="is_dropable" val="false" />
 		<set name="is_destroyable" val="false" />
@@ -350,7 +350,7 @@
 		<set name="immediate_effect" val="true" />
 		<set name="material" val="CLOTH" />
 		<set name="weight" val="1310" />
-		<set name="price" val="9500" />
+		<set name="price" val="12300" />
 		<set name="is_tradable" val="false" />
 		<set name="is_dropable" val="false" />
 		<set name="is_destroyable" val="false" />
@@ -367,7 +367,7 @@
 		<set name="immediate_effect" val="true" />
 		<set name="material" val="BRONZE" />
 		<set name="weight" val="8920" />
-		<set name="price" val="37820" />
+		<set name="price" val="49200" />
 		<set name="is_tradable" val="false" />
 		<set name="is_dropable" val="false" />
 		<set name="is_destroyable" val="false" />
@@ -387,7 +387,7 @@
 		<set name="immediate_effect" val="true" />
 		<set name="material" val="BRONZE" />
 		<set name="weight" val="3960" />
-		<set name="price" val="23600" />
+		<set name="price" val="30700" />
 		<set name="is_tradable" val="false" />
 		<set name="is_dropable" val="false" />
 		<set name="is_destroyable" val="false" />
@@ -406,7 +406,7 @@
 		<set name="immediate_effect" val="true" />
 		<set name="material" val="LEATHER" />
 		<set name="weight" val="650" />
-		<set name="price" val="9500" />
+		<set name="price" val="12300" />
 		<set name="is_tradable" val="false" />
 		<set name="is_dropable" val="false" />
 		<set name="is_destroyable" val="false" />
@@ -422,7 +422,7 @@
 		<set name="immediate_effect" val="true" />
 		<set name="material" val="CLOTH" />
 		<set name="weight" val="1310" />
-		<set name="price" val="9500" />
+		<set name="price" val="12300" />
 		<set name="is_tradable" val="false" />
 		<set name="is_dropable" val="false" />
 		<set name="is_destroyable" val="false" />
@@ -452,11 +452,11 @@
 		<set name="attack_range" val="40" />
 		<set name="damage_range" val="0;0;32;120" />
 		<set name="immediate_effect" val="true" />
-		<set name="crystal_count" val="884" />
+		<set name="crystal_count" val="1148" />
 		<set name="crystal_type" val="C" />
 		<set name="material" val="FINE_STEEL" />
 		<set name="weight" val="1490" />
-		<set name="price" val="2209700" />
+		<set name="price" val="2870000" />
 		<set name="soulshots" val="2" />
 		<set name="spiritshots" val="2" />
 		<set name="enchant_enabled" val="true" />
@@ -479,9 +479,9 @@
 		<set name="immediate_effect" val="true" />
 		<set name="material" val="LEATHER" />
 		<set name="weight" val="160" />
-		<set name="price" val="1566000" /> <!-- H5 Price -->
+		<set name="price" val="5628000" />
 		<set name="for_npc" val="true" />
-		<cond msgId="1518">
+		<cond msgId="600">
 			<player categoryType="HATCHLING_GROUP" />
 		</cond>
 		<for>
@@ -498,9 +498,9 @@
 		<set name="immediate_effect" val="true" />
 		<set name="material" val="LEATHER" />
 		<set name="weight" val="160" />
-		<set name="price" val="4793000" /> <!-- H5 Price -->
+		<set name="price" val="19073000" />
 		<set name="for_npc" val="true" />
-		<cond msgId="1518">
+		<cond msgId="600">
 			<player categoryType="HATCHLING_GROUP" />
 		</cond>
 		<for>
@@ -516,9 +516,9 @@
 		<set name="immediate_effect" val="true" />
 		<set name="material" val="LEATHER" />
 		<set name="weight" val="160" />
-		<set name="price" val="4793000" /> <!-- H5 Price -->
+		<set name="price" val="19073000" />
 		<set name="for_npc" val="true" />
-		<cond msgId="1518">
+		<cond msgId="600">
 			<player categoryType="HATCHLING_GROUP" />
 		</cond>
 		<for>
@@ -538,9 +538,9 @@
 		<set name="immediate_effect" val="true" />
 		<set name="material" val="STEEL" />
 		<set name="weight" val="100" />
-		<set name="price" val="2814000" /> <!-- H5 Price -->
+		<set name="price" val="5628000" />
 		<set name="for_npc" val="true" />
-		<cond msgId="1518">
+		<cond msgId="600">
 			<player categoryType="HATCHLING_GROUP" />
 		</cond>
 		<for>
@@ -562,9 +562,9 @@
 		<set name="immediate_effect" val="true" />
 		<set name="material" val="STEEL" />
 		<set name="weight" val="100" />
-		<set name="price" val="9536500" /> <!-- H5 Price -->
+		<set name="price" val="19073000" />
 		<set name="for_npc" val="true" />
-		<cond msgId="1518">
+		<cond msgId="600">
 			<player categoryType="HATCHLING_GROUP" />
 		</cond>
 		<for>

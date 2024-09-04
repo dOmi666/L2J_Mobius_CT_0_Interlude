@@ -1499,13 +1499,13 @@ public class SevenSigns
 					// Start the Festival of Darkness cycle.
 					SevenSignsFestival.getInstance().startFestivalManager();
 					// Send message that Competition has begun.
-					sendMessageToAll(SystemMessageId.SEVEN_SIGNS_THE_COMPETITION_PERIOD_HAS_BEGUN_VISIT_A_PRIEST_OF_DAWN_OR_PRIESTESS_OF_DUSK_TO_PARTICIPATE_IN_THE_EVENT);
+					sendMessageToAll(SystemMessageId.SEVEN_SIGNS_THE_QUEST_EVENT_PERIOD_HAS_BEGUN_VISIT_A_PRIEST_OF_DAWN_OR_PRIESTESS_OF_DUSK_TO_PARTICIPATE_IN_THE_EVENT);
 					break;
 				}
 				case PERIOD_COMPETITION: // Results Calculation
 				{
 					// Send message that Competition has ended.
-					sendMessageToAll(SystemMessageId.SEVEN_SIGNS_THE_COMPETITION_PERIOD_HAS_ENDED_THE_NEXT_QUEST_EVENT_WILL_START_IN_ONE_WEEK);
+					sendMessageToAll(SystemMessageId.SEVEN_SIGNS_THE_QUEST_EVENT_PERIOD_HAS_ENDED_THE_NEXT_QUEST_EVENT_WILL_START_IN_ONE_WEEK);
 					final int compWinner = getCabalHighestScore();
 					// Schedule a stop of the festival engine and reward highest ranking members from cycle
 					SevenSignsFestival.getInstance().getFestivalManagerSchedule().cancel(false);

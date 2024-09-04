@@ -27,7 +27,6 @@ import org.l2jmobius.gameserver.model.actor.Player;
 import org.l2jmobius.gameserver.model.actor.instance.BroadcastingTower;
 import org.l2jmobius.gameserver.network.SystemMessageId;
 import org.l2jmobius.gameserver.network.serverpackets.ActionFailed;
-import org.l2jmobius.gameserver.network.serverpackets.ItemList;
 
 public class Observation implements IBypassHandler
 {
@@ -43,31 +42,31 @@ public class Observation implements IBypassHandler
 		//@formatter:off
 		// Gludio
 		{-18347, 114000, -2360, 500},
-		{-18347, 113255, -2447, 500},
+		{-18347, 113090, -2085, 500},
 		// Dion
 		{22321, 155785, -2604, 500},
-		{22321, 156492, -2627, 500},
+		{22321, 156693, -2279, 500},
 		// Giran
 		{112000, 144864, -2445, 500},
-		{112657, 144864, -2525, 500},
+		{112833, 144859, -2152, 500},
 		// Innadril
 		{116260, 244600, -775, 500},
-		{116260, 245264, -721, 500},
+		{116260, 245446, -374, 500},
 		// Oren
 		{78100, 36950, -2242, 500},
-		{78744, 36950, -2244, 500},
+		{78947, 36955, -1867, 500},
 		// Aden
 		{147457, 9601, -233, 500},
-		{147457, 8720, -252, 500},
+		{147665, 8361, 479, 500},
 		// Goddard
 		{147542, -43543, -1328, 500},
-		{147465, -45259, -1328, 500},
+		{147471, -45631, -1347, 500},
 		// Rune
 		{20598, -49113, -300, 500},
-		{18702, -49150, -600, 500},
+		{18246, -49156, -574, 500},
 		// Schuttgart
 		{77541, -147447, 353, 500},
-		{77541, -149245, 353, 500},
+		{77541, -149722, 363, 500},
 		// Coliseum
 		{148416, 46724, -3000, 80},
 		{149500, 46724, -3000, 80},
@@ -83,7 +82,10 @@ public class Observation implements IBypassHandler
 		{-76175, 113330, -4300, 500},
 		{-74305, 111965, -4300, 500},
 		{-75915, 110600, -4300, 500},
-		{-78930, 110005, -4300, 500}
+		{-78930, 110005, -4300, 500},
+		// Monster Race Track
+		{13152, 182546, -3207, 0},
+		{11905, 182073, -3235, 0}
 		//@formatter:on
 	};
 	
@@ -103,6 +105,11 @@ public class Observation implements IBypassHandler
 		if (player.isRegisteredOnEvent())
 		{
 			player.sendMessage("Cannot use while registered on an event");
+			return false;
+		}
+		if (player.isInCombat())
+		{
+			player.sendPacket(SystemMessageId.YOU_CANNOT_OBSERVE_WHILE_YOU_ARE_IN_COMBAT);
 			return false;
 		}
 		
@@ -160,7 +167,7 @@ public class Observation implements IBypassHandler
 		{
 			// enter mode
 			player.enterObserverMode(pos);
-			player.sendPacket(new ItemList(player, false));
+			player.sendItemList(false);
 		}
 		player.sendPacket(ActionFailed.STATIC_PACKET);
 	}

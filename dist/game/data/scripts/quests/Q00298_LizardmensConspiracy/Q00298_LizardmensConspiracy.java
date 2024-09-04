@@ -16,154 +16,200 @@
  */
 package quests.Q00298_LizardmensConspiracy;
 
-import java.util.HashMap;
-import java.util.Map;
-
+import org.l2jmobius.gameserver.enums.QuestSound;
 import org.l2jmobius.gameserver.model.actor.Npc;
 import org.l2jmobius.gameserver.model.actor.Player;
-import org.l2jmobius.gameserver.model.holders.ItemChanceHolder;
 import org.l2jmobius.gameserver.model.quest.Quest;
 import org.l2jmobius.gameserver.model.quest.QuestState;
+import org.l2jmobius.gameserver.model.quest.State;
 
-/**
- * Lizardmen's Conspiracy (298)
- * @author xban1x
- */
 public class Q00298_LizardmensConspiracy extends Quest
 {
 	// NPCs
-	private static final int GUARD_PRAGA = 30333;
-	private static final int MAGISTER_ROHMER = 30344;
+	private static final int PRAGA = 30333;
+	private static final int ROHMER = 30344;
 	// Items
-	private static final int PATROLS_REPORT = 7182;
-	private static final int SHINING_GEM = 7183;
-	private static final int SHINING_RED_GEM = 7184;
-	// Monsters
-	private static final Map<Integer, ItemChanceHolder> MONSTERS = new HashMap<>();
-	static
-	{
-		MONSTERS.put(20922, new ItemChanceHolder(SHINING_GEM, 0.49, 1)); // Maille Lizardman Warrio
-		MONSTERS.put(20923, new ItemChanceHolder(SHINING_GEM, 0.70, 1)); // Maille Lizardman Shaman
-		MONSTERS.put(20924, new ItemChanceHolder(SHINING_GEM, 0.75, 1)); // Maille Lizardman Matriarch
-		MONSTERS.put(20926, new ItemChanceHolder(SHINING_RED_GEM, 0.54, 1)); // Giant Araneid
-		MONSTERS.put(20927, new ItemChanceHolder(SHINING_RED_GEM, 0.64, 1)); // King Araneid
-	}
-	// Misc
-	private static final int MIN_LEVEL = 25;
+	private static final int PATROL_REPORT = 7182;
+	private static final int WHITE_GEM = 7183;
+	private static final int RED_GEM = 7184;
 	
 	public Q00298_LizardmensConspiracy()
 	{
 		super(298);
-		addStartNpc(GUARD_PRAGA);
-		addTalkId(GUARD_PRAGA, MAGISTER_ROHMER);
-		addKillId(MONSTERS.keySet());
-		registerQuestItems(PATROLS_REPORT, SHINING_GEM, SHINING_RED_GEM);
+		registerQuestItems(PATROL_REPORT, WHITE_GEM, RED_GEM);
+		addStartNpc(PRAGA);
+		addTalkId(PRAGA, ROHMER);
+		addKillId(20926, 20927, 20922, 20923, 20924);
 	}
 	
 	@Override
-	public String onAdvEvent(String event, Npc npc, Player player)
+	public String onEvent(String event, Npc npc, Player player)
 	{
-		final QuestState qs = getQuestState(player, false);
-		String htmltext = null;
-		if (qs == null)
+		String htmltext = event;
+		final QuestState st = getQuestState(player, false);
+		if (st == null)
 		{
 			return htmltext;
 		}
 		
 		switch (event)
 		{
-			case "30333-03.htm":
+			case "30333-1.htm":
 			{
-				if (qs.isCreated())
-				{
-					qs.startQuest();
-					giveItems(player, PATROLS_REPORT, 1);
-					htmltext = event;
-				}
+				st.startQuest();
+				giveItems(player, PATROL_REPORT, 1);
 				break;
 			}
-			case "30344-04.html":
+			case "30344-1.htm":
 			{
-				if (qs.isCond(1) && hasQuestItems(player, PATROLS_REPORT))
-				{
-					takeItems(player, PATROLS_REPORT, -1);
-					qs.setCond(2, true);
-					htmltext = event;
-				}
+				st.setCond(2, true);
+				takeItems(player, PATROL_REPORT, 1);
 				break;
 			}
-			case "30344-06.html":
+			case "30344-4.htm":
 			{
-				if (qs.isCond(3))
+				if (st.isCond(3))
 				{
+					htmltext = "30344-3.htm";
+					takeItems(player, WHITE_GEM, -1);
+					takeItems(player, RED_GEM, -1);
 					addExpAndSp(player, 0, 42000);
-					qs.exitQuest(true, true);
-					htmltext = event;
-				}
-				else
-				{
-					htmltext = "30344-07.html";
+					st.exitQuest(true, true);
 				}
 				break;
 			}
 		}
+		
 		return htmltext;
 	}
 	
 	@Override
-	public String onKill(Npc npc, Player killer, boolean isSummon)
+	public String onTalk(Npc npc, Player player)
 	{
-		final QuestState qs = getRandomPartyMemberState(killer, 2, 3, npc);
-		if (qs != null)
+		String htmltext = getNoQuestMsg(player);
+		final QuestState st = getQuestState(player, true);
+		
+		switch (st.getState())
 		{
-			final ItemChanceHolder item = MONSTERS.get(npc.getId());
-			if (giveItemRandomly(qs.getPlayer(), npc, item.getId(), item.getCount(), 50, item.getChance(), true) //
-				&& (getQuestItemsCount(qs.getPlayer(), SHINING_GEM) >= 50) //
-				&& (getQuestItemsCount(qs.getPlayer(), SHINING_RED_GEM) >= 50))
+			case State.CREATED:
 			{
-				qs.setCond(3, true);
+				htmltext = (player.getLevel() < 25) ? "30333-0b.htm" : "30333-0a.htm";
+				break;
 			}
-		}
-		return super.onKill(npc, killer, isSummon);
-	}
-	
-	@Override
-	public String onTalk(Npc npc, Player talker)
-	{
-		final QuestState qs = getQuestState(talker, true);
-		String htmltext = getNoQuestMsg(talker);
-		if (qs.isCreated() && (npc.getId() == GUARD_PRAGA))
-		{
-			htmltext = (talker.getLevel() >= MIN_LEVEL) ? "30333-01.htm" : "30333-02.htm";
-		}
-		else if (qs.isStarted())
-		{
-			if ((npc.getId() == GUARD_PRAGA) && hasQuestItems(talker, PATROLS_REPORT))
+			case State.STARTED:
 			{
-				htmltext = "30333-04.html";
-			}
-			else if (npc.getId() == MAGISTER_ROHMER)
-			{
-				switch (qs.getCond())
+				switch (npc.getId())
 				{
-					case 1:
+					case PRAGA:
 					{
-						htmltext = "30344-01.html";
+						htmltext = "30333-2.htm";
 						break;
 					}
-					case 2:
+					case ROHMER:
 					{
-						htmltext = "30344-02.html";
-						break;
-					}
-					case 3:
-					{
-						htmltext = "30344-03.html";
+						if (st.isCond(1))
+						{
+							htmltext = (hasQuestItems(player, PATROL_REPORT)) ? "30344-0.htm" : "30344-0a.htm";
+						}
+						else
+						{
+							htmltext = "30344-2.htm";
+						}
 						break;
 					}
 				}
+				break;
 			}
 		}
+		
 		return htmltext;
+	}
+	
+	@Override
+	public String onKill(Npc npc, Player player, boolean isPet)
+	{
+		final QuestState qs = getRandomPartyMemberState(player, 2, 3, npc);
+		if (qs == null)
+		{
+			return null;
+		}
+		final Player partyMember = qs.getPlayer();
+		
+		final QuestState st = getQuestState(partyMember, false);
+		if (st == null)
+		{
+			return null;
+		}
+		
+		switch (npc.getId())
+		{
+			case 20922:
+			{
+				if (getRandom(100) < 40)
+				{
+					giveItems(player, WHITE_GEM, 1);
+					if (getQuestItemsCount(player, WHITE_GEM) < 50)
+					{
+						playSound(player, QuestSound.ITEMSOUND_QUEST_ITEMGET);
+					}
+					else if (getQuestItemsCount(player, RED_GEM) >= 50)
+					{
+						st.setCond(3, true);
+					}
+				}
+				break;
+			}
+			case 20923:
+			{
+				if (getRandom(100) < 45)
+				{
+					giveItems(player, WHITE_GEM, 1);
+					if (getQuestItemsCount(player, WHITE_GEM) < 50)
+					{
+						playSound(player, QuestSound.ITEMSOUND_QUEST_ITEMGET);
+					}
+					else if (getQuestItemsCount(player, RED_GEM) >= 50)
+					{
+						st.setCond(3, true);
+					}
+				}
+				break;
+			}
+			case 20924:
+			{
+				if (getRandom(100) < 35)
+				{
+					giveItems(player, WHITE_GEM, 1);
+					if (getQuestItemsCount(player, WHITE_GEM) < 50)
+					{
+						playSound(player, QuestSound.ITEMSOUND_QUEST_ITEMGET);
+					}
+					else if (getQuestItemsCount(player, RED_GEM) >= 50)
+					{
+						st.setCond(3, true);
+					}
+				}
+				break;
+			}
+			case 20926:
+			case 20927:
+			{
+				if (getRandom(100) < 40)
+				{
+					giveItems(player, RED_GEM, 1);
+					if (getQuestItemsCount(player, RED_GEM) < 50)
+					{
+						playSound(player, QuestSound.ITEMSOUND_QUEST_ITEMGET);
+					}
+					else if (getQuestItemsCount(player, WHITE_GEM) >= 50)
+					{
+						st.setCond(3, true);
+					}
+				}
+				break;
+			}
+		}
+		
+		return null;
 	}
 }

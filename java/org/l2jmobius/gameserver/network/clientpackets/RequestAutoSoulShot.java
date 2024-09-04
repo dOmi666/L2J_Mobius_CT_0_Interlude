@@ -16,11 +16,8 @@
  */
 package org.l2jmobius.gameserver.network.clientpackets;
 
-import org.l2jmobius.commons.network.ReadablePacket;
-import org.l2jmobius.gameserver.enums.PrivateStoreType;
 import org.l2jmobius.gameserver.model.actor.Player;
 import org.l2jmobius.gameserver.model.item.instance.Item;
-import org.l2jmobius.gameserver.network.GameClient;
 import org.l2jmobius.gameserver.network.SystemMessageId;
 import org.l2jmobius.gameserver.network.serverpackets.ExAutoSoulShot;
 import org.l2jmobius.gameserver.network.serverpackets.SystemMessage;
@@ -28,29 +25,29 @@ import org.l2jmobius.gameserver.network.serverpackets.SystemMessage;
 /**
  * @version $Revision: 1.0.0.0 $ $Date: 2005/07/11 15:29:30 $
  */
-public class RequestAutoSoulShot implements ClientPacket
+public class RequestAutoSoulShot extends ClientPacket
 {
 	// format cd
 	private int _itemId;
 	private int _type; // 1 = on : 0 = off;
 	
 	@Override
-	public void read(ReadablePacket packet)
+	protected void readImpl()
 	{
-		_itemId = packet.readInt();
-		_type = packet.readInt();
+		_itemId = readInt();
+		_type = readInt();
 	}
 	
 	@Override
-	public void run(GameClient client)
+	protected void runImpl()
 	{
-		final Player player = client.getPlayer();
+		final Player player = getPlayer();
 		if (player == null)
 		{
 			return;
 		}
 		
-		if ((player.getPrivateStoreType() == PrivateStoreType.NONE) && (player.getActiveRequester() == null) && !player.isDead())
+		if (!player.isInStoreMode() && (player.getActiveRequester() == null) && !player.isDead())
 		{
 			final Item item = player.getInventory().getItemByItemId(_itemId);
 			if (item == null)
@@ -117,7 +114,7 @@ public class RequestAutoSoulShot implements ClientPacket
 						{
 							if (((_itemId >= 2509) && (_itemId <= 2514)) || ((_itemId >= 3947) && (_itemId <= 3952)) || (_itemId == 5790) || ((_itemId >= 22072) && (_itemId <= 22081)))
 							{
-								player.sendPacket(SystemMessageId.YOUR_SPIRITSHOT_DOES_NOT_MATCH_THE_WEAPON_S_GRADE);
+								player.sendPacket(SystemMessageId.THE_SPIRITSHOT_DOES_NOT_MATCH_THE_WEAPON_S_GRADE);
 							}
 							else
 							{

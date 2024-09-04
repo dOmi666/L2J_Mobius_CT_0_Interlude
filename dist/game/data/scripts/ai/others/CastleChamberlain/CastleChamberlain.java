@@ -349,26 +349,26 @@ public class CastleChamberlain extends AbstractNpcAI
 	
 	private final String getSealOwner(int seal)
 	{
-		String npcString;
+		String result;
 		switch (SevenSigns.getInstance().getSealOwner(seal))
 		{
 			case SevenSigns.CABAL_DAWN:
 			{
-				npcString = "1000511";
+				result = "Dawn";
 				break;
 			}
 			case SevenSigns.CABAL_DUSK:
 			{
-				npcString = "1000510";
+				result = "Dusk";
 				break;
 			}
 			default:
 			{
-				npcString = "1000512";
+				result = "No Owner";
 				break;
 			}
 		}
-		return npcString;
+		return result;
 	}
 	
 	private final int getTaxLimit()
@@ -444,7 +444,7 @@ public class CastleChamberlain extends AbstractNpcAI
 	}
 	
 	@Override
-	public String onAdvEvent(String event, Npc npc, Player player)
+	public String onEvent(String event, Npc npc, Player player)
 	{
 		final Castle castle = npc.getCastle();
 		final StringTokenizer st = new StringTokenizer(event, " ");
@@ -676,23 +676,23 @@ public class CastleChamberlain extends AbstractNpcAI
 						final NpcHtmlMessage html = getHtmlPacket(player, npc, "chamberlain-02.html");
 						html.replace("%clanleadername%", clan.getLeaderName());
 						html.replace("%clanname%", clan.getName());
-						html.replace("%castlename%", String.valueOf(1001000 + castle.getResidenceId()));
+						html.replace("%castlename%", castle.getName());
 						switch (SevenSigns.getInstance().getCurrentPeriod())
 						{
 							case SevenSigns.PERIOD_COMP_RECRUITING:
 							{
-								html.replace("%ss_event%", "1000509");
+								html.replace("%ss_event%", "Preparation");
 								break;
 							}
 							case SevenSigns.PERIOD_COMPETITION:
 							{
-								html.replace("%ss_event%", "1000507");
+								html.replace("%ss_event%", "Competition");
 								break;
 							}
 							case SevenSigns.PERIOD_SEAL_VALIDATION:
 							case SevenSigns.PERIOD_COMP_RESULTS:
 							{
-								html.replace("%ss_event%", "1000508");
+								html.replace("%ss_event%", "Seal Validation");
 								break;
 							}
 						}
@@ -1212,7 +1212,7 @@ public class CastleChamberlain extends AbstractNpcAI
 					{
 						final NpcHtmlMessage html = getHtmlPacket(player, npc, "chamberlain-25.html");
 						html.replace("%owner_name%", player.getName());
-						html.replace("%feud_name%", String.valueOf(1001000 + castle.getResidenceId()));
+						html.replace("%feud_name%", castle.getName());
 						player.sendPacket(html);
 						giveItems(player, CROWN, 1);
 					}
@@ -1322,7 +1322,7 @@ public class CastleChamberlain extends AbstractNpcAI
 	// @formatter:on
 	public void onNpcManorBypass(OnNpcManorBypass evt)
 	{
-		final Player player = evt.getActiveChar();
+		final Player player = evt.getPlayer();
 		final Npc npc = evt.getTarget();
 		if (isOwner(player, npc))
 		{
@@ -1355,7 +1355,7 @@ public class CastleChamberlain extends AbstractNpcAI
 				{
 					if (manor.isManorApproved())
 					{
-						player.sendPacket(SystemMessageId.A_MANOR_CANNOT_BE_SET_UP_BETWEEN_4_30_AM_AND_8_PM);
+						player.sendPacket(SystemMessageId.A_MANOR_CANNOT_BE_SET_UP_BETWEEN_6_A_M_AND_8_P_M);
 						return;
 					}
 					player.sendPacket(new ExShowSeedSetting(castleId));
@@ -1365,7 +1365,7 @@ public class CastleChamberlain extends AbstractNpcAI
 				{
 					if (manor.isManorApproved())
 					{
-						player.sendPacket(SystemMessageId.A_MANOR_CANNOT_BE_SET_UP_BETWEEN_4_30_AM_AND_8_PM);
+						player.sendPacket(SystemMessageId.A_MANOR_CANNOT_BE_SET_UP_BETWEEN_6_A_M_AND_8_P_M);
 						return;
 					}
 					player.sendPacket(new ExShowCropSetting(castleId));

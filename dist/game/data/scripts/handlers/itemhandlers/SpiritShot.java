@@ -73,7 +73,7 @@ public class SpiritShot implements IItemHandler
 		{
 			if (!player.getAutoSoulShot().contains(itemId))
 			{
-				player.sendPacket(SystemMessageId.YOUR_SPIRITSHOT_DOES_NOT_MATCH_THE_WEAPON_S_GRADE);
+				player.sendPacket(SystemMessageId.THE_SPIRITSHOT_DOES_NOT_MATCH_THE_WEAPON_S_GRADE);
 			}
 			
 			return false;
@@ -84,7 +84,7 @@ public class SpiritShot implements IItemHandler
 		{
 			if (!player.disableAutoShot(itemId))
 			{
-				player.sendPacket(SystemMessageId.YOU_DO_NOT_HAVE_ENOUGH_SPIRITSHOT_FOR_THAT);
+				player.sendPacket(SystemMessageId.YOU_DO_NOT_HAVE_ENOUGH_SPIRITSHOTS_FOR_THAT);
 			}
 			return false;
 		}
@@ -93,7 +93,7 @@ public class SpiritShot implements IItemHandler
 		player.setChargedShot(ShotType.SPIRITSHOTS, true);
 		
 		// Send message to client
-		player.sendPacket(SystemMessageId.YOUR_SPIRITSHOT_HAS_BEEN_ENABLED);
+		player.sendPacket(SystemMessageId.POWER_OF_MANA_ENABLED);
 		Broadcast.toSelfAndKnownPlayersInRadius(player, new MagicSkillUse(player, player, skills[0].getSkillId(), skills[0].getSkillLevel(), 0, 0), 600);
 		return true;
 	}

@@ -16,25 +16,22 @@
  */
 package org.l2jmobius.gameserver.network.clientpackets;
 
-import org.l2jmobius.commons.network.ReadablePacket;
-import org.l2jmobius.gameserver.network.GameClient;
-
 /**
  * Format: (c) ddd d: dx d: dy d: dz
  * @author -Wooden-
  */
-public class MoveWithDelta implements ClientPacket
+public class MoveWithDelta extends ClientPacket
 {
 	@Override
-	public void read(ReadablePacket packet)
+	protected void readImpl()
 	{
-		packet.readInt(); // dx
-		packet.readInt(); // dy
-		packet.readInt(); // dz
+		readInt(); // dx
+		readInt(); // dy
+		readInt(); // dz
 	}
 	
 	@Override
-	public void run(GameClient client)
+	protected void runImpl()
 	{
 	}
 }

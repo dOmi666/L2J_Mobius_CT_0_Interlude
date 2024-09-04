@@ -89,7 +89,7 @@
 	</skill>
 	<skill id="3507" levels="1" name="Elven Mithril Set">
 		<!-- Increases Speed. INT-1, WIT+1 -->
-		<set name="icon" val="icon.armor_t51_u_i00" />
+		<set name="icon" val="icon.armor_elven_tunic_i00" />
 		<set name="magicLevel" val="1" />
 		<set name="operateType" val="P" />
 		<set name="targetType" val="SELF" />
@@ -700,11 +700,11 @@
 			</effect>
 		</for>
 	</skill>
-	<skill id="3552" levels="4" name="Special Ability: PvP Damage">
+	<skill id="3552" levels="2" name="Special Ability: PvP Damage">
 		<!-- Increases damage inflicted during PvP. -->
-		<table name="#atkCountMax">0 4 0 4</table>
-		<table name="#bonus">1.05 1.05 1.1 1.1</table>
-		<table name="#magicLevel">64 64 72 72</table>
+		<table name="#atkCountMax">0 4</table>
+		<table name="#bonus">1.05 1.05</table>
+		<table name="#magicLevel">64 64</table>
 		<set name="icon" val="icon.skill0297" />
 		<set name="magicLevel" val="#magicLevel" />
 		<set name="operateType" val="P" />
@@ -832,31 +832,26 @@
 			</effect>
 		</for>
 	</skill>
-	<skill id="3559" levels="2" name="Earring of Zaken">
+	<skill id="3559" levels="1" name="Earring of Zaken">
 		<!-- Increases resistance to bleed/shock/mental attacks, improves the effect of HP regeneration magic and restores HP by using some of the damage inflicted upon the enemy (does not include damage from skill or range attacks). -->
-		<table name="#darkRes">0 15</table>
-		<table name="#healEffect">1.1 1.15</table>
-		<table name="#magicLevel">75 80</table>
-		<table name="#traits">20 30</table>
 		<set name="icon" val="icon.accessory_earring_of_zaken_i00" />
-		<set name="magicLevel" val="#magicLevel" />
+		<set name="magicLevel" val="75" />
 		<set name="operateType" val="P" />
 		<set name="targetType" val="SELF" />
 		<for>
 			<effect name="Buff">
-				<mul stat="healEffect" val="#healEffect" />
+				<mul stat="healEffect" val="1.1" />
 				<add stat="absorbDam" val="4" />
-				<add stat="darkRes" val="#darkRes" />
 			</effect>
 			<effect name="AttackTrait">
 				<param BLEED="30" />
-				<param SHOCK="#traits" />
-				<param DERANGEMENT="#traits" />
+				<param SHOCK="20" />
+				<param DERANGEMENT="20" />
 			</effect>
 			<effect name="DefenceTrait">
 				<param BLEED="30" />
-				<param SHOCK="#traits" />
-				<param DERANGEMENT="#traits" />
+				<param SHOCK="20" />
+				<param DERANGEMENT="20" />
 			</effect>
 		</for>
 	</skill>
@@ -940,102 +935,90 @@
 			</effect>
 		</for>
 	</skill>
-	<skill id="3564" levels="3" name="Special Ability: Haste">
+	<skill id="3564" levels="1" name="Special Ability: Haste">
 		<!-- Increases Atk.Speed and enhances damage to target during PvP. -->
-		<table name="#magicLevel">75 80 84</table>
-		<table name="#pAtkSpd">1.07 1.1 1.11</table>
 		<set name="icon" val="icon.skill1086" />
-		<set name="magicLevel" val="#magicLevel" />
+		<set name="magicLevel" val="75" />
 		<set name="operateType" val="P" />
 		<set name="targetType" val="SELF" />
 		<for>
 			<effect name="Buff">
-				<mul stat="pAtkSpd" val="#pAtkSpd" />
+				<mul stat="pAtkSpd" val="1.07" />
 				<mul stat="pvpPhysDmg" val="1.05" />
 				<mul stat="pvpPhysSkillsDmg" val="1.05" />
 				<mul stat="pvpMagicalDmg" val="1.05" />
 			</effect>
 		</for>
 	</skill>
-	<skill id="3565" levels="3" name="Special Ability: Focus">
+	<skill id="3565" levels="1" name="Special Ability: Focus">
 		<!-- Increases critical attack success rate and damage inflicted during PvP. -->
-		<table name="#magicLevel">75 80 84</table>
-		<table name="#rCrit">80.6 107 96</table>
 		<set name="icon" val="icon.skill1077" />
-		<set name="magicLevel" val="#magicLevel" />
+		<set name="magicLevel" val="75" />
 		<set name="operateType" val="P" />
 		<set name="targetType" val="SELF" />
 		<for>
 			<effect name="Buff">
-				<add stat="critRate" val="#rCrit" />
+				<add stat="critRate" val="80.6" />
 				<mul stat="pvpPhysDmg" val="1.05" />
 				<mul stat="pvpPhysSkillsDmg" val="1.05" />
 				<mul stat="pvpMagicalDmg" val="1.05" />
 			</effect>
 		</for>
 	</skill>
-	<skill id="3566" levels="3" name="Special Ability: Focus">
+	<skill id="3566" levels="1" name="Special Ability: Focus">
 		<!-- Increases critical attack success rate and damage inflicted during PvP. -->
-		<table name="#magicLevel">75 80 84</table>
-		<table name="#rCrit">84.3 111.5 100.1</table>
 		<set name="icon" val="icon.skill1077" />
-		<set name="magicLevel" val="#magicLevel" />
+		<set name="magicLevel" val="75" />
 		<set name="operateType" val="P" />
 		<set name="targetType" val="SELF" />
 		<for>
 			<effect name="Buff">
-				<add stat="critRate" val="#rCrit" />
+				<add stat="critRate" val="84.3" />
 				<mul stat="pvpPhysDmg" val="1.05" />
 				<mul stat="pvpPhysSkillsDmg" val="1.05" />
 				<mul stat="pvpMagicalDmg" val="1.05" />
 			</effect>
 		</for>
 	</skill>
-	<skill id="3567" levels="3" name="Special Ability: Focus">
+	<skill id="3567" levels="2" name="Special Ability: Focus">
 		<!-- Increases critical attack success rate and damage inflicted during PvP. -->
-		<table name="#magicLevel">75 80 84</table>
-		<table name="#rCrit">88.1 116 104.1</table>
 		<set name="icon" val="icon.skill1077" />
-		<set name="magicLevel" val="#magicLevel" />
+		<set name="magicLevel" val="75" />
 		<set name="operateType" val="P" />
 		<set name="targetType" val="SELF" />
 		<for>
 			<effect name="Buff">
-				<add stat="critRate" val="#rCrit" />
+				<add stat="critRate" val="88.1" />
 				<mul stat="pvpPhysDmg" val="1.05" />
 				<mul stat="pvpPhysSkillsDmg" val="1.05" />
 				<mul stat="pvpMagicalDmg" val="1.05" />
 			</effect>
 		</for>
 	</skill>
-	<skill id="3568" levels="2" name="Special Ability: HP Drain">
+	<skill id="3568" levels="1" name="Special Ability: HP Drain">
 		<!-- Partially restores HP using damage inflicted upon the enemy. Excludes damage from skill or range attack. Enhances damage to target during PvP. -->
-		<table name="#absorbDam">3 4</table>
-		<table name="#magicLevel">75 84</table>
 		<set name="icon" val="icon.skill1268" />
-		<set name="magicLevel" val="#magicLevel" />
+		<set name="magicLevel" val="75" />
 		<set name="operateType" val="P" />
 		<set name="targetType" val="SELF" />
 		<for>
 			<effect name="Buff">
-				<add stat="absorbDam" val="#absorbDam" />
+				<add stat="absorbDam" val="3" />
 				<mul stat="pvpPhysDmg" val="1.05" />
 				<mul stat="pvpPhysSkillsDmg" val="1.05" />
 				<mul stat="pvpMagicalDmg" val="1.05" />
 			</effect>
 		</for>
 	</skill>
-	<skill id="3569" levels="4" name="Special Ability: HP Regeneration">
+	<skill id="3569" levels="1" name="Special Ability: HP Regeneration">
 		<!-- Increases HP regeneration rate and enhances damage to target during PvP. -->
-		<table name="#magicLevel">75 84 84 84</table>
-		<table name="#regHp">2.04 4.92 5.15 5.18</table>
 		<set name="icon" val="icon.skill1044" />
-		<set name="magicLevel" val="#magicLevel" />
+		<set name="magicLevel" val="75" />
 		<set name="operateType" val="P" />
 		<set name="targetType" val="SELF" />
 		<for>
 			<effect name="Buff">
-				<add stat="regHp" val="#regHp" />
+				<add stat="regHp" val="2.04" />
 				<mul stat="pvpPhysDmg" val="1.05" />
 				<mul stat="pvpPhysSkillsDmg" val="1.05" />
 				<mul stat="pvpMagicalDmg" val="1.05" />
@@ -1059,21 +1042,19 @@
 			</effect>
 		</for>
 	</skill>
-	<skill id="3571" levels="2" name="Special Ability: Crt. Stun">
+	<skill id="3571" levels="1" name="Special Ability: Crt. Stun">
 		<!-- Temporarily stuns and paralyzes target. -->
-		<table name="#activateRates">27 43</table>
-		<table name="#magicLevel">75 84</table>
 		<set name="abnormalLevel" val="1" />
 		<set name="abnormalTime" val="9" />
 		<set name="abnormalType" val="STUN" />
 		<set name="abnormalVisualEffect" val="STUN" />
-		<set name="activateRate" val="#activateRates" />
+		<set name="activateRate" val="27" />
 		<set name="basicProperty" val="CON" />
 		<set name="effectPoint" val="-100" />
 		<set name="icon" val="icon.skill0100" />
 		<set name="isDebuff" val="true" />
 		<set name="lvlBonusRate" val="1" />
-		<set name="magicLevel" val="#magicLevel" />
+		<set name="magicLevel" val="75" />
 		<set name="operateType" val="A2" />
 		<set name="targetType" val="ONE" />
 		<set name="trait" val="SHOCK" />
@@ -1081,48 +1062,42 @@
 			<effect name="Stun" />
 		</for>
 	</skill>
-	<skill id="3572" levels="4" name="Special Ability: Crt. Damage">
+	<skill id="3572" levels="1" name="Special Ability: Crt. Damage">
 		<!-- Increases critical attack success rate and damage inflicted during PvP. -->
-		<table name="#cAtkAdd">265 906 999 1059</table>
-		<table name="#magicLevel">75 84 85 86</table>
 		<set name="icon" val="icon.skill0193" />
-		<set name="magicLevel" val="#magicLevel" />
+		<set name="magicLevel" val="75" />
 		<set name="operateType" val="P" />
 		<set name="targetType" val="SELF" />
 		<for>
 			<effect name="Buff">
-				<add stat="critDmgAdd" val="#cAtkAdd" />
+				<add stat="critDmgAdd" val="265" />
 				<mul stat="pvpPhysDmg" val="1.05" />
 				<mul stat="pvpPhysSkillsDmg" val="1.05" />
 				<mul stat="pvpMagicalDmg" val="1.05" />
 			</effect>
 		</for>
 	</skill>
-	<skill id="3573" levels="3" name="Special Ability: Guidance">
+	<skill id="3573" levels="1" name="Special Ability: Guidance">
 		<!-- Increases Accuracy and enhances damage to target during PvP. -->
-		<table name="#accCombat">5.27 5.32 7.5</table>
-		<table name="#magicLevel">75 80 84</table>
 		<set name="icon" val="icon.skill1240" />
-		<set name="magicLevel" val="#magicLevel" />
+		<set name="magicLevel" val="75" />
 		<set name="operateType" val="P" />
 		<set name="targetType" val="SELF" />
 		<for>
 			<effect name="Buff">
-				<add stat="accCombat" val="#accCombat" />
+				<add stat="accCombat" val="5.27" />
 				<mul stat="pvpPhysDmg" val="1.05" />
 				<mul stat="pvpPhysSkillsDmg" val="1.05" />
 				<mul stat="pvpMagicalDmg" val="1.05" />
 			</effect>
 		</for>
 	</skill>
-	<skill id="3574" levels="3" name="Special Ability: Crt. Slow">
+	<skill id="3574" levels="1" name="Special Ability: Crt. Slow">
 		<!-- Temporarily decreases Speed. Effect 3. -->
-		<table name="#activateRates">16 24 33</table>
-		<table name="#magicLevel">75 84 84</table>
 		<set name="abnormalLevel" val="3" />
 		<set name="abnormalTime" val="120" />
 		<set name="abnormalType" val="SPEED_DOWN" />
-		<set name="activateRate" val="#activateRates" />
+		<set name="activateRate" val="16" />
 		<set name="basicProperty" val="MEN" />
 		<set name="castRange" val="1000" />
 		<set name="effectPoint" val="-100" />
@@ -1130,7 +1105,7 @@
 		<set name="icon" val="icon.skill1160" />
 		<set name="isDebuff" val="true" />
 		<set name="lvlBonusRate" val="1" />
-		<set name="magicLevel" val="#magicLevel" />
+		<set name="magicLevel" val="75" />
 		<set name="operateType" val="A2" />
 		<set name="targetType" val="ONE" />
 		<for>
@@ -1139,41 +1114,37 @@
 			</effect>
 		</for>
 	</skill>
-	<skill id="3575" levels="4" name="Special Ability: Empower Option">
+	<skill id="3575" levels="1" name="Special Ability: Empower Option">
 		<!-- Increases M. Atk. Enhances damage to target during PvP. -->
-		<table name="#magicLevel">75 84 85 86</table>
-		<table name="#mAtk">60.09 151.09 166.54 176.53</table>
 		<set name="icon" val="icon.skill1059" />
-		<set name="magicLevel" val="#magicLevel" />
+		<set name="magicLevel" val="75" />
 		<set name="operateType" val="P" />
 		<set name="targetType" val="SELF" />
 		<for>
 			<effect name="Buff">
-				<add stat="mAtk" val="#mAtk" />
+				<add stat="mAtk" val="60.09" />
 				<mul stat="pvpPhysDmg" val="1.05" />
 				<mul stat="pvpPhysSkillsDmg" val="1.05" />
 				<mul stat="pvpMagicalDmg" val="1.05" />
 			</effect>
 		</for>
 	</skill>
-	<skill id="3576" levels="4" name="Special Ability: MP Regeneration">
+	<skill id="3576" levels="1" name="Special Ability: MP Regeneration">
 		<!-- Increases MP regeneration rate and enhances damage to target during PvP. -->
-		<table name="#magicLevel">75 84 85 86</table>
-		<table name="#regMp">0.54 1.95 2.04 2.05</table>
 		<set name="icon" val="icon.skill1047" />
-		<set name="magicLevel" val="#magicLevel" />
+		<set name="magicLevel" val="75" />
 		<set name="operateType" val="P" />
 		<set name="targetType" val="SELF" />
 		<for>
 			<effect name="Buff">
-				<add stat="regMp" val="#regMp" />
+				<add stat="regMp" val="0.54" />
 				<mul stat="pvpPhysDmg" val="1.05" />
 				<mul stat="pvpPhysSkillsDmg" val="1.05" />
 				<mul stat="pvpMagicalDmg" val="1.05" />
 			</effect>
 		</for>
 	</skill>
-	<skill id="3577" levels="2" name="Special Ability: Magic Hold">
+	<skill id="3577" levels="1" name="Special Ability: Magic Hold">
 		<!-- Magically immobilizes target. -->
 		<set name="abnormalLevel" val="1" />
 		<set name="abnormalTime" val="30" />

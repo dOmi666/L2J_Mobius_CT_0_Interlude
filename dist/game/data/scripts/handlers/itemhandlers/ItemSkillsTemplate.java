@@ -176,48 +176,41 @@ public class ItemSkillsTemplate implements IItemHandler
 			final int hours = (int) (remainingTime / 3600000);
 			final int minutes = (int) (remainingTime % 3600000) / 60000;
 			final int seconds = (int) ((remainingTime / 1000) % 60);
-			SystemMessage sm = null;
+			String sm;
 			if (hours > 0)
 			{
-				sm = new SystemMessage(SystemMessageId.THERE_ARE_S2_HOUR_S_S3_MINUTE_S_AND_S4_SECOND_S_REMAINING_IN_S1_S_RE_USE_TIME);
 				if ((skill == null) || skill.isStatic())
 				{
-					sm.addItemName(item);
+					sm = "There are " + hours + " hour(s), " + minutes + " minute(s), and " + seconds + " second(s) remaining in " + item.getName() + "'s re-use time.";
 				}
 				else
 				{
-					sm.addSkillName(skill);
+					sm = "There are " + hours + " hour(s), " + minutes + " minute(s), and " + seconds + " second(s) remaining in " + skill.getName() + "'s re-use time.";
 				}
-				sm.addInt(hours);
-				sm.addInt(minutes);
 			}
 			else if (minutes > 0)
 			{
-				sm = new SystemMessage(SystemMessageId.THERE_ARE_S2_MINUTE_S_S3_SECOND_S_REMAINING_IN_S1_S_RE_USE_TIME);
 				if ((skill == null) || skill.isStatic())
 				{
-					sm.addItemName(item);
+					sm = "There are " + minutes + " minute(s), " + seconds + " second(s) remaining in " + item.getName() + "'s re-use time.";
 				}
 				else
 				{
-					sm.addSkillName(skill);
+					sm = "There are " + minutes + " minute(s), " + seconds + " second(s) remaining in " + skill.getName() + "'s re-use time.";
 				}
-				sm.addInt(minutes);
 			}
 			else
 			{
-				sm = new SystemMessage(SystemMessageId.THERE_ARE_S2_SECOND_S_REMAINING_IN_S1_S_RE_USE_TIME);
 				if ((skill == null) || skill.isStatic())
 				{
-					sm.addItemName(item);
+					sm = "There are " + seconds + " second(s) remaining in " + item.getName() + "'s re-use time.";
 				}
 				else
 				{
-					sm.addSkillName(skill);
+					sm = "There are " + seconds + " second(s) remaining in " + skill.getName() + "'s re-use time.";
 				}
 			}
-			sm.addInt(seconds);
-			playable.sendPacket(sm);
+			playable.sendMessage(sm);
 		}
 		return isAvailable;
 	}

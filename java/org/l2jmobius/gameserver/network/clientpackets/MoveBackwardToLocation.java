@@ -17,7 +17,6 @@
 package org.l2jmobius.gameserver.network.clientpackets;
 
 import org.l2jmobius.Config;
-import org.l2jmobius.commons.network.ReadablePacket;
 import org.l2jmobius.gameserver.ai.CtrlIntention;
 import org.l2jmobius.gameserver.data.xml.DoorData;
 import org.l2jmobius.gameserver.model.Location;
@@ -26,12 +25,9 @@ import org.l2jmobius.gameserver.model.events.EventDispatcher;
 import org.l2jmobius.gameserver.model.events.EventType;
 import org.l2jmobius.gameserver.model.events.impl.creature.player.OnPlayerMoveRequest;
 import org.l2jmobius.gameserver.model.events.returns.TerminateReturn;
-import org.l2jmobius.gameserver.network.GameClient;
-import org.l2jmobius.gameserver.network.SystemMessageId;
 import org.l2jmobius.gameserver.network.serverpackets.ActionFailed;
-import org.l2jmobius.gameserver.network.serverpackets.StopMove;
 
-public class MoveBackwardToLocation implements ClientPacket
+public class MoveBackwardToLocation extends ClientPacket
 {
 	private int _targetX;
 	private int _targetY;
@@ -42,21 +38,21 @@ public class MoveBackwardToLocation implements ClientPacket
 	private int _movementMode;
 	
 	@Override
-	public void read(ReadablePacket packet)
+	protected void readImpl()
 	{
-		_targetX = packet.readInt();
-		_targetY = packet.readInt();
-		_targetZ = packet.readInt();
-		_originX = packet.readInt();
-		_originY = packet.readInt();
-		_originZ = packet.readInt();
-		_movementMode = packet.readInt(); // is 0 if cursor keys are used 1 if mouse is used
+		_targetX = readInt();
+		_targetY = readInt();
+		_targetZ = readInt();
+		_originX = readInt();
+		_originY = readInt();
+		_originZ = readInt();
+		_movementMode = readInt(); // is 0 if cursor keys are used 1 if mouse is used
 	}
 	
 	@Override
-	public void run(GameClient client)
+	protected void runImpl()
 	{
-		final Player player = client.getPlayer();
+		final Player player = getPlayer();
 		if (player == null)
 		{
 			return;
@@ -64,14 +60,14 @@ public class MoveBackwardToLocation implements ClientPacket
 		
 		if ((Config.PLAYER_MOVEMENT_BLOCK_TIME > 0) && !player.isGM() && (player.getNotMoveUntil() > System.currentTimeMillis()))
 		{
-			player.sendPacket(SystemMessageId.YOU_CANNOT_MOVE_WHILE_SPEAKING_TO_AN_NPC_ONE_MOMENT_PLEASE);
+			player.sendMessage("You cannot move while speaking to an NPC. One moment please.");
 			player.sendPacket(ActionFailed.STATIC_PACKET);
 			return;
 		}
 		
 		if ((_targetX == _originX) && (_targetY == _originY) && (_targetZ == _originZ))
 		{
-			player.sendPacket(new StopMove(player));
+			player.stopMove(player.getLocation());
 			player.sendPacket(ActionFailed.STATIC_PACKET);
 			return;
 		}

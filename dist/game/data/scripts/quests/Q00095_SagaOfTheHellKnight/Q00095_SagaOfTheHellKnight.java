@@ -16,15 +16,13 @@
  */
 package quests.Q00095_SagaOfTheHellKnight;
 
-import org.l2jmobius.gameserver.model.Location;
-
-import quests.AbstractSagaQuest;
+import quests.SagasSuperClass;
 
 /**
  * Saga of the Hell Knight (95)
  * @author Emperorc
  */
-public class Q00095_SagaOfTheHellKnight extends AbstractSagaQuest
+public class Q00095_SagaOfTheHellKnight extends SagasSuperClass
 {
 	public Q00095_SagaOfTheHellKnight()
 	{
@@ -73,11 +71,23 @@ public class Q00095_SagaOfTheHellKnight extends AbstractSagaQuest
 		{
 			0x06
 		};
-		_npcSpawnLocations = new Location[]
+		_x = new int[]
 		{
-			new Location(164650, -74121, -2871),
-			new Location(47391, -56929, -2370),
-			new Location(47429, -56923, -2383)
+			164650,
+			47391,
+			47429
+		};
+		_y = new int[]
+		{
+			-74121,
+			-56929,
+			-56923
+		};
+		_z = new int[]
+		{
+			-2871,
+			-2370,
+			-2383
 		};
 		_text = new String[]
 		{

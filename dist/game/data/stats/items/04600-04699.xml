@@ -7,7 +7,7 @@
 		<set name="immediate_effect" val="true" />
 		<set name="material" val="LIQUID" />
 		<set name="weight" val="150" />
-		<set name="price" val="60000" />
+		<set name="price" val="6000" />
 		<set name="is_stackable" val="true" />
 	</item>
 	<item id="4601" type="EtcItem" name="Greater Dye of STR (Str+3 Con-3)">
@@ -17,7 +17,7 @@
 		<set name="immediate_effect" val="true" />
 		<set name="material" val="LIQUID" />
 		<set name="weight" val="150" />
-		<set name="price" val="90000" />
+		<set name="price" val="9000" />
 		<set name="is_stackable" val="true" />
 	</item>
 	<item id="4602" type="EtcItem" name="Greater Dye of STR (Str+3 Dex-3)">
@@ -27,7 +27,7 @@
 		<set name="immediate_effect" val="true" />
 		<set name="material" val="LIQUID" />
 		<set name="weight" val="150" />
-		<set name="price" val="90000" />
+		<set name="price" val="9000" />
 		<set name="is_stackable" val="true" />
 	</item>
 	<item id="4603" type="EtcItem" name="Greater Dye of CON (Con+3 Str-3)">
@@ -37,7 +37,7 @@
 		<set name="immediate_effect" val="true" />
 		<set name="material" val="LIQUID" />
 		<set name="weight" val="150" />
-		<set name="price" val="90000" />
+		<set name="price" val="9000" />
 		<set name="is_stackable" val="true" />
 	</item>
 	<item id="4604" type="EtcItem" name="Greater Dye of CON (Con+3 Dex-3)">
@@ -47,7 +47,7 @@
 		<set name="immediate_effect" val="true" />
 		<set name="material" val="LIQUID" />
 		<set name="weight" val="150" />
-		<set name="price" val="90000" />
+		<set name="price" val="9000" />
 		<set name="is_stackable" val="true" />
 	</item>
 	<item id="4605" type="EtcItem" name="Greater Dye of DEX (Dex+3 Str-3)">
@@ -57,7 +57,7 @@
 		<set name="immediate_effect" val="true" />
 		<set name="material" val="LIQUID" />
 		<set name="weight" val="150" />
-		<set name="price" val="90000" />
+		<set name="price" val="9000" />
 		<set name="is_stackable" val="true" />
 	</item>
 	<item id="4606" type="EtcItem" name="Greater Dye of DEX (Dex+3 Con-3)">
@@ -67,7 +67,7 @@
 		<set name="immediate_effect" val="true" />
 		<set name="material" val="LIQUID" />
 		<set name="weight" val="150" />
-		<set name="price" val="90000" />
+		<set name="price" val="9000" />
 		<set name="is_stackable" val="true" />
 	</item>
 	<item id="4607" type="EtcItem" name="Greater Dye of INT (Int+3 Men-3)">
@@ -77,7 +77,7 @@
 		<set name="immediate_effect" val="true" />
 		<set name="material" val="LIQUID" />
 		<set name="weight" val="150" />
-		<set name="price" val="90000" />
+		<set name="price" val="9000" />
 		<set name="is_stackable" val="true" />
 	</item>
 	<item id="4608" type="EtcItem" name="Greater Dye of INT (Int+3 Wit-3)">
@@ -87,7 +87,7 @@
 		<set name="immediate_effect" val="true" />
 		<set name="material" val="LIQUID" />
 		<set name="weight" val="150" />
-		<set name="price" val="90000" />
+		<set name="price" val="9000" />
 		<set name="is_stackable" val="true" />
 	</item>
 	<item id="4609" type="EtcItem" name="Greater Dye of MEN (Men+3 Int-3)">
@@ -97,7 +97,7 @@
 		<set name="immediate_effect" val="true" />
 		<set name="material" val="LIQUID" />
 		<set name="weight" val="150" />
-		<set name="price" val="90000" />
+		<set name="price" val="9000" />
 		<set name="is_stackable" val="true" />
 	</item>
 	<item id="4610" type="EtcItem" name="Greater Dye of MEN (Men+3 Wit-3)">
@@ -107,7 +107,7 @@
 		<set name="immediate_effect" val="true" />
 		<set name="material" val="LIQUID" />
 		<set name="weight" val="150" />
-		<set name="price" val="90000" />
+		<set name="price" val="9000" />
 		<set name="is_stackable" val="true" />
 	</item>
 	<item id="4611" type="EtcItem" name="Greater Dye of WIT (Wit+3 Int-3)">
@@ -117,7 +117,7 @@
 		<set name="immediate_effect" val="true" />
 		<set name="material" val="LIQUID" />
 		<set name="weight" val="150" />
-		<set name="price" val="90000" />
+		<set name="price" val="9000" />
 		<set name="is_stackable" val="true" />
 	</item>
 	<item id="4612" type="EtcItem" name="Greater Dye of WIT (Wit+3 Men-3)">
@@ -127,7 +127,7 @@
 		<set name="immediate_effect" val="true" />
 		<set name="material" val="LIQUID" />
 		<set name="weight" val="150" />
-		<set name="price" val="90000" />
+		<set name="price" val="9000" />
 		<set name="is_stackable" val="true" />
 	</item>
 	<item id="4613" type="EtcItem" name="Greater Dye of STR (Str+4 Con-4)">
@@ -137,7 +137,7 @@
 		<set name="immediate_effect" val="true" />
 		<set name="material" val="LIQUID" />
 		<set name="weight" val="150" />
-		<set name="price" val="145000" />
+		<set name="price" val="14500" />
 		<set name="is_stackable" val="true" />
 	</item>
 	<item id="4614" type="EtcItem" name="Greater Dye of STR (Str+4 Dex-4)">
@@ -147,7 +147,7 @@
 		<set name="immediate_effect" val="true" />
 		<set name="material" val="LIQUID" />
 		<set name="weight" val="150" />
-		<set name="price" val="145000" />
+		<set name="price" val="14500" />
 		<set name="is_stackable" val="true" />
 	</item>
 	<item id="4615" type="EtcItem" name="Greater Dye of CON (Con+4 Str-4)">
@@ -157,7 +157,7 @@
 		<set name="immediate_effect" val="true" />
 		<set name="material" val="LIQUID" />
 		<set name="weight" val="150" />
-		<set name="price" val="145000" />
+		<set name="price" val="14500" />
 		<set name="is_stackable" val="true" />
 	</item>
 	<item id="4616" type="EtcItem" name="Greater Dye of CON (Con+4 Dex-4)">
@@ -167,7 +167,7 @@
 		<set name="immediate_effect" val="true" />
 		<set name="material" val="LIQUID" />
 		<set name="weight" val="150" />
-		<set name="price" val="145000" />
+		<set name="price" val="14500" />
 		<set name="is_stackable" val="true" />
 	</item>
 	<item id="4617" type="EtcItem" name="Greater Dye of DEX (Dex+4 Str-4)">
@@ -177,7 +177,7 @@
 		<set name="immediate_effect" val="true" />
 		<set name="material" val="LIQUID" />
 		<set name="weight" val="150" />
-		<set name="price" val="145000" />
+		<set name="price" val="14500" />
 		<set name="is_stackable" val="true" />
 	</item>
 	<item id="4618" type="EtcItem" name="Greater Dye of DEX (Dex+4 Con-4)">
@@ -187,7 +187,7 @@
 		<set name="immediate_effect" val="true" />
 		<set name="material" val="LIQUID" />
 		<set name="weight" val="150" />
-		<set name="price" val="145000" />
+		<set name="price" val="14500" />
 		<set name="is_stackable" val="true" />
 	</item>
 	<item id="4619" type="EtcItem" name="Greater Dye of INT (Int+4 Men-4)">
@@ -197,7 +197,7 @@
 		<set name="immediate_effect" val="true" />
 		<set name="material" val="LIQUID" />
 		<set name="weight" val="150" />
-		<set name="price" val="145000" />
+		<set name="price" val="14500" />
 		<set name="is_stackable" val="true" />
 	</item>
 	<item id="4620" type="EtcItem" name="Greater Dye of INT (Int+4 Wit-4)">
@@ -207,7 +207,7 @@
 		<set name="immediate_effect" val="true" />
 		<set name="material" val="LIQUID" />
 		<set name="weight" val="150" />
-		<set name="price" val="145000" />
+		<set name="price" val="14500" />
 		<set name="is_stackable" val="true" />
 	</item>
 	<item id="4621" type="EtcItem" name="Greater Dye of MEN (Men+4 Int-4)">
@@ -217,7 +217,7 @@
 		<set name="immediate_effect" val="true" />
 		<set name="material" val="LIQUID" />
 		<set name="weight" val="150" />
-		<set name="price" val="145000" />
+		<set name="price" val="14500" />
 		<set name="is_stackable" val="true" />
 	</item>
 	<item id="4622" type="EtcItem" name="Greater Dye of MEN (Men+4 Wit-4)">
@@ -227,7 +227,7 @@
 		<set name="immediate_effect" val="true" />
 		<set name="material" val="LIQUID" />
 		<set name="weight" val="150" />
-		<set name="price" val="145000" />
+		<set name="price" val="14500" />
 		<set name="is_stackable" val="true" />
 	</item>
 	<item id="4623" type="EtcItem" name="Greater Dye of WIT (Wit+4 Int-4)">
@@ -237,7 +237,7 @@
 		<set name="immediate_effect" val="true" />
 		<set name="material" val="LIQUID" />
 		<set name="weight" val="150" />
-		<set name="price" val="145000" />
+		<set name="price" val="14500" />
 		<set name="is_stackable" val="true" />
 	</item>
 	<item id="4624" type="EtcItem" name="Greater Dye of WIT (Wit+4 Men-4)">
@@ -247,7 +247,7 @@
 		<set name="immediate_effect" val="true" />
 		<set name="material" val="LIQUID" />
 		<set name="weight" val="150" />
-		<set name="price" val="145000" />
+		<set name="price" val="14500" />
 		<set name="is_stackable" val="true" />
 	</item>
 	<item id="4625" type="EtcItem" name="Dice (Heart)">
@@ -296,7 +296,7 @@
 	</item>
 	<item id="4629" type="EtcItem" name="Red Soul Crystal">
 		<!-- A red crystal that absorbs souls. Once saturated it bestows special abilities to a weapon. 26 MP is consumed each time it is used. -->
-		<set name="icon" val="icon.etc_soul_stone_i00" />
+		<set name="icon" val="icon.etc_crystal_red_i00" />
 		<set name="default_action" val="SKILL_REDUCE" />
 		<set name="etcitem_type" val="SCROLL" />
 		<set name="material" val="CRYSTAL" />
@@ -307,7 +307,7 @@
 	</item>
 	<item id="4630" type="EtcItem" name="Red Soul Crystal - Stage 1">
 		<!-- A red crystal that absorbs souls, stage 1. Once saturated, it bestows special abilities to a weapon. 26 MP is consumed each time it is used. -->
-		<set name="icon" val="icon.etc_soul_stone_i00" />
+		<set name="icon" val="icon.etc_crystal_red_i00" />
 		<set name="default_action" val="SKILL_REDUCE" />
 		<set name="etcitem_type" val="SCROLL" />
 		<set name="material" val="CRYSTAL" />
@@ -318,7 +318,7 @@
 	</item>
 	<item id="4631" type="EtcItem" name="Red Soul Crystal - Stage 2">
 		<!-- A red crystal that absorbs souls, stage 2. Once saturated, it bestows special abilities to a weapon. 26 MP is consumed each time it is used. -->
-		<set name="icon" val="icon.etc_soul_stone_i00" />
+		<set name="icon" val="icon.etc_crystal_red_i00" />
 		<set name="default_action" val="SKILL_REDUCE" />
 		<set name="etcitem_type" val="SCROLL" />
 		<set name="material" val="CRYSTAL" />
@@ -329,7 +329,7 @@
 	</item>
 	<item id="4632" type="EtcItem" name="Red Soul Crystal - Stage 3">
 		<!-- A red crystal that absorbs souls, stage 3. Once saturated, it bestows special abilities to a weapon. 26 MP is consumed each time it is used. -->
-		<set name="icon" val="icon.etc_soul_stone_i00" />
+		<set name="icon" val="icon.etc_crystal_red_i00" />
 		<set name="default_action" val="SKILL_REDUCE" />
 		<set name="etcitem_type" val="SCROLL" />
 		<set name="material" val="CRYSTAL" />
@@ -340,7 +340,7 @@
 	</item>
 	<item id="4633" type="EtcItem" name="Red Soul Crystal - Stage 4">
 		<!-- A red crystal that absorbs souls, stage 4. Once saturated, it bestows special abilities to a weapon. 26 MP is consumed each time it is used. -->
-		<set name="icon" val="icon.etc_soul_stone_i00" />
+		<set name="icon" val="icon.etc_crystal_red_i00" />
 		<set name="default_action" val="SKILL_REDUCE" />
 		<set name="etcitem_type" val="SCROLL" />
 		<set name="material" val="CRYSTAL" />
@@ -351,7 +351,7 @@
 	</item>
 	<item id="4634" type="EtcItem" name="Red Soul Crystal - Stage 5">
 		<!-- A red crystal that absorbs souls, stage 5. Once saturated, it bestows special abilities to a weapon. 26 MP is consumed each time it is used. -->
-		<set name="icon" val="icon.etc_soul_stone_i00" />
+		<set name="icon" val="icon.etc_crystal_red_i00" />
 		<set name="default_action" val="SKILL_REDUCE" />
 		<set name="etcitem_type" val="SCROLL" />
 		<set name="material" val="CRYSTAL" />
@@ -362,7 +362,7 @@
 	</item>
 	<item id="4635" type="EtcItem" name="Red Soul Crystal - Stage 6">
 		<!-- A red crystal that absorbs souls, stage 6. Once saturated, it bestows special abilities to a weapon. 26 MP is consumed each time it is used. -->
-		<set name="icon" val="icon.etc_soul_stone_i00" />
+		<set name="icon" val="icon.etc_crystal_red_i00" />
 		<set name="default_action" val="SKILL_REDUCE" />
 		<set name="etcitem_type" val="SCROLL" />
 		<set name="material" val="CRYSTAL" />
@@ -373,7 +373,7 @@
 	</item>
 	<item id="4636" type="EtcItem" name="Red Soul Crystal - Stage 7">
 		<!-- A red crystal that absorbs souls, stage 7. Once saturated, it bestows special abilities to a weapon. 26 MP is consumed each time it is used. -->
-		<set name="icon" val="icon.etc_soul_stone_i00" />
+		<set name="icon" val="icon.etc_crystal_red_i00" />
 		<set name="default_action" val="SKILL_REDUCE" />
 		<set name="etcitem_type" val="SCROLL" />
 		<set name="material" val="CRYSTAL" />
@@ -384,7 +384,7 @@
 	</item>
 	<item id="4637" type="EtcItem" name="Red Soul Crystal - Stage 8">
 		<!-- A red crystal that absorbs souls, stage 8. Once saturated, it bestows special abilities to a weapon. 26 MP is consumed each time it is used. -->
-		<set name="icon" val="icon.etc_soul_stone_i00" />
+		<set name="icon" val="icon.etc_crystal_red_i00" />
 		<set name="default_action" val="SKILL_REDUCE" />
 		<set name="etcitem_type" val="SCROLL" />
 		<set name="material" val="CRYSTAL" />
@@ -395,7 +395,7 @@
 	</item>
 	<item id="4638" type="EtcItem" name="Red Soul Crystal - Stage 9">
 		<!-- A red crystal that absorbs souls, stage 9. Once saturated, it bestows special abilities to a weapon. 26 MP is consumed each time it is used. -->
-		<set name="icon" val="icon.etc_soul_stone_i00" />
+		<set name="icon" val="icon.etc_crystal_red_i00" />
 		<set name="default_action" val="SKILL_REDUCE" />
 		<set name="etcitem_type" val="SCROLL" />
 		<set name="material" val="CRYSTAL" />
@@ -406,7 +406,7 @@
 	</item>
 	<item id="4639" type="EtcItem" name="Red Soul Crystal - Stage 10">
 		<!-- A red crystal that absorbs souls, stage 10. Once saturated, it bestows special abilities to a weapon. Consumes 26 MP. Once a soul stone reaches this stage, it can absorb souls independently. No targeting is necessary. -->
-		<set name="icon" val="icon.etc_soul_stone_i00" />
+		<set name="icon" val="icon.etc_crystal_red_i00" />
 		<set name="default_action" val="SKILL_REDUCE" />
 		<set name="etcitem_type" val="SCROLL" />
 		<set name="material" val="CRYSTAL" />
@@ -417,7 +417,7 @@
 	</item>
 	<item id="4640" type="EtcItem" name="Green Soul Crystal">
 		<!-- A green crystal that absorbs souls. Once saturated, it bestows special abilities to a weapon. 26 MP is consumed each time it is used. -->
-		<set name="icon" val="icon.etc_soul_stone_i02" />
+		<set name="icon" val="icon.etc_crystal_green_i00" />
 		<set name="default_action" val="SKILL_REDUCE" />
 		<set name="etcitem_type" val="SCROLL" />
 		<set name="material" val="CRYSTAL" />
@@ -428,7 +428,7 @@
 	</item>
 	<item id="4641" type="EtcItem" name="Green Soul Crystal - Stage 1">
 		<!-- A green crystal that absorbs souls, stage 1. Once saturated, it bestows special abilities to a weapon. 26 MP is consumed each time it is used. -->
-		<set name="icon" val="icon.etc_soul_stone_i02" />
+		<set name="icon" val="icon.etc_crystal_green_i00" />
 		<set name="default_action" val="SKILL_REDUCE" />
 		<set name="etcitem_type" val="SCROLL" />
 		<set name="material" val="CRYSTAL" />
@@ -439,7 +439,7 @@
 	</item>
 	<item id="4642" type="EtcItem" name="Green Soul Crystal - Stage 2">
 		<!-- A green crystal that absorbs souls, stage 2. Once saturated, it bestows special abilities to a weapon. 26 MP is consumed each time it is used. -->
-		<set name="icon" val="icon.etc_soul_stone_i02" />
+		<set name="icon" val="icon.etc_crystal_green_i00" />
 		<set name="default_action" val="SKILL_REDUCE" />
 		<set name="etcitem_type" val="SCROLL" />
 		<set name="material" val="CRYSTAL" />
@@ -450,7 +450,7 @@
 	</item>
 	<item id="4643" type="EtcItem" name="Green Soul Crystal - Stage 3">
 		<!-- A green crystal that absorbs souls, stage 3. Once saturated, it bestows special abilities to a weapon. 26 MP is consumed each time it is used. -->
-		<set name="icon" val="icon.etc_soul_stone_i02" />
+		<set name="icon" val="icon.etc_crystal_green_i00" />
 		<set name="default_action" val="SKILL_REDUCE" />
 		<set name="etcitem_type" val="SCROLL" />
 		<set name="material" val="CRYSTAL" />
@@ -461,7 +461,7 @@
 	</item>
 	<item id="4644" type="EtcItem" name="Green Soul Crystal - Stage 4">
 		<!-- A green crystal that absorbs souls, stage 4. Once saturated, it bestows special abilities to a weapon. 26 MP is consumed each time it is used. -->
-		<set name="icon" val="icon.etc_soul_stone_i02" />
+		<set name="icon" val="icon.etc_crystal_green_i00" />
 		<set name="default_action" val="SKILL_REDUCE" />
 		<set name="etcitem_type" val="SCROLL" />
 		<set name="material" val="CRYSTAL" />
@@ -472,7 +472,7 @@
 	</item>
 	<item id="4645" type="EtcItem" name="Green Soul Crystal - Stage 5">
 		<!-- A green crystal that absorbs souls, stage 5. Once saturated, it bestows special abilities to a weapon. 26 MP is consumed each time it is used. -->
-		<set name="icon" val="icon.etc_soul_stone_i02" />
+		<set name="icon" val="icon.etc_crystal_green_i00" />
 		<set name="default_action" val="SKILL_REDUCE" />
 		<set name="etcitem_type" val="SCROLL" />
 		<set name="material" val="CRYSTAL" />
@@ -483,7 +483,7 @@
 	</item>
 	<item id="4646" type="EtcItem" name="Green Soul Crystal - Stage 6">
 		<!-- A green crystal that absorbs souls, stage 6. Once saturated, it bestows special abilities to a weapon. 26 MP is consumed each time it is used. -->
-		<set name="icon" val="icon.etc_soul_stone_i02" />
+		<set name="icon" val="icon.etc_crystal_green_i00" />
 		<set name="default_action" val="SKILL_REDUCE" />
 		<set name="etcitem_type" val="SCROLL" />
 		<set name="material" val="CRYSTAL" />
@@ -494,7 +494,7 @@
 	</item>
 	<item id="4647" type="EtcItem" name="Green Soul Crystal - Stage 7">
 		<!-- A green crystal that absorbs souls, stage 7. Once saturated, it bestows special abilities to a weapon. 26 MP is consumed each time it is used. -->
-		<set name="icon" val="icon.etc_soul_stone_i02" />
+		<set name="icon" val="icon.etc_crystal_green_i00" />
 		<set name="default_action" val="SKILL_REDUCE" />
 		<set name="etcitem_type" val="SCROLL" />
 		<set name="material" val="CRYSTAL" />
@@ -505,7 +505,7 @@
 	</item>
 	<item id="4648" type="EtcItem" name="Green Soul Crystal - Stage 8">
 		<!-- A green crystal that absorbs souls, stage 8. Once saturated, it bestows special abilities to a weapon. 26 MP is consumed each time it is used. -->
-		<set name="icon" val="icon.etc_soul_stone_i02" />
+		<set name="icon" val="icon.etc_crystal_green_i00" />
 		<set name="default_action" val="SKILL_REDUCE" />
 		<set name="etcitem_type" val="SCROLL" />
 		<set name="material" val="CRYSTAL" />
@@ -516,7 +516,7 @@
 	</item>
 	<item id="4649" type="EtcItem" name="Green Soul Crystal - Stage 9">
 		<!-- A green crystal that absorbs souls, stage 9. Once saturated, it bestows special abilities to a weapon. 26 MP is consumed each time it is used. -->
-		<set name="icon" val="icon.etc_soul_stone_i02" />
+		<set name="icon" val="icon.etc_crystal_green_i00" />
 		<set name="default_action" val="SKILL_REDUCE" />
 		<set name="etcitem_type" val="SCROLL" />
 		<set name="material" val="CRYSTAL" />
@@ -527,7 +527,7 @@
 	</item>
 	<item id="4650" type="EtcItem" name="Green Soul Crystal - Stage 10">
 		<!-- A green crystal that absorbs souls, stage 10. Once saturated, it bestows special abilities to a weapon. Consumes 26 MP. Once a soul stone reaches this stage, it can absorb souls independently. No targeting is necessary. -->
-		<set name="icon" val="icon.etc_soul_stone_i02" />
+		<set name="icon" val="icon.etc_crystal_green_i00" />
 		<set name="default_action" val="SKILL_REDUCE" />
 		<set name="etcitem_type" val="SCROLL" />
 		<set name="material" val="CRYSTAL" />
@@ -538,7 +538,7 @@
 	</item>
 	<item id="4651" type="EtcItem" name="Blue Soul Crystal">
 		<!-- A blue crystal that absorbs souls. Once saturated, it bestows special abilities to a weapon. 26 MP is consumed each time it is used. -->
-		<set name="icon" val="icon.etc_soul_stone_i01" />
+		<set name="icon" val="icon.etc_crystal_blue_i00" />
 		<set name="default_action" val="SKILL_REDUCE" />
 		<set name="etcitem_type" val="SCROLL" />
 		<set name="material" val="CRYSTAL" />
@@ -549,7 +549,7 @@
 	</item>
 	<item id="4652" type="EtcItem" name="Blue Soul Crystal - Stage 1">
 		<!-- A blue crystal that absorbs souls, stage 1. Once saturated, it bestows special abilities to a weapon. 26 MP is consumed each time it is used. -->
-		<set name="icon" val="icon.etc_soul_stone_i01" />
+		<set name="icon" val="icon.etc_crystal_blue_i00" />
 		<set name="default_action" val="SKILL_REDUCE" />
 		<set name="etcitem_type" val="SCROLL" />
 		<set name="material" val="CRYSTAL" />
@@ -560,7 +560,7 @@
 	</item>
 	<item id="4653" type="EtcItem" name="Blue Soul Crystal - Stage 2">
 		<!-- A blue crystal that absorbs souls, stage 2. Once saturated, it bestows special abilities to a weapon. 26 MP is consumed each time it is used. -->
-		<set name="icon" val="icon.etc_soul_stone_i01" />
+		<set name="icon" val="icon.etc_crystal_blue_i00" />
 		<set name="default_action" val="SKILL_REDUCE" />
 		<set name="etcitem_type" val="SCROLL" />
 		<set name="material" val="CRYSTAL" />
@@ -571,7 +571,7 @@
 	</item>
 	<item id="4654" type="EtcItem" name="Blue Soul Crystal - Stage 3">
 		<!-- A blue crystal that absorbs souls, stage 3. Once saturated, it bestows special abilities to a weapon. 26 MP is consumed each time it is used. -->
-		<set name="icon" val="icon.etc_soul_stone_i01" />
+		<set name="icon" val="icon.etc_crystal_blue_i00" />
 		<set name="default_action" val="SKILL_REDUCE" />
 		<set name="etcitem_type" val="SCROLL" />
 		<set name="material" val="CRYSTAL" />
@@ -582,7 +582,7 @@
 	</item>
 	<item id="4655" type="EtcItem" name="Blue Soul Crystal - Stage 4">
 		<!-- A blue crystal that absorbs souls, stage 4. Once saturated, it bestows special abilities to a weapon. 26 MP is consumed each time it is used. -->
-		<set name="icon" val="icon.etc_soul_stone_i01" />
+		<set name="icon" val="icon.etc_crystal_blue_i00" />
 		<set name="default_action" val="SKILL_REDUCE" />
 		<set name="etcitem_type" val="SCROLL" />
 		<set name="material" val="CRYSTAL" />
@@ -593,7 +593,7 @@
 	</item>
 	<item id="4656" type="EtcItem" name="Blue Soul Crystal - Stage 5">
 		<!-- A blue crystal that absorbs souls, stage 5. Once saturated, it bestows special abilities to a weapon. 26 MP is consumed each time it is used. -->
-		<set name="icon" val="icon.etc_soul_stone_i01" />
+		<set name="icon" val="icon.etc_crystal_blue_i00" />
 		<set name="default_action" val="SKILL_REDUCE" />
 		<set name="etcitem_type" val="SCROLL" />
 		<set name="material" val="CRYSTAL" />
@@ -604,7 +604,7 @@
 	</item>
 	<item id="4657" type="EtcItem" name="Blue Soul Crystal - Stage 6">
 		<!-- A blue crystal that absorbs souls, stage 6. Once saturated, it bestows special abilities to a weapon. 26 MP is consumed each time it is used. -->
-		<set name="icon" val="icon.etc_soul_stone_i01" />
+		<set name="icon" val="icon.etc_crystal_blue_i00" />
 		<set name="default_action" val="SKILL_REDUCE" />
 		<set name="etcitem_type" val="SCROLL" />
 		<set name="material" val="CRYSTAL" />
@@ -615,7 +615,7 @@
 	</item>
 	<item id="4658" type="EtcItem" name="Blue Soul Crystal - Stage 7">
 		<!-- A blue crystal that absorbs souls, stage 7. Once saturated, it bestows special abilities to a weapon. 26 MP is consumed each time it is used. -->
-		<set name="icon" val="icon.etc_soul_stone_i01" />
+		<set name="icon" val="icon.etc_crystal_blue_i00" />
 		<set name="default_action" val="SKILL_REDUCE" />
 		<set name="etcitem_type" val="SCROLL" />
 		<set name="material" val="CRYSTAL" />
@@ -626,7 +626,7 @@
 	</item>
 	<item id="4659" type="EtcItem" name="Blue Soul Crystal - Stage 8">
 		<!-- A blue crystal that absorbs souls, stage 8. Once saturated, it bestows special abilities to a weapon. 26 MP is consumed each time it is used. -->
-		<set name="icon" val="icon.etc_soul_stone_i01" />
+		<set name="icon" val="icon.etc_crystal_blue_i00" />
 		<set name="default_action" val="SKILL_REDUCE" />
 		<set name="etcitem_type" val="SCROLL" />
 		<set name="material" val="CRYSTAL" />
@@ -637,7 +637,7 @@
 	</item>
 	<item id="4660" type="EtcItem" name="Blue Soul Crystal - Stage 9">
 		<!-- A blue crystal that absorbs souls, stage 9. Once saturated, it bestows special abilities to a weapon. 26 MP is consumed each time it is used. -->
-		<set name="icon" val="icon.etc_soul_stone_i01" />
+		<set name="icon" val="icon.etc_crystal_blue_i00" />
 		<set name="default_action" val="SKILL_REDUCE" />
 		<set name="etcitem_type" val="SCROLL" />
 		<set name="material" val="CRYSTAL" />
@@ -648,7 +648,7 @@
 	</item>
 	<item id="4661" type="EtcItem" name="Blue Soul Crystal - Stage 10">
 		<!-- A blue crystal that absorbs souls, stage 10. Once saturated, it bestows special abilities to a weapon. Each use consumes 26 MP. Once a soul stone reaches this stage, it automatically absorbs souls. Therefore, no targeting is necessary. -->
-		<set name="icon" val="icon.etc_soul_stone_i01" />
+		<set name="icon" val="icon.etc_crystal_blue_i00" />
 		<set name="default_action" val="SKILL_REDUCE" />
 		<set name="etcitem_type" val="SCROLL" />
 		<set name="material" val="CRYSTAL" />
@@ -914,11 +914,11 @@
 		<set name="attack_range" val="40" />
 		<set name="damage_range" val="0;0;40;120" />
 		<set name="immediate_effect" val="true" />
-		<set name="crystal_count" val="705" />
+		<set name="crystal_count" val="916" />
 		<set name="crystal_type" val="C" />
 		<set name="material" val="FINE_STEEL" />
 		<set name="weight" val="1430" />
-		<set name="price" val="1762900" />
+		<set name="price" val="2290000" />
 		<set name="soulshots" val="2" />
 		<set name="spiritshots" val="2" />
 		<set name="enchant_enabled" val="true" />
@@ -944,11 +944,11 @@
 		<set name="attack_range" val="40" />
 		<set name="damage_range" val="0;0;40;120" />
 		<set name="immediate_effect" val="true" />
-		<set name="crystal_count" val="705" />
+		<set name="crystal_count" val="916" />
 		<set name="crystal_type" val="C" />
 		<set name="material" val="FINE_STEEL" />
 		<set name="weight" val="1430" />
-		<set name="price" val="1762900" />
+		<set name="price" val="2290000" />
 		<set name="soulshots" val="2" />
 		<set name="spiritshots" val="2" />
 		<set name="enchant_enabled" val="true" />
@@ -972,11 +972,11 @@
 		<set name="attack_range" val="40" />
 		<set name="damage_range" val="0;0;40;120" />
 		<set name="immediate_effect" val="true" />
-		<set name="crystal_count" val="705" />
+		<set name="crystal_count" val="916" />
 		<set name="crystal_type" val="C" />
 		<set name="material" val="FINE_STEEL" />
-		<set name="weight" val="1430" />
-		<set name="price" val="1762900" />
+		<set name="weight" val="430" />
+		<set name="price" val="2290000" />
 		<set name="soulshots" val="2" />
 		<set name="spiritshots" val="2" />
 		<set name="enchant_enabled" val="true" />
@@ -1000,11 +1000,11 @@
 		<set name="attack_range" val="40" />
 		<set name="damage_range" val="0;0;40;120" />
 		<set name="immediate_effect" val="true" />
-		<set name="crystal_count" val="884" />
+		<set name="crystal_count" val="1148" />
 		<set name="crystal_type" val="C" />
 		<set name="material" val="FINE_STEEL" />
 		<set name="weight" val="1420" />
-		<set name="price" val="2209700" />
+		<set name="price" val="2870000" />
 		<set name="soulshots" val="2" />
 		<set name="spiritshots" val="2" />
 		<set name="enchant_enabled" val="true" />
@@ -1028,11 +1028,11 @@
 		<set name="attack_range" val="40" />
 		<set name="damage_range" val="0;0;40;120" />
 		<set name="immediate_effect" val="true" />
-		<set name="crystal_count" val="884" />
+		<set name="crystal_count" val="1148" />
 		<set name="crystal_type" val="C" />
 		<set name="material" val="FINE_STEEL" />
 		<set name="weight" val="1420" />
-		<set name="price" val="2209700" />
+		<set name="price" val="2870000" />
 		<set name="soulshots" val="2" />
 		<set name="spiritshots" val="2" />
 		<set name="enchant_enabled" val="true" />
@@ -1056,11 +1056,11 @@
 		<set name="attack_range" val="40" />
 		<set name="damage_range" val="0;0;40;120" />
 		<set name="immediate_effect" val="true" />
-		<set name="crystal_count" val="884" />
+		<set name="crystal_count" val="1148" />
 		<set name="crystal_type" val="C" />
 		<set name="material" val="FINE_STEEL" />
 		<set name="weight" val="1420" />
-		<set name="price" val="2209700" />
+		<set name="price" val="2870000" />
 		<set name="soulshots" val="2" />
 		<set name="spiritshots" val="2" />
 		<set name="enchant_enabled" val="true" />
@@ -1084,11 +1084,11 @@
 		<set name="attack_range" val="40" />
 		<set name="damage_range" val="0;0;40;120" />
 		<set name="immediate_effect" val="true" />
-		<set name="crystal_count" val="884" />
+		<set name="crystal_count" val="1148" />
 		<set name="crystal_type" val="C" />
 		<set name="material" val="FINE_STEEL" />
 		<set name="weight" val="1420" />
-		<set name="price" val="2209700" />
+		<set name="price" val="2870000" />
 		<set name="soulshots" val="2" />
 		<set name="spiritshots" val="2" />
 		<set name="enchant_enabled" val="true" />
@@ -1112,11 +1112,11 @@
 		<set name="attack_range" val="40" />
 		<set name="damage_range" val="0;0;40;120" />
 		<set name="immediate_effect" val="true" />
-		<set name="crystal_count" val="884" />
+		<set name="crystal_count" val="1148" />
 		<set name="crystal_type" val="C" />
 		<set name="material" val="FINE_STEEL" />
 		<set name="weight" val="1420" />
-		<set name="price" val="2209700" />
+		<set name="price" val="2870000" />
 		<set name="soulshots" val="2" />
 		<set name="spiritshots" val="2" />
 		<set name="enchant_enabled" val="true" />
@@ -1140,11 +1140,11 @@
 		<set name="attack_range" val="40" />
 		<set name="damage_range" val="0;0;40;120" />
 		<set name="immediate_effect" val="true" />
-		<set name="crystal_count" val="884" />
+		<set name="crystal_count" val="1148" />
 		<set name="crystal_type" val="C" />
 		<set name="material" val="FINE_STEEL" />
 		<set name="weight" val="1420" />
-		<set name="price" val="2209700" />
+		<set name="price" val="2870000" />
 		<set name="soulshots" val="2" />
 		<set name="spiritshots" val="2" />
 		<set name="enchant_enabled" val="true" />
@@ -1168,11 +1168,11 @@
 		<set name="attack_range" val="40" />
 		<set name="damage_range" val="0;0;40;120" />
 		<set name="immediate_effect" val="true" />
-		<set name="crystal_count" val="884" />
+		<set name="crystal_count" val="1148" />
 		<set name="crystal_type" val="C" />
 		<set name="material" val="FINE_STEEL" />
 		<set name="weight" val="1420" />
-		<set name="price" val="2209700" />
+		<set name="price" val="2870000" />
 		<set name="soulshots" val="2" />
 		<set name="spiritshots" val="2" />
 		<set name="enchant_enabled" val="true" />
@@ -1196,11 +1196,11 @@
 		<set name="attack_range" val="40" />
 		<set name="damage_range" val="0;0;40;120" />
 		<set name="immediate_effect" val="true" />
-		<set name="crystal_count" val="884" />
+		<set name="crystal_count" val="1148" />
 		<set name="crystal_type" val="C" />
 		<set name="material" val="FINE_STEEL" />
 		<set name="weight" val="1420" />
-		<set name="price" val="2209700" />
+		<set name="price" val="2870000" />
 		<set name="soulshots" val="2" />
 		<set name="spiritshots" val="2" />
 		<set name="enchant_enabled" val="true" />
@@ -1225,11 +1225,11 @@
 		<set name="attack_range" val="40" />
 		<set name="damage_range" val="0;0;40;120" />
 		<set name="immediate_effect" val="true" />
-		<set name="crystal_count" val="884" />
+		<set name="crystal_count" val="1148" />
 		<set name="crystal_type" val="C" />
 		<set name="material" val="FINE_STEEL" />
 		<set name="weight" val="1420" />
-		<set name="price" val="2209700" />
+		<set name="price" val="2870000" />
 		<set name="soulshots" val="2" />
 		<set name="spiritshots" val="2" />
 		<set name="enchant_enabled" val="true" />
@@ -1253,11 +1253,11 @@
 		<set name="attack_range" val="40" />
 		<set name="damage_range" val="0;0;40;120" />
 		<set name="immediate_effect" val="true" />
-		<set name="crystal_count" val="884" />
+		<set name="crystal_count" val="1148" />
 		<set name="crystal_type" val="C" />
 		<set name="material" val="FINE_STEEL" />
 		<set name="weight" val="1420" />
-		<set name="price" val="2209700" />
+		<set name="price" val="2870000" />
 		<set name="soulshots" val="2" />
 		<set name="spiritshots" val="2" />
 		<set name="enchant_enabled" val="true" />
@@ -1281,11 +1281,11 @@
 		<set name="attack_range" val="40" />
 		<set name="damage_range" val="0;0;40;120" />
 		<set name="immediate_effect" val="true" />
-		<set name="crystal_count" val="884" />
+		<set name="crystal_count" val="1148" />
 		<set name="crystal_type" val="C" />
 		<set name="material" val="FINE_STEEL" />
 		<set name="weight" val="1420" />
-		<set name="price" val="2209700" />
+		<set name="price" val="2870000" />
 		<set name="soulshots" val="2" />
 		<set name="spiritshots" val="2" />
 		<set name="enchant_enabled" val="true" />
@@ -1310,11 +1310,11 @@
 		<set name="attack_range" val="40" />
 		<set name="damage_range" val="0;0;40;120" />
 		<set name="immediate_effect" val="true" />
-		<set name="crystal_count" val="884" />
+		<set name="crystal_count" val="1148" />
 		<set name="crystal_type" val="C" />
 		<set name="material" val="FINE_STEEL" />
 		<set name="weight" val="1420" />
-		<set name="price" val="2209700" />
+		<set name="price" val="2870000" />
 		<set name="soulshots" val="2" />
 		<set name="spiritshots" val="2" />
 		<set name="enchant_enabled" val="true" />
@@ -1339,11 +1339,11 @@
 		<set name="attack_range" val="40" />
 		<set name="damage_range" val="0;0;40;120" />
 		<set name="immediate_effect" val="true" />
-		<set name="crystal_count" val="1322" />
+		<set name="crystal_count" val="1720" />
 		<set name="crystal_type" val="C" />
 		<set name="material" val="ORIHARUKON" />
 		<set name="weight" val="1400" />
-		<set name="price" val="3304300" />
+		<set name="price" val="4300000" />
 		<set name="soulshots" val="3" />
 		<set name="spiritshots" val="3" />
 		<set name="enchant_enabled" val="true" />
@@ -1367,11 +1367,11 @@
 		<set name="attack_range" val="40" />
 		<set name="damage_range" val="0;0;40;120" />
 		<set name="immediate_effect" val="true" />
-		<set name="crystal_count" val="1322" />
+		<set name="crystal_count" val="1720" />
 		<set name="crystal_type" val="C" />
 		<set name="material" val="ORIHARUKON" />
 		<set name="weight" val="1400" />
-		<set name="price" val="3304300" />
+		<set name="price" val="4300000" />
 		<set name="soulshots" val="3" />
 		<set name="spiritshots" val="3" />
 		<set name="enchant_enabled" val="true" />
@@ -1395,11 +1395,11 @@
 		<set name="attack_range" val="40" />
 		<set name="damage_range" val="0;0;40;120" />
 		<set name="immediate_effect" val="true" />
-		<set name="crystal_count" val="1322" />
+		<set name="crystal_count" val="1720" />
 		<set name="crystal_type" val="C" />
 		<set name="material" val="ORIHARUKON" />
 		<set name="weight" val="1400" />
-		<set name="price" val="3304300" />
+		<set name="price" val="4300000" />
 		<set name="soulshots" val="3" />
 		<set name="spiritshots" val="3" />
 		<set name="enchant_enabled" val="true" />
@@ -1423,11 +1423,11 @@
 		<set name="attack_range" val="40" />
 		<set name="damage_range" val="0;0;40;120" />
 		<set name="immediate_effect" val="true" />
-		<set name="crystal_count" val="1322" />
+		<set name="crystal_count" val="1720" />
 		<set name="crystal_type" val="C" />
 		<set name="material" val="MITHRIL" />
 		<set name="weight" val="1400" />
-		<set name="price" val="3304300" />
+		<set name="price" val="4300000" />
 		<set name="soulshots" val="3" />
 		<set name="spiritshots" val="3" />
 		<set name="enchant_enabled" val="true" />

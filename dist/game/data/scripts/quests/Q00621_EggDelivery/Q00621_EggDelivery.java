@@ -16,19 +16,13 @@
  */
 package quests.Q00621_EggDelivery;
 
-import java.util.Arrays;
-import java.util.List;
-
+import org.l2jmobius.gameserver.enums.QuestSound;
 import org.l2jmobius.gameserver.model.actor.Npc;
 import org.l2jmobius.gameserver.model.actor.Player;
 import org.l2jmobius.gameserver.model.quest.Quest;
 import org.l2jmobius.gameserver.model.quest.QuestState;
 import org.l2jmobius.gameserver.model.quest.State;
 
-/**
- * Egg Delivery (621)
- * @author Janiko
- */
 public class Q00621_EggDelivery extends Quest
 {
 	// NPCs
@@ -37,131 +31,113 @@ public class Q00621_EggDelivery extends Quest
 	private static final int NAFF = 31544;
 	private static final int CROCUS = 31545;
 	private static final int KUBER = 31546;
-	private static final int BOELIN = 31547;
+	private static final int BEOLIN = 31547;
 	private static final int VALENTINE = 31584;
 	// Items
-	private static final int BOILED_EGG = 7195;
-	private static final int EGG_PRICE = 7196;
-	// Misc
-	private static final int MIN_LEVEL = 68;
-	// Reward
-	private static final int QUICK_STEP_POTION = 734;
-	private static final int SEALED_RING_OF_AURAKYRA = 6849;
-	private static final int SEALED_SANDDRAGONS_EARING = 6847;
-	private static final int SEALED_DRAGON_NECKLACE = 6851;
-	// Talkers
-	private static final List<Integer> TALKERS = Arrays.asList(NAFF, CROCUS, KUBER, BOELIN);
+	private static final int BOILED_EGGS = 7195;
+	private static final int FEE_OF_BOILED_EGG = 7196;
+	// Rewards
+	private static final int HASTE_POTION = 1062;
+	private static final int[] RECIPES =
+	{
+		6847,
+		6849,
+		6851
+	};
 	
 	public Q00621_EggDelivery()
 	{
 		super(621);
+		registerQuestItems(BOILED_EGGS, FEE_OF_BOILED_EGG);
 		addStartNpc(JEREMY);
-		addTalkId(JEREMY, PULIN, VALENTINE);
-		addTalkId(TALKERS);
-		registerQuestItems(BOILED_EGG, EGG_PRICE);
+		addTalkId(JEREMY, PULIN, NAFF, CROCUS, KUBER, BEOLIN, VALENTINE);
 	}
 	
 	@Override
-	public String onAdvEvent(String event, Npc npc, Player player)
+	public String onEvent(String event, Npc npc, Player player)
 	{
-		final QuestState qs = getQuestState(player, false);
-		String htmltext = null;
-		if (qs == null)
+		String htmltext = event;
+		final QuestState st = getQuestState(player, false);
+		if (st == null)
 		{
 			return htmltext;
 		}
+		
 		switch (event)
 		{
-			case "31521-03.htm":
+			case "31521-02.htm":
 			{
-				if (qs.isCreated())
+				st.startQuest();
+				giveItems(player, BOILED_EGGS, 5);
+				break;
+			}
+			case "31543-02.htm":
+			{
+				st.setCond(2);
+				playSound(player, QuestSound.ITEMSOUND_QUEST_ITEMGET);
+				takeItems(player, BOILED_EGGS, 1);
+				giveItems(player, FEE_OF_BOILED_EGG, 1);
+				break;
+			}
+			case "31544-02.htm":
+			{
+				st.setCond(3);
+				playSound(player, QuestSound.ITEMSOUND_QUEST_ITEMGET);
+				takeItems(player, BOILED_EGGS, 1);
+				giveItems(player, FEE_OF_BOILED_EGG, 1);
+				break;
+			}
+			case "31545-02.htm":
+			{
+				st.setCond(4);
+				playSound(player, QuestSound.ITEMSOUND_QUEST_ITEMGET);
+				takeItems(player, BOILED_EGGS, 1);
+				giveItems(player, FEE_OF_BOILED_EGG, 1);
+				break;
+			}
+			case "31546-02.htm":
+			{
+				st.setCond(5);
+				playSound(player, QuestSound.ITEMSOUND_QUEST_ITEMGET);
+				takeItems(player, BOILED_EGGS, 1);
+				giveItems(player, FEE_OF_BOILED_EGG, 1);
+				break;
+			}
+			case "31547-02.htm":
+			{
+				st.setCond(6);
+				playSound(player, QuestSound.ITEMSOUND_QUEST_ITEMGET);
+				takeItems(player, BOILED_EGGS, 1);
+				giveItems(player, FEE_OF_BOILED_EGG, 1);
+				break;
+			}
+			case "31521-06.htm":
+			{
+				if (getQuestItemsCount(player, FEE_OF_BOILED_EGG) < 5)
 				{
-					qs.startQuest();
-					giveItems(player, BOILED_EGG, 5);
-					htmltext = event;
+					htmltext = "31521-08.htm";
+					playSound(player, QuestSound.ITEMSOUND_QUEST_GIVEUP);
+					st.exitQuest(true);
+				}
+				else
+				{
+					st.setCond(7, true);
+					takeItems(player, FEE_OF_BOILED_EGG, 5);
 				}
 				break;
 			}
-			case "31521-06.html":
+			case "31584-02.htm":
 			{
-				if (qs.isCond(6))
+				if (getRandom(5) < 1)
 				{
-					if (getQuestItemsCount(player, EGG_PRICE) >= 5)
-					{
-						qs.setCond(7, true);
-						takeItems(player, EGG_PRICE, -1);
-						htmltext = event;
-					}
-					else
-					{
-						htmltext = "31521-07.html";
-					}
+					rewardItems(player, RECIPES[getRandom(3)], 1);
+					st.exitQuest(true, true);
 				}
-				break;
-			}
-			case "31543-02.html":
-			{
-				if (qs.isCond(1))
+				else
 				{
-					if (hasQuestItems(player, BOILED_EGG))
-					{
-						qs.setCond(2, true);
-						takeItems(player, BOILED_EGG, 1);
-						giveItems(player, EGG_PRICE, 1);
-						htmltext = event;
-					}
-					else
-					{
-						htmltext = "31543-03.html";
-					}
-				}
-				break;
-			}
-			case "31544-02.html":
-			case "31545-02.html":
-			case "31546-02.html":
-			case "31547-02.html":
-			{
-				if (TALKERS.contains(npc.getId()) && qs.isCond(TALKERS.indexOf(npc.getId()) + 2))
-				{
-					if (hasQuestItems(player, BOILED_EGG))
-					{
-						qs.setCond(qs.getCond() + 1, true);
-						takeItems(player, BOILED_EGG, 1);
-						giveItems(player, EGG_PRICE, 1);
-						htmltext = event;
-					}
-					else
-					{
-						htmltext = npc.getId() + "-03.html";
-					}
-				}
-				break;
-			}
-			case "31584-02.html":
-			{
-				if (qs.isCond(7))
-				{
-					final int rnd = getRandom(1000);
-					if (rnd < 800)
-					{
-						rewardItems(player, QUICK_STEP_POTION, 1);
-						giveAdena(player, 18800, true);
-					}
-					else if (rnd < 880)
-					{
-						rewardItems(player, SEALED_RING_OF_AURAKYRA, 1);
-					}
-					else if (rnd < 960)
-					{
-						rewardItems(player, SEALED_SANDDRAGONS_EARING, 1);
-					}
-					else if (rnd < 1000)
-					{
-						rewardItems(player, SEALED_DRAGON_NECKLACE, 1);
-					}
-					qs.exitQuest(true, true);
-					htmltext = event;
+					giveAdena(player, 18800, true);
+					rewardItems(player, HASTE_POTION, 1);
+					st.exitQuest(true, true);
 				}
 				break;
 			}
@@ -170,108 +146,112 @@ public class Q00621_EggDelivery extends Quest
 	}
 	
 	@Override
-	public String onTalk(Npc npc, Player talker)
+	public String onTalk(Npc npc, Player player)
 	{
-		final QuestState qs = getQuestState(talker, true);
-		String htmltext = getNoQuestMsg(talker);
-		switch (npc.getId())
+		String htmltext = getNoQuestMsg(player);
+		final QuestState st = getQuestState(player, true);
+		
+		switch (st.getState())
 		{
-			case JEREMY:
+			case State.CREATED:
 			{
-				switch (qs.getState())
+				htmltext = (player.getLevel() < 68) ? "31521-03.htm" : "31521-01.htm";
+				break;
+			}
+			case State.STARTED:
+			{
+				final int cond = st.getCond();
+				switch (npc.getId())
 				{
-					case State.CREATED:
+					case JEREMY:
 					{
-						htmltext = (talker.getLevel() >= MIN_LEVEL) ? "31521-01.htm" : "31521-02.htm";
-						break;
-					}
-					case State.STARTED:
-					{
-						switch (qs.getCond())
+						if (cond == 1)
 						{
-							case 1:
-							{
-								htmltext = "31521-04.html";
-								break;
-							}
-							case 6:
-							{
-								if (hasQuestItems(talker, EGG_PRICE))
-								{
-									htmltext = "31521-05.html";
-								}
-								break;
-							}
-							case 7:
-							{
-								if (!hasQuestItems(talker, BOILED_EGG))
-								{
-									htmltext = "31521-08.html";
-								}
-								break;
-							}
+							htmltext = "31521-04.htm";
+						}
+						else if (cond == 6)
+						{
+							htmltext = "31521-05.htm";
+						}
+						else if (cond == 7)
+						{
+							htmltext = "31521-07.htm";
 						}
 						break;
 					}
-					case State.COMPLETED:
+					case PULIN:
 					{
-						htmltext = getAlreadyCompletedMsg(talker);
+						if ((cond == 1) && (getQuestItemsCount(player, BOILED_EGGS) == 5))
+						{
+							htmltext = "31543-01.htm";
+						}
+						else if (cond > 1)
+						{
+							htmltext = "31543-03.htm";
+						}
 						break;
 					}
-				}
-				break;
-			}
-			case PULIN:
-			{
-				if (qs.isStarted())
-				{
-					switch (qs.getCond())
+					case NAFF:
 					{
-						case 1:
+						if ((cond == 2) && (getQuestItemsCount(player, BOILED_EGGS) == 4))
 						{
-							if (getQuestItemsCount(talker, BOILED_EGG) >= 5)
-							{
-								htmltext = "31543-01.html";
-							}
-							break;
+							htmltext = "31544-01.htm";
 						}
-						case 2:
+						else if (cond > 2)
 						{
-							htmltext = "31543-04.html";
-							break;
+							htmltext = "31544-03.htm";
 						}
+						break;
 					}
-				}
-				break;
-			}
-			case NAFF:
-			case CROCUS:
-			case KUBER:
-			case BOELIN:
-			{
-				if (qs.isStarted())
-				{
-					final int cond = TALKERS.indexOf(npc.getId()) + 2;
-					if (qs.isCond(cond) && hasQuestItems(talker, EGG_PRICE)) // 2,3,4,5
+					case CROCUS:
 					{
-						htmltext = npc.getId() + "-01.html";
+						if ((cond == 3) && (getQuestItemsCount(player, BOILED_EGGS) == 3))
+						{
+							htmltext = "31545-01.htm";
+						}
+						else if (cond > 3)
+						{
+							htmltext = "31545-03.htm";
+						}
+						break;
 					}
-					else if (qs.isCond(cond + 1)) // 3,4,5,6
+					case KUBER:
 					{
-						htmltext = npc.getId() + "-04.html";
+						if ((cond == 4) && (getQuestItemsCount(player, BOILED_EGGS) == 2))
+						{
+							htmltext = "31546-01.htm";
+						}
+						else if (cond > 4)
+						{
+							htmltext = "31546-03.htm";
+						}
+						break;
 					}
-				}
-				break;
-			}
-			case VALENTINE:
-			{
-				if (qs.isStarted() && qs.isCond(7))
-				{
-					htmltext = "31584-01.html";
+					case BEOLIN:
+					{
+						if ((cond == 5) && (getQuestItemsCount(player, BOILED_EGGS) == 1))
+						{
+							htmltext = "31547-01.htm";
+						}
+						else if (cond > 5)
+						{
+							htmltext = "31547-03.htm";
+						}
+						break;
+					}
+					case VALENTINE:
+					{
+						if (cond == 7)
+						{
+							htmltext = "31584-01.htm";
+						}
+						break;
+					}
 				}
 				break;
 			}
 		}
+		
 		return htmltext;
 	}
 }

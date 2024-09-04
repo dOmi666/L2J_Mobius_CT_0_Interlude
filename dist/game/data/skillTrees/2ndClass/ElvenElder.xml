@@ -191,9 +191,6 @@
 		<skill skillName="Sleep" skillId="1069" skillLevel="16" getLevel="48" levelUpSp="21000" learnedByNpc="true" />
 		<skill skillName="Sleep" skillId="1069" skillLevel="17" getLevel="48" levelUpSp="21000" learnedByNpc="true" />
 		<skill skillName="Sleep" skillId="1069" skillLevel="18" getLevel="48" levelUpSp="21000" learnedByNpc="true" />
-		<skill skillName="Greater Group Heal" skillId="1219" skillLevel="1" getLevel="48" levelUpSp="21000" learnedByNpc="true" />
-		<skill skillName="Greater Group Heal" skillId="1219" skillLevel="2" getLevel="48" levelUpSp="21000" learnedByNpc="true" />
-		<skill skillName="Greater Group Heal" skillId="1219" skillLevel="3" getLevel="48" levelUpSp="21000" learnedByNpc="true" />
 		<skill skillName="Recharge" skillId="1013" skillLevel="9" getLevel="48" levelUpSp="21000" learnedByNpc="true" />
 		<skill skillName="Recharge" skillId="1013" skillLevel="10" getLevel="48" levelUpSp="21000" learnedByNpc="true" />
 		<skill skillName="Might of Heaven" skillId="1028" skillLevel="5" getLevel="48" levelUpSp="21000" learnedByNpc="true" />
@@ -214,9 +211,6 @@
 		<skill skillName="Sleep" skillId="1069" skillLevel="19" getLevel="52" levelUpSp="26000" learnedByNpc="true" />
 		<skill skillName="Sleep" skillId="1069" skillLevel="20" getLevel="52" levelUpSp="26000" learnedByNpc="true" />
 		<skill skillName="Sleep" skillId="1069" skillLevel="21" getLevel="52" levelUpSp="26000" learnedByNpc="true" />
-		<skill skillName="Greater Group Heal" skillId="1219" skillLevel="4" getLevel="52" levelUpSp="26000" learnedByNpc="true" />
-		<skill skillName="Greater Group Heal" skillId="1219" skillLevel="5" getLevel="52" levelUpSp="26000" learnedByNpc="true" />
-		<skill skillName="Greater Group Heal" skillId="1219" skillLevel="6" getLevel="52" levelUpSp="26000" learnedByNpc="true" />
 		<skill skillName="Recharge" skillId="1013" skillLevel="11" getLevel="52" levelUpSp="38000" learnedByNpc="true" />
 		<skill skillName="Recharge" skillId="1013" skillLevel="12" getLevel="52" levelUpSp="38000" learnedByNpc="true" />
 		<skill skillName="Might of Heaven" skillId="1028" skillLevel="7" getLevel="52" levelUpSp="38000" learnedByNpc="true" />
@@ -237,9 +231,6 @@
 		<skill skillName="Sleep" skillId="1069" skillLevel="22" getLevel="56" levelUpSp="32000" learnedByNpc="true" />
 		<skill skillName="Sleep" skillId="1069" skillLevel="23" getLevel="56" levelUpSp="32000" learnedByNpc="true" />
 		<skill skillName="Sleep" skillId="1069" skillLevel="24" getLevel="56" levelUpSp="32000" learnedByNpc="true" />
-		<skill skillName="Greater Group Heal" skillId="1219" skillLevel="7" getLevel="56" levelUpSp="32000" learnedByNpc="true" />
-		<skill skillName="Greater Group Heal" skillId="1219" skillLevel="8" getLevel="56" levelUpSp="32000" learnedByNpc="true" />
-		<skill skillName="Greater Group Heal" skillId="1219" skillLevel="9" getLevel="56" levelUpSp="32000" learnedByNpc="true" />
 		<skill skillName="Recharge" skillId="1013" skillLevel="13" getLevel="56" levelUpSp="47000" learnedByNpc="true" />
 		<skill skillName="Recharge" skillId="1013" skillLevel="14" getLevel="56" levelUpSp="47000" learnedByNpc="true" />
 		<skill skillName="Might of Heaven" skillId="1028" skillLevel="9" getLevel="56" levelUpSp="47000" learnedByNpc="true" />
@@ -266,9 +257,6 @@
 		<skill skillName="Greater Heal" skillId="1217" skillLevel="15" getLevel="56" levelUpSp="32000" learnedByNpc="true" />
 		<skill skillName="Sleep" skillId="1069" skillLevel="25" getLevel="58" levelUpSp="50000" learnedByNpc="true" />
 		<skill skillName="Sleep" skillId="1069" skillLevel="26" getLevel="58" levelUpSp="50000" learnedByNpc="true" />
-		<skill skillName="Greater Group Heal" skillId="1219" skillLevel="10" getLevel="58" levelUpSp="33000" learnedByNpc="true" />
-		<skill skillName="Greater Group Heal" skillId="1219" skillLevel="11" getLevel="58" levelUpSp="33000" learnedByNpc="true" />
-		<skill skillName="Greater Group Heal" skillId="1219" skillLevel="12" getLevel="58" levelUpSp="33000" learnedByNpc="true" />
 		<skill skillName="Recharge" skillId="1013" skillLevel="15" getLevel="58" levelUpSp="50000" learnedByNpc="true" />
 		<skill skillName="Recharge" skillId="1013" skillLevel="16" getLevel="58" levelUpSp="50000" learnedByNpc="true" />
 		<skill skillName="Might of Heaven" skillId="1028" skillLevel="11" getLevel="58" levelUpSp="100000" learnedByNpc="true" />
@@ -289,9 +277,6 @@
 		<skill skillName="Greater Heal" skillId="1217" skillLevel="17" getLevel="58" levelUpSp="50000" learnedByNpc="true" />
 		<skill skillName="Sleep" skillId="1069" skillLevel="27" getLevel="60" levelUpSp="70000" learnedByNpc="true" />
 		<skill skillName="Sleep" skillId="1069" skillLevel="28" getLevel="60" levelUpSp="70000" learnedByNpc="true" />
-		<skill skillName="Greater Group Heal" skillId="1219" skillLevel="13" getLevel="60" levelUpSp="50000" learnedByNpc="true" />
-		<skill skillName="Greater Group Heal" skillId="1219" skillLevel="14" getLevel="60" levelUpSp="50000" learnedByNpc="true" />
-		<skill skillName="Greater Group Heal" skillId="1219" skillLevel="15" getLevel="60" levelUpSp="50000" learnedByNpc="true" />
 		<skill skillName="Recharge" skillId="1013" skillLevel="17" getLevel="60" levelUpSp="70000" learnedByNpc="true" />
 		<skill skillName="Recharge" skillId="1013" skillLevel="18" getLevel="60" levelUpSp="70000" learnedByNpc="true" />
 		<skill skillName="Might of Heaven" skillId="1028" skillLevel="12" getLevel="60" levelUpSp="140000" learnedByNpc="true" />
@@ -310,8 +295,6 @@
 		<skill skillName="Greater Heal" skillId="1217" skillLevel="19" getLevel="60" levelUpSp="70000" learnedByNpc="true" />
 		<skill skillName="Sleep" skillId="1069" skillLevel="29" getLevel="62" levelUpSp="110000" learnedByNpc="true" />
 		<skill skillName="Sleep" skillId="1069" skillLevel="30" getLevel="62" levelUpSp="110000" learnedByNpc="true" />
-		<skill skillName="Greater Group Heal" skillId="1219" skillLevel="16" getLevel="62" levelUpSp="110000" learnedByNpc="true" />
-		<skill skillName="Greater Group Heal" skillId="1219" skillLevel="17" getLevel="62" levelUpSp="110000" learnedByNpc="true" />
 		<skill skillName="Recharge" skillId="1013" skillLevel="19" getLevel="62" levelUpSp="110000" learnedByNpc="true" />
 		<skill skillName="Recharge" skillId="1013" skillLevel="20" getLevel="62" levelUpSp="110000" learnedByNpc="true" />
 		<skill skillName="Might of Heaven" skillId="1028" skillLevel="13" getLevel="62" levelUpSp="210000" learnedByNpc="true" />
@@ -330,8 +313,6 @@
 		<skill skillName="Greater Heal" skillId="1217" skillLevel="21" getLevel="62" levelUpSp="110000" learnedByNpc="true" />
 		<skill skillName="Sleep" skillId="1069" skillLevel="31" getLevel="64" levelUpSp="110000" learnedByNpc="true" />
 		<skill skillName="Sleep" skillId="1069" skillLevel="32" getLevel="64" levelUpSp="110000" learnedByNpc="true" />
-		<skill skillName="Greater Group Heal" skillId="1219" skillLevel="18" getLevel="64" levelUpSp="110000" learnedByNpc="true" />
-		<skill skillName="Greater Group Heal" skillId="1219" skillLevel="19" getLevel="64" levelUpSp="110000" learnedByNpc="true" />
 		<skill skillName="Recharge" skillId="1013" skillLevel="21" getLevel="64" levelUpSp="110000" learnedByNpc="true" />
 		<skill skillName="Recharge" skillId="1013" skillLevel="22" getLevel="64" levelUpSp="110000" learnedByNpc="true" />
 		<skill skillName="Might of Heaven" skillId="1028" skillLevel="14" getLevel="64" levelUpSp="230000" learnedByNpc="true" />
@@ -351,8 +332,6 @@
 		<skill skillName="Greater Heal" skillId="1217" skillLevel="23" getLevel="64" levelUpSp="110000" learnedByNpc="true" />
 		<skill skillName="Sleep" skillId="1069" skillLevel="33" getLevel="66" levelUpSp="160000" learnedByNpc="true" />
 		<skill skillName="Sleep" skillId="1069" skillLevel="34" getLevel="66" levelUpSp="160000" learnedByNpc="true" />
-		<skill skillName="Greater Group Heal" skillId="1219" skillLevel="20" getLevel="66" levelUpSp="160000" learnedByNpc="true" />
-		<skill skillName="Greater Group Heal" skillId="1219" skillLevel="21" getLevel="66" levelUpSp="160000" learnedByNpc="true" />
 		<skill skillName="Recharge" skillId="1013" skillLevel="23" getLevel="66" levelUpSp="160000" learnedByNpc="true" />
 		<skill skillName="Recharge" skillId="1013" skillLevel="24" getLevel="66" levelUpSp="160000" learnedByNpc="true" />
 		<skill skillName="Might of Heaven" skillId="1028" skillLevel="15" getLevel="66" levelUpSp="320000" learnedByNpc="true" />
@@ -373,8 +352,6 @@
 		<skill skillName="Greater Heal" skillId="1217" skillLevel="25" getLevel="66" levelUpSp="160000" learnedByNpc="true" />
 		<skill skillName="Sleep" skillId="1069" skillLevel="35" getLevel="68" levelUpSp="190000" learnedByNpc="true" />
 		<skill skillName="Sleep" skillId="1069" skillLevel="36" getLevel="68" levelUpSp="190000" learnedByNpc="true" />
-		<skill skillName="Greater Group Heal" skillId="1219" skillLevel="22" getLevel="68" levelUpSp="190000" learnedByNpc="true" />
-		<skill skillName="Greater Group Heal" skillId="1219" skillLevel="23" getLevel="68" levelUpSp="190000" learnedByNpc="true" />
 		<skill skillName="Recharge" skillId="1013" skillLevel="25" getLevel="68" levelUpSp="190000" learnedByNpc="true" />
 		<skill skillName="Recharge" skillId="1013" skillLevel="26" getLevel="68" levelUpSp="190000" learnedByNpc="true" />
 		<skill skillName="Might of Heaven" skillId="1028" skillLevel="16" getLevel="68" levelUpSp="390000" learnedByNpc="true" />
@@ -393,8 +370,6 @@
 		<skill skillName="Greater Heal" skillId="1217" skillLevel="27" getLevel="68" levelUpSp="190000" learnedByNpc="true" />
 		<skill skillName="Sleep" skillId="1069" skillLevel="37" getLevel="70" levelUpSp="250000" learnedByNpc="true" />
 		<skill skillName="Sleep" skillId="1069" skillLevel="38" getLevel="70" levelUpSp="250000" learnedByNpc="true" />
-		<skill skillName="Greater Group Heal" skillId="1219" skillLevel="24" getLevel="70" levelUpSp="250000" learnedByNpc="true" />
-		<skill skillName="Greater Group Heal" skillId="1219" skillLevel="25" getLevel="70" levelUpSp="250000" learnedByNpc="true" />
 		<skill skillName="Recharge" skillId="1013" skillLevel="27" getLevel="70" levelUpSp="250000" learnedByNpc="true" />
 		<skill skillName="Recharge" skillId="1013" skillLevel="28" getLevel="70" levelUpSp="250000" learnedByNpc="true" />
 		<skill skillName="Might of Heaven" skillId="1028" skillLevel="17" getLevel="70" levelUpSp="490000" learnedByNpc="true" />
@@ -413,8 +388,6 @@
 		<skill skillName="Greater Heal" skillId="1217" skillLevel="29" getLevel="70" levelUpSp="250000" learnedByNpc="true" />
 		<skill skillName="Sleep" skillId="1069" skillLevel="39" getLevel="72" levelUpSp="360000" learnedByNpc="true" />
 		<skill skillName="Sleep" skillId="1069" skillLevel="40" getLevel="72" levelUpSp="360000" learnedByNpc="true" />
-		<skill skillName="Greater Group Heal" skillId="1219" skillLevel="26" getLevel="72" levelUpSp="360000" learnedByNpc="true" />
-		<skill skillName="Greater Group Heal" skillId="1219" skillLevel="27" getLevel="72" levelUpSp="360000" learnedByNpc="true" />
 		<skill skillName="Recharge" skillId="1013" skillLevel="29" getLevel="72" levelUpSp="360000" learnedByNpc="true" />
 		<skill skillName="Recharge" skillId="1013" skillLevel="30" getLevel="72" levelUpSp="360000" learnedByNpc="true" />
 		<skill skillName="Might of Heaven" skillId="1028" skillLevel="18" getLevel="72" levelUpSp="710000" learnedByNpc="true" />
@@ -434,8 +407,6 @@
 		<skill skillName="Greater Heal" skillId="1217" skillLevel="31" getLevel="72" levelUpSp="360000" learnedByNpc="true" />
 		<skill skillName="Sleep" skillId="1069" skillLevel="41" getLevel="74" levelUpSp="520000" learnedByNpc="true" />
 		<skill skillName="Sleep" skillId="1069" skillLevel="42" getLevel="74" levelUpSp="520000" learnedByNpc="true" />
-		<skill skillName="Greater Group Heal" skillId="1219" skillLevel="28" getLevel="74" levelUpSp="520000" learnedByNpc="true" />
-		<skill skillName="Greater Group Heal" skillId="1219" skillLevel="29" getLevel="74" levelUpSp="520000" learnedByNpc="true" />
 		<skill skillName="Recharge" skillId="1013" skillLevel="31" getLevel="74" levelUpSp="520000" learnedByNpc="true" />
 		<skill skillName="Recharge" skillId="1013" skillLevel="32" getLevel="74" levelUpSp="520000" learnedByNpc="true" />
 		<skill skillName="Might of Heaven" skillId="1028" skillLevel="19" getLevel="74" levelUpSp="1050000" learnedByNpc="true" />

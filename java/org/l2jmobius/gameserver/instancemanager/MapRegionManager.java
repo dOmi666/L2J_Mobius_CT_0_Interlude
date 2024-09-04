@@ -312,24 +312,7 @@ public class MapRegionManager implements IXmlReader
 			// Karma player land out of city
 			if (player.getKarma() > 0)
 			{
-				try
-				{
-					final RespawnZone zone = ZoneManager.getInstance().getZone(player, RespawnZone.class);
-					if (zone != null)
-					{
-						return getRestartRegion(creature, zone.getRespawnPoint((Player) creature)).getChaoticSpawnLoc();
-					}
-					// Opposing race check.
-					if (getMapRegion(creature).getBannedRace().containsKey(creature.getRace()))
-					{
-						return REGIONS.get(getMapRegion(creature).getBannedRace().get(creature.getRace())).getChaoticSpawnLoc();
-					}
-					return getMapRegion(creature).getChaoticSpawnLoc();
-				}
-				catch (Exception e)
-				{
-					return REGIONS.get(DEFAULT_RESPAWN).getChaoticSpawnLoc();
-				}
+				return getNearestKarmaRespawn(player);
 			}
 			
 			// Checking if needed to be respawned in "far" town from the castle; and if player's clan is participating
@@ -367,6 +350,35 @@ public class MapRegionManager implements IXmlReader
 		}
 		
 		// Get the nearest town
+		return getNearestTownRespawn(creature);
+	}
+	
+	public Location getNearestKarmaRespawn(Player player)
+	{
+		try
+		{
+			final RespawnZone zone = ZoneManager.getInstance().getZone(player, RespawnZone.class);
+			if (zone != null)
+			{
+				return getRestartRegion(player, zone.getRespawnPoint(player)).getChaoticSpawnLoc();
+			}
+			
+			// Opposing race check.
+			if (getMapRegion(player).getBannedRace().containsKey(player.getRace()))
+			{
+				return REGIONS.get(getMapRegion(player).getBannedRace().get(player.getRace())).getChaoticSpawnLoc();
+			}
+			
+			return getMapRegion(player).getChaoticSpawnLoc();
+		}
+		catch (Exception e)
+		{
+			return REGIONS.get(DEFAULT_RESPAWN).getChaoticSpawnLoc();
+		}
+	}
+	
+	public Location getNearestTownRespawn(Creature creature)
+	{
 		try
 		{
 			final RespawnZone zone = ZoneManager.getInstance().getZone(creature, RespawnZone.class);
@@ -374,11 +386,13 @@ public class MapRegionManager implements IXmlReader
 			{
 				return getRestartRegion(creature, zone.getRespawnPoint((Player) creature)).getSpawnLoc();
 			}
+			
 			// Opposing race check.
 			if (getMapRegion(creature).getBannedRace().containsKey(creature.getRace()))
 			{
-				return REGIONS.get(getMapRegion(creature).getBannedRace().get(creature.getRace())).getChaoticSpawnLoc();
+				return REGIONS.get(getMapRegion(creature).getBannedRace().get(creature.getRace())).getSpawnLoc();
 			}
+			
 			return getMapRegion(creature).getSpawnLoc();
 		}
 		catch (Exception e)

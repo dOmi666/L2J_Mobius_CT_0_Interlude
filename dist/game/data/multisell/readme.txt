@@ -10,14 +10,10 @@ of this directory a little bit.
 102.xml  -> Olympiad: Equipment Rewards
 103.xml  -> Olympiad: Misc. Rewards
 
-201.xml  -> Test server helper - Purchase wearable items
 202.xml  -> Test server helper - Purchase quest items and rare spellbooks
-312.xml  -> Quest 312: Take Advantage of the Crisis!
 382.xml  -> Quest 382: Head Blacksmith Vergara
 426.xml  -> Quest 426: Fishing Shots
 500.xml  -> Seven Signs - Purchase consumable items
-620.xml  -> Blacksmith Pinter - Shadow academy items
-631.xml  -> Warehouse Freightman - enchants
 648.xml  -> Quest 648: An Ice Merchants Dream
 
 999.xml  -> Upgrade hatchling to strider equipment
@@ -30,7 +26,6 @@ of this directory a little bit.
 1005.xml -> Blacksmith Special Abilities bestowing service
 1006.xml -> Dual Swords B-grade, require Dual Sword Craft Stamp
 1007.xml -> Dual Swords B-grade
-1008.xml -> Blacksmith Life Stones exchange
 
 1235.xml -> Apella shop
 
@@ -105,15 +100,10 @@ of this directory a little bit.
 320825001.xml -> Adventure Guildsman: Use Life Crystal for A weapons
 320825002.xml -> Adventure Guildsman: Use Life Crystal for A armors
 
-305986001.xml -> Hellbound's Newbie Shadow Weapon Coupons
-305986002.xml -> Hellbound's Newbie Shadow Armor Coupons
-
 317606001.xml -> Adventurers' Guide Miss Queen: Give Newbie Coupon
 317606002.xml -> Adventurers' Guide Miss Queen: Return Newbie Coupon
 317606003.xml -> Adventurers' Guide Miss Queen: Give Traveler Coupon
 317606004.xml -> Adventurers' Guide Miss Queen: Return Traveler Coupon
-
-300900001.xml -> Talismans
 
 350980001.xml -> Manor Products: Gludio
 350980002.xml -> Manor Products: Dion
@@ -130,4 +120,3 @@ of this directory a little bit.
 3122802.xml -> Heavy Medal Event - Hyena
 3122803.xml -> Heavy Medal Event - Fox
 3122804.xml -> Heavy Medal Event - Wolf
-

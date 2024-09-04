@@ -18,9 +18,11 @@ package org.l2jmobius.gameserver.network.serverpackets;
 
 import static org.l2jmobius.gameserver.data.xml.MultisellData.PAGE_SIZE;
 
+import org.l2jmobius.commons.network.WritableBuffer;
 import org.l2jmobius.gameserver.model.multisell.Entry;
 import org.l2jmobius.gameserver.model.multisell.Ingredient;
 import org.l2jmobius.gameserver.model.multisell.ListContainer;
+import org.l2jmobius.gameserver.network.GameClient;
 import org.l2jmobius.gameserver.network.ServerPackets;
 
 public class MultiSellList extends ServerPacket
@@ -47,68 +49,68 @@ public class MultiSellList extends ServerPacket
 	}
 	
 	@Override
-	public void write()
+	public void writeImpl(GameClient client, WritableBuffer buffer)
 	{
-		ServerPackets.MULTI_SELL_LIST.writeId(this);
-		writeInt(_list.getListId()); // list id
-		writeInt(1 + (_index / PAGE_SIZE)); // page started from 1
-		writeInt(_finished); // finished
-		writeInt(PAGE_SIZE); // size of pages
-		writeInt(_size); // list length
+		ServerPackets.MULTI_SELL_LIST.writeId(this, buffer);
+		buffer.writeInt(_list.getListId()); // list id
+		buffer.writeInt(1 + (_index / PAGE_SIZE)); // page started from 1
+		buffer.writeInt(_finished); // finished
+		buffer.writeInt(PAGE_SIZE); // size of pages
+		buffer.writeInt(_size); // list length
 		Entry ent;
 		while (_size-- > 0)
 		{
 			ent = _list.getEntries().get(_index++);
-			writeInt(ent.getEntryId());
-			writeInt(0); // C6
-			writeInt(0); // C6
-			writeByte(1);
-			writeShort(ent.getProducts().size());
-			writeShort(ent.getIngredients().size());
+			buffer.writeInt(ent.getEntryId());
+			buffer.writeInt(0); // C6
+			buffer.writeInt(0); // C6
+			buffer.writeByte(1);
+			buffer.writeShort(ent.getProducts().size());
+			buffer.writeShort(ent.getIngredients().size());
 			for (Ingredient ing : ent.getProducts())
 			{
 				if (ing.getTemplate() != null)
 				{
-					writeShort(ing.getTemplate().getDisplayId());
-					writeInt(ing.getTemplate().getBodyPart());
-					writeShort(ing.getTemplate().getType2());
+					buffer.writeShort(ing.getTemplate().getDisplayId());
+					buffer.writeInt(ing.getTemplate().getBodyPart());
+					buffer.writeShort(ing.getTemplate().getType2());
 				}
 				else
 				{
-					writeShort(ing.getItemId());
-					writeInt(0);
-					writeShort(65535);
+					buffer.writeShort(ing.getItemId());
+					buffer.writeInt(0);
+					buffer.writeShort(65535);
 				}
-				writeInt(ing.getItemCount());
+				buffer.writeInt(ing.getItemCount());
 				if (ing.getItemInfo() != null)
 				{
-					writeShort(ing.getItemInfo().getEnchantLevel()); // enchant level
-					writeInt(ing.getItemInfo().getAugmentId()); // augment id
-					writeInt(0); // mana
+					buffer.writeShort(ing.getItemInfo().getEnchantLevel()); // enchant level
+					buffer.writeInt(ing.getItemInfo().getAugmentId()); // augment id
+					buffer.writeInt(0); // mana
 				}
 				else
 				{
-					writeShort(ing.getEnchantLevel()); // enchant level
-					writeInt(0); // augment id
-					writeInt(0); // mana
+					buffer.writeShort(ing.getEnchantLevel()); // enchant level
+					buffer.writeInt(0); // augment id
+					buffer.writeInt(0); // mana
 				}
 			}
 			for (Ingredient ing : ent.getIngredients())
 			{
-				writeShort(ing.getTemplate() != null ? ing.getTemplate().getDisplayId() : ing.getItemId());
-				writeShort(ing.getTemplate() != null ? ing.getTemplate().getType2() : 65535);
-				writeInt(ing.getItemCount());
+				buffer.writeShort(ing.getTemplate() != null ? ing.getTemplate().getDisplayId() : ing.getItemId());
+				buffer.writeShort(ing.getTemplate() != null ? ing.getTemplate().getType2() : 65535);
+				buffer.writeInt(ing.getItemCount());
 				if (ing.getItemInfo() != null)
 				{
-					writeShort(ing.getItemInfo().getEnchantLevel()); // enchant level
-					writeInt(ing.getItemInfo().getAugmentId()); // augment id
-					writeInt(0); // mana
+					buffer.writeShort(ing.getItemInfo().getEnchantLevel()); // enchant level
+					buffer.writeInt(ing.getItemInfo().getAugmentId()); // augment id
+					buffer.writeInt(0); // mana
 				}
 				else
 				{
-					writeShort(ing.getEnchantLevel()); // enchant level
-					writeInt(0); // augment id
-					writeInt(0); // mana
+					buffer.writeShort(ing.getEnchantLevel()); // enchant level
+					buffer.writeInt(0); // augment id
+					buffer.writeInt(0); // mana
 				}
 			}
 		}

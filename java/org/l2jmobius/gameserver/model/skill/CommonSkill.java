@@ -24,10 +24,12 @@ import org.l2jmobius.gameserver.model.holders.SkillHolder;
  */
 public enum CommonSkill
 {
+	FAKE_DEATH(60, 1),
 	RAID_CURSE(4215, 1),
 	RAID_CURSE2(4515, 1),
 	SEAL_OF_RULER(246, 1),
 	BUILD_HEADQUARTERS(247, 1),
+	SHADOW_SENSE(294, 1),
 	WYVERN_BREATH(4289, 1),
 	STRIDER_SIEGE_ASSAULT(325, 1),
 	FIREWORK(2024, 1),

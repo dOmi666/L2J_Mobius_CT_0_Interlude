@@ -98,7 +98,7 @@ public class PcBody implements ITargetTypeHandler
 			}
 		}
 		
-		creature.sendPacket(SystemMessageId.THAT_IS_AN_INCORRECT_TARGET);
+		creature.sendPacket(SystemMessageId.THAT_IS_THE_INCORRECT_TARGET);
 		return targetList;
 	}
 	

@@ -203,6 +203,17 @@ public class Broadcast
 		}
 	}
 	
+	public static void toPlayersInInstance(String text, int instanceId)
+	{
+		for (Player player : World.getInstance().getPlayers())
+		{
+			if (player.isOnline() && (player.getInstanceId() == instanceId))
+			{
+				player.sendMessage(text);
+			}
+		}
+	}
+	
 	public static void toAllOnlinePlayersOnScreen(String text)
 	{
 		toAllOnlinePlayers(new ExShowScreenMessage(text, 10000));

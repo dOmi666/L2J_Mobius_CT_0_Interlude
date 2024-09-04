@@ -16,15 +16,13 @@
  */
 package quests.Q00082_SagaOfTheSagittarius;
 
-import org.l2jmobius.gameserver.model.Location;
-
-import quests.AbstractSagaQuest;
+import quests.SagasSuperClass;
 
 /**
  * Saga of the Sagittarius (82)
  * @author Emperorc
  */
-public class Q00082_SagaOfTheSagittarius extends AbstractSagaQuest
+public class Q00082_SagaOfTheSagittarius extends SagasSuperClass
 {
 	public Q00082_SagaOfTheSagittarius()
 	{
@@ -73,11 +71,23 @@ public class Q00082_SagaOfTheSagittarius extends AbstractSagaQuest
 		{
 			0x09
 		};
-		_npcSpawnLocations = new Location[]
+		_x = new int[]
 		{
-			new Location(191046, -40640, -3042),
-			new Location(46066, -36396, -1685),
-			new Location(46066, -36396, -1685)
+			191046,
+			46066,
+			46066
+		};
+		_y = new int[]
+		{
+			-40640,
+			-36396,
+			-36396
+		};
+		_z = new int[]
+		{
+			-3042,
+			-1685,
+			-1685
 		};
 		_text = new String[]
 		{

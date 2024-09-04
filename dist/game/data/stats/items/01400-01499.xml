@@ -695,7 +695,7 @@
 		<set name="crystal_type" val="D" />
 		<set name="material" val="PAPER" />
 		<set name="weight" val="3" />
-		<set name="price" val="14" />
+		<set name="price" val="10" />
 		<!-- <set name="enchant_enabled" val="true" />NOTE: Retail typo. -->
 		<set name="is_stackable" val="true" />
 		<set name="handler" val="SoulShots" />
@@ -709,7 +709,7 @@
 		<set name="crystal_type" val="C" />
 		<set name="material" val="PAPER" />
 		<set name="weight" val="3" />
-		<set name="price" val="22" />
+		<set name="price" val="15" />
 		<!-- <set name="enchant_enabled" val="true" />NOTE: Retail typo. -->
 		<set name="is_stackable" val="true" />
 		<set name="handler" val="SoulShots" />

@@ -23,10 +23,6 @@ import org.l2jmobius.gameserver.model.quest.Quest;
 import org.l2jmobius.gameserver.model.quest.QuestState;
 import org.l2jmobius.gameserver.model.quest.State;
 
-/**
- * Step Into the Future (6)
- * @author malyelfik
- */
 public class Q00006_StepIntoTheFuture extends Quest
 {
 	// NPCs
@@ -35,135 +31,141 @@ public class Q00006_StepIntoTheFuture extends Quest
 	private static final int SIR_COLLIN = 30311;
 	// Items
 	private static final int BAULRO_LETTER = 7571;
-	private static final int SCROLL_OF_ESCAPE_GIRAN = 7559;
-	private static final int MARK_OF_TRAVELER = 7570;
-	// Misc
-	private static final int MIN_LEVEL = 3;
+	// Rewards
+	private static final int MARK_TRAVELER = 7570;
+	private static final int SOE_GIRAN = 7559;
 	
 	public Q00006_StepIntoTheFuture()
 	{
 		super(6);
+		registerQuestItems(BAULRO_LETTER);
 		addStartNpc(ROXXY);
 		addTalkId(ROXXY, BAULRO, SIR_COLLIN);
-		registerQuestItems(BAULRO_LETTER);
 	}
 	
 	@Override
-	public String onAdvEvent(String event, Npc npc, Player player)
+	public String onEvent(String event, Npc npc, Player player)
 	{
-		final QuestState qs = getQuestState(player, false);
-		if (qs == null)
+		String htmltext = event;
+		final QuestState st = getQuestState(player, false);
+		if (st == null)
 		{
-			return null;
+			return htmltext;
 		}
 		
-		String htmltext = event;
 		switch (event)
 		{
 			case "30006-03.htm":
 			{
-				qs.startQuest();
+				st.startQuest();
 				break;
 			}
-			case "30006-06.html":
+			case "30033-02.htm":
 			{
-				giveItems(player, SCROLL_OF_ESCAPE_GIRAN, 1);
-				giveItems(player, MARK_OF_TRAVELER, 1);
-				qs.exitQuest(false, true);
-				break;
-			}
-			case "30033-02.html":
-			{
-				qs.setCond(2, true);
+				st.setCond(2, true);
 				giveItems(player, BAULRO_LETTER, 1);
 				break;
 			}
-			case "30311-02.html":
+			case "30311-02.htm":
 			{
-				if (!hasQuestItems(player, BAULRO_LETTER))
+				if (hasQuestItems(player, BAULRO_LETTER))
 				{
-					return "30311-03.html";
+					st.setCond(3, true);
+					takeItems(player, BAULRO_LETTER, 1);
 				}
-				takeItems(player, BAULRO_LETTER, -1);
-				qs.setCond(3, true);
+				else
+				{
+					htmltext = "30311-03.htm";
+				}
 				break;
 			}
-			default:
+			case "30006-06.htm":
 			{
-				htmltext = null;
+				giveItems(player, MARK_TRAVELER, 1);
+				rewardItems(player, SOE_GIRAN, 1);
+				st.exitQuest(false, true);
 				break;
 			}
 		}
+		
 		return htmltext;
 	}
 	
 	@Override
 	public String onTalk(Npc npc, Player player)
 	{
-		final QuestState qs = getQuestState(player, true);
 		String htmltext = getNoQuestMsg(player);
-		switch (npc.getId())
+		final QuestState st = getQuestState(player, true);
+		
+		switch (st.getState())
 		{
-			case ROXXY:
+			case State.CREATED:
 			{
-				switch (qs.getState())
+				if ((player.getRace() != Race.HUMAN) || (player.getLevel() < 3))
 				{
-					case State.CREATED:
+					htmltext = "30006-01.htm";
+				}
+				else
+				{
+					htmltext = "30006-02.htm";
+				}
+				break;
+			}
+			case State.STARTED:
+			{
+				final int cond = st.getCond();
+				switch (npc.getId())
+				{
+					case ROXXY:
 					{
-						htmltext = ((player.getRace() == Race.HUMAN) && (player.getLevel() >= MIN_LEVEL)) ? "30006-02.htm" : "30006-01.html";
+						if ((cond == 1) || (cond == 2))
+						{
+							htmltext = "30006-04.htm";
+						}
+						else if (cond == 3)
+						{
+							htmltext = "30006-05.htm";
+						}
 						break;
 					}
-					case State.STARTED:
+					case BAULRO:
 					{
-						if (qs.isCond(1))
+						if (cond == 1)
 						{
-							htmltext = "30006-04.html";
+							htmltext = "30033-01.htm";
 						}
-						else if (qs.isCond(3))
+						else if (cond == 2)
 						{
-							htmltext = "30006-05.html";
+							htmltext = "30033-03.htm";
+						}
+						else
+						{
+							htmltext = "30033-04.htm";
 						}
 						break;
 					}
-					case State.COMPLETED:
+					case SIR_COLLIN:
 					{
-						htmltext = getAlreadyCompletedMsg(player);
+						if (cond == 2)
+						{
+							htmltext = "30311-01.htm";
+						}
+						else if (cond == 3)
+						{
+							htmltext = "30311-03a.htm";
+						}
 						break;
 					}
 				}
 				break;
 			}
-			case BAULRO:
+			case State.COMPLETED:
 			{
-				if (qs.isStarted())
-				{
-					if (qs.isCond(1))
-					{
-						htmltext = "30033-01.html";
-					}
-					else if (qs.isCond(2))
-					{
-						htmltext = "30033-03.html";
-					}
-				}
-				break;
-			}
-			case SIR_COLLIN:
-			{
-				if (qs.isStarted())
-				{
-					if (qs.isCond(2))
-					{
-						htmltext = "30311-01.html";
-					}
-					else if (qs.isCond(3))
-					{
-						htmltext = "30311-04.html";
-					}
-				}
+				htmltext = getAlreadyCompletedMsg(player);
 				break;
 			}
 		}
+		
 		return htmltext;
 	}
 }

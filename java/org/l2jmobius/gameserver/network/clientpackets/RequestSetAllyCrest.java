@@ -16,39 +16,37 @@
  */
 package org.l2jmobius.gameserver.network.clientpackets;
 
-import org.l2jmobius.commons.network.ReadablePacket;
 import org.l2jmobius.gameserver.data.sql.ClanTable;
 import org.l2jmobius.gameserver.data.sql.CrestTable;
 import org.l2jmobius.gameserver.enums.CrestType;
 import org.l2jmobius.gameserver.model.Crest;
 import org.l2jmobius.gameserver.model.actor.Player;
 import org.l2jmobius.gameserver.model.clan.Clan;
-import org.l2jmobius.gameserver.network.GameClient;
 import org.l2jmobius.gameserver.network.SystemMessageId;
 
 /**
  * Client packet for setting ally crest.
  */
-public class RequestSetAllyCrest implements ClientPacket
+public class RequestSetAllyCrest extends ClientPacket
 {
 	private int _length;
 	private byte[] _data = null;
 	
 	@Override
-	public void read(ReadablePacket packet)
+	protected void readImpl()
 	{
-		_length = packet.readInt();
+		_length = readInt();
 		if (_length > 192)
 		{
 			return;
 		}
-		_data = packet.readBytes(_length);
+		_data = readBytes(_length);
 	}
 	
 	@Override
-	public void run(GameClient client)
+	protected void runImpl()
 	{
-		final Player player = client.getPlayer();
+		final Player player = getPlayer();
 		if (player == null)
 		{
 			return;
@@ -68,14 +66,14 @@ public class RequestSetAllyCrest implements ClientPacket
 		
 		if (player.getAllyId() == 0)
 		{
-			player.sendPacket(SystemMessageId.THIS_FEATURE_IS_ONLY_AVAILABLE_TO_ALLIANCE_LEADERS);
+			player.sendPacket(SystemMessageId.THIS_FEATURE_IS_ONLY_AVAILABLE_ALLIANCE_LEADERS);
 			return;
 		}
 		
 		final Clan leaderClan = ClanTable.getInstance().getClan(player.getAllyId());
 		if ((player.getClanId() != leaderClan.getId()) || !player.isClanLeader())
 		{
-			player.sendPacket(SystemMessageId.THIS_FEATURE_IS_ONLY_AVAILABLE_TO_ALLIANCE_LEADERS);
+			player.sendPacket(SystemMessageId.THIS_FEATURE_IS_ONLY_AVAILABLE_ALLIANCE_LEADERS);
 			return;
 		}
 		
@@ -92,7 +90,7 @@ public class RequestSetAllyCrest implements ClientPacket
 			if (crest != null)
 			{
 				leaderClan.changeAllyCrest(crest.getId(), false);
-				player.sendPacket(SystemMessageId.THE_CREST_WAS_SUCCESSFULLY_REGISTERED);
+				player.sendMessage("The crest was successfully registered.");
 			}
 		}
 	}

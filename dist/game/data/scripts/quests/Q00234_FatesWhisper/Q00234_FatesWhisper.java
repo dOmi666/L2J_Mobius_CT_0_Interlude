@@ -19,7 +19,7 @@ package quests.Q00234_FatesWhisper;
 import java.util.HashMap;
 import java.util.Map;
 
-import org.l2jmobius.gameserver.data.ItemTable;
+import org.l2jmobius.gameserver.data.xml.ItemData;
 import org.l2jmobius.gameserver.enums.QuestSound;
 import org.l2jmobius.gameserver.model.actor.Npc;
 import org.l2jmobius.gameserver.model.actor.Player;
@@ -84,10 +84,10 @@ public class Q00234_FatesWhisper extends Quest
 	}
 	
 	@Override
-	public String onAdvEvent(String event, Npc npc, Player player)
+	public String onEvent(String event, Npc npc, Player player)
 	{
 		String htmltext = event;
-		final QuestState st = player.getQuestState(getName());
+		final QuestState st = getQuestState(player, false);
 		if (st == null)
 		{
 			return htmltext;
@@ -135,7 +135,7 @@ public class Q00234_FatesWhisper extends Quest
 				if (hasQuestItems(player, itemId))
 				{
 					final int aGradeItemId = Integer.parseInt(event.replace("selectAGrade_", ""));
-					htmltext = getHtm(player, "31002-12.htm").replace("%weaponname%", ItemTable.getInstance().getTemplate(aGradeItemId).getName());
+					htmltext = getHtm(player, "31002-12.htm").replace("%weaponname%", ItemData.getInstance().getTemplate(aGradeItemId).getName());
 					takeItems(player, itemId, 1);
 					giveItems(player, aGradeItemId, 1);
 					giveItems(player, STAR_OF_DESTINY, 1);
@@ -159,12 +159,8 @@ public class Q00234_FatesWhisper extends Quest
 	@Override
 	public String onTalk(Npc npc, Player player)
 	{
-		final QuestState st = player.getQuestState(getName());
 		String htmltext = getNoQuestMsg(player);
-		if (st == null)
-		{
-			return htmltext;
-		}
+		final QuestState st = getQuestState(player, true);
 		
 		switch (st.getState())
 		{

@@ -26,10 +26,6 @@ import org.l2jmobius.gameserver.model.buylist.BuyListHolder;
 import org.l2jmobius.gameserver.network.serverpackets.ActionFailed;
 import org.l2jmobius.gameserver.network.serverpackets.BuyList;
 
-
-
-
-
 /**
  * @version $Revision: 1.10.4.9 $ $Date: 2005/04/11 10:06:08 $
  */
@@ -106,12 +102,4 @@ public class Merchant extends Folk
 		// player.sendPacket(new ExBuySellList(player, buyList, taxRate, false));
 		player.sendPacket(ActionFailed.STATIC_PACKET);
 	}
-
-	@Override
-	public boolean isWarehouse()
-	{
-		return true;
-	}
-
-	
 }

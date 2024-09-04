@@ -978,7 +978,7 @@
 			<effect name="MagicalAttack" />
 		</for>
 	</skill>
-	<skill id="4252" levels="12" name="NPC Flame - Slow">
+	<skill id="4252" levels="12" name="NPC Flamestrike - Slow">
 		<table name="#magicLevel">10 20 30 40 50 60 70 75 80 85 90 95</table>
 		<table name="#mpConsume">18 29 40 53 68 83 98 104 109 113 115 117</table>
 		<table name="#power">3 5 7 9 13 16 20 20 20 20 20 20</table>
@@ -1344,9 +1344,9 @@
 			</effect>
 		</for>
 	</skill>
-	<skill id="4271" levels="8" name="Increase Force">
+	<skill id="4271" levels="7" name="Increase Force">
 		<!-- The force has been increased to level 1. -->
-		<table name="#icons">icon.skill4271_1 icon.skill4271_2 icon.skill4271_3 icon.skill4271_4 icon.skill4271_5 icon.skill4271_6 icon.skill4271_7 icon.skill4271_8</table>
+		<table name="#icons">icon.skill4271_1 icon.skill4271_2 icon.skill4271_3 icon.skill4271_4 icon.skill4271_5 icon.skill4271_6 icon.skill4271_7</table>
 		<set name="icon" val="#icons" />
 		<set name="magicLevel" val="1" />
 		<set name="operateType" val="P" />

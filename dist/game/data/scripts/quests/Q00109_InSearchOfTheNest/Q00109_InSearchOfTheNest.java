@@ -42,10 +42,10 @@ public class Q00109_InSearchOfTheNest extends Quest
 	}
 	
 	@Override
-	public String onAdvEvent(String event, Npc npc, Player player)
+	public String onEvent(String event, Npc npc, Player player)
 	{
 		final String htmltext = event;
-		final QuestState st = player.getQuestState(getName());
+		final QuestState st = getQuestState(player, false);
 		if (st == null)
 		{
 			return htmltext;
@@ -72,7 +72,7 @@ public class Q00109_InSearchOfTheNest extends Quest
 			}
 			case "31554-02.htm":
 			{
-				rewardItems(player, 57, 5168);
+				giveAdena(player, 5168, true);
 				st.exitQuest(false, true);
 				break;
 			}

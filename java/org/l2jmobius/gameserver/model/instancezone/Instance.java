@@ -53,9 +53,7 @@ import org.l2jmobius.gameserver.model.actor.Player;
 import org.l2jmobius.gameserver.model.actor.instance.Door;
 import org.l2jmobius.gameserver.model.actor.templates.DoorTemplate;
 import org.l2jmobius.gameserver.model.holders.InstanceReenterTimeHolder;
-import org.l2jmobius.gameserver.network.SystemMessageId;
 import org.l2jmobius.gameserver.network.serverpackets.CreatureSay;
-import org.l2jmobius.gameserver.network.serverpackets.SystemMessage;
 import org.l2jmobius.gameserver.util.Broadcast;
 
 /**
@@ -804,18 +802,14 @@ public class Instance
 		{
 			timeLeft = remaining / 60000;
 			interval = 300000;
-			final SystemMessage sm = new SystemMessage(SystemMessageId.THIS_DUNGEON_WILL_EXPIRE_IN_S1_MINUTE_S_YOU_WILL_BE_FORCED_OUT_OF_THE_DUNGEON_WHEN_THE_TIME_EXPIRES);
-			sm.addString(Integer.toString(timeLeft));
-			Broadcast.toPlayersInInstance(sm, _id);
+			Broadcast.toPlayersInInstance("This dungeon will expire in " + timeLeft + " minute(s). You will be forced out of the dungeon when the time expires.", _id);
 			remaining -= 300000;
 		}
 		else if (remaining > 60000)
 		{
 			timeLeft = remaining / 60000;
 			interval = 60000;
-			final SystemMessage sm = new SystemMessage(SystemMessageId.THIS_DUNGEON_WILL_EXPIRE_IN_S1_MINUTE_S_YOU_WILL_BE_FORCED_OUT_OF_THE_DUNGEON_WHEN_THE_TIME_EXPIRES);
-			sm.addString(Integer.toString(timeLeft));
-			Broadcast.toPlayersInInstance(sm, _id);
+			Broadcast.toPlayersInInstance("This dungeon will expire in " + timeLeft + " minute(s). You will be forced out of the dungeon when the time expires.", _id);
 			remaining -= 60000;
 		}
 		else if (remaining > 30000)

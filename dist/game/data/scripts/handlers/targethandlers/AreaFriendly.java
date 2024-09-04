@@ -44,7 +44,7 @@ public class AreaFriendly implements ITargetTypeHandler
 		final Player player = creature.getActingPlayer();
 		if (!checkTarget(player, target) && (skill.getCastRange() >= 0))
 		{
-			player.sendPacket(SystemMessageId.THAT_IS_AN_INCORRECT_TARGET);
+			player.sendPacket(SystemMessageId.THAT_IS_THE_INCORRECT_TARGET);
 			return targetList;
 		}
 		

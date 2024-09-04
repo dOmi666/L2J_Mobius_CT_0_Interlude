@@ -23,10 +23,6 @@ import org.l2jmobius.gameserver.model.quest.Quest;
 import org.l2jmobius.gameserver.model.quest.QuestState;
 import org.l2jmobius.gameserver.model.quest.State;
 
-/**
- * Nerupa's Request (160)
- * @author ivantotov
- */
 public class Q00160_NerupasRequest extends Quest
 {
 	// NPCs
@@ -36,154 +32,147 @@ public class Q00160_NerupasRequest extends Quest
 	private static final int JULIA = 30152;
 	// Items
 	private static final int SILVERY_SPIDERSILK = 1026;
-	private static final int UNOS_RECEIPT = 1027;
-	private static final int CELS_TICKET = 1028;
+	private static final int UNOREN_RECEIPT = 1027;
+	private static final int CREAMEES_TICKET = 1028;
 	private static final int NIGHTSHADE_LEAF = 1029;
 	// Reward
 	private static final int LESSER_HEALING_POTION = 1060;
-	// Misc
-	private static final int MIN_LEVEL = 3;
 	
 	public Q00160_NerupasRequest()
 	{
 		super(160);
+		registerQuestItems(SILVERY_SPIDERSILK, UNOREN_RECEIPT, CREAMEES_TICKET, NIGHTSHADE_LEAF);
 		addStartNpc(NERUPA);
 		addTalkId(NERUPA, UNOREN, CREAMEES, JULIA);
-		registerQuestItems(SILVERY_SPIDERSILK, UNOS_RECEIPT, CELS_TICKET, NIGHTSHADE_LEAF);
 	}
 	
 	@Override
-	public String onAdvEvent(String event, Npc npc, Player player)
+	public String onEvent(String event, Npc npc, Player player)
 	{
-		final QuestState qs = getQuestState(player, false);
-		if ((qs != null) && event.equals("30370-04.htm"))
+		final String htmltext = event;
+		final QuestState st = getQuestState(player, false);
+		if (st == null)
 		{
-			qs.startQuest();
-			if (!hasQuestItems(player, SILVERY_SPIDERSILK))
-			{
-				giveItems(player, SILVERY_SPIDERSILK, 1);
-			}
-			return event;
+			return htmltext;
 		}
-		return null;
+		
+		if (event.equals("30370-04.htm"))
+		{
+			st.startQuest();
+			giveItems(player, SILVERY_SPIDERSILK, 1);
+		}
+		
+		return htmltext;
 	}
 	
 	@Override
 	public String onTalk(Npc npc, Player player)
 	{
-		final QuestState qs = getQuestState(player, true);
 		String htmltext = getNoQuestMsg(player);
-		switch (qs.getState())
+		final QuestState st = getQuestState(player, true);
+		
+		switch (st.getState())
 		{
-			case State.COMPLETED:
-			{
-				htmltext = getAlreadyCompletedMsg(player);
-				break;
-			}
 			case State.CREATED:
 			{
-				if (npc.getId() == NERUPA)
+				if (player.getRace() != Race.ELF)
 				{
-					if (player.getRace() != Race.ELF)
-					{
-						htmltext = "30370-01.htm";
-					}
-					else if (player.getLevel() < MIN_LEVEL)
-					{
-						htmltext = "30370-02.htm";
-					}
-					else
-					{
-						htmltext = "30370-03.htm";
-					}
+					htmltext = "30370-00.htm";
+				}
+				else if (player.getLevel() < 3)
+				{
+					htmltext = "30370-02.htm";
+				}
+				else
+				{
+					htmltext = "30370-03.htm";
 				}
 				break;
 			}
 			case State.STARTED:
 			{
+				final int cond = st.getCond();
 				switch (npc.getId())
 				{
 					case NERUPA:
 					{
-						if (hasAtLeastOneQuestItem(player, SILVERY_SPIDERSILK, UNOS_RECEIPT, CELS_TICKET))
+						if (cond < 4)
 						{
-							htmltext = "30370-05.html";
+							htmltext = "30370-05.htm";
 						}
-						else if (hasQuestItems(player, NIGHTSHADE_LEAF))
+						else if (cond == 4)
 						{
+							htmltext = "30370-06.htm";
+							takeItems(player, NIGHTSHADE_LEAF, 1);
 							rewardItems(player, LESSER_HEALING_POTION, 5);
 							addExpAndSp(player, 1000, 0);
-							qs.exitQuest(false, true);
-							htmltext = "30370-06.html";
+							st.exitQuest(false, true);
 						}
 						break;
 					}
 					case UNOREN:
 					{
-						if (hasQuestItems(player, SILVERY_SPIDERSILK))
+						if (cond == 1)
 						{
-							takeItems(player, SILVERY_SPIDERSILK, -1);
-							if (!hasQuestItems(player, UNOS_RECEIPT))
-							{
-								giveItems(player, UNOS_RECEIPT, 1);
-							}
-							qs.setCond(2, true);
-							htmltext = "30147-01.html";
+							htmltext = "30147-01.htm";
+							st.setCond(2, true);
+							takeItems(player, SILVERY_SPIDERSILK, 1);
+							giveItems(player, UNOREN_RECEIPT, 1);
 						}
-						else if (hasQuestItems(player, UNOS_RECEIPT))
+						else if (cond == 2)
 						{
-							htmltext = "30147-02.html";
+							htmltext = "30147-02.htm";
 						}
-						else if (hasQuestItems(player, NIGHTSHADE_LEAF))
+						else if (cond == 4)
 						{
-							htmltext = "30147-03.html";
+							htmltext = "30147-03.htm";
 						}
 						break;
 					}
 					case CREAMEES:
 					{
-						if (hasQuestItems(player, UNOS_RECEIPT))
+						if (cond == 2)
 						{
-							takeItems(player, UNOS_RECEIPT, -1);
-							if (!hasQuestItems(player, CELS_TICKET))
-							{
-								giveItems(player, CELS_TICKET, 1);
-							}
-							qs.setCond(3, true);
-							htmltext = "30149-01.html";
+							htmltext = "30149-01.htm";
+							st.setCond(3, true);
+							takeItems(player, UNOREN_RECEIPT, 1);
+							giveItems(player, CREAMEES_TICKET, 1);
 						}
-						else if (hasQuestItems(player, CELS_TICKET))
+						else if (cond == 3)
 						{
-							htmltext = "30149-02.html";
+							htmltext = "30149-02.htm";
 						}
-						else if (hasQuestItems(player, NIGHTSHADE_LEAF))
+						else if (cond == 4)
 						{
-							htmltext = "30149-03.html";
+							htmltext = "30149-03.htm";
 						}
 						break;
 					}
 					case JULIA:
 					{
-						if (hasQuestItems(player, CELS_TICKET))
+						if (cond == 3)
 						{
-							takeItems(player, CELS_TICKET, -1);
-							if (!hasQuestItems(player, NIGHTSHADE_LEAF))
-							{
-								giveItems(player, NIGHTSHADE_LEAF, 1);
-							}
-							qs.setCond(4, true);
-							htmltext = "30152-01.html";
+							htmltext = "30152-01.htm";
+							st.setCond(4, true);
+							takeItems(player, CREAMEES_TICKET, 1);
+							giveItems(player, NIGHTSHADE_LEAF, 1);
 						}
-						else if (hasQuestItems(player, NIGHTSHADE_LEAF))
+						else if (cond == 4)
 						{
-							htmltext = "30152-02.html";
+							htmltext = "30152-02.htm";
 						}
 						break;
 					}
 				}
 				break;
 			}
+			case State.COMPLETED:
+			{
+				htmltext = getAlreadyCompletedMsg(player);
+				break;
+			}
 		}
+		
 		return htmltext;
 	}
 }

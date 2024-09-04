@@ -43,7 +43,6 @@ import org.l2jmobius.gameserver.model.zone.ZoneId;
 import org.l2jmobius.gameserver.network.SystemMessageId;
 import org.l2jmobius.gameserver.network.serverpackets.AbstractNpcInfo.TrapInfo;
 import org.l2jmobius.gameserver.network.serverpackets.ServerPacket;
-import org.l2jmobius.gameserver.network.serverpackets.SystemMessage;
 import org.l2jmobius.gameserver.taskmanager.DecayTaskManager;
 
 /**
@@ -333,11 +332,7 @@ public class Trap extends Npc
 		}
 		else
 		{
-			final SystemMessage sm = new SystemMessage(SystemMessageId.C1_HAS_DONE_S3_POINTS_OF_DAMAGE_TO_C2);
-			sm.addString(getName());
-			sm.addString(target.getName());
-			sm.addInt(damage);
-			_owner.sendPacket(sm);
+			_owner.sendMessage(getName() + " has done " + damage + " points of damage to " + target.getName() + ".");
 		}
 	}
 	

@@ -20,15 +20,12 @@ import org.l2jmobius.gameserver.enums.QuestSound;
 import org.l2jmobius.gameserver.enums.Race;
 import org.l2jmobius.gameserver.model.actor.Npc;
 import org.l2jmobius.gameserver.model.actor.Player;
-import org.l2jmobius.gameserver.model.holders.ItemHolder;
 import org.l2jmobius.gameserver.model.quest.Quest;
 import org.l2jmobius.gameserver.model.quest.QuestState;
 import org.l2jmobius.gameserver.model.quest.State;
+import org.l2jmobius.gameserver.model.variables.PlayerVariables;
+import org.l2jmobius.gameserver.network.serverpackets.SocialAction;
 
-/**
- * Sword of Solidarity (101)
- * @author xban1x
- */
 public class Q00101_SwordOfSolidarity extends Quest
 {
 	// NPCs
@@ -38,88 +35,188 @@ public class Q00101_SwordOfSolidarity extends Quest
 	private static final int BROKEN_SWORD_HANDLE = 739;
 	private static final int BROKEN_BLADE_BOTTOM = 740;
 	private static final int BROKEN_BLADE_TOP = 741;
-	private static final int ALTRANS_NOTE = 742;
 	private static final int ROIENS_LETTER = 796;
-	private static final int DIRECTIONS_TO_RUINS = 937;
-	// Monsters
-	private static final int[] MONSTERS =
-	{
-		20361, // Tunath Orc Marksman
-		20362, // Tunath Orc Warrior
-	};
-	// Rewards
-	private static final ItemHolder[] REWARDS =
-	{
-		new ItemHolder(738, 1), // Sword of Solidarity
-		new ItemHolder(1060, 100), // Lesser Healing Potion
-		new ItemHolder(4412, 10), // Echo Crystal - Theme of Battle
-		new ItemHolder(4413, 10), // Echo Crystal - Theme of Love
-		new ItemHolder(4414, 10), // Echo Crystal - Theme of Solitude
-		new ItemHolder(4415, 10), // Echo Crystal - Theme of Feast
-		new ItemHolder(4416, 10), // Echo Crystal - Theme of Celebration
-	};
-	// Misc
-	private static final int MIN_LEVEL = 9;
+	private static final int DIR_TO_RUINS = 937;
+	private static final int ALTRANS_NOTE = 742;
+	private static final int SWORD_OF_SOLIDARITY = 738;
+	private static final int SPIRITSHOT_FOR_BEGINNERS = 5790;
+	private static final int SOULSHOT_FOR_BEGINNERS = 5789;
+	private static final int LESSER_HEALING_POT = 1060;
+	private static final int ECHO_BATTLE = 4412;
+	private static final int ECHO_LOVE = 4413;
+	private static final int ECHO_SOLITUDE = 4414;
+	private static final int ECHO_FEAST = 4415;
+	private static final int ECHO_CELEBRATION = 4416;
 	
 	public Q00101_SwordOfSolidarity()
 	{
 		super(101);
+		registerQuestItems(BROKEN_SWORD_HANDLE, BROKEN_BLADE_BOTTOM, BROKEN_BLADE_TOP);
 		addStartNpc(ROIEN);
-		addKillId(MONSTERS);
 		addTalkId(ROIEN, ALTRAN);
-		registerQuestItems(BROKEN_SWORD_HANDLE, BROKEN_BLADE_BOTTOM, BROKEN_BLADE_TOP, ALTRANS_NOTE, ROIENS_LETTER, DIRECTIONS_TO_RUINS);
+		addKillId(20361, 20362);
 	}
 	
 	@Override
-	public String onAdvEvent(String event, Npc npc, Player player)
+	public String onEvent(String event, Npc npc, Player player)
 	{
-		final QuestState qs = getQuestState(player, false);
-		String htmltext = null;
-		if (qs != null)
+		final String htmltext = event;
+		final QuestState st = getQuestState(player, false);
+		if (st == null)
 		{
-			switch (event)
+			return htmltext;
+		}
+		
+		switch (event)
+		{
+			case "30008-03.htm":
 			{
-				case "30008-03.html":
-				case "30008-09.html":
+				st.startQuest();
+				giveItems(player, ROIENS_LETTER, 1);
+				break;
+			}
+			case "30283-02.htm":
+			{
+				st.setCond(2, true);
+				takeItems(player, ROIENS_LETTER, 1);
+				giveItems(player, DIR_TO_RUINS, 1);
+				break;
+			}
+			case "30283-06.htm":
+			{
+				takeItems(player, BROKEN_SWORD_HANDLE, 1);
+				giveItems(player, SWORD_OF_SOLIDARITY, 1);
+				giveItems(player, LESSER_HEALING_POT, 100);
+				// Give newbie reward if player is eligible
+				if (player.isNewbie())
 				{
-					htmltext = event;
-					break;
-				}
-				case "30008-04.htm":
-				{
-					qs.startQuest();
-					giveItems(player, ROIENS_LETTER, 1);
-					htmltext = event;
-					break;
-				}
-				case "30283-02.html":
-				{
-					if (qs.isCond(1) && hasQuestItems(player, ROIENS_LETTER))
+					int newPlayerRewardsReceived = player.getVariables().getInt(PlayerVariables.NEWBIE_SHOTS_RECEIVED, 0);
+					if (newPlayerRewardsReceived < 2)
 					{
-						takeItems(player, ROIENS_LETTER, -1);
-						giveItems(player, DIRECTIONS_TO_RUINS, 1);
-						qs.setCond(2, true);
-						htmltext = event;
-					}
-					break;
-				}
-				case "30283-07.html":
-				{
-					if (qs.isCond(5) && hasQuestItems(player, BROKEN_SWORD_HANDLE))
-					{
-						for (ItemHolder reward : REWARDS)
+						st.showQuestionMark(26);
+						if (player.isMageClass())
 						{
-							giveItems(player, reward);
+							st.playTutorialVoice("tutorial_voice_027");
+							giveItems(player, SPIRITSHOT_FOR_BEGINNERS, 3000);
+							player.getVariables().set(PlayerVariables.NEWBIE_SHOTS_RECEIVED, ++newPlayerRewardsReceived);
 						}
-						addExpAndSp(player, 25747, 2171);
-						giveAdena(player, 10981, true);
-						qs.exitQuest(false, true);
-						htmltext = event;
+						else
+						{
+							st.playTutorialVoice("tutorial_voice_026");
+							giveItems(player, SOULSHOT_FOR_BEGINNERS, 7000);
+							player.getVariables().set(PlayerVariables.NEWBIE_SHOTS_RECEIVED, ++newPlayerRewardsReceived);
+						}
 					}
-					break;
 				}
+				giveItems(player, ECHO_BATTLE, 10);
+				giveItems(player, ECHO_LOVE, 10);
+				giveItems(player, ECHO_SOLITUDE, 10);
+				giveItems(player, ECHO_FEAST, 10);
+				giveItems(player, ECHO_CELEBRATION, 10);
+				player.broadcastPacket(new SocialAction(player.getObjectId(), 3));
+				st.exitQuest(false, true);
+				break;
 			}
 		}
+		
+		return htmltext;
+	}
+	
+	@Override
+	public String onTalk(Npc npc, Player player)
+	{
+		String htmltext = getNoQuestMsg(player);
+		final QuestState st = getQuestState(player, true);
+		
+		switch (st.getState())
+		{
+			case State.CREATED:
+			{
+				if (player.getRace() != Race.HUMAN)
+				{
+					htmltext = "30008-01a.htm";
+				}
+				else if (player.getLevel() < 9)
+				{
+					htmltext = "30008-01.htm";
+				}
+				else
+				{
+					htmltext = "30008-02.htm";
+				}
+				break;
+			}
+			case State.STARTED:
+			{
+				final int cond = (st.getCond());
+				switch (npc.getId())
+				{
+					case ROIEN:
+					{
+						if (cond == 1)
+						{
+							htmltext = "30008-04.htm";
+						}
+						else if (cond == 2)
+						{
+							htmltext = "30008-03a.htm";
+						}
+						else if (cond == 3)
+						{
+							htmltext = "30008-06.htm";
+						}
+						else if (cond == 4)
+						{
+							htmltext = "30008-05.htm";
+							st.setCond(5, true);
+							takeItems(player, ALTRANS_NOTE, 1);
+							giveItems(player, BROKEN_SWORD_HANDLE, 1);
+						}
+						else if (cond == 5)
+						{
+							htmltext = "30008-05a.htm";
+						}
+						break;
+					}
+					case ALTRAN:
+					{
+						if (cond == 1)
+						{
+							htmltext = "30283-01.htm";
+						}
+						else if (cond == 2)
+						{
+							htmltext = "30283-03.htm";
+						}
+						else if (cond == 3)
+						{
+							htmltext = "30283-04.htm";
+							st.setCond(4, true);
+							takeItems(player, DIR_TO_RUINS, 1);
+							takeItems(player, BROKEN_BLADE_TOP, 1);
+							takeItems(player, BROKEN_BLADE_BOTTOM, 1);
+							giveItems(player, ALTRANS_NOTE, 1);
+						}
+						else if (cond == 4)
+						{
+							htmltext = "30283-04a.htm";
+						}
+						else if (cond == 5)
+						{
+							htmltext = "30283-05.htm";
+						}
+						break;
+					}
+				}
+				break;
+			}
+			case State.COMPLETED:
+			{
+				htmltext = getAlreadyCompletedMsg(player);
+				break;
+			}
+		}
+		
 		return htmltext;
 	}
 	
@@ -155,141 +252,5 @@ public class Q00101_SwordOfSolidarity extends Quest
 			}
 		}
 		return super.onKill(npc, killer, isSummon);
-	}
-	
-	@Override
-	public String onTalk(Npc npc, Player player)
-	{
-		final QuestState qs = getQuestState(player, true);
-		String htmltext = getNoQuestMsg(player);
-		switch (npc.getId())
-		{
-			case ROIEN:
-			{
-				switch (qs.getState())
-				{
-					case State.CREATED:
-					{
-						htmltext = (player.getRace() == Race.HUMAN) ? (player.getLevel() >= MIN_LEVEL) ? "30008-02.htm" : "30008-08.htm" : "30008-01.htm";
-						break;
-					}
-					case State.STARTED:
-					{
-						switch (qs.getCond())
-						{
-							case 1:
-							{
-								if (hasQuestItems(player, ROIENS_LETTER))
-								{
-									htmltext = "30008-05.html";
-								}
-								break;
-							}
-							case 2:
-							{
-								if (hasAtLeastOneQuestItem(player, BROKEN_BLADE_BOTTOM, BROKEN_BLADE_TOP))
-								{
-									htmltext = "30008-11.html";
-								}
-								else if (hasQuestItems(player, DIRECTIONS_TO_RUINS))
-								{
-									htmltext = "30008-10.html";
-								}
-								break;
-							}
-							case 3:
-							{
-								if (hasQuestItems(player, BROKEN_BLADE_BOTTOM, BROKEN_BLADE_TOP))
-								{
-									htmltext = "30008-12.html";
-								}
-								break;
-							}
-							case 4:
-							{
-								if (hasQuestItems(player, ALTRANS_NOTE))
-								{
-									takeItems(player, ALTRANS_NOTE, -1);
-									giveItems(player, BROKEN_SWORD_HANDLE, 1);
-									qs.setCond(5, true);
-									htmltext = "30008-06.html";
-								}
-								break;
-							}
-							case 5:
-							{
-								if (hasQuestItems(player, BROKEN_SWORD_HANDLE))
-								{
-									htmltext = "30008-07.html";
-								}
-								break;
-							}
-						}
-						break;
-					}
-					case State.COMPLETED:
-					{
-						htmltext = getAlreadyCompletedMsg(player);
-						break;
-					}
-				}
-				break;
-			}
-			case ALTRAN:
-			{
-				switch (qs.getCond())
-				{
-					case 1:
-					{
-						if (hasQuestItems(player, ROIENS_LETTER))
-						{
-							htmltext = "30283-01.html";
-						}
-						break;
-					}
-					case 2:
-					{
-						if (hasAtLeastOneQuestItem(player, BROKEN_BLADE_BOTTOM, BROKEN_BLADE_TOP))
-						{
-							htmltext = "30283-08.html";
-						}
-						else if (hasQuestItems(player, DIRECTIONS_TO_RUINS))
-						{
-							htmltext = "30283-03.html";
-						}
-						break;
-					}
-					case 3:
-					{
-						if (hasQuestItems(player, BROKEN_BLADE_BOTTOM, BROKEN_BLADE_TOP))
-						{
-							takeItems(player, -1, DIRECTIONS_TO_RUINS, BROKEN_BLADE_TOP, BROKEN_BLADE_BOTTOM);
-							giveItems(player, ALTRANS_NOTE, 1);
-							qs.setCond(4, true);
-							htmltext = "30283-04.html";
-						}
-						break;
-					}
-					case 4:
-					{
-						if (hasQuestItems(player, ALTRANS_NOTE))
-						{
-							htmltext = "30283-05.html";
-						}
-						break;
-					}
-					case 5:
-					{
-						if (hasQuestItems(player, BROKEN_SWORD_HANDLE))
-						{
-							htmltext = "30283-06.html";
-						}
-						break;
-					}
-				}
-				break;
-			}
-		}
-		return htmltext;
 	}
 }

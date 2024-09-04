@@ -26,114 +26,95 @@ import org.l2jmobius.gameserver.model.quest.Quest;
 import org.l2jmobius.gameserver.model.quest.QuestState;
 import org.l2jmobius.gameserver.model.quest.State;
 
-/**
- * Hunting for Wild Beasts (341)
- * @author xban1x
- */
 public class Q00341_HuntingForWildBeasts extends Quest
 {
-	// NPCs
-	private static final int PANO = 30078;
-	// Monsters
-	private static final Map<Integer, Integer> MONSTERS = new HashMap<>();
+	// Item
+	private static final int BEAR_SKIN = 4259;
+	// Drop chances
+	private static final Map<Integer, Integer> CHANCES = new HashMap<>();
 	static
 	{
-		MONSTERS.put(20203, 99);
-		MONSTERS.put(20310, 87);
-		MONSTERS.put(20021, 83);
-		MONSTERS.put(20335, 87);
+		CHANCES.put(20021, 500000); // Red Bear
+		CHANCES.put(20203, 900000); // Dion Grizzly
+		CHANCES.put(20310, 500000); // Brown Bear
+		CHANCES.put(20335, 700000); // Grizzly Bear
 	}
-	// Items
-	private static final int BEAR_SKIN = 4259;
-	// Misc
-	private static final int MIN_LEVEL = 20;
-	private static final int ADENA_COUNT = 3710;
-	private static final int REQUIRED_COUNT = 20;
 	
 	public Q00341_HuntingForWildBeasts()
 	{
 		super(341);
-		addStartNpc(PANO);
-		addTalkId(PANO);
-		addKillId(MONSTERS.keySet());
 		registerQuestItems(BEAR_SKIN);
+		addStartNpc(30078); // Pano
+		addTalkId(30078);
+		addKillId(20021, 20203, 20310, 20335);
 	}
 	
 	@Override
-	public String onAdvEvent(String event, Npc npc, Player player)
+	public String onEvent(String event, Npc npc, Player player)
 	{
-		final QuestState qs = getQuestState(player, false);
-		String htmltext = null;
-		if (qs != null)
+		String htmltext = event;
+		final QuestState st = getQuestState(player, false);
+		if (st == null)
 		{
-			switch (event)
-			{
-				case "30078-03.htm":
-				{
-					htmltext = event;
-					break;
-				}
-				case "30078-04.htm":
-				{
-					qs.startQuest();
-					htmltext = event;
-					break;
-				}
-			}
+			return htmltext;
 		}
+		
+		if (event.equals("30078-02.htm"))
+		{
+			st.startQuest();
+		}
+		
 		return htmltext;
 	}
 	
 	@Override
 	public String onTalk(Npc npc, Player player)
 	{
-		final QuestState qs = getQuestState(player, true);
 		String htmltext = getNoQuestMsg(player);
-		switch (qs.getState())
+		final QuestState st = getQuestState(player, true);
+		
+		switch (st.getState())
 		{
 			case State.CREATED:
 			{
-				htmltext = player.getLevel() >= MIN_LEVEL ? "30078-01.html" : "30078-02.htm";
+				htmltext = (player.getLevel() < 20) ? "30078-00.htm" : "30078-01.htm";
 				break;
 			}
 			case State.STARTED:
 			{
-				if (qs.isCond(2) && (getQuestItemsCount(player, BEAR_SKIN) >= REQUIRED_COUNT))
+				if (getQuestItemsCount(player, BEAR_SKIN) < 20)
 				{
-					giveAdena(player, ADENA_COUNT, true);
-					qs.exitQuest(true, true);
-					htmltext = "30078-05.html";
+					htmltext = "30078-03.htm";
 				}
 				else
 				{
-					htmltext = "30078-06.html";
+					htmltext = "30078-04.htm";
+					takeItems(player, BEAR_SKIN, -1);
+					giveAdena(player, 3710, true);
+					st.exitQuest(true, true);
 				}
 				break;
 			}
 		}
+		
 		return htmltext;
 	}
 	
 	@Override
 	public String onKill(Npc npc, Player player, boolean isPet)
 	{
-		final QuestState qs = getQuestState(player, false);
-		if ((qs != null) && qs.isCond(1))
+		final QuestState st = getQuestState(player, false);
+		if ((st == null) || !st.isStarted())
 		{
-			long skins = getQuestItemsCount(player, BEAR_SKIN);
-			if ((skins < REQUIRED_COUNT) && (getRandom(100) < MONSTERS.get(npc.getId())))
-			{
-				giveItems(player, BEAR_SKIN, 1);
-				if ((++skins) < REQUIRED_COUNT)
-				{
-					playSound(player, QuestSound.ITEMSOUND_QUEST_ITEMGET);
-				}
-				else
-				{
-					qs.setCond(2, true);
-				}
-			}
+			return null;
 		}
-		return super.onKill(npc, player, isPet);
+		
+		if ((getQuestItemsCount(player, BEAR_SKIN) < 20) && (getRandom(1000000) < CHANCES.get(npc.getId())))
+		{
+			giveItems(player, BEAR_SKIN, 1);
+			playSound(player, QuestSound.ITEMSOUND_QUEST_ITEMGET);
+		}
+		
+		return null;
 	}
 }

@@ -404,7 +404,7 @@ public class CastleManorManager implements IXmlReader, IStorable
 						final ClanMember clanLeader = owner.getLeader();
 						if ((clanLeader != null) && clanLeader.isOnline())
 						{
-							clanLeader.getPlayer().sendPacket(SystemMessageId.YOU_DO_NOT_HAVE_ENOUGH_FUNDS_IN_THE_CLAN_WAREHOUSE_FOR_THE_MANOR_TO_OPERATE);
+							clanLeader.getPlayer().sendPacket(SystemMessageId.THE_AMOUNT_IS_NOT_SUFFICIENT_AND_SO_THE_MANOR_IS_NOT_IN_OPERATION);
 						}
 					}
 					else
