@@ -8032,6 +8032,9 @@
 			<param name="MoveAroundSocial" value="80"/>
 			<param name="MoveAroundSocial1" value="80"/>
 			<param name="MoveAroundSocial2" value="80"/>
+			<minions name="Privates">
+				<npc id="22087" count="3" respawnTime="300" weightPoint="1"/>
+			</minions>
 			<param name="ai_type" value="pronghorn_spirit"/>
 			<param name="silhouette" value="22087"/> <!-- Pronghorn Spirit -->
 			<param name="SoulShot" value="200"/>
