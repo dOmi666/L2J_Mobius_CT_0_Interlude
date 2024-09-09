@@ -2190,6 +2190,17 @@
 				<group chance="70">
 					<item id="57" min="4672" max="9569" chance="100"/> <!-- Adena -->
 				</group>
+				<group chance="0.008">
+					<item id="5312" min="1" max="1" chance="50"/> <!-- Sealed Helm of Nightmare -->
+					<item id="5317" min="1" max="1" chance="50"/> <!-- Sealed Majestic Circlet -->
+				</group>
+				<group chance="0.004">
+					<item id="5316" min="1" max="1" chance="50"/> <!-- Sealed Majestic Plate Armor -->
+					<item id="5311" min="1" max="1" chance="50"/> <!-- Sealed Armor of Nightmare -->
+				</group>
+				<group chance="0.004">
+					<item id="5315" min="1" max="1" chance="100"/> <!-- Sealed Shield of Nightmare -->
+				</group>
 				<group chance="35.6953">
 					<item id="5528" min="1" max="1" chance="0.39445"/> <!-- Sealed Majestic Circlet Design -->
 					<item id="5527" min="1" max="1" chance="0.39445"/> <!-- Sealed Helm of Nightmare Design -->
