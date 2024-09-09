@@ -564,7 +564,7 @@
 		<set name="magicLevel" val="#magicLevel" />
 		<set name="mpConsume" val="#mpConsume" />
 		<set name="operateType" val="A2" />
-		<set name="reuseDelay" val="40000" />
+		<set name="reuseDelay" val="8000" />
 		<set name="staticReuse" val="true" />
 		<set name="targetType" val="AURA" />
 		<enchant1 name="effectPoint" val="#ench1EffectPoints" />
