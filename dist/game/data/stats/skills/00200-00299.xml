@@ -2011,7 +2011,7 @@
 		<set name="magicLevel" val="68" />
 		<set name="mpConsume" val="32" />
 		<set name="operateType" val="A2" />
-		<set name="reuseDelay" val="600000" />
+		<set name="reuseDelay" val="30000" />
 		<set name="targetType" val="SELF" />
 		<cond msgId="113" addName="1">
 			<using kind="DUALFIST" />
