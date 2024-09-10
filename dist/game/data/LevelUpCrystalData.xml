@@ -521,7 +521,7 @@
 			<detail chance="3" absorbType="PARTY_ONE_RANDOM" levelList="10, 11, 12" />
 		</item>
 		<item npcId="25338"> <!-- Anakazel -->
-			<detail chance="75" absorbType="PARTY_ONE_RANDOM" levelList="12, 13" />
+			<detail chance="100" absorbType="PARTY_ONE_RANDOM" levelList="12, 13" />
 		</item>
 		<item npcId="22215"> <!-- Tyrannasourus -->
 			<detail chance="25" absorbType="PARTY_ONE_RANDOM" levelList="10, 11" />
