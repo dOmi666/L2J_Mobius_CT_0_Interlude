@@ -1465,13 +1465,13 @@
 		<set name="abnormalType" val="SLEEP" />
 		<set name="abnormalVisualEffect" val="SLEEP" />
 		<set name="activateRate" val="40" />
-		<set name="affectLimit" val="9-10" />
+		<set name="affectLimit" val="19-30" />
 		<set name="affectRange" val="200" />
 		<set name="basicProperty" val="MEN" />
 		<set name="castRange" val="500" />
 		<set name="effectPoint" val="#effectPoints" />
 		<set name="effectRange" val="1000" />
-		<set name="hitTime" val="15000" />
+		<set name="hitTime" val="10000" />
 		<set name="icon" val="icon.skill1072" />
 		<set name="isDebuff" val="true" />
 		<set name="isMagic" val="1" /> <!-- Magic Skill -->

@@ -175,7 +175,7 @@
 	<skill id="1209" levels="6" name="Seal of Poison">
 		<!-- Instantly poisons nearby enemies. Effect 3. -->
 		<table name="#abnormalLevels">3 4 5 6 7 8</table>
-		<table name="#dot">14 19 24 30 34 37</table>
+		<table name="#dot">0.006 0.012 0.018 0.024 0.030 0.036</table>
 		<table name="#effectPoints">-204 -285 -379 -495 -582 -635</table>
 		<table name="#magicLevel">20 30 40 52 62 70</table>
 		<table name="#mpConsume">23 32 42 56 69 78</table>
@@ -184,8 +184,8 @@
 		<set name="abnormalTime" val="30" />
 		<set name="abnormalType" val="POISON" />
 		<set name="abnormalVisualEffect" val="DOT_POISON" />
-		<set name="activateRate" val="60" />
-		<set name="affectLimit" val="10-10" />
+		<set name="activateRate" val="70" />
+		<set name="affectLimit" val="30-30" />
 		<set name="affectRange" val="200" />
 		<set name="basicProperty" val="CON" />
 		<set name="effectPoint" val="#effectPoints" />
@@ -202,7 +202,7 @@
 		<set name="targetType" val="AURA" />
 		<set name="trait" val="POISON" />
 		<for>
-			<effect name="DamOverTime" ticks="5">
+			<effect name="DamOverTimePercent" ticks="2">
 				<param power="#dot" />
 			</effect>
 		</for>
@@ -845,7 +845,7 @@
 		<set name="castRange" val="150" />
 		<set name="effectPoint" val="#effectPoints" />
 		<set name="effectRange" val="650" />
-		<set name="hitTime" val="1500" />
+		<set name="hitTime" val="1200" />
 		<set name="icon" val="icon.skill1231" />
 		<set name="isDebuff" val="true" />
 		<set name="isMagic" val="1" /> <!-- Magic Skill -->
@@ -854,7 +854,7 @@
 		<set name="mpInitialConsume" val="#mpInitialConsume" />
 		<set name="operateType" val="A3" />
 		<set name="power" val="#power" />
-		<set name="reuseDelay" val="1000" />
+		<set name="reuseDelay" val="800" />
 		<set name="targetType" val="ONE" />
 		<enchant1 name="magicLevel" val="#enchMagicLvl" />
 		<enchant1 name="power" val="#ench1Power" />
@@ -999,7 +999,7 @@
 		<set name="effectRange" val="1400" />
 		<set name="element" val="1" /> <!-- Water -->
 		<set name="elementPower" val="20" />
-		<set name="hitTime" val="4000" />
+		<set name="hitTime" val="3000" />
 		<set name="icon" val="icon.skill1235" />
 		<set name="isMagic" val="1" /> <!-- Magic Skill -->
 		<set name="lvlBonusRate" val="1" />
