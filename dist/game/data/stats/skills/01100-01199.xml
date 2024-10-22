@@ -214,17 +214,17 @@
 	<skill id="1108" levels="4" name="Seal of Flame">
 		<!-- A protective ring of fire that continuously reduces HP of surrounding enemies. Effect 5. -->
 		<table name="#abnormalLevels">5 6 7 8</table>
-		<table name="#dot">60 73 84 92</table>
+		<table name="#dot">0.009 0.018 0.027 0.036</table>
 		<table name="#effectPoints">-286 -333 -390 -409</table>
 		<table name="#magicLevel">48 56 68 74</table>
 		<table name="#mpConsume">77 92 113 122</table>
 		<table name="#mpInitialConsume">20 23 29 31</table>
 		<set name="abnormalLevel" val="#abnormalLevels" />
-		<set name="abnormalTime" val="15" />
+		<set name="abnormalTime" val="30" />
 		<set name="abnormalType" val="DOT_ATTR" />
 		<set name="abnormalVisualEffect" val="DOT_BLEEDING" />
-		<set name="activateRate" val="60" />
-		<set name="affectLimit" val="10-10" />
+		<set name="activateRate" val="80" />
+		<set name="affectLimit" val="30-30" />
 		<set name="affectRange" val="300" />
 		<set name="basicProperty" val="MEN" />
 		<set name="effectPoint" val="#effectPoints" />
@@ -240,7 +240,7 @@
 		<set name="reuseDelay" val="5000" />
 		<set name="targetType" val="AURA" />
 		<for>
-			<effect name="DamOverTime" ticks="1">
+			<effect name="DamOverTimePercent" ticks="2">
 				<param power="#dot" />
 			</effect>
 		</for>
@@ -1052,7 +1052,7 @@
 	<skill id="1167" levels="6" name="Poisonous Cloud">
 		<!-- Instantaneous poison cloud attack. Effect 3. -->
 		<table name="#abnormalLevels">3 4 5 6 7 8</table>
-		<table name="#dot">24 32 41 50 58 63</table>
+		<table name="#dot">0.008 0.012 0.018 0.024 0.032 0.045</table>
 		<table name="#effectPoints">-243 -331 -457 -532 -597 -655</table>
 		<table name="#magicLevel">25 35 48 56 64 74</table>
 		<table name="#mpConsume">27 36 52 61 71 82</table>
@@ -1081,7 +1081,7 @@
 		<set name="targetType" val="AREA" />
 		<set name="trait" val="POISON" />
 		<for>
-			<effect name="DamOverTime" ticks="5">
+			<effect name="DamOverTimePercent" ticks="2">
 				<param power="#dot" />
 			</effect>
 		</for>
@@ -1089,7 +1089,7 @@
 	<skill id="1168" levels="7" name="Curse: Poison">
 		<!-- Instantaneous poisonous curse. Effect 1. -->
 		<table name="#abnormalLevels">1 3 4 5 6 7 8</table>
-		<table name="#dot">11 24 32 41 50 58 63</table>
+		<table name="#dot">0.007 0.014 0.021 0.028 0.035 0.042 0.045</table>
 		<table name="#effectPoints">-121 -204 -285 -418 -495 -582 -646</table>
 		<table name="#magicLevel">7 20 30 44 52 62 72</table>
 		<table name="#mpConsume">8 16 21 31 38 46 53</table>
@@ -1116,7 +1116,7 @@
 		<set name="targetType" val="ONE" />
 		<set name="trait" val="POISON" />
 		<for>
-			<effect name="DamOverTime" ticks="5">
+			<effect name="DamOverTimePercent" ticks="2">
 				<param power="#dot" />
 			</effect>
 		</for>

@@ -742,7 +742,7 @@
 	<skill id="129" levels="5" name="Poison">
 		<!-- Instantly poisons enemy. Effect 3. -->
 		<table name="#abnormalLevels">3 5 6 7 8</table>
-		<table name="#dot">24 41 50 58 63</table>
+		<table name="#dot">0.009 0.018 0.027 0.035 0.045</table>
 		<table name="#effectPoints">-204 -467 -549 -611 -655</table>
 		<table name="#magicLevel">20 49 58 66 74</table>
 		<table name="#mpConsume">8 18 22 25 28</table>
@@ -769,7 +769,7 @@
 		<set name="targetType" val="ONE" />
 		<set name="trait" val="POISON" />
 		<for>
-			<effect name="DamOverTime" ticks="5">
+			<effect name="DamOverTimePercent" ticks="2">
 				<param power="#dot" />
 			</effect>
 		</for>
