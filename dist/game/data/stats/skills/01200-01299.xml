@@ -999,7 +999,7 @@
 		<set name="effectRange" val="1400" />
 		<set name="element" val="1" /> <!-- Water -->
 		<set name="elementPower" val="20" />
-		<set name="hitTime" val="3000" />
+		<set name="hitTime" val="4000" />
 		<set name="icon" val="icon.skill1235" />
 		<set name="isMagic" val="1" /> <!-- Magic Skill -->
 		<set name="lvlBonusRate" val="1" />
@@ -1008,7 +1008,7 @@
 		<set name="mpInitialConsume" val="#mpInitialConsume" />
 		<set name="operateType" val="A1" />
 		<set name="power" val="#power" />
-		<set name="reuseDelay" val="1200" />
+		<set name="reuseDelay" val="4000" />
 		<set name="targetType" val="ONE" />
 		<enchant1 name="magicLevel" val="#enchMagicLvl" />
 		<enchant1 name="power" val="#ench1Power" />
@@ -1182,7 +1182,7 @@
 		<set name="mpInitialConsume" val="#mpInitialConsume" />
 		<set name="operateType" val="A1" />
 		<set name="power" val="#power" />
-		<set name="reuseDelay" val="1200" />
+		<set name="reuseDelay" val="4000" />
 		<set name="targetType" val="ONE" />
 		<enchant1 name="magicLevel" val="#enchMagicLvl" />
 		<enchant1 name="power" val="#ench1Power" />
