@@ -682,7 +682,7 @@
 		<set name="abnormalLevel" val="#abnormalLevels" />
 		<set name="abnormalTime" val="3600" />
 		<set name="abnormalType" val="SPA_DISEASE_A" />
-		<set name="abnormalVisualEffect" val="BIG_HEAD" />
+		<set name="abnormalVisualEffect" val="DOT_POISON" />
 		<set name="castRange" val="600" />
 		<set name="effectPoint" val="-100" />
 		<set name="effectRange" val="1100" />
@@ -709,7 +709,7 @@
 		<set name="abnormalLevel" val="#abnormalLevels" />
 		<set name="abnormalTime" val="3600" />
 		<set name="abnormalType" val="SPA_DISEASE_B" />
-		<set name="abnormalVisualEffect" val="BIG_HEAD" />
+		<set name="abnormalVisualEffect" val="DOT_POISON" />
 		<set name="castRange" val="600" />
 		<set name="effectPoint" val="-100" />
 		<set name="effectRange" val="1100" />
@@ -736,7 +736,7 @@
 		<set name="abnormalLevel" val="#abnormalLevels" />
 		<set name="abnormalTime" val="3600" />
 		<set name="abnormalType" val="SPA_DISEASE_C" />
-		<set name="abnormalVisualEffect" val="BIG_HEAD" />
+		<set name="abnormalVisualEffect" val="DOT_POISON" />
 		<set name="castRange" val="600" />
 		<set name="effectPoint" val="-100" />
 		<set name="effectRange" val="1100" />
@@ -763,7 +763,7 @@
 		<set name="abnormalLevel" val="#abnormalLevels" />
 		<set name="abnormalTime" val="600" />
 		<set name="abnormalType" val="SPA_DISEASE_D" />
-		<set name="abnormalVisualEffect" val="BIG_HEAD" />
+		<set name="abnormalVisualEffect" val="DOT_POISON" />
 		<set name="castRange" val="3600" />
 		<set name="effectPoint" val="-100" />
 		<set name="effectRange" val="1100" />
