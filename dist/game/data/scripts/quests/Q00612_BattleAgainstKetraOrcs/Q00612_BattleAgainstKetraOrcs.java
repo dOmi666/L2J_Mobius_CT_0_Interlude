@@ -38,21 +38,21 @@ public class Q00612_BattleAgainstKetraOrcs extends Quest
 	private static final Map<Integer, Integer> MOBS = new HashMap<>();
 	static
 	{
-		MOBS.put(21324, 500); // Ketra Orc Footman
-		MOBS.put(21327, 510); // Ketra Orc Raider
-		MOBS.put(21328, 522); // Ketra Orc Scout
-		MOBS.put(21329, 519); // Ketra Orc Shaman
-		MOBS.put(21331, 529); // Ketra Orc Warrior
-		MOBS.put(21332, 529); // Ketra Orc Lieutenant
-		MOBS.put(21334, 539); // Ketra Orc Medium
-		MOBS.put(21336, 548); // Ketra Orc White Captain
-		MOBS.put(21338, 558); // Ketra Orc Seer
-		MOBS.put(21339, 568); // Ketra Orc General
-		MOBS.put(21340, 568); // Ketra Orc Battalion Commander
-		MOBS.put(21342, 578); // Ketra Orc Grand Seer
-		MOBS.put(21343, 664); // Ketra Commander
-		MOBS.put(21345, 713); // Ketra's Head Shaman
-		MOBS.put(21347, 738); // Ketra Prophet
+		MOBS.put(21324, 600); // Ketra Orc Footman
+		MOBS.put(21327, 610); // Ketra Orc Raider
+		MOBS.put(21328, 622); // Ketra Orc Scout
+		MOBS.put(21329, 619); // Ketra Orc Shaman
+		MOBS.put(21331, 629); // Ketra Orc Warrior
+		MOBS.put(21332, 729); // Ketra Orc Lieutenant
+		MOBS.put(21334, 739); // Ketra Orc Medium
+		MOBS.put(21336, 748); // Ketra Orc White Captain
+		MOBS.put(21338, 758); // Ketra Orc Seer
+		MOBS.put(21339, 768); // Ketra Orc General
+		MOBS.put(21340, 768); // Ketra Orc Battalion Commander
+		MOBS.put(21342, 778); // Ketra Orc Grand Seer
+		MOBS.put(21343, 864); // Ketra Commander
+		MOBS.put(21345, 913); // Ketra's Head Shaman
+		MOBS.put(21347, 938); // Ketra Prophet
 	}
 	// Items
 	private static final int SEED = 7187;

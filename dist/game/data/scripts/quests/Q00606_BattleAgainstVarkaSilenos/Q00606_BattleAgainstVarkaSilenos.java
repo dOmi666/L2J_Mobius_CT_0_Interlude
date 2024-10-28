@@ -38,21 +38,21 @@ public class Q00606_BattleAgainstVarkaSilenos extends Quest
 	private static final Map<Integer, Integer> MOBS = new HashMap<>();
 	static
 	{
-		MOBS.put(21350, 500); // Varka Silenos Recruit
-		MOBS.put(21353, 510); // Varka Silenos Scout
-		MOBS.put(21354, 522); // Varka Silenos Hunter
-		MOBS.put(21355, 519); // Varka Silenos Shaman
-		MOBS.put(21357, 529); // Varka Silenos Priest
-		MOBS.put(21358, 529); // Varka Silenos Warrior
-		MOBS.put(21360, 539); // Varka Silenos Medium
-		MOBS.put(21362, 539); // Varka Silenos Officer
-		MOBS.put(21364, 558); // Varka Silenos Seer
-		MOBS.put(21365, 568); // Varka Silenos Great Magus
-		MOBS.put(21366, 568); // Varka Silenos General
-		MOBS.put(21368, 568); // Varka Silenos Great Seer
-		MOBS.put(21369, 664); // Varka's Commander
-		MOBS.put(21371, 713); // Varka's Head Magus
-		MOBS.put(21373, 738); // Varka's Prophet
+		MOBS.put(21350, 600); // Varka Silenos Recruit
+		MOBS.put(21353, 610); // Varka Silenos Scout
+		MOBS.put(21354, 622); // Varka Silenos Hunter
+		MOBS.put(21355, 619); // Varka Silenos Shaman
+		MOBS.put(21357, 629); // Varka Silenos Priest
+		MOBS.put(21358, 729); // Varka Silenos Warrior
+		MOBS.put(21360, 739); // Varka Silenos Medium
+		MOBS.put(21362, 739); // Varka Silenos Officer
+		MOBS.put(21364, 758); // Varka Silenos Seer
+		MOBS.put(21365, 768); // Varka Silenos Great Magus
+		MOBS.put(21366, 768); // Varka Silenos General
+		MOBS.put(21368, 768); // Varka Silenos Great Seer
+		MOBS.put(21369, 864); // Varka's Commander
+		MOBS.put(21371, 913); // Varka's Head Magus
+		MOBS.put(21373, 938); // Varka's Prophet
 	}
 	// Items
 	private static final int HORN = 7186;

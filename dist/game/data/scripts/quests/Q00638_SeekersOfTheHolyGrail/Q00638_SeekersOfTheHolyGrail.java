@@ -176,15 +176,15 @@ public class Q00638_SeekersOfTheHolyGrail extends Quest
 			{
 				if (qs.isStarted() && (getQuestItemsCount(player, TOTEM) >= TOTEMS_REQUIRED_COUNT))
 				{
-					if (getRandom(100) < 80)
+					if (getRandom(100) < 75)
 					{
 						if (getRandomBoolean())
 						{
-							rewardItems(player, SCROLL_ENCHANT_A_S, 1);
+							rewardItems(player, SCROLL_ENCHANT_A_S, getRandom(4)+1);
 						}
 						else
 						{
-							rewardItems(player, SCROLL_ENCHANT_W_S, 1);
+							rewardItems(player, SCROLL_ENCHANT_W_S, getRandom(3)+1);
 						}
 						htmltext = "31328-07.html";
 					}
