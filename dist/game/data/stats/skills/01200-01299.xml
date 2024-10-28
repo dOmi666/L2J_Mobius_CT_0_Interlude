@@ -1008,7 +1008,7 @@
 		<set name="mpInitialConsume" val="#mpInitialConsume" />
 		<set name="operateType" val="A1" />
 		<set name="power" val="#power" />
-		<set name="reuseDelay" val="1000" />
+		<set name="reuseDelay" val="4000" />
 		<set name="targetType" val="ONE" />
 		<enchant1 name="magicLevel" val="#enchMagicLvl" />
 		<enchant1 name="power" val="#ench1Power" />
@@ -1182,7 +1182,7 @@
 		<set name="mpInitialConsume" val="#mpInitialConsume" />
 		<set name="operateType" val="A1" />
 		<set name="power" val="#power" />
-		<set name="reuseDelay" val="1000" />
+		<set name="reuseDelay" val="4000" />
 		<set name="targetType" val="ONE" />
 		<enchant1 name="magicLevel" val="#enchMagicLvl" />
 		<enchant1 name="power" val="#ench1Power" />
