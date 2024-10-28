@@ -749,7 +749,7 @@
 		<table name="#magicLevel">44 48 52 56 58 60 62 64 66 68 70 72 74</table>
 		<table name="#mpConsume">47 52 56 62 64 66 70 71 74 76 78 80 82</table>
 		<table name="#mpInitialConsume">12 13 14 15 16 17 17 18 19 19 20 20 21</table>
-		<set name="affectLimit" val="10-10" />
+		<set name="affectLimit" val="30-30" />
 		<set name="affectRange" val="200" />
 		<set name="hitTime" val="1500" />
 		<set name="icon" val="icon.skill1034" />
@@ -1113,7 +1113,7 @@
 		<set name="abnormalTime" val="120" />
 		<set name="abnormalType" val="TURN_PASSIVE" />
 		<set name="activateRate" val="35" />
-		<set name="affectLimit" val="10-10" />
+		<set name="affectLimit" val="30-30" />
 		<set name="affectRange" val="1000" />
 		<set name="basicProperty" val="MEN" />
 		<set name="hitTime" val="7000" />
@@ -1935,7 +1935,7 @@
 		<set name="abnormalTime" val="30" />
 		<set name="abnormalType" val="HIT_DOWN" />
 		<set name="activateRate" val="60" />
-		<set name="affectLimit" val="10-10" />
+		<set name="affectLimit" val="30-30" />
 		<set name="affectRange" val="200" />
 		<set name="basicProperty" val="MEN" />
 		<set name="effectPoint" val="#effectPoints" />
@@ -2025,7 +2025,7 @@
 		<set name="abnormalTime" val="60" />
 		<set name="abnormalType" val="SPEED_DOWN" />
 		<set name="activateRate" val="40" />
-		<set name="affectLimit" val="10-10" />
+		<set name="affectLimit" val="30-30" />
 		<set name="affectRange" val="200" />
 		<set name="basicProperty" val="MEN" />
 		<set name="effectPoint" val="#effectPoints" />

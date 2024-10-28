@@ -582,7 +582,7 @@
 		<table name="#magicLevel">18 19 20 22 23 24 26 27 28 30 31 32 34 35 36</table>
 		<table name="#mpConsume">19 20 20 21 22 23 25 26 27 28 28 29 32 33 34</table>
 		<table name="#power">108 117 126 147 159 171 198 213 229 263 281 301 344 367 391</table>
-		<set name="affectLimit" val="5-12" />
+		<set name="affectLimit" val="30-30" />
 		<set name="affectRange" val="80" />
 		<set name="castRange" val="40" />
 		<set name="coolTime" val="720" />
@@ -1847,7 +1847,7 @@
 		<set name="abnormalLevel" val="1" />
 		<set name="abnormalTime" val="10" />
 		<set name="abnormalType" val="REAL_TARGET" />
-		<set name="affectLimit" val="9-10" />
+		<set name="affectLimit" val="30-30" />
 		<set name="affectRange" val="#affectRange" />
 		<set name="effectPoint" val="#effectPoints" />
 		<set name="hitTime" val="1500" />
