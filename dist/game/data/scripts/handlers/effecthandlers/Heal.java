@@ -103,7 +103,7 @@ public class Heal extends AbstractEffect
 			// Heal critic, since CT2.3 Gracia Final
 			if (info.getSkill().isMagic() && Formulas.calcMCrit(creature.getMCriticalHit(target, info.getSkill())))
 			{
-				amount *= 3;
+				amount *= 1;
 			}
 		}
 		
