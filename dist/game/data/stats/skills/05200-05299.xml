@@ -63,7 +63,7 @@
 		<set name="abnormalType" val="STUN" />
 		<set name="abnormalVisualEffect" val="STUN" />
 		<set name="activateRate" val="50" />
-		<set name="affectLimit" val="10-10" />
+		<set name="affectLimit" val="30-30" />
 		<set name="affectRange" val="150" />
 		<set name="basicProperty" val="CON" />
 		<set name="coolTime" val="500" />
@@ -90,7 +90,7 @@
 		<set name="abnormalType" val="TURN_FLEE" />
 		<set name="abnormalVisualEffect" val="TURN_FLEE" />
 		<set name="activateRate" val="50" />
-		<set name="affectLimit" val="10-10" />
+		<set name="affectLimit" val="30-30" />
 		<set name="affectRange" val="150" />
 		<set name="basicProperty" val="MEN" />
 		<set name="coolTime" val="500" />
@@ -373,7 +373,7 @@
 		<set name="abnormalType" val="STUN" />
 		<set name="abnormalVisualEffect" val="STUN" />
 		<set name="activateRate" val="50" />
-		<set name="affectLimit" val="10-10" />
+		<set name="affectLimit" val="30-30" />
 		<set name="affectRange" val="200" />
 		<set name="basicProperty" val="CON" />
 		<set name="castRange" val="600" />
@@ -400,7 +400,7 @@
 		<set name="abnormalType" val="TURN_FLEE" />
 		<set name="abnormalVisualEffect" val="TURN_FLEE" />
 		<set name="activateRate" val="50" />
-		<set name="affectLimit" val="10-10" />
+		<set name="affectLimit" val="30-30" />
 		<set name="affectRange" val="200" />
 		<set name="basicProperty" val="MEN" />
 		<set name="castRange" val="600" />

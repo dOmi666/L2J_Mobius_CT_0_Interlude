@@ -227,7 +227,7 @@
 		<set name="abnormalType" val="ROOT_PHYSICALLY" />
 		<set name="abnormalVisualEffect" val="ROOT" />
 		<set name="activateRate" val="40" />
-		<set name="affectLimit" val="10-10" />
+		<set name="affectLimit" val="30-30" />
 		<set name="affectRange" val="100" />
 		<set name="basicProperty" val="MEN" />
 		<set name="effectPoint" val="#effectPoints" />
@@ -360,7 +360,7 @@
 		<set name="abnormalTime" val="10" />
 		<set name="abnormalType" val="ALL_SPEED_DOWN" />
 		<set name="activateRate" val="50" />
-		<set name="affectLimit" val="6-12" />
+		<set name="affectLimit" val="30-30" />
 		<set name="affectRange" val="150" />
 		<set name="baseCritRate" val="10" />
 		<set name="basicProperty" val="MEN" />
@@ -397,7 +397,7 @@
 		<set name="abnormalTime" val="10" />
 		<set name="abnormalType" val="ALL_ATTACK_DOWN" />
 		<set name="activateRate" val="40" />
-		<set name="affectLimit" val="6-12" />
+		<set name="affectLimit" val="30-30" />
 		<set name="affectRange" val="150" />
 		<set name="baseCritRate" val="15" /> <!-- Epilogue Modification -->
 		<set name="basicProperty" val="MEN" />
@@ -1129,7 +1129,7 @@
 		<set name="abnormalType" val="SILENCE_ALL" />
 		<set name="abnormalVisualEffect" val="SILENCE" />
 		<set name="activateRate" val="60" />
-		<set name="affectLimit" val="10-10" />
+		<set name="affectLimit" val="30-30" />
 		<set name="affectRange" val="150" />
 		<set name="basicProperty" val="MEN" />
 		<set name="effectPoint" val="-507" />
@@ -1298,7 +1298,7 @@
 	</skill>
 	<skill id="444" levels="1" name="Festive Sweeper">
 		<!-- When used on nearby corpses that are in a Spoil state, extra items may be obtained. -->
-		<set name="affectLimit" val="9-10" />
+		<set name="affectLimit" val="30-30" />
 		<set name="affectRange" val="200" />
 		<set name="hitTime" val="500" />
 		<set name="icon" val="BranchSys2.icon.br_skill0444_a" />
@@ -1506,7 +1506,7 @@
 		<set name="abnormalType" val="STUN" />
 		<set name="abnormalVisualEffect" val="STUN" />
 		<set name="activateRate" val="50" />
-		<set name="affectLimit" val="6-12" />
+		<set name="affectLimit" val="30-30" />
 		<set name="affectRange" val="150" />
 		<set name="basicProperty" val="CON" />
 		<set name="coolTime" val="500" />

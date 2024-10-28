@@ -684,7 +684,7 @@
 		</for>
 	</skill>
 	<skill id="5139" levels="1" name="Tidal Wave">
-		<set name="affectLimit" val="10-10" />
+		<set name="affectLimit" val="30-30" />
 		<set name="affectRange" val="200" />
 		<set name="castRange" val="500" />
 		<set name="effectPoint" val="-100" />

@@ -144,7 +144,7 @@
 		<set name="abnormalType" val="POISON" />
 		<set name="abnormalVisualEffect" val="DOT_POISON" />
 		<set name="activateRate" val="35" />
-		<set name="affectLimit" val="10-10" />
+		<set name="affectLimit" val="30-30" />
 		<set name="affectRange" val="200" />
 		<set name="basicProperty" val="CON" />
 		<set name="castRange" val="400" />
@@ -269,7 +269,7 @@
 		<set name="abnormalType" val="ROOT_MAGICALLY" />
 		<set name="abnormalVisualEffect" val="ROOT" />
 		<set name="activateRate" val="40" />
-		<set name="affectLimit" val="10-10" />
+		<set name="affectLimit" val="30-30" />
 		<set name="affectRange" val="200" />
 		<set name="basicProperty" val="MEN" />
 		<set name="effectPoint" val="#effectPoints" />
@@ -518,7 +518,7 @@
 		<set name="abnormalTime" val="30" />
 		<set name="abnormalType" val="PA_DOWN" />
 		<set name="activateRate" val="40" />
-		<set name="affectLimit" val="10-10" />
+		<set name="affectLimit" val="30-30" />
 		<set name="affectRange" val="200" />
 		<set name="basicProperty" val="MEN" />
 		<set name="effectPoint" val="#effectPoints" />
