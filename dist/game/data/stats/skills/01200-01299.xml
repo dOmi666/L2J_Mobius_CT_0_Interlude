@@ -844,8 +844,8 @@
 		<set name="abnormalType" val="MA_DOWN" />
 		<set name="castRange" val="150" />
 		<set name="effectPoint" val="#effectPoints" />
-		<set name="effectRange" val="650" />
-		<set name="hitTime" val="1000" />
+		<set name="effectRange" val="350" />
+		<set name="hitTime" val="650" />
 		<set name="icon" val="icon.skill1231" />
 		<set name="isDebuff" val="true" />
 		<set name="isMagic" val="1" /> <!-- Magic Skill -->
@@ -854,7 +854,7 @@
 		<set name="mpInitialConsume" val="#mpInitialConsume" />
 		<set name="operateType" val="A3" />
 		<set name="power" val="#power" />
-		<set name="reuseDelay" val="1000" />
+		<set name="reuseDelay" val="200" />
 		<set name="targetType" val="ONE" />
 		<enchant1 name="magicLevel" val="#enchMagicLvl" />
 		<enchant1 name="power" val="#ench1Power" />
