@@ -1720,18 +1720,7 @@ public abstract class Creature extends WorldObject implements ISkillsHolder, IDe
 				skillTime = (int) (0.6 * skillTime);
 			}
 		}
-		
-		// Avoid broken Casting Animation.
-		// Client can't handle less than 550ms Casting Animation in Magic Skills with more than 550ms base.
-		if (skill.isMagic() && ((skill.getHitTime() + skill.getCoolTime()) > 550) && (skillTime < 550))
-		{
-			skillTime = skillTime + 1;
-		}
-		// Client can't handle less than 500ms Casting Animation in Physical Skills with 500ms base or more.
-		else if (!skill.isStatic() && ((skill.getHitTime() + skill.getCoolTime()) >= 500) && (skillTime < 500))
-		{
-			skillTime += 1;
-		}
+	
 		
 		// queue herbs and potions
 		if (_isCastingSimultaneouslyNow && simultaneously)
