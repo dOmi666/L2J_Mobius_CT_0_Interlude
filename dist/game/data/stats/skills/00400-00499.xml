@@ -839,7 +839,7 @@
 		<set name="magicLevel" val="#magicLevel" />
 		<set name="mpConsume" val="#mpConsume" />
 		<set name="operateType" val="A2" />
-		<set name="reuseDelay" val="75000" />
+		<set name="reuseDelay" val="30000" />
 		<set name="targetType" val="SELF" />
 		<cond msgId="113" addName="1">
 			<using kind="POLE" />
@@ -847,6 +847,8 @@
 		<for>
 			<effect name="Buff">
 				<add stat="atkCountMax" val="#atkCountMax" />
+				<add stat="runSpd" val="18" />
+				<add stat="pAtkRange" val="50" />
 			</effect>
 		</for>
 	</skill>
