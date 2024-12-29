@@ -874,9 +874,6 @@
 				</add>
 				<add stat="accCombat" val="#accCombat">
 					<using kind="POLE" />
-				<add stat="atkCountMax" val="30" />
-				<add stat="runSpd" val="1" />
-				<add stat="pAtkRange" val="60" />
 				</add>
 			</effect>
 		</for>
