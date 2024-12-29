@@ -864,6 +864,14 @@
 		<for>
 			<effect name="MpConsumePerLevel" ticks="5">
 				<param power="0.5" />
+				<add stat="pAtkRange" val="60" >
+					<using kind="POLE" />
+				</add>
+				<add stat="atkCountMax" val="30" >
+					<using kind="POLE" />
+				</add>
+				<add stat="runSpd" val="1" >
+				</add>
 				<add stat="accCombat" val="#accCombat">
 					<using kind="POLE" />
 				</add>
