@@ -1400,15 +1400,16 @@
 	<skill id="4484" levels="1" name="Eating Follower Heal">
 		<set name="castRange" val="600" />
 		<set name="effectPoint" val="100" />
+		<set name="reuseDelay" val="10000" />
 		<set name="effectRange" val="1100" />
-		<set name="hitTime" val="100" />
+		<set name="hitTime" val="2100" />
 		<set name="isMagic" val="1" /> <!-- Magic Skill -->
 		<set name="magicLevel" val="75" />
 		<set name="operateType" val="A1" />
 		<set name="targetType" val="ONE" />
 		<for>
 			<effect name="HealPercent">
-				<param power="50" />
+				<param power="10" />
 			</effect>
 		</for>
 	</skill>
