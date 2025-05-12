@@ -308,13 +308,26 @@ public class CreatureStat
 	 */
 	public int getMCriticalHit(Creature target, Skill skill)
 	{
+		return this.getMCriticalHit(target, skill, Config.MAX_MCRIT_RATE);
+	}
+
+	public int getMCriticalHit(Creature target, Skill skill, Creature creature) {
+		if (creature.getName() == "CrashBone") {
+			return this.getMCriticalHit(target, skill, 9999);
+		}
+		return this.getMCriticalHit(target, skill, Config.MAX_MCRIT_RATE);
+	}
+
+	public int getMCriticalHit(Creature target, Skill skill, int MAX_MCRIT_RATE) {
 		int val = (int) calcStat(Stat.MCRITICAL_RATE, 1, target, skill) * 10;
 		if (!_creature.canOverrideCond(PlayerCondOverride.MAX_STATS_VALUE))
 		{
-			val = Math.min(val, Config.MAX_MCRIT_RATE);
+			val = Math.min(val, MAX_MCRIT_RATE);
 		}
 		return val;
 	}
+
+	
 	
 	/**
 	 * <b><u>Example of use </u>: Calculate Magic damage.
