@@ -70,7 +70,7 @@ public class MagicalAttack extends AbstractEffect
 		
 		final boolean sps = info.getSkill().useSpiritShot() && creature.isChargedShot(ShotType.SPIRITSHOTS);
 		final boolean bss = info.getSkill().useSpiritShot() && creature.isChargedShot(ShotType.BLESSED_SPIRITSHOTS);
-		final boolean mcrit = Formulas.calcMCrit(creature.getMCriticalHit(target, info.getSkill()));
+		final boolean mcrit = Formulas.calcMCrit(creature.getMCriticalHit(target, info.getSkill(), creature));
 		final byte shld = Formulas.calcShldUse(creature, target, info.getSkill());
 		final int damage = (int) Formulas.calcMagicDam(creature, target, info.getSkill(), shld, sps, bss, mcrit);
 		if (damage > 0)
