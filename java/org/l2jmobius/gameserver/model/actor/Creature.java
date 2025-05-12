@@ -6077,6 +6077,11 @@ public abstract class Creature extends WorldObject implements ISkillsHolder, IDe
 	{
 		return _stat.getMCriticalHit(target, skill);
 	}
+
+	public int getMCriticalHit(Creature target, Skill skill, Creature creature)
+	{
+		return _stat.getMCriticalHit(target, skill, creature);
+	}
 	
 	public double getMDef(Creature target, Skill skill)
 	{

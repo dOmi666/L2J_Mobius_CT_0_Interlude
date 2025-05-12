@@ -9,3 +9,22 @@ CREATE TABLE IF NOT EXISTS `custom_teleport` (
   `itemId` smallint(5) unsigned NOT NULL DEFAULT '57',
   PRIMARY KEY (`id`)
 ) DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+INSERT INTO `custom_teleport` VALUES
+('Goddard Town -> FoG entrance',31000,175282,-115833,-3768,400000,0,57),
+('GLOBAL GK ---> Primeval Isle',31001,11544,-24451,-3640,800000,0,57),
+('GLOBAL GK ---> Saints Necropolis',31002,83438,209527,-5432,1000000,0,57),
+('GLOBAL GK ---> Discliple Necropolis',31003,172681,-17571,-4896,900000,0,57),
+('GLOBAL GK ---> Martydom Necropolis',31004,118601,132847,-4824,800000,0,57),
+('GLOBAL GK ---> Devotion Necropolis',31005,-51942,79096,-4739,700000,0,57),
+('GLOBAL GK ---> Patriot Necropolis',31006,-21423,77375,-5171,500000,0,57),
+('GLOBAL GK ---> Worshipper Necropolis',31007,111552,174014,-5440,300000,0,57),
+('GLOBAL GK ---> Pilgrim Necropolis',31008,45249,123548,-5411,200000,0,57),
+('GLOBAL GK ---> Sacrifice Necropolis',31009,-41569,210082,-5085,100000,0,57),
+('GLOBAL GK ---> Catacomb Dark Omen',31010,-19176,13504,-4899,1000000,0,57),
+('GLOBAL GK ---> Catacomb Forbidden Path',31011,12521,-248481,-9585,900000,0,57),
+('GLOBAL GK ---> Catacomb Witch',31012,140690,79679,-5429,700000,0,57),
+('GLOBAL GK ---> Catacomb Apostate',31013,-20195,-250764,-8163,600000,0,57),
+('GLOBAL GK ---> Catacomb Branded',31014,46542,170305,-4979,500000,0,57),
+('GLOBAL GK ---> Catacomb Heretic',31015,-53174,-250275,-7911,300000,0,57),
+('Goddard ---> Imperial Tomb',31016,186699,-75915,-2826,500000,0,57),
+('Dion ---> Execution Grounds',31017,45494,149030,-3652,20000,0,57);
