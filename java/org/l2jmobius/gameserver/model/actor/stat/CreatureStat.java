@@ -22,6 +22,7 @@ import org.l2jmobius.Config;
 import org.l2jmobius.gameserver.enums.PlayerCondOverride;
 import org.l2jmobius.gameserver.model.Elementals;
 import org.l2jmobius.gameserver.model.actor.Creature;
+import org.l2jmobius.gameserver.model.actor.Player;
 import org.l2jmobius.gameserver.model.item.Weapon;
 import org.l2jmobius.gameserver.model.skill.Skill;
 import org.l2jmobius.gameserver.model.stats.Calculator;
@@ -312,11 +313,13 @@ public class CreatureStat
 	}
 
 	public int getMCriticalHit(Creature target, Skill skill, Creature creature) {
-		if (creature.getName() == "CrashBone") {
+		final Player player = creature.getActingPlayer();
+		if (player != null && creature.getName().equals("CrashBone")) {
 			return this.getMCriticalHit(target, skill, 9999);
 		}
 		return this.getMCriticalHit(target, skill, Config.MAX_MCRIT_RATE);
 	}
+
 
 	public int getMCriticalHit(Creature target, Skill skill, int MAX_MCRIT_RATE) {
 		int val = (int) calcStat(Stat.MCRITICAL_RATE, 1, target, skill) * 10;
