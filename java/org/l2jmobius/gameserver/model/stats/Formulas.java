@@ -863,7 +863,7 @@ public class Formulas
 		}
 		else if (mcrit)
 		{
-			damage *= attacker.isPlayer() && target.isPlayer() ? 2.5 : 3;
+			damage *= attacker.isPlayer() && target.isPlayer() ? 3 : 3;
 			damage *= attacker.calcStat(Stat.MAGIC_CRIT_DMG, 1, null, null);
 		}
 		
