@@ -35,12 +35,12 @@
 	</item>
 	<!-- Blessed Spiritshot: S Grade -->
 	<item>
-	<ingredient id="57" count="10000000"/>
+	<ingredient id="57" count="50000000"/>
 	<production id="3952" count="5000"/>
 	</item>
 	<!-- Blessed Spiritshot: A-Grade -->
 	<item>
-	<ingredient id="57" count="200000"/>
+	<ingredient id="57" count="1000000"/>
 	<production id="3951" count="5000"/>
 	</item>
 	<!-- Blessed Spiritshot: B-Grade -->

@@ -75,7 +75,7 @@
 	</item>
 	<!-- Scroll: Enchant Weapon (D) -->
 	<item>
-	<ingredient id="57" count="31"/>
+	<ingredient id="57" count="100000"/>
 	<production id="955" count="1"/>
 	</item>
 	<!-- Scroll of Escape -->
