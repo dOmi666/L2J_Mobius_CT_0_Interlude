@@ -1604,6 +1604,11 @@ public class Formulas
 		int defenceAttribute = target.getDefenseElementValue(attacker.getAttackElement());
 		if (attackAttribute <= defenceAttribute)
 		{
+			// if defence attribute is higher, damage should be reduced
+			// before make an ampiric func we need to know the attack attribute
+			// and the defence attribute
+			SystemMessage msg_to_attacker = new SystemMessage("deneme");
+			attacker.sendPacket(msg_to_attacker);
 			return 1;
 		}
 		

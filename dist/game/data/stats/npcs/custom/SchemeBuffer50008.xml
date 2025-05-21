@@ -15,4 +15,48 @@
 			<height normal="16" />
 		</collision>
 	</npc>
+	<npc id="900000" level="1" displayId="20432" type="Monster" name="testmob" title="HIGH HP" usingServerSideTitle="true">
+		<parameters>
+			<param name="MoveAroundSocial" value="0"/>
+			<param name="MoveAroundSocial1" value="0"/>
+			<param name="MoveAroundSocial2" value="0"/>
+		</parameters>
+		<race>ANIMAL</race>
+		<sex>MALE</sex>
+		<acquire exp="35" sp="2"/>
+		<stats str="40" int="21" dex="30" wit="20" con="43" men="20">
+			<vitals hp="1000000" hpRegen="200000" mp="40.0" mpRegen="0.9"/>
+			<attack physical="8.47458" magical="5.78704" random="30" critical="4" accuracy="4.75" attackSpeed="253" type="SWORD" range="40" distance="80" width="120"/>
+			<defence physical="500" magical="500"/>
+			<speed>
+				<walk ground="50"/>
+				<run ground="80"/>
+			</speed>
+		</stats>
+		<status undying="false" canBeSown="true"/>
+		<skillList>
+			<skill id="4408" level="1"/> <!-- HP Increase (1x) -->
+			<skill id="4409" level="1"/> <!-- MP Increase (1x) -->
+			<skill id="4410" level="11"/> <!-- Average P. Atk. -->
+			<skill id="4411" level="11"/> <!-- Average M. Atk. -->
+			<skill id="4412" level="11"/> <!-- Average P. Def. -->
+			<skill id="4413" level="11"/> <!-- Average M. Def. -->
+			<skill id="4414" level="2"/> <!-- Standard Type -->
+			<skill id="4415" level="3"/> <!-- One-handed Sword -->
+			<skill id="4416" level="4"/> <!-- Animals -->
+		</skillList>
+		<exCrtEffect>false</exCrtEffect>
+		<ai aggroRange="1000" clanHelpRange="300" isAggressive="false"/>
+		<dropLists>
+			<drop>
+				<group chance="100">
+					<item id="57" min="1" max="1" chance="100"/> <!-- Adena -->
+				</group>
+			</drop>
+		</dropLists>
+		<collision>
+			<radius normal="5"/>
+			<height normal="4.5"/>
+		</collision>
+	</npc>
 </list>
