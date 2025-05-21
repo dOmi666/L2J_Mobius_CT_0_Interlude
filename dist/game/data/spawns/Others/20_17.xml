@@ -11,5 +11,6 @@
 		<npc id="31113" x="11913" y="-23842" z="-3640" heading="39662" respawnDelay="60" /> <!-- Merchant of Mammon -->
 		<npc id="31126" x="11843" y="-23747" z="-3640" heading="43175" respawnDelay="60" /> <!-- Blacksmith of Mammon -->
 		<npc id="50100" x="11791" y="-24624" z="-3640" heading="25376" respawnDelay="60" /> <!-- Skatty - SPECIAL Gatekeeper -->
+		<npc id="900000" x="11189" y="-24518" z="-3642" heading="2599" respawnDelay="1" /> <!-- testmob - HIGH HP -->
 	</spawn>
 </list>

@@ -1587,10 +1587,13 @@ public class Formulas
 		//SystemMessage msg_to_attacker = new SystemMessage("deneme");
 		//attacker.sendPacket(msg_to_attacker);
 
-		int attackAttribute;
+		int attackAttribute = 0;
+		int defenceAttribute = target.getDefenseElementValue(attacker.getAttackElement());
 
 		if (skill != null)
 		{
+			SystemMessage msg1 = new SystemMessage(" bu 1 attack attribute is " + attackAttribute + "--- defence attribute is " + defenceAttribute);
+			attacker.sendPacket(msg1);
 			if ((skill.getElement() == -1) || (attacker.getAttackElement() != skill.getElement()))
 			{
 				return 1;
@@ -1599,6 +1602,8 @@ public class Formulas
 		}
 		else
 		{
+			SystemMessage msg2 = new SystemMessage(" bu 2 attack attribute is " + attackAttribute + "--- defence attribute is " + defenceAttribute);
+			attacker.sendPacket(msg2);
 			attackAttribute = attacker.getAttackElementValue(attacker.getAttackElement());
 			if (attackAttribute == 0)
 			{
@@ -1606,10 +1611,9 @@ public class Formulas
 			}
 		}
 		
-		int defenceAttribute = target.getDefenseElementValue(attacker.getAttackElement());
 		
-		SystemMessage ms = new SystemMessage("attack attribute is " + attackAttribute + "--- defence attribute is " + defenceAttribute);
-		attacker.sendPacket(ms);
+		SystemMessage msg = new SystemMessage("attack attribute is " + attackAttribute + "--- defence attribute is " + defenceAttribute);
+		attacker.sendPacket(msg);
 
 		if (attackAttribute <= defenceAttribute)
 		{
