@@ -1583,7 +1583,12 @@ public class Formulas
 	 */
 	public static double calcAttributeBonus(Creature attacker, Creature target, Skill skill)
 	{
+		//that works
+		//SystemMessage msg_to_attacker = new SystemMessage("deneme");
+		//attacker.sendPacket(msg_to_attacker);
+
 		int attackAttribute;
+
 		if (skill != null)
 		{
 			if ((skill.getElement() == -1) || (attacker.getAttackElement() != skill.getElement()))
@@ -1602,13 +1607,18 @@ public class Formulas
 		}
 		
 		int defenceAttribute = target.getDefenseElementValue(attacker.getAttackElement());
+		
+		SystemMessage ms = new SystemMessage("attack attribute is " + attackAttribute + "--- defence attribute is " + defenceAttribute);
+		attacker.sendPacket(ms);
+
 		if (attackAttribute <= defenceAttribute)
 		{
 			// if defence attribute is higher, damage should be reduced
 			// before make an ampiric func we need to know the attack attribute
 			// and the defence attribute
-			SystemMessage msg_to_attacker = new SystemMessage("deneme");
-			attacker.sendPacket(msg_to_attacker);
+			
+
+			
 			return 1;
 		}
 		
