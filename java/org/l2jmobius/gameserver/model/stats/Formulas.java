@@ -868,7 +868,7 @@ public class Formulas
 		}
 		
 		// Weapon random damage
-		damage *= attacker.getRandomDamageMultiplier();
+		// damage *= attacker.getRandomDamageMultiplier();
 		
 		// PvP bonuses for damage
 		if (isPvP)
@@ -878,7 +878,8 @@ public class Formulas
 		}
 		
 		damage *= calcAttributeBonus(attacker, target, skill);
-		
+		SystemMessage msg1 = new SystemMessage("Attribute bonus is " + calcAttributeBonus(attacker, target, skill));
+		attacker.sendPacket(msg1);
 		if (target.isAttackable())
 		{
 			damage *= attacker.calcStat(Stat.PVE_MAGICAL_DMG, 1, null, null);
@@ -968,6 +969,7 @@ public class Formulas
 		}
 		
 		damage *= calcAttributeBonus(owner, target, skill);
+		
 		
 		if (target.isAttackable())
 		{
@@ -1592,7 +1594,7 @@ public class Formulas
 
 		if (skill != null)
 		{
-			SystemMessage msg1 = new SystemMessage(" bu 1 attack attribute is " + attackAttribute + "--- defence attribute is " + defenceAttribute);
+			SystemMessage msg1 = new SystemMessage("attack attribute is " + attackAttribute + "--- defence attribute is " + defenceAttribute  + "  attack element is " + attacker.getAttackElement() + "  skill element is " + skill.getElement());
 			attacker.sendPacket(msg1);
 			if ((skill.getElement() == -1) || (attacker.getAttackElement() != skill.getElement()))
 			{
