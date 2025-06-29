@@ -1594,17 +1594,21 @@ public class Formulas
 
 		if (skill != null)
 		{
-			SystemMessage msg1 = new SystemMessage("attack attribute is " + attackAttribute + "--- defence attribute is " + defenceAttribute  + "  attack element is " + attacker.getAttackElement() + "  skill element is " + skill.getElement());
-			attacker.sendPacket(msg1);
-			if ((skill.getElement() == -1) || (attacker.getAttackElement() != skill.getElement()))
+			if ((skill.getElement() != -1) )
 			{
-				return 1;
+				defenceAttribute = target.getDefenseElementValue(skill.getElement());
+				attackAttribute = attacker.getAttackElementValue(skill.getElement()) + skill.getElementPower();
+				SystemMessage msg1 = new SystemMessage("DEBUG: skill attack attribute is " + attackAttribute + 
+				"--- defence attribute is " + defenceAttribute  + "  attacker character element is " + attacker.getAttackElement() + 
+				"  skill element is " + skill.getElement() +  
+				"  resist value is: " + target.getDefenseElementValue(skill.getElement()));
+				attacker.sendPacket(msg1);
 			}
-			attackAttribute = attacker.getAttackElementValue(attacker.getAttackElement()) + skill.getElementPower();
 		}
 		else
 		{
-			SystemMessage msg2 = new SystemMessage(" bu 2 attack attribute is " + attackAttribute + "--- defence attribute is " + defenceAttribute);
+			SystemMessage msg2 = new SystemMessage("DEBUG: autoattack attack attribute is " + attackAttribute + "--- defence attribute is " + defenceAttribute + 
+			"  attacker character element is " + attacker.getAttackElement());
 			attacker.sendPacket(msg2);
 			attackAttribute = attacker.getAttackElementValue(attacker.getAttackElement());
 			if (attackAttribute == 0)
@@ -1613,9 +1617,7 @@ public class Formulas
 			}
 		}
 		
-		
-		SystemMessage msg = new SystemMessage("attack attribute is " + attackAttribute + "--- defence attribute is " + defenceAttribute);
-		attacker.sendPacket(msg);
+
 
 		if (attackAttribute <= defenceAttribute)
 		{
