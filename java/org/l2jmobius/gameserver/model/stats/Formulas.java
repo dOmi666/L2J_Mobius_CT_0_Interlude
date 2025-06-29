@@ -1602,165 +1602,37 @@ public class Formulas
 				"--- defence attribute is " + defenceAttribute  + "  attacker character element is " + attacker.getAttackElement() + 
 				"  skill element is " + skill.getElement() +  
 				"  resist value is: " + target.getDefenseElementValue(skill.getElement()));
-				attacker.sendPacket(msg1);
+				// attacker.sendPacket(msg1);
 			}
 		}
 		else
 		{
+			attackAttribute = attacker.getAttackElementValue(attacker.getAttackElement());
 			SystemMessage msg2 = new SystemMessage("DEBUG: autoattack attack attribute is " + attackAttribute + "--- defence attribute is " + defenceAttribute + 
 			"  attacker character element is " + attacker.getAttackElement());
-			attacker.sendPacket(msg2);
-			attackAttribute = attacker.getAttackElementValue(attacker.getAttackElement());
+			// attacker.sendPacket(msg2);
 			if (attackAttribute == 0)
 			{
 				return 1;
 			}
 		}
-		
 
-
-		if (attackAttribute <= defenceAttribute)
+		double result;
+		if (attackAttribute - defenceAttribute > 0 && attackAttribute - defenceAttribute < 20)
 		{
-			// if defence attribute is higher, damage should be reduced
-			// before make an ampiric func we need to know the attack attribute
-			// and the defence attribute
-			
-
-			
-			return 1;
+			result = 1.0 + 2 * (attackAttribute - defenceAttribute) / 100.0;
 		}
 		
-		double attackAttributeMod = 0;
-		double defenceAttributeMod = 0;
-		if (attackAttribute >= 450)
-		{
-			if (defenceAttribute >= 450)
-			{
-				attackAttributeMod = 0.06909;
-				defenceAttributeMod = 0.078;
-			}
-			// On retail else if (attack_attribute >= 350), can be considered a typo
-			else if (defenceAttribute >= 350)
-			{
-				attackAttributeMod = 0.0887;
-				defenceAttributeMod = 0.1007;
-			}
-			else
-			{
-				attackAttributeMod = 0.129;
-				defenceAttributeMod = 0.1473;
-			}
-		}
-		else if (attackAttribute >= 300)
-		{
-			if (defenceAttribute >= 300)
-			{
-				attackAttributeMod = 0.0887;
-				defenceAttributeMod = 0.1007;
-			}
-			else if (defenceAttribute >= 150)
-			{
-				attackAttributeMod = 0.129;
-				defenceAttributeMod = 0.1473;
-			}
-			else
-			{
-				attackAttributeMod = 0.25;
-				defenceAttributeMod = 0.2894;
-			}
-		}
-		else if (attackAttribute >= 150)
-		{
-			if (defenceAttribute >= 150)
-			{
-				attackAttributeMod = 0.129;
-				defenceAttributeMod = 0.1473;
-			}
-			else if (defenceAttribute >= 0)
-			{
-				attackAttributeMod = 0.25;
-				defenceAttributeMod = 0.2894;
-			}
-			else
-			{
-				attackAttributeMod = 0.4;
-				defenceAttributeMod = 0.55;
-			}
-		}
-		else if (attackAttribute >= -99)
-		{
-			if (defenceAttribute >= 0)
-			{
-				attackAttributeMod = 0.25;
-				defenceAttributeMod = 0.2894;
-			}
-			else
-			{
-				attackAttributeMod = 0.4;
-				defenceAttributeMod = 0.55;
-			}
-		}
 		else
 		{
-			if (defenceAttribute >= 450)
-			{
-				attackAttributeMod = 0.06909;
-				defenceAttributeMod = 0.078;
-			}
-			else if (defenceAttribute >= 350)
-			{
-				attackAttributeMod = 0.0887;
-				defenceAttributeMod = 0.1007;
-			}
-			else
-			{
-				attackAttributeMod = 0.129;
-				defenceAttributeMod = 0.1473;
-			}
+			result = 1.0 + (attackAttribute - defenceAttribute) / 100.0;
 		}
-		
-		final int attributeDiff = attackAttribute - defenceAttribute;
-		double min;
-		double max;
-		if (attributeDiff >= 300)
+
+		if (result < 0.50)
 		{
-			max = 100.0;
-			min = -50;
+			result = 0.50;
 		}
-		else if (attributeDiff >= 150)
-		{
-			max = 70.0;
-			min = -50;
-		}
-		else if (attributeDiff >= -150)
-		{
-			max = 40.0;
-			min = -50;
-		}
-		else if (attributeDiff >= -300)
-		{
-			max = 40.0;
-			min = -60;
-		}
-		else
-		{
-			max = 40.0;
-			min = -80;
-		}
-		
-		attackAttribute += 100;
-		attackAttribute *= attackAttribute;
-		attackAttributeMod *= (attackAttribute / 144.0);
-		defenceAttribute += 100;
-		defenceAttribute *= defenceAttribute;
-		defenceAttributeMod *= (defenceAttribute / 169.0);
-		double attributeModDiff = attackAttributeMod - defenceAttributeMod;
-		attributeModDiff = Util.constrain(attributeModDiff, min, max);
-		double result = (attributeModDiff / 100.0) + 1;
-		if (attacker.isPlayable() && target.isPlayable() && (result < 1.0))
-		{
-			result = 1.0;
-		}
+
 		
 		return result;
 	}
