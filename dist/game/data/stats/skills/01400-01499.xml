@@ -574,7 +574,7 @@
 		<set name="channelingTickInterval" val="2" />
 		<set name="effectPoint" val="-676" />
 		<set name="element" val="0" /> <!-- Fire -->
-		<set name="elementPower" val="20" />
+		<set name="elementPower" val="1" />
 		<set name="hitTime" val="15000" />
 		<set name="icon" val="icon.skill1419" />
 		<set name="isMagic" val="1" /> <!-- Magic Skill -->
@@ -603,7 +603,7 @@
 		<set name="channelingTickInterval" val="2" />
 		<set name="effectPoint" val="-676" />
 		<set name="element" val="2" /> <!-- Wind -->
-		<set name="elementPower" val="20" />
+		<set name="elementPower" val="1" />
 		<set name="hitTime" val="15000" />
 		<set name="icon" val="icon.skill1420" />
 		<set name="isMagic" val="1" /> <!-- Magic Skill -->
@@ -632,7 +632,7 @@
 		<set name="channelingTickInterval" val="2" />
 		<set name="effectPoint" val="-676" />
 		<set name="element" val="1" /> <!-- Water -->
-		<set name="elementPower" val="20" />
+		<set name="elementPower" val="1" />
 		<set name="hitTime" val="15000" />
 		<set name="icon" val="icon.skill1421" />
 		<set name="isMagic" val="1" /> <!-- Magic Skill -->
@@ -683,7 +683,7 @@
 		<set name="channelingTickInterval" val="2" />
 		<set name="effectPoint" val="-676" />
 		<set name="element" val="5" /> <!-- Dark -->
-		<set name="elementPower" val="20" />
+		<set name="elementPower" val="1" />
 		<set name="hitTime" val="15000" />
 		<set name="icon" val="icon.skill1423" />
 		<set name="isMagic" val="1" /> <!-- Magic Skill -->

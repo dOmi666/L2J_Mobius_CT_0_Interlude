@@ -1096,7 +1096,7 @@
 		<set name="effectPoint" val="810" />
 		<set name="effectRange" val="400" />
 		<set name="element" val="4" /> <!-- Holy -->
-		<set name="elementPower" val="20" />
+		<set name="elementPower" val="1" />
 		<set name="hitTime" val="1800" />
 		<set name="hpConsume" val="1215" />
 		<set name="icon" val="icon.skill0341" />
@@ -1268,7 +1268,7 @@
 		<set name="baseCritRate" val="25" /> <!-- Epilogue Modification -->
 		<set name="effectPoint" val="-679" />
 		<set name="element" val="3" /> <!-- Earth -->
-		<set name="elementPower" val="20" />
+		<set name="elementPower" val="1" />
 		<set name="hitTime" val="1800" />
 		<set name="hpConsume" val="340" />
 		<set name="icon" val="icon.skill0347" />
@@ -1856,7 +1856,7 @@
 		<set name="basicProperty" val="MEN" />
 		<set name="effectPoint" val="-666" />
 		<set name="element" val="3" /> <!-- Earth -->
-		<set name="elementPower" val="20" />
+		<set name="elementPower" val="1" />
 		<set name="hitTime" val="2000" />
 		<set name="icon" val="icon.skill0367" />
 		<set name="isDebuff" val="true" />

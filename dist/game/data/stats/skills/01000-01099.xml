@@ -615,7 +615,7 @@
 		<set name="effectPoint" val="#effectPoints" />
 		<set name="effectRange" val="900" />
 		<set name="element" val="4" /> <!-- Holy -->
-		<set name="elementPower" val="20" />
+		<set name="elementPower" val="1" />
 		<set name="hitTime" val="2500" />
 		<set name="icon" val="icon.skill1028" />
 		<set name="isMagic" val="1" /> <!-- Magic Skill -->
@@ -651,7 +651,7 @@
 		<set name="effectPoint" val="#effectPoints" />
 		<set name="effectRange" val="900" />
 		<set name="element" val="4" /> <!-- Holy -->
-		<set name="elementPower" val="20" />
+		<set name="elementPower" val="1" />
 		<set name="hitTime" val="2500" />
 		<set name="icon" val="icon.skill1031" />
 		<set name="isMagic" val="1" /> <!-- Magic Skill -->

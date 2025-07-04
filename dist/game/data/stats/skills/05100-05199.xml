@@ -532,7 +532,7 @@
 		<set name="power" val="300" />
 		<set name="targetType" val="ONE" />
 		<set name="element" val="0" /> <!-- Fire -->
-		<set name="elementPower" val="20" />
+		<set name="elementPower" val="1" />
 		<for>
 			<effect name="MagicalAttack" />
 		</for>
@@ -545,7 +545,7 @@
 		<set name="power" val="300" />
 		<set name="targetType" val="ONE" />
 		<set name="element" val="1" /> <!-- Water -->
-		<set name="elementPower" val="20" />
+		<set name="elementPower" val="1" />
 		<for>
 			<effect name="MagicalAttack" />
 		</for>
@@ -558,7 +558,7 @@
 		<set name="power" val="300" />
 		<set name="targetType" val="ONE" />
 		<set name="element" val="2" /> <!-- Wind -->
-		<set name="elementPower" val="20" />
+		<set name="elementPower" val="1" />
 		<for>
 			<effect name="MagicalAttack" />
 		</for>
@@ -571,7 +571,7 @@
 		<set name="power" val="300" />
 		<set name="targetType" val="ONE" />
 		<set name="element" val="5" /> <!-- Dark -->
-		<set name="elementPower" val="20" />
+		<set name="elementPower" val="1" />
 		<for>
 			<effect name="MagicalAttack" />
 		</for>
@@ -690,7 +690,7 @@
 		<set name="effectPoint" val="-100" />
 		<set name="effectRange" val="1000" />
 		<set name="element" val="1" /> <!-- Water -->
-		<set name="elementPower" val="20" />
+		<set name="elementPower" val="1" />
 		<set name="hitTime" val="4000" />
 		<set name="isMagic" val="1" /> <!-- Magic Skill -->
 		<set name="magicLevel" val="80" />
@@ -1360,7 +1360,7 @@
 		<set name="castRange" val="40" />
 		<set name="effectRange" val="400" />
 		<set name="element" val="3" /> <!-- Earth -->
-		<set name="elementPower" val="20" />
+		<set name="elementPower" val="1" />
 		<set name="icon" val="icon.skill3080" />
 		<set name="isDebuff" val="true" />
 		<set name="isMagic" val="2" /> <!-- Static Skill -->
@@ -1589,7 +1589,7 @@
 		<set name="effectPoint" val="-655" />
 		<set name="effectRange" val="1400" />
 		<set name="element" val="2" /> <!-- Wind -->
-		<set name="elementPower" val="20" />
+		<set name="elementPower" val="1" />
 		<set name="hitTime" val="4000" />
 		<set name="magicLevel" val="75" />
 		<set name="operateType" val="A1" />

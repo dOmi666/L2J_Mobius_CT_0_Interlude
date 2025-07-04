@@ -53,7 +53,7 @@
 		<set name="effectPoint" val="-100" />
 		<set name="effectRange" val="1000" />
 		<set name="element" val="2" /> <!-- Wind -->
-		<set name="elementPower" val="20" />
+		<set name="elementPower" val="1" />
 		<set name="hitTime" val="5000" />
 		<set name="magicLevel" val="76" />
 		<set name="mpConsume" val="103" />
@@ -780,7 +780,7 @@
 		<set name="affectRange" val="200" />
 		<set name="effectPoint" val="-100" />
 		<set name="element" val="0" /> <!-- Fire -->
-		<set name="elementPower" val="20" />
+		<set name="elementPower" val="1" />
 		<set name="hitTime" val="4000" />
 		<set name="isMagic" val="1" /> <!-- Magic Skill -->
 		<set name="magicLevel" val="#magicLevel" />
@@ -803,7 +803,7 @@
 		<set name="effectPoint" val="-100" />
 		<set name="effectRange" val="2000" />
 		<set name="element" val="0" /> <!-- Fire -->
-		<set name="elementPower" val="20" />
+		<set name="elementPower" val="1" />
 		<set name="hitTime" val="4000" />
 		<set name="isMagic" val="1" /> <!-- Magic Skill -->
 		<set name="magicLevel" val="#magicLevel" />
@@ -824,7 +824,7 @@
 		<set name="effectPoint" val="-100" />
 		<set name="effectRange" val="2100" />
 		<set name="element" val="1" /> <!-- Water -->
-		<set name="elementPower" val="20" />
+		<set name="elementPower" val="1" />
 		<set name="hitTime" val="4000" />
 		<set name="isMagic" val="1" /> <!-- Magic Skill -->
 		<set name="magicLevel" val="#magicLevel" />
@@ -861,7 +861,7 @@
 		<set name="effectPoint" val="-100" />
 		<set name="effectRange" val="2000" />
 		<set name="element" val="2" /> <!-- Wind -->
-		<set name="elementPower" val="20" />
+		<set name="elementPower" val="1" />
 		<set name="hitTime" val="4000" />
 		<set name="isMagic" val="1" /> <!-- Magic Skill -->
 		<set name="magicLevel" val="#magicLevel" />
@@ -946,7 +946,7 @@
 		<set name="effectPoint" val="-100" />
 		<set name="effectRange" val="2100" />
 		<set name="element" val="5" /> <!-- Dark -->
-		<set name="elementPower" val="20" />
+		<set name="elementPower" val="1" />
 		<set name="hitTime" val="4000" />
 		<set name="isMagic" val="1" /> <!-- Magic Skill -->
 		<set name="magicLevel" val="#magicLevel" />
@@ -1070,7 +1070,7 @@
 		<set name="effectPoint" val="-100" />
 		<set name="effectRange" val="1500" />
 		<set name="element" val="2" /> <!-- Wind -->
-		<set name="elementPower" val="20" />
+		<set name="elementPower" val="1" />
 		<set name="hitTime" val="1500" />
 		<set name="magicLevel" val="#magicLevel" />
 		<set name="operateType" val="A1" />
@@ -1473,7 +1473,7 @@
 		<set name="affectRange" val="150" />
 		<set name="effectPoint" val="-100" />
 		<set name="element" val="0" /> <!-- Fire -->
-		<set name="elementPower" val="20" />
+		<set name="elementPower" val="1" />
 		<set name="hitTime" val="100" />
 		<set name="isSuicideAttack" val="true" />
 		<set name="magicLevel" val="85" />
