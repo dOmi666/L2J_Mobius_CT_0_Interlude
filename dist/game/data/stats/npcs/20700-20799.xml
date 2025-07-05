@@ -433,7 +433,8 @@
 			<skill id="4413" level="10"/> <!-- Slightly Weak M. Def. -->
 			<skill id="4414" level="2"/> <!-- Standard Type -->
 			<skill id="4415" level="3"/> <!-- One-handed Sword -->
-			<skill id="4416" level="9"/> <!-- Demons -->
+			 <skill id="4416" level="9"/> <!-- Demons -->
+			<skill id="4333" level="3"/> <!-- Resist Dark Attack -->
 		</skillList>
 		<shots shotChance="30" spiritChance="30"/>
 		<exCrtEffect>false</exCrtEffect>
@@ -593,7 +594,8 @@
 			<skill id="4413" level="10"/> <!-- Slightly Weak M. Def. -->
 			<skill id="4414" level="2"/> <!-- Standard Type -->
 			<skill id="4415" level="3"/> <!-- One-handed Sword -->
-			<skill id="4416" level="9"/> <!-- Demons -->
+			 <skill id="4416" level="9"/> <!-- Demons -->
+			<skill id="4333" level="3"/> <!-- Resist Dark Attack -->
 		</skillList>
 		<shots shotChance="30" spiritChance="30"/>
 		<exCrtEffect>false</exCrtEffect>
@@ -1600,7 +1602,8 @@
 			<skill id="4413" level="10"/> <!-- Slightly Weak M. Def. -->
 			<skill id="4414" level="2"/> <!-- Standard Type -->
 			<skill id="4415" level="3"/> <!-- One-handed Sword -->
-			<skill id="4416" level="9"/> <!-- Demons -->
+			 <skill id="4416" level="9"/> <!-- Demons -->
+			<skill id="4333" level="3"/> <!-- Resist Dark Attack -->
 			<skill id="4438" level="2"/> <!-- Greater Resist Sleep -->
 		</skillList>
 		<shots shotChance="30" spiritChance="30"/>
@@ -2824,7 +2827,8 @@
 			<skill id="4413" level="11"/> <!-- Average M. Def. -->
 			<skill id="4414" level="2"/> <!-- Standard Type -->
 			<skill id="4415" level="3"/> <!-- One-handed Sword -->
-			<skill id="4416" level="9"/> <!-- Demons -->
+			 <skill id="4416" level="9"/> <!-- Demons -->
+			<skill id="4333" level="3"/> <!-- Resist Dark Attack -->
 		</skillList>
 		<shots shotChance="30" spiritChance="30"/>
 		<exCrtEffect>false</exCrtEffect>

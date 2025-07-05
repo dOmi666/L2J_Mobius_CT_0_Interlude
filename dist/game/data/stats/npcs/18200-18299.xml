@@ -588,7 +588,8 @@
 			<skill id="4413" level="20"/> <!-- Extremely Strong M. Def. -->
 			<skill id="4414" level="2"/> <!-- Standard Type -->
 			<skill id="4415" level="4"/> <!-- One-handed Sword -->
-			<skill id="4416" level="9"/> <!-- Demons -->
+			 <skill id="4416" level="9"/> <!-- Demons -->
+			<skill id="4333" level="3"/> <!-- Resist Dark Attack -->
 			<skill id="4589" level="9"/> <!-- Decrease Speed -->
 			<skill id="4280" level="3"/> <!-- Water Attack Weak Point -->
 			<skill id="4639" level="3"/> <!-- NPC Clan Buff - Acumen Empower Berserk -->
@@ -641,7 +642,8 @@
 			<skill id="4413" level="20"/> <!-- Extremely Strong M. Def. -->
 			<skill id="4414" level="2"/> <!-- Standard Type -->
 			<skill id="4415" level="4"/> <!-- One-handed Sword -->
-			<skill id="4416" level="9"/> <!-- Demons -->
+			 <skill id="4416" level="9"/> <!-- Demons -->
+			<skill id="4333" level="3"/> <!-- Resist Dark Attack -->
 			<skill id="4589" level="9"/> <!-- Decrease Speed -->
 			<skill id="4280" level="3"/> <!-- Water Attack Weak Point -->
 			<skill id="4639" level="3"/> <!-- NPC Clan Buff - Acumen Empower Berserk -->
@@ -694,7 +696,8 @@
 			<skill id="4413" level="20"/> <!-- Extremely Strong M. Def. -->
 			<skill id="4414" level="2"/> <!-- Standard Type -->
 			<skill id="4415" level="4"/> <!-- One-handed Sword -->
-			<skill id="4416" level="9"/> <!-- Demons -->
+			 <skill id="4416" level="9"/> <!-- Demons -->
+			<skill id="4333" level="3"/> <!-- Resist Dark Attack -->
 			<skill id="4589" level="9"/> <!-- Decrease Speed -->
 			<skill id="4280" level="3"/> <!-- Water Attack Weak Point -->
 			<skill id="4639" level="3"/> <!-- NPC Clan Buff - Acumen Empower Berserk -->
@@ -747,7 +750,8 @@
 			<skill id="4413" level="20"/> <!-- Extremely Strong M. Def. -->
 			<skill id="4414" level="2"/> <!-- Standard Type -->
 			<skill id="4415" level="4"/> <!-- One-handed Sword -->
-			<skill id="4416" level="9"/> <!-- Demons -->
+			 <skill id="4416" level="9"/> <!-- Demons -->
+			<skill id="4333" level="3"/> <!-- Resist Dark Attack -->
 			<skill id="4589" level="9"/> <!-- Decrease Speed -->
 			<skill id="4280" level="3"/> <!-- Water Attack Weak Point -->
 			<skill id="4639" level="3"/> <!-- NPC Clan Buff - Acumen Empower Berserk -->
@@ -800,7 +804,8 @@
 			<skill id="4413" level="20"/> <!-- Extremely Strong M. Def. -->
 			<skill id="4414" level="2"/> <!-- Standard Type -->
 			<skill id="4415" level="4"/> <!-- One-handed Sword -->
-			<skill id="4416" level="9"/> <!-- Demons -->
+			 <skill id="4416" level="9"/> <!-- Demons -->
+			<skill id="4333" level="3"/> <!-- Resist Dark Attack -->
 			<skill id="4589" level="9"/> <!-- Decrease Speed -->
 			<skill id="4280" level="3"/> <!-- Water Attack Weak Point -->
 			<skill id="4639" level="3"/> <!-- NPC Clan Buff - Acumen Empower Berserk -->
@@ -853,7 +858,8 @@
 			<skill id="4413" level="20"/> <!-- Extremely Strong M. Def. -->
 			<skill id="4414" level="2"/> <!-- Standard Type -->
 			<skill id="4415" level="4"/> <!-- One-handed Sword -->
-			<skill id="4416" level="9"/> <!-- Demons -->
+			 <skill id="4416" level="9"/> <!-- Demons -->
+			<skill id="4333" level="3"/> <!-- Resist Dark Attack -->
 			<skill id="4589" level="9"/> <!-- Decrease Speed -->
 			<skill id="4280" level="3"/> <!-- Water Attack Weak Point -->
 			<skill id="4639" level="3"/> <!-- NPC Clan Buff - Acumen Empower Berserk -->
@@ -906,7 +912,8 @@
 			<skill id="4413" level="20"/> <!-- Extremely Strong M. Def. -->
 			<skill id="4414" level="2"/> <!-- Standard Type -->
 			<skill id="4415" level="4"/> <!-- One-handed Sword -->
-			<skill id="4416" level="9"/> <!-- Demons -->
+			 <skill id="4416" level="9"/> <!-- Demons -->
+			<skill id="4333" level="3"/> <!-- Resist Dark Attack -->
 			<skill id="4589" level="9"/> <!-- Decrease Speed -->
 			<skill id="4280" level="3"/> <!-- Water Attack Weak Point -->
 			<skill id="4639" level="3"/> <!-- NPC Clan Buff - Acumen Empower Berserk -->
@@ -959,7 +966,8 @@
 			<skill id="4413" level="20"/> <!-- Extremely Strong M. Def. -->
 			<skill id="4414" level="2"/> <!-- Standard Type -->
 			<skill id="4415" level="4"/> <!-- One-handed Sword -->
-			<skill id="4416" level="9"/> <!-- Demons -->
+			 <skill id="4416" level="9"/> <!-- Demons -->
+			<skill id="4333" level="3"/> <!-- Resist Dark Attack -->
 			<skill id="4589" level="9"/> <!-- Decrease Speed -->
 			<skill id="4280" level="3"/> <!-- Water Attack Weak Point -->
 			<skill id="4639" level="3"/> <!-- NPC Clan Buff - Acumen Empower Berserk -->
@@ -1012,7 +1020,8 @@
 			<skill id="4413" level="17"/> <!-- Very Strong M. Def. -->
 			<skill id="4414" level="2"/> <!-- Standard Type -->
 			<skill id="4415" level="3"/> <!-- One-handed Sword -->
-			<skill id="4416" level="9"/> <!-- Demons -->
+			 <skill id="4416" level="9"/> <!-- Demons -->
+			<skill id="4333" level="3"/> <!-- Resist Dark Attack -->
 			<skill id="4587" level="9"/> <!-- Decrease P. Atk. -->
 			<skill id="4613" level="9"/> <!-- NPC Clan Heal -->
 		</skillList>
@@ -1065,7 +1074,8 @@
 			<skill id="4413" level="17"/> <!-- Very Strong M. Def. -->
 			<skill id="4414" level="2"/> <!-- Standard Type -->
 			<skill id="4415" level="3"/> <!-- One-handed Sword -->
-			<skill id="4416" level="9"/> <!-- Demons -->
+			 <skill id="4416" level="9"/> <!-- Demons -->
+			<skill id="4333" level="3"/> <!-- Resist Dark Attack -->
 			<skill id="4597" level="9"/> <!-- Bleed -->
 			<skill id="4600" level="9"/> <!-- Reducing P. Def Stun -->
 			<skill id="4613" level="9"/> <!-- NPC Clan Heal -->
@@ -1113,7 +1123,8 @@
 			<skill id="4413" level="11"/> <!-- Average M. Def. -->
 			<skill id="4414" level="2"/> <!-- Standard Type -->
 			<skill id="4415" level="3"/> <!-- One-handed Sword -->
-			<skill id="4416" level="9"/> <!-- Demons -->
+			 <skill id="4416" level="9"/> <!-- Demons -->
+			<skill id="4333" level="3"/> <!-- Resist Dark Attack -->
 			<skill id="4560" level="9"/> <!-- NPC Fire Burn -->
 		</skillList>
 		<exCrtEffect>true</exCrtEffect>
@@ -1158,7 +1169,8 @@
 			<skill id="4413" level="11"/> <!-- Average M. Def. -->
 			<skill id="4414" level="2"/> <!-- Standard Type -->
 			<skill id="4415" level="3"/> <!-- One-handed Sword -->
-			<skill id="4416" level="9"/> <!-- Demons -->
+			 <skill id="4416" level="9"/> <!-- Demons -->
+			<skill id="4333" level="3"/> <!-- Resist Dark Attack -->
 			<skill id="4573" level="9"/> <!-- NPC Sonic Blaster -->
 		</skillList>
 		<exCrtEffect>true</exCrtEffect>
@@ -1204,7 +1216,8 @@
 			<skill id="4413" level="11"/> <!-- Average M. Def. -->
 			<skill id="4414" level="2"/> <!-- Standard Type -->
 			<skill id="4415" level="3"/> <!-- One-handed Sword -->
-			<skill id="4416" level="9"/> <!-- Demons -->
+			 <skill id="4416" level="9"/> <!-- Demons -->
+			<skill id="4333" level="3"/> <!-- Resist Dark Attack -->
 			<skill id="4560" level="9"/> <!-- NPC Fire Burn -->
 			<skill id="4573" level="9"/> <!-- NPC Sonic Blaster -->
 		</skillList>
@@ -1252,7 +1265,8 @@
 			<skill id="4413" level="11"/> <!-- Average M. Def. -->
 			<skill id="4414" level="2"/> <!-- Standard Type -->
 			<skill id="4415" level="3"/> <!-- One-handed Sword -->
-			<skill id="4416" level="9"/> <!-- Demons -->
+			 <skill id="4416" level="9"/> <!-- Demons -->
+			<skill id="4333" level="3"/> <!-- Resist Dark Attack -->
 			<skill id="4560" level="9"/> <!-- NPC Fire Burn -->
 		</skillList>
 		<exCrtEffect>true</exCrtEffect>
@@ -1299,7 +1313,8 @@
 			<skill id="4413" level="11"/> <!-- Average M. Def. -->
 			<skill id="4414" level="2"/> <!-- Standard Type -->
 			<skill id="4415" level="3"/> <!-- One-handed Sword -->
-			<skill id="4416" level="9"/> <!-- Demons -->
+			 <skill id="4416" level="9"/> <!-- Demons -->
+			<skill id="4333" level="3"/> <!-- Resist Dark Attack -->
 			<skill id="4561" level="9"/> <!-- NPC Fire Burn - Magic -->
 		</skillList>
 		<exCrtEffect>true</exCrtEffect>
@@ -1347,7 +1362,8 @@
 			<skill id="4413" level="11"/> <!-- Average M. Def. -->
 			<skill id="4414" level="2"/> <!-- Standard Type -->
 			<skill id="4415" level="3"/> <!-- One-handed Sword -->
-			<skill id="4416" level="9"/> <!-- Demons -->
+			 <skill id="4416" level="9"/> <!-- Demons -->
+			<skill id="4333" level="3"/> <!-- Resist Dark Attack -->
 			<skill id="4561" level="9"/> <!-- NPC Fire Burn - Magic -->
 			<skill id="4575" level="2"/> <!-- NPC Clan Buff - Haste -->
 		</skillList>
@@ -1397,7 +1413,8 @@
 			<skill id="4413" level="11"/> <!-- Average M. Def. -->
 			<skill id="4414" level="2"/> <!-- Standard Type -->
 			<skill id="4415" level="3"/> <!-- One-handed Sword -->
-			<skill id="4416" level="9"/> <!-- Demons -->
+			 <skill id="4416" level="9"/> <!-- Demons -->
+			<skill id="4333" level="3"/> <!-- Resist Dark Attack -->
 			<skill id="4561" level="9"/> <!-- NPC Fire Burn - Magic -->
 		</skillList>
 		<exCrtEffect>true</exCrtEffect>
@@ -1444,7 +1461,8 @@
 			<skill id="4413" level="11"/> <!-- Average M. Def. -->
 			<skill id="4414" level="2"/> <!-- Standard Type -->
 			<skill id="4415" level="3"/> <!-- One-handed Sword -->
-			<skill id="4416" level="9"/> <!-- Demons -->
+			 <skill id="4416" level="9"/> <!-- Demons -->
+			<skill id="4333" level="3"/> <!-- Resist Dark Attack -->
 			<skill id="4561" level="9"/> <!-- NPC Fire Burn - Magic -->
 		</skillList>
 		<exCrtEffect>true</exCrtEffect>

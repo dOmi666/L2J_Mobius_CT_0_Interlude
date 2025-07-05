@@ -1643,7 +1643,8 @@
 			<skill id="4413" level="11"/> <!-- Average M. Def. -->
 			<skill id="4414" level="2"/> <!-- Standard Type -->
 			<skill id="4415" level="3"/> <!-- One-handed Sword -->
-			<skill id="4416" level="9"/> <!-- Demons -->
+			 <skill id="4416" level="9"/> <!-- Demons -->
+			<skill id="4333" level="3"/> <!-- Resist Dark Attack -->
 			<skill id="4572" level="7"/> <!-- NPC Triple Sonic Slash -->
 			<skill id="4789" level="7"/> <!-- NPC High Level -->
 		</skillList>
@@ -1721,7 +1722,8 @@
 			<skill id="4413" level="11"/> <!-- Average M. Def. -->
 			<skill id="4414" level="2"/> <!-- Standard Type -->
 			<skill id="4415" level="3"/> <!-- One-handed Sword -->
-			<skill id="4416" level="9"/> <!-- Demons -->
+			 <skill id="4416" level="9"/> <!-- Demons -->
+			<skill id="4333" level="3"/> <!-- Resist Dark Attack -->
 			<skill id="4592" level="9"/> <!-- Decrease P. Def. -->
 			<skill id="4789" level="7"/> <!-- NPC High Level -->
 		</skillList>
@@ -1808,7 +1810,8 @@
 			<skill id="4413" level="10"/> <!-- Slightly Weak M. Def. -->
 			<skill id="4414" level="2"/> <!-- Standard Type -->
 			<skill id="4415" level="3"/> <!-- One-handed Sword -->
-			<skill id="4416" level="9"/> <!-- Demons -->
+			 <skill id="4416" level="9"/> <!-- Demons -->
+			<skill id="4333" level="3"/> <!-- Resist Dark Attack -->
 			<skill id="4566" level="9"/> <!-- NPC Eruption - Magic -->
 			<skill id="4657" level="9"/> <!-- Hold -->
 			<skill id="4789" level="7"/> <!-- NPC High Level -->
@@ -1883,7 +1886,8 @@
 			<skill id="4413" level="10"/> <!-- Slightly Weak M. Def. -->
 			<skill id="4414" level="2"/> <!-- Standard Type -->
 			<skill id="4415" level="3"/> <!-- One-handed Sword -->
-			<skill id="4416" level="9"/> <!-- Demons -->
+			 <skill id="4416" level="9"/> <!-- Demons -->
+			<skill id="4333" level="3"/> <!-- Resist Dark Attack -->
 			<skill id="4566" level="9"/> <!-- NPC Eruption - Magic -->
 			<skill id="4613" level="9"/> <!-- NPC Clan Heal -->
 			<skill id="4789" level="7"/> <!-- NPC High Level -->
@@ -1962,7 +1966,8 @@
 			<skill id="4413" level="8"/> <!-- Weak M. Def. -->
 			<skill id="4414" level="2"/> <!-- Standard Type -->
 			<skill id="4415" level="3"/> <!-- One-handed Sword -->
-			<skill id="4416" level="9"/> <!-- Demons -->
+			 <skill id="4416" level="9"/> <!-- Demons -->
+			<skill id="4333" level="3"/> <!-- Resist Dark Attack -->
 			<skill id="4596" level="9"/> <!-- Bleed -->
 			<skill id="4633" level="3"/> <!-- NPC Buff - Acumen Empower Berserk -->
 			<skill id="4789" level="7"/> <!-- NPC High Level -->
@@ -2047,7 +2052,8 @@
 			<skill id="4413" level="8"/> <!-- Weak M. Def. -->
 			<skill id="4414" level="2"/> <!-- Standard Type -->
 			<skill id="4415" level="3"/> <!-- One-handed Sword -->
-			<skill id="4416" level="9"/> <!-- Demons -->
+			 <skill id="4416" level="9"/> <!-- Demons -->
+			<skill id="4333" level="3"/> <!-- Resist Dark Attack -->
 			<skill id="4565" level="9"/> <!-- NPC Eruption -->
 			<skill id="4584" level="9"/> <!-- Reducing P. Def Stun -->
 			<skill id="4632" level="3"/> <!-- NPC Buff - Acumen Empower WildMagic -->
@@ -2127,7 +2133,8 @@
 			<skill id="4413" level="11"/> <!-- Average M. Def. -->
 			<skill id="4414" level="2"/> <!-- Standard Type -->
 			<skill id="4415" level="6"/> <!-- Blunt Weapons -->
-			<skill id="4416" level="9"/> <!-- Demons -->
+			 <skill id="4416" level="9"/> <!-- Demons -->
+			<skill id="4333" level="3"/> <!-- Resist Dark Attack -->
 			<skill id="4576" level="3"/> <!-- NPC Clan Buff - Damage Shield -->
 			<skill id="4585" level="3"/> <!-- NPC Clan Buff - Berserk Might -->
 			<skill id="4595" level="3"/> <!-- NPC Clan Buff - Acumen Shield -->
@@ -2205,7 +2212,8 @@
 			<skill id="4413" level="11"/> <!-- Average M. Def. -->
 			<skill id="4414" level="2"/> <!-- Standard Type -->
 			<skill id="4415" level="6"/> <!-- Blunt Weapons -->
-			<skill id="4416" level="9"/> <!-- Demons -->
+			 <skill id="4416" level="9"/> <!-- Demons -->
+			<skill id="4333" level="3"/> <!-- Resist Dark Attack -->
 			<skill id="4560" level="9"/> <!-- NPC Fire Burn -->
 			<skill id="4789" level="8"/> <!-- NPC High Level -->
 		</skillList>
@@ -2281,7 +2289,8 @@
 			<skill id="4413" level="10"/> <!-- Slightly Weak M. Def. -->
 			<skill id="4414" level="2"/> <!-- Standard Type -->
 			<skill id="4415" level="6"/> <!-- Blunt Weapons -->
-			<skill id="4416" level="9"/> <!-- Demons -->
+			 <skill id="4416" level="9"/> <!-- Demons -->
+			<skill id="4333" level="3"/> <!-- Resist Dark Attack -->
 			<skill id="4571" level="9"/> <!-- NPC Blazing Circle -->
 			<skill id="4789" level="8"/> <!-- NPC High Level -->
 		</skillList>
@@ -2360,7 +2369,8 @@
 			<skill id="4413" level="12"/> <!-- Slightly Strong M. Def. -->
 			<skill id="4414" level="2"/> <!-- Standard Type -->
 			<skill id="4415" level="6"/> <!-- Blunt Weapons -->
-			<skill id="4416" level="9"/> <!-- Demons -->
+			 <skill id="4416" level="9"/> <!-- Demons -->
+			<skill id="4333" level="3"/> <!-- Resist Dark Attack -->
 			<skill id="4789" level="8"/> <!-- NPC High Level -->
 		</skillList>
 		<exCrtEffect>false</exCrtEffect>
@@ -2442,7 +2452,8 @@
 			<skill id="4413" level="9"/> <!-- Slightly Weak M. Def. -->
 			<skill id="4414" level="2"/> <!-- Standard Type -->
 			<skill id="4415" level="4"/> <!-- One-handed Sword -->
-			<skill id="4416" level="9"/> <!-- Demons -->
+			 <skill id="4416" level="9"/> <!-- Demons -->
+			<skill id="4333" level="3"/> <!-- Resist Dark Attack -->
 			<skill id="4577" level="9"/> <!-- Decrease Accuracy -->
 			<skill id="4585" level="3"/> <!-- NPC Clan Buff - Berserk Might -->
 			<skill id="4601" level="3"/> <!-- NPC Clan Buff - Acumen Focus -->
@@ -2525,7 +2536,8 @@
 			<skill id="4413" level="13"/> <!-- Slightly Strong M. Def. -->
 			<skill id="4414" level="2"/> <!-- Standard Type -->
 			<skill id="4415" level="4"/> <!-- One-handed Sword -->
-			<skill id="4416" level="9"/> <!-- Demons -->
+			 <skill id="4416" level="9"/> <!-- Demons -->
+			<skill id="4333" level="3"/> <!-- Resist Dark Attack -->
 			<skill id="4560" level="9"/> <!-- NPC Fire Burn -->
 			<skill id="4789" level="8"/> <!-- NPC High Level -->
 		</skillList>
@@ -2754,7 +2766,8 @@
 			<skill id="4413" level="11"/> <!-- Average M. Def. -->
 			<skill id="4414" level="2"/> <!-- Standard Type -->
 			<skill id="4415" level="6"/> <!-- Blunt Weapons -->
-			<skill id="4416" level="9"/> <!-- Demons -->
+			 <skill id="4416" level="9"/> <!-- Demons -->
+			<skill id="4333" level="3"/> <!-- Resist Dark Attack -->
 			<skill id="4280" level="3"/> <!-- Water Attack Weak Point -->
 			<skill id="4789" level="7"/> <!-- NPC High Level -->
 		</skillList>

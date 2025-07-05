@@ -1062,7 +1062,8 @@
 			<skill id="4413" level="11"/> <!-- Average M. Def. -->
 			<skill id="4414" level="3"/> <!-- Light Armor Type -->
 			<skill id="4415" level="3"/> <!-- One-handed Sword -->
-			<skill id="4416" level="9"/> <!-- Demons -->
+			 <skill id="4416" level="9"/> <!-- Demons -->
+			<skill id="4333" level="3"/> <!-- Resist Dark Attack -->
 		</skillList>
 		<exCrtEffect>false</exCrtEffect>
 		<sNpcPropHpRate>4</sNpcPropHpRate>
@@ -1340,7 +1341,8 @@
 			<skill id="4413" level="11"/> <!-- Average M. Def. -->
 			<skill id="4414" level="3"/> <!-- Light Armor Type -->
 			<skill id="4415" level="3"/> <!-- One-handed Sword -->
-			<skill id="4416" level="9"/> <!-- Demons -->
+			 <skill id="4416" level="9"/> <!-- Demons -->
+			<skill id="4333" level="3"/> <!-- Resist Dark Attack -->
 		</skillList>
 		<exCrtEffect>false</exCrtEffect>
 		<sNpcPropHpRate>4</sNpcPropHpRate>
@@ -1468,7 +1470,8 @@
 			<skill id="4413" level="11"/> <!-- Average M. Def. -->
 			<skill id="4414" level="3"/> <!-- Light Armor Type -->
 			<skill id="4415" level="3"/> <!-- One-handed Sword -->
-			<skill id="4416" level="9"/> <!-- Demons -->
+			 <skill id="4416" level="9"/> <!-- Demons -->
+			<skill id="4333" level="3"/> <!-- Resist Dark Attack -->
 		</skillList>
 		<exCrtEffect>false</exCrtEffect>
 		<sNpcPropHpRate>4</sNpcPropHpRate>
@@ -1623,7 +1626,8 @@
 			<skill id="4413" level="11"/> <!-- Average M. Def. -->
 			<skill id="4414" level="3"/> <!-- Light Armor Type -->
 			<skill id="4415" level="3"/> <!-- One-handed Sword -->
-			<skill id="4416" level="9"/> <!-- Demons -->
+			 <skill id="4416" level="9"/> <!-- Demons -->
+			<skill id="4333" level="3"/> <!-- Resist Dark Attack -->
 		</skillList>
 		<exCrtEffect>false</exCrtEffect>
 		<sNpcPropHpRate>4</sNpcPropHpRate>
@@ -1757,7 +1761,8 @@
 			<skill id="4413" level="11"/> <!-- Average M. Def. -->
 			<skill id="4414" level="3"/> <!-- Light Armor Type -->
 			<skill id="4415" level="3"/> <!-- One-handed Sword -->
-			<skill id="4416" level="9"/> <!-- Demons -->
+			 <skill id="4416" level="9"/> <!-- Demons -->
+			<skill id="4333" level="3"/> <!-- Resist Dark Attack -->
 		</skillList>
 		<exCrtEffect>false</exCrtEffect>
 		<sNpcPropHpRate>4</sNpcPropHpRate>
@@ -1921,7 +1926,8 @@
 			<skill id="4413" level="11"/> <!-- Average M. Def. -->
 			<skill id="4414" level="3"/> <!-- Light Armor Type -->
 			<skill id="4415" level="3"/> <!-- One-handed Sword -->
-			<skill id="4416" level="9"/> <!-- Demons -->
+			 <skill id="4416" level="9"/> <!-- Demons -->
+			<skill id="4333" level="3"/> <!-- Resist Dark Attack -->
 		</skillList>
 		<exCrtEffect>false</exCrtEffect>
 		<sNpcPropHpRate>4</sNpcPropHpRate>
@@ -2090,7 +2096,8 @@
 			<skill id="4413" level="11"/> <!-- Average M. Def. -->
 			<skill id="4414" level="3"/> <!-- Light Armor Type -->
 			<skill id="4415" level="3"/> <!-- One-handed Sword -->
-			<skill id="4416" level="9"/> <!-- Demons -->
+			 <skill id="4416" level="9"/> <!-- Demons -->
+			<skill id="4333" level="3"/> <!-- Resist Dark Attack -->
 		</skillList>
 		<exCrtEffect>false</exCrtEffect>
 		<sNpcPropHpRate>4</sNpcPropHpRate>
@@ -2420,7 +2427,8 @@
 			<skill id="4413" level="11"/> <!-- Average M. Def. -->
 			<skill id="4414" level="3"/> <!-- Light Armor Type -->
 			<skill id="4415" level="3"/> <!-- One-handed Sword -->
-			<skill id="4416" level="9"/> <!-- Demons -->
+			 <skill id="4416" level="9"/> <!-- Demons -->
+			<skill id="4333" level="3"/> <!-- Resist Dark Attack -->
 		</skillList>
 		<exCrtEffect>false</exCrtEffect>
 		<sNpcPropHpRate>4</sNpcPropHpRate>
@@ -2810,7 +2818,8 @@
 			<skill id="4413" level="11"/> <!-- Average M. Def. -->
 			<skill id="4414" level="3"/> <!-- Light Armor Type -->
 			<skill id="4415" level="3"/> <!-- One-handed Sword -->
-			<skill id="4416" level="9"/> <!-- Demons -->
+			 <skill id="4416" level="9"/> <!-- Demons -->
+			<skill id="4333" level="3"/> <!-- Resist Dark Attack -->
 		</skillList>
 		<exCrtEffect>false</exCrtEffect>
 		<sNpcPropHpRate>4</sNpcPropHpRate>
@@ -3096,7 +3105,8 @@
 			<skill id="4413" level="11"/> <!-- Average M. Def. -->
 			<skill id="4414" level="3"/> <!-- Light Armor Type -->
 			<skill id="4415" level="3"/> <!-- One-handed Sword -->
-			<skill id="4416" level="9"/> <!-- Demons -->
+			 <skill id="4416" level="9"/> <!-- Demons -->
+			<skill id="4333" level="3"/> <!-- Resist Dark Attack -->
 		</skillList>
 		<exCrtEffect>false</exCrtEffect>
 		<sNpcPropHpRate>4</sNpcPropHpRate>
@@ -3248,7 +3258,8 @@
 			<skill id="4413" level="11"/> <!-- Average M. Def. -->
 			<skill id="4414" level="3"/> <!-- Light Armor Type -->
 			<skill id="4415" level="3"/> <!-- One-handed Sword -->
-			<skill id="4416" level="9"/> <!-- Demons -->
+			 <skill id="4416" level="9"/> <!-- Demons -->
+			<skill id="4333" level="3"/> <!-- Resist Dark Attack -->
 		</skillList>
 		<exCrtEffect>false</exCrtEffect>
 		<sNpcPropHpRate>4</sNpcPropHpRate>
@@ -3406,7 +3417,8 @@
 			<skill id="4413" level="11"/> <!-- Average M. Def. -->
 			<skill id="4414" level="3"/> <!-- Light Armor Type -->
 			<skill id="4415" level="3"/> <!-- One-handed Sword -->
-			<skill id="4416" level="9"/> <!-- Demons -->
+			 <skill id="4416" level="9"/> <!-- Demons -->
+			<skill id="4333" level="3"/> <!-- Resist Dark Attack -->
 		</skillList>
 		<exCrtEffect>false</exCrtEffect>
 		<sNpcPropHpRate>4</sNpcPropHpRate>
@@ -3572,7 +3584,8 @@
 			<skill id="4413" level="11"/> <!-- Average M. Def. -->
 			<skill id="4414" level="3"/> <!-- Light Armor Type -->
 			<skill id="4415" level="3"/> <!-- One-handed Sword -->
-			<skill id="4416" level="9"/> <!-- Demons -->
+			 <skill id="4416" level="9"/> <!-- Demons -->
+			<skill id="4333" level="3"/> <!-- Resist Dark Attack -->
 		</skillList>
 		<exCrtEffect>false</exCrtEffect>
 		<sNpcPropHpRate>4</sNpcPropHpRate>
@@ -3736,7 +3749,8 @@
 			<skill id="4413" level="11"/> <!-- Average M. Def. -->
 			<skill id="4414" level="3"/> <!-- Light Armor Type -->
 			<skill id="4415" level="3"/> <!-- One-handed Sword -->
-			<skill id="4416" level="9"/> <!-- Demons -->
+			 <skill id="4416" level="9"/> <!-- Demons -->
+			<skill id="4333" level="3"/> <!-- Resist Dark Attack -->
 		</skillList>
 		<exCrtEffect>false</exCrtEffect>
 		<sNpcPropHpRate>4</sNpcPropHpRate>
@@ -3910,7 +3924,8 @@
 			<skill id="4413" level="11"/> <!-- Average M. Def. -->
 			<skill id="4414" level="3"/> <!-- Light Armor Type -->
 			<skill id="4415" level="3"/> <!-- One-handed Sword -->
-			<skill id="4416" level="9"/> <!-- Demons -->
+			 <skill id="4416" level="9"/> <!-- Demons -->
+			<skill id="4333" level="3"/> <!-- Resist Dark Attack -->
 		</skillList>
 		<exCrtEffect>false</exCrtEffect>
 		<sNpcPropHpRate>4</sNpcPropHpRate>
@@ -4249,7 +4264,8 @@
 			<skill id="4413" level="11"/> <!-- Average M. Def. -->
 			<skill id="4414" level="3"/> <!-- Light Armor Type -->
 			<skill id="4415" level="3"/> <!-- One-handed Sword -->
-			<skill id="4416" level="9"/> <!-- Demons -->
+			 <skill id="4416" level="9"/> <!-- Demons -->
+			<skill id="4333" level="3"/> <!-- Resist Dark Attack -->
 		</skillList>
 		<exCrtEffect>false</exCrtEffect>
 		<sNpcPropHpRate>4</sNpcPropHpRate>

@@ -3659,7 +3659,7 @@
 			<skill id="4065" level="5"/> <!-- NPC Heal -->
 			<skill id="4276" level="1"/> <!-- Weak Point against Bow/Crossbow Weapons -->
 			<skill id="4281" level="3"/> <!-- Wind Attack Weak Point -->
-			<skill id="4276" level="1"/> <!-- Weak Point against Bow/Crossbow Weapons -->
+			<skill id="4098" level="5"/> <!-- Silence -->
 			<skill id="4408" level="10"/> <!-- HP Increase (2x) -->
 			<skill id="4409" level="1"/> <!-- MP Increase (1x) -->
 			<skill id="4410" level="10"/> <!-- Slightly Weak P. Atk. -->
@@ -3753,7 +3753,8 @@
 			<skill id="4413" level="11"/> <!-- Average M. Def. -->
 			<skill id="4414" level="2"/> <!-- Standard Type -->
 			<skill id="4415" level="5"/> <!-- Blunt Weapons -->
-			<skill id="4416" level="9"/> <!-- Demons -->
+			 <skill id="4416" level="9"/> <!-- Demons -->
+			<skill id="4333" level="3"/> <!-- Resist Dark Attack -->
 		</skillList>
 		<shots shotChance="30" spiritChance="30"/>
 		<exCrtEffect>false</exCrtEffect>
@@ -5076,7 +5077,8 @@
 			<skill id="4413" level="13"/> <!-- Slightly Strong M. Def. -->
 			<skill id="4414" level="2"/> <!-- Standard Type -->
 			<skill id="4415" level="5"/> <!-- Blunt Weapons -->
-			<skill id="4416" level="9"/> <!-- Demons -->
+			 <skill id="4416" level="9"/> <!-- Demons -->
+			<skill id="4333" level="3"/> <!-- Resist Dark Attack -->
 			<skill id="4438" level="2"/> <!-- Greater Resist Sleep -->
 		</skillList>
 		<shots shotChance="30" spiritChance="30"/>
@@ -5153,10 +5155,10 @@
 			<hitTime>740</hitTime>
 		</stats>
 		<status undying="false" canBeSown="true"/>
-		<<skill id="4276" level="1"/> <!-- Weak Point against Bow/Crossbow Weapons -->
+		<skillList>
+			<skill id="4276" level="1"/> <!-- Weak Point against Bow/Crossbow Weapons -->
 			<skill id="4281" level="3"/> <!-- Wind Attack Weak Point -->
 			<skill id="4072" level="7"/> <!-- Stun -->
-			<skill id="4276" level="1"/> <!-- Weak Point against Bow/Crossbow Weapons -->
 			<skill id="4408" level="10"/> <!-- HP Increase (2x) -->
 			<skill id="4409" level="1"/> <!-- MP Increase (1x) -->
 			<skill id="4410" level="12"/> <!-- Slightly Strong P. Atk. -->
@@ -5165,7 +5167,8 @@
 			<skill id="4413" level="10"/> <!-- Slightly Weak M. Def. -->
 			<skill id="4414" level="2"/> <!-- Standard Type -->
 			<skill id="4415" level="5"/> <!-- Blunt Weapons -->
-			<skill id="4416" level="9"/> <!-- Demons -->
+			 <skill id="4416" level="9"/> <!-- Demons -->
+			<skill id="4333" level="3"/> <!-- Resist Dark Attack -->
 		</skillList>
 		<shots shotChance="30" spiritChance="30"/>
 		<exCrtEffect>false</exCrtEffect>
@@ -5236,11 +5239,11 @@
 			</speed>
 			<hitTime>460</hitTime>
 		</stats>
-		<<skill id="4276" level="1"/> <!-- Weak Point against Bow/Crossbow Weapons -->
-			<skill id="4281" level="3"/> <!-- Wind Attack Weak Point -->
+		<status undying="false" canBeSown="true"/>
 		<skillList>
 			<skill id="4077" level="6"/> <!-- NPC Aura Burn -->
 			<skill id="4276" level="1"/> <!-- Weak Point against Bow/Crossbow Weapons -->
+			<skill id="4281" level="3"/> <!-- Wind Attack Weak Point -->
 			<skill id="4408" level="10"/> <!-- HP Increase (2x) -->
 			<skill id="4409" level="1"/> <!-- MP Increase (1x) -->
 			<skill id="4410" level="12"/> <!-- Slightly Strong P. Atk. -->
@@ -5323,12 +5326,12 @@
 			</speed>
 			<hitTime>540</hitTime>
 		</stats>
-		<<skill id="4276" level="1"/> <!-- Weak Point against Bow/Crossbow Weapons -->
-			<skill id="4281" level="3"/> <!-- Wind Attack Weak Point -->
+		<status undying="false" canBeSown="true"/>
 		<skillList>
 			<skill id="4002" level="6"/> <!-- NPC HP Drain -->
 			<skill id="4065" level="6"/> <!-- NPC Heal -->
 			<skill id="4276" level="1"/> <!-- Weak Point against Bow/Crossbow Weapons -->
+			<skill id="4281" level="3"/> <!-- Wind Attack Weak Point -->
 			<skill id="4408" level="10"/> <!-- HP Increase (2x) -->
 			<skill id="4409" level="1"/> <!-- MP Increase (1x) -->
 			<skill id="4410" level="10"/> <!-- Slightly Weak P. Atk. -->
@@ -5337,7 +5340,8 @@
 			<skill id="4413" level="12"/> <!-- Slightly Strong M. Def. -->
 			<skill id="4414" level="2"/> <!-- Standard Type -->
 			<skill id="4415" level="7"/> <!-- Daggers -->
-			<skill id="4416" level="9"/> <!-- Demons -->
+			 <skill id="4416" level="9"/> <!-- Demons -->
+			<skill id="4333" level="3"/> <!-- Resist Dark Attack -->
 		</skillList>
 		<shots shotChance="30" spiritChance="30"/>
 		<exCrtEffect>false</exCrtEffect>
@@ -5668,7 +5672,8 @@
 			<skill id="4413" level="10"/> <!-- Slightly Weak M. Def. -->
 			<skill id="4414" level="2"/> <!-- Standard Type -->
 			<skill id="4415" level="3"/> <!-- One-handed Sword -->
-			<skill id="4416" level="9"/> <!-- Demons -->
+			 <skill id="4416" level="9"/> <!-- Demons -->
+			<skill id="4333" level="3"/> <!-- Resist Dark Attack -->
 		</skillList>
 		<shots shotChance="30" spiritChance="30"/>
 		<exCrtEffect>false</exCrtEffect>
@@ -5755,7 +5760,8 @@
 			<skill id="4413" level="10"/> <!-- Slightly Weak M. Def. -->
 			<skill id="4414" level="2"/> <!-- Standard Type -->
 			<skill id="4415" level="9"/> <!-- Bows -->
-			<skill id="4416" level="9"/> <!-- Demons -->
+			 <skill id="4416" level="9"/> <!-- Demons -->
+			<skill id="4333" level="3"/> <!-- Resist Dark Attack -->
 		</skillList>
 		<shots shotChance="30" spiritChance="30"/>
 		<exCrtEffect>false</exCrtEffect>
@@ -6020,7 +6026,8 @@
 			<skill id="4413" level="11"/> <!-- Average M. Def. -->
 			<skill id="4414" level="2"/> <!-- Standard Type -->
 			<skill id="4415" level="3"/> <!-- One-handed Sword -->
-			<skill id="4416" level="9"/> <!-- Demons -->
+			 <skill id="4416" level="9"/> <!-- Demons -->
+			<skill id="4333" level="3"/> <!-- Resist Dark Attack -->
 		</skillList>
 		<shots shotChance="30" spiritChance="30"/>
 		<exCrtEffect>false</exCrtEffect>
@@ -6108,7 +6115,8 @@
 			<skill id="4413" level="10"/> <!-- Slightly Weak M. Def. -->
 			<skill id="4414" level="2"/> <!-- Standard Type -->
 			<skill id="4415" level="3"/> <!-- One-handed Sword -->
-			<skill id="4416" level="9"/> <!-- Demons -->
+			 <skill id="4416" level="9"/> <!-- Demons -->
+			<skill id="4333" level="3"/> <!-- Resist Dark Attack -->
 		</skillList>
 		<shots shotChance="30" spiritChance="30"/>
 		<exCrtEffect>false</exCrtEffect>
@@ -6289,7 +6297,8 @@
 			<skill id="4413" level="11"/> <!-- Average M. Def. -->
 			<skill id="4414" level="2"/> <!-- Standard Type -->
 			<skill id="4415" level="3"/> <!-- One-handed Sword -->
-			<skill id="4416" level="9"/> <!-- Demons -->
+			 <skill id="4416" level="9"/> <!-- Demons -->
+			<skill id="4333" level="3"/> <!-- Resist Dark Attack -->
 		</skillList>
 		<shots shotChance="30" spiritChance="30"/>
 		<exCrtEffect>false</exCrtEffect>
@@ -6373,7 +6382,8 @@
 			<skill id="4413" level="11"/> <!-- Average M. Def. -->
 			<skill id="4414" level="2"/> <!-- Standard Type -->
 			<skill id="4415" level="3"/> <!-- One-handed Sword -->
-			<skill id="4416" level="9"/> <!-- Demons -->
+			 <skill id="4416" level="9"/> <!-- Demons -->
+			<skill id="4333" level="3"/> <!-- Resist Dark Attack -->
 			<skill id="4438" level="2"/> <!-- Greater Resist Sleep -->
 			<skill id="4439" level="2"/> <!-- Greater Resist Hold -->
 		</skillList>

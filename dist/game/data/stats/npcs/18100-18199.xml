@@ -2943,7 +2943,8 @@
 			<skill id="4413" level="16"/> <!-- Very Strong M. Def. -->
 			<skill id="4414" level="2"/> <!-- Standard Type -->
 			<skill id="4415" level="6"/> <!-- Blunt Weapons -->
-			<skill id="4416" level="9"/> <!-- Demons -->
+			 <skill id="4416" level="9"/> <!-- Demons -->
+			<skill id="4333" level="3"/> <!-- Resist Dark Attack -->
 			<skill id="4582" level="9"/> <!-- Poison -->
 			<skill id="4621" level="9"/> <!-- NPC AE - 80% HP Drain -->
 		</skillList>
@@ -2991,7 +2992,8 @@
 			<skill id="4413" level="21"/> <!-- Extremely Strong M. Def. -->
 			<skill id="4414" level="2"/> <!-- Standard Type -->
 			<skill id="4415" level="6"/> <!-- Blunt Weapons -->
-			<skill id="4416" level="9"/> <!-- Demons -->
+			 <skill id="4416" level="9"/> <!-- Demons -->
+			<skill id="4333" level="3"/> <!-- Resist Dark Attack -->
 			<skill id="4582" level="9"/> <!-- Poison -->
 			<skill id="4657" level="9"/> <!-- Hold -->
 		</skillList>
@@ -3039,7 +3041,8 @@
 			<skill id="4413" level="16"/> <!-- Very Strong M. Def. -->
 			<skill id="4414" level="2"/> <!-- Standard Type -->
 			<skill id="4415" level="6"/> <!-- Blunt Weapons -->
-			<skill id="4416" level="9"/> <!-- Demons -->
+			 <skill id="4416" level="9"/> <!-- Demons -->
+			<skill id="4333" level="3"/> <!-- Resist Dark Attack -->
 			<skill id="4582" level="9"/> <!-- Poison -->
 			<skill id="4621" level="9"/> <!-- NPC AE - 80% HP Drain -->
 		</skillList>
@@ -3087,7 +3090,8 @@
 			<skill id="4413" level="21"/> <!-- Extremely Strong M. Def. -->
 			<skill id="4414" level="2"/> <!-- Standard Type -->
 			<skill id="4415" level="6"/> <!-- Blunt Weapons -->
-			<skill id="4416" level="9"/> <!-- Demons -->
+			 <skill id="4416" level="9"/> <!-- Demons -->
+			<skill id="4333" level="3"/> <!-- Resist Dark Attack -->
 			<skill id="4582" level="9"/> <!-- Poison -->
 			<skill id="4657" level="9"/> <!-- Hold -->
 		</skillList>
@@ -3135,7 +3139,8 @@
 			<skill id="4413" level="16"/> <!-- Very Strong M. Def. -->
 			<skill id="4414" level="2"/> <!-- Standard Type -->
 			<skill id="4415" level="6"/> <!-- Blunt Weapons -->
-			<skill id="4416" level="9"/> <!-- Demons -->
+			 <skill id="4416" level="9"/> <!-- Demons -->
+			<skill id="4333" level="3"/> <!-- Resist Dark Attack -->
 			<skill id="4582" level="9"/> <!-- Poison -->
 			<skill id="4621" level="9"/> <!-- NPC AE - 80% HP Drain -->
 		</skillList>
@@ -3183,7 +3188,8 @@
 			<skill id="4413" level="21"/> <!-- Extremely Strong M. Def. -->
 			<skill id="4414" level="2"/> <!-- Standard Type -->
 			<skill id="4415" level="6"/> <!-- Blunt Weapons -->
-			<skill id="4416" level="9"/> <!-- Demons -->
+			 <skill id="4416" level="9"/> <!-- Demons -->
+			<skill id="4333" level="3"/> <!-- Resist Dark Attack -->
 			<skill id="4582" level="9"/> <!-- Poison -->
 			<skill id="4657" level="9"/> <!-- Hold -->
 		</skillList>
@@ -3231,7 +3237,8 @@
 			<skill id="4413" level="16"/> <!-- Very Strong M. Def. -->
 			<skill id="4414" level="2"/> <!-- Standard Type -->
 			<skill id="4415" level="6"/> <!-- Blunt Weapons -->
-			<skill id="4416" level="9"/> <!-- Demons -->
+			 <skill id="4416" level="9"/> <!-- Demons -->
+			<skill id="4333" level="3"/> <!-- Resist Dark Attack -->
 			<skill id="4582" level="9"/> <!-- Poison -->
 			<skill id="4621" level="9"/> <!-- NPC AE - 80% HP Drain -->
 		</skillList>
@@ -3279,7 +3286,8 @@
 			<skill id="4413" level="21"/> <!-- Extremely Strong M. Def. -->
 			<skill id="4414" level="2"/> <!-- Standard Type -->
 			<skill id="4415" level="6"/> <!-- Blunt Weapons -->
-			<skill id="4416" level="9"/> <!-- Demons -->
+			 <skill id="4416" level="9"/> <!-- Demons -->
+			<skill id="4333" level="3"/> <!-- Resist Dark Attack -->
 			<skill id="4582" level="9"/> <!-- Poison -->
 			<skill id="4657" level="9"/> <!-- Hold -->
 		</skillList>
@@ -3676,7 +3684,8 @@
 			<skill id="4413" level="11"/> <!-- Average M. Def. -->
 			<skill id="4414" level="2"/> <!-- Standard Type -->
 			<skill id="4415" level="3"/> <!-- One-handed Sword -->
-			<skill id="4416" level="9"/> <!-- Demons -->
+			 <skill id="4416" level="9"/> <!-- Demons -->
+			<skill id="4333" level="3"/> <!-- Resist Dark Attack -->
 			<skill id="4565" level="9"/> <!-- NPC Eruption -->
 			<skill id="4601" level="3"/> <!-- NPC Clan Buff - Acumen Focus -->
 		</skillList>
@@ -3730,7 +3739,8 @@
 			<skill id="4413" level="11"/> <!-- Average M. Def. -->
 			<skill id="4414" level="2"/> <!-- Standard Type -->
 			<skill id="4415" level="3"/> <!-- One-handed Sword -->
-			<skill id="4416" level="9"/> <!-- Demons -->
+			 <skill id="4416" level="9"/> <!-- Demons -->
+			<skill id="4333" level="3"/> <!-- Resist Dark Attack -->
 			<skill id="4589" level="9"/> <!-- Decrease Speed -->
 			<skill id="4694" level="1"/> <!-- Ultimate Debuff -->
 			<skill id="4695" level="1"/> <!-- Ultimate Debuff -->
@@ -3783,7 +3793,8 @@
 			<skill id="4413" level="11"/> <!-- Average M. Def. -->
 			<skill id="4414" level="2"/> <!-- Standard Type -->
 			<skill id="4415" level="3"/> <!-- One-handed Sword -->
-			<skill id="4416" level="9"/> <!-- Demons -->
+			 <skill id="4416" level="9"/> <!-- Demons -->
+			<skill id="4333" level="3"/> <!-- Resist Dark Attack -->
 			<skill id="4438" level="4"/> <!-- Greater Resist Sleep -->
 			<skill id="4439" level="4"/> <!-- Greater Resist Hold -->
 			<skill id="4589" level="9"/> <!-- Decrease Speed -->
@@ -3838,7 +3849,8 @@
 			<skill id="4413" level="11"/> <!-- Average M. Def. -->
 			<skill id="4414" level="2"/> <!-- Standard Type -->
 			<skill id="4415" level="3"/> <!-- One-handed Sword -->
-			<skill id="4416" level="9"/> <!-- Demons -->
+			 <skill id="4416" level="9"/> <!-- Demons -->
+			<skill id="4333" level="3"/> <!-- Resist Dark Attack -->
 			<skill id="4565" level="9"/> <!-- NPC Eruption -->
 			<skill id="4601" level="3"/> <!-- NPC Clan Buff - Acumen Focus -->
 		</skillList>
@@ -3892,7 +3904,8 @@
 			<skill id="4413" level="11"/> <!-- Average M. Def. -->
 			<skill id="4414" level="2"/> <!-- Standard Type -->
 			<skill id="4415" level="3"/> <!-- One-handed Sword -->
-			<skill id="4416" level="9"/> <!-- Demons -->
+			 <skill id="4416" level="9"/> <!-- Demons -->
+			<skill id="4333" level="3"/> <!-- Resist Dark Attack -->
 			<skill id="4589" level="9"/> <!-- Decrease Speed -->
 			<skill id="4694" level="1"/> <!-- Ultimate Debuff -->
 			<skill id="4695" level="1"/> <!-- Ultimate Debuff -->
@@ -3945,7 +3958,8 @@
 			<skill id="4413" level="11"/> <!-- Average M. Def. -->
 			<skill id="4414" level="2"/> <!-- Standard Type -->
 			<skill id="4415" level="3"/> <!-- One-handed Sword -->
-			<skill id="4416" level="9"/> <!-- Demons -->
+			 <skill id="4416" level="9"/> <!-- Demons -->
+			<skill id="4333" level="3"/> <!-- Resist Dark Attack -->
 			<skill id="4438" level="4"/> <!-- Greater Resist Sleep -->
 			<skill id="4439" level="4"/> <!-- Greater Resist Hold -->
 			<skill id="4589" level="9"/> <!-- Decrease Speed -->
@@ -4000,7 +4014,8 @@
 			<skill id="4413" level="11"/> <!-- Average M. Def. -->
 			<skill id="4414" level="2"/> <!-- Standard Type -->
 			<skill id="4415" level="3"/> <!-- One-handed Sword -->
-			<skill id="4416" level="9"/> <!-- Demons -->
+			 <skill id="4416" level="9"/> <!-- Demons -->
+			<skill id="4333" level="3"/> <!-- Resist Dark Attack -->
 			<skill id="4565" level="9"/> <!-- NPC Eruption -->
 			<skill id="4601" level="3"/> <!-- NPC Clan Buff - Acumen Focus -->
 		</skillList>
@@ -4054,7 +4069,8 @@
 			<skill id="4413" level="11"/> <!-- Average M. Def. -->
 			<skill id="4414" level="2"/> <!-- Standard Type -->
 			<skill id="4415" level="3"/> <!-- One-handed Sword -->
-			<skill id="4416" level="9"/> <!-- Demons -->
+			 <skill id="4416" level="9"/> <!-- Demons -->
+			<skill id="4333" level="3"/> <!-- Resist Dark Attack -->
 			<skill id="4589" level="9"/> <!-- Decrease Speed -->
 			<skill id="4694" level="1"/> <!-- Ultimate Debuff -->
 			<skill id="4695" level="1"/> <!-- Ultimate Debuff -->
@@ -4107,7 +4123,8 @@
 			<skill id="4413" level="11"/> <!-- Average M. Def. -->
 			<skill id="4414" level="2"/> <!-- Standard Type -->
 			<skill id="4415" level="3"/> <!-- One-handed Sword -->
-			<skill id="4416" level="9"/> <!-- Demons -->
+			 <skill id="4416" level="9"/> <!-- Demons -->
+			<skill id="4333" level="3"/> <!-- Resist Dark Attack -->
 			<skill id="4438" level="4"/> <!-- Greater Resist Sleep -->
 			<skill id="4439" level="4"/> <!-- Greater Resist Hold -->
 			<skill id="4589" level="9"/> <!-- Decrease Speed -->
@@ -4162,7 +4179,8 @@
 			<skill id="4413" level="11"/> <!-- Average M. Def. -->
 			<skill id="4414" level="2"/> <!-- Standard Type -->
 			<skill id="4415" level="3"/> <!-- One-handed Sword -->
-			<skill id="4416" level="9"/> <!-- Demons -->
+			 <skill id="4416" level="9"/> <!-- Demons -->
+			<skill id="4333" level="3"/> <!-- Resist Dark Attack -->
 			<skill id="4565" level="9"/> <!-- NPC Eruption -->
 			<skill id="4601" level="3"/> <!-- NPC Clan Buff - Acumen Focus -->
 		</skillList>
@@ -4216,7 +4234,8 @@
 			<skill id="4413" level="11"/> <!-- Average M. Def. -->
 			<skill id="4414" level="2"/> <!-- Standard Type -->
 			<skill id="4415" level="3"/> <!-- One-handed Sword -->
-			<skill id="4416" level="9"/> <!-- Demons -->
+			 <skill id="4416" level="9"/> <!-- Demons -->
+			<skill id="4333" level="3"/> <!-- Resist Dark Attack -->
 			<skill id="4589" level="9"/> <!-- Decrease Speed -->
 			<skill id="4694" level="1"/> <!-- Ultimate Debuff -->
 			<skill id="4695" level="1"/> <!-- Ultimate Debuff -->
@@ -4269,7 +4288,8 @@
 			<skill id="4413" level="11"/> <!-- Average M. Def. -->
 			<skill id="4414" level="2"/> <!-- Standard Type -->
 			<skill id="4415" level="3"/> <!-- One-handed Sword -->
-			<skill id="4416" level="9"/> <!-- Demons -->
+			 <skill id="4416" level="9"/> <!-- Demons -->
+			<skill id="4333" level="3"/> <!-- Resist Dark Attack -->
 			<skill id="4438" level="4"/> <!-- Greater Resist Sleep -->
 			<skill id="4439" level="4"/> <!-- Greater Resist Hold -->
 			<skill id="4589" level="9"/> <!-- Decrease Speed -->
@@ -4325,7 +4345,8 @@
 			<skill id="4413" level="17"/> <!-- Very Strong M. Def. -->
 			<skill id="4414" level="2"/> <!-- Standard Type -->
 			<skill id="4415" level="3"/> <!-- One-handed Sword -->
-			<skill id="4416" level="9"/> <!-- Demons -->
+			 <skill id="4416" level="9"/> <!-- Demons -->
+			<skill id="4333" level="3"/> <!-- Resist Dark Attack -->
 			<skill id="4613" level="9"/> <!-- NPC Clan Heal -->
 		</skillList>
 		<exCrtEffect>true</exCrtEffect>
@@ -4377,7 +4398,8 @@
 			<skill id="4413" level="17"/> <!-- Very Strong M. Def. -->
 			<skill id="4414" level="2"/> <!-- Standard Type -->
 			<skill id="4415" level="3"/> <!-- One-handed Sword -->
-			<skill id="4416" level="9"/> <!-- Demons -->
+			 <skill id="4416" level="9"/> <!-- Demons -->
+			<skill id="4333" level="3"/> <!-- Resist Dark Attack -->
 			<skill id="4597" level="9"/> <!-- Bleed -->
 			<skill id="4613" level="9"/> <!-- NPC Clan Heal -->
 			<skill id="4657" level="9"/> <!-- Hold -->
@@ -4620,7 +4642,8 @@
 			<skill id="4413" level="11"/> <!-- Average M. Def. -->
 			<skill id="4414" level="2"/> <!-- Standard Type -->
 			<skill id="4415" level="3"/> <!-- One-handed Sword -->
-			<skill id="4416" level="9"/> <!-- Demons -->
+			 <skill id="4416" level="9"/> <!-- Demons -->
+			<skill id="4333" level="3"/> <!-- Resist Dark Attack -->
 			<skill id="4563" level="9"/> <!-- NPC Solar Flare - Magic -->
 		</skillList>
 		<exCrtEffect>true</exCrtEffect>
@@ -4669,7 +4692,8 @@
 			<skill id="4413" level="11"/> <!-- Average M. Def. -->
 			<skill id="4414" level="2"/> <!-- Standard Type -->
 			<skill id="4415" level="3"/> <!-- One-handed Sword -->
-			<skill id="4416" level="9"/> <!-- Demons -->
+			 <skill id="4416" level="9"/> <!-- Demons -->
+			<skill id="4333" level="3"/> <!-- Resist Dark Attack -->
 			<skill id="4563" level="9"/> <!-- NPC Solar Flare - Magic -->
 			<skill id="4609" level="4"/> <!-- NPC Clan Buff - Vampiric Rage -->
 		</skillList>
@@ -4719,7 +4743,8 @@
 			<skill id="4413" level="11"/> <!-- Average M. Def. -->
 			<skill id="4414" level="2"/> <!-- Standard Type -->
 			<skill id="4415" level="3"/> <!-- One-handed Sword -->
-			<skill id="4416" level="9"/> <!-- Demons -->
+			 <skill id="4416" level="9"/> <!-- Demons -->
+			<skill id="4333" level="3"/> <!-- Resist Dark Attack -->
 			<skill id="4563" level="9"/> <!-- NPC Solar Flare - Magic -->
 			<skill id="4587" level="9"/> <!-- Decrease P. Atk. -->
 		</skillList>
@@ -4769,7 +4794,8 @@
 			<skill id="4413" level="11"/> <!-- Average M. Def. -->
 			<skill id="4414" level="2"/> <!-- Standard Type -->
 			<skill id="4415" level="3"/> <!-- One-handed Sword -->
-			<skill id="4416" level="9"/> <!-- Demons -->
+			 <skill id="4416" level="9"/> <!-- Demons -->
+			<skill id="4333" level="3"/> <!-- Resist Dark Attack -->
 		</skillList>
 		<exCrtEffect>true</exCrtEffect>
 		<sNpcPropHpRate>6</sNpcPropHpRate>

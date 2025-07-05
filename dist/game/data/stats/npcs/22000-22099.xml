@@ -4131,7 +4131,8 @@
 			<skill id="4413" level="14"/> <!-- Strong M. Def. -->
 			<skill id="4414" level="2"/> <!-- Standard Type -->
 			<skill id="4415" level="7"/> <!-- Daggers -->
-			<skill id="4416" level="9"/> <!-- Demons -->
+			 <skill id="4416" level="9"/> <!-- Demons -->
+			<skill id="4333" level="3"/> <!-- Resist Dark Attack -->
 			<skill id="4417" level="14"/> <!-- Demons -->
 		</skillList>
 		<shots shotChance="30" spiritChance="30"/>
@@ -4431,7 +4432,8 @@
 			<skill id="4413" level="14"/> <!-- Strong M. Def. -->
 			<skill id="4414" level="2"/> <!-- Standard Type -->
 			<skill id="4415" level="7"/> <!-- Daggers -->
-			<skill id="4416" level="9"/> <!-- Demons -->
+			 <skill id="4416" level="9"/> <!-- Demons -->
+			<skill id="4333" level="3"/> <!-- Resist Dark Attack -->
 			<skill id="4417" level="14"/> <!-- Demons -->
 		</skillList>
 		<shots shotChance="30" spiritChance="30"/>
