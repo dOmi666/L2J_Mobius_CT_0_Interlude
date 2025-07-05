@@ -590,7 +590,7 @@
 			<skill id="4415" level="4"/> <!-- One-handed Sword -->
 			<skill id="4416" level="9"/> <!-- Demons -->
 			<skill id="4589" level="9"/> <!-- Decrease Speed -->
-			<skill id="4605" level="9"/> <!-- Surrender To Fire -->
+			<skill id="4280" level="3"/> <!-- Water Attack Weak Point -->
 			<skill id="4639" level="3"/> <!-- NPC Clan Buff - Acumen Empower Berserk -->
 		</skillList>
 		<exCrtEffect>true</exCrtEffect>
@@ -643,7 +643,7 @@
 			<skill id="4415" level="4"/> <!-- One-handed Sword -->
 			<skill id="4416" level="9"/> <!-- Demons -->
 			<skill id="4589" level="9"/> <!-- Decrease Speed -->
-			<skill id="4605" level="9"/> <!-- Surrender To Fire -->
+			<skill id="4280" level="3"/> <!-- Water Attack Weak Point -->
 			<skill id="4639" level="3"/> <!-- NPC Clan Buff - Acumen Empower Berserk -->
 		</skillList>
 		<exCrtEffect>true</exCrtEffect>
@@ -696,7 +696,7 @@
 			<skill id="4415" level="4"/> <!-- One-handed Sword -->
 			<skill id="4416" level="9"/> <!-- Demons -->
 			<skill id="4589" level="9"/> <!-- Decrease Speed -->
-			<skill id="4605" level="9"/> <!-- Surrender To Fire -->
+			<skill id="4280" level="3"/> <!-- Water Attack Weak Point -->
 			<skill id="4639" level="3"/> <!-- NPC Clan Buff - Acumen Empower Berserk -->
 		</skillList>
 		<exCrtEffect>true</exCrtEffect>
@@ -749,7 +749,7 @@
 			<skill id="4415" level="4"/> <!-- One-handed Sword -->
 			<skill id="4416" level="9"/> <!-- Demons -->
 			<skill id="4589" level="9"/> <!-- Decrease Speed -->
-			<skill id="4605" level="9"/> <!-- Surrender To Fire -->
+			<skill id="4280" level="3"/> <!-- Water Attack Weak Point -->
 			<skill id="4639" level="3"/> <!-- NPC Clan Buff - Acumen Empower Berserk -->
 		</skillList>
 		<exCrtEffect>true</exCrtEffect>
@@ -802,7 +802,7 @@
 			<skill id="4415" level="4"/> <!-- One-handed Sword -->
 			<skill id="4416" level="9"/> <!-- Demons -->
 			<skill id="4589" level="9"/> <!-- Decrease Speed -->
-			<skill id="4605" level="9"/> <!-- Surrender To Fire -->
+			<skill id="4280" level="3"/> <!-- Water Attack Weak Point -->
 			<skill id="4639" level="3"/> <!-- NPC Clan Buff - Acumen Empower Berserk -->
 		</skillList>
 		<exCrtEffect>true</exCrtEffect>
@@ -855,7 +855,7 @@
 			<skill id="4415" level="4"/> <!-- One-handed Sword -->
 			<skill id="4416" level="9"/> <!-- Demons -->
 			<skill id="4589" level="9"/> <!-- Decrease Speed -->
-			<skill id="4605" level="9"/> <!-- Surrender To Fire -->
+			<skill id="4280" level="3"/> <!-- Water Attack Weak Point -->
 			<skill id="4639" level="3"/> <!-- NPC Clan Buff - Acumen Empower Berserk -->
 		</skillList>
 		<exCrtEffect>true</exCrtEffect>
@@ -908,7 +908,7 @@
 			<skill id="4415" level="4"/> <!-- One-handed Sword -->
 			<skill id="4416" level="9"/> <!-- Demons -->
 			<skill id="4589" level="9"/> <!-- Decrease Speed -->
-			<skill id="4605" level="9"/> <!-- Surrender To Fire -->
+			<skill id="4280" level="3"/> <!-- Water Attack Weak Point -->
 			<skill id="4639" level="3"/> <!-- NPC Clan Buff - Acumen Empower Berserk -->
 		</skillList>
 		<exCrtEffect>true</exCrtEffect>
@@ -961,7 +961,7 @@
 			<skill id="4415" level="4"/> <!-- One-handed Sword -->
 			<skill id="4416" level="9"/> <!-- Demons -->
 			<skill id="4589" level="9"/> <!-- Decrease Speed -->
-			<skill id="4605" level="9"/> <!-- Surrender To Fire -->
+			<skill id="4280" level="3"/> <!-- Water Attack Weak Point -->
 			<skill id="4639" level="3"/> <!-- NPC Clan Buff - Acumen Empower Berserk -->
 		</skillList>
 		<exCrtEffect>true</exCrtEffect>
@@ -2077,7 +2077,7 @@
 			<skill id="4416" level="2"/> <!-- Magic Creatures -->
 			<skill id="4436" level="5"/> <!-- Greater Resist Poison -->
 			<skill id="4437" level="5"/> <!-- Greater Resist Bleeding -->
-			<skill id="4605" level="9"/> <!-- Surrender To Fire -->
+			<skill id="4280" level="3"/> <!-- Water Attack Weak Point -->
 			<skill id="4616" level="1"/> <!-- Fake Petrificiation -->
 			<skill id="4620" level="9"/> <!-- Paralysis -->
 		</skillList>

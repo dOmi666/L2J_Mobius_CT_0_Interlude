@@ -2005,7 +2005,8 @@
 			<skill id="4415" level="5"/> <!-- Blunt Weapons -->
 			<skill id="4416" level="8"/> <!-- Angels -->
 			<skill id="4417" level="17"/> <!-- Angels -->
-			<skill id="4467" level="3"/> <!-- Surrender To Light -->
+			<skill id="4336" level="3"/> <!-- Dark Attack Weak Point -->
+			<skill id="4335" level="1"/> <!-- Sacred Attack -->
 			<skill id="4574" level="9"/> <!-- NPC Sonic Storm -->
 			<skill id="4589" level="10"/> <!-- Decrease Speed -->
 			<skill id="4789" level="9"/> <!-- NPC High Level -->
@@ -2097,6 +2098,8 @@
 			<skill id="4563" level="9"/> <!-- NPC Solar Flare - Magic -->
 			<skill id="4613" level="9"/> <!-- NPC Clan Heal -->
 			<skill id="4789" level="9"/> <!-- NPC High Level -->
+			<skill id="4336" level="3"/> <!-- Dark Attack Weak Point -->
+			<skill id="4335" level="1"/> <!-- Sacred Attack -->
 		</skillList>
 		<exCrtEffect>false</exCrtEffect>
 		<sNpcPropHpRate>4</sNpcPropHpRate>
@@ -2173,10 +2176,11 @@
 			<skill id="4415" level="3"/> <!-- One-handed Sword -->
 			<skill id="4416" level="8"/> <!-- Angels -->
 			<skill id="4417" level="17"/> <!-- Angels -->
-			<skill id="4467" level="3"/> <!-- Surrender To Light -->
 			<skill id="4574" level="9"/> <!-- NPC Sonic Storm -->
 			<skill id="4589" level="10"/> <!-- Decrease Speed -->
 			<skill id="4789" level="9"/> <!-- NPC High Level -->
+			<skill id="4336" level="3"/> <!-- Dark Attack Weak Point -->
+			<skill id="4335" level="1"/> <!-- Sacred Attack -->
 		</skillList>
 		<exCrtEffect>false</exCrtEffect>
 		<sNpcPropHpRate>4</sNpcPropHpRate>
@@ -2270,6 +2274,8 @@
 			<skill id="4563" level="9"/> <!-- NPC Solar Flare - Magic -->
 			<skill id="4789" level="9"/> <!-- NPC High Level -->
 			<skill id="5021" level="9"/> <!-- Inspiration of Einhasad -->
+			<skill id="4336" level="3"/> <!-- Dark Attack Weak Point -->
+			<skill id="4335" level="1"/> <!-- Sacred Attack -->
 		</skillList>
 		<exCrtEffect>false</exCrtEffect>
 		<sNpcPropHpRate>4</sNpcPropHpRate>
@@ -2335,7 +2341,8 @@
 			<skill id="4417" level="16"/> <!-- Angels -->
 			<skill id="4438" level="4"/> <!-- Greater Resist Sleep -->
 			<skill id="4439" level="4"/> <!-- Greater Resist Hold -->
-			
+			<skill id="4336" level="3"/> <!-- Dark Attack Weak Point -->
+			<skill id="4335" level="1"/> <!-- Sacred Attack -->			
 			<skill id="4789" level="9"/> <!-- NPC High Level -->
 		</skillList>
 		<exCrtEffect>false</exCrtEffect>
@@ -2411,7 +2418,8 @@
 			<skill id="4415" level="3"/> <!-- One-handed Sword -->
 			<skill id="4416" level="8"/> <!-- Angels -->
 			<skill id="4417" level="17"/> <!-- Angels -->
-			<skill id="4467" level="3"/> <!-- Surrender To Light -->
+			<skill id="4336" level="3"/> <!-- Dark Attack Weak Point -->
+			<skill id="4335" level="1"/> <!-- Sacred Attack -->
 			<skill id="4574" level="9"/> <!-- NPC Sonic Storm -->
 			<skill id="4643" level="10"/> <!-- Decrease Speed -->
 			<skill id="4789" level="9"/> <!-- NPC High Level -->
@@ -2493,6 +2501,8 @@
 			<skill id="4416" level="8"/> <!-- Angels -->
 			<skill id="4417" level="16"/> <!-- Angels -->
 			<skill id="4789" level="10"/> <!-- NPC High Level -->
+			<skill id="4336" level="3"/> <!-- Dark Attack Weak Point -->
+			<skill id="4335" level="1"/> <!-- Sacred Attack -->
 		</skillList>
 		<exCrtEffect>false</exCrtEffect>
 		<sNpcPropHpRate>4</sNpcPropHpRate>
@@ -2579,6 +2589,8 @@
 			<skill id="4416" level="8"/> <!-- Angels -->
 			<skill id="4417" level="16"/> <!-- Angels -->
 			<skill id="4789" level="10"/> <!-- NPC High Level -->
+			<skill id="4336" level="3"/> <!-- Dark Attack Weak Point -->
+			<skill id="4335" level="1"/> <!-- Sacred Attack -->
 		</skillList>
 		<exCrtEffect>false</exCrtEffect>
 		<sNpcPropHpRate>5</sNpcPropHpRate>
@@ -2661,6 +2673,8 @@
 			<skill id="4417" level="17"/> <!-- Angels -->
 			<skill id="4491" level="9"/> <!-- Holy Weapon -->
 			<skill id="4789" level="10"/> <!-- NPC High Level -->
+			<skill id="4336" level="3"/> <!-- Dark Attack Weak Point -->
+			<skill id="4335" level="1"/> <!-- Sacred Attack -->
 		</skillList>
 		<exCrtEffect>false</exCrtEffect>
 		<sNpcPropHpRate>5</sNpcPropHpRate>
@@ -2822,6 +2836,8 @@
 			<skill id="4563" level="9"/> <!-- NPC Solar Flare - Magic -->
 			<skill id="4613" level="9"/> <!-- NPC Clan Heal -->
 			<skill id="4789" level="10"/> <!-- NPC High Level -->
+			<skill id="4336" level="3"/> <!-- Dark Attack Weak Point -->
+			<skill id="4335" level="1"/> <!-- Sacred Attack -->
 		</skillList>
 		<exCrtEffect>false</exCrtEffect>
 		<sNpcPropHpRate>4</sNpcPropHpRate>
@@ -2902,6 +2918,8 @@
 			<skill id="4417" level="17"/> <!-- Angels -->
 			<skill id="4574" level="9"/> <!-- NPC Sonic Storm -->
 			<skill id="4789" level="10"/> <!-- NPC High Level -->
+			<skill id="4336" level="3"/> <!-- Dark Attack Weak Point -->
+			<skill id="4335" level="1"/> <!-- Sacred Attack -->
 		</skillList>
 		<exCrtEffect>false</exCrtEffect>
 		<sNpcPropHpRate>6</sNpcPropHpRate>
@@ -2983,6 +3001,7 @@
 			<skill id="4414" level="3"/> <!-- Light Armor Type -->
 			<skill id="4415" level="5"/> <!-- Blunt Weapons -->
 			<skill id="4416" level="1"/> <!-- Undead -->
+			<skill id="4275" level="3"/> <!-- Sacred Attack Weak Point -->
 			<skill id="4417" level="35"/> <!-- Undead -->
 			<skill id="4789" level="9"/> <!-- NPC High Level -->
 			<skill id="5043" level="10"/> <!-- NPC Super Sonic Blaster -->
@@ -3034,6 +3053,7 @@
 			<skill id="4414" level="2"/> <!-- Standard Type -->
 			<skill id="4415" level="3"/> <!-- One-handed Sword -->
 			<skill id="4416" level="1"/> <!-- Undead -->
+			<skill id="4275" level="3"/> <!-- Sacred Attack Weak Point -->
 			<skill id="4417" level="35"/> <!-- Undead -->
 			<skill id="4789" level="9"/> <!-- NPC High Level -->
 		</skillList>
@@ -3100,6 +3120,7 @@
 			<skill id="4414" level="2"/> <!-- Standard Type -->
 			<skill id="4415" level="5"/> <!-- Blunt Weapons -->
 			<skill id="4416" level="1"/> <!-- Undead -->
+			<skill id="4275" level="3"/> <!-- Sacred Attack Weak Point -->
 			<skill id="4417" level="35"/> <!-- Undead -->
 			<skill id="4789" level="10"/> <!-- NPC High Level -->
 		</skillList>
@@ -3164,8 +3185,10 @@
 			<skill id="4414" level="1"/> <!-- Heavy Armor Type -->
 			<skill id="4415" level="5"/> <!-- Blunt Weapons -->
 			<skill id="4416" level="1"/> <!-- Undead -->
+			<skill id="4275" level="3"/> <!-- Sacred Attack Weak Point -->
 			<skill id="4417" level="35"/> <!-- Undead -->
-			<skill id="4466" level="3"/> <!-- Surrender To Darkness -->
+			<skill id="4275" level="3"/> <!-- Sacred Attack Weak Point  -->
+			<skill id="4333" level="3"/> <!-- Resist Dark Attack  -->
 			<skill id="4622" level="9"/> <!-- NPC AE - 80% HP Drain - Magic -->
 			<skill id="4665" level="9"/> <!-- NPC 100% HP Drain - Magic -->
 			<skill id="4789" level="9"/> <!-- NPC High Level -->
@@ -3238,6 +3261,7 @@
 			<skill id="4414" level="1"/> <!-- Heavy Armor Type -->
 			<skill id="4415" level="3"/> <!-- One-handed Sword -->
 			<skill id="4416" level="1"/> <!-- Undead -->
+			<skill id="4275" level="3"/> <!-- Sacred Attack Weak Point -->
 			<skill id="4417" level="35"/> <!-- Undead -->
 			<skill id="4649" level="9"/> <!-- Poison -->
 			<skill id="4789" level="6"/> <!-- NPC High Level -->
@@ -3325,6 +3349,7 @@
 			<skill id="4414" level="1"/> <!-- Heavy Armor Type -->
 			<skill id="4415" level="3"/> <!-- One-handed Sword -->
 			<skill id="4416" level="1"/> <!-- Undead -->
+			<skill id="4275" level="3"/> <!-- Sacred Attack Weak Point -->
 			<skill id="4417" level="35"/> <!-- Undead -->
 			<skill id="4612" level="9"/> <!-- NPC Wide Wild Sweep -->
 			<skill id="4789" level="6"/> <!-- NPC High Level -->
@@ -3420,6 +3445,8 @@
 			<skill id="4417" level="26"/> <!-- Humanoids -->
 			<skill id="4573" level="9"/> <!-- NPC Sonic Blaster -->
 			<skill id="4789" level="9"/> <!-- NPC High Level -->
+			<skill id="4333" level="4"/> <!-- Resist Dark Attack -->
+			<skill id="4275" level="4"/> <!-- Sacred Attack Weak Point -->
 		</skillList>
 		<exCrtEffect>false</exCrtEffect>
 		<sNpcPropHpRate>5</sNpcPropHpRate>
@@ -3511,10 +3538,13 @@
 			<skill id="4415" level="11"/> <!-- Spears -->
 			<skill id="4416" level="6"/> <!-- Humanoids -->
 			<skill id="4417" level="26"/> <!-- Humanoids -->
-			<skill id="4466" level="3"/> <!-- Surrender To Darkness -->
+			<skill id="4275" level="3"/> <!-- Sacred Attack Weak Point  -->
+			<skill id="4333" level="3"/> <!-- Resist Dark Attack  -->
 			<skill id="4629" level="9"/> <!-- NPC MR - HP Drain -->
 			<skill id="4668" level="9"/> <!-- NPC Strong 100% HP Drain - Magic -->
 			<skill id="4789" level="9"/> <!-- NPC High Level -->
+			<skill id="4333" level="4"/> <!-- Resist Dark Attack -->
+			<skill id="4275" level="4"/> <!-- Sacred Attack Weak Point -->
 		</skillList>
 		<exCrtEffect>false</exCrtEffect>
 		<sNpcPropHpRate>5</sNpcPropHpRate>
@@ -3595,6 +3625,7 @@
 			<skill id="4414" level="1"/> <!-- Heavy Armor Type -->
 			<skill id="4415" level="5"/> <!-- Blunt Weapons -->
 			<skill id="4416" level="1"/> <!-- Undead -->
+			<skill id="4275" level="3"/> <!-- Sacred Attack Weak Point -->
 			<skill id="4417" level="35"/> <!-- Undead -->
 			<skill id="4789" level="9"/> <!-- NPC High Level -->
 		</skillList>
@@ -3673,6 +3704,7 @@
 			<skill id="4414" level="3"/> <!-- Light Armor Type -->
 			<skill id="4415" level="5"/> <!-- Blunt Weapons -->
 			<skill id="4416" level="1"/> <!-- Undead -->
+			<skill id="4275" level="3"/> <!-- Sacred Attack Weak Point -->
 			<skill id="4417" level="36"/> <!-- Undead -->
 			
 			<skill id="4789" level="9"/> <!-- NPC High Level -->
@@ -3766,6 +3798,8 @@
 			<skill id="4417" level="26"/> <!-- Humanoids -->
 			<skill id="4573" level="9"/> <!-- NPC Sonic Blaster -->
 			<skill id="4789" level="9"/> <!-- NPC High Level -->
+			<skill id="4333" level="4"/> <!-- Resist Dark Attack -->
+			<skill id="4275" level="4"/> <!-- Sacred Attack Weak Point -->
 		</skillList>
 		<exCrtEffect>false</exCrtEffect>
 		<sNpcPropHpRate>5</sNpcPropHpRate>
@@ -3828,6 +3862,7 @@
 			<skill id="4414" level="2"/> <!-- Standard Type -->
 			<skill id="4415" level="5"/> <!-- Blunt Weapons -->
 			<skill id="4416" level="1"/> <!-- Undead -->
+			<skill id="4275" level="3"/> <!-- Sacred Attack Weak Point -->
 			<skill id="4417" level="35"/> <!-- Undead -->
 			<skill id="4612" level="9"/> <!-- NPC Wide Wild Sweep -->
 			<skill id="4615" level="9"/> <!-- Bleed -->
@@ -3911,6 +3946,8 @@
 			<skill id="4622" level="9"/> <!-- NPC AE - 80% HP Drain - Magic -->
 			<skill id="4665" level="9"/> <!-- NPC 100% HP Drain - Magic -->
 			<skill id="4789" level="9"/> <!-- NPC High Level -->
+			<skill id="4333" level="4"/> <!-- Resist Dark Attack -->
+			<skill id="4275" level="4"/> <!-- Sacred Attack Weak Point -->
 		</skillList>
 		<exCrtEffect>false</exCrtEffect>
 		<sNpcPropHpRate>4</sNpcPropHpRate>
@@ -3973,6 +4010,7 @@
 			<skill id="4414" level="2"/> <!-- Standard Type -->
 			<skill id="4415" level="5"/> <!-- Blunt Weapons -->
 			<skill id="4416" level="1"/> <!-- Undead -->
+			<skill id="4275" level="3"/> <!-- Sacred Attack Weak Point -->
 			<skill id="4417" level="35"/> <!-- Undead -->
 			<skill id="4649" level="9"/> <!-- Poison -->
 			<skill id="4789" level="9"/> <!-- NPC High Level -->
@@ -4056,10 +4094,13 @@
 			<skill id="4415" level="11"/> <!-- Spears -->
 			<skill id="4416" level="6"/> <!-- Humanoids -->
 			<skill id="4417" level="26"/> <!-- Humanoids -->
-			<skill id="4466" level="3"/> <!-- Surrender To Darkness -->
+			<skill id="4275" level="3"/> <!-- Sacred Attack Weak Point  -->
+			<skill id="4333" level="3"/> <!-- Resist Dark Attack  -->
 			<skill id="4629" level="9"/> <!-- NPC MR - HP Drain -->
 			<skill id="4668" level="9"/> <!-- NPC Strong 100% HP Drain - Magic -->
 			<skill id="4789" level="9"/> <!-- NPC High Level -->
+			<skill id="4333" level="4"/> <!-- Resist Dark Attack -->
+			<skill id="4275" level="4"/> <!-- Sacred Attack Weak Point -->
 		</skillList>
 		<exCrtEffect>false</exCrtEffect>
 		<sNpcPropHpRate>4</sNpcPropHpRate>
@@ -4142,6 +4183,8 @@
 			<skill id="4629" level="9"/> <!-- NPC MR - HP Drain -->
 			<skill id="4668" level="9"/> <!-- NPC Strong 100% HP Drain - Magic -->
 			<skill id="4789" level="10"/> <!-- NPC High Level -->
+			<skill id="4333" level="4"/> <!-- Resist Dark Attack -->
+			<skill id="4275" level="4"/> <!-- Sacred Attack Weak Point -->
 		</skillList>
 		<exCrtEffect>false</exCrtEffect>
 		<sNpcPropHpRate>5</sNpcPropHpRate>
@@ -4209,6 +4252,7 @@
 			<skill id="4414" level="2"/> <!-- Standard Type -->
 			<skill id="4415" level="13"/> <!-- Two-handed Sword -->
 			<skill id="4416" level="1"/> <!-- Undead -->
+			<skill id="4275" level="3"/> <!-- Sacred Attack Weak Point -->
 			<skill id="4417" level="35"/> <!-- Undead -->
 			<skill id="4612" level="9"/> <!-- NPC Wide Wild Sweep -->
 			<skill id="4615" level="9"/> <!-- Bleed -->
@@ -4284,8 +4328,10 @@
 			<skill id="4414" level="2"/> <!-- Standard Type -->
 			<skill id="4415" level="13"/> <!-- Two-handed Sword -->
 			<skill id="4416" level="1"/> <!-- Undead -->
+			<skill id="4275" level="3"/> <!-- Sacred Attack Weak Point -->
 			<skill id="4417" level="35"/> <!-- Undead -->
-			<skill id="4466" level="3"/> <!-- Surrender To Darkness -->
+			<skill id="4275" level="3"/> <!-- Sacred Attack Weak Point  -->
+			<skill id="4333" level="3"/> <!-- Resist Dark Attack  -->
 			<skill id="4622" level="9"/> <!-- NPC AE - 80% HP Drain - Magic -->
 			<skill id="4665" level="9"/> <!-- NPC 100% HP Drain - Magic -->
 			<skill id="4789" level="9"/> <!-- NPC High Level -->
@@ -4356,6 +4402,7 @@
 			<skill id="4414" level="3"/> <!-- Light Armor Type -->
 			<skill id="4415" level="3"/> <!-- One-handed Sword -->
 			<skill id="4416" level="1"/> <!-- Undead -->
+			<skill id="4275" level="3"/> <!-- Sacred Attack Weak Point -->
 			<skill id="4417" level="36"/> <!-- Undead -->
 			
 			<skill id="4789" level="10"/> <!-- NPC High Level -->
@@ -4439,6 +4486,8 @@
 			<skill id="4612" level="9"/> <!-- NPC Wide Wild Sweep -->
 			<skill id="4641" level="10"/> <!-- NPC Super Strike -->
 			<skill id="4789" level="10"/> <!-- NPC High Level -->
+			<skill id="4333" level="4"/> <!-- Resist Dark Attack -->
+			<skill id="4275" level="4"/> <!-- Sacred Attack Weak Point -->
 		</skillList>
 		<exCrtEffect>false</exCrtEffect>
 		<sNpcPropHpRate>5</sNpcPropHpRate>
@@ -4509,6 +4558,8 @@
 			<skill id="4416" level="6"/> <!-- Humanoids -->
 			<skill id="4417" level="26"/> <!-- Humanoids -->
 			<skill id="4789" level="10"/> <!-- NPC High Level -->
+			<skill id="4333" level="4"/> <!-- Resist Dark Attack -->
+			<skill id="4275" level="4"/> <!-- Sacred Attack Weak Point -->
 		</skillList>
 		<exCrtEffect>false</exCrtEffect>
 		<sNpcPropHpRate>4</sNpcPropHpRate>
@@ -4584,8 +4635,11 @@
 			<skill id="4415" level="11"/> <!-- Spears -->
 			<skill id="4416" level="6"/> <!-- Humanoids -->
 			<skill id="4417" level="26"/> <!-- Humanoids -->
-			<skill id="4466" level="3"/> <!-- Surrender To Darkness -->
+			<skill id="4275" level="3"/> <!-- Sacred Attack Weak Point  -->
+			<skill id="4333" level="3"/> <!-- Resist Dark Attack  -->
 			<skill id="4789" level="10"/> <!-- NPC High Level -->
+			<skill id="4333" level="4"/> <!-- Resist Dark Attack -->
+			<skill id="4275" level="4"/> <!-- Sacred Attack Weak Point -->
 		</skillList>
 		<exCrtEffect>false</exCrtEffect>
 		<sNpcPropHpRate>4</sNpcPropHpRate>
@@ -4655,7 +4709,8 @@
 			<skill id="4415" level="1"/> <!-- Bare Hands -->
 			<skill id="4416" level="6"/> <!-- Humanoids -->
 			<skill id="4417" level="26"/> <!-- Humanoids -->
-			<skill id="4466" level="3"/> <!-- Surrender To Darkness -->
+			<skill id="4275" level="3"/> <!-- Sacred Attack Weak Point  -->
+			<skill id="4333" level="3"/> <!-- Resist Dark Attack  -->
 			<skill id="4622" level="9"/> <!-- NPC AE - 80% HP Drain - Magic -->
 			<skill id="4665" level="9"/> <!-- NPC 100% HP Drain - Magic -->
 			<skill id="4789" level="10"/> <!-- NPC High Level -->
@@ -4748,6 +4803,8 @@
 			<skill id="4612" level="9"/> <!-- NPC Wide Wild Sweep -->
 			<skill id="4641" level="10"/> <!-- NPC Super Strike -->
 			<skill id="4789" level="10"/> <!-- NPC High Level -->
+			<skill id="4333" level="4"/> <!-- Resist Dark Attack -->
+			<skill id="4275" level="4"/> <!-- Sacred Attack Weak Point -->
 		</skillList>
 		<exCrtEffect>false</exCrtEffect>
 		<sNpcPropHpRate>5</sNpcPropHpRate>
@@ -4820,6 +4877,8 @@
 			<skill id="4416" level="6"/> <!-- Humanoids -->
 			<skill id="4417" level="26"/> <!-- Humanoids -->
 			<skill id="4789" level="10"/> <!-- NPC High Level -->
+			<skill id="4333" level="4"/> <!-- Resist Dark Attack -->
+			<skill id="4275" level="4"/> <!-- Sacred Attack Weak Point -->
 		</skillList>
 		<exCrtEffect>false</exCrtEffect>
 		<sNpcPropHpRate>4</sNpcPropHpRate>
@@ -4891,6 +4950,7 @@
 			<skill id="4414" level="3"/> <!-- Light Armor Type -->
 			<skill id="4415" level="3"/> <!-- One-handed Sword -->
 			<skill id="4416" level="1"/> <!-- Undead -->
+			<skill id="4275" level="3"/> <!-- Sacred Attack Weak Point -->
 			<skill id="4417" level="36"/> <!-- Undead -->
 			
 			<skill id="4789" level="10"/> <!-- NPC High Level -->
@@ -4972,7 +5032,8 @@
 			<skill id="4415" level="3"/> <!-- One-handed Sword -->
 			<skill id="4416" level="6"/> <!-- Humanoids -->
 			<skill id="4417" level="26"/> <!-- Humanoids -->
-			<skill id="4466" level="3"/> <!-- Surrender To Darkness -->
+			<skill id="4275" level="3"/> <!-- Sacred Attack Weak Point  -->
+			<skill id="4333" level="3"/> <!-- Resist Dark Attack  -->
 			<skill id="4622" level="9"/> <!-- NPC AE - 80% HP Drain - Magic -->
 			<skill id="4665" level="9"/> <!-- NPC 100% HP Drain - Magic -->
 			<skill id="4789" level="10"/> <!-- NPC High Level -->
@@ -5061,6 +5122,8 @@
 			<skill id="4641" level="10"/> <!-- NPC Super Strike -->
 			<skill id="4655" level="9"/> <!-- NPC Death Link - Magic -->
 			<skill id="4789" level="10"/> <!-- NPC High Level -->
+			<skill id="4333" level="4"/> <!-- Resist Dark Attack -->
+			<skill id="4275" level="4"/> <!-- Sacred Attack Weak Point -->
 		</skillList>
 		<exCrtEffect>false</exCrtEffect>
 		<sNpcPropHpRate>5</sNpcPropHpRate>
@@ -5131,6 +5194,8 @@
 			<skill id="4417" level="26"/> <!-- Humanoids -->
 			<skill id="4612" level="9"/> <!-- NPC Wide Wild Sweep -->
 			<skill id="4789" level="10"/> <!-- NPC High Level -->
+			<skill id="4333" level="4"/> <!-- Resist Dark Attack -->
+			<skill id="4275" level="4"/> <!-- Sacred Attack Weak Point -->
 		</skillList>
 		<exCrtEffect>false</exCrtEffect>
 		<sNpcPropHpRate>4</sNpcPropHpRate>
@@ -5206,7 +5271,8 @@
 			<skill id="4415" level="11"/> <!-- Spears -->
 			<skill id="4416" level="6"/> <!-- Humanoids -->
 			<skill id="4417" level="26"/> <!-- Humanoids -->
-			<skill id="4466" level="3"/> <!-- Surrender To Darkness -->
+			<skill id="4275" level="3"/> <!-- Sacred Attack Weak Point  -->
+			<skill id="4333" level="3"/> <!-- Resist Dark Attack  -->
 			<skill id="4622" level="9"/> <!-- NPC AE - 80% HP Drain - Magic -->
 			<skill id="4665" level="9"/> <!-- NPC 100% HP Drain - Magic -->
 			<skill id="4789" level="10"/> <!-- NPC High Level -->
@@ -5286,6 +5352,8 @@
 			<skill id="4622" level="9"/> <!-- NPC AE - 80% HP Drain - Magic -->
 			<skill id="4665" level="9"/> <!-- NPC 100% HP Drain - Magic -->
 			<skill id="4789" level="10"/> <!-- NPC High Level -->
+			<skill id="4333" level="4"/> <!-- Resist Dark Attack -->
+			<skill id="4275" level="4"/> <!-- Sacred Attack Weak Point -->
 		</skillList>
 		<exCrtEffect>false</exCrtEffect>
 		<sNpcPropHpRate>4</sNpcPropHpRate>
@@ -5371,6 +5439,8 @@
 			<skill id="4612" level="9"/> <!-- NPC Wide Wild Sweep -->
 			<skill id="4641" level="10"/> <!-- NPC Super Strike -->
 			<skill id="4789" level="10"/> <!-- NPC High Level -->
+			<skill id="4333" level="4"/> <!-- Resist Dark Attack -->
+			<skill id="4275" level="4"/> <!-- Sacred Attack Weak Point -->
 		</skillList>
 		<exCrtEffect>false</exCrtEffect>
 		<sNpcPropHpRate>5</sNpcPropHpRate>
@@ -5444,7 +5514,8 @@
 			<skill id="4415" level="11"/> <!-- Spears -->
 			<skill id="4416" level="6"/> <!-- Humanoids -->
 			<skill id="4417" level="26"/> <!-- Humanoids -->
-			<skill id="4466" level="3"/> <!-- Surrender To Darkness -->
+			<skill id="4275" level="3"/> <!-- Sacred Attack Weak Point  -->
+			<skill id="4333" level="3"/> <!-- Resist Dark Attack  -->
 			<skill id="4622" level="9"/> <!-- NPC AE - 80% HP Drain - Magic -->
 			<skill id="4665" level="9"/> <!-- NPC 100% HP Drain - Magic -->
 			<skill id="4789" level="10"/> <!-- NPC High Level -->
@@ -5515,6 +5586,7 @@
 			<skill id="4414" level="3"/> <!-- Light Armor Type -->
 			<skill id="4415" level="3"/> <!-- One-handed Sword -->
 			<skill id="4416" level="1"/> <!-- Undead -->
+			<skill id="4275" level="3"/> <!-- Sacred Attack Weak Point -->
 			<skill id="4417" level="36"/> <!-- Undead -->
 			
 			<skill id="4789" level="10"/> <!-- NPC High Level -->
@@ -5592,6 +5664,8 @@
 			<skill id="4416" level="6"/> <!-- Humanoids -->
 			<skill id="4417" level="26"/> <!-- Humanoids -->
 			<skill id="4789" level="10"/> <!-- NPC High Level -->
+			<skill id="4333" level="4"/> <!-- Resist Dark Attack -->
+			<skill id="4275" level="4"/> <!-- Sacred Attack Weak Point -->
 		</skillList>
 		<exCrtEffect>false</exCrtEffect>
 		<sNpcPropHpRate>4</sNpcPropHpRate>
@@ -5676,6 +5750,8 @@
 			<skill id="4641" level="10"/> <!-- NPC Super Strike -->
 			<skill id="4655" level="9"/> <!-- NPC Death Link - Magic -->
 			<skill id="4789" level="10"/> <!-- NPC High Level -->
+			<skill id="4333" level="4"/> <!-- Resist Dark Attack -->
+			<skill id="4275" level="4"/> <!-- Sacred Attack Weak Point -->
 		</skillList>
 		<exCrtEffect>false</exCrtEffect>
 		<sNpcPropHpRate>5</sNpcPropHpRate>
@@ -5749,6 +5825,7 @@
 			<skill id="4414" level="3"/> <!-- Light Armor Type -->
 			<skill id="4415" level="3"/> <!-- One-handed Sword -->
 			<skill id="4416" level="1"/> <!-- Undead -->
+			<skill id="4275" level="3"/> <!-- Sacred Attack Weak Point -->
 			<skill id="4417" level="36"/> <!-- Undead -->
 			
 			<skill id="4789" level="10"/> <!-- NPC High Level -->
@@ -5831,6 +5908,8 @@
 			<skill id="4622" level="9"/> <!-- NPC AE - 80% HP Drain - Magic -->
 			<skill id="4665" level="9"/> <!-- NPC 100% HP Drain - Magic -->
 			<skill id="4789" level="10"/> <!-- NPC High Level -->
+			<skill id="4333" level="4"/> <!-- Resist Dark Attack -->
+			<skill id="4275" level="4"/> <!-- Sacred Attack Weak Point -->
 		</skillList>
 		<exCrtEffect>false</exCrtEffect>
 		<sNpcPropHpRate>4</sNpcPropHpRate>
@@ -5901,7 +5980,8 @@
 			<skill id="4415" level="11"/> <!-- Spears -->
 			<skill id="4416" level="6"/> <!-- Humanoids -->
 			<skill id="4417" level="26"/> <!-- Humanoids -->
-			<skill id="4466" level="3"/> <!-- Surrender To Darkness -->
+			<skill id="4275" level="3"/> <!-- Sacred Attack Weak Point  -->
+			<skill id="4333" level="3"/> <!-- Resist Dark Attack  -->
 			<skill id="4622" level="9"/> <!-- NPC AE - 80% HP Drain - Magic -->
 			<skill id="4665" level="9"/> <!-- NPC 100% HP Drain - Magic -->
 			<skill id="4789" level="10"/> <!-- NPC High Level -->
@@ -5986,6 +6066,7 @@
 			<skill id="4414" level="1"/> <!-- Heavy Armor Type -->
 			<skill id="4415" level="13"/> <!-- Two-handed Sword -->
 			<skill id="4416" level="1"/> <!-- Undead -->
+			<skill id="4275" level="3"/> <!-- Sacred Attack Weak Point -->
 			<skill id="4417" level="35"/> <!-- Undead -->
 			<skill id="4573" level="9"/> <!-- NPC Sonic Blaster -->
 			<skill id="4612" level="9"/> <!-- NPC Wide Wild Sweep -->
@@ -6050,6 +6131,7 @@
 			<skill id="4413" level="11"/> <!-- Average M. Def. -->
 			<skill id="4414" level="1"/> <!-- Heavy Armor Type -->
 			<skill id="4416" level="1"/> <!-- Undead -->
+			<skill id="4275" level="3"/> <!-- Sacred Attack Weak Point -->
 			<skill id="4417" level="35"/> <!-- Undead -->
 			<skill id="4649" level="9"/> <!-- Poison -->
 			<skill id="4789" level="10"/> <!-- NPC High Level -->
@@ -6233,6 +6315,7 @@
 			<skill id="4414" level="3"/> <!-- Light Armor Type -->
 			<skill id="4415" level="3"/> <!-- One-handed Sword -->
 			<skill id="4416" level="1"/> <!-- Undead -->
+			<skill id="4275" level="3"/> <!-- Sacred Attack Weak Point -->
 			<skill id="4417" level="36"/> <!-- Undead -->
 			
 			<skill id="4789" level="10"/> <!-- NPC High Level -->
@@ -6295,7 +6378,8 @@
 			<skill id="4415" level="5"/> <!-- Blunt Weapons -->
 			<skill id="4416" level="6"/> <!-- Humanoids -->
 			<skill id="4417" level="26"/> <!-- Humanoids -->
-			<skill id="4466" level="3"/> <!-- Surrender To Darkness -->
+			<skill id="4275" level="3"/> <!-- Sacred Attack Weak Point  -->
+			<skill id="4333" level="3"/> <!-- Resist Dark Attack  -->
 			<skill id="4622" level="9"/> <!-- NPC AE - 80% HP Drain - Magic -->
 			<skill id="4789" level="10"/> <!-- NPC High Level -->
 		</skillList>
@@ -6366,7 +6450,8 @@
 			<skill id="4415" level="11"/> <!-- Spears -->
 			<skill id="4416" level="6"/> <!-- Humanoids -->
 			<skill id="4417" level="26"/> <!-- Humanoids -->
-			<skill id="4466" level="3"/> <!-- Surrender To Darkness -->
+			<skill id="4275" level="3"/> <!-- Sacred Attack Weak Point  -->
+			<skill id="4333" level="3"/> <!-- Resist Dark Attack  -->
 			<skill id="4622" level="9"/> <!-- NPC AE - 80% HP Drain - Magic -->
 			<skill id="4665" level="9"/> <!-- NPC 100% HP Drain - Magic -->
 			<skill id="4789" level="10"/> <!-- NPC High Level -->
@@ -6506,6 +6591,7 @@
 			<skill id="4414" level="2"/> <!-- Standard Type -->
 			<skill id="4415" level="3"/> <!-- One-handed Sword -->
 			<skill id="4416" level="1"/> <!-- Undead -->
+			<skill id="4275" level="3"/> <!-- Sacred Attack Weak Point -->
 			<skill id="4417" level="35"/> <!-- Undead -->
 			<skill id="4789" level="9"/> <!-- NPC High Level -->
 		</skillList>
@@ -6554,6 +6640,7 @@
 			<skill id="4414" level="3"/> <!-- Light Armor Type -->
 			<skill id="4415" level="5"/> <!-- Blunt Weapons -->
 			<skill id="4416" level="1"/> <!-- Undead -->
+			<skill id="4275" level="3"/> <!-- Sacred Attack Weak Point -->
 			<skill id="4417" level="36"/> <!-- Undead -->
 			
 			<skill id="4789" level="9"/> <!-- NPC High Level -->

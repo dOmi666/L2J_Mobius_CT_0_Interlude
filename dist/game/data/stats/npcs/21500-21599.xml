@@ -4871,6 +4871,7 @@
 			<skill id="4414" level="2"/> <!-- Standard Type -->
 			<skill id="4415" level="3"/> <!-- One-handed Sword -->
 			<skill id="4416" level="1"/> <!-- Undead -->
+			<skill id="4275" level="3"/> <!-- Sacred Attack Weak Point -->
 			<skill id="4649" level="6"/> <!-- Poison -->
 		</skillList>
 		<shots shotChance="30" spiritChance="30"/>
@@ -4981,6 +4982,7 @@
 			<skill id="4414" level="2"/> <!-- Standard Type -->
 			<skill id="4415" level="3"/> <!-- One-handed Sword -->
 			<skill id="4416" level="1"/> <!-- Undead -->
+			<skill id="4275" level="3"/> <!-- Sacred Attack Weak Point -->
 			<skill id="4649" level="6"/> <!-- Poison -->
 		</skillList>
 		<shots shotChance="30" spiritChance="30"/>
@@ -5092,6 +5094,7 @@
 			<skill id="4414" level="2"/> <!-- Standard Type -->
 			<skill id="4415" level="7"/> <!-- Daggers -->
 			<skill id="4416" level="1"/> <!-- Undead -->
+			<skill id="4275" level="3"/> <!-- Sacred Attack Weak Point -->
 			<skill id="4649" level="6"/> <!-- Poison -->
 		</skillList>
 		<shots shotChance="30" spiritChance="30"/>
@@ -5207,6 +5210,7 @@
 			<skill id="4414" level="2"/> <!-- Standard Type -->
 			<skill id="4415" level="7"/> <!-- Daggers -->
 			<skill id="4416" level="1"/> <!-- Undead -->
+			<skill id="4275" level="3"/> <!-- Sacred Attack Weak Point -->
 			<skill id="4649" level="6"/> <!-- Poison -->
 		</skillList>
 		<shots shotChance="30" spiritChance="30"/>
@@ -5319,6 +5323,7 @@
 			<skill id="4414" level="2"/> <!-- Standard Type -->
 			<skill id="4415" level="7"/> <!-- Daggers -->
 			<skill id="4416" level="1"/> <!-- Undead -->
+			<skill id="4275" level="3"/> <!-- Sacred Attack Weak Point -->
 			<skill id="4579" level="6"/> <!-- Bleed -->
 			<skill id="4649" level="6"/> <!-- Poison -->
 		</skillList>
@@ -5434,6 +5439,7 @@
 			<skill id="4414" level="2"/> <!-- Standard Type -->
 			<skill id="4415" level="7"/> <!-- Daggers -->
 			<skill id="4416" level="1"/> <!-- Undead -->
+			<skill id="4275" level="3"/> <!-- Sacred Attack Weak Point -->
 			<skill id="4649" level="6"/> <!-- Poison -->
 		</skillList>
 		<shots shotChance="30" spiritChance="30"/>
@@ -5546,6 +5552,7 @@
 			<skill id="4414" level="3"/> <!-- Light Armor Type -->
 			<skill id="4415" level="3"/> <!-- One-handed Sword -->
 			<skill id="4416" level="1"/> <!-- Undead -->
+			<skill id="4275" level="3"/> <!-- Sacred Attack Weak Point -->
 			<skill id="4649" level="6"/> <!-- Poison -->
 		</skillList>
 		<shots shotChance="30" spiritChance="30"/>
@@ -5658,6 +5665,7 @@
 			<skill id="4414" level="3"/> <!-- Light Armor Type -->
 			<skill id="4415" level="3"/> <!-- One-handed Sword -->
 			<skill id="4416" level="1"/> <!-- Undead -->
+			<skill id="4275" level="3"/> <!-- Sacred Attack Weak Point -->
 			<skill id="4649" level="6"/> <!-- Poison -->
 		</skillList>
 		<shots shotChance="30" spiritChance="30"/>
@@ -5772,6 +5780,7 @@
 			<skill id="4414" level="3"/> <!-- Light Armor Type -->
 			<skill id="4415" level="3"/> <!-- One-handed Sword -->
 			<skill id="4416" level="1"/> <!-- Undead -->
+			<skill id="4275" level="3"/> <!-- Sacred Attack Weak Point -->
 			<skill id="4581" level="6"/> <!-- Hold -->
 		</skillList>
 		<shots shotChance="30" spiritChance="30"/>
@@ -5877,6 +5886,7 @@
 			<skill id="4414" level="3"/> <!-- Light Armor Type -->
 			<skill id="4415" level="3"/> <!-- One-handed Sword -->
 			<skill id="4416" level="1"/> <!-- Undead -->
+			<skill id="4275" level="3"/> <!-- Sacred Attack Weak Point -->
 			<skill id="4596" level="6"/> <!-- Bleed -->
 		</skillList>
 		<shots shotChance="30" spiritChance="30"/>
@@ -6459,6 +6469,7 @@
 			<skill id="4414" level="3"/> <!-- Light Armor Type -->
 			<skill id="4415" level="3"/> <!-- One-handed Sword -->
 			<skill id="4416" level="1"/> <!-- Undead -->
+			<skill id="4275" level="3"/> <!-- Sacred Attack Weak Point -->
 			<skill id="4649" level="6"/> <!-- Poison -->
 		</skillList>
 		<shots shotChance="30" spiritChance="30"/>
@@ -7470,6 +7481,7 @@
 			<skill id="4414" level="2"/> <!-- Standard Type -->
 			<skill id="4415" level="3"/> <!-- One-handed Sword -->
 			<skill id="4416" level="1"/> <!-- Undead -->
+			<skill id="4275" level="3"/> <!-- Sacred Attack Weak Point -->
 			<skill id="4592" level="6"/> <!-- Decrease P. Def. -->
 			<skill id="4649" level="6"/> <!-- Poison -->
 		</skillList>
@@ -7579,6 +7591,7 @@
 			<skill id="4414" level="2"/> <!-- Standard Type -->
 			<skill id="4415" level="3"/> <!-- One-handed Sword -->
 			<skill id="4416" level="1"/> <!-- Undead -->
+			<skill id="4275" level="3"/> <!-- Sacred Attack Weak Point -->
 			<skill id="4581" level="6"/> <!-- Hold -->
 		</skillList>
 		<shots shotChance="30" spiritChance="30"/>
@@ -8343,6 +8356,7 @@
 			<skill id="4414" level="2"/> <!-- Standard Type -->
 			<skill id="4415" level="3"/> <!-- One-handed Sword -->
 			<skill id="4416" level="1"/> <!-- Undead -->
+			<skill id="4275" level="3"/> <!-- Sacred Attack Weak Point -->
 			<skill id="4649" level="7"/> <!-- Poison -->
 			<skill id="4789" level="2"/> <!-- NPC High Level -->
 		</skillList>
@@ -8452,6 +8466,7 @@
 			<skill id="4414" level="2"/> <!-- Standard Type -->
 			<skill id="4415" level="7"/> <!-- Daggers -->
 			<skill id="4416" level="1"/> <!-- Undead -->
+			<skill id="4275" level="3"/> <!-- Sacred Attack Weak Point -->
 			<skill id="4596" level="7"/> <!-- Bleed -->
 			<skill id="4635" level="3"/> <!-- NPC Buff - Acumen Berserk WildMagic -->
 			<skill id="4789" level="2"/> <!-- NPC High Level -->
@@ -10466,6 +10481,7 @@
 			<skill id="4414" level="2"/> <!-- Standard Type -->
 			<skill id="4415" level="3"/> <!-- One-handed Sword -->
 			<skill id="4416" level="1"/> <!-- Undead -->
+			<skill id="4275" level="3"/> <!-- Sacred Attack Weak Point -->
 			<skill id="4592" level="6"/> <!-- Decrease P. Def. -->
 			<skill id="4649" level="6"/> <!-- Poison -->
 		</skillList>
@@ -10548,6 +10564,7 @@
 			<skill id="4414" level="2"/> <!-- Standard Type -->
 			<skill id="4415" level="3"/> <!-- One-handed Sword -->
 			<skill id="4416" level="1"/> <!-- Undead -->
+			<skill id="4275" level="3"/> <!-- Sacred Attack Weak Point -->
 			<skill id="4649" level="6"/> <!-- Poison -->
 		</skillList>
 		<shots shotChance="30" spiritChance="30"/>

@@ -32,6 +32,7 @@
 			<skill id="4414" level="2"/> <!-- Standard Type -->
 			<skill id="4415" level="3"/> <!-- One-handed Sword -->
 			<skill id="4416" level="1"/> <!-- Undead -->
+			<skill id="4275" level="3"/> <!-- Sacred Attack Weak Point -->
 			<skill id="4567" level="8"/> <!-- NPC Eruption - Slow -->
 			<skill id="4789" level="5"/> <!-- NPC High Level -->
 		</skillList>
@@ -1386,6 +1387,7 @@
 			<skill id="4414" level="2"/> <!-- Standard Type -->
 			<skill id="4415" level="3"/> <!-- One-handed Sword -->
 			<skill id="4416" level="1"/> <!-- Undead -->
+			<skill id="4275" level="3"/> <!-- Sacred Attack Weak Point -->
 			<skill id="4613" level="9"/> <!-- NPC Clan Heal -->
 			<skill id="4789" level="6"/> <!-- NPC High Level -->
 		</skillList>

@@ -500,6 +500,7 @@
 			<skill id="4414" level="2"/> <!-- Standard Type -->
 			<skill id="4415" level="3"/> <!-- One-handed Sword -->
 			<skill id="4416" level="1"/> <!-- Undead -->
+			<skill id="4275" level="3"/> <!-- Sacred Attack Weak Point -->
 			<skill id="4561" level="9"/> <!-- NPC Fire Burn - Magic -->
 			<skill id="4789" level="6"/> <!-- NPC High Level -->
 		</skillList>
@@ -583,6 +584,7 @@
 			<skill id="4414" level="2"/> <!-- Standard Type -->
 			<skill id="4415" level="3"/> <!-- One-handed Sword -->
 			<skill id="4416" level="1"/> <!-- Undead -->
+			<skill id="4275" level="3"/> <!-- Sacred Attack Weak Point -->
 			<skill id="4663" level="1"/> <!-- NPC Hate -->
 			<skill id="4789" level="6"/> <!-- NPC High Level -->
 		</skillList>
@@ -661,6 +663,7 @@
 			<skill id="4414" level="2"/> <!-- Standard Type -->
 			<skill id="4415" level="3"/> <!-- One-handed Sword -->
 			<skill id="4416" level="1"/> <!-- Undead -->
+			<skill id="4275" level="3"/> <!-- Sacred Attack Weak Point -->
 			<skill id="4438" level="2"/> <!-- Greater Resist Sleep -->
 			<skill id="4579" level="9"/> <!-- Bleed -->
 			<skill id="4789" level="6"/> <!-- NPC High Level -->
@@ -741,6 +744,7 @@
 			<skill id="4414" level="2"/> <!-- Standard Type -->
 			<skill id="4415" level="3"/> <!-- One-handed Sword -->
 			<skill id="4416" level="1"/> <!-- Undead -->
+			<skill id="4275" level="3"/> <!-- Sacred Attack Weak Point -->
 			<skill id="4592" level="9"/> <!-- Decrease P. Def. -->
 			<skill id="4789" level="6"/> <!-- NPC High Level -->
 		</skillList>
@@ -1161,6 +1165,7 @@
 			<skill id="4414" level="2"/> <!-- Standard Type -->
 			<skill id="4415" level="7"/> <!-- Daggers -->
 			<skill id="4416" level="1"/> <!-- Undead -->
+			<skill id="4275" level="3"/> <!-- Sacred Attack Weak Point -->
 			<skill id="4561" level="9"/> <!-- NPC Fire Burn - Magic -->
 			<skill id="4603" level="9"/> <!-- Decrease P. Atk. -->
 			<skill id="4613" level="9"/> <!-- NPC Clan Heal -->
@@ -1240,6 +1245,7 @@
 			<skill id="4414" level="2"/> <!-- Standard Type -->
 			<skill id="4415" level="7"/> <!-- Daggers -->
 			<skill id="4416" level="1"/> <!-- Undead -->
+			<skill id="4275" level="3"/> <!-- Sacred Attack Weak Point -->
 			<skill id="4579" level="9"/> <!-- Bleed -->
 			<skill id="4789" level="7"/> <!-- NPC High Level -->
 		</skillList>
@@ -1321,6 +1327,7 @@
 			<skill id="4414" level="2"/> <!-- Standard Type -->
 			<skill id="4415" level="3"/> <!-- One-handed Sword -->
 			<skill id="4416" level="1"/> <!-- Undead -->
+			<skill id="4275" level="3"/> <!-- Sacred Attack Weak Point -->
 			<skill id="4665" level="9"/> <!-- NPC 100% HP Drain - Magic -->
 			<skill id="4789" level="7"/> <!-- NPC High Level -->
 		</skillList>
@@ -1397,6 +1404,7 @@
 			<skill id="4414" level="2"/> <!-- Standard Type -->
 			<skill id="4415" level="3"/> <!-- One-handed Sword -->
 			<skill id="4416" level="1"/> <!-- Undead -->
+			<skill id="4275" level="3"/> <!-- Sacred Attack Weak Point -->
 			<skill id="4789" level="7"/> <!-- NPC High Level -->
 		</skillList>
 		<exCrtEffect>false</exCrtEffect>
@@ -1466,6 +1474,7 @@
 			<skill id="4414" level="2"/> <!-- Standard Type -->
 			<skill id="4415" level="3"/> <!-- One-handed Sword -->
 			<skill id="4416" level="1"/> <!-- Undead -->
+			<skill id="4275" level="3"/> <!-- Sacred Attack Weak Point -->
 			<skill id="4572" level="9"/> <!-- NPC Triple Sonic Slash -->
 			<skill id="4789" level="7"/> <!-- NPC High Level -->
 		</skillList>
@@ -1547,6 +1556,7 @@
 			<skill id="4414" level="2"/> <!-- Standard Type -->
 			<skill id="4415" level="3"/> <!-- One-handed Sword -->
 			<skill id="4416" level="1"/> <!-- Undead -->
+			<skill id="4275" level="3"/> <!-- Sacred Attack Weak Point -->
 			<skill id="4572" level="9"/> <!-- NPC Triple Sonic Slash -->
 			<skill id="4573" level="9"/> <!-- NPC Sonic Blaster -->
 			<skill id="4789" level="7"/> <!-- NPC High Level -->
@@ -2745,7 +2755,7 @@
 			<skill id="4414" level="2"/> <!-- Standard Type -->
 			<skill id="4415" level="6"/> <!-- Blunt Weapons -->
 			<skill id="4416" level="9"/> <!-- Demons -->
-			<skill id="4605" level="9"/> <!-- Surrender To Fire -->
+			<skill id="4280" level="3"/> <!-- Water Attack Weak Point -->
 			<skill id="4789" level="7"/> <!-- NPC High Level -->
 		</skillList>
 		<exCrtEffect>false</exCrtEffect>
@@ -2823,6 +2833,7 @@
 			<skill id="4414" level="2"/> <!-- Standard Type -->
 			<skill id="4415" level="3"/> <!-- One-handed Sword -->
 			<skill id="4416" level="1"/> <!-- Undead -->
+			<skill id="4275" level="3"/> <!-- Sacred Attack Weak Point -->
 			<skill id="4663" level="1"/> <!-- NPC Hate -->
 			<skill id="4789" level="6"/> <!-- NPC High Level -->
 		</skillList>
@@ -2894,7 +2905,8 @@
 			<skill id="4414" level="2"/> <!-- Standard Type -->
 			<skill id="4415" level="3"/> <!-- One-handed Sword -->
 			<skill id="4416" level="1"/> <!-- Undead -->
-			<skill id="4605" level="9"/> <!-- Surrender To Fire -->
+			<skill id="4275" level="3"/> <!-- Sacred Attack Weak Point -->
+			<skill id="4280" level="3"/> <!-- Water Attack Weak Point -->
 			<skill id="4789" level="6"/> <!-- NPC High Level -->
 		</skillList>
 		<exCrtEffect>false</exCrtEffect>
@@ -3039,6 +3051,7 @@
 			<skill id="4414" level="2"/> <!-- Standard Type -->
 			<skill id="4415" level="7"/> <!-- Daggers -->
 			<skill id="4416" level="1"/> <!-- Undead -->
+			<skill id="4275" level="3"/> <!-- Sacred Attack Weak Point -->
 		</skillList>
 		<shots shotChance="30" spiritChance="30"/>
 		<exCrtEffect>false</exCrtEffect>
@@ -3107,6 +3120,7 @@
 			<skill id="4414" level="3"/> <!-- Light Armor Type -->
 			<skill id="4415" level="3"/> <!-- One-handed Sword -->
 			<skill id="4416" level="1"/> <!-- Undead -->
+			<skill id="4275" level="3"/> <!-- Sacred Attack Weak Point -->
 		</skillList>
 		<shots shotChance="30" spiritChance="30"/>
 		<exCrtEffect>false</exCrtEffect>
@@ -3178,6 +3192,7 @@
 			<skill id="4414" level="3"/> <!-- Light Armor Type -->
 			<skill id="4415" level="9"/> <!-- Bows -->
 			<skill id="4416" level="1"/> <!-- Undead -->
+			<skill id="4275" level="3"/> <!-- Sacred Attack Weak Point -->
 		</skillList>
 		<shots shotChance="30" spiritChance="30"/>
 		<exCrtEffect>false</exCrtEffect>
@@ -3255,6 +3270,7 @@
 			<skill id="4414" level="2"/> <!-- Standard Type -->
 			<skill id="4415" level="3"/> <!-- One-handed Sword -->
 			<skill id="4416" level="1"/> <!-- Undead -->
+			<skill id="4275" level="3"/> <!-- Sacred Attack Weak Point -->
 		</skillList>
 		<shots shotChance="30" spiritChance="30"/>
 		<exCrtEffect>false</exCrtEffect>
@@ -3328,6 +3344,7 @@
 			<skill id="4414" level="2"/> <!-- Standard Type -->
 			<skill id="4415" level="3"/> <!-- One-handed Sword -->
 			<skill id="4416" level="1"/> <!-- Undead -->
+			<skill id="4275" level="3"/> <!-- Sacred Attack Weak Point -->
 		</skillList>
 		<shots shotChance="30" spiritChance="30"/>
 		<exCrtEffect>false</exCrtEffect>

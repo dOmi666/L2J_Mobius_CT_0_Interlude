@@ -513,9 +513,12 @@
 		<set name="magicLevel" val="1" />
 		<set name="operateType" val="P" />
 		<set name="targetType" val="SELF" />
+		<table name="#dark">6 12 18 24 30</table>
+		<table name="#holy">3 6 9 12 15</table>
 		<for>
 			<effect name="Buff">
-				<sub stat="darkRes" val="#darkRes" />
+				<sub stat="darkRes" val="#dark" />
+				<add stat="holyRes" val="#holy" />
 			</effect>
 		</for>
 	</skill>

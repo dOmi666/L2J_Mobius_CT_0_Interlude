@@ -1397,6 +1397,14 @@
 		<set name="magicLevel" val="1" />
 		<set name="operateType" val="P" />
 		<set name="targetType" val="SELF" />
+		<table name="#holy">6 12 18 24 30</table>
+		<table name="#dark">3 6 9 12 15</table>
+		<for>
+			<effect name="Buff">
+				<sub stat="holyRes" val="#holy" />
+				<add stat="darkRes" val="#dark" />
+			</effect>
+		</for>		
 	</skill>
 	<skill id="4276" levels="5" name="Bow Weapon Weak Point">
 		<!-- Vulnerable to archery attacks. -->
@@ -1442,6 +1450,14 @@
 		<set name="magicLevel" val="1" />
 		<set name="operateType" val="P" />
 		<set name="targetType" val="SELF" />
+		<table name="#fire">6 12 18 24 30</table>
+		<table name="#water">3 6 9 12 15</table>
+		<for>
+			<effect name="Buff">
+				<sub stat="fireRes" val="#fire" />
+				<add stat="waterRes" val="#water" />
+			</effect>
+		</for>
 	</skill>
 	<skill id="4280" levels="5" name="Water Attack Weak Point">
 		<!-- Vulnerable to water attacks. -->
@@ -1449,6 +1465,14 @@
 		<set name="magicLevel" val="1" />
 		<set name="operateType" val="P" />
 		<set name="targetType" val="SELF" />
+		<table name="#water">6 12 18 24 30</table>
+		<table name="#fire">3 6 9 12 15</table>
+		<for>
+			<effect name="Buff">
+				<sub stat="waterRes" val="#water" />
+				<add stat="fireRes" val="#fire" />
+			</effect>
+		</for>
 	</skill>
 	<skill id="4281" levels="5" name="Wind Attack Weak Point">
 		<!-- Vulnerable to wind attacks. -->
@@ -1456,6 +1480,14 @@
 		<set name="magicLevel" val="1" />
 		<set name="operateType" val="P" />
 		<set name="targetType" val="SELF" />
+		<table name="#wind">6 12 18 24 30</table>
+		<table name="#earth">3 6 9 12 15</table>
+		<for>
+			<effect name="Buff">
+				<sub stat="windRes" val="#wind" />
+				<add stat="earthRes" val="#earth" />
+			</effect>
+		</for>
 	</skill>
 	<skill id="4282" levels="5" name="Earth Attack Weak Point">
 		<!-- Vulnerable to earth attacks. -->
@@ -1463,6 +1495,14 @@
 		<set name="magicLevel" val="1" />
 		<set name="operateType" val="P" />
 		<set name="targetType" val="SELF" />
+		<table name="#earth">6 12 18 24 30</table>
+		<table name="#wind">3 6 9 12 15</table>
+		<for>
+			<effect name="Buff">
+				<sub stat="earthRes" val="#earth" />
+				<add stat="windRes" val="#wind" />
+			</effect>
+		</for>
 	</skill>
 	<skill id="4283" levels="1" name="Greater Resist Magic Attack">
 		<!-- Very resistant to magic attack. -->

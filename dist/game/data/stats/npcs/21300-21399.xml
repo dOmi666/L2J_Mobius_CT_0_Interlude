@@ -1514,6 +1514,7 @@
 			<skill id="4414" level="2"/> <!-- Standard Type -->
 			<skill id="4415" level="5"/> <!-- Blunt Weapons -->
 			<skill id="4416" level="5"/> <!-- Plants -->
+			<skill id="4279" level="3"/> <!-- Fire Attack Weak Point  -->
 			<skill id="4555" level="1"/> <!-- NPC Resist Mutant -->
 			<skill id="4789" level="3"/> <!-- NPC High Level -->
 		</skillList>
@@ -1868,6 +1869,7 @@
 			<skill id="4414" level="2"/> <!-- Standard Type -->
 			<skill id="4415" level="6"/> <!-- Blunt Weapons -->
 			<skill id="4416" level="5"/> <!-- Plants -->
+			<skill id="4279" level="3"/> <!-- Fire Attack Weak Point  -->
 			<skill id="4555" level="1"/> <!-- NPC Resist Mutant -->
 			<skill id="4789" level="4"/> <!-- NPC High Level -->
 		</skillList>
@@ -5965,6 +5967,7 @@
 			<skill id="4414" level="2"/> <!-- Standard Type -->
 			<skill id="4415" level="6"/> <!-- Blunt Weapons -->
 			<skill id="4416" level="5"/> <!-- Plants -->
+			<skill id="4279" level="3"/> <!-- Fire Attack Weak Point  -->
 			<skill id="4789" level="6"/> <!-- NPC High Level -->
 		</skillList>
 		<exCrtEffect>false</exCrtEffect>
@@ -6774,6 +6777,7 @@
 			<skill id="4414" level="2"/> <!-- Standard Type -->
 			<skill id="4415" level="3"/> <!-- One-handed Sword -->
 			<skill id="4416" level="5"/> <!-- Plants -->
+			<skill id="4279" level="3"/> <!-- Fire Attack Weak Point  -->
 			<skill id="4789" level="8"/> <!-- NPC High Level -->
 		</skillList>
 		<exCrtEffect>false</exCrtEffect>
@@ -8590,6 +8594,7 @@
 			<skill id="4414" level="2"/> <!-- Standard Type -->
 			<skill id="4415" level="3"/> <!-- One-handed Sword -->
 			<skill id="4416" level="1"/> <!-- Undead -->
+			<skill id="4275" level="3"/> <!-- Sacred Attack Weak Point -->
 			<skill id="4584" level="9"/> <!-- Reducing P. Def Stun -->
 			
 			<skill id="4789" level="6"/> <!-- NPC High Level -->
@@ -8674,6 +8679,7 @@
 			<skill id="4414" level="2"/> <!-- Standard Type -->
 			<skill id="4415" level="3"/> <!-- One-handed Sword -->
 			<skill id="4416" level="1"/> <!-- Undead -->
+			<skill id="4275" level="3"/> <!-- Sacred Attack Weak Point -->
 			<skill id="4579" level="9"/> <!-- Bleed -->
 			<skill id="4586" level="9"/> <!-- Decrease Evasion -->
 			
@@ -9435,7 +9441,7 @@
 			<skill id="4414" level="2"/> <!-- Standard Type -->
 			<skill id="4415" level="3"/> <!-- One-handed Sword -->
 			<skill id="4416" level="7"/> <!-- Spirits -->
-			<skill id="4605" level="9"/> <!-- Surrender To Fire -->
+			<skill id="4280" level="3"/> <!-- Water Attack Weak Point -->
 			
 			<skill id="4789" level="8"/> <!-- NPC High Level -->
 		</skillList>
@@ -9525,7 +9531,7 @@
 			<skill id="4415" level="3"/> <!-- One-handed Sword -->
 			<skill id="4416" level="10"/> <!-- Dragons -->
 			<skill id="4590" level="9"/> <!-- Decrease Speed -->
-			<skill id="4605" level="9"/> <!-- Surrender To Fire -->
+			<skill id="4280" level="3"/> <!-- Water Attack Weak Point -->
 			<skill id="4614" level="10"/> <!-- NPC Death Bomb -->
 			<skill id="4789" level="9"/> <!-- NPC High Level -->
 		</skillList>
@@ -9604,6 +9610,7 @@
 			<skill id="4415" level="10"/> <!-- Bows -->
 			<skill id="4416" level="2"/> <!-- Magic Creatures -->
 			<skill id="4607" level="1"/> <!-- Magma Attack -->
+			<skill id="4280" level="3"/> <!-- Water Attack Weak Point -->
 			<skill id="4789" level="6"/> <!-- NPC High Level -->
 		</skillList>
 		<shots shotChance="20" spiritChance="20"/>
@@ -9680,6 +9687,7 @@
 			<skill id="4415" level="10"/> <!-- Bows -->
 			<skill id="4416" level="2"/> <!-- Magic Creatures -->
 			<skill id="4607" level="1"/> <!-- Magma Attack -->
+			<skill id="4280" level="3"/> <!-- Water Attack Weak Point -->
 			<skill id="4789" level="8"/> <!-- NPC High Level -->
 		</skillList>
 		<shots shotChance="30" spiritChance="30"/>

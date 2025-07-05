@@ -4898,6 +4898,7 @@
 			<skill id="4414" level="2"/> <!-- Standard Type -->
 			<skill id="4415" level="3"/> <!-- One-handed Sword -->
 			<skill id="4416" level="5"/> <!-- Plants -->
+			<skill id="4279" level="3"/> <!-- Fire Attack Weak Point  -->
 			<skill id="4494" level="1"/> <!-- Raid Boss -->
 			<skill id="4826" level="1"/> <!-- Raid Boss - Level 44 -->
 		</skillList>

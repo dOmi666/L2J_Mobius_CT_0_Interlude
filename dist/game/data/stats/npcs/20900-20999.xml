@@ -3043,6 +3043,7 @@
 			<skill id="4414" level="3"/> <!-- Light Armor Type -->
 			<skill id="4415" level="5"/> <!-- Blunt Weapons -->
 			<skill id="4416" level="5"/> <!-- Plants -->
+			<skill id="4279" level="3"/> <!-- Fire Attack Weak Point  -->
 		</skillList>
 		<shots shotChance="30" spiritChance="30"/>
 		<exCrtEffect>false</exCrtEffect>
@@ -3124,6 +3125,7 @@
 			<skill id="4414" level="3"/> <!-- Light Armor Type -->
 			<skill id="4415" level="5"/> <!-- Blunt Weapons -->
 			<skill id="4416" level="5"/> <!-- Plants -->
+			<skill id="4279" level="3"/> <!-- Fire Attack Weak Point  -->
 		</skillList>
 		<shots shotChance="30" spiritChance="30"/>
 		<exCrtEffect>false</exCrtEffect>
@@ -3210,6 +3212,7 @@
 			<skill id="4414" level="3"/> <!-- Light Armor Type -->
 			<skill id="4415" level="5"/> <!-- Blunt Weapons -->
 			<skill id="4416" level="5"/> <!-- Plants -->
+			<skill id="4279" level="3"/> <!-- Fire Attack Weak Point  -->
 		</skillList>
 		<shots shotChance="30" spiritChance="30"/>
 		<exCrtEffect>false</exCrtEffect>
@@ -3295,6 +3298,7 @@
 			<skill id="4414" level="2"/> <!-- Standard Type -->
 			<skill id="4415" level="5"/> <!-- Blunt Weapons -->
 			<skill id="4416" level="1"/> <!-- Undead -->
+			<skill id="4275" level="3"/> <!-- Sacred Attack Weak Point -->
 		</skillList>
 		<shots shotChance="30" spiritChance="30"/>
 		<exCrtEffect>false</exCrtEffect>
@@ -3378,6 +3382,7 @@
 			<skill id="4414" level="2"/> <!-- Standard Type -->
 			<skill id="4415" level="5"/> <!-- Blunt Weapons -->
 			<skill id="4416" level="1"/> <!-- Undead -->
+			<skill id="4275" level="3"/> <!-- Sacred Attack Weak Point -->
 		</skillList>
 		<shots shotChance="30" spiritChance="30"/>
 		<exCrtEffect>false</exCrtEffect>
@@ -3463,6 +3468,7 @@
 			<skill id="4414" level="2"/> <!-- Standard Type -->
 			<skill id="4415" level="5"/> <!-- Blunt Weapons -->
 			<skill id="4416" level="1"/> <!-- Undead -->
+			<skill id="4275" level="3"/> <!-- Sacred Attack Weak Point -->
 		</skillList>
 		<shots shotChance="30" spiritChance="30"/>
 		<exCrtEffect>false</exCrtEffect>
@@ -3545,6 +3551,7 @@
 			<skill id="4414" level="2"/> <!-- Standard Type -->
 			<skill id="4415" level="5"/> <!-- Blunt Weapons -->
 			<skill id="4416" level="1"/> <!-- Undead -->
+			<skill id="4275" level="3"/> <!-- Sacred Attack Weak Point -->
 		</skillList>
 		<shots shotChance="30" spiritChance="30"/>
 		<exCrtEffect>false</exCrtEffect>
@@ -3630,6 +3637,7 @@
 			<skill id="4414" level="2"/> <!-- Standard Type -->
 			<skill id="4415" level="5"/> <!-- Blunt Weapons -->
 			<skill id="4416" level="1"/> <!-- Undead -->
+			<skill id="4275" level="3"/> <!-- Sacred Attack Weak Point -->
 		</skillList>
 		<shots shotChance="30" spiritChance="30"/>
 		<exCrtEffect>false</exCrtEffect>
@@ -3715,6 +3723,7 @@
 			<skill id="4414" level="2"/> <!-- Standard Type -->
 			<skill id="4415" level="5"/> <!-- Blunt Weapons -->
 			<skill id="4416" level="1"/> <!-- Undead -->
+			<skill id="4275" level="3"/> <!-- Sacred Attack Weak Point -->
 		</skillList>
 		<shots shotChance="30" spiritChance="30"/>
 		<exCrtEffect>false</exCrtEffect>
@@ -5063,6 +5072,7 @@
 			<skill id="4414" level="2"/> <!-- Standard Type -->
 			<skill id="4415" level="3"/> <!-- One-handed Sword -->
 			<skill id="4416" level="1"/> <!-- Undead -->
+			<skill id="4275" level="3"/> <!-- Sacred Attack Weak Point -->
 		</skillList>
 		<shots shotChance="30" spiritChance="30"/>
 		<exCrtEffect>false</exCrtEffect>
@@ -5144,6 +5154,7 @@
 			<skill id="4414" level="2"/> <!-- Standard Type -->
 			<skill id="4415" level="3"/> <!-- One-handed Sword -->
 			<skill id="4416" level="1"/> <!-- Undead -->
+			<skill id="4275" level="3"/> <!-- Sacred Attack Weak Point -->
 		</skillList>
 		<shots shotChance="30" spiritChance="30"/>
 		<exCrtEffect>false</exCrtEffect>
@@ -5222,6 +5233,7 @@
 			<skill id="4414" level="2"/> <!-- Standard Type -->
 			<skill id="4415" level="3"/> <!-- One-handed Sword -->
 			<skill id="4416" level="1"/> <!-- Undead -->
+			<skill id="4275" level="3"/> <!-- Sacred Attack Weak Point -->
 		</skillList>
 		<shots shotChance="30" spiritChance="30"/>
 		<exCrtEffect>false</exCrtEffect>
@@ -5393,6 +5405,7 @@
 			<skill id="4414" level="3"/> <!-- Light Armor Type -->
 			<skill id="4415" level="9"/> <!-- Bows -->
 			<skill id="4416" level="1"/> <!-- Undead -->
+			<skill id="4275" level="3"/> <!-- Sacred Attack Weak Point -->
 			<skill id="4438" level="2"/> <!-- Greater Resist Sleep -->
 		</skillList>
 		<shots shotChance="30" spiritChance="30"/>
@@ -5635,6 +5648,7 @@
 			<skill id="4065" level="6"/> <!-- NPC Heal -->
 			<skill id="4078" level="6"/> <!-- NPC Flamestrike -->
 			<skill id="4276" level="1"/> <!-- Weak Point against Bow/Crossbow Weapons -->
+			<skill id="4281" level="3"/> <!-- Wind Attack Weak Point -->
 			<skill id="4408" level="10"/> <!-- HP Increase (2x) -->
 			<skill id="4409" level="1"/> <!-- MP Increase (1x) -->
 			<skill id="4410" level="10"/> <!-- Slightly Weak P. Atk. -->
@@ -5715,7 +5729,8 @@
 		</stats>
 		<status undying="false" canBeSown="true"/>
 		<skillList>
-			<skill id="4118" level="6"/> <!-- Paralysis -->
+			<skill id="4276" level="1"/> <!-- Weak Point against Bow/Crossbow Weapons -->
+			<skill id="4281" level="3"/> <!-- Wind Attack Weak Point -->
 			<skill id="4276" level="1"/> <!-- Weak Point against Bow/Crossbow Weapons -->
 			<skill id="4408" level="10"/> <!-- HP Increase (2x) -->
 			<skill id="4409" level="1"/> <!-- MP Increase (1x) -->
@@ -6143,7 +6158,8 @@
 		</stats>
 		<status undying="false" canBeSown="true"/>
 		<skillList>
-			<skill id="4065" level="5"/> <!-- NPC Heal -->
+			<skill id="4276" level="1"/> <!-- Weak Point against Bow/Crossbow Weapons -->
+			<skill id="4281" level="3"/> <!-- Wind Attack Weak Point -->
 			<skill id="4087" level="5"/> <!-- NPC Blaze -->
 			<skill id="4276" level="1"/> <!-- Weak Point against Bow/Crossbow Weapons -->
 			<skill id="4408" level="10"/> <!-- HP Increase (2x) -->
@@ -6226,7 +6242,8 @@
 			<hitTime>500</hitTime>
 		</stats>
 		<status undying="false" canBeSown="true"/>
-		<skillList>
+		<<skill id="4276" level="1"/> <!-- Weak Point against Bow/Crossbow Weapons -->
+			<skill id="4281" level="3"/> <!-- Wind Attack Weak Point -->
 			<skill id="4097" level="5"/> <!-- NPC Chant of Life -->
 			<skill id="4117" level="5"/> <!-- Paralysis -->
 			<skill id="4276" level="1"/> <!-- Weak Point against Bow/Crossbow Weapons -->
@@ -6732,6 +6749,7 @@
 			<skill id="4414" level="2"/> <!-- Standard Type -->
 			<skill id="4415" level="3"/> <!-- One-handed Sword -->
 			<skill id="4416" level="1"/> <!-- Undead -->
+			<skill id="4275" level="3"/> <!-- Sacred Attack Weak Point -->
 		</skillList>
 		<shots shotChance="30" spiritChance="30"/>
 		<exCrtEffect>false</exCrtEffect>
@@ -6894,6 +6912,7 @@
 			<skill id="4414" level="2"/> <!-- Standard Type -->
 			<skill id="4415" level="5"/> <!-- Blunt Weapons -->
 			<skill id="4416" level="1"/> <!-- Undead -->
+			<skill id="4275" level="3"/> <!-- Sacred Attack Weak Point -->
 		</skillList>
 		<shots shotChance="30" spiritChance="30"/>
 		<exCrtEffect>false</exCrtEffect>
@@ -6973,6 +6992,7 @@
 			<skill id="4414" level="2"/> <!-- Standard Type -->
 			<skill id="4415" level="5"/> <!-- Blunt Weapons -->
 			<skill id="4416" level="1"/> <!-- Undead -->
+			<skill id="4275" level="3"/> <!-- Sacred Attack Weak Point -->
 		</skillList>
 		<shots shotChance="30" spiritChance="30"/>
 		<exCrtEffect>false</exCrtEffect>
@@ -7051,6 +7071,7 @@
 			<skill id="4414" level="2"/> <!-- Standard Type -->
 			<skill id="4415" level="5"/> <!-- Blunt Weapons -->
 			<skill id="4416" level="1"/> <!-- Undead -->
+			<skill id="4275" level="3"/> <!-- Sacred Attack Weak Point -->
 		</skillList>
 		<shots shotChance="30" spiritChance="30"/>
 		<exCrtEffect>false</exCrtEffect>
@@ -7146,6 +7167,7 @@
 			<skill id="4414" level="2"/> <!-- Standard Type -->
 			<skill id="4415" level="7"/> <!-- Daggers -->
 			<skill id="4416" level="1"/> <!-- Undead -->
+			<skill id="4275" level="3"/> <!-- Sacred Attack Weak Point -->
 		</skillList>
 		<shots shotChance="30" spiritChance="30"/>
 		<exCrtEffect>false</exCrtEffect>
