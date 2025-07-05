@@ -5027,7 +5027,7 @@
 		<status undying="false" canBeSown="true"/>
 		<skillList>
 			<skill id="4152" level="2"/> <!-- NPC HP Drain - Magic -->
-			<skill id="4276" level="1"/> <!-- Weak Point against Bow/Crossbow Weapons -->
+			<skill id="4160" level="2"/> <!-- NPC Aura Burn - Magic -->
 			<skill id="4281" level="3"/> <!-- Wind Attack Weak Point -->
 			<skill id="4276" level="1"/> <!-- Weak Point against Bow/Crossbow Weapons -->
 			<skill id="4408" level="1"/> <!-- HP Increase (1x) -->
@@ -5779,7 +5779,7 @@
 		<status undying="false" canBeSown="true"/>
 		<skillList>
 			<skill id="4076" level="2"/> <!-- Decrease Speed -->
-			<skill id="4276" level="1"/> <!-- Weak Point against Bow/Crossbow Weapons -->
+			<skill id="4158" level="2"/> <!-- NPC Prominence - Magic -->
 			<skill id="4281" level="3"/> <!-- Wind Attack Weak Point -->
 			<skill id="4160" level="2"/> <!-- NPC Aura Burn - Magic -->
 			<skill id="4276" level="1"/> <!-- Weak Point against Bow/Crossbow Weapons -->
@@ -5888,7 +5888,7 @@
 			<skill id="4281" level="3"/> <!-- Wind Attack Weak Point -->
 			<skill id="4157" level="2"/> <!-- NPC Blaze - Magic -->
 			<skill id="4160" level="2"/> <!-- NPC Aura Burn - Magic -->
-			<skill id="4276" level="1"/> <!-- Weak Point against Bow/Crossbow Weapons -->
+			<skill id="4076" level="2"/> <!-- Decrease Speed -->
 			<skill id="4408" level="1"/> <!-- HP Increase (1x) -->
 			<skill id="4409" level="1"/> <!-- MP Increase (1x) -->
 			<skill id="4410" level="10"/> <!-- Slightly Weak P. Atk. -->

@@ -5731,7 +5731,7 @@
 		<skillList>
 			<skill id="4276" level="1"/> <!-- Weak Point against Bow/Crossbow Weapons -->
 			<skill id="4281" level="3"/> <!-- Wind Attack Weak Point -->
-			<skill id="4276" level="1"/> <!-- Weak Point against Bow/Crossbow Weapons -->
+			<skill id="4118" level="6"/> <!-- Paralysis -->
 			<skill id="4408" level="10"/> <!-- HP Increase (2x) -->
 			<skill id="4409" level="1"/> <!-- MP Increase (1x) -->
 			<skill id="4410" level="12"/> <!-- Slightly Strong P. Atk. -->
@@ -6161,7 +6161,7 @@
 			<skill id="4276" level="1"/> <!-- Weak Point against Bow/Crossbow Weapons -->
 			<skill id="4281" level="3"/> <!-- Wind Attack Weak Point -->
 			<skill id="4087" level="5"/> <!-- NPC Blaze -->
-			<skill id="4276" level="1"/> <!-- Weak Point against Bow/Crossbow Weapons -->
+			<skill id="4065" level="5"/> <!-- NPC Heal -->
 			<skill id="4408" level="10"/> <!-- HP Increase (2x) -->
 			<skill id="4409" level="1"/> <!-- MP Increase (1x) -->
 			<skill id="4410" level="11"/> <!-- Average P. Atk. -->
@@ -6242,11 +6242,11 @@
 			<hitTime>500</hitTime>
 		</stats>
 		<status undying="false" canBeSown="true"/>
-		<<skill id="4276" level="1"/> <!-- Weak Point against Bow/Crossbow Weapons -->
+		<skillList>
+			<skill id="4276" level="1"/> <!-- Weak Point against Bow/Crossbow Weapons -->
 			<skill id="4281" level="3"/> <!-- Wind Attack Weak Point -->
 			<skill id="4097" level="5"/> <!-- NPC Chant of Life -->
 			<skill id="4117" level="5"/> <!-- Paralysis -->
-			<skill id="4276" level="1"/> <!-- Weak Point against Bow/Crossbow Weapons -->
 			<skill id="4408" level="10"/> <!-- HP Increase (2x) -->
 			<skill id="4409" level="1"/> <!-- MP Increase (1x) -->
 			<skill id="4410" level="11"/> <!-- Average P. Atk. -->
