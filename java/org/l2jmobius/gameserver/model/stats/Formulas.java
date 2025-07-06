@@ -1620,7 +1620,7 @@ public class Formulas
 		double result;
 		if (attackAttribute - defenceAttribute > 0 && attackAttribute - defenceAttribute < 20)
 		{
-			result = 1.0 + 2 * (attackAttribute - defenceAttribute) / 100.0;
+			result = 1.0 + 0.4 * (attackAttribute - defenceAttribute) / 100.0;
 		}
 		
 		else
