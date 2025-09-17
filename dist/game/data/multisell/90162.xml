@@ -94,10 +94,101 @@
 	<production id="7186" count="2"/>
 	</item>
 	<!-- Ketra molar to nependes seed -->
-	 <item>
+	<item>
 	<ingredient id="7234" count="10"/>
 	<production id="7187" count="2"/>
 	</item>
 	<!-- VARKA MANE -->
 	<!-- VARKA MANE -->
+
+	<!-- From there will be champion drop event medal list -->
+	<!-- Scroll: Enchant Weapon (S) = 24 Event - Glittering Medal -->
+	<item>
+	<ingredient id="6393" count="24"/>
+	<production id="959" count="1"/>
+	</item>
+
+	<!-- Scroll: Enchant Armor (S) = 7 Event - Glittering Medal -->
+	<item>
+	<ingredient id="6393" count="7"/>
+	<production id="960" count="1"/>
+	</item>
+
+	<!-- Scroll: Enchant Weapon (A) = 7 Event - Glittering Medal -->
+	<item>
+	<ingredient id="6393" count="7"/>
+	<production id="729" count="1"/>
+	</item>
+
+	<!-- Scroll: Enchant Armor (A) = 4 Event - Glittering Medal -->
+	<item>
+	<ingredient id="6393" count="4"/>
+	<production id="730" count="1"/>
+	</item>
+
+	<!-- Scroll: Enchant Weapon (B) = 2 Event - Glittering Medal -->
+	<item>
+	<ingredient id="6393" count="2"/>
+	<production id="947" count="1"/>
+	</item>
+
+	<!-- Scroll: Enchant Armor (B) = 2 Event - Glittering Medal -->
+	<item>
+	<ingredient id="6393" count="2"/>
+	<production id="948" count="1"/>
+	</item>
+
+	<!-- Mana Potion x 200 = 3 Event - Glittering Medal -->
+	<item>
+	<ingredient id="6393" count="3"/>
+	<production id="728" count="200"/>
+	</item>
+
+	<!-- Greater Healing Potion x 200 = 2 Event - Glittering Medal -->
+	<item>
+	<ingredient id="6393" count="2"/>
+	<production id="1539" count="200"/>
+	</item>
+
+	<!-- Blessed Spiritshot: S Grade x 5000 = 6 Event - Glittering Medal -->
+	<item>
+	<ingredient id="6393" count="6"/>
+	<production id="3952" count="5000"/>
+	</item>
+
+	<!-- Soulshot: S-grade x 5000 = 3 Event - Glittering Medal -->
+	<item>
+	<ingredient id="6393" count="3"/>
+	<production id="1467" count="5000"/>
+	</item>
+
+	<!-- Blessed Spiritshot: A Grade x 5000 = 1 Event - Glittering Medal -->
+	<item>
+	<ingredient id="6393" count="1"/>
+	<production id="3951" count="5000"/>
+	</item>
+
+	<!-- Soulshot: A-grade x 5000 = 1 Event - Glittering Medal -->
+	<item>
+	<ingredient id="6393" count="1"/>
+	<production id="1466" count="5000"/>
+	</item>
+
+	<!-- Blessed Spiritshot: B Grade x 5000 = 1 Event - Glittering Medal -->
+	<item>
+	<ingredient id="6393" count="1"/>
+	<production id="3950" count="5000"/>
+	</item>
+
+	<!-- Soulshot: B-grade x 5000 = 1 Event - Glittering Medal -->
+	<item>
+	<ingredient id="6393" count="1"/>
+	<production id="1465" count="5000"/>
+	</item>
+
+	<!-- Ancient Adena x 1.000.000 = 6 Event - Glittering Medal -->
+	<item>
+	<ingredient id="6393" count="6"/>
+	<production id="5575" count="1000000"/>
+	</item>
 </list>
