@@ -492,7 +492,7 @@
 		<set name="magicLevel" val="#magicLevel" />
 		<set name="mpConsume" val="#mpConsume" />
 		<set name="operateType" val="A2" />
-		<set name="reuseDelay" val="150000" />
+		<set name="reuseDelay" val="15000" />
 		<set name="targetType" val="SELF" />
 		<enchant1 name="magicLevel" val="#enchMagicLvl" />
 		<enchant2 name="abnormalTime" val="#ench2AbnormalTimes" />
