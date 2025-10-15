@@ -210,7 +210,7 @@ public class Q00374_WhisperOfDreamsPart1 extends Quest
 			return null;
 		}
 		
-		if (Rnd.get(100) < 1)
+		if (Rnd.get(100) < 3)
 		{
 			giveItems(st.getPlayer(), SEALED_MYSTERIOUS_STONE, 1);
 			st.unset("condStone");
