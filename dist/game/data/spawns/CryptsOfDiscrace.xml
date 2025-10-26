@@ -8,19 +8,19 @@
 		<npc id="21656" x="178525" y="-113620" z="-5834" heading="18285" respawnDelay="110" />
 		<npc id="21656" x="180270" y="-116964" z="-6170" heading="0" respawnDelay="110" />
 		<npc id="21656" x="180371" y="-116786" z="-6170" heading="0" respawnDelay="110" />
-		<npc id="21657" x="178242" y="-109055" z="-5886" heading="0" respawnDelay="110" />
-		<npc id="21657" x="179216" y="-107717" z="-5834" heading="6763" respawnDelay="110" />
-		<npc id="21657" x="178392" y="-108652" z="-5834" heading="52395" respawnDelay="110" />
-		<npc id="21657" x="178793" y="-109557" z="-5834" heading="50754" respawnDelay="110" />
-		<npc id="21657" x="178255" y="-110440" z="-5893" heading="0" respawnDelay="110" />
-		<npc id="21657" x="178556" y="-109906" z="-5893" heading="0" respawnDelay="110" />
-		<npc id="21657" x="182130" y="-106489" z="-6101" heading="0" respawnDelay="110" />
-		<npc id="21657" x="181928" y="-106489" z="-6101" heading="0" respawnDelay="110" />
-		<npc id="21657" x="181525" y="-107201" z="-6101" heading="0" respawnDelay="110" />
-		<npc id="21657" x="185355" y="-109112" z="-5888" heading="35885" respawnDelay="110" />
-		<npc id="21657" x="186846" y="-108788" z="-5888" heading="44506" respawnDelay="110" />
-		<npc id="21657" x="187665" y="-110658" z="-5888" heading="40265" respawnDelay="110" />
-		<npc id="21657" x="186833" y="-110797" z="-5888" heading="25874" respawnDelay="110" />
+		<npc id="21393" x="178242" y="-109055" z="-5886" heading="0" respawnDelay="110" />
+		<npc id="21393" x="179216" y="-107717" z="-5834" heading="6763" respawnDelay="110" />
+		<npc id="21393" x="178392" y="-108652" z="-5834" heading="52395" respawnDelay="110" />
+		<npc id="21393" x="178793" y="-109557" z="-5834" heading="50754" respawnDelay="110" />
+		<npc id="21393" x="178255" y="-110440" z="-5893" heading="0" respawnDelay="110" />
+		<npc id="21393" x="178556" y="-109906" z="-5893" heading="0" respawnDelay="110" />
+		<npc id="21393" x="182130" y="-106489" z="-6101" heading="0" respawnDelay="110" />
+		<npc id="21393" x="181928" y="-106489" z="-6101" heading="0" respawnDelay="110" />
+		<npc id="21393" x="181525" y="-107201" z="-6101" heading="0" respawnDelay="110" />
+		<npc id="21393" x="185355" y="-109112" z="-5888" heading="35885" respawnDelay="110" />
+		<npc id="21393" x="186846" y="-108788" z="-5888" heading="44506" respawnDelay="110" />
+		<npc id="21393" x="187665" y="-110658" z="-5888" heading="40265" respawnDelay="110" />
+		<npc id="21393" x="186833" y="-110797" z="-5888" heading="25874" respawnDelay="110" />
 		<npc id="22007" x="51003" y="-118403" z="-4154" heading="54153" respawnDelay="60" />
 		<npc id="22007" x="49735" y="-120081" z="-4143" heading="26814" respawnDelay="60" />
 		<npc id="22007" x="49732" y="-120239" z="-4143" heading="57247" respawnDelay="60" />
