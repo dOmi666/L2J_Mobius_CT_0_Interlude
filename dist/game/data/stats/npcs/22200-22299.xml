@@ -989,15 +989,15 @@
 		<dropLists>
 			<drop>
 				<group chance="80">
-					<item id="57" min="400000" max="900000" chance="100"/> <!-- Adena -->
+					<item id="57" min="200000" max="500000" chance="100"/> <!-- Adena -->
 				</group>
 				<group chance="100">
-					<item id="8627" min="2" max="3" chance="2"/> <!-- Elixir of Life (S-Grade) -->
-					<item id="8752" min="1" max="3" chance="4"/> <!-- High-Grade Life Stone: Level 76 -->
+					<item id="8627" min="1" max="2" chance="2"/> <!-- Elixir of Life (S-Grade) -->
+					<item id="8752" min="1" max="2" chance="4"/> <!-- High-Grade Life Stone: Level 76 -->
 					<item id="6622" min="1" max="1" chance="0.5"/> <!-- Giant's Codex -->
 				</group>
 				<group chance="100">
-					<item id="8762" min="1" max="2" chance="30"/> <!-- Top-Grade Life Stone: Level 76 -->
+					<item id="8762" min="1" max="1" chance="30"/> <!-- Top-Grade Life Stone: Level 76 -->
 				</group>
 			</drop>
 		</dropLists>
@@ -1085,15 +1085,15 @@
 		<dropLists>
 			<drop>
 				<group chance="80">
-					<item id="57" min="400000" max="900000" chance="100"/> <!-- Adena -->
+					<item id="57" min="200000" max="500000" chance="100"/> <!-- Adena -->
 				</group>
 				<group chance="100">
-					<item id="8627" min="2" max="3" chance="2"/> <!-- Elixir of Life (S-Grade) -->
-					<item id="8752" min="1" max="3" chance="4"/> <!-- High-Grade Life Stone: Level 76 -->
+					<item id="8627" min="1" max="2" chance="2"/> <!-- Elixir of Life (S-Grade) -->
+					<item id="8752" min="1" max="2" chance="4"/> <!-- High-Grade Life Stone: Level 76 -->
 					<item id="6622" min="1" max="1" chance="0.5"/> <!-- Giant's Codex -->
 				</group>
 				<group chance="100">
-					<item id="8762" min="1" max="2" chance="30"/> <!-- Top-Grade Life Stone: Level 76 -->
+					<item id="8762" min="1" max="1" chance="30"/> <!-- Top-Grade Life Stone: Level 76 -->
 				</group>
 			</drop>
 		</dropLists>
@@ -1182,20 +1182,17 @@
 		<dropLists>
 			<drop>
 				<group chance="80">
-					<item id="57" min="400000" max="900000" chance="100"/> <!-- Adena -->
+					<item id="57" min="200000" max="500000" chance="100"/> <!-- Adena -->
 				</group>
 				<group chance="100">
-					<item id="8627" min="2" max="3" chance="2"/> <!-- Elixir of Life (S-Grade) -->
-					<item id="8752" min="1" max="3" chance="4"/> <!-- High-Grade Life Stone: Level 76 -->
+					<item id="8627" min="1" max="2" chance="2"/> <!-- Elixir of Life (S-Grade) -->
+					<item id="8752" min="1" max="2" chance="4"/> <!-- High-Grade Life Stone: Level 76 -->
 					<item id="6622" min="1" max="1" chance="0.5"/> <!-- Giant's Codex -->
 				</group>
 				<group chance="100">
-					<item id="8762" min="1" max="2" chance="30"/> <!-- Top-Grade Life Stone: Level 76 -->
+					<item id="8762" min="1" max="1" chance="30"/> <!-- Top-Grade Life Stone: Level 76 -->
 				</group>
 			</drop>
-			<spoil>
-				<item id="4042" min="3" max="9" chance="30"/> <!-- Enria -->
-			</spoil>
 		</dropLists>
 		<collision>
 			<radius normal="60"/>
