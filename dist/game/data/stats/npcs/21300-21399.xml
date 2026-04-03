@@ -9537,7 +9537,7 @@
 			<skill id="4416" level="10"/> <!-- Dragons -->
 			<skill id="4590" level="9"/> <!-- Decrease Speed -->
 			<skill id="4280" level="3"/> <!-- Water Attack Weak Point -->
-			<skill id="4614" level="10"/> <!-- NPC Death Bomb -->
+			<!-- <skill id="4614" level="10"/> NPC Death Bomb -->
 			<skill id="4789" level="9"/> <!-- NPC High Level -->
 		</skillList>
 		<shots shotChance="30" spiritChance="30"/>
